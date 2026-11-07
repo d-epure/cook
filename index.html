@@ -76,9 +76,9 @@ details>summary{cursor:pointer}
 /* reteta */
 ul.ing .gh{list-style:none;margin:8px 0 2px -18px;break-inside:avoid}
 ul.ing{columns:2;padding-left:20px;margin:8px 0}
-.step{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:12px 0 12px 12px;border-left:5px solid var(--c,var(--line));border-bottom:1px solid var(--line)}
+.step{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:12px 0 12px 12px;border-left:5px solid var(--c,var(--line));border-bottom:1px solid var(--line)}
 .step:last-child{border-bottom:0}
-.min{font-weight:800;font-size:1.05rem}
+.min{font-weight:800;font-size:1.05rem;white-space:nowrap}
 .par{font-size:.85rem;color:var(--mut)}
 pre{background:var(--bg);border-radius:var(--r-s);padding:12px}
 
@@ -363,16 +363,16 @@ function timeline(steps){
  const end={},free={};
  steps.forEach(s=>{let st=0;(s.depinde_de||[]).forEach(d=>{if(end[d]!=null)st=Math.max(st,end[d])});
   if(s.aparat!=="manual"&&AP.some(a=>a.id===s.aparat)){st=Math.max(st,free[s.aparat]||0)}
-  s._s=st;s._e=st+(+s.durata_min||0);end[s.id]=s._e;if(s.aparat!=="manual")free[s.aparat]=s._e});
+  s._s=Math.round(st*10)/10;s._e=Math.round((s._s+(+s.durata_min||0))*10)/10;end[s.id]=s._e;if(s.aparat!=="manual")free[s.aparat]=s._e});
  return [...steps].sort((a,b)=>a._s-b._s);
 }
 function params(s){
- const a=[];if(s.mod)a.push(s.mod);if(+s.durata_min)a.push(s.durata_min+" min");if(+s.temp)a.push(s.temp+" C");
+ const a=[];if(s.mod)a.push(s.mod);if(+s.durata_min)a.push(+(+s.durata_min).toFixed(1)+" min");if(+s.temp)a.push(s.temp+" C");
  if(s.aparat==="MC"||s.aparat==="Thermomix"){if(s.treapta)a.push("treapta "+s.treapta);if(s.sens&&s.sens!=="normal")a.push("sens "+s.sens)}
  if(+s.sonda_c)a.push("sonda "+s.sonda_c+" C");return a.join(" - ");
 }
 function stepHtml(s,showMin,par){
- return `<div class="step" style="--c:${col(s.aparat)}"><div><div class="min">${showMin?"min "+s._s:""}</div>${tag(s.aparat)}</div><div>${esc(s.text)}<div class="par">${par?"in paralel cu alt aparat - ":""}${esc(params(s))}</div>${check(s).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}</div></div>`;
+ return `<div class="step" style="--c:${col(s.aparat)}"><div><div class="min">${showMin?"min "+Math.round(s._s):""}</div>${tag(s.aparat)}</div><div>${esc(s.text)}<div class="par">${par?"in paralel cu alt aparat - ":""}${esc(params(s))}</div>${check(s).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}</div></div>`;
 }
 function renderRecipe(sel){
  const c=RC[sel];if(!c||!$(sel))return;const r=c.r,tl=timeline(r.pasi||[]),tot=Math.max(0,...tl.map(s=>s._e)),ids=[...new Set(tl.map(s=>s.aparat))];let body;
@@ -380,7 +380,7 @@ function renderRecipe(sel){
  else body=ids.map(a=>`<h2>${tag(a)}</h2>`+tl.filter(s=>s.aparat===a).map(s=>stepHtml(s,false)).join("")).join("");
  const top=c.kind==="saved"?`<div style="margin-bottom:10px"><button class="alt" data-rback="1">Inapoi la lista</button> ${favBtn(sKey(r))}</div>`:"";
  const save=c.kind==="gen"?`<button class="go" id="bSave" style="margin:0">Salveaza</button>`:"";
- $(sel).innerHTML=top+`<div class="card"><h2>${esc(r.titlu)}</h2><div class="muted">${esc(r.portii)} portii - aprox. ${tot} min</div>${r.din_carte?`<div class="muted">Adaptata din: ${esc(r.din_carte)} (reteta din carte ramane neschimbata)</div>`:""}<div style="margin-top:6px">${lbH(r.etichete)}</div>${r.sursa_web&&safeUrl(r.sursa_web.url)?`<div class="muted">Inspirata de: <a href="${esc(r.sursa_web.url)}" target="_blank" rel="noopener noreferrer">${esc(r.sursa_web.nume||r.sursa_web.url)}</a> (adaptata, nu copiata)</div>`:""}
+ $(sel).innerHTML=top+`<div class="card"><h2>${esc(r.titlu)}</h2><div class="muted">${esc(r.portii)} portii - aprox. ${Math.round(tot)} min</div>${r.din_carte?`<div class="muted">Adaptata din: ${esc(r.din_carte)} (reteta din carte ramane neschimbata)</div>`:""}<div style="margin-top:6px">${lbH(r.etichete)}</div>${r.sursa_web&&safeUrl(r.sursa_web.url)?`<div class="muted">Inspirata de: <a href="${esc(r.sursa_web.url)}" target="_blank" rel="noopener noreferrer">${esc(r.sursa_web.nume||r.sursa_web.url)}</a> (adaptata, nu copiata)</div>`:""}
  <ul class="ing">${(r.ingrediente||[]).map(i=>`<li>${esc(i.cantitate)} ${esc(i.unitate)} ${esc(i.nume)}</li>`).join("")}</ul>
  ${(r.avertismente||[]).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}
  ${tagPicker(r,"data-tgr",c.kind==="gen"?"Etichete (se salveaza odata cu reteta)":"Etichete")}
@@ -654,7 +654,7 @@ $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
   putList(id==="lAll"?[]:getList().filter(x=>!x.done));navCount();drawList()}};
 navCount();
 /* versiune */
-const APP_V="1.7.11";
+const APP_V="1.7.12";
 $("#appv").textContent="Cartea mea de retete - versiunea "+APP_V;
 $("#bkcard h2").insertAdjacentHTML("afterend",'<div id="bkwarn" class="warn" style="margin:0 0 8px"></div>');
 /* submeniu Setari (Cont, Aparate, Etichete, Biblioteca, Date) */
