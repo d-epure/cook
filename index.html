@@ -265,7 +265,7 @@ function apiErr(status,j,model){const m=(j&&j.error&&j.error.message)||"",t=(j&&
  if(status===413)return"Cererea e prea mare. Scurteaza lista de ingrediente.";
  if(status===529||status>=500)return"Serviciul Anthropic e suprasolicitat sau are probleme. Incearca din nou peste cateva secunde.";
  return"Eroare "+status+(t?" ("+t+")":"")+(m?": "+m:"")}
-async function ask(model,system,user,max,temp,tools){
+async function ask(model,system,user,max,temp,tools,_retry){
  const key=LS("rk");if(!key)throw new Error("Adauga cheia API in Setari.");
  ABORT=new AbortController();let r,j;
  try{r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",signal:ABORT.signal,headers:{"content-type":"application/json","x-api-key":key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify(Object.assign({model,max_tokens:max,temperature:temp,system,messages:[{role:"user",content:user}]},tools?{tools}:{}))});
@@ -276,7 +276,7 @@ async function ask(model,system,user,max,temp,tools){
  if(j.stop_reason==="pause_turn")throw new Error("Cautarea web a durat prea mult. Incearca din nou.");
  const t=(j.content||[]).filter(c=>c.type==="text").map(c=>c.text||"").join("");const a=t.indexOf("{"),b=t.lastIndexOf("}");
  if(a<0)throw new Error("Raspuns fara continut util. Incearca din nou.");
- try{return JSON.parse(t.slice(a,b+1))}catch(x){throw new Error(j.stop_reason==="max_tokens"?"Raspunsul a fost taiat (reteta prea lunga). Incearca din nou sau alege alta idee.":"Raspunsul modelului nu a fost valid. Incearca din nou.")}
+ try{return JSON.parse(t.slice(a,b+1))}catch(x){if(j.stop_reason==="max_tokens"&&!_retry&&max<8000)return ask(model,system,user,Math.min(max*2,8000),temp,tools,true);throw new Error(j.stop_reason==="max_tokens"?"Raspunsul a fost taiat (reteta prea lunga). Incearca din nou sau alege alta idee.":"Raspunsul modelului nu a fost valid. Incearca din nou.")}
 }
 const SYS="Esti un bucatar practic care adapteaza retete la aparate. Scrii in romana, FARA diacritice. Raspunzi DOAR cu JSON valid, fara text in plus.";
 function timer(b,txt){const t0=Date.now(),bar=$("#busy");const up=()=>{const sec=Math.round((Date.now()-t0)/1000);b.textContent=txt+" "+sec+"s";$("#busyt").textContent=txt+" "+sec+"s"};
@@ -310,9 +310,9 @@ ${lblRule()}
 Aparate:\n${apText(l)}\n${RULE}
 Titlul retetei in romana, fara diacritice. "rezumat": 3-4 propozitii in cuvintele tale (NU copia textul sursei) cu ingredientele cheie si pasii principali. "url" trebuie sa fie adresa reala a paginii gasite, nu inventa adrese.
 Raspunde DOAR cu JSON: {"idei":[{"titlu":"","timp_total_min":0,"ai":[""],"lipsesc":[""],"aparate":["id"],"etichete":[""],"url":"","sursa_nume":"","rezumat":""}]}`;
-   r=await ask($("#m1").value||"claude-haiku-4-5",SYS,uw,3500,0.3,[{type:"web_search_20250305",name:"web_search",max_uses:3}]);
+   r=await ask($("#m1").value||"claude-haiku-4-5",SYS,uw,5000,0.3,[{type:"web_search_20250305",name:"web_search",max_uses:3}]);
    r.idei=(r.idei||[]).map(x=>Object.assign(x,{url:safeUrl(x.url)}));}
-  else r=await ask($("#m1").value||"claude-haiku-4-5",SYS,u,1200,0.4);
+  else r=await ask($("#m1").value||"claude-haiku-4-5",SYS,u,2500,0.4);
   window._idei=old.concat(r.idei).slice(0,30);drawIdei();
  }catch(e){fail(e)}
  stop();b.disabled=false;b.textContent=lbl;
@@ -333,7 +333,7 @@ ${lblRule()}
 Aparate:\n${apText(pick())}\n${RULE}
 Reguli: MC: treapta 1-10 sau "turbo", sens "normal"/"invers", volum_ml continut max 3000, max 99 min pe pas. Pasi fara aparat = aparat "manual". Pune pasi in paralel unde se poate, cu depinde_de pentru ordine. Fii concis: maxim 9 pasi, fiecare text sub 25 de cuvinte. Nu inventa valori de presiune.
 Format: {"titlu":"","portii":0,"ingrediente":[{"nume":"","cantitate":0,"unitate":""}],"pasi":[{"id":"p1","text":"","aparat":"id|manual","mod":"","temp":0,"treapta":"","sens":"","sonda_c":0,"volum_ml":0,"durata_min":0,"depinde_de":["id"]}],"avertismente":[""],"etichete":[""]}`;
- try{cur=await ask($("#m2").value||"claude-haiku-4-5",SYS,u,2200,0.3);cur.etichete=normTags(cur.etichete&&cur.etichete.length?cur.etichete:idea.etichete);if(idea.url)cur.sursa_web={url:idea.url,nume:idea.sursa_nume||""};showRecipe()}
+ try{cur=await ask($("#m2").value||"claude-haiku-4-5",SYS,u,3500,0.3);cur.etichete=normTags(cur.etichete&&cur.etichete.length?cur.etichete:idea.etichete);if(idea.url)cur.sursa_web={url:idea.url,nume:idea.sursa_nume||""};showRecipe()}
  catch(e){fail(e)}
  stop();btn.disabled=false;btn.textContent="Alege reteta";
 }
@@ -605,7 +605,7 @@ $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
   putList(id==="lAll"?[]:getList().filter(x=>!x.done));navCount();drawList()}};
 navCount();
 /* versiune */
-const APP_V="1.7.4";
+const APP_V="1.7.5";
 $("#appv").textContent="Cartea mea de retete - versiunea "+APP_V;
 $("#bkcard h2").insertAdjacentHTML("afterend",'<div id="bkwarn" class="warn" style="margin:0 0 8px"></div>');
 /* submeniu Setari (Cont, Aparate, Etichete, Biblioteca, Date) */
