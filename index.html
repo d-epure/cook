@@ -283,7 +283,15 @@ async function ask(model,system,user,max,temp,tools,_retry){
  if(a<0)throw new Error("Raspuns fara continut util. Incearca din nou.");
  try{return JSON.parse(t.slice(a,b+1))}catch(x){if(j.stop_reason==="max_tokens"&&!_retry&&max<8000)return ask(model,system,user,Math.min(max*2,8000),temp,tools,true);throw new Error(j.stop_reason==="max_tokens"?"Raspunsul a fost taiat (reteta prea lunga). Incearca din nou sau alege alta idee.":"Raspunsul modelului nu a fost valid. Incearca din nou.")}
 }
-const STRICT="Reguli de scriere: romana corecta, FARA diacritice si fara cuvinte inventate sau gresite (verifica fiecare cuvant; foloseste verbe uzuale: toaca, taie, amesteca, framanta, mixeaza, caleste, fierbe, coace, scurge). Fiecare pas incepe cu un verb la imperativ si contine o singura actiune. Pasii pe MC sau Thermomix au obligatoriu mod, durata_min, treapta (1-10 sau turbo) si sens; cand tai, toci sau mixezi precizeaza treapta si durata in secunde/minute (ex. 'Toaca ardeii 5 sec, treapta 5'), nu scrie doar 'fin' sau 'apoi mai fin' fara valori. Pasii pe Ninja au mod, temp si durata_min. Un pas repetat (ex. a doua tura de tocat) este un pas separat cu propriile valori. Foloseste exact ingredientele si cantitatile din reteta, fara a inventa altele. Nu lasa texte care nu sunt propozitii complete.";
+/* reguli pentru model: doar cele relevante pentru aparatele bifate (mai putini tokeni) */
+function rulesFor(L,n){
+ const rb=L.filter(a=>a.id==="MC"||a.id==="Thermomix"),nj=L.some(a=>a.id==="Ninja"),th=rb.some(a=>a.id==="Thermomix");
+ let t="Reguli de scriere: romana corecta, FARA diacritice si fara cuvinte inventate sau gresite (verifica fiecare cuvant; foloseste verbe uzuale: toaca, taie, amesteca, framanta, mixeaza, caleste, fierbe, coace, scurge). Fiecare pas incepe cu un verb la imperativ si contine o singura actiune. Un pas repetat (ex. a doua tura de tocat) este un pas separat cu propriile valori. Foloseste exact ingredientele si cantitatile din reteta, fara a inventa altele. Nu lasa texte care nu sunt propozitii complete.";
+ if(rb.length){const ml=Math.min(...rb.map(a=>a.maxMl||3000)),mm=rb.map(a=>a.maxMin).filter(Boolean);
+  t+=` Pasii pe ${rb.map(a=>a.id).join(" sau ")} au obligatoriu mod, durata_min, treapta (${th?"0.5":"1"}-10 sau \"turbo\") si sens \"normal\"/\"invers\"; la taiat, tocat sau mixat precizeaza treapta si durata (ex. 'Toaca ardeii 5 sec, treapta 5'), nu scrie doar 'fin' fara valori. Volum_ml continut maxim ${ml}${mm.length?", maxim "+Math.min(...mm)+" min pe pas":""}.`}
+ if(nj)t+=` Pasii pe Ninja au mod, temp si durata_min. Nu inventa valori de presiune; la presiune scrie in avertismente sa verifice manualul.`;
+ t+=` Pasi fara aparat = aparat "manual". Pune pasi in paralel unde se poate, cu depinde_de pentru ordine. Maxim ${n} pasi, fiecare text sub 25 de cuvinte.`;
+ return t}
 const SYS="Esti un bucatar practic care adapteaza retete la aparate. Scrii in romana, FARA diacritice. Raspunzi DOAR cu JSON valid, fara text in plus.";
 function timer(b,txt){const t0=Date.now(),bar=$("#busy");const up=()=>{const sec=Math.round((Date.now()-t0)/1000);b.textContent=txt+" "+sec+"s";$("#busyt").textContent=txt+" "+sec+"s"};
  bar.classList.remove("hidden");up();const i=setInterval(up,500);return()=>{clearInterval(i);bar.classList.add("hidden")}}
@@ -338,7 +346,7 @@ async function makeRecipe(idea,btn){
  const u=`Reteta: "${idea.titlu}" pentru ${$("#por").value} portii.${idea.rezumat?` Se bazeaza pe o reteta de pe web (${idea.sursa_nume||"sursa"}). Rezumat: ${idea.rezumat} Reformuleaza in cuvintele tale si adapteaza la aparate; nu copia textul sursei.`:""} Ingrediente ale utilizatorului: ${$("#ing").value}.
 ${lblRule()}
 Aparate:\n${apText(pick())}\n${RULE}
-${STRICT}\nReguli: MC si Thermomix: treapta 1-10 (Thermomix si 0.5) sau "turbo", sens "normal"/"invers", volum_ml continut max 3000, max 99 min pe pas. Pasi fara aparat = aparat "manual". Pune pasi in paralel unde se poate, cu depinde_de pentru ordine. Fii concis: maxim 9 pasi, fiecare text sub 25 de cuvinte. Nu inventa valori de presiune.
+${rulesFor(pick(),9)}
 Format: {"titlu":"","portii":0,"ingrediente":[{"nume":"","cantitate":0,"unitate":""}],"pasi":[{"id":"p1","text":"","aparat":"id|manual","mod":"","temp":0,"treapta":"","sens":"","sonda_c":0,"volum_ml":0,"durata_min":0,"depinde_de":["id"]}],"avertismente":[""],"etichete":[""]}`;
  try{cur=await ask($("#m2").value||"claude-haiku-4-5",SYS,u,3500,0.3);cur.etichete=normTags(cur.etichete&&cur.etichete.length?cur.etichete:idea.etichete);if(idea.url)cur.sursa_web={url:idea.url,nume:idea.sursa_nume||""};showRecipe()}
  catch(e){fail(e)}
@@ -504,7 +512,7 @@ async function adaptBook(i,p,sel,btn){
 Ingrediente:\n${ing}
 Pasii din carte:\n${pasi||"(nu sunt pasi extrasi)"}${r.verifica?`\nATENTIE: extragerea automata a acestei retete e nesigura (${r.verifica.join(", ")}). Textul paginii din carte, ca atare, ca sa clarifici ingredientele si pasii (daca ceva ramane neclar, scrie in avertismente):\n${String(r.text_brut||"").slice(0,3500)}`:""}
 Aparate:\n${apText(L)}\n${RULE}
-${STRICT}\nReguli: pentru fiecare pas pe aparat da mod, durata_min, temp (unde se aplica), iar la aparatele cu treapta (Monsieur Cuisine, Thermomix) treapta 1-10 sau "turbo" si sens "normal"/"invers". Volum_ml continut sa nu depaseasca capacitatea aparatului. Pasi fara aparat = aparat "manual". Pune pasi in paralel unde se poate, cu depinde_de pentru ordine. Maxim 12 pasi, fiecare text sub 25 de cuvinte. Nu inventa valori de presiune; la presiune scrie in avertismente sa verifice manualul.
+${rulesFor(L,12)}
 Format: {"titlu":"","portii":0,"ingrediente":[{"nume":"","cantitate":0,"unitate":""}],"pasi":[{"id":"p1","text":"","aparat":"id|manual","mod":"","temp":0,"treapta":"","sens":"","sonda_c":0,"volum_ml":0,"durata_min":0,"depinde_de":["id"]}],"avertismente":[""]}`;
  try{
   const a=await ask($("#m2").value||"claude-haiku-4-5",SYS,u,4000,0.2);
@@ -654,7 +662,7 @@ $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
   putList(id==="lAll"?[]:getList().filter(x=>!x.done));navCount();drawList()}};
 navCount();
 /* versiune */
-const APP_V="1.7.12";
+const APP_V="1.7.13";
 $("#appv").textContent="Cartea mea de retete - versiunea "+APP_V;
 $("#bkcard h2").insertAdjacentHTML("afterend",'<div id="bkwarn" class="warn" style="margin:0 0 8px"></div>');
 /* submeniu Setari (Cont, Aparate, Etichete, Biblioteca, Date) */
