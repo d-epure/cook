@@ -123,7 +123,7 @@ nav button.on .dot{background:var(--prit)}
  <div class="card">
   <label for="ing">Ingrediente pe care le ai</label>
   <textarea id="ing" placeholder="ex: piept de pui, broccoli, orez, smantana"></textarea>
-  <label>Aparate pentru adaptare</label><div class="chk" id="apbox"></div><p class="muted" style="margin:4px 0 0">Daca nu bifezi nimic, folosesc MC si Ninja (cu backup doar la nevoie). Daca bifezi, folosesc doar aparatele bifate.</p>
+  <details id="apdet" style="margin-top:12px"><summary id="apsum"><b>Aparate pentru adaptare</b></summary><div class="chk" id="apbox"></div><p class="muted" style="margin:4px 0 0">Daca nu bifezi nimic, folosesc MC si Ninja (cu backup doar la nevoie). Daca bifezi, folosesc doar aparatele bifate.</p></details>
   <label>Etichete</label><div class="chk" id="lbbox"></div><p class="muted" style="margin:4px 0 0">Fara bife = orice fel de mancare. Dietele (vegan, keto...) se aplica toate odata; bucatariile (romanesc, asiatic) sunt alternative.</p>
   <div class="row">
    <div><label for="por">Portii</label><input id="por" type="number" min="1" max="8" value="2"></div>
@@ -230,7 +230,9 @@ $("#nav").onclick=e=>{const v=e.target.dataset.v;if(!v)return;
 /* ===== APARATE (profile, setari, alegere) ===== */
 /* aparate */
 function renderBox(){const sel=new Set([...document.querySelectorAll("#apbox input:checked")].map(i=>i.value));
- $("#apbox").innerHTML=AP.filter(a=>a.on).map(a=>`<label><input type="checkbox" value="${esc(a.id)}" ${sel.has(a.id)?"checked":""}>${tag(a.id)}${esc(a.nume)}</label>`).join("")}
+ $("#apbox").innerHTML=AP.filter(a=>a.on).map(a=>`<label><input type="checkbox" value="${esc(a.id)}" ${sel.has(a.id)?"checked":""}>${tag(a.id)}${esc(a.nume)}</label>`).join("");apSum()}
+function apSum(){const c=[...document.querySelectorAll("#apbox input:checked")].map(i=>i.value),L=c.length?AP.filter(a=>c.includes(a.id)):AP.filter(a=>a.on);$("#apsum").innerHTML="<b>Aparate pentru adaptare:</b> "+(L.map(a=>esc(a.id)).join(", ")||"niciunul")+(c.length?"":" <span class=\"muted\">(implicit)</span>")}
+$("#apbox").addEventListener("change",apSum);
 function renderCfg(){
  $("#apcfg").innerHTML=AP.map((a,i)=>`<div class="apr">${tag(a.id)}<b>${esc(a.nume)}</b><label><input type="checkbox" data-t="on" data-i="${i}" ${a.on?"checked":""}> activ</label><label><input type="checkbox" data-t="backup" data-i="${i}" ${a.backup?"checked":""}> backup</label><button class="alt" data-x="${i}">Elimina</button></div>`).join("")+
  `<h2 style="margin-top:16px">Aparat nou</h2><label for="nn">Nume</label><input id="nn" placeholder="ex: Cuptor electric">
@@ -603,7 +605,7 @@ $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
   putList(id==="lAll"?[]:getList().filter(x=>!x.done));navCount();drawList()}};
 navCount();
 /* versiune */
-const APP_V="1.7.3";
+const APP_V="1.7.4";
 $("#appv").textContent="Cartea mea de retete - versiunea "+APP_V;
 $("#bkcard h2").insertAdjacentHTML("afterend",'<div id="bkwarn" class="warn" style="margin:0 0 8px"></div>');
 /* submeniu Setari (Cont, Aparate, Etichete, Biblioteca, Date) */
