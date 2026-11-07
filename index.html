@@ -3,53 +3,113 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Retete pe doua aparate</title>
+<title>Cartea mea de retete</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap">
 <style>
-/* Stiluri - Retete pe doua aparate. Culorile sunt variabile CSS (tema deschisa/inchisa). */
-:root{--bg:#f1f5f4;--card:#fff;--ink:#16252a;--mut:#5d6f74;--line:#d5dfdd;--mc:#0b7a86;--nj:#8a3fa8;--man:#8a7a52;--warn:#b4491e;--btn:#16252a;--btnt:#fff;color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#101a1d;--card:#182428;--ink:#e8f0ef;--mut:#92a5a9;--line:#2a3a3f;--mc:#46c4d0;--nj:#c58be0;--man:#c9b982;--warn:#f08a5d;--btn:#e8f0ef;--btnt:#101a1d;color-scheme:dark}}
+/* Cartea mea de retete - stiluri. Culorile sunt variabile (tema deschisa/inchisa urmeaza telefonul/calculatorul). */
+:root{
+ --bg:#f2f5f2;--card:#fff;--ink:#1c2b26;--mut:#5f736b;--line:#dbe4de;
+ --pri:#1f6b4a;--prit:#fff;--soft:#e5f0e8;--warn:#b4491e;
+ --r:16px;--r-s:12px;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+ --bg:#0f1815;--card:#16231f;--ink:#e7f1ec;--mut:#93aaa0;--line:#26372f;
+ --pri:#5fcf98;--prit:#0c1a14;--soft:#1e3128;--warn:#f08a5d;color-scheme:dark}}
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.5 "Bricolage Grotesque",system-ui,sans-serif;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
-main{max-width:720px;margin:0 auto;padding:16px}
-h1{font-size:1.9rem;font-weight:800;margin:8px 0 2px;letter-spacing:-.02em}
-h2{font-size:1.25rem;margin:0 0 8px}
-p.sub{color:var(--mut);margin:0 0 14px}
-nav{display:flex;flex-wrap:wrap;gap:0 6px;margin:10px 0 16px;border-bottom:1px solid var(--line)}
-nav button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 10px;color:var(--mut);font:inherit;font-weight:600;cursor:pointer}
-nav button.on{color:var(--ink);border-color:var(--ink)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin:0 0 12px}
-label{display:block;font-weight:600;margin:10px 0 4px}
-textarea,input,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px}
-textarea{min-height:84px;resize:vertical}
-.row{display:flex;gap:10px}.row>*{flex:1}
-button.go{background:var(--btn);color:var(--btnt);border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer;margin-top:12px}
-button.go:disabled{opacity:.5}
-@media(max-width:560px){.grid{grid-template-columns:1fr}}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}#bMore{margin:4px 0 16px}.lb{display:inline-block;font-size:.8rem;border:1px solid var(--line);color:var(--mut);padding:0 8px;border-radius:99px;margin:0 4px 4px 0}button.alt.on{background:var(--btn);color:var(--btnt);border-color:var(--btn);font-weight:700}button.alt{background:none;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font:inherit;cursor:pointer}
-button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--mc);outline-offset:2px}
-.tag{display:inline-block;font-size:.8rem;font-weight:700;padding:1px 8px;border-radius:99px;color:#fff;margin-right:4px}
-.tag{background:var(--c,#a8975f);color:#0b1417}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Bricolage Grotesque",system-ui,sans-serif;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);-webkit-text-size-adjust:100%}
+main{max-width:720px;margin:0 auto;padding:20px 16px 96px}
+
+/* antet */
+h1{font-size:2.2rem;line-height:1.1;font-weight:800;margin:10px 0 8px;letter-spacing:-.03em}
+h2{font-size:1.2rem;line-height:1.25;font-weight:700;margin:0 0 8px;letter-spacing:-.01em}
+p.sub{color:var(--mut);margin:0 0 18px;max-width:34em;font-size:1.02rem}
+
+/* meniu */
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+nav button{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 14px;min-height:40px;color:var(--ink);font:inherit;font-weight:600;font-size:.95rem;cursor:pointer;transition:background .15s,border-color .15s}
+nav button:hover{border-color:var(--pri)}
+nav button.on{background:var(--pri);border-color:var(--pri);color:var(--prit)}
+
+/* carduri si campuri */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:0 0 14px;box-shadow:0 1px 2px rgba(20,40,30,.05)}
+label{display:block;font-weight:600;margin:14px 0 6px}
+label:first-child{margin-top:0}
+textarea,input,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:var(--r-s);padding:11px 12px;min-height:44px}
+textarea{min-height:92px;resize:vertical}
+input[type=checkbox],input[type=radio]{accent-color:var(--pri)}
+.row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1}
+
+/* butoane */
+button.go{background:var(--pri);color:var(--prit);border:0;border-radius:var(--r-s);padding:12px 20px;min-height:46px;font:inherit;font-weight:700;cursor:pointer;margin-top:14px;transition:filter .15s}
+button.go:hover{filter:brightness(1.08)}
+button.go:disabled{opacity:.5;cursor:default}
+button.alt{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-s);padding:9px 14px;min-height:42px;font:inherit;font-weight:600;cursor:pointer;transition:border-color .15s,background .15s}
+button.alt:hover{border-color:var(--pri)}
+button.alt:disabled{opacity:.5;cursor:default}
+button.alt.on{background:var(--soft);color:var(--ink);border:2px solid var(--pri);font-weight:700}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.fgrid select{text-overflow:ellipsis}
+/* idei */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid .card{margin:0;display:flex;flex-direction:column}
+.grid .card .go{margin-top:auto;align-self:flex-start}
+#bMore{margin:6px 0 18px}
+
+/* etichete si aparate */
+.lb{display:inline-block;font-size:.8rem;font-weight:600;background:var(--soft);color:var(--ink);padding:2px 10px;border-radius:99px;margin:0 6px 6px 0}
+.tag{display:inline-block;font-size:.8rem;font-weight:700;padding:2px 10px;border-radius:99px;margin-right:6px;background:var(--c,#a8975f);color:#0b1417}
+.chk{display:flex;flex-wrap:wrap;gap:8px 16px}
+.chk label{display:flex;gap:8px;align-items:center;font-weight:400;margin:0}
+.chk input{width:auto;min-height:0}
+.apr{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.apr:last-child{border-bottom:0}
+.apr b{flex:1}.apr input{width:auto}
+
+/* text auxiliar */
 .muted{color:var(--mut);font-size:.92rem}
 .warn{color:var(--warn);font-size:.92rem;margin-top:4px}
-.step{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:10px 0 10px 10px;border-left:5px solid var(--line);border-bottom:1px solid var(--line)}
-.step{border-left-color:var(--c,var(--line))}.apr{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}.apr b{flex:1}.apr input{width:auto}.chk{display:flex;flex-wrap:wrap;gap:6px 14px}.chk label{display:flex;gap:6px;align-items:center;font-weight:400;margin:0}.chk input{width:auto}
+.err{color:var(--warn);font-weight:600;margin-top:12px}
+.hidden{display:none}
+details>summary{cursor:pointer}
+
+/* reteta */
+ul.ing .gh{list-style:none;margin:8px 0 2px -18px;break-inside:avoid}
+ul.ing{columns:2;padding-left:20px;margin:8px 0}
+.step{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:12px 0 12px 12px;border-left:5px solid var(--c,var(--line));border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
 .min{font-weight:800;font-size:1.05rem}
 .par{font-size:.85rem;color:var(--mut)}
-.hidden{display:none}
-.err{color:var(--warn);font-weight:600;margin-top:10px}
-ul.ing{columns:2;padding-left:18px;margin:6px 0}
-@media (max-width:480px){ul.ing{columns:1}.row{flex-direction:column}}
-#busy,#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:9;max-width:min(92vw,520px);background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:0 4px 18px rgba(0,0,0,.25)}#toast{bottom:72px;border-color:var(--warn)}#busy.hidden,#toast.hidden{display:none}
-@media(max-width:480px){nav button{padding:8px 7px;font-size:.92rem}}.lst .it{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}.lst .it>div{flex:1;min-width:0}.lst .it input{width:auto}.lst .done .tx{text-decoration:line-through;color:var(--mut)}.lst .src{font-size:.82rem;color:var(--mut)}
+pre{background:var(--bg);border-radius:var(--r-s);padding:12px}
+
+/* submeniu Setari */
+.snav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--warn);margin-left:6px;vertical-align:middle;pointer-events:none}
+nav button.on .dot{background:var(--prit)}
+
+/* lista de cumparaturi */
+.lst .it{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.lst .it>div{flex:1;min-width:0}
+.lst .it input{width:auto;min-height:0}
+.lst .done .tx{text-decoration:line-through;color:var(--mut)}
+.lst .src{font-size:.82rem;color:var(--mut)}
+
+/* bara de lucru si mesaje */
+#busy,#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:9;max-width:min(92vw,520px);background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px;box-shadow:0 6px 24px rgba(0,0,0,.22)}
+#toast{bottom:80px;border-color:var(--warn)}
+#busy.hidden,#toast.hidden{display:none}
+
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+@media (max-width:480px){h1{font-size:1.85rem}ul.ing{columns:1}.row{flex-direction:column}nav button{padding:8px 12px;font-size:.92rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
 
 </head>
 <body>
 <main>
-<h1>Retete pe doua aparate</h1>
-<p class="sub">Spune ce ai in casa. Primesti retete impartite intre Monsieur Cuisine Smart si Ninja Foodi MAX.</p>
+<h1>Cartea mea de retete</h1>
+<p class="sub">Retetele tale la un loc: cauta in biblioteca, gaseste idei din ce ai in casa si adapteaza-le, cand vrei, la aparatele tale.</p>
 <nav id="nav">
  <button data-v="idei" class="on">Idei</button>
  <button data-v="carti">Biblioteca mea</button>
@@ -63,7 +123,7 @@ ul.ing{columns:2;padding-left:18px;margin:6px 0}
  <div class="card">
   <label for="ing">Ingrediente pe care le ai</label>
   <textarea id="ing" placeholder="ex: piept de pui, broccoli, orez, smantana"></textarea>
-  <label>Aparate</label><div class="chk" id="apbox"></div><p class="muted" style="margin:4px 0 0">Daca nu bifezi nimic, folosesc MC si Ninja (cu backup doar la nevoie). Daca bifezi, folosesc doar aparatele bifate.</p>
+  <label>Aparate pentru adaptare</label><div class="chk" id="apbox"></div><p class="muted" style="margin:4px 0 0">Daca nu bifezi nimic, folosesc MC si Ninja (cu backup doar la nevoie). Daca bifezi, folosesc doar aparatele bifate.</p>
   <label>Etichete</label><div class="chk" id="lbbox"></div><p class="muted" style="margin:4px 0 0">Fara bife = orice fel de mancare. Dietele (vegan, keto...) se aplica toate odata; bucatariile (romanesc, asiatic) sunt alternative.</p>
   <div class="row">
    <div><label for="por">Portii</label><input id="por" type="number" min="1" max="8" value="2"></div>
@@ -78,14 +138,17 @@ ul.ing{columns:2;padding-left:18px;margin:6px 0}
  <div id="reteta"></div>
 </section>
 
-<section id="v-carti" class="hidden"><div class="card"><label for="bq">Cauta in retetele tale</label><input id="bq" placeholder="ingrediente sau nume, ex: vita, cartofi"><label for="bs">Carte</label><select id="bs"></select><label for="bc">Categorie</label><select id="bc"></select><label for="bf">Eticheta</label><select id="bf"></select><label for="bv">Stare</label><select id="bv"><option value="">Toate</option><option value="v">De verificat (extragere nesigura)</option><option value="ok">Fara semn de intrebare</option></select><div id="bn" class="muted" style="margin-top:8px"></div></div><div id="bres"></div></section>
+<section id="v-carti" class="hidden"><div class="card"><label for="bq">Cauta in retetele tale</label><input id="bq" placeholder="ingrediente sau nume, ex: vita, cartofi">
+ <div class="fgrid"><div><label for="bs">Carte</label><select id="bs"></select></div><div><label for="bc">Categorie</label><select id="bc"></select></div><div><label for="bf">Eticheta</label><select id="bf"></select></div><div><label for="bv">Stare</label><select id="bv"><option value="">Toate</option><option value="v">De verificat (extragere nesigura)</option><option value="ok">Fara semn de intrebare</option></select></div></div>
+ <div id="bn" class="muted" style="margin-top:10px"></div></div><div id="bres"></div></section>
 <section id="v-fav" class="hidden"><div id="favl"></div></section>
 <section id="v-salvate" class="hidden"><div id="sfilt"><label for="fs">Filtreaza dupa eticheta</label><select id="fs"></select></div><div id="salvate" style="margin-top:12px"></div></section>
 
 <section id="v-lista" class="hidden"><div class="card lst"><div id="ll"></div></div></section>
 
 <section id="v-setari" class="hidden">
- <div class="card">
+ <div id="snav" class="snav"><button class="alt" data-s="cont">Cont</button><button class="alt" data-s="aparate">Aparate</button><button class="alt" data-s="etichete">Etichete</button><button class="alt" data-s="biblioteca">Biblioteca</button><button class="alt" data-s="date">Date</button></div>
+ <div class="card" data-sg="cont">
   <label for="key">Cheie API Anthropic</label>
   <input id="key" type="password" autocomplete="off" placeholder="sk-ant-...">
   <label for="m1">Model pentru idei</label><input id="m1">
@@ -102,10 +165,10 @@ ul.ing{columns:2;padding-left:18px;margin:6px 0}
    </ol></details>
   <div id="usg" class="muted" style="margin-top:10px"></div>
  </div>
- <div class="card"><h2>Aparate</h2><div id="apcfg"></div></div>
- <div class="card" id="tgcard"><h2>Etichete</h2><div id="tgl"></div></div>
- <div class="card" id="bkcard"><h2>Copie de siguranta</h2><p class="muted" style="margin:0 0 10px">Datele tale stau doar in acest browser. Descarca periodic o copie: retete salvate, favorite, etichete, aparate, biblioteca incarcata si modelele alese. Cheia API NU se include.</p><button class="go" id="bExp" style="margin:0">Descarca copia (JSON)</button><div id="bkm" class="muted" style="margin:8px 0"></div><label for="bimp">Restaureaza dintr-o copie</label><input id="bimp" type="file" accept=".json,application/json"><div id="bipv"></div></div>
- <div class="card" id="bscard"><h2>Retete din carti</h2><label for="bnm">Numele cartii (optional)</label><input id="bnm" placeholder="ex: BT FIT Cookbook V2"><p class="muted" style="margin:4px 0 0">Daca il lasi gol, folosesc numele din fisier, iar daca nici acela nu exista, numele fisierului.</p><label for="bfile">Incarca baza de retete (retete.json)</label><input id="bfile" type="file" accept=".json,application/json"><div id="bm" class="muted" style="margin:6px 0 12px"></div><div id="bpv"></div><div id="bsn"></div><p class="muted">Stergerea afecteaza doar retetele incarcate in Biblioteca mea. Aparatele, retetele salvate si cheia API raman. Fisierul tau retete.json ramane neatins.</p></div>
+ <div class="card" data-sg="aparate"><h2>Aparate</h2><div id="apcfg"></div></div>
+ <div class="card" id="tgcard" data-sg="etichete"><h2>Etichete</h2><div id="tgl"></div></div>
+ <div class="card" id="bkcard" data-sg="date"><h2>Copie de siguranta</h2><p class="muted" style="margin:0 0 10px">Datele tale stau doar in acest browser. Descarca periodic o copie: retete salvate, favorite, etichete, aparate, biblioteca incarcata si modelele alese. Cheia API NU se include.</p><button class="go" id="bExp" style="margin:0">Descarca copia (JSON)</button><div id="bkm" class="muted" style="margin:8px 0"></div><label for="bimp">Restaureaza dintr-o copie</label><input id="bimp" type="file" accept=".json,application/json"><div id="bipv"></div></div>
+ <div class="card" id="bscard" data-sg="biblioteca"><h2>Retete din carti</h2><label for="bnm">Numele cartii (optional)</label><input id="bnm" placeholder="ex: BT FIT Cookbook V2"><p class="muted" style="margin:4px 0 0">Daca il lasi gol, folosesc numele din fisier, iar daca nici acela nu exista, numele fisierului.</p><label for="bfile">Incarca baza de retete (retete.json)</label><input id="bfile" type="file" accept=".json,application/json"><div id="bm" class="muted" style="margin:6px 0 12px"></div><div id="bpv"></div><div id="bsn"></div><p class="muted">Stergerea afecteaza doar retetele incarcate in Biblioteca mea. Aparatele, retetele salvate si cheia API raman. Fisierul tau retete.json ramane neatins.</p></div>
 </section>
 </main>
 <div id="busy" class="hidden" role="status"><span id="busyt"></span> <button class="alt" id="bCancel">Anuleaza</button></div>
@@ -136,7 +199,7 @@ const esc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",
 let cur=null,mode="cron",SV=null,FV=null;const RC={};
 
 /* ===== ETICHETE (lista centrala, normalizare, cautare) ===== */
-const norm=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+const norm=s=>String(s||"").toLowerCase().replace(/(?<=\w)\u00ee(?=\w)/g,"a").normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 const TDEF=[{n:"traditional romanesc",t:"bucatarie"},{n:"asiatic",t:"bucatarie"},{n:"vegan",t:"dieta"},{n:"vegetarian",t:"dieta"},{n:"high-protein",t:"dieta",auto:"protein"},{n:"keto",t:"dieta",auto:"keto"}];
 let TAGS;try{TAGS=JSON.parse(LS("rtags"))}catch(e){}if(!Array.isArray(TAGS)||!TAGS.length)TAGS=JSON.parse(JSON.stringify(TDEF));
 const saveTags=()=>LS("rtags",JSON.stringify(TAGS));
@@ -157,7 +220,7 @@ const favBtn=(k,txt,st)=>`<button class="alt${isFav(k)?" on":""}" data-fav="${es
 function showRecipe(){RC["#reteta"]={r:cur,kind:"gen"};show("idei");renderRecipe("#reteta");const el=$("#reteta");if(el.firstChild)el.scrollIntoView({behavior:"smooth",block:"start"})}
 
 function show(v){document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));$("#v-"+v).classList.remove("hidden");
- document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));if(v==="salvate")renderSaved();if(v==="fav")renderFav();if(v==="lista")drawList();if(v==="setari"){useDraw();renderCfg();renderTagCfg();updBS()}if(v==="idei")renderBox()}
+ document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));if(v==="salvate")renderSaved();if(v==="fav")renderFav();if(v==="lista")drawList();if(v==="setari"){useDraw();renderCfg();renderTagCfg();updBS();setSub(LS("rk")?SUB:"cont")}bkBadge();if(v==="idei")renderBox()}
 $("#nav").onclick=e=>{const v=e.target.dataset.v;if(!v)return;
  if(!$("#v-"+v).classList.contains("hidden")){if(v==="salvate")SV=null;if(v==="fav")FV=null;if(v==="carti")drawBook()}
  show(v)};
@@ -387,7 +450,7 @@ const bChips=r=>(r.categorie?`<span class="lb" style="font-weight:700;color:var(
 function drawBook(){
  const srcs=[...new Set(BOOK.map(r=>r.sursa||"necunoscuta"))],sel=$("#bs"),prev=sel.value;
  if(sel.dataset.k!==srcs.join("|")){sel.dataset.k=srcs.join("|");sel.innerHTML='<option value="">Toate cartile</option>'+srcs.map(x=>`<option>${esc(x)}</option>`).join("");sel.value=srcs.includes(prev)?prev:""}
- const cats=[...new Set(BOOK.map(r=>r.categorie).filter(Boolean))].sort(),cs=$("#bc"),cp=cs.value;
+ const cats=[...new Set(BOOK.filter(r=>!sel.value||(r.sursa||"necunoscuta")===sel.value).map(r=>r.categorie).filter(Boolean))].sort(),cs=$("#bc"),cp=cs.value; /* categoriile arata doar ce exista in cartea aleasa */
  if(cs.dataset.k!==cats.join("|")){cs.dataset.k=cats.join("|");cs.innerHTML='<option value="">Toate categoriile</option>'+cats.map(x=>`<option>${esc(x)}</option>`).join("");cs.value=cats.includes(cp)?cp:""}
  const q=norm($("#bq").value).split(/[,;\s]+/).filter(x=>x.length>1),f=$("#bf").value,sc0=sel.value,cat0=cs.value;
  const l=BOOK.map((r,i)=>({r,i,sc:q.filter(t=>bTxt(r).includes(t)).length})).filter(x=>(!q.length||x.sc>0)&&(!f||bLab(x.r).includes(f))&&(!sc0||(x.r.sursa||"necunoscuta")===sc0)&&(!cat0||x.r.categorie===cat0)&&(!$("#bv").value||($("#bv").value==="v")===!!x.r.verifica)).sort((a,b)=>b.sc-a.sc);
@@ -401,8 +464,8 @@ function openBook(i,p,sel){sel=sel||"#bres";bi=i;if(sel==="#favl")FV={t:"b",i,p}
  $(sel).innerHTML=`<div class="bv" data-bi="${i}"><div style="margin-bottom:10px"><button class="alt" data-bback="1">${sel==="#bres"?"Inapoi la rezultate":"Inapoi la favorite"}</button> ${favBtn(bKey(r))}</div><div class="card"><h2>${esc(r.titlu)}</h2><div>${bChips(r)}</div>
  ${tagPicker(r,"data-tgb")}
  ${r.verifica?`<div class="warn">Extragerea automata a acestei retete e nesigura (${esc(r.verifica.join(", "))}). Mai jos e textul paginii din carte, ca atare.</div><pre style="white-space:pre-wrap;font:inherit">${esc(r.text_brut||"")}</pre>`:""}
- <div class="row" style="gap:8px;margin:8px 0 0"><button class="alt" data-cumb="1">Adauga la cumparaturi</button><button class="alt" data-edit="1">Corecteaza reteta</button></div><label for="${pid}">Portii</label><input id="${pid}" data-bp="1" type="number" min="1" value="${p}" style="max-width:100px">
- <h2 style="margin-top:14px">Ingrediente</h2><ul class="ing">${(r.ingrediente||[]).map(x=>`<li>${x.c!=null?fmtQ(x.c*f)+" "+(x.u?esc(x.u)+" ":""):""}${esc(x.n)}</li>`).join("")}</ul>
+ <div class="row" style="gap:8px;margin:8px 0 0"><button class="alt" data-cumb="1">Adauga la cumparaturi</button><button class="alt" data-edit="1">Corecteaza reteta</button></div>${r.portii==null?`<p class="muted" style="margin:10px 0 0">Cantitatile sunt cele din carte.</p>`:`<label for="${pid}">Portii</label><input id="${pid}" data-bp="1" type="number" min="1" value="${p}" style="max-width:100px">`}
+ <h2 style="margin-top:14px">Ingrediente</h2>${(r.ingrediente||[]).length?`<ul class="ing">${ingHtml(r,f)}</ul>`:`<p class="muted">Reteta nu are o lista proprie de ingrediente. Cantitatile sunt in modul de preparare sau in reteta la care trimite.</p>`}
  <h2>Mod de preparare</h2><ol>${(r.pasi_carte||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>
  ${m&&m.kcal!=null?`<h2>Macro per portie</h2><p class="muted">Valori din carte, aproximative: ${m.kcal} kcal, proteine ${m.proteine??"?"} g, carbohidrati ${m.carbo??"?"} g${m.fibre!=null?" (fibre "+m.fibre+" g)":""}, grasimi ${m.grasimi??"?"} g${m.saturate!=null?" (saturate "+m.saturate+" g)":""}</p>`:""}
  ${L(r.sfaturi)?"<h2>Sfaturi practice</h2>"+ul(r.sfaturi):""}${L(r.alergeni)?"<p><b>Alergeni:</b> "+esc(r.alergeni.join(", "))+"</p>":""}${L(r.variante)?"<p><b>Variante:</b></p>"+ul(r.variante):""}
@@ -414,9 +477,14 @@ const UN=["g","kg","ml","l","cl","lingura","linguri","lingurita","lingurite","ca
 function toNum(s){s=String(s).trim().replace(",",".");let t=0;const fr={"\u00bd":.5,"\u00bc":.25,"\u00be":.75};
  s=s.replace(/[\u00bd\u00bc\u00be]/g,c=>{t+=fr[c];return""});const f=s.match(/(\d+)\s*\/\s*(\d+)/);if(f){t+=f[1]/f[2];s=s.replace(f[0],"")}
  const n=parseFloat(s);if(!isNaN(n))t+=n;return +t.toFixed(3)}
+function ingHtml(r,f){let g=null,o="";(r.ingrediente||[]).forEach(x=>{const gg=x.g||null;if(gg!==g){g=gg;if(g)o+=`<li class="gh"><b>${esc(g)}</b></li>`}
+  o+=`<li>${x.c!=null?fmtQ(x.c*f)+" "+(x.u?esc(x.u)+" ":""):""}${esc(x.n)}</li>`});return o}
+function ingText(list){let g=null;return (list||[]).map(x=>{const gg=x.g||null;let h="";if(gg!==g){g=gg;if(g)h="## "+g+"\n"}return h+ingLine(x)}).join("\n")}
+function parseIngText(t){let g=null;const out=[];t.split("\n").forEach(l=>{const s=l.trim();if(s.startsWith("##")){g=s.replace(/^#+\s*/,"")||null;return}const p=parseIng(l);if(p){if(g)p.g=g;out.push(p)}});return out}
 function parseIng(line){const t=line.trim().replace(/^[\u2022\-*]\s*/,"");if(!t)return null;
  const m=t.match(/^(\d+(?:[.,]\d+)?(?:\s*\/\s*\d+)?\s*[\u00bd\u00bc\u00be]?|[\u00bd\u00bc\u00be])\s*(.*)$/);if(!m)return{c:null,u:"",n:t};
  const rest=m[2].trim(),w=rest.split(/\s+/)[0]||"";
+ const vf=norm(rest).match(/^(varf de (lingurita|cutit))\b/);if(vf)return{c:toNum(m[1]),u:rest.slice(0,vf[1].length),n:rest.slice(vf[1].length).trim()};
  if(UN.includes(norm(w))&&rest.length>w.length)return{c:toNum(m[1]),u:w,n:rest.slice(w.length).trim()};
  return{c:toNum(m[1]),u:"",n:rest}}
 const ingLine=x=>[x.c!=null?x.c:"",x.u||"",x.n||""].join(" ").replace(/\s+/g," ").trim();
@@ -428,14 +496,14 @@ function editForm(r,i,sel){const m=r.macro||{},cats=[...new Set(BOOK.map(x=>x.ca
  ${r.text_brut?`<details open><summary><b>Textul paginii din carte</b> (il poti selecta si copia)</summary><pre style="white-space:pre-wrap;font:inherit;margin:8px 0">${esc(r.text_brut)}</pre></details>`:""}
  <label for="ef-t${i}">Titlu</label><input id="ef-t${i}" data-ef="titlu" value="${esc(r.titlu)}">
  <div class="row"><div><label for="ef-p${i}">Portii</label><input id="ef-p${i}" data-ef="portii" type="number" min="1" value="${esc(r.portii||1)}"></div><div><label for="ef-c${i}">Categorie</label><select id="ef-c${i}" data-ef="categorie">${cats.map(c=>`<option${c===r.categorie?" selected":""}>${esc(c)}</option>`).join("")}</select></div></div>
- <label for="ef-i${i}">Ingrediente (unul pe linie, ex: 160 g morcovi)</label><textarea id="ef-i${i}" data-ef="ing" rows="8">${esc((r.ingrediente||[]).map(ingLine).join("\n"))}</textarea>
+ <label for="ef-i${i}">Ingrediente (unul pe linie, ex: 160 g morcovi; o linie care incepe cu ## este titlu de grup, ex: ## Crema)</label><textarea id="ef-i${i}" data-ef="ing" rows="8">${esc(ingText(r.ingrediente))}</textarea>
  <label for="ef-s${i}">Mod de preparare (un pas pe linie)</label><textarea id="ef-s${i}" data-ef="pasi" rows="8">${esc((r.pasi_carte||[]).join("\n"))}</textarea>
  <div class="row"><div><label>kcal</label><input data-ef="kcal" type="number" step="any" value="${esc(mv("kcal"))}"></div><div><label>Proteine g</label><input data-ef="proteine" type="number" step="any" value="${esc(mv("proteine"))}"></div><div><label>Carbo g</label><input data-ef="carbo" type="number" step="any" value="${esc(mv("carbo"))}"></div><div><label>Grasimi g</label><input data-ef="grasimi" type="number" step="any" value="${esc(mv("grasimi"))}"></div></div>
  <div class="row" style="gap:8px;margin-top:12px"><button class="go" data-esave="1" style="margin:0">Salveaza</button>${r.verifica?'<button class="go" data-esave="v" style="margin:0">Salveaza si marcheaza verificata</button>':""}<button class="alt" data-ecancel="1">Renunta</button></div></div></div>`}
 function editSave(bv,i,sel,verif){const r=BOOK[i],g=k=>bv.querySelector(`[data-ef=${k}]`).value;
  const t=g("titlu").trim();if(!t){toast("Titlul nu poate fi gol.");return}
  r.titlu=t;r.portii=Math.max(1,+g("portii")||1);if(g("categorie"))r.categorie=g("categorie");
- r.ingrediente=g("ing").split("\n").map(parseIng).filter(Boolean);r.pasi_carte=g("pasi").split("\n").map(x=>x.trim()).filter(Boolean);
+ r.ingrediente=parseIngText(g("ing"));r.pasi_carte=g("pasi").split("\n").map(x=>x.trim()).filter(Boolean);
  r.macro=Object.assign({},r.macro);["kcal","proteine","carbo","grasimi"].forEach(k=>{const v=g(k);r.macro[k]=v===""?null:+v});
  r.corectata=true;if(verif)delete r.verifica;
  if(persistBook(r)){EDIT=null;openBook(i,r.portii,sel)}}
@@ -456,7 +524,7 @@ function bvChange(e,sel){const bv=e.target.closest(".bv");if(!bv)return false;co
 $("#bq").oninput=drawBook;$("#bf").onchange=drawBook;$("#bs").onchange=drawBook;$("#bc").onchange=drawBook;$("#bv").onchange=drawBook;
 $("#bres").onclick=e=>{if(bvClick(e,"#bres"))return;const d=e.target.dataset;
  if(d.fav!==undefined){toggleFav(d.fav);drawBook();return}
- if(d.b!==undefined)openBook(+d.b,BOOK[d.b].portii||1,"#bres")};
+ if(d.b!==undefined){openBook(+d.b,BOOK[d.b].portii||1,"#bres");$("#bres").scrollIntoView({block:"start"})}};
 $("#bres").onchange=e=>{bvChange(e,"#bres")};
 const BOOK0=BOOK;function setBook(j){BOOK=j;FV=null;drawBook()}
 const getStored=()=>{try{const j=JSON.parse(LS("rbook"));return Array.isArray(j)?j:[]}catch(e){return[]}};
@@ -531,8 +599,25 @@ $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
   putList(id==="lAll"?[]:getList().filter(x=>!x.done));navCount();drawList()}};
 navCount();
 /* versiune */
-const APP_V="1.5.0";
-$("#bkcard").insertAdjacentHTML("afterend",`<p class="muted" style="text-align:center">Versiune ${APP_V}</p>`);
+const APP_V="1.7.1";
+$("#bkcard").insertAdjacentHTML("afterend",`<p class="muted" style="text-align:center" data-sg="date">Versiune ${APP_V}</p>`);
+$("#bkcard h2").insertAdjacentHTML("afterend",'<div id="bkwarn" class="warn" style="margin:0 0 8px"></div>');
+/* submeniu Setari (Cont, Aparate, Etichete, Biblioteca, Date) */
+const SUBS=["cont","aparate","etichete","biblioteca","date"];
+let SUB=LS("rsub");
+function setSub(s){if(!SUBS.includes(s))s="cont";SUB=s;LS("rsub",s);
+ document.querySelectorAll("#snav button").forEach(b=>b.classList.toggle("on",b.dataset.s===s));
+ document.querySelectorAll("#v-setari [data-sg]").forEach(e=>e.classList.toggle("hidden",e.dataset.sg!==s))}
+$("#snav").onclick=e=>{if(e.target.dataset.s)setSub(e.target.dataset.s)};
+/* semn pentru copia de siguranta veche (peste 30 de zile) */
+const DOT='<span class="dot" title="Copia de siguranta e veche"></span>';
+function bkAge(){const t=+LS("rbk");return t?Math.floor((Date.now()-t)/864e5):null}
+function bkDue(){let has=false;try{has=JSON.parse(LS("rs")||"[]").length>0||getStored().length>0}catch(e){}if(!has)return false;const g=bkAge();return g===null||g>30}
+function bkBadge(){const d=bkDue(),g=bkAge();
+ document.querySelector("#nav [data-v=setari]").innerHTML="Setari"+(d?DOT:"");
+ document.querySelector("#snav [data-s=date]").innerHTML="Date"+(d?DOT:"");
+ $("#bkwarn").textContent=d?(g===null?"Nu ai descarcat nicio copie de siguranta inca.":"Ultima copie are "+g+" de zile. Descarc-o din nou."):""}
+bkBadge();
 $("#bCancel").onclick=()=>{if(ABORT)ABORT.abort()};
 /* copie de siguranta */
 const BK_KEYS=["rs","rfav","rtags","ra","rbook","rm1","rm2b","rl"];
@@ -544,7 +629,7 @@ $("#bExp").onclick=()=>{const d={};BK_KEYS.forEach(k=>{const v=LS(k);if(v!=null)
  const o={app:"retete-dana",format:1,data_export:new Date().toISOString(),date:d},i=bkInfo(d);
  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(o)],{type:"application/json"}));
  a.download="retete-copie-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
- LS("rbk",String(Date.now()));$("#bkm").textContent="Descarcat: "+i.salvate+" retete salvate, "+i.favorite+" favorite, "+i.biblioteca+" retete in biblioteca. "+bkLast()};
+ LS("rbk",String(Date.now()));bkBadge();$("#bkm").textContent="Descarcat: "+i.salvate+" retete salvate, "+i.favorite+" favorite, "+i.biblioteca+" retete in biblioteca. "+bkLast()};
 function impDraw(){const el=$("#bipv");if(!IMP){el.innerHTML="";return}const i=bkInfo(IMP.date);
  el.innerHTML=`<div class="card" style="margin:8px 0 0"><b>${esc(IMP.f.name)}</b><div class="muted" style="margin:6px 0 10px">Copie din ${esc((IMP.data_export||"").slice(0,10))}: ${i.salvate} retete salvate, ${i.favorite} favorite, ${i.etichete} etichete, ${i.aparate} aparate, ${i.biblioteca} retete in biblioteca.<br><b>Inlocuieste</b> tot ce ai acum in aplicatie pentru aceste date (cheia API ramane).</div><button class="go" data-ip="ok" style="margin:0">Restaureaza</button> <button class="alt" data-ip="no">Anuleaza</button></div>`}
 $("#bimp").onchange=async e=>{const f=e.target.files[0];IMP=null;$("#bkm").textContent=bkLast();if(!f){impDraw();return}
