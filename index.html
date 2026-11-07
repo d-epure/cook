@@ -189,12 +189,13 @@ const COL=["#1f9aa8","#a35bc4","#d2703d","#4f9a49","#4f7be8","#c75a7c","#a8975f"
 const DEF=[
 {id:"MC",nume:"Monsieur Cuisine Smart",on:1,backup:0,strict:1,tmin:37,tmax:130,maxMin:99,maxMl:3000,moduri:"gatit, sotat, abur, framantat, mixat, tocat, sous vide, slow cook, cantarire",note:"taie, toaca, mixeaza, framanta, sosuri, supe-crema; treapta 1-10 sau turbo; sens normal/invers; max 3 l continut"},
 {id:"Ninja",nume:"Ninja Foodi MAX 14-in-1",on:1,backup:0,strict:1,tmin:80,tmax:200,moduri:"Pressure Cook, Air Fry, Grill, Bake, Dehydrate, Prove, Sear/Saute, Steam, Slow Cook, Yoghurt, Steam Meals, Steam Air Fry, Steam Bake, Steam Bread",note:"crocant, air fry, gratar, copt, presiune, slow cook, abur; sonda digitala (sonda_c); la Pressure Cook scrie 'verifica presiunea in manual'"},
-{id:"Thermomix",nume:"Thermomix",on:1,backup:0,strict:1,tmin:37,tmax:120,maxMl:2200,moduri:"gatit, sotat, abur (Varoma), framantat, mixat, tocat, emulsionat, sous vide, cantarire",note:"taie, toaca, mixeaza, framanta, sosuri, supe-crema; treapta 1-10 sau turbo; sens normal/invers; Varoma pentru abur; max 2,2 l continut"},
+{id:"Thermomix",nume:"Thermomix TM6",on:1,backup:0,strict:1,tmin:37,tmax:120,maxMl:2200,moduri:"gatit, sotat, abur (Varoma), framantat, mixat, tocat, emulsionat, amestecat, slow cook, sous vide, fermentare, fierbator (kettle), cantarire",note:"taie, toaca, mixeaza, framanta, sosuri, supe-crema; treapta 0.5-10 sau turbo; sens normal/invers; Varoma pentru abur (vas separat, 3,3 l); slow cook pana la 8 h; fermentare 38-70 C pana la 12 h; temperaturi peste 120 C (rumenire, caramel) doar in retete ghidate Cookidoo, deci foloseste cel mult 120 C; max 2,2 l continut"},
 {id:"aragaz",nume:"Aragaz pe gaz",on:1,backup:1,moduri:"foc mic, foc mediu, foc mare",note:"tigaie sau oala, fara temperatura exacta"},
 {id:"fierbator",nume:"Fierbator de apa",on:1,backup:1,moduri:"fierbere apa",note:"apa fierbinte rapid"},
 {id:"cuptor",nume:"Cuptor clasic pe gaz",on:1,backup:1,tmin:120,tmax:250,moduri:"copt",note:"temperatura aproximativa, fara ventilator"}];
 let AP;try{AP=JSON.parse(LS("ra"))}catch(e){}if(!Array.isArray(AP)||!AP.length)AP=JSON.parse(JSON.stringify(DEF));
 /* migrare: Thermomix adaugat in lista implicita (o singura data, daca lipseste) */
+if(!LS("rdef2")){const k=AP.findIndex(a=>a&&a.id==="Thermomix");if(k>=0){const t=JSON.parse(JSON.stringify(DEF.find(a=>a.id==="Thermomix")));t.on=AP[k].on;AP[k]=t;LS("ra",JSON.stringify(AP))}LS("rdef2","1")}
 if(!LS("rdef1")){if(!AP.some(a=>a&&a.id==="Thermomix")){const t=DEF.find(a=>a.id==="Thermomix"),i=AP.findIndex(a=>a&&a.id==="aragaz");AP.splice(i<0?AP.length:i,0,JSON.parse(JSON.stringify(t)));LS("ra",JSON.stringify(AP))}LS("rdef1","1")}
 const saveAP=()=>LS("ra",JSON.stringify(AP));
 const col=id=>{const i=AP.findIndex(a=>a.id===id);return i<0?"#a8975f":COL[i%COL.length]};
@@ -282,6 +283,7 @@ async function ask(model,system,user,max,temp,tools,_retry){
  if(a<0)throw new Error("Raspuns fara continut util. Incearca din nou.");
  try{return JSON.parse(t.slice(a,b+1))}catch(x){if(j.stop_reason==="max_tokens"&&!_retry&&max<8000)return ask(model,system,user,Math.min(max*2,8000),temp,tools,true);throw new Error(j.stop_reason==="max_tokens"?"Raspunsul a fost taiat (reteta prea lunga). Incearca din nou sau alege alta idee.":"Raspunsul modelului nu a fost valid. Incearca din nou.")}
 }
+const STRICT="Reguli de scriere: romana corecta, FARA diacritice si fara cuvinte inventate sau gresite (verifica fiecare cuvant; foloseste verbe uzuale: toaca, taie, amesteca, framanta, mixeaza, caleste, fierbe, coace, scurge). Fiecare pas incepe cu un verb la imperativ si contine o singura actiune. Pasii pe MC sau Thermomix au obligatoriu mod, durata_min, treapta (1-10 sau turbo) si sens; cand tai, toci sau mixezi precizeaza treapta si durata in secunde/minute (ex. 'Toaca ardeii 5 sec, treapta 5'), nu scrie doar 'fin' sau 'apoi mai fin' fara valori. Pasii pe Ninja au mod, temp si durata_min. Un pas repetat (ex. a doua tura de tocat) este un pas separat cu propriile valori. Foloseste exact ingredientele si cantitatile din reteta, fara a inventa altele. Nu lasa texte care nu sunt propozitii complete.";
 const SYS="Esti un bucatar practic care adapteaza retete la aparate. Scrii in romana, FARA diacritice. Raspunzi DOAR cu JSON valid, fara text in plus.";
 function timer(b,txt){const t0=Date.now(),bar=$("#busy");const up=()=>{const sec=Math.round((Date.now()-t0)/1000);b.textContent=txt+" "+sec+"s";$("#busyt").textContent=txt+" "+sec+"s"};
  bar.classList.remove("hidden");up();const i=setInterval(up,500);return()=>{clearInterval(i);bar.classList.add("hidden")}}
@@ -336,7 +338,7 @@ async function makeRecipe(idea,btn){
  const u=`Reteta: "${idea.titlu}" pentru ${$("#por").value} portii.${idea.rezumat?` Se bazeaza pe o reteta de pe web (${idea.sursa_nume||"sursa"}). Rezumat: ${idea.rezumat} Reformuleaza in cuvintele tale si adapteaza la aparate; nu copia textul sursei.`:""} Ingrediente ale utilizatorului: ${$("#ing").value}.
 ${lblRule()}
 Aparate:\n${apText(pick())}\n${RULE}
-Reguli: MC: treapta 1-10 sau "turbo", sens "normal"/"invers", volum_ml continut max 3000, max 99 min pe pas. Pasi fara aparat = aparat "manual". Pune pasi in paralel unde se poate, cu depinde_de pentru ordine. Fii concis: maxim 9 pasi, fiecare text sub 25 de cuvinte. Nu inventa valori de presiune.
+${STRICT}\nReguli: MC si Thermomix: treapta 1-10 (Thermomix si 0.5) sau "turbo", sens "normal"/"invers", volum_ml continut max 3000, max 99 min pe pas. Pasi fara aparat = aparat "manual". Pune pasi in paralel unde se poate, cu depinde_de pentru ordine. Fii concis: maxim 9 pasi, fiecare text sub 25 de cuvinte. Nu inventa valori de presiune.
 Format: {"titlu":"","portii":0,"ingrediente":[{"nume":"","cantitate":0,"unitate":""}],"pasi":[{"id":"p1","text":"","aparat":"id|manual","mod":"","temp":0,"treapta":"","sens":"","sonda_c":0,"volum_ml":0,"durata_min":0,"depinde_de":["id"]}],"avertismente":[""],"etichete":[""]}`;
  try{cur=await ask($("#m2").value||"claude-haiku-4-5",SYS,u,3500,0.3);cur.etichete=normTags(cur.etichete&&cur.etichete.length?cur.etichete:idea.etichete);if(idea.url)cur.sursa_web={url:idea.url,nume:idea.sursa_nume||""};showRecipe()}
  catch(e){fail(e)}
@@ -350,7 +352,9 @@ function check(s){
  if(a.strict&&s.mod&&!a.moduri.split(",").some(m=>m.trim().toLowerCase()===String(s.mod).toLowerCase()))w.push(`Modul "${s.mod}" nu exista pe acest aparat.`);
  if(a.maxMin&&+s.durata_min>a.maxMin)w.push(`Peste ${a.maxMin} min pe pas.`);
  if(a.maxMl&&+s.volum_ml>a.maxMl)w.push(`Peste ${a.maxMl/1000} l in vas.`);
- if(a.id==="MC"){const tr=String(s.treapta||"").toLowerCase();if(tr&&tr!=="turbo"&&!(+tr>=1&&+tr<=10))w.push("Treapta trebuie sa fie 1-10 sau turbo.")}
+ if(a.id==="MC"||a.id==="Thermomix"){const tr=String(s.treapta||"").toLowerCase(),lo=a.id==="Thermomix"?0.5:1;if(tr&&tr!=="turbo"&&!(+tr>=lo&&+tr<=10))w.push("Treapta trebuie sa fie "+lo+"-10 sau turbo.")}
+ if((a.id==="MC"||a.id==="Thermomix")&&/toc|mix|framant|taie|emuls|tritur/i.test((s.text||"")+" "+(s.mod||""))&&(!s.treapta||!+s.durata_min))w.push("Pasul nu are treapta sau durata: verifica reteta din carte.");
+ if(a.id==="Ninja"&&!+s.durata_min&&s.mod)w.push("Pasul nu are durata: verifica reteta din carte.");
  if(/pressure/i.test(s.mod||""))w.push("Verifica presiunea si timpul in manual.");
  if(a.backup)w.push("Aparat backup: rezultatul poate diferi.");
  return w;
@@ -364,7 +368,7 @@ function timeline(steps){
 }
 function params(s){
  const a=[];if(s.mod)a.push(s.mod);if(+s.durata_min)a.push(s.durata_min+" min");if(+s.temp)a.push(s.temp+" C");
- if(s.aparat==="MC"){if(s.treapta)a.push("treapta "+s.treapta);if(s.sens&&s.sens!=="normal")a.push("sens "+s.sens)}
+ if(s.aparat==="MC"||s.aparat==="Thermomix"){if(s.treapta)a.push("treapta "+s.treapta);if(s.sens&&s.sens!=="normal")a.push("sens "+s.sens)}
  if(+s.sonda_c)a.push("sonda "+s.sonda_c+" C");return a.join(" - ");
 }
 function stepHtml(s,showMin,par){
@@ -500,7 +504,7 @@ async function adaptBook(i,p,sel,btn){
 Ingrediente:\n${ing}
 Pasii din carte:\n${pasi}
 Aparate:\n${apText(L)}\n${RULE}
-Reguli: pentru fiecare pas pe aparat da mod, durata_min, temp (unde se aplica), iar la aparatele cu treapta (Monsieur Cuisine, Thermomix) treapta 1-10 sau "turbo" si sens "normal"/"invers". Volum_ml continut sa nu depaseasca capacitatea aparatului. Pasi fara aparat = aparat "manual". Pune pasi in paralel unde se poate, cu depinde_de pentru ordine. Maxim 12 pasi, fiecare text sub 25 de cuvinte. Nu inventa valori de presiune; la presiune scrie in avertismente sa verifice manualul.
+${STRICT}\nReguli: pentru fiecare pas pe aparat da mod, durata_min, temp (unde se aplica), iar la aparatele cu treapta (Monsieur Cuisine, Thermomix) treapta 1-10 sau "turbo" si sens "normal"/"invers". Volum_ml continut sa nu depaseasca capacitatea aparatului. Pasi fara aparat = aparat "manual". Pune pasi in paralel unde se poate, cu depinde_de pentru ordine. Maxim 12 pasi, fiecare text sub 25 de cuvinte. Nu inventa valori de presiune; la presiune scrie in avertismente sa verifice manualul.
 Format: {"titlu":"","portii":0,"ingrediente":[{"nume":"","cantitate":0,"unitate":""}],"pasi":[{"id":"p1","text":"","aparat":"id|manual","mod":"","temp":0,"treapta":"","sens":"","sonda_c":0,"volum_ml":0,"durata_min":0,"depinde_de":["id"]}],"avertismente":[""]}`;
  try{
   const a=await ask($("#m2").value||"claude-haiku-4-5",SYS,u,4000,0.2);
@@ -650,7 +654,7 @@ $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
   putList(id==="lAll"?[]:getList().filter(x=>!x.done));navCount();drawList()}};
 navCount();
 /* versiune */
-const APP_V="1.7.8";
+const APP_V="1.7.10";
 $("#appv").textContent="Cartea mea de retete - versiunea "+APP_V;
 $("#bkcard h2").insertAdjacentHTML("afterend",'<div id="bkwarn" class="warn" style="margin:0 0 8px"></div>');
 /* submeniu Setari (Cont, Aparate, Etichete, Biblioteca, Date) */
