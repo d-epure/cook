@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cartea mea de retete</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap">
-<link rel="stylesheet" href="style.css?v=1.7.2">
+<link rel="stylesheet" href="style.css?v=1.7.3">
 
 </head>
 <body>
@@ -73,9 +73,10 @@
  <div class="card" id="bscard" data-sg="biblioteca"><h2>Retete din carti</h2><label for="bnm">Numele cartii (optional)</label><input id="bnm" placeholder="ex: BT FIT Cookbook V2"><p class="muted" style="margin:4px 0 0">Daca il lasi gol, folosesc numele din fisier, iar daca nici acela nu exista, numele fisierului.</p><label for="bfile">Incarca baza de retete (retete.json)</label><input id="bfile" type="file" accept=".json,application/json"><div id="bm" class="muted" style="margin:6px 0 12px"></div><div id="bpv"></div><div id="bsn"></div><p class="muted">Stergerea afecteaza doar retetele incarcate in Biblioteca mea. Aparatele, retetele salvate si cheia API raman. Fisierul tau retete.json ramane neatins.</p></div>
 </section>
 </main>
+<footer id="appv" class="muted" style="text-align:center;padding:18px 16px 28px;font-size:.8rem"></footer>
 <div id="busy" class="hidden" role="status"><span id="busyt"></span> <button class="alt" id="bCancel">Anuleaza</button></div>
 <div id="toast" class="hidden" role="alert"></div>
 
-<script src="app.js?v=1.7.2"></script>
+<script src="app.js?v=1.7.3"></script>
 </body>
 </html>
