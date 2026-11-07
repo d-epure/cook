@@ -1,4 +1,4 @@
-# Retete pe doua aparate
+# Retete 
 
 Aplicatie personala, fara server si fara build. Publicata pe GitHub Pages.
 
