@@ -2,6 +2,16 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 1.11.0
+- **Meniu saptamanal** (tab nou "Meniu"): fiecare zi are trei mese - Mic dejun, Pranz, Desert. Navighezi saptamanile cu < si >, "Saptamana asta" te aduce inapoi.
+- Adaugi in meniu din trei locuri: butonul "+ Adauga" de la o masa (cauti in retetele salvate/generate si in biblioteca, dupa nume sau ingredient), butonul "Adauga la meniu" din orice reteta din Biblioteca, Favorite, Salvate sau din Idei, si text liber ("resturi", "iesim in oras"). O reteta generata care nu e salvata se salveaza automat cand o pui in meniu. Masa propusa: Desert pentru dulciuri, Mic dejun dimineata, altfel Pranz.
+- Fara apeluri AI si fara cost: meniul se face manual, din ce ai deja.
+- Cantitatea de portii se poate schimba direct in meniu; cumparaturile se scaleaza la acele portii.
+- **Cumparaturi din meniu**: buton pe fiecare zi si buton pentru toata saptamana. Foloseste aceeasi curatare ca lista normala (fara apa, fara titluri, ce ai in Debara se ascunde) si aduna cantitatile cand produsul si unitatea coincid. Intrarile deja adaugate sunt marcate "in lista" si nu se dubleaza; daca apesi din nou cere confirmare. Schimbarea portiilor reactiveaza intrarea.
+- Daca o reteta din meniu e stearsa sau cartea e reincarcata, meniul pastreaza titlul si ingredientele, cu un avertisment.
+- Meniul intra in copia de siguranta si se restaureaza odata cu restul. Zilele mai vechi de 120 de zile se sterg singure.
+- Teste noi: `tests/test_meniu.py`.
+
 ## 1.10.2
 - Audit: **securitate** - numele categoriilor alimentelor nu mai pot executa cod (XSS) in Debara si Setari; toate valorile afisate trec prin escapare.
 - Audit: **performanta** - Debara si lista de cumparaturi folosesc un cache (la 300 produse in lista si 200 in debara: ~480 ms -> ~11 ms).

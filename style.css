@@ -68,9 +68,9 @@ details>summary{cursor:pointer}
 /* reteta */
 ul.ing .gh{list-style:none;margin:8px 0 2px -18px;break-inside:avoid}
 ul.ing{columns:2;padding-left:20px;margin:8px 0}
-.step{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:12px 0 12px 12px;border-left:5px solid var(--c,var(--line));border-bottom:1px solid var(--line)}
+.step{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:12px 0 12px 12px;border-left:5px solid var(--c,var(--line));border-bottom:1px solid var(--line)}
 .step:last-child{border-bottom:0}
-.min{font-weight:800;font-size:1.05rem}
+.min{font-weight:800;font-size:1.05rem;white-space:nowrap}
 .par{font-size:.85rem;color:var(--mut)}
 pre{background:var(--bg);border-radius:var(--r-s);padding:12px}
 
@@ -80,8 +80,8 @@ pre{background:var(--bg);border-radius:var(--r-s);padding:12px}
 nav button.on .dot{background:var(--prit)}
 
 /* lista de cumparaturi */
-.lst .it{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
-.lst .it>div{flex:1;min-width:0}
+.lst .it{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.lst .it>div{flex:1;min-width:150px}
 .lst .it input{width:auto;min-height:0}
 .lst .done .tx{text-decoration:line-through;color:var(--mut)}
 .lst .src{font-size:.82rem;color:var(--mut)}
@@ -94,3 +94,33 @@ nav button.on .dot{background:var(--prit)}
 @media (max-width:560px){.grid{grid-template-columns:1fr}}
 @media (max-width:480px){h1{font-size:1.85rem}ul.ing{columns:1}.row{flex-direction:column}nav button{padding:8px 12px;font-size:.92rem}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* debara: grid pe categorii */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.pcat{border:1px solid var(--line);border-radius:var(--r-s);padding:12px 12px 4px;background:var(--bg)}
+.pcat h3{margin:0 0 6px;font-size:1.05rem;font-weight:700}
+.pit{padding:8px 0;border-top:1px solid var(--line)}
+.pn{font-weight:600;overflow-wrap:anywhere}
+.pf{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 2px}
+.fchip{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:3px 11px;min-height:30px;font:inherit;font-size:.82rem;font-weight:600;cursor:pointer}
+.fchip.on{background:var(--soft);border:2px solid var(--pri);padding:2px 10px}
+.pa{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center}
+.pa button.alt{min-height:36px;padding:5px 10px;font-size:.85rem}
+.fd{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)}
+.fd .pn{flex:1 1 140px}
+.fd select{width:auto;flex:0 1 140px;min-height:38px;padding:5px 8px}
+.fd .fa{font-size:.8rem;min-width:56px;text-align:center}
+.fd button.alt{min-height:36px;padding:5px 10px;font-size:.85rem}
+
+/* meniu saptamanal */
+.mdlg{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.45);display:flex;align-items:flex-start;justify-content:center;padding:16px;overflow:auto}
+.mdlg.hidden{display:none}
+.mdbox{width:min(560px,100%);margin:0}
+.mday.today{border:2px solid var(--pri)}
+.mh{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.mh h2{margin:0}
+.ms{padding:10px 0 4px;border-top:1px solid var(--line);margin-top:10px}
+.mt{font-weight:700;font-size:.85rem;color:var(--mut);margin-bottom:4px}
+.me{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:6px 0}
+.me .mn{flex:1 1 180px;min-width:140px}
+.mpi{width:68px;min-height:40px;padding:6px 8px}
