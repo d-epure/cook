@@ -2,6 +2,14 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.4.1
+- Cautare in Biblioteca (si la adaugare in meniu): se cauta doar in titlu si in numele ingredientelor, pe inceput de cuvant ("ou" gaseste "oua", nu "sos"). Notele din paranteza si expresii ca "peste noapte" nu mai conteaza, deci "peste" (pestele) nu mai gaseste retete cu "peste noapte".
+- Cuvintele uzuale (cu, de, la, sau, fara, in...) sunt ignorate in cautare. Retetele cu cuvantul in titlu apar inaintea celor unde apare doar ca ingredient.
+
+## 2.4.0
+- Corecteaza reteta: textul paginii din carte e acum editabil (nu mai e doar de citit). Il corectezi (de ex. randurile rupte) si se salveaza odata cu reteta.
+- Buton nou "Imparte in portii, ingrediente si pasi": din text gaseste local (fara AI) portiile, ingredientele (cu titluri de grup "Strat ...:"), pasii si macro-urile, iti arata ce a gasit si completeaza campurile doar dupa ce confirmi. Rezultatul se verifica; formatul cartii cu doua coloane poate amesteca randuri.
+
 ## 2.3.1
 - Biblioteca: "+ Reteta noua" are acum propriul buton, deasupra cardului de cautare, separat de cautare si filtre.
 
