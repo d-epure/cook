@@ -2,6 +2,31 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.10.3
+- Corectura retetei: o singura sectiune. Am scos textul paginii din carte din editor si din reteta deschisa (era aceeasi informatie de doua ori). Verifici direct in carte, dupa referinta "Din: <carte>, reteta nr. N" (afisata in editor si in avertismentul retetelor de verificat), si corectezi doar campurile (titlu, portii, ingrediente, pasi, macro). Textul brut ramane in date (se foloseste doar la adaptarea AI a retetelor nesigure).
+
+## 2.10.2
+- Editor reteta: eticheta de la Ingrediente e scurta ("Ingrediente (unul pe linie)"); explicatia cu "##" (titlu de grup) a trecut intr-o nota mica sub camp.
+
+## 2.10.1
+- Editor reteta: corectura e unitara. Ce corectezi in textul de sus (paginii din carte) se muta singur in campurile de jos (portii, ingrediente, pasi, macro), cu "Revino la ce era". Ce corectezi in campurile de jos se scrie singur in textul de sus. Butonul "Imparte..." a disparut (nu mai e nevoie).
+- Textul original din carte se pastreaza si ai "Revino la textul original din carte" dupa salvare.
+
+## 2.10.0
+- Reteta deschisa: "Salveaza ca reteta mea" (sub "Mai multe actiuni"). Face o copie in "Retetele mele", cu "(varianta mea)" in titlu si mentiunea "adaptata din <carte>, reteta nr. N", si o deschide in editor. Originalul ramane neatins. Fara AI, deci gratuit. Se poate descarca ca JSON impreuna cu restul retetelor tale.
+
+## 2.9.0
+- Setari > Biblioteca: buton "Descarca JSON" la fiecare carte. Primesti un fisier cu retetele cartii, cu corecturile tale (inclusiv cele marcate verificate), in acelasi format in care incarci cartile. Il poti reincarca oricand la "Retete din carti" si inlocuieste cartea cu acelasi nume. Retetele "Retetele mele" se descarca la fel.
+
+## 2.8.3
+- Editor reteta: sus apare acum "Din: <carte>, reteta nr. N" (si pagina, daca exista in date), ca sa stii unde sa cauti in carte cand corectezi. Inainte aparea doar in reteta deschisa, jos.
+
+## 2.8.2
+- Editor reteta: nu mai corectezi aceleasi randuri de doua ori. "Imparte in portii, ingrediente si pasi" completeaza direct campurile (cu "Revino la ce era"), iar textul paginii din carte se strange singur cand reteta are deja ingrediente.
+
+## 2.8.1
+- Editor reteta: la retetele "de verificat", butonul principal e "Salveaza ca verificata"; celalalt e secundar si se numeste "Salveaza, raman de verificat". Butoanele nu se mai rup pe doua randuri.
+
 ## 2.8.0
 - Pornire inteligenta: daca ai ceva planificat pentru azi, aplicatia se deschide direct pe Meniu (vederea aleasa data trecuta, "Azi si maine" sau "Saptamana"; cu "Am gatit", "Deschide" si cumparaturi), nu pe "Idei". Fara meniu pe azi, se deschide ca pana acum.
 - Meniu: textul de ajutor apare doar cand meniul e gol.
