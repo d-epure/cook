@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=2.4.1">
+<link rel="stylesheet" href="style.css?v=2.8.0">
 
 </head>
 <body>
@@ -51,8 +51,8 @@
 </section>
 
 <section id="v-carti" class="hidden"><div id="bnewrow" style="margin-bottom:12px"><button class="go" id="bnew" type="button" style="margin:0;width:100%">+ Reteta noua (o scrii tu)</button></div><div class="card" id="bsearch"><label for="bq">Cauta in retetele tale</label><input id="bq" placeholder="ingrediente sau nume, ex: vita, cartofi">
- <div class="fgrid"><div><label for="bs">Carte</label><select id="bs"></select></div><div><label for="bc">Categorie</label><select id="bc"></select></div><div><label for="bf">Eticheta</label><select id="bf"></select></div><div><label for="bv">Stare</label><select id="bv"><option value="">Toate</option><option value="v">De verificat (extragere nesigura)</option><option value="ok">Fara semn de intrebare</option></select></div><div><label for="bd">Din debara</label><select id="bd"><option value="">Toate retetele</option><option value="0">Am tot ce trebuie</option><option value="1">Lipseste cel mult 1</option><option value="2">Lipsesc cel mult 2</option><option value="3">Lipsesc cel mult 3</option></select></div><div><label for="bj">Jurnal</label><select id="bj"><option value="">Toate</option><option value="4">Apreciate (4-5 stele)</option><option value="ok">Gatite pana acum</option><option value="g0">Negatite inca</option><option value="old">Negatite sau demult (peste 60 zile)</option></select></div><div><label for="bp">Preferinte</label><select id="bp"><option value="">Toate</option><option value="ok">Fara alimente evitate</option><option value="lk">Cu alimente care imi plac</option></select></div></div>
- <div id="bn" class="muted" style="margin-top:10px"></div></div><div id="bres"></div></section>
+ <details id="bflt" class="mre"><summary id="bfsum">Filtre</summary><div class="fgrid"><div><label for="bs">Carte</label><select id="bs"></select></div><div><label for="bc">Categorie</label><select id="bc"></select></div><div><label for="bf">Eticheta</label><select id="bf"></select></div><div><label for="bv">Stare</label><select id="bv"><option value="">Toate</option><option value="v">De verificat (extragere nesigura)</option><option value="ok">Fara semn de intrebare</option></select></div><div><label for="bd">Din debara</label><select id="bd"><option value="">Toate retetele</option><option value="0">Am tot ce trebuie</option><option value="1">Lipseste cel mult 1</option><option value="2">Lipsesc cel mult 2</option><option value="3">Lipsesc cel mult 3</option></select></div><div><label for="bj">Jurnal</label><select id="bj"><option value="">Toate</option><option value="4">Apreciate (4-5 stele)</option><option value="ok">Gatite pana acum</option><option value="g0">Negatite inca</option><option value="old">Negatite sau demult (peste 60 zile)</option></select></div><div><label for="bp">Preferinte</label><select id="bp"><option value="">Toate</option><option value="ok">Fara alimente evitate</option><option value="lk">Cu alimente care imi plac</option></select></div></div></details>
+ <div id="bn" class="muted" style="margin-top:10px"></div><button class="alt" id="bvq" type="button" hidden style="margin-top:8px">Parcurge retetele de verificat</button></div><div id="bres"></div></section>
 <section id="v-fav" class="hidden"><div id="favl"></div></section>
 <section id="v-salvate" class="hidden"><div id="sfilt"><label for="fs">Filtreaza dupa eticheta</label><select id="fs"></select></div><div id="salvate" style="margin-top:12px"></div></section>
 
@@ -63,7 +63,7 @@
 <section id="v-lista" class="hidden"><div class="card lst"><div id="ll"></div></div></section>
 
 <section id="v-setari" class="hidden">
- <div id="snav" class="snav"><button class="alt" data-s="cont">Cont</button><button class="alt" data-s="aparate">Aparate</button><button class="alt" data-s="etichete">Etichete retete</button><button class="alt" data-s="alimente">Etichete alimente</button><button class="alt" data-s="pref">Preferinte</button><button class="alt" data-s="biblioteca">Biblioteca</button><button class="alt" data-s="date">Date</button></div>
+ <div id="snav" class="snav"><button class="alt" data-s="cont">Cont si aparate</button><button class="alt" data-s="alimente">Alimente si etichete</button><button class="alt" data-s="biblioteca">Biblioteca</button><button class="alt" data-s="date">Date</button></div>
  <div class="card" data-sg="cont">
   <label for="key">Cheie API Anthropic</label>
   <input id="key" type="password" autocomplete="off" placeholder="sk-ant-...">
@@ -99,6 +99,6 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="app.js?v=2.4.1"></script>
+<script src="app.js?v=2.8.0"></script>
 </body>
 </html>

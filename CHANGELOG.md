@@ -2,6 +2,23 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.8.0
+- Pornire inteligenta: daca ai ceva planificat pentru azi, aplicatia se deschide direct pe Meniu (vederea aleasa data trecuta, "Azi si maine" sau "Saptamana"; cu "Am gatit", "Deschide" si cumparaturi), nu pe "Idei". Fara meniu pe azi, se deschide ca pana acum.
+- Meniu: textul de ajutor apare doar cand meniul e gol.
+- Biblioteca: filtrele sunt pliate sub "Filtre" (cu numarul celor active) pe ecran mic, deci lista de retete apare mult mai sus. Pe ecran larg raman deschise.
+
+## 2.7.0
+- Setari simplificat: din 7 sectiuni raman 4. "Cont si aparate", "Alimente si etichete" (etichete alimente, preferinte, etichete retete), "Biblioteca", "Date". Continutul e acelasi, doar grupat.
+
+## 2.6.0
+- Biblioteca: buton "Parcurge retetele de verificat (N)". Deschide pe rand fiecare reteta nesigura direct in editor, cu "De verificat: X din N". "Salveaza si marcheaza verificata" trece la urmatoarea; "Sari peste" o lasa pentru mai tarziu; "Opreste" iese din coada.
+- Combinat cu textul editabil si "Imparte in portii, ingrediente si pasi" (2.4.0), poti curata retetele nesigure una dupa alta.
+
+## 2.5.0
+- Nou: "Propune-mi un meniu" in Meniu. Alegi mesele (mic dejun, pranz, desert) si aplicatia propune retete pentru toate mesele goale din saptamana (de azi inainte), din Biblioteca si din retetele salvate.
+- Reguli: retetele cu alimente evitate sunt excluse total; retetele "de verificat", sosurile, muraturile si conservele nu se propun; nu se repeta nimic din meniu sau din propunere. Se prefera retetele cu alimente care iti plac, favoritele, cele bine apreciate, cele cu putine ingrediente lipsa din debara, cele negatite recent, si (daca ai tinta de calorii) cele apropiate de ea.
+- Fiecare rand are "Alta varianta" si "x" (scoate). Nimic nu intra in meniu pana nu apesi "Adauga in meniu". Mesele fara nicio reteta potrivita primesc, la cerere, "Genereaza cu AI" (o singura cerere, doar la apasare; reteta respecta preferintele si se salveaza in Salvate). Nu se face niciun apel AI automat.
+
 ## 2.4.1
 - Cautare in Biblioteca (si la adaugare in meniu): se cauta doar in titlu si in numele ingredientelor, pe inceput de cuvant ("ou" gaseste "oua", nu "sos"). Notele din paranteza si expresii ca "peste noapte" nu mai conteaza, deci "peste" (pestele) nu mai gaseste retete cu "peste noapte".
 - Cuvintele uzuale (cu, de, la, sau, fara, in...) sunt ignorate in cautare. Retetele cu cuvantul in titlu apar inaintea celor unde apare doar ca ingredient.

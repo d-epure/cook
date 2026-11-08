@@ -54,9 +54,9 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .chk{display:flex;flex-wrap:wrap;gap:8px 16px}
 .chk label{display:flex;gap:8px;align-items:center;font-weight:400;margin:0}
 .chk input{width:auto;min-height:0}
-.apr{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.apr{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
 .apr:last-child{border-bottom:0}
-.apr b{flex:1}.apr input{width:auto}
+.apr b{flex:1;min-width:0;overflow-wrap:anywhere}.apr input{width:auto}
 
 /* text auxiliar */
 .muted{color:var(--mut);font-size:.92rem}
