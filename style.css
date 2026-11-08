@@ -169,3 +169,5 @@ nav[hidden],#nav button[hidden]{display:none}
 .acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:8px 0 0}
 .acts button{margin:0;width:100%;min-height:46px}
 .mre{margin:8px 0 0}.mre summary{cursor:pointer;font-weight:700;padding:10px 2px;color:var(--pri);min-height:44px;box-sizing:border-box}
+.lst .it input[type=checkbox]{width:24px;height:24px;flex:none}
+.lcs{width:auto;min-height:34px;padding:2px 8px;font-size:.85rem;margin-top:4px}

@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=2.10.3">
+<link rel="stylesheet" href="style.css?v=2.14.0">
 
 </head>
 <body>
@@ -23,8 +23,7 @@
 <nav id="nav" aria-label="Pagini">
  <button data-v="idei" class="on">Idei</button>
  <button data-v="carti">Biblioteca mea</button>
- <button data-v="fav">Favorite</button>
- <button data-v="salvate">Salvate</button>
+ <button data-v="salvate">Retetele mele</button>
  <button data-v="meniu">Meniu</button>
  <button data-v="lista">Cumparaturi</button>
  <button data-v="debara">Debara</button>
@@ -53,8 +52,7 @@
 <section id="v-carti" class="hidden"><div id="bnewrow" style="margin-bottom:12px"><button class="go" id="bnew" type="button" style="margin:0;width:100%">+ Reteta noua (o scrii tu)</button></div><div class="card" id="bsearch"><label for="bq">Cauta in retetele tale</label><input id="bq" placeholder="ingrediente sau nume, ex: vita, cartofi">
  <details id="bflt" class="mre"><summary id="bfsum">Filtre</summary><div class="fgrid"><div><label for="bs">Carte</label><select id="bs"></select></div><div><label for="bc">Categorie</label><select id="bc"></select></div><div><label for="bf">Eticheta</label><select id="bf"></select></div><div><label for="bv">Stare</label><select id="bv"><option value="">Toate</option><option value="v">De verificat (extragere nesigura)</option><option value="ok">Fara semn de intrebare</option></select></div><div><label for="bd">Din debara</label><select id="bd"><option value="">Toate retetele</option><option value="0">Am tot ce trebuie</option><option value="1">Lipseste cel mult 1</option><option value="2">Lipsesc cel mult 2</option><option value="3">Lipsesc cel mult 3</option></select></div><div><label for="bj">Jurnal</label><select id="bj"><option value="">Toate</option><option value="4">Apreciate (4-5 stele)</option><option value="ok">Gatite pana acum</option><option value="g0">Negatite inca</option><option value="old">Negatite sau demult (peste 60 zile)</option></select></div><div><label for="bp">Preferinte</label><select id="bp"><option value="">Toate</option><option value="ok">Fara alimente evitate</option><option value="lk">Cu alimente care imi plac</option></select></div></div></details>
  <div id="bn" class="muted" style="margin-top:10px"></div><button class="alt" id="bvq" type="button" hidden style="margin-top:8px">Parcurge retetele de verificat</button></div><div id="bres"></div></section>
-<section id="v-fav" class="hidden"><div id="favl"></div></section>
-<section id="v-salvate" class="hidden"><div id="sfilt"><label for="fs">Filtreaza dupa eticheta</label><select id="fs"></select></div><div id="salvate" style="margin-top:12px"></div></section>
+<section id="v-salvate" class="hidden"><div id="sfilt"><label for="fk">Arata</label><select id="fk"><option value="">Toate</option><option value="fav">Favorite</option><option value="ai">Generate de AI</option><option value="mine">Scrise de mine</option></select><label for="fs">Filtreaza dupa eticheta</label><select id="fs"></select></div><div id="salvate" style="margin-top:12px"></div></section>
 
 <section id="v-debara" class="hidden"><div class="card lst"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px"><h2 style="margin:0">Debaraua mea</h2><button class="alt" id="pCats" type="button">Schimba categoriile</button></div><p class="muted">Produse pe care le ai deja sau care se consuma greu (sare, oua, faina, orez, conserve). Pe categorii (le gestionezi in Setari, Etichete alimente); la legume, fructe si cereale poti marca neprocesat, congelat sau conserva. Nu retin cantitati; sare, piper, ulei, zahar si faina sunt puse de la inceput, le poti scoate. In Cumparaturi, bifa "Ascunde produsele din debara" le scoate din lista.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="pin" maxlength="60" placeholder="ex: oua, orez, paste" aria-label="Produs nou pentru debara" style="flex:1;min-width:160px"><button class="go" id="pAdd" style="margin:0">Adauga</button></div><div id="pl"></div></div></section>
 <section id="v-meniu" class="hidden"><div id="mw"></div></section>
@@ -91,6 +89,7 @@
   <h3 style="margin:16px 0 4px">Evit</h3><div class="row" style="gap:8px"><input id="pfe" maxlength="80" placeholder="ex: ciuperci, ficat" aria-label="Aliment pe care il eviti" style="flex:1;min-width:140px" autocomplete="off"><button class="go" id="pfAddE" style="margin:0">Adauga</button></div><div id="pfEl" class="pfl"></div></div>
  <div class="card" id="tgcard" data-sg="etichete"><h2>Etichete retete</h2><div id="tgl"></div></div>
  <div class="card" id="bkcard" data-sg="date"><h2>Copie de siguranta</h2><div id="pst" class="muted" style="margin:0 0 10px"></div><p class="muted" style="margin:0 0 10px">Datele tale stau doar in acest browser. Descarca periodic o copie: retete salvate, favorite, etichete, aparate, biblioteca incarcata si modelele alese. Cheia API NU se include.</p><button class="go" id="bExp" style="margin:0">Descarca copia (JSON)</button> <button class="alt" id="bShare" type="button" hidden>Trimite copia</button><div id="bkm" class="muted" style="margin:8px 0"></div><label for="bimp">Restaureaza dintr-o copie</label><input id="bimp" type="file" accept=".json,application/json"><div id="bipv"></div></div>
+ <div class="card" id="pxcard" data-sg="biblioteca"><h2>Categorii si mese</h2><p class="muted" style="margin:0 0 10px">Pentru "Propune-mi un meniu": la ce masa se potriveste fiecare categorie. "Automat" e o ghicire dupa nume; alege tu daca e gresita. "Nu propune" scoate categoria din propuneri.</p><div id="pxl"></div></div>
  <div class="card" id="bscard" data-sg="biblioteca"><h2>Retete din carti</h2><label for="bnm">Numele cartii (optional)</label><input id="bnm" placeholder="ex: BT FIT Cookbook V2"><p class="muted" style="margin:4px 0 0">Daca il lasi gol, folosesc numele din fisier, iar daca nici acela nu exista, numele fisierului.</p><label for="bfile">Incarca baza de retete (retete.json)</label><input id="bfile" type="file" accept=".json,application/json"><div id="bm" class="muted" style="margin:6px 0 12px"></div><div id="bpv"></div><div id="bsn"></div><p class="muted">Stergerea afecteaza doar retetele incarcate in Biblioteca mea. Aparatele, retetele salvate si cheia API raman. Fisierul tau retete.json ramane neatins.</p></div>
 </section>
 </main>
@@ -99,6 +98,6 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="app.js?v=2.10.3"></script>
+<script src="app.js?v=2.14.0"></script>
 </body>
 </html>

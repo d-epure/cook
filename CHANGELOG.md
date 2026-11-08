@@ -2,6 +2,37 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.14.0
+- Favorite si Salvate sunt acum o singura pagina: "Retetele mele". Un filtru "Arata" are: Toate / Favorite / Generate de AI / Scrise de mine; filtrul pe etichete ramane. Fiecare reteta apare o singura data, cu o linie care spune de unde e (generata de AI, scrisa de tine, din biblioteca).
+- In pagina apar: retetele salvate din idei, retetele scrise de tine si retetele din carti marcate favorite. Cele din carti se deschid si se corecteaza pe loc, ca in Biblioteca. Scoasa din favorite, o reteta din carte dispare din lista (ramane in Biblioteca).
+- Pagina separata "Favorite" a fost eliminata; datele (stele, salvate) nu s-au schimbat.
+
+## 2.13.0
+- Cumparaturi: categoria unui produs se poate schimba direct din lista (lista mica de sub produs, in modul grupat); alegerea se tine minte (aceeasi ca in Debara) si se aplica la urmatoarele liste.
+- Incadrari corectate: "unt de arahide", nuci, seminte -> Altele (nu Lactate); oua -> Lactate (nu Altele).
+- Casute de bifat mai mari in lista, pentru folosire la magazin.
+
+## 2.12.0
+- Setari > Biblioteca: "Categorii si mese". Fiecare categorie din biblioteca ta (cu numarul de retete) are o lista: Automat (cu masa ghicita afisata), Mic dejun, Pranz, Desert sau Nu propune. "Propune-mi un meniu" foloseste alegerile tale, nu doar ghicirea dupa nume. Wrap-urile, sandvisurile si burgerii sunt acum ghicite la Pranz (nu la Mic dejun). Se salveaza si intra in copia de siguranta.
+
+## 2.11.1
+- Stergerea unei retete din Salvate si resetarea consumului nu aveau nici confirmare, nici anulare. Acum au "Anuleaza" (8 secunde), ca restul stergerilor usoare.
+
+## 2.11.0
+- Setari > Biblioteca: buton "Descarca toate". Un singur fisier JSON cu toate retetele (toate cartile, plus "Retetele mele"), cu corecturile tale. Se reincarca la "Retete din carti" si fiecare carte ramane sub numele ei, inlocuind-o pe cea existenta.
+
+## 2.10.6
+- Reparat: contorul "N de verificat" (si butonul "Parcurge retetele de verificat (N)") ramaneau pe valoarea veche cat timp lucrai in editor. Se actualizeaza acum dupa fiecare salvare.
+- Coada: banner-ul spune "De verificat: mai sunt N" (numar real), nu "X din N".
+- Retetele cu marcaj gol nu mai sunt numarate ca "de verificat" (de aceea numarul de la prima deschidere poate fi mai mic decat inainte).
+
+## 2.10.5
+- Editor reteta: optiunile "Salveaza ca verificata" / "Salveaza, raman de verificat" apar doar la retetele cu un motiv real de verificare. Un marcaj gol ("verifica": []) nu mai conteaza ca "de verificat" (si nu mai e numarat in "N de verificat").
+- Am scos nota cu "##" de sub campul Ingrediente (ramane exemplul din campul gol).
+
+## 2.10.4
+- "Salveaza ca verificata" sterge si textul brut al paginii din carte (nu mai e necesar dupa corectura). Retetele verificate nu mai poarta acest text nici in baza locala, nici in fisierele "Descarca JSON", deci sunt mai mici si fara informatie dublata. Retetele inca nesigure il pastreaza, ca originalul sa nu se piarda.
+
 ## 2.10.3
 - Corectura retetei: o singura sectiune. Am scos textul paginii din carte din editor si din reteta deschisa (era aceeasi informatie de doua ori). Verifici direct in carte, dupa referinta "Din: <carte>, reteta nr. N" (afisata in editor si in avertismentul retetelor de verificat), si corectezi doar campurile (titlu, portii, ingrediente, pasi, macro). Textul brut ramane in date (se foloseste doar la adaptarea AI a retetelor nesigure).
 
