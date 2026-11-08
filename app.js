@@ -428,13 +428,42 @@ function editForm(r,i,sel){const m=r.macro||{},cats=[...new Set([...BOOK.map(x=>
  <div class="row"><div><label for="ef-p${i}">Portii</label><input id="ef-p${i}" data-ef="portii" type="number" min="1" value="${esc(r.portii||1)}"></div><div><label for="ef-c${i}">Categorie</label><select id="ef-c${i}" data-ef="categorie">${cats.map(c=>`<option${c===r.categorie?" selected":""}>${esc(c)}</option>`).join("")}</select></div></div>
  <label for="ef-i${i}">Ingrediente (unul pe linie, ex: 160 g morcovi; o linie care incepe cu ## este titlu de grup, ex: ## Crema)</label><textarea id="ef-i${i}" data-ef="ing" rows="8" placeholder="200 g faina&#10;2 oua&#10;## Sos&#10;1 lingura smantana">${esc(ingText(r.ingrediente))}</textarea>
  <label for="ef-s${i}">Mod de preparare (un pas pe linie)</label><textarea id="ef-s${i}" data-ef="pasi" rows="8" placeholder="Amesteca faina cu ouale.&#10;Coace 30 de minute.">${esc((r.pasi_carte||[]).join("\n"))}</textarea>
+ <div class="row" style="margin-top:12px;align-items:center;gap:8px"><button class="alt" type="button" data-emac="1" style="margin:0">Calculeaza macro (AI)</button><span class="muted">Estimare per portie, din ingredientele de mai sus.</span></div><div data-mres aria-live="polite"></div>
  <div class="row"><div><label>kcal</label><input data-ef="kcal" type="number" step="any" value="${esc(mv("kcal"))}"></div><div><label>Proteine g</label><input data-ef="proteine" type="number" step="any" value="${esc(mv("proteine"))}"></div><div><label>Carbo g</label><input data-ef="carbo" type="number" step="any" value="${esc(mv("carbo"))}"></div><div><label>Grasimi g</label><input data-ef="grasimi" type="number" step="any" value="${esc(mv("grasimi"))}"></div></div>
  <div class="row" style="gap:8px;margin-top:12px"><button class="go" data-esave="1" style="margin:0">Salveaza</button>${r.manual&&!r.nou?'<button class="alt" data-edel="1" style="margin:0">Sterge reteta</button>':""}${r.verifica?'<button class="go" data-esave="v" style="margin:0">Salveaza si marcheaza verificata</button>':""}<button class="alt" data-ecancel="1">Renunta</button></div></div></div>`}
+/* ===== Calcul macronutrienti cu AI (doar la apasare), in editorul retetei ===== */
+const MACK=["kcal","proteine","carbo","grasimi"],MACL={kcal:"kcal",proteine:"proteine",carbo:"carbohidrati",grasimi:"grasimi"};
+const macTxt=o=>MACK.map(k=>o[k]!=null&&o[k]!==""?`${MACL[k]} ${o[k]}${k==="kcal"?"":" g"}`:null).filter(Boolean).join(", ")||"(nimic)";
+function macApply(bv,o,tags){MACK.forEach(k=>{const el=bv.querySelector(`[data-ef=${k}]`);if(el)el.value=o[k]!=null?o[k]:""});bv.dataset.stags=JSON.stringify(tags||[]);
+ const au=autoTags({macro:o}),t=[...new Set([...(tags||[]),...au])];
+ const box=bv.querySelector("[data-mres]");box.innerHTML=`<p class="muted" style="margin:8px 0">Completat: ${esc(macTxt(o))} (per portie).${t.length?" Etichete dupa salvare: "+esc(t.join(", "))+".":""} Verifica valorile si apasa Salveaza.</p>`}
+async function macCalc(bv,btn){const g=k=>bv.querySelector(`[data-ef=${k}]`).value,box=bv.querySelector("[data-mres]");
+ if(!LS("rk")){box.innerHTML='<div class="warn">Adauga cheia API in Setari ca sa folosesti calculul.</div>';return}
+ const ings=parseIngText(g("ing")).filter(x=>x.n);if(!ings.length){box.innerHTML='<div class="warn">Scrie mai intai ingredientele.</div>';return}
+ const por=Math.max(1,+g("portii")||1),old={};MACK.forEach(k=>{const v=g(k);old[k]=v===""?null:+v});
+ const names=TAGS.filter(t=>!t.auto).map(t=>t.n);
+ const sys='Esti nutritionist. Estimezi valorile nutritionale pentru o reteta. Raspunzi DOAR cu JSON valid, fara text in plus, fara diacritice.';
+ const u=`Reteta: ${g("titlu")||"fara titlu"}\nPortii: ${por}\nIngrediente (cantitatile sunt pentru toata reteta):\n${ings.map(ingLine).join("\n")}\n\nCalculeaza valorile PER PORTIE (total / ${por}), tinand cont de starea alimentului asa cum e scris (crud, gatit). Daca un ingredient nu are cantitate, estimeaza una uzuala si adauga-l in "nesigur". Ignora apa, sarea si condimentele fara aport. Rotunjeste: kcal la intreg, restul la o zecimala.\nTrimite JSON: {"kcal":numar,"proteine":numar,"carbo":numar,"grasimi":numar,"nesigur":["ingredient neclar",...],"etichete":[...]}\nIn "etichete" pune doar etichete care se potrivesc cu siguranta din aceasta lista: ${JSON.stringify(names)} (gol daca nu esti sigur).`;
+ btn.disabled=true;btn.textContent="Calculez...";box.innerHTML="";
+ try{const j=await ask($("#m2").value||"claude-haiku-4-5",sys,u,600,0);
+  const n=k=>{const v=+j[k];return Number.isFinite(v)&&v>=0&&v<20000?Math.round(v*10)/10:null};
+  const o={kcal:n("kcal"),proteine:n("proteine"),carbo:n("carbo"),grasimi:n("grasimi")};
+  if(MACK.every(k=>o[k]==null)){box.innerHTML='<div class="warn">Nu am primit valori utilizabile. Incearca din nou.</div>';return}
+  const tags=(Array.isArray(j.etichete)?j.etichete:[]).filter(x=>names.includes(x)).slice(0,5);
+  const uns=(Array.isArray(j.nesigur)?j.nesigur:[]).slice(0,8).map(x=>String(x).slice(0,60));
+  bv._mac={o,tags};const had=MACK.some(k=>old[k]!=null);
+  const un=uns.length?`<p class="warn" style="margin:6px 0">Estimat pentru: ${esc(uns.join(", "))}.</p>`:"";
+  if(!had)macApply(bv,o,tags);
+  if(!had&&uns.length)box.innerHTML+=un;
+  if(had)box.innerHTML=`<div class="card" style="margin:8px 0;background:var(--soft)"><b>Exista deja valori.</b><p style="margin:6px 0">Acum: ${esc(macTxt(old))}<br>Calculat: ${esc(macTxt(o))}</p>${un}<div class="row" style="gap:8px"><button class="go" type="button" data-emacok="1" style="margin:0">Foloseste valorile calculate</button><button class="alt" type="button" data-emacno="1" style="margin:0">Pastreaza ce am</button></div></div>`}
+ catch(e){box.innerHTML=`<div class="warn">${esc(e.message||"Eroare")}</div>`}
+ finally{btn.disabled=false;btn.textContent="Calculeaza macro (AI)"}}
 function editSave(bv,i,sel,verif){const r=BOOK[i],g=k=>bv.querySelector(`[data-ef=${k}]`).value;
  const t=g("titlu").trim();if(!t){toast("Titlul nu poate fi gol.");return}
  r.titlu=t;r.portii=Math.max(1,+g("portii")||1);if(g("categorie"))r.categorie=g("categorie");
  r.ingrediente=parseIngText(g("ing"));r.pasi_carte=g("pasi").split("\n").map(x=>x.trim()).filter(Boolean);
  r.macro=Object.assign({},r.macro);["kcal","proteine","carbo","grasimi"].forEach(k=>{const v=g(k);r.macro[k]=v===""?null:+v});
+ {let st=[];try{st=JSON.parse(bv.dataset.stags||"[]")}catch(e){}if(st.length)r.etichete=[...new Set([...normTags(r.etichete),...normTags(st)])]}
  if(!r.manual)r.corectata=true;if(verif)delete r.verifica;
  if(r.nou){delete r.nou;const st=getStored();if(!st.length)BOOK=[r];st.push(r);saveStored(st);EDIT=null;updBS();openBook(BOOK.indexOf(r),r.portii,sel);return}
  if(persistBook(r)){EDIT=null;openBook(i,r.portii,sel)}}
@@ -444,6 +473,9 @@ function bvClick(e,sel){const bv=e.target.closest(".bv");if(!bv)return false;con
  if(jrAct(d,bKey(BOOK[i]))){openBook(i,p,sel);return true}
  if(d.edit!==undefined){EDIT={sel,i};openBook(i,p,sel);return true}
  if(d.ecancel!==undefined){EDIT=null;if(BOOK[i].nou){BOOK=BOOK.filter(x=>!x.nou);drawBook();return true}openBook(i,BOOK[i].portii||1,sel);return true}
+ if(d.emac!==undefined){macCalc(bv,e.target);return true}
+ if(d.emacok!==undefined){macApply(bv,bv._mac.o,bv._mac.tags);return true}
+ if(d.emacno!==undefined){bv.querySelector("[data-mres]").innerHTML="";return true}
  if(d.edel!==undefined){const b=e.target;if(!b.dataset.arm){b.dataset.arm="1";b.textContent="Sigur? Apasa din nou pentru stergere definitiva";setTimeout(()=>{if(b.isConnected){delete b.dataset.arm;b.textContent="Sterge reteta"}},5000);return true}
   const k=bKey(BOOK[i]);EDIT=null;putStored(getStored().filter(x=>bKey(x)!==k));toast("Reteta a fost stearsa.");return true}
  if(d.esave!==undefined){editSave(bv,i,sel,d.esave==="v");return true}
@@ -876,7 +908,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="2.2.0";
+const APP_V="2.3.1";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){

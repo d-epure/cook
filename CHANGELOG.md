@@ -2,6 +2,100 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.3.1
+- Biblioteca: "+ Reteta noua" are acum propriul buton, deasupra cardului de cautare, separat de cautare si filtre.
+
+## 2.3.0
+- Editor reteta: buton "Calculeaza macro (AI)". Trimite ingredientele si portiile la model (doar cand apesi, cu cheia ta) si completeaza kcal, proteine, carbohidrati, grasimi per portie. Poti corecta valorile inainte sa salvezi.
+- Daca reteta are deja valori, vezi cele de acum si cele calculate si alegi tu. Ingredientele fara cantitate sunt estimate si afisate ca "nesigure".
+- Etichete: keto si high-protein se pun automat din valorile calculate; modelul poate sugera si alte etichete (ex. vegan, vegetarian) care se adauga la salvare.
+
+## 2.2.0
+- Nou: "+ Reteta noua" in Biblioteca. Scrii singura reteta (titlu, portii, categorie, ingrediente unul pe linie, pasi, macro optional) cu acelasi editor ca "Corecteaza reteta". Se salveaza in cartea "Retetele mele" si functioneaza ca orice reteta din carte: cautare, filtre, debara, meniu, cumparaturi, Mod gatit, jurnal, preferinte. Intra in copia de siguranta.
+- Retetele scrise de tine au in editor si butonul "Sterge reteta" (cu confirmare).
+
+## 2.1.1
+- Reteta deschisa: zona de butoane era aglomerata. Acum se vad doar "Mod gatit" (buton principal) si "Adauga la meniu"; "Adauga la cumparaturi", "Corecteaza reteta" si "Adapteaza la aparatele mele" sunt sub "Mai multe actiuni".
+
+## 2.1.0
+- Nou: Preferinte alimente (Setari > Preferinte). Doua liste: "Imi plac" si "Evit". Scrii un aliment sau mai multe separate cu virgula; potrivirea merge dupa cuvinte ("ciuperci" prinde si "ciuperci champignon").
+- Biblioteca: pe retete apare "Contine ce eviti: ..." si "Iti place: ...", iar in reteta deschisa un avertisment. Filtru nou "Preferinte" (fara alimente evitate / cu alimente care imi plac).
+- Un aliment nu poate fi in ambele liste. Scoaterea dintr-o lista se poate anula.
+- Preferintele intra in copia de siguranta. Ele vor fi baza pentru "Propune-mi un meniu" (2.2.0): alimentele evitate vor fi excluse total.
+
+## 2.0.0
+Versiune majora: se schimba locul in care sta biblioteca (structura datelor). Totul se muta singur si verificat; nu trebuie sa faci nimic.
+- **Biblioteca in baza de date a browserului (IndexedDB)**, nu in localStorage. Dispare limita de ~5 MB: poti incarca mult mai multe carti (testat cu o biblioteca de ~7 MB). Incarcarea, corectarile, etichetele, stergerea si restaurarea din copie folosesc noul loc.
+- **Migrare automata**: la prima deschidere, biblioteca veche din localStorage e copiata in IndexedDB, se verifica ca numarul de retete e identic si abia apoi se scoate din localStorage. Daca ceva nu merge, ramane varianta veche.
+- **Rezerva**: daca browserul nu ofera IndexedDB (mod privat, browser foarte vechi), biblioteca ramane in localStorage ca pana acum.
+- **Copia de siguranta** include in continuare biblioteca (exportata din IndexedDB), iar restaurarea o scrie mai intai pe ea; daca scrierea esueaza, raman datele de dinainte, neschimbate.
+- **Trimite copia**: buton nou in Setari, Date, care deschide partajarea telefonului (Drive, WhatsApp, e-mail) cu fisierul de copie; apare doar cand browserul permite partajarea de fisiere. "Descarca copia" ramane.
+- In Setari, Date vezi separat spatiul folosit de setari/liste/meniu (limita ~5 MB) si marimea bibliotecii (fara limita).
+- Cand se deschide aplicatia, pentru o fractiune de secunda apare "Se incarca biblioteca..." (citirea din IndexedDB e asincrona).
+- Daca datele aplicatiei se sterg (curatarea site-ului), biblioteca ramasa orfana in IndexedDB nu mai apare, ca sa nu existe date vechi "fantoma".
+- Teste noi: `tests/test_idb.py`, `tests/test_trimite_copia.py`; testele asteapta acum ca aplicatia sa fie gata dupa fiecare reincarcare.
+
+## 1.21.0
+- **Instalare ca aplicatie**: pe telefon (Chrome: "Instaleaza aplicatia" / Safari: Partajeaza, "Adauga pe ecranul principal") apare cu icon propriu, se deschide pe tot ecranul, fara bara browserului. Fisiere noi in repo: `manifest.webmanifest`, `sw.js`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` (le urci langa `index.html`).
+- **Merge si fara internet**: aplicatia se salveaza pe dispozitiv (service worker). Cand ai net, primesti mereu ultima versiune; cand nu ai, se deschide din ce a salvat (biblioteca, meniul, lista, mod gatit functioneaza; cererile catre model, evident, nu). Apelurile catre `api.anthropic.com` nu trec prin acest mecanism si nu se salveaza nicaieri. La o versiune noua apare un mesaj sa reincarci pagina.
+- **Stocare protejata**: aplicatia cere browserului sa nu-ti stearga datele singur cand ramane fara spatiu. In Setari, Date vezi daca e protejata, cat spatiu folosesc datele si, daca browserul o permite, un buton "Instaleaza aplicatia".
+- Nu functioneaza cu `index-un-singur-fisier.html` deschis ca fisier local (service worker-ul cere http/https); merge pe GitHub Pages.
+- Test nou: `tests/test_pwa.py` (porneste un server local si verifica cache-ul si deschiderea fara net).
+
+## 1.20.0
+- **Primii pasi**: pe pagina Idei apare un card cu 3 pasi (cheia API, cartile de retete, produse in Debara), cu bife pentru ce e facut si buton "Mergi" care te duce unde trebuie. Dispare singur cand toate sunt facute si se poate ascunde cu "Ascunde" (alegerea se tine minte). Util mai ales pe un telefon sau laptop nou.
+- Test nou: `tests/test_primii_pasi.py`.
+
+## 1.19.0
+- **Jurnal pe reteta**: la orice reteta din biblioteca sau salvata ai un card "Jurnal" cu **stele** (1-5; apesi din nou pe aceeasi stea ca sa o scoti), **"Am gatit azi"** (tine minte datele si numarul de ori; "Anuleaza ultima gatire" daca ai apasat din greseala) si **notite** (ex: "mai putina sare"). Notitele se salveaza singure.
+- In liste (Biblioteca, Salvate, Favorite) apare o linie discreta: "★★★★☆ - gatita de 3 ori, ultima data 2 nov 2026".
+- **Filtru "Jurnal" in Biblioteca**: Apreciate (4-5 stele), Gatite pana acum, Negatite inca, Negatite sau demult (peste 60 de zile) - ca sa nu gatesti mereu aceleasi retete.
+- **In Meniu**: butonul "Am gatit" pe intrarile din ziua de azi sau din zilele trecute; dupa apasare apare "gatit" si se trece in jurnal.
+- Retetele generate si nesalvate nu au jurnal; il primesc cand le salvezi. Jurnalul intra in copia de siguranta.
+- Reparatie interna: ajutoarele de data si jurnal sunt definite acum la inceputul codului (o ordonare gresita ar fi oprit aplicatia la deschidere; prinsa de testul nou).
+- Test nou: `tests/test_jurnal.py`.
+
+## 1.18.0
+- **Mod gatit**: buton nou pe orice reteta (din carte, salvata, generata sau adaptata). Se deschide pe tot ecranul: un singur pas, cu font mare, aparatul si parametrii pasului, bara de progres si butoane mari Inapoi / Inainte (merg si sagetile de la tastatura). Ingredientele sunt la un tap distanta. Ultimul pas se incheie cu "Gata, pofta buna!".
+- **Cronometre**: pasii cu durata (la retetele generate) au buton "Porneste cronometrul". La retetele din carti durata se citeste din text ("fierbe 20-25 minute" -> 20 min, "o ora" -> 60 min). Poti avea mai multe cronometre deodata; raman active cand treci la alt pas. La final suna, vibreaza (pe telefon) si apare "Gata!". Daca inchizi cu cronometre pornite, aplicatia cere o confirmare.
+- **Ecranul ramane aprins** cat timp e deschis modul gatit (acolo unde browserul permite; altfel ecranul se stinge normal).
+- Limita: cronometrele merg cat timp aplicatia e deschisa in browser; daca blochezi telefonul, sunetul poate intarzia.
+- Test nou: `tests/test_mod_gatit.py`.
+
+## 1.17.0
+- **Macro in Meniu**: la retetele din carti (care au kcal si proteine pe portie) apare sub titlu "~500 kcal, 40 g proteine (1 portie)", iar fiecare zi are un total: kcal, proteine, carbohidrati, grasimi. Se aduna cate o portie din fiecare reteta; numarul de portii din meniu ramane pentru cumparaturi, nu pentru macro. Intrarile fara date (retete generate, text liber) sunt semnalate.
+- **Tinta zilnica** optionala (calorii, proteine) in sectiunea "Tinta zilnica pentru macro": totalul zilei se arata ca "1850 / 2200 kcal". In vederea pe saptamana apare si media pe zi (doar zilele cu date). Tinta intra in copia de siguranta.
+- Daca o reteta dispare din biblioteca, macro-ul ei ramane salvat in meniu.
+- Test nou: `tests/test_macro_meniu.py`.
+
+## 1.16.0
+- **Ce pot gati din debara**: filtru nou in Biblioteca, "Din debara": *Am tot ce trebuie*, *Lipseste cel mult 1*, *cel mult 2* sau *cel mult 3*. Retetele se ordoneaza dupa cate ingrediente iti lipsesc, iar pe fiecare card apare lista a ce lipseste ("Iti lipsesc (2): ardei, busuioc") sau "Ai tot ce trebuie din debara". Se combina cu celelalte filtre si cu cautarea.
+- Potrivirea e putin mai larga decat la Cumparaturi: "cartofi albi" e acoperit de "cartofi", dar "sos de rosii fara zahar" nu e acoperit de "zahar". Sare, piper, ulei, zahar si faina (puse implicit in debara) conteaza ca avute. Retetele fara lista de ingrediente (sau cu doar apa) nu apar in acest filtru. Nu foloseste cheia API.
+- Test nou: `tests/test_din_debara.py`. Pe 1434 retete, calculul dureaza ~0,1 s.
+
+## 1.15.0
+- **Navigare in doua trepte**: sus, 4 sectiuni - **Gatesc** (Idei, Biblioteca), **Retete** (Favorite, Salvate), **Planific** (Meniu, Cumparaturi, Debara), **Setari**. Sub ele apar doar paginile sectiunii alese, deci pe telefon bara de sus ocupa doua randuri scurte in loc de trei. Sectiunea tine minte ultima pagina deschisa.
+- Contorul de cumparaturi apare si pe sectiunea Planific ("Planific (3)"), iar semnul de copie de siguranta veche apare pe Setari.
+- Favorite si Salvate raman doua pagini, dar sunt acum in aceeasi sectiune (Favorite = steaua, pe orice reteta din biblioteca sau salvata; Salvate = retetele generate de tine, cu etichete si stergere). Le pot uni intr-o singura lista cu filtru, daca vrei.
+- Test nou: `tests/test_navigare.py`; testele existente folosesc un ajutor comun (`tests/_h.py`) pentru navigare.
+
+## 1.14.0
+- **Meniu se deschide pe "Azi si maine"**: vezi direct ce ai de gatit, fara sa cauti ziua in saptamana. Doua butoane comuta intre "Azi si maine" si "Saptamana" (alegerea se tine minte). Eticheta "azi" / "maine" pe zile.
+- Buton nou: "Cumparaturi pentru azi si maine". Vederea pe saptamana are in continuare navigarea intre saptamani, cumparaturile pe saptamana si golirea saptamanii.
+- Daca adaugi ceva intr-o zi din afara intervalului azi/maine, meniul trece singur pe vederea pe saptamana, ca sa vezi ce ai adaugat.
+- Test nou: `tests/test_meniu_azi.py`.
+
+## 1.13.0
+- **Anuleaza in loc de confirma**: stergerile de zi cu zi se fac imediat, iar jos apare o bara "Anuleaza" timp de 8 secunde. Se aplica la: scoaterea unui produs din lista, "Sterge bifate", "Goleste lista", "Am in debara", scoaterea din Debara, "Am terminat", scoaterea unei intrari din meniu si "Goleste saptamana". Anularea readuce exact starea de dinainte (inclusiv produsul mutat intre lista si debara).
+- Raman cu confirmare (sunt actiuni mari sau greu de refacut): stergerea unei carti din biblioteca, a unei etichete si a unui aparat.
+- Test nou: `tests/test_anuleaza.py`. Testele de versiune nu mai depind de numarul exact.
+
+## 1.12.0
+- **Cumparaturi - adaugare manuala**: camp deasupra listei. Scrii "2 l lapte, paine" (separat cu virgula) si Enter; se aduna cu ce exista deja. Apa nu se adauga nici manual. Sursa apare ca "Adaugat manual".
+- **Cumparaturi - grupare pe categorii** (bifa "Grupeaza pe categorii", activa implicit): aceleasi categorii ca in Debara (Legume, Carne, Lactate...), ca sa parcurgi magazinul pe rafturi. Alegerea se pastreaza.
+- **Trimite lista**: buton care deschide partajarea telefonului (WhatsApp, mesaje etc.); apare doar daca browserul o ofera. "Copiaza lista" copiaza acum textul grupat pe categorii.
+- Test nou: `tests/test_lista_manual.py`.
+
 ## 1.11.0
 - **Meniu saptamanal** (tab nou "Meniu"): fiecare zi are trei mese - Mic dejun, Pranz, Desert. Navighezi saptamanile cu < si >, "Saptamana asta" te aduce inapoi.
 - Adaugi in meniu din trei locuri: butonul "+ Adauga" de la o masa (cauti in retetele salvate/generate si in biblioteca, dupa nume sau ingredient), butonul "Adauga la meniu" din orice reteta din Biblioteca, Favorite, Salvate sau din Idei, si text liber ("resturi", "iesim in oras"). O reteta generata care nu e salvata se salveaza automat cand o pui in meniu. Masa propusa: Desert pentru dulciuri, Mic dejun dimineata, altfel Pranz.

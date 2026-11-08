@@ -7,7 +7,9 @@ Aplicatie personala, fara server si fara build. Publicata pe GitHub Pages.
 - `style.css` - aspect (tema deschisa/inchisa prin variabile CSS)
 - `app.js` - toata logica, cu sectiuni marcate `===== NUME =====` si un cuprins in primele linii
 - `retete.json` - biblioteca ta din carte. NU o pune in repo public; o incarci din Setari -> Retete din carti
-- `tests/` - teste automate cu Playwright (6 fisiere test_*.py; le rulezi dupa fiecare modificare)
+- `sw.js`, `manifest.webmanifest`, `icon-*.png` - instalare ca aplicatie si functionare fara net (se urca langa `index.html`)
+- `CHANGELOG.md` - istoricul versiunilor
+- `tests/` - teste automate cu Playwright (`test_*.py`, un ajutor comun in `_h.py`; le rulezi dupa fiecare modificare)
 
 ## Cand modifici ceva
 1. Schimba `APP_V` in `app.js` si numarul `?v=...` din `index.html` (pentru ca GitHub Pages sa nu serveasca fisiere vechi din cache).
@@ -16,5 +18,6 @@ Aplicatie personala, fara server si fara build. Publicata pe GitHub Pages.
 
 ## Reguli de cod
 - Orice text din model sau din JSON trece prin `esc()` inainte de `innerHTML`.
+- Biblioteca (retete.json incarcat) sta in IndexedDB (`saveStored` / `getStored` / `STORED`); nu scrie direct `localStorage.rbook`.
 - Datele noi in localStorage: adauga cheia in `BK_KEYS` (copia de siguranta) si in comentariul de la inceputul `app.js`.
 - Cheia API nu intra niciodata in fisiere din repo.
