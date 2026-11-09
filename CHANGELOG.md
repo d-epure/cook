@@ -2,6 +2,19 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.22.1
+- Ingredientele se afiseaza unitar cu prima litera mare ("2 l Lapte") in Cumparaturi, Debara, retete si modul de gatit. Doar afisare: datele salvate si cautarea nu se schimba.
+- Debara: numarul de produse a trecut sub titlu; explicatiile actiunilor (am terminat, editeaza / scoate) si marcajele sunt pe randuri separate; textul explicativ e impartit pe puncte, mai usor de citit.
+
+## 2.22.0
+- Lista de cumparaturi: vedere noua "Pe retete" (comutator langa "Pe produse"). Fiecare reteta apare cu ingredientele ei si butonul "Scoate", care elimina doar partea ei din lista (ceapa 3 -> 2 daca reteta scoasa avea 1). Poti da Anuleaza timp de 8 secunde.
+- Meniu: eticheta "in lista" a devenit buton; apasat, scoate intrarea din cumparaturi si o poate adauga din nou.
+- Lista retine acum cantitatea per reteta. Produsele adaugate inainte de aceasta versiune nu au evidenta: se sterg doar daca reteta e singura lor sursa, altfel raman neatinse.
+
+## 2.21.0
+- Meniu: dupa "Cumparaturi" (azi si maine, saptamana sau o zi) mergi direct in lista de cumparaturi, cu un banner de rezumat si butonul "Inapoi la meniu".
+- Idei: textul de la "Aparate pentru adaptare" nu mai pomeneste aparate fixe; spune ca se folosesc aparatele active din Setari, cu link catre Setari > Aparate.
+
 ## 2.20.3
 - Carti: campul "Numele cartii" nu mai sta deasupra alegerii fisierului (parea o cautare). Apare in previzualizarea de dinainte de import, dupa ce alegi fisierul, precompletat cu numele din fisier ("Numele cartii (poti schimba)"); daca fisierul are mai multe carti, ramane gol si se folosesc numele din fisier.
 - "Copia de siguranta" se numeste acum "Backup aplicatie si retete" (butoane "Descarca backup", "Trimite backup", "Restaureaza dintr-un backup"; mesaje, stari si fisierul descarcat "retete-backup-DATA.json" la fel). Restaurarea accepta in continuare si fisierele vechi "retete-copie-...".

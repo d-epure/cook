@@ -305,3 +305,17 @@ nav[hidden],#nav button[hidden]{display:none}
 @media (max-width:899px){h2.dup{display:none}}
 @media (min-width:900px){#sback{display:none}}
 .shd{margin:0 0 -2px}.stt{margin:2px 0 0;font-size:1.5rem}
+.lbn{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;margin-bottom:10px;background:#e4efe7;border-radius:12px;font-size:14px}
+.lbn span{flex:1 1 220px}
+.lseg{margin:8px 0}
+.lseg>button{flex:1 1 0}
+.lseg>button.on{background:#1f6b4a;color:#fff;border-color:#1f6b4a}
+.lrg{margin-bottom:12px}
+.lrh{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.lri{padding:5px 0;border-top:1px solid #e3e9e4;font-size:15px}
+.lbb{border:0;cursor:pointer;font:inherit;font-size:12px;min-height:32px}
+.pinfo{margin:8px 0 12px;padding-left:18px;font-size:14px;line-height:1.45}
+.pinfo li{margin:3px 0}
+.plg{margin:10px 0 12px}
+.plg .fleg{display:flex;flex-wrap:wrap;gap:4px 14px;margin:4px 0}
+#pcn{font-size:14px;margin-top:2px}

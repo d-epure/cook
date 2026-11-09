@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=2.20.3">
+<link rel="stylesheet" href="style.css?v=2.22.1">
 
 </head>
 <body>
@@ -33,7 +33,7 @@
  <div class="card">
   <label for="ing">Ingrediente pe care le ai</label>
   <textarea id="ing" placeholder="ex: piept de pui, broccoli, orez, smantana"></textarea>
-  <details id="apdet" style="margin-top:12px"><summary id="apsum"><b>Aparate pentru adaptare</b></summary><div class="chk" id="apbox"></div><p class="muted" style="margin:4px 0 0">Daca nu bifezi nimic, folosesc MC si Ninja (cu backup doar la nevoie). Daca bifezi, folosesc doar aparatele bifate.</p></details>
+  <details id="apdet" style="margin-top:12px"><summary id="apsum"><b>Aparate pentru adaptare</b></summary><div class="chk" id="apbox"></div><p class="muted" style="margin:4px 0 0">Implicit folosesc aparatele active din Setari. Bifeaza aici doar daca vrei altele pentru aceasta adaptare. <a href="#" data-gosub="aparate">Schimba aparatele active</a></p></details>
   <label>Etichete</label><div class="chk" id="lbbox"></div><p class="muted" style="margin:4px 0 0">Fara bife = orice fel de mancare. Dietele (vegan, keto...) se aplica toate odata; bucatariile (romanesc, asiatic) sunt alternative.</p>
   <div class="row">
    <div><label for="por">Portii</label><input id="por" type="number" min="1" max="8" value="2"></div>
@@ -53,7 +53,7 @@
  <div id="bn" class="muted" style="margin-top:10px"></div><button class="alt" id="bvq" type="button" hidden style="margin-top:8px">Parcurge retetele de verificat</button></div><div id="bres"></div></section>
 <section id="v-salvate" class="hidden"><div id="sfilt"><div><label for="fk">Arata</label><select id="fk"><option value="">Toate</option><option value="fav">Favorite</option><option value="ai">Generate de AI</option><option value="mine">Scrise de mine</option></select></div><div><label for="fs">Eticheta</label><select id="fs"></select></div></div><div id="salvate" style="margin-top:12px"></div></section>
 
-<section id="v-debara" class="hidden"><div class="card lst"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px"><h2 style="margin:0">Debaraua mea</h2><button class="alt" id="pCats" type="button">Schimba categoriile</button></div><p class="muted">Produse pe care le ai deja sau care se consuma greu (sare, oua, faina, orez, conserve). Pe categorii (le gestionezi in Setari, Alimente); la legume, fructe si cereale poti marca proaspat, congelat, uscat, conserva sau altceva (borcan). Nu retin cantitati; sare, piper, ulei, zahar si faina sunt puse de la inceput, le poti scoate. In Cumparaturi, bifa "Ascunde produsele din debara" le scoate din lista.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="pin" maxlength="60" placeholder="ex: oua, orez, paste" aria-label="Produs nou pentru debara" style="flex:1;min-width:160px"><button class="go" id="pAdd" style="margin:0">Adauga</button></div><div id="pl"></div></div></section>
+<section id="v-debara" class="hidden"><div class="card lst"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px"><div><h2 style="margin:0">Debaraua mea</h2><div class="muted" id="pcn"></div></div><button class="alt" id="pCats" type="button">Schimba categoriile</button></div><ul class="muted pinfo"><li><b>Ce pui aici:</b> produse pe care le ai deja sau care se consuma greu (sare, oua, faina, orez, conserve). Nu retin cantitati.</li><li><b>De la inceput:</b> sarea, piperul, uleiul, zaharul si faina sunt deja puse; le poti scoate.</li><li><b>Categorii si marcaje:</b> categoriile se schimba din Setari. La legume, fructe si cereale poti marca proaspat, congelat, uscat, conserva sau altceva (borcan).</li><li><b>In Cumparaturi:</b> bifa "Ascunde produsele din debara" le scoate din lista.</li></ul><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="pin" maxlength="60" placeholder="ex: oua, orez, paste" aria-label="Produs nou pentru debara" style="flex:1;min-width:160px"><button class="go" id="pAdd" style="margin:0">Adauga</button></div><div id="pl"></div></div></section>
 <section id="v-meniu" class="hidden"><div id="mw"></div></section>
 <div id="mdlg" class="mdlg hidden"></div>
 <div id="cook" class="cook hidden"></div>
@@ -99,6 +99,6 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="app.js?v=2.20.3"></script>
+<script src="app.js?v=2.22.1"></script>
 </body>
 </html>
