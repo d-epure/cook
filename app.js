@@ -136,7 +136,7 @@ async function ask(model,system,user,max,temp,tools,_retry){
  ABORT=new AbortController();let r,j;
  try{r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",signal:ABORT.signal,headers:{"content-type":"application/json","x-api-key":key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify(Object.assign({model,max_tokens:max,temperature:temp,system,messages:[{role:"user",content:user}]},tools?{tools}:{}))});
   j=await r.json().catch(()=>({}))}
- catch(e){if(e.name==="AbortError")throw new Error("Anulat.");throw new Error("Nu pot contacta Anthropic. Verifica conexiunea la internet.")}
+ catch(e){if(e.name==="AbortError")throw new Error("Anulat.");throw new Error("Nu pot contacta Anthropic. Verifica internetul; daca ai deschis fisierul din previzualizare sau cu o extensie de blocare reclame, deschide aplicatia pe adresa ei publicata, intr-un browser obisnuit.")}
  finally{ABORT=null}
  if(j.usage)useAdd(j.usage);if(!r.ok)throw new Error(apiErr(r.status,j,model));
  if(j.stop_reason==="pause_turn")throw new Error("Cautarea web a durat prea mult. Incearca din nou.");
@@ -723,11 +723,12 @@ function prepIngs(ings){const out=[];let skip=false;
 function addList(ings,title){const l=getList();let n=0;ings=prepIngs(ings);
  ings.forEach(x=>{const nm=String(x.n||"").trim();if(!nm)return;const u=String(x.u||"").trim(),c=(x.c===""||x.c==null||isNaN(+x.c))?null:+x.c,k=norm(nm)+"|"+norm(u);
   let it=l.find(y=>y.k===k&&!y.done);
+  if(it&&!it.parts&&it.src.length===1)it.parts=[{s:it.src[0],c:it.c}];
   if(it){if(it.c!=null&&c!=null)it.c=+(it.c+c).toFixed(2);else if(it.c==null)it.c=c;if(!it.src.includes(title))it.src.push(title);
    if(it.parts){const pt=it.parts.find(p=>p.s===title);if(pt)pt.c=pt.c!=null&&c!=null?+(pt.c+c).toFixed(2):(pt.c==null?c:pt.c);else it.parts.push({s:title,c})}}
   else l.push({k,n:nm,u,c,src:[title],parts:[{s:title,c}],done:0});n++});
  putList(l);navCount();return n}
-/* 2.22.1: scoate dintr-o sursa (reteta / intrare din meniu) doar partea ei din lista */
+/* 2.22.3: scoate dintr-o sursa (reteta / intrare din meniu) doar partea ei din lista */
 function removeSrc(title){const l=getList(),out=[];let rem=0,red=0,kept=0;
  l.forEach(x=>{if(x.done||!x.src.includes(title)){out.push(x);return}
   if(x.parts){x.parts=x.parts.filter(p=>p.s!==title);if(!x.parts.length){rem++;return}
@@ -739,6 +740,8 @@ function removeSrc(title){const l=getList(),out=[];let rem=0,red=0,kept=0;
  if(ch)putMen(m);
  navCount();return{rem,red,kept}}
 const srcMsg=(t,r)=>"Scos: "+t+" ("+r.rem+" produse scoase"+(r.red?", "+r.red+" cu cantitate redusa":"")+(r.kept?"; "+r.kept+" comune cu alte retete, cantitatea ramane (lista veche)":"")+").";
+/* 2.22.3: produsele vechi cu o singura sursa primesc evidenta pe retete (cantitatea e exacta); cele cu mai multe surse nu pot fi impartite */
+(function(){try{const l=getList();let ch=0;l.forEach(x=>{if(!x.parts&&x.src&&x.src.length===1){x.parts=[{s:x.src[0],c:x.c}];ch++}});if(ch)LS("rl",JSON.stringify(l))}catch(e){}})();
 /* Anuleaza: instantaneu la stergere, cu 8 secunde pentru a reveni (in loc de "Confirma") */
 let UDO=null,UDT=0;
 const undoMark=keys=>{const s={};keys.forEach(k=>{try{s[k]=localStorage.getItem(k)}catch(e){s[k]=null}});return s};
@@ -749,9 +752,9 @@ $("#undob").onclick=()=>{if(!UDO)return;const u=UDO;undoHide();
  try{Object.keys(u.snap).forEach(k=>{if(u.snap[k]==null)localStorage.removeItem(k);else localStorage.setItem(k,u.snap[k])})}catch(e){toast("Nu am putut anula: memoria browserului nu mai raspunde.");return}
  u.redraw();toast("Anulat.")};
 const fmtQ=c=>c>=10?String(Math.round(c)):c>=1?String(+c.toFixed(1)):String(+c.toFixed(2));
-const cap=s=>{s=String(s==null?"":s);return s.charAt(0).toUpperCase()+s.slice(1)}; /* 2.22.1: doar afisare, datele raman cum sunt */
+const cap=s=>{s=String(s==null?"":s);return s.charAt(0).toUpperCase()+s.slice(1)}; /* 2.22.3: doar afisare, datele raman cum sunt */
 const itTxt=x=>(x.c!=null?fmtQ(x.c)+" ":"")+(x.u?x.u+" ":"")+cap(x.n);
-if(LS("rgrp2")!=="1"){LS("rgrp","1");LS("rgrp2","1")} /* 2.22.1: bifa "Grupeaza" a fost scoasa; lista e mereu grupata */
+if(LS("rgrp2")!=="1"){LS("rgrp","1");LS("rgrp2","1")} /* 2.22.3: bifa "Grupeaza" a fost scoasa; lista e mereu grupata */
 const GRP=LS("rgrp")!=="0";
 let LSRC=[];let LV=LS("rlv")==="r"?"r":"p";
 const canShare=()=>typeof navigator!=="undefined"&&typeof navigator.share==="function";
@@ -1099,7 +1102,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="2.22.1";
+const APP_V="2.22.3";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1145,8 +1148,8 @@ $("#fdn").onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();$("#fdAdd").click
 $("#fdq").oninput=drawFoods;
 $("#fdl").onchange=e=>{const n=e.target.dataset.fc;if(n===undefined)return;setCat(n,e.target.value);drawFoods()};
 $("#fdl").onclick=e=>{const n=e.target.dataset.fr;if(n===undefined)return;putCats(getCats().filter(x=>cn(x.n)!==cn(n)));drawFoods()};
-$("#pCats").onclick=()=>{show("setari");setSub("alimente");$("#fdet").open=true;window.scrollTo(0,0)};
-/* Setari: pagina de pornire cu lista si stari; Utilizare in fata, Tehnic pliat (2.22.1) */
+$("#pCats").onclick=()=>{show("setari");setSub("alimente");$("#cdet").open=true;window.scrollTo(0,0)};
+/* Setari: pagina de pornire cu lista si stari; Utilizare in fata, Tehnic pliat (2.22.3) */
 const SUBS=["aparate","pref","alimente","etichete","mese","cont","date","despre"];
 const SGMAP={aparate:["aparate"],pref:["pref"],alimente:["alimente"],etichete:["etichete"],mese:["mese"],cont:["cont"],date:["biblioteca","date"],despre:["despre"]};
 const STITLE={aparate:"Aparate",pref:"Preferinte alimente",alimente:"Categorii alimente",etichete:"Etichete retete",mese:"Mese",cont:"AI si cheie",date:"Carti si date",despre:"Despre"};

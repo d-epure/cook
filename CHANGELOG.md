@@ -2,6 +2,13 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.22.3
+- Setari > Categorii alimente: partea folosita des, alegerea categoriei fiecarui aliment, e acum prima si mereu vizibila. Gestionarea categoriilor (adauga, redenumeste, sterge, marcaje) e pliata sub "Gestioneaza categoriile"; butonul "Schimba categoriile" din Debara o deschide direct.
+
+## 2.22.2
+- Lista de cumparaturi: produsele adaugate inainte de 2.22.0 care au o singura sursa primesc automat evidenta pe retete, deci "Scoate" le reduce corect si pe ele. Cele cu mai multe surse (amestecate de atunci) raman cum sunt, fiindca nu se pot imparti exact.
+- Mesajul "Nu pot contacta Anthropic" explica acum cauzele probabile (previzualizare sau extensie care blocheaza).
+
 ## 2.22.1
 - Ingredientele se afiseaza unitar cu prima litera mare ("2 l Lapte") in Cumparaturi, Debara, retete si modul de gatit. Doar afisare: datele salvate si cautarea nu se schimba.
 - Debara: numarul de produse a trecut sub titlu; explicatiile actiunilor (am terminat, editeaza / scoate) si marcajele sunt pe randuri separate; textul explicativ e impartit pe puncte, mai usor de citit.

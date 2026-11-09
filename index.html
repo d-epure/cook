@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=2.22.1">
+<link rel="stylesheet" href="style.css?v=2.22.3">
 
 </head>
 <body>
@@ -79,10 +79,10 @@
   <div id="usg" class="muted" style="margin-top:10px"></div>
  </div>
  <div class="card" data-sg="aparate"><h2>Aparate</h2><div id="apcfg"></div></div>
- <div class="card" id="fdcard" data-sg="alimente"><h2>Categorii alimente</h2><p class="muted" style="margin:0 0 10px">Categoriile alimentelor din Debara. Poti adauga, redenumi sau sterge categorii. Bifa "cu marcaje" adauga marcajele proaspat / congelat / uscat / conserva / altceva pentru alimentele categoriei. La stergere, alimentele ei trec la incadrarea automata.</p>
- <div id="cgl"></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><input id="cgn" maxlength="30" placeholder="categorie noua, ex: Dulciuri" aria-label="Categorie noua" style="flex:1;min-width:160px"><button class="go" id="cgAdd" style="margin:0">Adauga categorie</button></div>
- <details id="fdet" class="mre" style="margin-top:16px"><summary>Categoria fiecarui aliment</summary><p class="muted" style="margin:8px 0 10px">Alegi categoria fiecarui aliment. Ce alegi aici are prioritate fata de incadrarea automata; alimentele noi se incadreaza automat.</p>
- <div style="display:flex;gap:8px;flex-wrap:wrap"><input id="fdn" maxlength="60" placeholder="aliment, ex: ceapa rosie" aria-label="Aliment" style="flex:1;min-width:160px"><select id="fdc" aria-label="Categorie" style="width:auto;flex:0 0 auto"></select><button class="go" id="fdAdd" style="margin:0">Salveaza</button></div><label for="fdq">Cauta</label><input id="fdq" placeholder="filtreaza lista" autocomplete="off"><div id="fdl" style="margin-top:8px"></div></details></div>
+ <div class="card" id="fdcard" data-sg="alimente"><h2>Categorii alimente</h2><p class="muted" style="margin:0 0 10px">Alegi categoria fiecarui aliment din Debara. Ce alegi aici are prioritate fata de incadrarea automata; alimentele noi se incadreaza automat.</p>
+ <div id="fdet"><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="fdn" maxlength="60" placeholder="aliment, ex: ceapa rosie" aria-label="Aliment" style="flex:1;min-width:160px"><select id="fdc" aria-label="Categorie" style="width:auto;flex:0 0 auto"></select><button class="go" id="fdAdd" style="margin:0">Salveaza</button></div><label for="fdq">Cauta</label><input id="fdq" placeholder="filtreaza lista" autocomplete="off"><div id="fdl" style="margin-top:8px"></div></div>
+ <details id="cdet" class="mre" style="margin-top:16px"><summary>Gestioneaza categoriile</summary><p class="muted" style="margin:8px 0 10px">Poti adauga, redenumi sau sterge categorii. Bifa "cu marcaje" adauga marcajele proaspat / congelat / uscat / conserva / altceva pentru alimentele categoriei. La stergere, alimentele ei trec la incadrarea automata.</p>
+ <div id="cgl"></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><input id="cgn" maxlength="30" placeholder="categorie noua, ex: Dulciuri" aria-label="Categorie noua" style="flex:1;min-width:160px"><button class="go" id="cgAdd" style="margin:0">Adauga categorie</button></div></details></div>
  <div class="card" id="pfcard" data-sg="pref"><h2>Preferinte alimente</h2><p class="muted" style="margin:0 0 10px">Alimentele pe care le iubesti si cele pe care le eviti. Ajuta la propunerea de meniu (cele evitate nu mai apar deloc) si la avertismentele din Biblioteca. Scrii un aliment sau mai multe, separate cu virgula. Potrivirea merge dupa cuvinte: "ciuperci" prinde si "ciuperci champignon".</p>
   <h3 style="margin:12px 0 4px">Imi plac</h3><div class="row" style="gap:8px"><input id="pfl" maxlength="80" placeholder="ex: somon, avocado" aria-label="Aliment care iti place" style="flex:1;min-width:140px" autocomplete="off"><button class="go" id="pfAddL" style="margin:0">Adauga</button></div><div id="pfLl" class="pfl"></div>
   <h3 style="margin:16px 0 4px">Evit</h3><div class="row" style="gap:8px"><input id="pfe" maxlength="80" placeholder="ex: ciuperci, ficat" aria-label="Aliment pe care il eviti" style="flex:1;min-width:140px" autocomplete="off"><button class="go" id="pfAddE" style="margin:0">Adauga</button></div><div id="pfEl" class="pfl"></div></div>
@@ -99,6 +99,6 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="app.js?v=2.22.1"></script>
+<script src="app.js?v=2.22.3"></script>
 </body>
 </html>
