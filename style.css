@@ -75,7 +75,7 @@ ul.ing{columns:2;padding-left:20px;margin:8px 0}
 pre{background:var(--bg);border-radius:var(--r-s);padding:12px}
 
 /* submeniu Setari */
-.snav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.snav{display:flex;flex-direction:column;gap:12px;margin:0 0 14px}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--warn);margin-left:6px;vertical-align:middle;pointer-events:none}
 nav button.on .dot{background:var(--prit)}
 
@@ -218,3 +218,90 @@ nav[hidden],#nav button[hidden]{display:none}
 #ll .lmore>summary{padding:8px 4px}
 #ll .lact2{flex-direction:row;gap:8px;margin-top:6px}
 #ll .lact2 button{margin:0;min-height:38px;padding:6px 14px;font-size:.9rem}
+
+#ll .lmore{flex:1 1 100%}
+#ll .lact2{flex-wrap:wrap}
+#ll .lact button,#ll .lact2 button{white-space:nowrap}
+
+.pit.pedit{gap:6px 8px}
+.pit.pedit input{flex:1 1 100%;min-width:0;min-height:38px}
+.pit.pedit .lcs{max-width:none;min-height:38px;font-size:.9rem}
+.pit.pedit .pa button{min-height:38px}
+/* "Mai multe" ca meniu langa Copy to clipboard */
+#ll .lmore{position:relative;flex:0 0 auto}
+#ll .lmore>summary{padding:8px 6px;list-style:none}
+#ll .lmore .lact2{position:absolute;top:100%;left:0;z-index:5;flex-direction:column;align-items:stretch;gap:6px;margin-top:2px;padding:8px;background:var(--card,#fff);border:1px solid var(--line,#dde4df);border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.14);min-width:170px}
+
+.pit .pmenu{position:relative;margin:0;flex:0 0 auto}
+.pit .pmenu>summary{list-style:none;width:34px;height:34px;min-height:34px;padding:0;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;background:var(--card);font-weight:700;font-size:1.1rem;cursor:pointer;line-height:1}
+.pit .pmenu>summary::-webkit-details-marker{display:none}
+.pit .pmen{position:absolute;top:100%;right:0;z-index:6;display:flex;flex-direction:column;gap:6px;margin-top:2px;padding:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.14);min-width:170px}
+.pit .pmen button{margin:0;min-height:38px;padding:6px 14px;font-size:.9rem;white-space:nowrap}
+
+.ck{display:inline-flex;align-items:center;gap:6px;margin:0;font-weight:400;white-space:nowrap;font-size:.92rem}
+.ck input{width:auto;margin:0;flex:0 0 auto}
+.apd{display:flex;align-items:center;justify-content:space-between;gap:6px 14px;padding:8px 0;flex-wrap:wrap}
+.apn{display:flex;align-items:center;gap:10px;flex:1 1 220px;min-width:0}
+.apc{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.apd .alt{margin:0;min-height:34px;padding:4px 10px;font-size:.85rem}
+
+
+/* meniu 2.18.0 */
+.mhh{margin:0;flex:1 1 auto;min-width:0}
+.mtog{display:flex;align-items:center;gap:8px;width:100%;margin:0;padding:6px 0;background:none;border:0;box-shadow:none;color:inherit;font:inherit;font-weight:700;font-size:1.1rem;text-align:left;min-height:36px}
+.mtog .chev{color:var(--mut);width:1em}
+.mday .mh .ib{margin:0;min-height:36px;min-width:40px;padding:4px 8px}
+#mw .mact{align-items:center;flex-wrap:nowrap}
+#mw .mact .go{flex:1 1 auto;min-width:0}
+#mw .lmore{position:relative;flex:0 0 auto;margin:0}
+#mw .lmore>summary{padding:8px 6px;list-style:none;white-space:nowrap}
+#mw .lmore .lact2{position:absolute;top:100%;right:0;z-index:5;display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:2px;padding:8px;background:var(--card,#fff);border:1px solid var(--line,#dde4df);border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.14);min-width:230px}
+#mw .lmore .lact2 .alt{margin:0}
+.mtgi{padding-top:6px;border-top:1px solid var(--line,#dde4df);font-size:.85rem}
+#mw .row.mseg,#mw .row.mact{flex-direction:row;flex-wrap:nowrap}
+#mw .mseg>button{flex:1 1 0;margin:0}
+.mtgt{font-weight:700}
+#mdres .chips{display:flex;gap:8px}
+#mdres .fchip{flex:1 1 0;width:auto;height:auto;min-height:38px;padding:4px 8px!important;border-radius:99px;opacity:1;filter:none;white-space:nowrap}
+#mdres .fchip.on{background:var(--soft);border:2px solid var(--pri)}
+
+/* Setari 2.20.0: lista cu stari + detaliu */
+#sdet{display:none}
+#v-setari.sm-det #sdet{display:block}
+#v-setari.sm-det #shome{display:none}
+#sback{display:flex;align-items:center;gap:12px;margin:0 0 12px}
+#sback .alt{margin:0;min-height:40px}
+#sbt{font-size:1.15rem}
+.sgrp{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.srow{display:flex;align-items:center;gap:12px;width:100%;margin:0;padding:12px 16px;min-height:52px;background:transparent;border:0;border-top:1px solid var(--line);border-radius:0;color:inherit;font:inherit;text-align:left;cursor:pointer;box-shadow:none}
+.sgrp>.srow:first-child{border-top:0}
+.srow:hover{background:var(--soft)}
+.srow.on{background:var(--soft);box-shadow:inset 4px 0 0 var(--pri)}
+.srt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.srt b{font-size:1rem}
+.srs{font-size:.84rem;color:var(--mut)}
+.srs.warn2,.warn2{color:#a15c00;font-weight:700}
+.srow .chev,.adv>summary .chev{color:var(--mut);font-size:1.3rem;line-height:1;transition:transform .15s}
+.adv{border:1px dashed var(--line);border-radius:14px;overflow:hidden}
+.adv>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;padding:8px 14px;color:var(--mut);font-size:.9rem;font-weight:600}
+.adv>summary::-webkit-details-marker{display:none}
+.adv[open]>summary .chev{transform:rotate(90deg)}
+.adv .sgrp{border:0;border-top:1px solid var(--line);border-radius:0}
+.okk{font-size:.8rem;color:var(--pri);font-weight:600}
+.chg{white-space:pre-wrap;word-break:break-word;max-height:360px;overflow:auto;background:var(--soft);border-radius:10px;padding:10px 12px;font:inherit;font-size:.85rem;margin:0}
+@media (min-width:900px){
+ #sgrid{display:grid;grid-template-columns:340px minmax(0,1fr);gap:28px;align-items:start}
+ #sdet,#v-setari.sm-det #sdet{display:block}
+ #v-setari.sm-det #shome{display:block}
+ #sback{display:none}
+}
+@media (min-width:900px){main:has(#v-setari:not(.hidden)){max-width:1040px}}
+
+/* Setari: zona de tranzitie (2.20.1) - o singura cale "Toate setarile" + titlul paginii, fara dubluri */
+#sback{display:block;margin:0 0 12px}
+#sbk{background:none;border:0;box-shadow:none;padding:6px 0;min-height:40px;margin:0;width:auto;color:var(--pri);font:inherit;font-weight:700;cursor:pointer}
+#sbk:hover{text-decoration:underline}
+#sbt{display:block;margin:2px 0 0;font-size:1.5rem}
+@media (max-width:899px){h2.dup{display:none}}
+@media (min-width:900px){#sback{display:none}}
+.shd{margin:0 0 -2px}.stt{margin:2px 0 0;font-size:1.5rem}

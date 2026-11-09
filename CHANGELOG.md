@@ -2,6 +2,55 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.20.3
+- Carti: campul "Numele cartii" nu mai sta deasupra alegerii fisierului (parea o cautare). Apare in previzualizarea de dinainte de import, dupa ce alegi fisierul, precompletat cu numele din fisier ("Numele cartii (poti schimba)"); daca fisierul are mai multe carti, ramane gol si se folosesc numele din fisier.
+- "Copia de siguranta" se numeste acum "Backup aplicatie si retete" (butoane "Descarca backup", "Trimite backup", "Restaureaza dintr-un backup"; mesaje, stari si fisierul descarcat "retete-backup-DATA.json" la fel). Restaurarea accepta in continuare si fisierele vechi "retete-copie-...".
+- Cand o pagina din Setari are doua carduri (Carti si date), fiecare isi pastreaza titlul.
+
+## 2.20.2
+- Setari: lista are acum titlu propriu ("Utilizare" + "Cum gatesti si cum planifici"), in locul golului de sub butoanele de sus; la intoarcere din detaliu pagina nu mai pare incompleta, iar titlul sta in acelasi loc ca titlul detaliului.
+
+## 2.20.1
+- Setari: zona de tranzitie la detaliu curatata - nu mai apare "Setari" de doua ori. Sus ramane o singura cale ("‹ Toate setarile") si titlul paginii, iar titlul dublat din card dispare pe telefon.
+- Acorduri corecte in stari ("1 categorie", "1 aliment").
+
+## 2.20.0
+- Setari: pagina de pornire este o lista cu stare sub fiecare titlu (de ex. "6 active · 3 backup"). Apesi pe un rand si se deschide detaliul, cu "‹ Setari" pentru intoarcere. Pe ecran lat (peste 900px) lista ramane in stanga, iar detaliul apare in dreapta.
+- Utilizarea e in fata: Aparate, Preferinte alimente (acum separat), Categorii alimente, Etichete retete, Mese.
+- Partea tehnica e pliata intr-un rand discret "Tehnic: cheie AI, carti si date, despre": AI si cheie (fostul "Cont"), Carti si date (importul de carti + copia de siguranta, unite), Despre (versiune si istoric modificari).
+- Randul Tehnic arata "in ordine" si se aprinde doar cand e nevoie: "cheie lipsa" sau copie de siguranta veche (peste 14 zile; inainte 30) / inexistenta.
+- Cand o actiune AI cere cheia si lipseste, mesajul are butonul "Seteaza cheia" care duce direct la campul cheii.
+- Setari se deschide mereu la lista (nu mai memoreaza ultima sectiune).
+
+## 2.19.0
+- Meniu > "Adauga in meniu": trei filtre - Colectia mea (salvate + scrise de tine), Favorite (favoritele din carti) si Biblioteca (alegi o carte si vezi retetele ei). Cautarea lucreaza in sursa aleasa; fara filtru cauta peste tot. Lista ramane goala pana scrii sau alegi o sursa.
+- Etichetele urmeaza sursa: "Colectia mea (generata)", "Scrisa de tine", "Favorita - <carte>", "Din <carte>".
+- Macro in Meniu: mesajul "macro exista doar la retetele din carti" a disparut. Pentru retetele fara macro apare butonul "Estimeaza macro cu AI (N)" pe fiecare zi; valorile estimate se pastreaza in meniu, apar cu "estimat" si sunt numarate separat in total (retetele din carti raman neatinse).
+
+## 2.18.1
+- Meniu > "Adauga in meniu": lista nu mai arata retete cat timp campul de cautare e gol; apare doar "Arata Colectia mea" (la cerere), care listeaza retetele salvate, favoritele din carti si cele scrise de tine (inainte erau doar primele 10 salvate).
+- Etichete clare in dialog: "Colectia mea (generata)", "Scrisa de tine", "Din <carte>".
+
+## 2.18.0
+- Meniu: partea de sus compacta - alegerea Azi si maine / Saptamana, navigarea pe saptamani (titlul intervalului te intoarce la saptamana asta), butonul "Cumparaturi" si un dropdown "Mai multe" (Propune-mi un meniu, Goleste saptamana, tinta zilnica de macro).
+- Zilele sunt pliabile: ziua de azi e deschisa, restul pliate; sloturile goale (cu "+ Adauga") apar doar la ziua deschisa, iar retetele adaugate se vad mereu.
+- "Cumparaturi pentru ziua asta" este acum o iconita (cos) langa titlul zilei, doar cand ziua are retete.
+- Textul explicativ apare doar cand meniul e gol.
+
+## 2.17.4
+- Setari > Aparate: randuri compacte (nume + activ/backup/Elimina pe o linie, pe telefon doua linii ordonate); "+ Aparat nou" este pliat si isi deschide campurile doar la apasare; checkbox-ul "doar backup" aliniat cu eticheta.
+
+## 2.17.3
+- Debara: editarea nu mai porneste la apasarea numelui. Fiecare rand are acum un buton "..." cu un mic meniu (Editeaza, Scoate din debara), la fel ca "Mai multe" din Cumparaturi. Pe rand raman doar cosul ("am terminat") si "...", deci randul e mai curat. Meniurile se inchid cand apesi in alta parte.
+
+## 2.17.2
+- Debara: produsele se pot edita fara stergere si readaugare. Apesi pe nume si poti schimba numele si categoria (Enter salveaza, Esc renunta; se poate anula). Marcajele se pastreaza; daca noul nume exista deja in debara, schimbarea e refuzata cu mesaj. Legenda de sus spune "apasa pe nume: editezi".
+- Cumparaturi: butonul "Copiaza lista" se numeste acum "Copy to clipboard"; "Mai multe" e pe acelasi rand cu el si se deschide ca un mic meniu (Sterge bifate, Goleste lista).
+
+## 2.17.1
+- Debara: numele se afiseaza si se ordoneaza dupa produsul de baza: "pudra de usturoi" devine "usturoi, pudra" si sta sub "usturoi"; "seminte de susan" devine "susan"; la fel "unt de arahide" -> "arahide, unt", "ulei de masline" -> "masline, ulei" (pudra, ulei, sos, suc, unt, faina, pasta, zeama, lapte, otet, sirop, fulgi, crema, gem, dulceata, ceai, amidon, esenta, bulion, amestec; iar seminte/boabe/frunze/bulbi/fructe/flori se omit). Doar afisarea se schimba: numele salvat ramane, deci potrivirea cu retetele si cu lista nu e afectata. Ordinea alfabetica e acum cu reguli romanesti.
+- Cumparaturi, "Copiaza lista": daca browserul nu permite copierea automata, lista apare intr-un camp selectat, gata de copiat, in loc de simplu mesaj de eroare. "Mai multe" se deschide pe rand propriu, cu butoanele aliniate la stanga si pe o singura linie.
+
 ## 2.17.0
 - Antet: subtitlul de sub titlu a fost scos (se repeta pe fiecare pagina si ocupa 3 randuri pe telefon). Continutul incepe mai sus.
 - Cumparaturi, mai compact: campul de produs si "Adauga" sunt pe acelasi rand; raman la vedere "Copiaza lista" (si "Trimite lista", cand telefonul o permite); "Sterge bifate" si "Goleste lista" sunt in "Mai multe" (ambele se pot anula ca inainte). Bifa "Grupeaza pe categorii" a fost scoasa: lista e mereu grupata, ca pana acum la toata lumea cu setarea implicita. Daca o dezactivasesi, lista revine la grupat.
