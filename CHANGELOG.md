@@ -2,6 +2,49 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.17.0
+- Antet: subtitlul de sub titlu a fost scos (se repeta pe fiecare pagina si ocupa 3 randuri pe telefon). Continutul incepe mai sus.
+- Cumparaturi, mai compact: campul de produs si "Adauga" sunt pe acelasi rand; raman la vedere "Copiaza lista" (si "Trimite lista", cand telefonul o permite); "Sterge bifate" si "Goleste lista" sunt in "Mai multe" (ambele se pot anula ca inainte). Bifa "Grupeaza pe categorii" a fost scoasa: lista e mereu grupata, ca pana acum la toata lumea cu setarea implicita. Daca o dezactivasesi, lista revine la grupat.
+- Biblioteca: filtrele folosite rar (Din debara, Jurnal, Preferinte) sunt intr-un submeniu "Mai multe filtre", care se deschide singur cand unul e activ si apare numarat. Raman la vedere Carte, Categorie, Eticheta, Stare.
+- Verificat in audit: "Primii pasi" dispare deja singur cand toti pasii sunt bifati, deci nu a fost nevoie de schimbare.
+
+## 2.16.1
+- Biblioteca: filtrul "Carte" are acum si "★ Favorite", deci retetele marcate cu stea se regasesc si din Biblioteca (alaturi de pagina Colectia mea, filtrul Arata -> Favorite). Merge impreuna cu celelalte filtre; lista de categorii si etichete se limiteaza la favorite.
+
+## 2.16.0
+- Navigare simplificata: sectiunile "Gatesc" si "Retete" s-au unit intr-o singura sectiune, "Retete", cu trei pagini: Idei (retete generate de AI), Biblioteca (cartile tale) si Colectia mea (ce pastrezi: salvate, favorite, scrise de tine). Sus sunt acum 3 butoane (Retete, Planific, Setari) in loc de 4.
+- "Retetele mele" (pagina) s-a redenumit "Colectia mea", ca sa nu se mai confunde cu cartea "Retetele mele" in care se scriu retetele proprii. "Biblioteca mea" a devenit "Biblioteca". Datele nu s-au schimbat.
+
+## 2.15.2
+- Debara: butonul text "Am terminat" repetat pe fiecare rand a devenit o icoana de cos de cumparaturi (il pune inapoi in Cumparaturi, cu Anuleaza ca inainte), iar "x" ramane lang a ea, ambele mici si egale. Ce face fiecare e spus o singura data, in legenda de sub numarul de produse, si la hover.
+
+## 2.15.1
+- Debara cu icoane: fiecare produs e pe un singur rand (nume, marcaje, "Am terminat", "x"), iar marcajele sunt icoane care se apasa: frunza verde = proaspat, cub de gheata = congelat, frunza galbena = uscat, conserva = conserva, borcan = altceva. Se pot combina; cele nealese sunt estompate. Sub numarul de produse e o legenda cu cele 5 icoane; numele apare si la apasare lunga/hover.
+- Marcajele sunt 5, nu 3: "neprocesat" a devenit "proaspat" (se muta automat), iar "uscat" si "altceva" sunt noi. Ce avai marcat ca "neprocesat" apare acum ca "proaspat"; daca era de fapt uscat, il rebifezi.
+- Pe ecran lat, categoriile sunt in coloane de cel putin 420 px; pe telefon, numele si butoanele sunt pe un rand, iar icoanele dedesubt.
+
+## 2.15.0
+- Setari, taburi separate: Cont si Aparate sunt acum doua taburi; "Categorii si mese" are tabul "Mese"; incarcarea si descarcarea cartilor e in tabul "Carti" (inainte era "Biblioteca", sub Categorii si mese). Ordine: Cont, Aparate, Alimente, Etichete retete, Mese, Carti, Date.
+- Mese: fiecare categorie are acum un singur rand (nume cu numarul de retete, iar masa in dreapta), nu doua.
+- README actualizat: nu mai descrie aplicatia ca "retete pe doua aparate"; explica sectiunile, unde sta fiecare lucru si regulile de lucru.
+- Mesajul de dupa descarcarea unei carti trimite la Setari -> Carti.
+
+## 2.14.4
+- Setari mai aerisite: "Alimente si etichete" s-a impartit. Tab nou "Etichete retete" (separat), iar tabul "Alimente" are doar Categorii alimente si Preferinte alimente. Pagina din Alimente a scazut de la ~2770 la ~1590 px.
+- Lista lunga cu categoria fiecarui aliment e pliata ("Categoria fiecarui aliment"); se deschide singura cand apesi "Schimba categoriile" din Debara.
+- "Etichete alimente" se numeste acum "Categorii alimente" (nu se mai confunda cu etichetele retetelor). Textul "neprocesat / congelat / conserva" nu se mai repeta pe fiecare rand: raman doar bifa "cu marcaje" si o explicatie.
+
+## 2.14.3
+- Retetele mele, afisaj mai curat: eticheta si aparatele sunt pe un singur rand de chip-uri (inainte erau doua randuri), iar originea ("Generata de AI", "Scrisa de tine", "Din <carte>") e o linie mica sub titlu. Cardurile si butoanele sunt mai mici, iar cele doua filtre ("Arata" si "Eticheta") stau pe acelasi rand.
+- Redundante scoase: etichetele din carti nu se mai afiseaza de doua ori, iar categoria "Retetele mele" nu mai apare ca chip la retetele scrise de tine (originea e deja spusa).
+
+## 2.14.2
+- Cumparaturi: selectorul "Muta" de pe fiecare rand a fost eliminat (categoria se alegea in doua locuri). Acum categoria se alege o singura data, in fereastra care apare la "In debara", impreuna cu numele general; alegerea se tine minte si pentru urmatoarele liste. Categoriile se mai pot schimba in Debara si in Setari.
+
+## 2.14.1
+- Cumparaturi, afisaj mai compact: un produs ocupa un singur rand (pe ecran lat: nume si reteta in stanga, "Muta", "In debara" si "x" in dreapta). Selectorul de categorie e acum un mic "Muta" care arata doar celelalte categorii (categoria curenta e deja titlul grupului, deci nu se mai repeta). Butoanele sunt mai mici, iar cele doua optiuni de sus (Ascunde din debara, Grupeaza) stau mai aproape de casuta.
+- Butonul "Am in debara" se numeste acum "In debara".
+
 ## 2.14.0
 - Favorite si Salvate sunt acum o singura pagina: "Retetele mele". Un filtru "Arata" are: Toate / Favorite / Generate de AI / Scrise de mine; filtrul pe etichete ramane. Fiecare reteta apare o singura data, cu o linie care spune de unde e (generata de AI, scrisa de tine, din biblioteca).
 - In pagina apar: retetele salvate din idei, retetele scrise de tine si retetele din carti marcate favorite. Cele din carti se deschid si se corecteaza pe loc, ca in Biblioteca. Scoasa din favorite, o reteta din carte dispare din lista (ramane in Biblioteca).

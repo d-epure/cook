@@ -96,7 +96,7 @@ nav button.on .dot{background:var(--prit)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* debara: grid pe categorii */
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:12px}
 .pcat{border:1px solid var(--line);border-radius:var(--r-s);padding:12px 12px 4px;background:var(--bg)}
 .pcat h3{margin:0 0 6px;font-size:1.05rem;font-weight:700}
 .pit{padding:8px 0;border-top:1px solid var(--line)}
@@ -170,4 +170,51 @@ nav[hidden],#nav button[hidden]{display:none}
 .acts button{margin:0;width:100%;min-height:46px}
 .mre{margin:8px 0 0}.mre summary{cursor:pointer;font-weight:700;padding:10px 2px;color:var(--pri);min-height:44px;box-sizing:border-box}
 .lst .it input[type=checkbox]{width:24px;height:24px;flex:none}
-.lcs{width:auto;min-height:34px;padding:2px 8px;font-size:.85rem;margin-top:4px}
+.lcs{width:auto;max-width:68px;min-height:32px;padding:2px 4px;font-size:.78rem;margin:0}
+.lst .it{padding:6px 0;gap:4px 6px}
+.lst .it>div{min-width:90px}
+.lst .it button{min-height:32px;padding:4px 8px;font-size:.8rem;margin:0}
+.lst .it button[data-lx]{min-width:30px;padding:4px 6px}
+.lst .src{line-height:1.2}
+
+#sfilt{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+#sfilt label{margin:0 0 2px}
+#salvate .sc{padding:12px 14px;margin-bottom:8px}
+#salvate .sc h2{margin:0 0 2px;font-size:1.05rem}
+#salvate .org{font-size:.8rem;margin:0 0 6px}
+#salvate .chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+#salvate .chips>*{margin:0}
+#salvate .sc>button{min-height:34px;padding:4px 12px;font-size:.85rem;margin:0 4px 0 0}
+
+.pxr{display:grid;grid-template-columns:1fr minmax(140px,46%);gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.pxr select{min-height:38px;padding:4px 8px;font-size:.9rem;margin:0}
+.pxr b{font-weight:600}
+
+.pit{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px}
+.pit .pn{flex:1 1 110px}
+.pit .pf{margin:0;flex:0 0 auto;gap:4px;flex-wrap:nowrap}
+.pit .pa{margin:0;flex:0 0 auto;display:flex;gap:6px}
+.pit .pa button{min-height:32px;padding:4px 10px;font-size:.82rem;margin:0}
+.fchip{width:34px;height:34px;padding:0!important;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;opacity:.4;filter:grayscale(.6)}
+.fchip.on{opacity:1;filter:none;background:var(--soft);border:2px solid var(--pri)}
+.fleg{display:inline-flex;flex-wrap:wrap;gap:4px 12px;margin-left:10px;vertical-align:middle}
+.fleg span{display:inline-flex;align-items:center;gap:3px;font-size:.8rem}
+.fleg svg{width:16px;height:16px}
+@media (max-width:600px){
+ .pit{display:grid;grid-template-columns:1fr auto;gap:4px 8px}
+ .pit .pa{grid-column:2;grid-row:1}
+ .pit .pf{grid-column:1/-1;grid-row:2}
+}
+
+.pit .pa .ib{min-width:34px;width:34px;height:34px;min-height:34px;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700}
+
+#ll .ladd{flex-direction:row;flex-wrap:nowrap;gap:8px;margin-bottom:8px}
+#ll .ladd input{flex:1;min-width:0}
+#ll .ladd button{flex:0 0 auto;margin:0;width:auto}
+#ll .lact{flex-direction:row;flex-wrap:wrap;gap:8px;align-items:flex-start;margin-bottom:6px}
+#ll .lact>*{flex:0 0 auto}
+#ll .lact>button{margin:0;min-height:38px;padding:6px 14px;font-size:.9rem}
+#ll .lmore{margin:0}
+#ll .lmore>summary{padding:8px 4px}
+#ll .lact2{flex-direction:row;gap:8px;margin-top:6px}
+#ll .lact2 button{margin:0;min-height:38px;padding:6px 14px;font-size:.9rem}
