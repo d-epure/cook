@@ -319,3 +319,34 @@ nav[hidden],#nav button[hidden]{display:none}
 .plg{margin:10px 0 12px}
 .plg .fleg{display:flex;flex-wrap:wrap;gap:4px 14px;margin:4px 0}
 #pcn{font-size:14px;margin-top:2px}
+.plst{margin:0;padding-left:22px}
+.plst li{padding:10px 0;border-top:1px solid #e3e9e4;line-height:1.5}
+.plst li:first-child{border-top:0}
+.plst{margin:0;padding-left:22px}
+.plst li{padding:10px 0;border-top:1px solid #e3e9e4;line-height:1.5}
+.plst li:first-child{border-top:0}
+/* Info: Ingrediente / Masuri */
+.nctl{flex-direction:row;flex-wrap:wrap;gap:8px;align-items:center}
+.nctl #nq{flex:1 1 100%;min-width:0;width:auto}
+.nctl .nam{display:inline-flex;align-items:center;gap:6px;margin:0;font-weight:400;white-space:nowrap}
+.nctl .nam input{width:84px}
+.nctl #ns{width:auto;flex:0 0 auto}
+#ngc.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.nh,.nrb{display:grid;grid-template-columns:minmax(0,1fr) 54px 54px 54px 54px;gap:6px;align-items:center}
+.nh{font-size:.78rem;color:var(--mut,#55655d);padding:4px 8px;border-bottom:1px solid #dde4df}
+.nh span:not(:first-child),.nrb span:not(:first-child){text-align:right}
+.nr{border-bottom:1px solid #e3e9e4}
+.nrb{width:100%;background:none;border:0;border-radius:0;padding:10px 8px;text-align:left;font:inherit;color:inherit;cursor:pointer;min-height:44px}
+.nrb:hover{background:#f2f6f3}
+.nrb .nk{font-weight:700}
+.nn .muted{font-size:.85rem}
+.nd{padding:4px 8px 12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.ng h4{margin:0 0 4px;font-size:.85rem;color:#55655d}
+.nv{display:flex;justify-content:space-between;gap:8px;padding:2px 0;font-size:.92rem}
+.mr{padding:10px 0;border-bottom:1px solid #e3e9e4}
+.mcs{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:4px}
+.mcs span{display:flex;flex-direction:column;font-size:.92rem}
+.mcs small{color:#55655d;font-size:.78rem}
+@media(max-width:420px){.nh,.nrb{grid-template-columns:minmax(0,1fr) 44px 44px 44px 44px;gap:4px;font-size:.9rem}}
+.nchip{width:auto;flex:0 0 auto;min-height:32px;padding:2px 12px;border-radius:99px;margin:0;font-size:.9rem}
+@media(max-width:480px){#gnav{display:flex;flex-wrap:nowrap;gap:6px}#gnav button{font-size:.95rem;padding:9px 12px;flex:0 0 auto;margin:0}}

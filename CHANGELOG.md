@@ -2,6 +2,15 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.23.0
+- Grup nou in bara de sus: **Info** (Retete / Planific / Info / Setari), cu doua pagini.
+- Info > Ingrediente: 200 de alimente comune cu valori nutritionale la 100 g: calorii, proteine, carbohidrati, grasimi; la atingere se deschid fibre, zaharuri, grasimi saturate, colesterol, 8 minerale si 11 vitamine. Cautare, filtre pe grupe (legume, fructe, carne, peste, oua si lactate, cereale si paste, leguminoase, nuci si seminte, grasimi, condimente, dulciuri si altele), sortare (inclusiv proteine la 100 kcal) si un camp "Pentru N g" care rescaleaza toate valorile.
+- Info > Masuri: cat cantareste in grame o lingura, o lingurita, o cana sau o bucata din fiecare aliment.
+- Sursa datelor: USDA National Nutrient Database for Standard Reference, versiunea 28 (domeniu public), in fisierul nou nutri.js. Alimentele sunt in starea indicata (crud, fiert etc.); unele sunt aproximari (telemea = feta, cascaval = cheddar).
+
+## 2.22.4
+- Retete cu pasi fara timp si fara aparat (de ex. o salata): nu mai apar "min 0", eticheta "manual", butoanele Cronologie / Pe aparat si durata totala. Apare doar lista numerotata a pasilor. Retetele cu timpi sau aparate raman neschimbate.
+
 ## 2.22.3
 - Setari > Categorii alimente: partea folosita des, alegerea categoriei fiecarui aliment, e acum prima si mereu vizibila. Gestionarea categoriilor (adauga, redenumeste, sterge, marcaje) e pliata sub "Gestioneaza categoriile"; butonul "Schimba categoriile" din Debara o deschide direct.
 
