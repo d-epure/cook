@@ -355,3 +355,14 @@ nav[hidden],#nav button[hidden]{display:none}
 
 .pdet{margin:6px 0 10px}.pdet summary{cursor:pointer;color:var(--mut);font-size:14px}
 .mmac.muted{color:var(--ink)}
+
+/* 2.26.0 */
+.bsec{margin-top:16px;padding-top:6px;border-top:1px solid var(--line)}
+.lseg>button.on{background:var(--soft);color:var(--ink);border-color:var(--pri)}
+.nctl select{width:auto;min-width:0;flex:1 1 140px}
+#mq{flex:1 1 180px}
+label:has(>input[type=checkbox]){padding:8px 4px 8px 0;min-height:40px}
+input[type=checkbox]{width:20px;height:20px}
+button[aria-label^="Scoate"]{min-height:40px;min-width:40px}
+details>summary{padding:8px 0}
+@media (max-width:520px){.pxr{grid-template-columns:1fr}.pxr select{width:100%}#tgl .apr input[data-tn]{flex:1 1 100%!important}}

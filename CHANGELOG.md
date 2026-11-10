@@ -2,6 +2,25 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.26.2
+- Info > Ingrediente: se afiseaza doar denumirea alimentului, fara nicio stare (nici fiert, uscat, conserva); cand starea conteaza, e deja in nume (ex. "Fasole boabe fiarta").
+
+## 2.26.1
+- Info > Ingrediente: nu se mai afiseaza "cru/crud/crude" (implicit alimentele sunt crude); raman doar starile care conteaza (fiert, copt, uscat, conserva).
+
+## 2.26.0
+Din auditul UI/UX.
+- Reteta deschisa: ingredientele si pasii vin primii; etichetele si jurnalul sunt intr-un bloc dedicat sub reteta.
+- Biblioteca: carduri mai compacte (fara spatiu gol intre insigne si butoane); titlurile si textul retetelor se afiseaza fara diacritice (datele originale raman neschimbate).
+- Info: grupa se alege dintr-un selector (nu 11 butoane); descrierea e mai scurta; Masuri are acelasi selector de grupa.
+- Setari: lista de mese si etichetele nu mai taie textul pe telefon; Stocare si instalare e pliata; modelele AI sunt sub "Modele (avansat)"; mesajul "Nu ai descarcat niciun backup inca" apare o singura data.
+- Cumparaturi: butonul "Copy to clipboard" e acum "Copiaza lista"; comutatorul Pe produse / Pe retete e discret.
+- Debara: legenda simbolurilor e pliata; campul de cautare are un text mai scurt.
+- Meniu: butonul "x" e acum "Scoate". Idei: Portii si Timp maxim pe acelasi rand.
+- Tinte tactile: bife si butoane de scoatere de minimum 40 px.
+- Contorul de produse ramane doar pe Cumparaturi (nu mai apare si pe Planific).
+- Colectia mea goala nu mai arata filtrele.
+
 ## 2.25.0
 - Biblioteca: se arata primele 60 de retete, restul prin "Arata mai multe" (cautarea "a" nu mai deseneaza 1434 retete deodata).
 - Lista de cumparaturi: elementele stricate din datele salvate sunt ignorate la citire, nu mai blocheaza pagina Cumparaturi.

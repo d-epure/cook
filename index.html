@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=2.25.0">
+<link rel="stylesheet" href="style.css?v=2.26.2">
 
 </head>
 <body>
@@ -37,7 +37,7 @@
   <textarea id="ing" placeholder="ex: piept de pui, broccoli, orez, smantana"></textarea>
   <details id="apdet" style="margin-top:12px"><summary id="apsum"><b>Aparate pentru adaptare</b></summary><div class="chk" id="apbox"></div><p class="muted" style="margin:4px 0 0">Implicit folosesc aparatele active din Setari. Bifeaza aici doar daca vrei altele pentru aceasta adaptare. <a href="#" data-gosub="aparate">Schimba aparatele active</a></p></details>
   <label>Etichete</label><div class="chk" id="lbbox"></div><p class="muted" style="margin:4px 0 0">Fara bife = orice fel de mancare. Dietele (vegan, keto...) se aplica toate odata; bucatariile (romanesc, asiatic) sunt alternative.</p>
-  <div class="row">
+  <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
    <div><label for="por">Portii</label><input id="por" type="number" min="1" max="8" value="2"></div>
    
    <div><label for="tmax">Timp maxim (min)</label><input id="tmax" type="number" min="10" value="60"></div>
@@ -55,28 +55,28 @@
  <div id="bn" class="muted" style="margin-top:10px"></div><button class="alt" id="bvq" type="button" hidden style="margin-top:8px">Parcurge retetele de verificat</button></div><div id="bres"></div></section>
 <section id="v-salvate" class="hidden"><div id="sfilt"><div><label for="fk">Arata</label><select id="fk"><option value="">Toate</option><option value="fav">Favorite</option><option value="ai">Generate de AI</option><option value="mine">Scrise de mine</option></select></div><div><label for="fs">Eticheta</label><select id="fs"></select></div></div><div id="salvate" style="margin-top:12px"></div></section>
 
-<section id="v-debara" class="hidden"><div class="card lst"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px"><div><h2 style="margin:0">Debaraua mea</h2><div class="muted" id="pcn"></div></div><button class="alt" id="pCats" type="button">Schimba categoriile</button></div><details class="pdet"><summary>Cum functioneaza Debaraua</summary><ul class="muted pinfo"><li><b>Ce pui aici:</b> produse pe care le ai deja sau care se consuma greu (sare, oua, faina, orez, conserve). Nu retin cantitati.</li><li><b>De la inceput:</b> sarea, piperul, uleiul, zaharul si faina sunt deja puse; le poti scoate.</li><li><b>Categorii si marcaje:</b> categoriile se schimba din Setari. La legume, fructe si cereale poti marca proaspat, congelat, uscat, conserva sau altceva (borcan).</li><li><b>In Cumparaturi:</b> bifa "Ascunde produsele din debara" le scoate din lista.</li></ul></details><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="pin" maxlength="60" placeholder="cauta sau adauga: ex: oua, orez" aria-label="Cauta in debara sau adauga un produs nou" style="flex:1;min-width:160px"><button class="go" id="pAdd" style="margin:0">Adauga</button></div><div id="pl"></div></div></section>
+<section id="v-debara" class="hidden"><div class="card lst"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px"><div><h2 style="margin:0">Debaraua mea</h2><div class="muted" id="pcn"></div></div><button class="alt" id="pCats" type="button">Schimba categoriile</button></div><details class="pdet"><summary>Cum functioneaza Debaraua</summary><ul class="muted pinfo"><li><b>Ce pui aici:</b> produse pe care le ai deja sau care se consuma greu (sare, oua, faina, orez, conserve). Nu retin cantitati.</li><li><b>De la inceput:</b> sarea, piperul, uleiul, zaharul si faina sunt deja puse; le poti scoate.</li><li><b>Categorii si marcaje:</b> categoriile se schimba din Setari. La legume, fructe si cereale poti marca proaspat, congelat, uscat, conserva sau altceva (borcan).</li><li><b>In Cumparaturi:</b> bifa "Ascunde produsele din debara" le scoate din lista.</li></ul></details><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="pin" maxlength="60" placeholder="cauta sau adauga" aria-label="Cauta in debara sau adauga un produs nou" style="flex:1;min-width:160px"><button class="go" id="pAdd" style="margin:0">Adauga</button></div><div id="pl"></div></div></section>
 <section id="v-meniu" class="hidden"><div id="mw"></div></section>
 <div id="mdlg" class="mdlg hidden"></div>
 <div id="cook" class="cook hidden"></div>
 <section id="v-lista" class="hidden"><div class="card lst"><div id="ll"></div></div></section>
 
-<section id="v-ingr" class="hidden"><div class="card"><h2 style="margin:0 0 4px">Ingrediente</h2><p class="muted" style="margin:0 0 10px">Valori nutritionale pentru alimente comune: calorii (kcal) si, in grame, proteine, carbohidrati si grasimi; la atingere, fibre, minerale si vitamine. Valorile sunt pentru cantitatea de mai jos.</p>
-<div class="row nctl"><input id="nq" placeholder="cauta un aliment, ex: ou, orez" aria-label="Cauta aliment" autocomplete="off"><label class="nam">Pentru <input id="nam" type="number" min="1" max="5000" value="100" aria-label="Cantitate in grame"> g</label><select id="ns" aria-label="Sortare"><option value="nume">Nume A-Z</option><option value="kcal">Calorii</option><option value="p">Proteine</option><option value="pk">Proteine la 100 kcal</option><option value="c">Carbohidrati</option><option value="g">Grasimi</option><option value="fib">Fibre</option></select></div>
-<div id="ngc" class="chips"></div><div id="nl"></div>
+<section id="v-ingr" class="hidden"><div class="card"><h2 style="margin:0 0 4px">Ingrediente</h2><p class="muted" style="margin:0 0 10px">Calorii si macro pentru alimente comune; atinge un aliment pentru fibre, minerale si vitamine.</p>
+<div class="row nctl"><input id="nq" placeholder="cauta un aliment, ex: ou, orez" aria-label="Cauta aliment" autocomplete="off"><label class="nam">Pentru <input id="nam" type="number" min="1" max="5000" value="100" aria-label="Cantitate in grame"> g</label><select id="ns" aria-label="Sortare"><option value="nume">Nume A-Z</option><option value="kcal">Calorii</option><option value="p">Proteine</option><option value="pk">Proteine la 100 kcal</option><option value="c">Carbohidrati</option><option value="g">Grasimi</option><option value="fib">Fibre</option></select><select id="ngc" aria-label="Grupa"></select></div>
+<div id="nl"></div>
 <p class="muted" style="margin:12px 0 0;font-size:.85rem">Sursa: USDA National Nutrient Database for Standard Reference, versiunea 28 (domeniu public). Valorile sunt pentru alimentul in starea indicata (crud, fiert etc.) si pot diferi de eticheta produsului tau. "-" inseamna ca sursa nu are valoare masurata. Unele alimente romanesti sunt aproximate prin cel mai apropiat din sursa (de ex. telemea = feta).</p></div></section>
 <section id="v-masuri" class="hidden"><div class="card"><h2 style="margin:0 0 4px">Masuri</h2><p class="muted" style="margin:0 0 10px">Cat cantareste, in grame, o lingura, o lingurita sau o cana din alimentele care se masoara asa (faina, zahar, lapte, ulei, seminte etc.). Sunt valori medii; difera dupa soi si dupa cat de plina e lingura.</p>
-<input id="mq" placeholder="cauta un aliment, ex: faina, zahar" aria-label="Cauta aliment" autocomplete="off"><div id="ml" style="margin-top:8px"></div></div></section>
+<div class="row nctl"><input id="mq" placeholder="cauta un aliment, ex: faina, zahar" aria-label="Cauta aliment" autocomplete="off"><select id="mgc" aria-label="Grupa"></select></div><div id="ml" style="margin-top:8px"></div></div></section>
 
 <section id="v-setari" class="hidden">
  <div id="sgrid"><div id="shome"><div id="snav" class="snav"></div></div><div id="sdet"><div id="sback"><button id="sbk" type="button">&lsaquo; Toate setarile</button><h2 id="sbt"></h2></div>
  <div class="card" data-sg="cont">
   <label for="key">Cheie API Anthropic</label>
   <input id="key" type="password" autocomplete="off" placeholder="sk-ant-...">
-  <label for="m1">Model pentru idei</label><input id="m1">
-  <label for="m2">Model pentru reteta completa</label><input id="m2"><p class="muted">Haiku e rapid. Sonnet e mai precis, dar mult mai lent.</p>
+  <details><summary>Modele (avansat)</summary><label for="m1">Model pentru idei</label><input id="m1">
+  <label for="m2">Model pentru reteta completa</label><input id="m2"><p class="muted">Haiku e rapid. Sonnet e mai precis, dar mult mai lent.</p></details>
   <button class="go" id="bSet">Salveaza setarile</button>
-  <p class="muted">Cheia ramane doar in acest browser (localStorage) si se trimite direct catre Anthropic.</p>
+  <p class="muted">Cheia ramane doar in acest browser si se trimite direct catre Anthropic.</p>
   <details style="margin-top:10px"><summary><b>Protejeaza-ti cheia si cheltuielile</b></summary>
    <ol class="muted" style="margin:8px 0 0;padding-left:20px">
     <li>In consola Anthropic (console.anthropic.com) creeaza o cheie separata, doar pentru aceasta aplicatie. Daca ajunge in mana cuiva, o stergi fara sa afectezi altceva.</li>
@@ -108,7 +108,7 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=2.25.0"></script>
-<script src="app.js?v=2.25.0"></script>
+<script src="nutri.js?v=2.26.2"></script>
+<script src="app.js?v=2.26.2"></script>
 </body>
 </html>
