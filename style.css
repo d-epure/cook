@@ -137,7 +137,7 @@ nav[hidden],#nav button[hidden]{display:none}
 #nav button.on{background:var(--soft);border:2px solid var(--pri);color:var(--ink);padding:4px 12px}
 .miss{margin:6px 0 2px;font-size:.92rem;color:var(--warn);font-weight:600}
 .miss.ok{color:var(--pri)}
-.mmac{margin-top:10px;padding:10px 12px;background:var(--soft);border-radius:var(--r-s);font-size:.92rem}
+.mmac{margin-top:10px;padding:10px 12px;background:var(--soft);color:var(--ink);border-radius:var(--r-s);font-size:.92rem}
 .mtg{margin-top:10px}.mtg summary{cursor:pointer;font-weight:600}
 
 /* mod gatit */
@@ -230,7 +230,7 @@ nav[hidden],#nav button[hidden]{display:none}
 /* "Mai multe" ca meniu langa Copy to clipboard */
 #ll .lmore{position:relative;flex:0 0 auto}
 #ll .lmore>summary{padding:8px 6px;list-style:none}
-#ll .lmore .lact2{position:absolute;top:100%;left:0;z-index:5;flex-direction:column;align-items:stretch;gap:6px;margin-top:2px;padding:8px;background:var(--card,#fff);border:1px solid var(--line,#dde4df);border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.14);min-width:170px}
+#ll .lmore .lact2{position:absolute;top:100%;left:0;z-index:5;flex-direction:column;align-items:stretch;gap:6px;margin-top:2px;padding:8px;background:var(--card,#fff);border:1px solid var(--line);border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.14);min-width:170px}
 
 .pit .pmenu{position:relative;margin:0;flex:0 0 auto}
 .pit .pmenu>summary{list-style:none;width:34px;height:34px;min-height:34px;padding:0;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;background:var(--card);font-weight:700;font-size:1.1rem;cursor:pointer;line-height:1}
@@ -255,9 +255,9 @@ nav[hidden],#nav button[hidden]{display:none}
 #mw .mact .go{flex:1 1 auto;min-width:0}
 #mw .lmore{position:relative;flex:0 0 auto;margin:0}
 #mw .lmore>summary{padding:8px 6px;list-style:none;white-space:nowrap}
-#mw .lmore .lact2{position:absolute;top:100%;right:0;z-index:5;display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:2px;padding:8px;background:var(--card,#fff);border:1px solid var(--line,#dde4df);border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.14);min-width:230px}
+#mw .lmore .lact2{position:absolute;top:100%;right:0;z-index:5;display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:2px;padding:8px;background:var(--card,#fff);border:1px solid var(--line);border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.14);min-width:230px}
 #mw .lmore .lact2 .alt{margin:0}
-.mtgi{padding-top:6px;border-top:1px solid var(--line,#dde4df);font-size:.85rem}
+.mtgi{padding-top:6px;border-top:1px solid var(--line);font-size:.85rem}
 #mw .row.mseg,#mw .row.mact{flex-direction:row;flex-wrap:nowrap}
 #mw .mseg>button{flex:1 1 0;margin:0}
 .mtgt{font-weight:700}
@@ -305,14 +305,14 @@ nav[hidden],#nav button[hidden]{display:none}
 @media (max-width:899px){h2.dup{display:none}}
 @media (min-width:900px){#sback{display:none}}
 .shd{margin:0 0 -2px}.stt{margin:2px 0 0;font-size:1.5rem}
-.lbn{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;margin-bottom:10px;background:#e4efe7;border-radius:12px;font-size:14px}
+.lbn{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;margin-bottom:10px;background:var(--soft);border-radius:12px;font-size:14px}
 .lbn span{flex:1 1 220px}
 .lseg{margin:8px 0}
 .lseg>button{flex:1 1 0}
-.lseg>button.on{background:#1f6b4a;color:#fff;border-color:#1f6b4a}
+.lseg>button.on{background:var(--pri);color:var(--prit);border-color:var(--pri)}
 .lrg{margin-bottom:12px}
 .lrh{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.lri{padding:5px 0;border-top:1px solid #e3e9e4;font-size:15px}
+.lri{padding:5px 0;border-top:1px solid var(--line);font-size:15px}
 .lbb{border:0;cursor:pointer;font:inherit;font-size:12px;min-height:32px}
 .pinfo{margin:8px 0 12px;padding-left:18px;font-size:14px;line-height:1.45}
 .pinfo li{margin:3px 0}
@@ -320,10 +320,10 @@ nav[hidden],#nav button[hidden]{display:none}
 .plg .fleg{display:flex;flex-wrap:wrap;gap:4px 14px;margin:4px 0}
 #pcn{font-size:14px;margin-top:2px}
 .plst{margin:0;padding-left:22px}
-.plst li{padding:10px 0;border-top:1px solid #e3e9e4;line-height:1.5}
+.plst li{padding:10px 0;border-top:1px solid var(--line);line-height:1.5}
 .plst li:first-child{border-top:0}
 .plst{margin:0;padding-left:22px}
-.plst li{padding:10px 0;border-top:1px solid #e3e9e4;line-height:1.5}
+.plst li{padding:10px 0;border-top:1px solid var(--line);line-height:1.5}
 .plst li:first-child{border-top:0}
 /* Info: Ingrediente / Masuri */
 .nctl{flex-direction:row;flex-wrap:wrap;gap:8px;align-items:center}
@@ -333,26 +333,25 @@ nav[hidden],#nav button[hidden]{display:none}
 .nctl #ns{width:auto;flex:0 0 auto}
 #ngc.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
 .nh,.nrb{display:grid;grid-template-columns:minmax(0,1fr) 54px 54px 54px 54px;gap:6px;align-items:center}
-.nh{font-size:.78rem;color:var(--mut,#55655d);padding:4px 8px;border-bottom:1px solid #dde4df}
+.nh{font-size:.78rem;color:var(--mut);padding:4px 8px;border-bottom:1px solid var(--line)}
 .nh span:not(:first-child),.nrb span:not(:first-child){text-align:right}
-.nr{border-bottom:1px solid #e3e9e4}
+.nr{border-bottom:1px solid var(--line)}
 .nrb{width:100%;background:none;border:0;border-radius:0;padding:10px 8px;text-align:left;font:inherit;color:inherit;cursor:pointer;min-height:44px}
-.nrb:hover{background:#f2f6f3}
+.nrb:hover{background:var(--soft)}
 .nrb .nk{font-weight:700}
 .nn .muted{font-size:.85rem}
 .nd{padding:4px 8px 12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.ng h4{margin:0 0 4px;font-size:.85rem;color:#55655d}
+.ng h4{margin:0 0 4px;font-size:.85rem;color:var(--mut)}
 .nv{display:flex;justify-content:space-between;gap:8px;padding:2px 0;font-size:.92rem}
-.mr{padding:10px 0;border-bottom:1px solid #e3e9e4}
-.mcs{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:4px}
-.mcs span{display:flex;flex-direction:column;font-size:.92rem}
-.mcs small{color:#55655d;font-size:.78rem}
 @media(max-width:420px){.nh,.nrb{grid-template-columns:minmax(0,1fr) 44px 44px 44px 44px;gap:4px;font-size:.9rem}}
 .nchip{width:auto;flex:0 0 auto;min-height:32px;padding:2px 12px;border-radius:99px;margin:0;font-size:.9rem}
 @media(max-width:480px){#gnav{display:flex;flex-wrap:nowrap;gap:6px}#gnav button{font-size:.95rem;padding:9px 12px;flex:0 0 auto;margin:0}}
 .mh2,.mt2{display:grid;grid-template-columns:minmax(0,1fr) 64px 70px 60px;gap:8px;align-items:center}
-.mh2{font-size:.78rem;color:#55655d;padding:4px 0;border-bottom:1px solid #dde4df}
-.mt2{padding:8px 0;border-bottom:1px solid #e3e9e4;font-size:.95rem}
+.mh2{font-size:.78rem;color:var(--mut);padding:4px 0;border-bottom:1px solid var(--line)}
+.mt2{padding:8px 0;border-bottom:1px solid var(--line);font-size:.95rem}
 .mh2 span:not(:first-child),.mt2 span:not(:first-child){text-align:right}
-.mt2 small{display:block;font-size:.72rem;color:#55655d}
+.mt2 small{display:block;font-size:.72rem;color:var(--mut)}
 @media(max-width:420px){.mh2,.mt2{grid-template-columns:minmax(0,1fr) 52px 62px 48px;gap:4px;font-size:.9rem}.mh2{font-size:.72rem}}
+
+.pdet{margin:6px 0 10px}.pdet summary{cursor:pointer;color:var(--mut);font-size:14px}
+.mmac.muted{color:var(--ink)}

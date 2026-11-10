@@ -2,6 +2,21 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.25.0
+- Biblioteca: se arata primele 60 de retete, restul prin "Arata mai multe" (cautarea "a" nu mai deseneaza 1434 retete deodata).
+- Lista de cumparaturi: elementele stricate din datele salvate sunt ignorate la citire, nu mai blocheaza pagina Cumparaturi.
+- Info, Lista si Debara folosesc culorile temei, deci arata corect si in modul intunecat.
+- Contrast: corectat in Meniu (totalul de macro) si in Aparate (eticheta mov).
+- Debara: textul de ajutor e pliat sub "Cum functioneaza Debaraua".
+- Curatenie: scos cod nefolosit (bTxt, vqLeft, BKDAYS, clase CSS .mr/.mcs).
+
+## 2.24.1
+- Setari: sectiunea "Tehnic" nu se mai inchide singura. Cand lista Setari se redesena (de ex. dupa actualizarea semnului de backup), "Tehnic" revenea pliat chiar daca o deschisesei tu. Acum ramane asa cum ai lasat-o.
+
+## 2.24.0
+- Debara: campul de sus cauta si adauga in acelasi timp. Pe masura ce scrii, lista se filtreaza, iar numarul de sub titlu arata "N din total". Daca nu exista, apare "Nu e in debara. Apasa Adauga ca sa-l pui." Nu exista un al doilea camp.
+- Info > Ingrediente: "Drojdie inactiva (fulgi)", cu valorile de pe eticheta unui produs cunoscut (400 kcal, 50 g proteine, 37 g carbohidrati, 4 g grasimi, 17 g fibre la 100 g), pentru ca sursa USDA nu o are. Vitaminele si mineralele raman goale: depind de marca si de fortifiere. "Drojdie uscata" a fost redenumita "Drojdie de panificatie (uscata)", ca sa nu fie confundata cu cea inactiva.
+
 ## 2.23.4
 - Info: "Faina de porumb" si "Malai" sunt acum doua alimente separate (inainte erau unul singur, "Faina de porumb (malai)"). Valorile vin din doua intrari diferite din sursa USDA (corn flour si cornmeal); diferenta nutritionala dintre ele e mica, dar masurile (lingura, cana) difera.
 
