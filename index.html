@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=2.23.0">
+<link rel="stylesheet" href="style.css?v=2.23.4">
 
 </head>
 <body>
@@ -65,8 +65,9 @@
 <div class="row nctl"><input id="nq" placeholder="cauta un aliment, ex: ou, orez" aria-label="Cauta aliment" autocomplete="off"><label class="nam">Pentru <input id="nam" type="number" min="1" max="5000" value="100" aria-label="Cantitate in grame"> g</label><select id="ns" aria-label="Sortare"><option value="nume">Nume A-Z</option><option value="kcal">Calorii</option><option value="p">Proteine</option><option value="pk">Proteine la 100 kcal</option><option value="c">Carbohidrati</option><option value="g">Grasimi</option><option value="fib">Fibre</option></select></div>
 <div id="ngc" class="chips"></div><div id="nl"></div>
 <p class="muted" style="margin:12px 0 0;font-size:.85rem">Sursa: USDA National Nutrient Database for Standard Reference, versiunea 28 (domeniu public). Valorile sunt pentru alimentul in starea indicata (crud, fiert etc.) si pot diferi de eticheta produsului tau. "-" inseamna ca sursa nu are valoare masurata. Unele alimente romanesti sunt aproximate prin cel mai apropiat din sursa (de ex. telemea = feta).</p></div></section>
-<section id="v-masuri" class="hidden"><div class="card"><h2 style="margin:0 0 4px">Masuri</h2><p class="muted" style="margin:0 0 10px">Cat cantareste, in grame, o lingura, o lingurita, o cana sau o bucata dintr-un aliment. Sunt valori medii; difera dupa soi si dupa cat de plina e lingura.</p>
-<input id="mq" placeholder="cauta un aliment, ex: faina, ou" aria-label="Cauta aliment" autocomplete="off"><div id="ml" style="margin-top:8px"></div></div></section>
+<section id="v-masuri" class="hidden"><div class="card"><h2 style="margin:0 0 4px">Masuri</h2><p class="muted" style="margin:0 0 10px">Cat cantareste, in grame, o lingura, o lingurita sau o cana din alimentele care se masoara asa (faina, zahar, lapte, ulei, seminte etc.). Sunt valori medii; difera dupa soi si dupa cat de plina e lingura.</p>
+<input id="mq" placeholder="cauta un aliment, ex: faina, zahar" aria-label="Cauta aliment" autocomplete="off"><div id="ml" style="margin-top:8px"></div></div></section>
+
 <section id="v-setari" class="hidden">
  <div id="sgrid"><div id="shome"><div id="snav" class="snav"></div></div><div id="sdet"><div id="sback"><button id="sbk" type="button">&lsaquo; Toate setarile</button><h2 id="sbt"></h2></div>
  <div class="card" data-sg="cont">
@@ -107,7 +108,7 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=2.23.0"></script>
-<script src="app.js?v=2.23.0"></script>
+<script src="nutri.js?v=2.23.4"></script>
+<script src="app.js?v=2.23.4"></script>
 </body>
 </html>

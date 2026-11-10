@@ -2,6 +2,19 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.23.4
+- Info: "Faina de porumb" si "Malai" sunt acum doua alimente separate (inainte erau unul singur, "Faina de porumb (malai)"). Valorile vin din doua intrari diferite din sursa USDA (corn flour si cornmeal); diferenta nutritionala dintre ele e mica, dar masurile (lingura, cana) difera.
+
+## 2.23.3
+- Info > Masuri simplificata: raman doar alimentele care se masoara cu lingura, lingurita sau cana (faina, zahar, lapte, ulei, seminte, cereale uscate, condimente etc., 72 de alimente). Coloana "Bucata" si nota explicativa au fost scoase; bucatile atipice se cantaresc.
+
+## 2.23.2
+- Info > Masuri, coloana "Bucata" refacuta. Inainte lua primul rand gasit in sursa, deci amesteca o boaba de afina (1 g), o felie, un fruct intreg de 905 g, un inel de ardei etc. Acum "Bucata" inseamna un exemplar intreg de marime medie, fara resturi necomestibile; la paine, branzeturi si mezeluri o felie, la peste un file. Fiecare valoare are eticheta ei (medie, felie, catel, bucata M...) si o nota explica regula. Unde nu exista un exemplar clar (fructe de padure, nuci, verdeturi, varza, broccoli) apare "-". 71 din 200 de alimente au "Bucata".
+- Reparat: unele alimente (ardei gras, linte, ulei de masline) afisau "o lingura" ca "bucata".
+
+## 2.23.1
+- Info > Masuri: tabel cu o singura linie de antet (Lingura, Lingurita, Cana, Bucata, toate in grame) in loc de masurile repetate la fiecare aliment.
+
 ## 2.23.0
 - Grup nou in bara de sus: **Info** (Retete / Planific / Info / Setari), cu doua pagini.
 - Info > Ingrediente: 200 de alimente comune cu valori nutritionale la 100 g: calorii, proteine, carbohidrati, grasimi; la atingere se deschid fibre, zaharuri, grasimi saturate, colesterol, 8 minerale si 11 vitamine. Cautare, filtre pe grupe (legume, fructe, carne, peste, oua si lactate, cereale si paste, leguminoase, nuci si seminte, grasimi, condimente, dulciuri si altele), sortare (inclusiv proteine la 100 kcal) si un camp "Pentru N g" care rescaleaza toate valorile.

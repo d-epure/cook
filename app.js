@@ -729,7 +729,7 @@ function addList(ings,title){const l=getList();let n=0;ings=prepIngs(ings);
    if(it.parts){const pt=it.parts.find(p=>p.s===title);if(pt)pt.c=pt.c!=null&&c!=null?+(pt.c+c).toFixed(2):(pt.c==null?c:pt.c);else it.parts.push({s:title,c})}}
   else l.push({k,n:nm,u,c,src:[title],parts:[{s:title,c}],done:0});n++});
  putList(l);navCount();return n}
-/* 2.23.0: scoate dintr-o sursa (reteta / intrare din meniu) doar partea ei din lista */
+/* 2.23.4: scoate dintr-o sursa (reteta / intrare din meniu) doar partea ei din lista */
 function removeSrc(title){const l=getList(),out=[];let rem=0,red=0,kept=0;
  l.forEach(x=>{if(x.done||!x.src.includes(title)){out.push(x);return}
   if(x.parts){x.parts=x.parts.filter(p=>p.s!==title);if(!x.parts.length){rem++;return}
@@ -741,7 +741,7 @@ function removeSrc(title){const l=getList(),out=[];let rem=0,red=0,kept=0;
  if(ch)putMen(m);
  navCount();return{rem,red,kept}}
 const srcMsg=(t,r)=>"Scos: "+t+" ("+r.rem+" produse scoase"+(r.red?", "+r.red+" cu cantitate redusa":"")+(r.kept?"; "+r.kept+" comune cu alte retete, cantitatea ramane (lista veche)":"")+").";
-/* 2.23.0: produsele vechi cu o singura sursa primesc evidenta pe retete (cantitatea e exacta); cele cu mai multe surse nu pot fi impartite */
+/* 2.23.4: produsele vechi cu o singura sursa primesc evidenta pe retete (cantitatea e exacta); cele cu mai multe surse nu pot fi impartite */
 (function(){try{const l=getList();let ch=0;l.forEach(x=>{if(!x.parts&&x.src&&x.src.length===1){x.parts=[{s:x.src[0],c:x.c}];ch++}});if(ch)LS("rl",JSON.stringify(l))}catch(e){}})();
 /* Anuleaza: instantaneu la stergere, cu 8 secunde pentru a reveni (in loc de "Confirma") */
 let UDO=null,UDT=0;
@@ -753,9 +753,9 @@ $("#undob").onclick=()=>{if(!UDO)return;const u=UDO;undoHide();
  try{Object.keys(u.snap).forEach(k=>{if(u.snap[k]==null)localStorage.removeItem(k);else localStorage.setItem(k,u.snap[k])})}catch(e){toast("Nu am putut anula: memoria browserului nu mai raspunde.");return}
  u.redraw();toast("Anulat.")};
 const fmtQ=c=>c>=10?String(Math.round(c)):c>=1?String(+c.toFixed(1)):String(+c.toFixed(2));
-const cap=s=>{s=String(s==null?"":s);return s.charAt(0).toUpperCase()+s.slice(1)}; /* 2.23.0: doar afisare, datele raman cum sunt */
+const cap=s=>{s=String(s==null?"":s);return s.charAt(0).toUpperCase()+s.slice(1)}; /* 2.23.4: doar afisare, datele raman cum sunt */
 const itTxt=x=>(x.c!=null?fmtQ(x.c)+" ":"")+(x.u?x.u+" ":"")+cap(x.n);
-if(LS("rgrp2")!=="1"){LS("rgrp","1");LS("rgrp2","1")} /* 2.23.0: bifa "Grupeaza" a fost scoasa; lista e mereu grupata */
+if(LS("rgrp2")!=="1"){LS("rgrp","1");LS("rgrp2","1")} /* 2.23.4: bifa "Grupeaza" a fost scoasa; lista e mereu grupata */
 const GRP=LS("rgrp")!=="0";
 let LSRC=[];let LV=LS("rlv")==="r"?"r":"p";
 const canShare=()=>typeof navigator!=="undefined"&&typeof navigator.share==="function";
@@ -1103,7 +1103,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="2.23.0";
+const APP_V="2.23.4";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1150,7 +1150,7 @@ $("#fdq").oninput=drawFoods;
 $("#fdl").onchange=e=>{const n=e.target.dataset.fc;if(n===undefined)return;setCat(n,e.target.value);drawFoods()};
 $("#fdl").onclick=e=>{const n=e.target.dataset.fr;if(n===undefined)return;putCats(getCats().filter(x=>cn(x.n)!==cn(n)));drawFoods()};
 $("#pCats").onclick=()=>{show("setari");setSub("alimente");$("#cdet").open=true;window.scrollTo(0,0)};
-/* Setari: pagina de pornire cu lista si stari; Utilizare in fata, Tehnic pliat (2.23.0) */
+/* Setari: pagina de pornire cu lista si stari; Utilizare in fata, Tehnic pliat (2.23.4) */
 const SUBS=["aparate","pref","alimente","etichete","mese","cont","date","despre"];
 const SGMAP={aparate:["aparate"],pref:["pref"],alimente:["alimente"],etichete:["etichete"],mese:["mese"],cont:["cont"],date:["biblioteca","date"],despre:["despre"]};
 const STITLE={aparate:"Aparate",pref:"Preferinte alimente",alimente:"Categorii alimente",etichete:"Etichete retete",mese:"Mese",cont:"AI si cheie",date:"Carti si date",despre:"Despre"};
@@ -1239,7 +1239,7 @@ renderTagUI();
 renderBox();
 drawOnb();
 
-/* 2.23.0: Info > Ingrediente si Masuri (datele sunt in nutri.js) */
+/* 2.23.4: Info > Ingrediente si Masuri (datele sunt in nutri.js) */
 const IGR=["Legume","Fructe","Carne","Peste","Oua si lactate","Cereale si paste","Leguminoase","Nuci si seminte","Grasimi","Condimente","Dulciuri si altele"];
 const ICOL=NUTRI.C,iv=(r,k)=>r[3+ICOL.indexOf(k)];
 const IMIC=[["Alte valori",[["fib","Fibre","g"],["zah","Zaharuri","g"],["sat","Grasimi saturate","g"],["col","Colesterol","mg"]]],["Minerale",[["na","Sodiu","mg"],["ca","Calciu","mg"],["fe","Fier","mg"],["mg","Magneziu","mg"],["fo","Fosfor","mg"],["k","Potasiu","mg"],["zn","Zinc","mg"],["se","Seleniu","mcg"]]],["Vitamine",[["va","Vitamina A","mcg"],["vc","Vitamina C","mg"],["vd","Vitamina D","mcg"],["ve","Vitamina E","mg"],["vk","Vitamina K","mcg"],["b1","B1 (tiamina)","mg"],["b2","B2 (riboflavina)","mg"],["b3","B3 (niacina)","mg"],["b6","B6","mg"],["b9","B9 (folat)","mcg"],["b12","B12","mcg"]]]];
@@ -1260,12 +1260,10 @@ $("#nam").oninput=e=>{IAMT=e.target.value;drawIngr()};
 $("#ns").onchange=e=>{ISORT=e.target.value;drawIngr()};
 $("#ngc").onclick=e=>{const b=e.target.closest("button");if(!b||b.dataset.ng===undefined)return;IGP=b.dataset.ng;drawIngr()};
 $("#nl").onclick=e=>{const b=e.target.closest("button");if(!b||b.dataset.ni===undefined)return;const i=+b.dataset.ni;IOPEN.has(i)?IOPEN.delete(i):IOPEN.add(i);drawIngr()};
-const PCW={"extra large":"foarte mare","extra small":"foarte mica",large:"mare",medium:"medie",small:"mica",slice:"felie",slices:"felii",clove:"catel",leaf:"frunza",leaves:"frunze",head:"cap",bunch:"legatura",drumstick:"pulpa",breast:"piept",thigh:"pulpa",fillet:"file",steak:"fripta",chop:"cotlet",half:"jumatate",pat:"bucata",stalk:"tulpina",spear:"lujer",ear:"stiulete",sprigs:"crengute"};
-const pcName=d=>{const t=String(d||"").split(/[(,]/)[0].trim().toLowerCase();const w=Object.keys(PCW).find(k=>t.startsWith(k));return w?PCW[w]:"bucata"};
 function drawMas(){const q=norm($("#mq").value||"").trim().split(/\s+/).filter(Boolean);
- const L=NUTRI.M.filter(m=>(m[2].some(x=>x!=null)||m[3])&&q.every(w=>norm(m[0]).includes(w))).sort((a,b)=>a[0].localeCompare(b[0],"ro"));
- const c=(t,v)=>`<span><small>${t}</small><b>${v==null?"-":v+" g"}</b></span>`;
- $("#ml").innerHTML=L.length?L.map(m=>`<div class="mr"><div class="mn2"><b>${esc(m[0])}</b></div><div class="mcs">${c("1 lingura",m[2][0])}${c("1 lingurita",m[2][1])}${c("1 cana",m[2][2])}${m[3]?c("1 "+pcName(m[3][0]),m[3][1]):c("1 bucata",null)}</div></div>`).join(""):`<p class="muted">Nu am gasit niciun aliment.</p>`}
+ const L=NUTRI.M.filter(m=>m[2].some(x=>x!=null)&&q.every(w=>norm(m[0]).includes(w))).sort((a,b)=>a[0].localeCompare(b[0],"ro"));
+ const v=x=>x==null?"-":x;
+ $("#ml").innerHTML=L.length?`<div class="mh2"><span>Aliment</span><span>Lingura</span><span>Lingurita</span><span>Cana</span></div>`+L.map(m=>`<div class="mt2"><span><b>${esc(m[0])}</b></span><span>${v(m[2][0])}</span><span>${v(m[2][1])}</span><span>${v(m[2][2])}</span></div>`).join(""):`<p class="muted">Nu am gasit niciun aliment.</p>`}
 $("#mq").oninput=drawMas;
 /* daca ai ceva planificat azi, aplicatia se deschide direct pe Meniu > Azi */
 {const m=getMen(),t=dKey(new Date());if(SLOTS.some(([s])=>((m[t]||{})[s]||[]).length)){show("meniu")}else syncNav("idei")}

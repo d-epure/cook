@@ -350,3 +350,9 @@ nav[hidden],#nav button[hidden]{display:none}
 @media(max-width:420px){.nh,.nrb{grid-template-columns:minmax(0,1fr) 44px 44px 44px 44px;gap:4px;font-size:.9rem}}
 .nchip{width:auto;flex:0 0 auto;min-height:32px;padding:2px 12px;border-radius:99px;margin:0;font-size:.9rem}
 @media(max-width:480px){#gnav{display:flex;flex-wrap:nowrap;gap:6px}#gnav button{font-size:.95rem;padding:9px 12px;flex:0 0 auto;margin:0}}
+.mh2,.mt2{display:grid;grid-template-columns:minmax(0,1fr) 64px 70px 60px;gap:8px;align-items:center}
+.mh2{font-size:.78rem;color:#55655d;padding:4px 0;border-bottom:1px solid #dde4df}
+.mt2{padding:8px 0;border-bottom:1px solid #e3e9e4;font-size:.95rem}
+.mh2 span:not(:first-child),.mt2 span:not(:first-child){text-align:right}
+.mt2 small{display:block;font-size:.72rem;color:#55655d}
+@media(max-width:420px){.mh2,.mt2{grid-template-columns:minmax(0,1fr) 52px 62px 48px;gap:4px;font-size:.9rem}.mh2{font-size:.72rem}}
