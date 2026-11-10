@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.28.1
+- Randul "Patrunjel (radacina)" din Info a fost redenumit "Pastarnac (patrunjel radacina)" (valorile erau deja cele pentru pastarnac), ca sa fie gasit de calculul macro si de cautare. Ingredientul "patrunjel" simplu se potriveste acum cu patrunjelul verde, nu cu radacina.
+- La "Adaugate de tine" si la ingredientele fara date, numele se afiseaza fara diacritice.
+
 ## 2.28.0
 - Macro calculat local, din Info > Ingrediente, direct pe reteta deschisa: buton "Calculeaza din Info" in sectiunea "Macro per portie" (fara AI, gratuit). Arata acoperirea ("din X din Y ingrediente") si, in "Cum am calculat", ce aliment si cate grame s-au folosit.
 - Ingredientele fara date (sau cu unitate imposibil de convertit, ex. "1 cutie") sunt evidentiate; pentru fiecare alegi "Cauta cu AI" sau "Completeaza manual". Rezultatul se salveaza local (cheia noua rfd, inclusa in backup) si se foloseste la toate retetele viitoare.
