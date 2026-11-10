@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.27.0
+- Info > Gatire (pagina noua): sfaturi generale pentru cine invata sa gateasca, in 12 teme pliabile: tehnici de baza (organizare, taiere, fierbere, prajire, coacere), timpi si temperaturi (fierbere, cuptor, temperaturi sigure pentru carne), siguranta alimentara (igiena, pastrare) si inlocuiri / cum repari o mancare. Continutul e in `nutri.js`.
+
 ## 2.26.3
 - Documentatie: README si comentariul de la inceputul `app.js` actualizate (sectiunea Info, `nutri.js`, lista corecta a paginilor din Setari, cheile din localStorage, pasii de publicare).
 

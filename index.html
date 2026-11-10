@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=2.26.3">
+<link rel="stylesheet" href="style.css?v=2.27.0">
 
 </head>
 <body>
@@ -28,6 +28,7 @@
  <button data-v="debara">Debara</button>
  <button data-v="ingr">Ingrediente</button>
  <button data-v="masuri">Masuri</button>
+  <button data-v="gatire">Gatire</button>
  <button data-v="setari">Setari</button>
 </nav>
 
@@ -67,6 +68,8 @@
 <p class="muted" style="margin:12px 0 0;font-size:.85rem">Sursa: USDA National Nutrient Database for Standard Reference, versiunea 28 (domeniu public). Valorile sunt pentru alimentul in starea indicata (crud, fiert etc.) si pot diferi de eticheta produsului tau. "-" inseamna ca sursa nu are valoare masurata. Unele alimente romanesti sunt aproximate prin cel mai apropiat din sursa (de ex. telemea = feta).</p></div></section>
 <section id="v-masuri" class="hidden"><div class="card"><h2 style="margin:0 0 4px">Masuri</h2><p class="muted" style="margin:0 0 10px">Cat cantareste, in grame, o lingura, o lingurita sau o cana din alimentele care se masoara asa (faina, zahar, lapte, ulei, seminte etc.). Sunt valori medii; difera dupa soi si dupa cat de plina e lingura.</p>
 <div class="row nctl"><input id="mq" placeholder="cauta un aliment, ex: faina, zahar" aria-label="Cauta aliment" autocomplete="off"><select id="mgc" aria-label="Grupa"></select></div><div id="ml" style="margin-top:8px"></div></div></section>
+
+<section id="v-gatire" class="hidden"><div class="card"><h2 style="margin:0 0 4px">Gatire</h2><p class="muted" style="margin:0 0 10px">Sfaturi generale pentru cine invata sa gateasca. Timpii sunt orientativi: urmeaza mereu reteta si instructiunile de pe ambalaj. Temperaturile de siguranta pentru carne urmeaza recomandarile USDA.</p><div id="gl"></div></div></section>
 
 <section id="v-setari" class="hidden">
  <div id="sgrid"><div id="shome"><div id="snav" class="snav"></div></div><div id="sdet"><div id="sback"><button id="sbk" type="button">&lsaquo; Toate setarile</button><h2 id="sbt"></h2></div>
@@ -108,7 +111,7 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=2.26.3"></script>
-<script src="app.js?v=2.26.3"></script>
+<script src="nutri.js?v=2.27.0"></script>
+<script src="app.js?v=2.27.0"></script>
 </body>
 </html>

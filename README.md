@@ -14,6 +14,7 @@ Aplicatie personala pentru retete: le gasesti, le adaptezi, le planifici si faci
 - **Info** (date din `nutri.js`, fara legatura cu restul datelor)
   - *Ingrediente*: calorii, proteine, carbohidrati, grasimi, iar la atingere fibre, minerale si vitamine, pentru o cantitate la alegere; filtru pe grupa, sortare si cautare.
   - *Masuri*: cat cantareste o lingura, o lingurita sau o cana din alimentele care se masoara asa.
+  - *Gatire*: sfaturi generale pentru cine invata sa gateasca, pe teme pliabile: tehnici de baza, timpi si temperaturi, siguranta alimentara, inlocuiri si cum repari o mancare.
   - Sursa: USDA National Nutrient Database for Standard Reference, versiunea 28 (domeniu public), plus drojdia inactiva dupa eticheta produsului.
 - **Setari**: AI si cheie (cheia API, modele), Aparate, Preferinte alimente, Categorii alimente, Etichete retete, Mese (la ce masa se potriveste fiecare categorie), Carti si date (incarcarea si descarcarea cartilor, copie de siguranta) si Despre (versiune si istoric).
 
@@ -23,7 +24,7 @@ AI-ul (Anthropic) se foloseste doar cand apesi: idei, reteta completa, adaptare,
 - `index.html` - structura paginii (sectiuni, pagini, formulare)
 - `style.css` - aspect (tema deschisa/inchisa prin variabile CSS)
 - `app.js` - toata logica, cu sectiuni marcate `===== NUME =====`
-- `nutri.js` - datele din Info (nutritie si masuri); se urca in repo la fiecare modificare
+- `nutri.js` - datele din Info (nutritie, masuri si sfaturile de gatire); se urca in repo la fiecare modificare
 - `sw.js`, `manifest.webmanifest`, `icon-*.png` - instalare ca aplicatie si functionare fara net (se urca langa `index.html`)
 - `CHANGELOG.md` - istoricul versiunilor (cel mai nou primul)
 - `tests/` - teste automate cu Playwright (`test_*.py`, ajutor comun in `_h.py`)

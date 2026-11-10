@@ -366,3 +366,12 @@ input[type=checkbox]{width:20px;height:20px}
 button[aria-label^="Scoate"]{min-height:40px;min-width:40px}
 details>summary{padding:8px 0}
 @media (max-width:520px){.pxr{grid-template-columns:1fr}.pxr select{width:100%}#tgl .apr input[data-tn]{flex:1 1 100%!important}}
+
+/* Info > Gatire */
+.gg{margin:18px 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.gg:first-of-type{margin-top:8px}
+.gd{border-top:1px solid var(--line)}
+.gd:last-of-type{border-bottom:1px solid var(--line)}
+.gd>summary{cursor:pointer;font-weight:600;padding:12px 0;min-height:44px}
+.gd ul{margin:0 0 12px;padding-left:20px}
+.gd li{margin:6px 0;line-height:1.5}
