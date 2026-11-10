@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.26.3
+- Documentatie: README si comentariul de la inceputul `app.js` actualizate (sectiunea Info, `nutri.js`, lista corecta a paginilor din Setari, cheile din localStorage, pasii de publicare).
+
 ## 2.26.2
 - Info > Ingrediente: se afiseaza doar denumirea alimentului, fara nicio stare (nici fiert, uscat, conserva); cand starea conteaza, e deja in nume (ex. "Fasole boabe fiarta").
 
