@@ -20,6 +20,8 @@ Aplicatie personala pentru retete: le gasesti, le adaptezi, le planifici si faci
 
 AI-ul (Anthropic) se foloseste doar cand apesi: idei, reteta completa, adaptare, estimare de macro si, optional, un meniu generat. Restul (cautare, meniu propus, liste, debara, Info) merge local si gratuit.
 
+Macro pe reteta: butonul "Calculeaza din Info" (in reteta deschisa) calculeaza local din Info > Ingrediente. Ingredientele fara date le cauti cu AI sau le completezi manual; se salveaza local (cheia `rfd`, inclusa in backup) si apar in Info > Ingrediente, "Adaugate de tine". Greutatile pe bucata si cuvintele fara calorii sunt in `nutri.js` (`NUTRI.P`, `NUTRI.Z`).
+
 ## Fisiere
 - `index.html` - structura paginii (sectiuni, pagini, formulare)
 - `style.css` - aspect (tema deschisa/inchisa prin variabile CSS)

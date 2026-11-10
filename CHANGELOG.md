@@ -2,6 +2,14 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.28.0
+- Macro calculat local, din Info > Ingrediente, direct pe reteta deschisa: buton "Calculeaza din Info" in sectiunea "Macro per portie" (fara AI, gratuit). Arata acoperirea ("din X din Y ingrediente") si, in "Cum am calculat", ce aliment si cate grame s-au folosit.
+- Ingredientele fara date (sau cu unitate imposibil de convertit, ex. "1 cutie") sunt evidentiate; pentru fiecare alegi "Cauta cu AI" sau "Completeaza manual". Rezultatul se salveaza local (cheia noua rfd, inclusa in backup) si se foloseste la toate retetele viitoare.
+- Alimentele adaugate de tine apar in Info > Ingrediente, sectiunea "Adaugate de tine" (cu Scoate si Copiaza lista).
+- "Salveaza pe reteta" pune macro-ul pe reteta, vizibil in Meniu, filtre si etichete automate.
+- Potrivire mai buna a numelor (plural, sinonime: oua/ou, cepe/ceapa) si greutati medii pe bucata/lingura/ceasca (nutri.js: NUTRI.P, NUTRI.Z). Estimare pe 1238 retete: ~80% din linii potrivite, ~72% calculabile.
+- Butonul "Calculeaza macro (AI)" din editor ramane, ca estimare AI pentru toata reteta.
+
 ## 2.27.0
 - Info > Gatire (pagina noua): sfaturi generale pentru cine invata sa gateasca, in 12 teme pliabile: tehnici de baza (organizare, taiere, fierbere, prajire, coacere), timpi si temperaturi (fierbere, cuptor, temperaturi sigure pentru carne), siguranta alimentara (igiena, pastrare) si inlocuiri / cum repari o mancare. Continutul e in `nutri.js`.
 
