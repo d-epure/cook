@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.29.0
+- Alimentele adaugate de tine (AI sau manual) au acum toate cele 27 de valori ca randurile din baza: fibre, zaharuri, grasimi saturate, colesterol, minerale si vitamine. AI le cere pe toate (null pentru ce nu stie); manual, le completezi optional intr-o sectiune pliata.
+- Randul unui aliment adaugat se deschide ca cele din baza. In el: "Completeaza cu AI" (pentru cele salvate doar cu macro), "Editeaza" (orice valoare, manual) si "Sterge".
+- "Copiaza lista" include si valorile de micronutrienti. Datele sunt pregatite pentru functii viitoare cu focus pe micronutrienti.
+
 ## 2.28.4
 - Info > Ingrediente: cand cautarea nu gaseste nimic, apar "Cauta cu AI" si "Completeaza manual" pentru termenul cautat; rezultatul se salveaza local si apare imediat in lista, marcat AI sau manual.
 
