@@ -375,3 +375,6 @@ details>summary{padding:8px 0}
 .gd>summary{cursor:pointer;font-weight:600;padding:12px 0;min-height:44px}
 .gd ul{margin:0 0 12px;padding-left:20px}
 .gd li{margin:6px 0;line-height:1.5}
+
+/* 2.28.3: buton compact "Sterge" pe alimentele adaugate */
+.nn .fdx{margin:0 0 0 4px;padding:0 6px;min-height:22px;height:22px;font-size:.72rem;font-weight:400;line-height:1;border:1px solid var(--line);background:none;color:var(--mut);border-radius:6px;vertical-align:middle;width:auto}

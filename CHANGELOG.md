@@ -2,6 +2,19 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.28.4
+- Info > Ingrediente: cand cautarea nu gaseste nimic, apar "Cauta cu AI" si "Completeaza manual" pentru termenul cautat; rezultatul se salveaza local si apare imediat in lista, marcat AI sau manual.
+
+## 2.28.3
+- Corectie in Info: randul "Patrunjel (radacina)" avea valorile USDA pentru pastarnac (75 kcal, 1.2 / 18 / 0.3); l-am redenumit "Pastarnac". Radacina de patrunjel nu are rand in Info (nu am valori de incredere pentru ea).
+- Un aliment adaugat de tine care exista deja in Info cu acelasi nume nu mai apare de doua ori in lista.
+- Butonul "Sterge" de pe alimentele adaugate de tine e mic si sta pe acelasi rand cu numele.
+
+## 2.28.2
+- Corectie la 2.28.1: "Patrunjel (radacina)" si pastarnacul sunt alimente diferite; numele randului din Info e cel original, iar pastarnacul ramane aliment separat.
+- Alimentele gasite cu AI sau completate manual apar in lista principala din Info > Ingrediente, marcate "AI" sau "manual" (nu mai exista sectiune separata); filtrul de grupa le include (AI alege grupa, manual o alegi tu, optional).
+- Butonul "Scoate" se numeste acum "Sterge" (sterge alimentul din lista ta; retetele care il foloseau il vor cere din nou).
+
 ## 2.28.1
 - Randul "Patrunjel (radacina)" din Info a fost redenumit "Pastarnac (patrunjel radacina)" (valorile erau deja cele pentru pastarnac), ca sa fie gasit de calculul macro si de cautare. Ingredientul "patrunjel" simplu se potriveste acum cu patrunjelul verde, nu cu radacina.
 - La "Adaugate de tine" si la ingredientele fara date, numele se afiseaza fara diacritice.

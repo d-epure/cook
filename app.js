@@ -1115,7 +1115,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="2.28.1";
+const APP_V="2.28.4";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1261,19 +1261,19 @@ const iN=(x,f)=>x==null?"-":(x=x*f,x>=100?String(Math.round(x)):x>=10?String(+x.
 function drawIngr(){
  const f=(+IAMT>0?+IAMT:100)/100,q=norm(IGS).trim().split(/\s+/).filter(Boolean);
  if($("#ngc").dataset.k!=="1"){$("#ngc").dataset.k="1";$("#ngc").innerHTML=["",...IGR].map(g=>`<option value="${esc(g)}">${esc(g||"Toate grupele")}</option>`).join("");$("#mgc").innerHTML=$("#ngc").innerHTML}$("#ngc").value=IGP;
- let L=NUTRI.R.map((r,i)=>[r,i]).filter(([r])=>(!IGP||r[1]===IGP)&&q.every(w=>norm(r[0]).includes(w)));
+ let L=NUTRI.R.map((r,i)=>[r,i]).concat(Object.entries(FD).filter(([k])=>!fdBase().R.some(b=>b.t.join(" ")===k)).map(([k,x])=>[[cap(dn(x.n)),x.gr||"","",...x.k,...Array(23).fill(null)],"u"+k])).filter(([r])=>(!IGP||r[1]===IGP)&&q.every(w=>norm(r[0]).includes(w)));
  const key={kcal:r=>iv(r,"kcal"),p:r=>iv(r,"p"),c:r=>iv(r,"c"),g:r=>iv(r,"g"),fib:r=>iv(r,"fib"),pk:r=>iv(r,"kcal")>=20?iv(r,"p")/iv(r,"kcal"):-1}[ISORT];
  if(key)L.sort((a,b)=>(key(b[0])||0)-(key(a[0])||0)||a[0][0].localeCompare(b[0][0],"ro"));else L.sort((a,b)=>a[0][0].localeCompare(b[0][0],"ro"));
- const row=([r,i])=>{const op=IOPEN.has(i);
+ const row=([r,i])=>{if(typeof i==="string"){const uf=FD[i.slice(1)]||{};return`<div class="nr"><div class="nrb" style="cursor:default"><span class="nn"><b>${esc(r[0])}</b> <span class="muted">${uf.src==="ai"?"AI":"manual"}</span> <button class="fdx" type="button" data-fdd="${esc(i.slice(1))}" aria-label="Sterge ${esc(r[0])}">Sterge</button></span><span class="nk">${iN(iv(r,"kcal"),f)}</span><span>${iN(iv(r,"p"),f)}</span><span>${iN(iv(r,"c"),f)}</span><span>${iN(iv(r,"g"),f)}</span></div></div>`}const op=IOPEN.has(i);
   return`<div class="nr"><button type="button" class="nrb" data-ni="${i}" aria-expanded="${op}"><span class="nn"><b>${esc(r[0])}</b></span><span class="nk">${iN(iv(r,"kcal"),f)}</span><span>${iN(iv(r,"p"),f)}</span><span>${iN(iv(r,"c"),f)}</span><span>${iN(iv(r,"g"),f)}</span></button>`+
   (op?`<div class="nd">${IMIC.map(([t,a])=>`<div class="ng"><h4>${t}</h4>${a.map(([k,n,u])=>`<div class="nv"><span>${n}</span><b>${iN(iv(r,k),f)}${iv(r,k)==null?"":" "+u}</b></div>`).join("")}</div>`).join("")}</div>`:"")+`</div>`};
  drawNu();
- $("#nl").innerHTML=L.length?`<div class="nh"><span>Aliment</span><span>kcal</span><span>Prot.</span><span>Carb.</span><span>Gras.</span></div>`+L.map(row).join(""):`<p class="muted">Nu am gasit niciun aliment${IGS?" pentru \""+esc(IGS)+"\"":""}.</p>`}
+ $("#nl").innerHTML=L.length?`<div class="nh"><span>Aliment</span><span>kcal</span><span>Prot.</span><span>Carb.</span><span>Gras.</span></div>`+L.map(row).join(""):`<p class="muted">Nu am gasit niciun aliment${IGS?" pentru \""+esc(IGS)+"\"":""}.</p>`+(IGS.trim()&&!IGP?`<div data-irow><p class="muted" style="margin:0 0 6px">Il poti cauta cu AI sau completa tu; ramane salvat in lista ta, marcat AI sau manual.</p><div class="row" style="gap:8px"><button class="alt" type="button" data-iai="1" style="margin:0"${LS("rk")?"":" disabled"}>Cauta cu AI</button><button class="alt" type="button" data-iman="1" style="margin:0">Completeaza manual</button></div>${LS("rk")?"":'<p class="muted" style="margin:6px 0 0">Pentru AI adauga cheia API in Setari.</p>'}<div data-mform></div></div>`:"")}
 $("#nq").oninput=e=>{IGS=e.target.value;drawIngr()};
 $("#nam").oninput=e=>{IAMT=e.target.value;drawIngr()};
 $("#ns").onchange=e=>{ISORT=e.target.value;drawIngr()};
 $("#ngc").onchange=e=>{IGP=e.target.value;drawIngr()};$("#mgc").onchange=drawMas;
-$("#nl").onclick=e=>{const b=e.target.closest("button");if(!b||b.dataset.ni===undefined)return;const i=+b.dataset.ni;IOPEN.has(i)?IOPEN.delete(i):IOPEN.add(i);drawIngr()};
+$("#nl").onclick=e=>{const b=e.target.closest("button");if(b&&b.dataset.fdd!==undefined){const n=(FD[b.dataset.fdd]||{}).n;delete FD[b.dataset.fdd];fdSave();drawIngr();toast("Sters din lista ta: "+dn(n||"")+".");return}const INZ=()=>({x:{n:IGS.trim(),c:100,u:"g",nr:1}});if(b&&b.dataset.iai!==undefined){fdAIZ(INZ(),b,$("#nl [data-mform]"),drawIngr);return}if(b&&b.dataset.iman!==undefined){$("#nl [data-mform]").innerHTML=fdFormHtml(INZ(),"i");return}if(b&&b.dataset.mms==="i"){fdManZ(INZ(),$("#nl [data-irow]"),drawIngr);return}if(!b||b.dataset.ni===undefined)return;const i=+b.dataset.ni;IOPEN.has(i)?IOPEN.delete(i):IOPEN.add(i);drawIngr()};
 function drawMas(){const q=norm($("#mq").value||"").trim().split(/\s+/).filter(Boolean);
  const mg=$("#mgc").value,L=NUTRI.M.filter(m=>m[2].some(x=>x!=null)&&(!mg||m[1]===mg)&&q.every(w=>norm(m[0]).includes(w))).sort((a,b)=>a[0].localeCompare(b[0],"ro"));
  const v=x=>x==null?"-":x;
@@ -1336,35 +1336,37 @@ function macPanel(bv,i){const r=BOOK[i],L=macLocal(r),box=bv.querySelector("[dat
  if(L.det.length)h+=`<details><summary>Cum am calculat</summary><ul>${L.det.map(d=>`<li>${esc(ingLine(d.x))}: ${d.f.zero?"fara aport caloric":Math.round(d.g)+" g "+esc(d.f.n)+(d.f.loose?" (potrivire aproximativa)":"")+(d.f.user?" (adaugat de tine)":"")}${d.ap?" (greutate estimata)":""}</li>`).join("")}</ul></details>`;
  if(L.ok)h+=`<div class="acts"><button class="go" type="button" data-msv="1">${had?"Foloseste valorile calculate":"Salveaza pe reteta"}</button></div>${L.miss.length?`<p class="muted" style="margin:4px 0">Calculul e partial; poti salva acum si recalcula dupa ce completezi restul.</p>`:""}`;
  box.innerHTML=h+"</div>"}
-function fdFormShow(bv,j){const z=bv._ml.miss[j],row=bv.querySelector(`[data-mrow="${j}"] [data-mform]`),f=z.f?z.f.k:["","","",""],cv=fdNeedCv(z.x);
+function fdFormShow(bv,j){const z=bv._ml.miss[j];bv.querySelector(`[data-mrow="${j}"] [data-mform]`).innerHTML=fdFormHtml(z,j)}
+function fdFormHtml(z,j){const f=z.f?z.f.k:["","","",""],cv=fdNeedCv(z.x);
  const inp=(k,l,v)=>`<div><label>${l}</label><input data-mf="${k}" type="number" min="0" step="any" value="${esc(v)}"></div>`;
- row.innerHTML=`<p class="muted" style="margin:8px 0 4px">Valori la 100 g de ${esc(z.x.n)}:</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${inp("kcal","kcal",f[0])}${inp("p","Proteine g",f[1])}${inp("c","Carbo g",f[3])}${inp("g","Grasimi g",f[2])}</div>${cv?`<div style="margin-top:8px">${inp("cv","Grame intr-o "+(z.x.u||"bucata"),"")}</div>`:""}<div data-merr class="warn" hidden></div><button class="go" type="button" data-mms="${j}" style="margin-top:8px">Salveaza local</button>`}
-function fdPut(z,k,cv,src){const key=mTok(z.x.n).join(" ")||dn(z.x.n).toLowerCase(),old=FD[key]||{},u=dn(z.x.u||"").toLowerCase().trim(),c=Object.assign({},old.cv);if(cv)c[u]=cv;
- FD[key]={n:old.n||z.x.n,t:key.split(" "),k,src:src||old.src||"manual",cv:c};fdSave()}
-function fdManSave(bv,i,j,btn){const z=bv._ml.miss[j],row=btn.closest("[data-mrow]"),g=k=>{const e=row.querySelector(`[data-mf=${k}]`);return e&&e.value!==""?+e.value:NaN},er=row.querySelector("[data-merr]");
+ return`<p class="muted" style="margin:8px 0 4px">Valori la 100 g de ${esc(z.x.n)}:</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${inp("kcal","kcal",f[0])}${inp("p","Proteine g",f[1])}${inp("c","Carbo g",f[3])}${inp("g","Grasimi g",f[2])}</div>${cv?`<div style="margin-top:8px">${inp("cv","Grame intr-o "+(z.x.u||"bucata"),"")}</div>`:""}<div style="margin-top:8px"><label>Grupa (optional)</label><select data-mf="gr"><option value="">-</option>${IGR.map(g=>`<option>${esc(g)}</option>`).join("")}</select></div><div data-merr class="warn" hidden></div><button class="go" type="button" data-mms="${j}" style="margin-top:8px">Salveaza local</button>`}
+function fdPut(z,k,cv,src,gr){const key=mTok(z.x.n).join(" ")||dn(z.x.n).toLowerCase(),old=FD[key]||{},u=dn(z.x.u||"").toLowerCase().trim(),c=Object.assign({},old.cv);if(cv)c[u]=cv;
+ FD[key]={n:old.n||z.x.n,t:key.split(" "),k,src:src||old.src||"manual",cv:c,gr:gr||old.gr||""};fdSave()}
+function fdManSave(bv,i,j,btn){fdManZ(bv._ml.miss[j],btn.closest("[data-mrow]"),()=>macPanel(bv,i))}
+function fdManZ(z,row,after){const g=k=>{const e=row.querySelector(`[data-mf=${k}]`);return e&&e.value!==""?+e.value:NaN},er=row.querySelector("[data-merr]");
  const k=[g("kcal"),g("p"),g("g"),g("c")],cv=g("cv"),need=fdNeedCv(z.x);
  const bad=k.some(v=>!Number.isFinite(v)||v<0)||k[0]>950||k[1]+k[2]+k[3]>105?"Completeaza cele patru valori (la 100 g); proteine+grasimi+carbo nu pot depasi 100 g.":need&&!(cv>0)?"Spune cate grame are o unitate.":"";
  if(bad){er.textContent=bad;er.hidden=false;return}
- fdPut(z,k.map(r1),need?cv:null,"manual");toast("Salvat local: "+z.x.n+".");macPanel(bv,i)}
+ fdPut(z,k.map(r1),need?cv:null,"manual",(row.querySelector("[data-mf=gr]")||{}).value);toast("Salvat local: "+dn(z.x.n)+".");after()}
 function fdOk(j,need){const n=k=>{const v=+j[k];return Number.isFinite(v)&&v>=0?r1(v):null},k=[n("kcal"),n("proteine"),n("grasimi"),n("carbo")];
- if(k.some(v=>v==null)||k[0]>950||k[1]+k[2]+k[3]>105)return null;const cv=+j.grame_unitate;if(need&&!(cv>0&&cv<5000))return null;return{k,cv:need?r1(cv):null}}
-async function fdAI(bv,i,j,btn){const z=bv._ml.miss[j],row=btn.closest("[data-mrow]"),box=row.querySelector("[data-mform]"),need=fdNeedCv(z.x);
+ if(k.some(v=>v==null)||k[0]>950||k[1]+k[2]+k[3]>105)return null;const cv=+j.grame_unitate;if(need&&!(cv>0&&cv<5000))return null;return{k,cv:need?r1(cv):null,gr:IGR.includes(j.grupa)?j.grupa:""}}
+function fdAI(bv,i,j,btn){return fdAIZ(bv._ml.miss[j],btn,btn.closest("[data-mrow]").querySelector("[data-mform]"),()=>macPanel(bv,i))}
+async function fdAIZ(z,btn,box,after){const need=fdNeedCv(z.x);
  if(!LS("rk")){toast("Adauga cheia API in Setari.");return}
  const sys='Esti nutritionist. Raspunzi DOAR cu JSON valid, fara text in plus, fara diacritice.';
- const u=`Ingredient dintr-o reteta: "${z.x.n}"${z.x.u?" (in reteta: "+z.x.c+" "+z.x.u+")":""}.\nDa valorile nutritionale la 100 g, pentru alimentul asa cum e scris (crud daca nu spune altfel).${need?" Spune si cate grame are in medie o singura "+(z.x.u||"bucata")+" (grame_unitate).":" Pune grame_unitate null."}\nJSON: {"kcal":numar,"proteine":numar,"grasimi":numar,"carbo":numar,"grame_unitate":numar sau null}`;
+ const u=`Aliment: "${z.x.n}"${z.x.u&&!z.x.nr?" (in reteta: "+z.x.c+" "+z.x.u+")":""}.\nDa valorile nutritionale la 100 g, pentru alimentul asa cum e scris (crud daca nu spune altfel).${need?" Spune si cate grame are in medie o singura "+(z.x.u||"bucata")+" (grame_unitate).":" Pune grame_unitate null."}\nAlege si grupa din: ${IGR.join(", ")} (grupa).\nJSON: {"kcal":numar,"proteine":numar,"grasimi":numar,"carbo":numar,"grame_unitate":numar sau null,"grupa":"..."}`;
  btn.disabled=true;btn.textContent="Caut...";box.innerHTML="";
  try{const a=await ask($("#m2").value||"claude-haiku-4-5",sys,u,300,0),v=fdOk(a,need);
   if(!v){box.innerHTML='<div class="warn" style="margin-top:6px">Raspuns neutilizabil. Incearca din nou sau completeaza manual.</div>';return}
-  fdPut(z,z.f&&!z.f.zero?z.f.k:v.k,v.cv,"ai");toast("Salvat local (AI): "+z.x.n+". Verifica-l in Info > Ingrediente.");macPanel(bv,i)}
+  fdPut(z,z.f&&!z.f.zero?z.f.k:v.k,v.cv,"ai",v.gr);toast("Salvat local (AI): "+dn(z.x.n)+". Verifica valorile.");after()}
  catch(e){box.innerHTML=`<div class="warn" style="margin-top:6px">${esc(e.message||"Eroare")}</div>`}
  finally{if(btn.isConnected){btn.disabled=false;btn.textContent="Cauta cu AI"}}}
 function macSaveRec(bv,i,sel,p){const r=BOOK[i],L=bv._ml;if(!L||!L.ok)return;
  r.macro={kcal:L.o.kcal,proteine:L.o.proteine,carbo:L.o.carbo,grasimi:L.o.grasimi,sursa:"local",acoperire:L.ok+" din "+L.n};
  if(persistBook(r)){openBook(i,p,sel);toast("Macro salvat pe reteta.")}}
-function drawNu(){const el=$("#nu"),ks=Object.keys(FD),q=norm(IGS).trim().split(/\s+/).filter(Boolean),L=ks.filter(k=>!IGP&&q.every(w=>norm(FD[k].n).includes(w))).sort();
- el.innerHTML=!ks.length?"":`<h3 class="gg">Adaugate de tine (${ks.length})</h3>`+(L.length?`<div class="nh"><span>Aliment</span><span>kcal</span><span>Prot.</span><span>Carb.</span><span>Gras.</span></div>`+L.map(k=>{const f=FD[k];return`<div class="nr"><div class="nrb" style="cursor:default"><span class="nn"><b>${esc(dn(f.n))}</b> <span class="muted">${f.src==="ai"?"AI":"manual"}</span></span><span class="nk">${f.k[0]}</span><span>${f.k[1]}</span><span>${f.k[3]}</span><span>${f.k[2]}</span></div><button class="alt" type="button" data-fdd="${esc(k)}" aria-label="Scoate ${esc(dn(f.n))}" style="margin:0 8px 8px">Scoate</button></div>`}).join(""):'<p class="muted">Niciun aliment adaugat de tine pentru aceasta cautare.</p>')+`<div class="acts"><button class="alt" type="button" data-fdcp="1">Copiaza lista</button></div><p class="muted" style="margin:0 0 6px">Valori la 100 g, doar in aplicatie (incluse in backup).</p><h3 class="gg">Toate alimentele</h3>`}
+function drawNu(){const n=Object.keys(FD).length;$("#nu").innerHTML=n?`<p class="muted" style="margin:6px 0">${n===1?"1 aliment adaugat de tine apare":n+" alimente adaugate de tine apar"} in lista, marcate AI sau manual (la 100 g; sunt in backup). <button class="alt" type="button" data-fdcp="1" style="margin:0 0 0 6px">Copiaza lista</button></p>`:""}
 $("#nu").onclick=e=>{const b=e.target.closest("button");if(!b)return;
- if(b.dataset.fdd!==undefined){const n=(FD[b.dataset.fdd]||{}).n;delete FD[b.dataset.fdd];fdSave();drawNu();toast("Scos: "+n+".");return}
+
  if(b.dataset.fdcp!==undefined){const t=Object.values(FD).map(f=>`${f.n}: ${f.k[0]} kcal, proteine ${f.k[1]} g, grasimi ${f.k[2]} g, carbo ${f.k[3]} g la 100 g${f.cv&&Object.keys(f.cv).length?"; "+Object.entries(f.cv).map(([u,g])=>"1 "+(u||"bucata")+" = "+g+" g").join(", "):""}`).join("\n");
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>toast("Lista copiata."),()=>toast("Nu am putut copia."));else toast("Nu pot copia in acest browser.")}};
 /* daca ai ceva planificat azi, aplicatia se deschide direct pe Meniu > Azi */
