@@ -379,3 +379,9 @@ details>summary{padding:8px 0}
 /* 2.28.3: buton compact "Sterge" pe alimentele adaugate */
 .fdx{margin:0 0 0 4px;padding:0 6px;min-height:22px;height:22px;font-size:.72rem;font-weight:400;line-height:1;border:1px solid var(--line);background:none;color:var(--mut);border-radius:6px;vertical-align:middle;width:auto}
 .nr .row .fdx{flex:0 0 auto!important;width:auto!important;margin:0!important;padding:0 10px!important;min-height:30px!important;height:30px;font-size:.8rem}
+
+
+/* 2.31.1: linia "Contine:" cu cuvinte colorate pe categorie */
+.pf{margin:6px 0 2px;font-size:.92rem;font-weight:600}.pf .pk{color:var(--pri)}.pf .pa{color:var(--warn)}
+.pf .pk,.pf .pa{display:inline!important;margin:0!important;padding:0!important}
+.pf{display:block!important}

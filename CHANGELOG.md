@@ -2,6 +2,24 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.31.3
+- Biblioteca: pe randul "Cauta in retetele tale" apare "Rezultat: x retete gasite din y retete in baza locala". Linia separata cu totalul si cu "de verificat" a fost scoasa (numarul de verificat ramane pe butonul "Parcurge retetele de verificat (n)"); au ramas doar notele despre filtrul Din debara.
+
+## 2.31.2
+- Biblioteca: numarul de retete gasite apare sus, sub filtre ("112 retete" sau "Se arata 60 din 112 retete"); jos ramane doar butonul "Arata mai multe".
+
+## 2.31.1
+- Preferintele pe retete: o singura linie "Contine: ..." (pe card si pe reteta deschisa) in loc de "Iti place" si "Contine ce eviti". Fiecare cuvant are culoarea categoriei: verde pentru ce-ti place, maro pentru ce e mai putin potrivit. Fara dezacorduri de singular/plural.
+
+## 2.31.0
+- Comutatorul RO/EN din 2.30 a fost scos (prea complicat). In schimb, cand deschizi un aliment din Info > Ingrediente, numele englezesc (USDA) apare imediat sub cel romanesc. Cautarea gaseste alimentul si dupa numele englezesc. Ordinea alimentelor ramane alfabetica dupa numele romanesc.
+
+## 2.30.1
+- Ordinea alimentelor in Info (Ingrediente si Masuri) e aceeasi in RO si EN (alfabetic dupa numele romanesc); comutatorul schimba doar numele afisate, ca sa poti urmari usor acelasi aliment in ambele limbi.
+
+## 2.30.0
+- Comutator RO | EN in Info > Ingrediente si Masuri: numele alimentelor (si etichetele de nutrienti) in romana sau engleza. Numele englezesti sunt cele din USDA; cautarea gaseste alimentul in ambele limbi, indiferent de selectie. Alegerea se retine. Textele aplicatiei si alimentele adaugate de tine raman asa cum sunt.
+
 ## 2.29.0
 - Alimentele adaugate de tine (AI sau manual) au acum toate cele 27 de valori ca randurile din baza: fibre, zaharuri, grasimi saturate, colesterol, minerale si vitamine. AI le cere pe toate (null pentru ce nu stie); manual, le completezi optional intr-o sectiune pliata.
 - Randul unui aliment adaugat se deschide ca cele din baza. In el: "Completeaza cu AI" (pentru cele salvate doar cu macro), "Editeaza" (orice valoare, manual) si "Sterge".
