@@ -385,3 +385,11 @@ details>summary{padding:8px 0}
 .pf{margin:6px 0 2px;font-size:.92rem;font-weight:600}.pf .pk{color:var(--pri)}.pf .pa{color:var(--warn)}
 .pf .pk,.pf .pa{display:inline!important;margin:0!important;padding:0!important}
 .pf{display:block!important}
+
+/* 3.1.0: micronutrienti */
+.mmic{margin-top:10px;font-size:.92rem}.mmic>summary{cursor:pointer;font-weight:600;padding:6px 0}.mmore{margin-top:6px}
+.mic{display:grid;grid-template-columns:minmax(90px,1.1fr) 1.2fr minmax(120px,2fr);gap:8px;align-items:center;padding:3px 0}
+.mic .mbar{height:8px;background:var(--line);border-radius:4px;overflow:hidden}.mic .mbar i{display:block;height:100%;background:var(--mut)}
+.mic.ok .mbar i{background:#2e7d5b}.mic.mid .mbar i{background:#c9a227}.mic.low .mbar i{background:#c0562b}.mic.bad .mbar i{background:#b3261e}
+.mic .mv{font-size:.85rem;text-align:right}
+@media(max-width:560px){.mic{grid-template-columns:1fr 1fr}.mic .mv{grid-column:1/3;text-align:left}}

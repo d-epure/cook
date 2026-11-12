@@ -2,6 +2,17 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.1.0
+- **Profil nutritional** (Setari > Profil nutritional): sex, varsta, greutate, inaltime, nivel de activitate si etapa (mentinere, crestere masa musculara, definire). Din el se calculeaza tintele zilnice: calorii (formula Mifflin-St Jeor x nivel de activitate, +10% la crestere, -15% la definire), proteine (standard 0,83 / 1,6 / 2,0 g pe kg dupa etapa), grasimi (30% din calorii), carbohidrati (restul), fibre.
+- **Tintele de macro au standard recomandat, dar se pot edita:** calorii, proteine pe kg, grasimi in procente din calorii. Daca golesti un camp, revine la standard.
+- **Tinta de macro se editeaza acum intr-un singur loc** (Profil nutritional). Campurile de tinta din Meniu au fost scoase; tinta veche din Meniu ramane folosita pana completezi profilul.
+- **Micronutrienti** (25 de valori din baza Info): in Meniu, pe fiecare zi (cate 1 portie din fiecare reteta) si ca medie pe saptamana, cu bara si procent din necesarul zilnic; in reteta, per portie. Nutrientii importanti (fibre, sodiu, saturate, zaharuri, fier, calciu, vitamina D, B12, folat) sunt primii, restul sub "Restul nutrientilor". Micronutrientii se compara cu valorile EFSA pentru adulti de 18+ ani (fara editare).
+- Acoperirea e afisata mereu: cate ingrediente au valori. Limite: valori de la alimente crude (fara pierderile de la gatit), sarea adaugata nu intra in sodiu, nu acopera sarcina, alaptarea sau boli. Orientare, nu sfat medical.
+- Profilul intra in backup si in sincronizarea Dropbox.
+
+## 3.0.3
+- Cand scoti o reteta de la favorite (din Biblioteca, Retete salvate sau din reteta deschisa), apare bara "Scos de la favorite" cu "Anuleaza", 8 secunde, ca la celelalte stergeri.
+
 ## 3.0.2
 - **Reparatie in sincronizare (important):** la prima sincronizare a unui dispozitiv, o valoare goala de aici (de exemplu portii necompletate) suprascria o valoare existenta din Dropbox. Acum o valoare goala nu mai bate niciodata o valoare completata, iar la prima sincronizare, cand exista doua valori diferite, castiga cea din Dropbox si esti anuntat.
 - La prima pornire a acestei versiuni, baza de sincronizare se reseteaza o data (pe fiecare dispozitiv) si lista de conflicte se goleste, ca sa se repare automat datele suprascrise gresit in 3.0.0 / 3.0.1.
