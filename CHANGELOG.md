@@ -2,10 +2,19 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.34.0
+- Setari > Date: copii automate in acest browser. Aplicatia isi face singura o copie (cel mult una la 20 de ore, la pornire) si le pastreaza pe ultimele 3, cu "Restaureaza" si "Fa o copie acum". Inainte de orice restaurare se face o copie a starii curente. Nu te ajuta daca stergi datele browserului.
+- Setari > Date: backup in Dropbox. Lipesti o data "App key" din aplicatia ta Dropbox, conectezi contul (autentificare PKCE, fara secret in cod), apoi "Salveaza acum in Dropbox" sau copie automata o data pe zi la deschidere (poate fi oprita). Se pastreaza ultimele 10 copii in folderul aplicatiei; poti restaura oricare, cu previzualizare si confirmare ca la restaurarea din fisier.
+- Semnul de backup vechi tine cont si de backup-ul din Dropbox. Cheia API, app key-ul si tokenul Dropbox nu intra in backup.
+
+## 2.33.0
+- Meniu: cand macro-ul din carte al unei retete difera mult de calculul din Info (sub 70% sau peste 140% per portie), sub reteta apare o avertizare cu ambele cifre: "Verifica portiile in reteta". Se calculeaza doar cand cel putin 80% din ingrediente au date, nu pentru retete cu "-" si nu pentru macro calculat deja din Info. Butonul "E in regula" ascunde avertizarea pe acea reteta (se salveaza pe reteta si intra in backup). Nu modifica niciun macro si nu schimba totalul zilei.
+
 ## 2.32.0
 - Numarul de portii se confirma separat: o reteta marcata "numar de portii" (in coada "De verificat") arata un avertisment propriu, iar in editor apare butonul "Confirma numarul de portii", care scoate doar acest marcaj si salveaza imediat, fara sa atinga restul retetei. "Salveaza ca verificata" nu mai sterge marcajul de portii.
 - Campul "Portii" din editor e gol cand reteta nu are numar (inainte aparea 1, ceea ce ascundea problema). Poti scrie "-" daca numarul nu se aplica: reteta ramane fara portii, fara "Macro per portie" calculat si fara scalare.
 - Setari > Date > "Aplica un fisier de corectii": aplica portii si marcaje pe retetele deja incarcate, potrivite dupa numar si titlu, fara sa le inlocuiasca. Retetele ale caror portii le-ai schimbat intre timp sunt sarite; se vede o previzualizare inainte de aplicare.
+- README: sectiune noua despre ce contine backup-ul complet, backup-ul per carte si fisierul de corectii.
 - Retetele marcate doar pentru portii raman in propunerile de meniu.
 
 ## 2.31.3

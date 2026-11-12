@@ -1086,7 +1086,7 @@ function drawMenu(){
  const rows=days.map(d=>{const dm=m[d]||{},op=isOpen(d),has=SLOTS.some(([s])=>(dm[s]||[]).length);
   return`<div class="card mday${d===today?" today":""}"><div class="mh"><h2 class="mhh"><button class="mtog" data-mtog="1" data-day="${d}" aria-expanded="${op}"><span class="chev">${op?"&#9662;":"&#9656;"}</span> ${esc(dLab(d))}${d===today?` <span class="lb">azi</span>`:d===tom?` <span class="lb">maine</span>`:""}</button></h2>${has?`<button class="alt ib" data-mshop="d" data-day="${d}" aria-label="Cumparaturi pentru ziua asta" title="Cumparaturi pentru ziua asta">${CART}</button>`:""}</div>`+
   SLOTS.filter(([id])=>op||(dm[id]||[]).length).map(([id,lab])=>`<div class="ms"><div class="mt">${lab}</div>${(dm[id]||[]).map((en,ix)=>{const rec=menRec(en),ref=`data-day="${d}" data-slot="${id}" data-ix="${ix}"`;
-   return`<div class="me"><div class="mn"><span class="tx">${esc(en.t)}</span>${en.L?` <button class="lb lbb" data-mlx="1" ${ref} title="Scoate din cumparaturi" aria-label="In lista; apasa ca sa scoti din cumparaturi">in lista &times;</button>`:""}${en.s!=="x"&&!rec?`<div class="warn">Reteta nu mai e in aplicatie; folosesc ingredientele salvate in meniu.</div>`:""}${(()=>{const a=menMac(en);return a?`<div class="muted">~${Math.round(a[0])} kcal${a[1]!=null?", "+Math.round(a[1])+" g proteine":""} (1 portie${en.me?", estimat":""})</div>`:""})()}</div>${en.s!=="x"&&!(rec&&en.s==="b"&&rec.r.portii==null)?`<input class="mpi" type="number" min="1" max="99" value="${esc(clampP(en.p||en.bp))}" ${ref} data-mp="1" aria-label="Portii pentru ${esc(en.t)}" title="Portii">`:""}${en.s!=="x"&&d<=today?((getNote(en.k).h||[]).includes(d)?` <span class="lb">gatit</span>`:`<button class="alt" data-mgat="1" ${ref}>Am gatit</button>`):""}${rec?`<button class="alt" data-mopen="1" ${ref}>Deschide</button>`:""}<button class="alt" data-mdel="1" ${ref} aria-label="Scoate ${esc(en.t)} din meniu">Scoate</button></div>`}).join("")}${op?`<button class="alt" data-madd="${id}" data-day="${d}">+ Adauga</button>`:""}</div>`).join("")+macBlock(dm,d)+`</div>`}).join("");
+   return`<div class="me"><div class="mn"><span class="tx">${esc(en.t)}</span>${en.L?` <button class="lb lbb" data-mlx="1" ${ref} title="Scoate din cumparaturi" aria-label="In lista; apasa ca sa scoti din cumparaturi">in lista &times;</button>`:""}${en.s!=="x"&&!rec?`<div class="warn">Reteta nu mai e in aplicatie; folosesc ingredientele salvate in meniu.</div>`:""}${(()=>{const a=menMac(en);return a?`<div class="muted">~${Math.round(a[0])} kcal${a[1]!=null?", "+Math.round(a[1])+" g proteine":""} (1 portie${en.me?", estimat":""})</div>`:""})()}${(()=>{const dd=rec&&en.s==="b"?macDiff(rec.r):null;return dd?`<div class="warn" style="margin:4px 0">Macro din carte (${dd.carte} kcal) difera mult de calculul din Info (${dd.calc} kcal per portie). Verifica portiile in reteta. <button class="alt" data-mok="1" ${ref} style="margin:4px 0 0">E in regula</button></div>`:""})()}</div>${en.s!=="x"&&!(rec&&en.s==="b"&&rec.r.portii==null)?`<input class="mpi" type="number" min="1" max="99" value="${esc(clampP(en.p||en.bp))}" ${ref} data-mp="1" aria-label="Portii pentru ${esc(en.t)}" title="Portii">`:""}${en.s!=="x"&&d<=today?((getNote(en.k).h||[]).includes(d)?` <span class="lb">gatit</span>`:`<button class="alt" data-mgat="1" ${ref}>Am gatit</button>`):""}${rec?`<button class="alt" data-mopen="1" ${ref}>Deschide</button>`:""}<button class="alt" data-mdel="1" ${ref} aria-label="Scoate ${esc(en.t)} din meniu">Scoate</button></div>`}).join("")}${op?`<button class="alt" data-madd="${id}" data-day="${d}">+ Adauga</button>`:""}</div>`).join("")+macBlock(dm,d)+`</div>`}).join("");
  $("#mw").innerHTML=head+rows}
 /* cumparaturi din meniu: intrarile deja adaugate nu se repeta decat daca confirmi */
 function menShop(btn,ds,label){
@@ -1111,6 +1111,7 @@ $("#v-meniu").onclick=e=>{const b=e.target.closest("button")||e.target,d=b.datas
  if(d.mlx!==undefined){const en=((getMen()[d.day]||{})[d.slot]||[])[+d.ix];if(en){const t=en.t+" (meniu "+ZILE[dFrom(d.day).getDay()].toLowerCase()+")",u=undoMark(["rl","rmen"]),r=removeSrc(t);drawMenu();undoShow(srcMsg(t,r),u,redrawAll)}return}
  if(d.mdel!==undefined){const u=undoMark(["rmen"]),m=getMen(),a=(m[d.day]||{})[d.slot];if(a){const t=(a[+d.ix]||{}).t;a.splice(+d.ix,1);putMen(m);drawMenu();undoShow("Scos din meniu: "+t+".",u,redrawAll)}return}
  if(d.mgat!==undefined){const a=(getMen()[d.day]||{})[d.slot],en=a&&a[+d.ix];if(en&&en.k){setNote(en.k,{h:(getNote(en.k).h||[]).concat([d.day])});drawMenu();toast("Marcat ca gatit: "+en.t+" ("+fmtDay(d.day)+").")}return}
+ if(d.mok!==undefined){const a=(getMen()[d.day]||{})[d.slot],en=a&&a[+d.ix],rec=en&&menRec(en);if(rec&&en.s==="b"){rec.r.mok=true;if(persistBook(rec.r)){drawMenu();toast("Avertizare ascunsa pentru aceasta reteta.")}}return}
  if(d.mopen!==undefined){const a=(getMen()[d.day]||{})[d.slot],en=a&&a[+d.ix],rec=en&&menRec(en);if(!rec)return;
   if(en.s==="b"){show("carti");drawBook();openBook(rec.i,clampP(en.p||rec.r.portii||1),"#bres")}else{SV=en.k;show("salvate")}
   window.scrollTo(0,0)}};
@@ -1118,7 +1119,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="2.32.0";
+const APP_V="2.34.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1182,7 +1183,7 @@ function sStat(id){try{
  if(id==="etichete")return TAGS.length+" etichete";
  if(id==="mese"){const n=Object.keys(getPxc()).length;return n?n+(n===1?" categorie cu masa aleasa":" categorii cu masa aleasa"):"mese automate"}
  if(id==="cont")return (LS("rk")?"Cheie setata":"Cheie lipsa")+" \u00b7 "+((LS("rm1")||"claude-haiku-4-5").replace("claude-",""));
- if(id==="date"){const t=+LS("rbk"),n=(()=>{try{return STORED.length}catch(e){return 0}})();return (n?n+" retete in biblioteca \u00b7 ":"")+(t?"backup: "+new Date(t).toLocaleDateString("ro-RO",{day:"numeric",month:"short"}):"niciun backup")}
+ if(id==="date"){const t=Math.max(+LS("rbk")||0,+LS("rdbl")||0),n=(()=>{try{return STORED.length}catch(e){return 0}})();return (n?n+" retete in biblioteca \u00b7 ":"")+(t?"backup: "+new Date(t).toLocaleDateString("ro-RO",{day:"numeric",month:"short"}):"niciun backup")}
  if(id==="despre")return "Versiunea "+APP_V}catch(e){}return""}
 function sRow(id,e){const w=id==="cont"&&!LS("rk")||id==="date"&&bkDue();return`<button type="button" class="srow${e===id?" on":""}" data-s="${id}"><span class="srt"><b>${STITLE[id]}</b><span class="srs${w?" warn2":""}">${esc(sStat(id))}</span></span><span class="chev" aria-hidden="true">&rsaquo;</span></button>`}
 let TOPEN=false; /* 2.24.1: Tehnic ramane deschis daca l-ai deschis tu, chiar daca lista se redeseneaza */
@@ -1204,7 +1205,7 @@ WIDE.addEventListener&&WIDE.addEventListener("change",sRender);
 document.addEventListener("click",e=>{const g=e.target.closest("[data-gosub]");if(g){show("setari");setSub(g.dataset.gosub);setTimeout(()=>{if(g.dataset.gosub==="cont"&&$("#key"))$("#key").focus()},0)}});
 /* semn pentru copia de siguranta veche (peste 14 zile) */
 const DOT='<span class="dot" title="Backup-ul e vechi"></span>';
-function bkAge(){const t=+LS("rbk");return t?Math.floor((Date.now()-t)/864e5):null}
+function bkAge(){const t=Math.max(+LS("rbk")||0,+LS("rdbl")||0);return t?Math.floor((Date.now()-t)/864e5):null}
 function bkDue(){let has=false;try{has=getSaved().length>0||getStored().length>0}catch(e){}if(!has)return false;const g=bkAge();return g===null||g>14}
 function bkBadge(){const d=bkDue(),g=bkAge();
  document.querySelector("#nav [data-v=setari]").innerHTML="Setari"+(d?DOT:"");document.querySelector("#gnav [data-g=set]").innerHTML="Setari"+(d?DOT:"");
@@ -1233,23 +1234,93 @@ $("#bShare").onclick=async()=>{const f=bkBuild(),file=new File([f.json],f.name,{
 (()=>{try{const t=new File(["{}"],"a.json",{type:"application/json"});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[t]}))$("#bShare").hidden=false}catch(e){}})();
 function impDraw(){const el=$("#bipv");if(!IMP){el.innerHTML="";return}const i=bkInfo(IMP.date);
  el.innerHTML=`<div class="card" style="margin:8px 0 0"><b>${esc(IMP.f.name)}</b><div class="muted" style="margin:6px 0 10px">Backup din ${esc((IMP.data_export||"").slice(0,10))}: ${i.salvate} retete salvate, ${i.favorite} favorite, ${i.etichete} etichete, ${i.aparate} aparate, ${i.biblioteca} retete in biblioteca, ${i.debara} produse in debara, ${i.meniu} zile in meniu.<br><b>Inlocuieste</b> tot ce ai acum in aplicatie pentru aceste date (cheia API ramane).</div><button class="go" data-ip="ok" style="margin:0">Restaureaza</button> <button class="alt" data-ip="no">Anuleaza</button></div>`}
+function bkParse(txt,name){const j=JSON.parse(txt);if(j.app!=="retete-dana"||!j.date||typeof j.date!=="object")throw 0;
+ for(const k of Object.keys(j.date)){if(!BK_KEYS.includes(k)||typeof j.date[k]!=="string")throw 0;if(!["rm1","rm2b"].includes(k))JSON.parse(j.date[k])}
+ return{date:j.date,data_export:j.data_export,f:{name}}}
 $("#bimp").onchange=async e=>{const f=e.target.files[0];IMP=null;$("#bkm").textContent=bkLast();if(!f){impDraw();return}
- try{const j=JSON.parse(await f.text());if(j.app!=="retete-dana"||!j.date||typeof j.date!=="object")throw 0;
-  for(const k of Object.keys(j.date)){if(!BK_KEYS.includes(k)||typeof j.date[k]!=="string")throw 0;if(!["rm1","rm2b"].includes(k))JSON.parse(j.date[k])}
-  IMP={date:j.date,data_export:j.data_export,f};impDraw()}
+ try{IMP=bkParse(await f.text(),f.name);impDraw()}
  catch(x){impDraw();$("#bkm").textContent="Fisierul nu e un backup valid al acestei aplicatii."}};
 $("#bipv").onclick=async e=>{const d=e.target.dataset.ip;if(!d)return;
  if(d==="no"){IMP=null;$("#bimp").value="";impDraw();$("#bkm").textContent="Restaurare anulata.";return}
  const KL=BK_KEYS.filter(k=>k!=="rbook"),bak={},prev=STORED,date=IMP.date;KL.forEach(k=>{bak[k]=localStorage.getItem(k)});
  const back=()=>{try{KL.forEach(k=>{if(bak[k]!=null)localStorage.setItem(k,bak[k]);else localStorage.removeItem(k)})}catch(y){}};
  let lib=[];try{const j=date.rbook!=null?JSON.parse(date.rbook):[];lib=Array.isArray(j)?j:[]}catch(x){lib=[]}
- $("#bkm").textContent="Restaurez...";
+ $("#bkm").textContent="Restaurez...";await snapMake(true);
  /* biblioteca intai (cea mai mare); daca ceva esueaza, ramane tot ce era inainte */
  if(!(await saveStored(lib))){await saveStored(prev);$("#bkm").textContent="Nu am putut salva biblioteca din backup. Am pastrat datele de dinainte, neschimbate.";return}
  try{KL.forEach(k=>{if(date[k]!=null)localStorage.setItem(k,date[k]);else localStorage.removeItem(k)})}
  catch(x){back();await saveStored(prev);
   $("#bkm").textContent="Nu am putut scrie in browser (spatiu insuficient). Am pastrat datele de dinainte, neschimbate.";return}
  $("#bkm").textContent="Restaurat. Reincarc aplicatia...";setTimeout(()=>location.reload(),600)};
+
+/* ===== 2.34.0: copii automate in browser + backup in Dropbox ===== */
+/* Copii in browser: ultimele SNAPN, cel mult una la 20 de ore, in IndexedDB (cheile snap:...). Dropbox: folderul aplicatiei, autentificare PKCE (fara secret in cod);
+   rdbk = app key (o scrii tu in Setari), rdbt = refresh token, rdbl = ultimul backup, rdba = "0" daca ai oprit copia zilnica. Niciuna nu intra in backup. */
+const SNAPN=3,DBN=10,AUTOH=20*36e5;
+const idbKeys=()=>new Promise((res,rej)=>{const r=DB.transaction("kv").objectStore("kv").getAllKeys();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+const idbDel=k=>new Promise((res,rej)=>{const t=DB.transaction("kv","readwrite");t.objectStore("kv").delete(k);t.oncomplete=()=>res();t.onerror=()=>rej(t.error)});
+const hasData=()=>{try{return getSaved().length>0||getStored().length>0}catch(e){return false}};
+async function snapList(){if(!(IDBOK&&DB))return[];try{return(await idbKeys()).filter(k=>String(k).startsWith("snap:")).sort().reverse()}catch(e){return[]}}
+async function snapMake(force){if(!(IDBOK&&DB)||!hasData())return false;
+ try{const L=await snapList();if(!force&&L.length&&Date.now()-Date.parse(L[0].slice(5))<AUTOH)return false;
+  await idbPut("snap:"+new Date().toISOString(),bkBuild().json);for(const k of(await snapList()).slice(SNAPN))await idbDel(k);return true}catch(e){return false}}
+const fmtDT=t=>{const d=new Date(t);return isNaN(d)?String(t):d.toLocaleString("ro-RO",{dateStyle:"short",timeStyle:"short"})};
+const b64u=b=>btoa(String.fromCharCode(...new Uint8Array(b))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+const DBK=()=>(LS("rdbk")||"").trim(),dbRedirect=()=>location.origin+location.pathname,dbOn=()=>!!(DBK()&&LS("rdbt"));
+async function dbConnect(){const v=b64u(crypto.getRandomValues(new Uint8Array(32))),ch=b64u(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(v)));
+ sessionStorage.setItem("rdbv",v);
+ location.href="https://www.dropbox.com/oauth2/authorize?"+new URLSearchParams({client_id:DBK(),response_type:"code",code_challenge:ch,code_challenge_method:"S256",token_access_type:"offline",redirect_uri:dbRedirect()})}
+async function dbToken(body){const r=await fetch("https://api.dropboxapi.com/oauth2/token",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(body)});
+ const j=await r.json().catch(()=>({}));if(!r.ok){if(j.error==="invalid_grant"&&body.grant_type==="refresh_token")try{localStorage.removeItem("rdbt")}catch(e){}
+  throw new Error(j.error==="invalid_grant"?"Conectarea Dropbox a expirat. Conecteaza din nou.":(j.error_description||j.error||"Eroare Dropbox"))}return j}
+let DBAT=null,DBAX=0;
+async function dbAccess(){if(DBAT&&Date.now()<DBAX-60000)return DBAT;const rt=LS("rdbt");if(!rt)throw new Error("Dropbox nu e conectat.");
+ const j=await dbToken({grant_type:"refresh_token",refresh_token:rt,client_id:DBK()});DBAT=j.access_token;DBAX=Date.now()+(j.expires_in||14400)*1000;return DBAT}
+async function dbApi(url,arg,body,content){const t=await dbAccess(),h={Authorization:"Bearer "+t};
+ if(content){h["Dropbox-API-Arg"]=JSON.stringify(arg);if(body!=null)h["Content-Type"]="application/octet-stream"}else h["Content-Type"]="application/json";
+ const r=await fetch(url,{method:"POST",headers:h,body:content?body:JSON.stringify(arg)});
+ if(!r.ok){let m="Eroare Dropbox ("+r.status+")";try{const j=await r.json();if(j.error_summary)m+=": "+j.error_summary}catch(e){}throw new Error(m)}return r}
+const dbStamp=()=>{const d=new Date(),p=n=>String(n).padStart(2,"0");return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+"-"+p(d.getHours())+p(d.getMinutes())};
+async function dbList(){const j=await(await dbApi("https://api.dropboxapi.com/2/files/list_folder",{path:""})).json();
+ return(j.entries||[]).filter(x=>x[".tag"]==="file"&&/^retete-backup-.*\.json$/.test(x.name)).sort((a,b)=>b.name.localeCompare(a.name))}
+async function dbBackup(){const f=bkBuild();
+ await dbApi("https://content.dropboxapi.com/2/files/upload",{path:"/retete-backup-"+dbStamp()+".json",mode:"add",autorename:true,mute:true},f.json,true);
+ LS("rdbl",String(Date.now()));try{localStorage.removeItem("rdbe")}catch(e){}
+ try{for(const x of(await dbList()).slice(DBN))await dbApi("https://api.dropboxapi.com/2/files/delete_v2",{path:x.path_lower})}catch(e){}
+ bkBadge();return f.info}
+async function snDraw(){const el=$("#snbox");if(!el)return;const L=await snapList();
+ el.innerHTML=`<h3 style="margin:16px 0 4px">Copii automate in acest browser</h3><p class="muted" style="margin:0 0 8px">Aplicatia isi face singura o copie (cel mult una la 20 de ore) si le pastreaza pe ultimele ${SNAPN}. Te ajuta daca stergi sau strici ceva; nu te ajuta daca stergi datele browserului.</p>`+
+  (IDBOK&&DB?(L.length?L.map(k=>`<div class="apr"><span>${esc(fmtDT(k.slice(5)))}</span><button class="alt" type="button" data-snr="${esc(k)}">Restaureaza</button></div>`).join(""):'<p class="muted">Inca nu exista nicio copie.</p>')+`<button class="alt" type="button" data-snmk="1" style="margin-top:8px">Fa o copie acum</button>`:'<p class="muted">Browserul nu permite baza de date locala, deci copiile automate nu sunt disponibile.</p>')}
+async function dbDraw(msg){const el=$("#dbbox");if(!el)return;const k=DBK();let h=`<h3 style="margin:16px 0 4px">Backup in Dropbox</h3>`;
+ if(!k){h+=`<p class="muted" style="margin:0 0 8px">Creezi o data o aplicatie in Dropbox (pasii sunt in README) si lipesti aici "App key". Nu e o parola. Backup-urile ajung doar in folderul aplicatiei, in Dropbox-ul tau.</p><label for="dbk">App key Dropbox</label><input id="dbk" autocomplete="off" placeholder="App key"><button class="alt" type="button" data-dbks="1" style="margin-top:8px">Salveaza cheia</button>`}
+ else if(!dbOn()){h+=`<p class="muted" style="margin:0 0 8px">App key salvat. Adresa de redirectionare pe care o adaugi in aplicatia Dropbox: <b>${esc(dbRedirect())}</b></p><button class="go" type="button" data-dbc="1" style="margin:0">Conecteaza Dropbox</button> <button class="alt" type="button" data-dbkx="1">Schimba cheia</button>`}
+ else{h+=`<p class="muted" style="margin:0 0 8px">Conectat. ${LS("rdbl")?"Ultimul backup in Dropbox: "+esc(fmtDT(+LS("rdbl")))+".":"Nu ai facut inca un backup in Dropbox."}${LS("rdbe")?" Ultima incercare automata a esuat: "+esc(LS("rdbe"))+".":""}</p><button class="go" type="button" data-dbs="1" style="margin:0">Salveaza acum in Dropbox</button> <button class="alt" type="button" data-dbx="1">Deconecteaza</button>
+  <label style="display:flex;gap:8px;align-items:center;margin-top:10px"><input type="checkbox" id="dba"${LS("rdba")==="0"?"":" checked"} style="width:auto"> Copie automata o data pe zi (cand deschizi aplicatia)</label><div id="dbl" class="muted" style="margin-top:8px">Se incarca lista...</div>`}
+ el.innerHTML=h+(msg?`<div class="muted" style="margin-top:8px" role="status">${esc(msg)}</div>`:"");
+ if(k&&dbOn()){const box=$("#dbl");try{const L=await dbList();if(!$("#dbl"))return;box.innerHTML=L.length?`<div>Copii in Dropbox (ultimele ${DBN}):</div>`+L.map(x=>`<div class="apr"><span>${esc(x.name.replace(/^retete-backup-|\.json$/g,""))} <span class="muted">${Math.round((x.size||0)/1024)} KB</span></span><button class="alt" type="button" data-dbr="${esc(x.path_lower)}" data-dbn="${esc(x.name)}">Restaureaza</button></div>`).join(""):"Nu exista copii in Dropbox.";}
+  catch(e){if($("#dbl"))$("#dbl").textContent=e.message||"Nu am putut citi lista."}}}
+function bkPreview(txt,name){try{IMP=bkParse(txt,name);impDraw();$("#bkm").textContent="Verifica previzualizarea de mai jos si confirma restaurarea.";const p=$("#bipv");if(p&&p.scrollIntoView)p.scrollIntoView({block:"center"})}
+ catch(x){IMP=null;impDraw();$("#bkm").textContent="Copia nu e un backup valid al acestei aplicatii."}}
+$("#snbox").onclick=async e=>{const d=e.target.dataset;
+ if(d.snmk!==undefined){await snapMake(true);snDraw();toast("Copie facuta.");return}
+ if(d.snr){try{bkPreview(await idbGet(d.snr),"copie "+fmtDT(d.snr.slice(5)))}catch(x){toast("Nu am putut citi copia.")}}};
+$("#dbbox").onclick=async e=>{const b=e.target,d=b.dataset;
+ if(d.dbks!==undefined){const v=($("#dbk").value||"").trim();if(!/^[a-z0-9]{8,40}$/i.test(v)){toast("App key nu pare valid (litere si cifre).");return}LS("rdbk",v);dbDraw();return}
+ if(d.dbkx!==undefined){try{localStorage.removeItem("rdbk")}catch(x){}dbDraw();return}
+ if(d.dbc!==undefined){try{await dbConnect()}catch(x){dbDraw("Nu am putut porni conectarea: "+(x.message||x))}return}
+ if(d.dbx!==undefined){["rdbt","rdbl","rdbe"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;bkBadge();dbDraw("Deconectat. Copiile ramase in Dropbox nu au fost sterse.");return}
+ if(d.dbs!==undefined){b.disabled=true;try{const i=await dbBackup();dbDraw(bkMsg(i,"Salvat in Dropbox: "))}catch(x){b.disabled=false;dbDraw(x.message||"Nu am putut salva in Dropbox.")}return}
+ if(d.dbr){b.disabled=true;try{const t=await(await dbApi("https://content.dropboxapi.com/2/files/download",{path:d.dbr},null,true)).text();b.disabled=false;bkPreview(t,d.dbn)}catch(x){b.disabled=false;toast(x.message||"Nu am putut descarca copia.")}}};
+$("#dbbox").onchange=e=>{if(e.target.id==="dba")LS("rdba",e.target.checked?"1":"0")};
+/* intoarcere din Dropbox dupa autorizare: ?code=... */
+(async()=>{const q=new URLSearchParams(location.search),c=q.get("code"),v=sessionStorage.getItem("rdbv");if(!(c&&v)&&!q.get("error"))return;
+ try{history.replaceState(null,"",location.pathname)}catch(e){}try{sessionStorage.removeItem("rdbv")}catch(e){}if(!c||!v){show("setari");setSub("date");toast("Conectarea Dropbox a fost anulata.");return}
+ try{const j=await dbToken({grant_type:"authorization_code",code:c,code_verifier:v,client_id:DBK(),redirect_uri:dbRedirect()});LS("rdbt",j.refresh_token);DBAT=j.access_token;DBAX=Date.now()+(j.expires_in||14400)*1000;show("setari");setSub("date");toast("Dropbox conectat.");dbDraw()}
+ catch(x){show("setari");setSub("date");dbDraw("Nu am putut conecta Dropbox: "+(x.message||x))}})();
+snDraw();dbDraw();
+/* copii automate la pornire (dupa ce biblioteca e incarcata) */
+setTimeout(async()=>{await snapMake(false);snDraw();
+ if(dbOn()&&LS("rdba")!=="0"&&hasData()&&Date.now()-(+LS("rdbl")||0)>AUTOH){try{await dbBackup();dbDraw()}catch(e){LS("rdbe",(e.message||"eroare").slice(0,120));dbDraw()}}},3000);
 $("#bflt").open=innerWidth>700;
 renderTagUI();
 renderBox();
@@ -1354,6 +1425,9 @@ function macLocal(r){const por=r.portii||1,S=[0,0,0,0],det=[],miss=[];let n=0,ap
 function macHead(r){const m=r.macro,had=m&&m.kcal!=null,has=(r.ingrediente||[]).length&&!r.pna;
  const t=had?`<p class="muted">${m.sursa==="local"?"Calculat din baza Info"+(m.acoperire?" ("+esc(m.acoperire)+" ingrediente)":"")+", aproximativ":"Valori din carte, aproximative"}: ${esc(m.kcal)} kcal, proteine ${esc(m.proteine??"?")} g, carbohidrati ${esc(m.carbo??"?")} g${m.fibre!=null?" (fibre "+esc(m.fibre)+" g)":""}, grasimi ${esc(m.grasimi??"?")} g${m.saturate!=null?" (saturate "+esc(m.saturate)+" g)":""}</p>`:'<p class="muted">Reteta nu are valori de macro.</p>';
  return t+(has?`<button class="alt" type="button" data-mcl="1">${had?"Recalculeaza din Info":"Calculeaza din Info"}</button>`:"")}
+/* avertizare in meniu: macro din carte foarte diferit de calculul din Info (portii sau cifre nesigure); "E in regula" o ascunde pe reteta */
+function macDiff(r){if(!r||r.mok||r.pna||!r.macro||r.macro.kcal==null||r.macro.sursa==="local"||!(+r.macro.kcal>0))return null;
+ const L=macLocal(r);if(!L.n||L.ok/L.n<.8||!L.o.kcal)return null;const q=L.o.kcal/+r.macro.kcal;return q<.7||q>1.4?{carte:Math.round(+r.macro.kcal),calc:L.o.kcal}:null}
 const fdNeedCv=x=>fdGrams(x,{k:[0,0,0,0]})==null;
 function macPanel(bv,i){const r=BOOK[i],L=macLocal(r),box=bv.querySelector("[data-macp]"),m=r.macro,had=m&&m.kcal!=null,o=L.o;bv._ml=L;
  if(!L.n){box.innerHTML='<p class="muted">Nu sunt ingrediente cu cantitate de calculat.</p>';return}
