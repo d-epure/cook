@@ -951,14 +951,16 @@ function dayMic(dm){const s=new Array(27).fill(0);let ents=0,used=0,n=0,ok=0;
  SLOTS.forEach(([id])=>(dm[id]||[]).forEach(en=>{if(en.s==="x")return;ents++;const r=micEnt(en);if(!r)return;used++;n+=r.n;ok+=r.ok;r.s.forEach((v,i)=>{s[i]+=v})}));return{s,ents,used,n,ok}}
 const fmtN=v=>{const a=Math.abs(v);return String(a>=100?Math.round(v):a>=10?+v.toFixed(1):+v.toFixed(2)).replace(".",",")};
 /* randuri cu bara: valoare / tinta, procent, culoare dupa stare */
-function micRows(s,tg,grp){return MIC.filter(m=>m[4]===grp).map(m=>{const v=s[m[0]],t=tg?tg[m[0]]:null,pc=t?v/t*100:null;
-  let cl="",txt=fmtN(v)+" "+m[2];
-  if(t){const x=m[3]==="x";cl=x?(pc>100?"bad":"ok"):(pc>=100?"ok":pc>=70?"mid":"low");txt+=" / "+(x?"max ":"")+fmtN(t)+" "+m[2]+" ("+Math.round(pc)+"%)"}
-  return`<div class="mic ${cl}"><span class="mn2">${m[1]}</span><span class="mbar"><i style="width:${t?Math.min(100,Math.round(pc)):0}%"></i></span><span class="mv">${txt}</span></div>`}).join("")}
+/* bara: 0..120% din tinta; linia = 100%; verde = cat ai atins; terracotta doar peste 100% la limite (over=true) */
+function barRow(n,v,t,u,over,big,mx,extra){const pc=t?v/t*100:null;if(pc==null)return`<div class="mic"><span class="mn2">${n}</span><span class="mbar"></span><span class="mv">${fmtN(v)} ${u}</span></div>`;
+ const g=Math.min(pc,over?100:120)/1.2,o=over&&pc>100?(Math.min(pc,120)-100)/1.2:0,r=Math.round(pc);
+ const rest=big?(t-v>=.5?`<span class="rest">mai ramane ${fmtN(t-v)} ${u}</span>`:over&&v-t>=.5?`<span class="rest">peste tinta cu ${fmtN(v-t)} ${u}</span>`:""):"";
+ return`<div class="mic${big?" big":""}"><span class="mn2">${n}</span><span class="mbar" role="img" aria-label="${n}: ${r}% din ${mx?"limita":"necesar"}"><i class="f" style="width:${g.toFixed(1)}%"></i>${o?`<i class="ov" style="left:${(100/1.2).toFixed(1)}%;width:${o.toFixed(1)}%"></i>`:""}<span class="tk"></span></span><span class="mv"><b>${fmtN(v)}</b> / ${mx?"max ":""}${fmtN(t)} ${u} &middot; ${r}%${rest}</span></div>`}
+function micRows(s,tg,grp){return MIC.filter(m=>m[4]===grp).map(m=>barRow(m[1],s[m[0]],tg?tg[m[0]]:null,m[2],m[3]==="x",false,m[3]==="x")).join("")}
 function micPanel(s,cov,pr,note){const t=profT(pr),tg=micT(pr,t);
  return(tg?"":`<p class="muted" style="margin:6px 0">Fara profil nutritional completat se vad doar valorile. Completeaza Setari > Profil nutritional ca sa apara procentele din necesarul zilnic.</p>`)+
   micRows(s,tg,1)+`<details class="mmore"><summary class="muted">Restul nutrientilor</summary>${micRows(s,tg,0)}</details>`+
-  `<p class="muted" style="margin:6px 0 0;font-size:.85rem">${note?note+" ":""}${cov}Valori din baza Info (USDA, alimente crude), fara pierderile de la gatit; sodiul nu include sarea adaugata. Referinta: EFSA, adulti 18+. Orientare, nu sfat medical.</p>`}
+  `<p class="muted" style="margin:6px 0 0;font-size:.85rem">${note?note+" ":""}${cov}Valori din baza Info (USDA, alimente crude), fara pierderile de la gatit; sodiul nu include sarea adaugata. Referinta: EFSA, adulti. Orientare, nu sfat medical.</p>`}
 const micCov=d=>d.ents?(d.used<d.ents?(d.ents-d.used)+" din "+d.ents+" retete fara ingrediente, neincluse. ":"")+(d.n?"Calculat din "+d.ok+" din "+d.n+" ingrediente. ":""):"";
 function micBlock(dm,d){const t=dayMic(dm);if(!t.used)return"";const pr=getPr();
  return`<details class="mmic" data-mico="${d}"${MICO[d]?" open":""}><summary>Micronutrienti</summary>${micPanel(t.s,micCov(t),pr,"Cate 1 portie din fiecare reteta.")}</details>`}
@@ -980,7 +982,7 @@ function profDraw(){const el=$("#profbox");if(!el)return;const p=getPr(),t=profT
   <div><label for="pr-gp">Grasimi (% din calorii)</label><input id="pr-gp" data-pr="gp" type="number" min="10" max="60" step="1" value="${esc(p.gp==null?"":p.gp)}" placeholder="standard: 30"></div></div>
   <p style="margin:10px 0 0"><b>Tinta pe zi:</b> ${t.k} kcal, proteine ${t.p} g (${String(+t.pk.toFixed(2)).replace(".",",")} g/kg), grasimi ${t.f} g, carbohidrati ${t.c} g (restul), fibre 25 g.</p>`}
  else h+=`<p class="muted" style="margin:10px 0 0">Completeaza toate campurile ca sa apara tintele si procentele din necesar.</p>`;
- h+=`<p class="muted" style="margin:10px 0 0;font-size:.85rem">Valori de referinta EFSA pentru adulti sanatosi (18+ ani). Nu acopera sarcina, alaptarea sau boli care schimba necesarul. Energia se estimeaza cu formula Mifflin-St Jeor si nivelul de activitate; etapa o ajusteaza (crestere +10%, definire -15%). Proteinele standard: 0,83 g/kg (mentinere, minimul EFSA), 1,6 (crestere musculara), 2,0 (definire). Orientare, nu sfat medical.</p>`;
+ h+=`<p class="muted" style="margin:10px 0 0;font-size:.85rem">Valori de referinta EFSA pentru adulti sanatosi. Nu acopera sarcina, alaptarea sau boli care schimba necesarul. Energia se estimeaza cu formula Mifflin-St Jeor si nivelul de activitate; etapa o ajusteaza (crestere +10%, definire -15%). Proteinele standard: 0,83 g/kg (mentinere, minimul EFSA), 1,6 (crestere musculara), 2,0 (definire). Orientare, nu sfat medical.</p>`;
  el.innerHTML=h}
 function dayMac(dm){const s=[0,0,0,0];let n=0,nd=0,nm=0,ne=0;SLOTS.forEach(([id])=>(dm[id]||[]).forEach(en=>{n++;const a=menMac(en);if(a){nd++;if(en.me&&!(en.s==="b"&&menRec(en)&&menRec(en).r.macro&&menRec(en).r.macro.kcal!=null))ne++;a.forEach((v,i)=>{if(v!=null)s[i]+=v})}else if(en.s!=="x")nm++}));return{n,nd,nm,ne,s:s.map(Math.round)}}
 /* estimare macro cu AI pentru intrarile fara macro dintr-o zi; valorile se pastreaza in intrarea din meniu, marcate "estimat" */
@@ -1142,8 +1144,10 @@ function drawMenu(){
  function macBlock(dm,d){const t=dayMac(dm);if(!t.nd&&!t.nm)return"";
   const eb=t.nm?`<button class="alt" data-mest="d" data-day="${d}" style="margin:8px 0 0">Estimeaza macro cu AI (${t.nm})</button>`:"";
   if(!t.nd)return`<div class="mmac muted">Fara macro pentru ${t.nm} ${t.nm===1?"reteta":"retete"}.${eb?"<br>":""}${eb}</div>`;
-  const tg=(v,x)=>x?` / ${x}`:"";
-  return`<div class="mmac"><b>Total aprox.:</b> ${t.s[0]}${tg(0,mt.k)} kcal - ${t.s[1]}${tg(0,mt.p)} g proteine - ${t.s[2]} g carbo - ${t.s[3]} g grasimi<div class="muted">cate 1 portie din fiecare reteta${t.ne?"; "+t.ne+" estimat"+(t.ne===1?"a":"e")+" cu AI":""}${t.nm?"; "+t.nm+" fara macro":""}</div>${eb}</div>`}
+  const pt=profT(),T=[mt.k||0,mt.p||0,pt.ok?pt.c:0,pt.ok?pt.f:0],U=["kcal","g","g","g"],N=["Calorii","Proteine","Carbohidrati","Grasimi"],OV=[1,0,1,1];
+  const note=`<div class="muted">cate 1 portie din fiecare reteta${t.ne?"; "+t.ne+" estimat"+(t.ne===1?"a":"e")+" cu AI":""}${t.nm?"; "+t.nm+" fara macro":""}</div>`;
+  if(!T.some(x=>x))return`<div class="mmac"><b>Total aprox.:</b> ${t.s[0]} kcal - ${t.s[1]} g proteine - ${t.s[2]} g carbo - ${t.s[3]} g grasimi${note}${eb}</div>`;
+  return`<div class="mmac"><b>Macro, total aprox.</b>${[0,1,2,3].map(i=>T[i]?barRow(N[i],t.s[i],T[i],U[i],!!OV[i],true,false):`<div class="mic big"><span class="mn2">${N[i]}</span><span class="mbar"></span><span class="mv"><b>${t.s[i]}</b> ${U[i]}</span></div>`).join("")}${note}${eb}</div>`}
  const isOpen=d=>MDO[d]!==undefined?MDO[d]:(d===today||(!days.includes(today)&&d===days[0]));
  const rows=days.map(d=>{const dm=m[d]||{},op=isOpen(d),has=SLOTS.some(([s])=>(dm[s]||[]).length);
   return`<div class="card mday${d===today?" today":""}"><div class="mh"><h2 class="mhh"><button class="mtog" data-mtog="1" data-day="${d}" aria-expanded="${op}"><span class="chev">${op?"&#9662;":"&#9656;"}</span> ${esc(dLab(d))}${d===today?` <span class="lb">azi</span>`:d===tom?` <span class="lb">maine</span>`:""}</button></h2>${has?`<button class="alt ib" data-mshop="d" data-day="${d}" aria-label="Cumparaturi pentru ziua asta" title="Cumparaturi pentru ziua asta">${CART}</button>`:""}</div>`+
@@ -1182,7 +1186,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.1.1";
+const APP_V="3.1.2";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){

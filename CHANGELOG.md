@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.1.2
+- Barele de nutrienti si macro: o singura culoare (verdele aplicatiei) in loc de gradient. Bara arata cat din tinta ai atins; linia marcheaza 100%; terracotta apare doar peste tinta la limite (sodiu, saturate, zaharuri) si la calorii, carbohidrati si grasimi. Pentru proteine si micronutrienti de atins, peste 100% ramane verde.
+- Macro in Meniu: bloc propriu, cu bare mai groase, valoare, tinta, procent si "mai ramane" (sau "peste tinta cu ..."). Fara tinte ramane linia de total ca inainte.
+- "adulti" in loc de "adulti 18+".
+
 ## 3.1.1
 - **Reparatie in calculul de macro:** un ingredient ca "apa" era potrivit cu "Ton in apa" (potrivire aproximativa) si aduna calorii si proteine de ton. Acum apa si celelalte ingrediente fara aport caloric sunt recunoscute inainte de orice potrivire aproximativa. Se corecteaza si micronutrientii din meniu si din reteta.
 - Panoul "Calculat din Info": nu mai repeta valorile din carte ("Acum in reteta" era deja afisat deasupra), iar "Cum am calculat" arata acum aportul fiecarui ingredient per portie (kcal, proteine, carbo, grasimi), de la cel mai mare la cel mai mic, in loc sa repete cantitatea. Potrivirile aproximative sunt marcate "verifica".
