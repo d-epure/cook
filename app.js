@@ -1182,7 +1182,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.1.0";
+const APP_V="3.1.1";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1575,8 +1575,9 @@ const FPREF=["ulei de floarea-soarelui","faina alba","orez alb","lapte 3,5%","sm
 function fdMatch(name){const it=mTok(name);if(!it.length)return null;const S=new Set(it),B=fdBase(),raw=dn(name).toLowerCase();
  const ok=f=>!FST.test(f.nm)||FST.test(raw),pr=f=>{const j=FPREF.indexOf(f.nm);return j<0?99:j};
  const sub=L=>{const c=L.filter(f=>f.t.length&&f.t.every(w=>S.has(w))&&ok(f));if(!c.length)return null;const m=Math.max(...c.map(f=>f.t.length));return c.filter(f=>f.t.length===m).sort((a,b)=>pr(a)-pr(b))[0]};
- const U=Object.values(FD).map(f=>({n:f.n,nm:dn(f.n).toLowerCase(),t:f.t||mTok(f.n),k:f.k,cv:f.cv,user:1}));
+ const U=Object.values(FD).map(f=>({n:f.n,nm:dn(f.n).toLowerCase(),t:f.t||mTok(f.n),k:f.k,cv:f.cv,user:1,v:(f.x&&f.x.length===23&&f.k&&f.k.length===4)?f.k.map(v=>+v||0).concat(f.x.map(v=>v==null||v===""?0:+v)):null}));
  let f=sub(U)||sub(B.R);if(f)return f;
+ if(it.every(w=>B.Z.has(w)))return{zero:1,n:"fara aport caloric"};
  if(it.length===1){const c=B.R.filter(f=>f.t.includes(it[0])&&ok(f));if(c.length){c.sort((a,b)=>(b.t[0]===it[0])-(a.t[0]===it[0])||pr(a)-pr(b)||a.t.length-b.t.length);return Object.assign({loose:1},c[0])}}
  if(it.every(w=>B.Z.has(w)))return{zero:1,n:"fara aport caloric"};
  return null}
@@ -1609,10 +1610,12 @@ const fdNeedCv=x=>fdGrams(x,{k:[0,0,0,0]})==null;
 function macPanel(bv,i){const r=BOOK[i],L=macLocal(r),box=bv.querySelector("[data-macp]"),m=r.macro,had=m&&m.kcal!=null,o=L.o;bv._ml=L;
  if(!L.n){box.innerHTML='<p class="muted">Nu sunt ingrediente cu cantitate de calculat.</p>';return}
  const hk=!!LS("rk");
- let h=`<div class="card" style="margin:8px 0;background:var(--soft)"><b>${L.ok?"Calculat din Info: "+esc(macTxt(o))+" per portie":"Nu am putut calcula nimic inca"}</b><p class="muted" style="margin:4px 0">Din ${L.ok} din ${L.n} ingrediente${L.ap?"; la "+L.ap+" greutatea e estimata (bucati, linguri, cesti)":""}.${r.portii==null?" Reteta nu are numar de portii: valorile sunt pentru toata reteta.":""}</p>${had&&L.ok?`<p class="muted" style="margin:4px 0">Acum in reteta: ${esc(macTxt(m))}.</p>`:""}`;
+ let h=`<div class="card" style="margin:8px 0;background:var(--soft)"><b>${L.ok?"Calculat din Info: "+esc(macTxt(o))+" per portie":"Nu am putut calcula nimic inca"}</b><p class="muted" style="margin:4px 0">Din ${L.ok} din ${L.n} ingrediente${L.ap?"; la "+L.ap+" greutatea e estimata (bucati, linguri, cesti)":""}.${r.portii==null?" Reteta nu are numar de portii: valorile sunt pentru toata reteta.":""}</p>`;
  if(L.miss.length){h+=`<div class="warn" style="margin:8px 0"><b>Fara date pentru ${L.miss.length} ingrediente.</b> Pentru fiecare alegi: cauti cu AI sau completezi tu; ramane salvat in aplicatie si le folosesc data viitoare.${hk?"":" Pentru AI adauga cheia API in Setari."}</div>`+
   L.miss.map((z,j)=>`<div class="card" data-mrow="${j}" style="margin:6px 0"><b>${esc(dn(z.x.n))}</b> <span class="muted">(${esc(dn(ingLine(z.x)))}) ${z.why==="date"?"nu e in Info":"nu pot converti \""+esc(z.x.u||"bucata")+"\" in grame"}</span><div class="row" style="gap:8px;margin-top:6px"><button class="alt" type="button" data-mai="${j}" style="margin:0"${hk?"":" disabled"}>Cauta cu AI</button><button class="alt" type="button" data-mman="${j}" style="margin:0">Completeaza manual</button></div><div data-mform></div></div>`).join("")}
- if(L.det.length)h+=`<details><summary>Cum am calculat</summary><ul>${L.det.map(d=>`<li>${esc(ingLine(d.x))}: ${d.f.zero?"fara aport caloric":Math.round(d.g)+" g "+esc(d.f.n)+(d.f.loose?" (potrivire aproximativa)":"")+(d.f.user?" (adaugat de tine)":"")}${d.ap?" (greutate estimata)":""}</li>`).join("")}</ul></details>`;
+ if(L.det.length){const por=r.portii||1,cn=d=>d.f.zero?{kcal:0,proteine:0,grasimi:0,carbo:0}:{kcal:Math.round(d.g*d.f.k[0]/100/por),proteine:r1(d.g*d.f.k[1]/100/por),grasimi:r1(d.g*d.f.k[2]/100/por),carbo:r1(d.g*d.f.k[3]/100/por)},
+  W=d=>["g","gr","gram","grame"].includes(dn(d.x.u||"").toLowerCase().trim());
+  h+=`<details><summary>Cum am calculat (aportul fiecarui ingredient, per portie)</summary><ul>${L.det.map(d=>({d,c:cn(d)})).sort((a,b)=>b.c.kcal-a.c.kcal).map(({d,c})=>`<li>${esc(ingLine(d.x))} &rarr; ${d.f.zero?"fara aport caloric":esc(d.f.n)+(d.f.loose?" (potrivire aproximativa, verifica)":"")+(d.f.user?" (adaugat de tine)":"")+(W(d)&&!d.ap?"":", "+Math.round(d.g)+" g"+(d.ap?" estimat":""))+": "+esc(macTxt(c))}</li>`).join("")}</ul></details>`}
  if(L.ok)h+=`<div class="acts"><button class="go" type="button" data-msv="1">${had?"Foloseste valorile calculate":"Salveaza pe reteta"}</button></div>${L.miss.length?`<p class="muted" style="margin:4px 0">Calculul e partial; poti salva acum si recalcula dupa ce completezi restul.</p>`:""}`;
  box.innerHTML=h+"</div>"}
 const XK=ICOL.slice(4),XI={};IMIC.forEach(([,g])=>g.forEach(([k,n,u])=>{XI[k]=[n,u]}));

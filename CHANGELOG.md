@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.1.1
+- **Reparatie in calculul de macro:** un ingredient ca "apa" era potrivit cu "Ton in apa" (potrivire aproximativa) si aduna calorii si proteine de ton. Acum apa si celelalte ingrediente fara aport caloric sunt recunoscute inainte de orice potrivire aproximativa. Se corecteaza si micronutrientii din meniu si din reteta.
+- Panoul "Calculat din Info": nu mai repeta valorile din carte ("Acum in reteta" era deja afisat deasupra), iar "Cum am calculat" arata acum aportul fiecarui ingredient per portie (kcal, proteine, carbo, grasimi), de la cel mai mare la cel mai mic, in loc sa repete cantitatea. Potrivirile aproximative sunt marcate "verifica".
+- Alimentele tale cu valori extinse (fibre, minerale, vitamine) intra acum si in calculul micronutrientilor.
+
 ## 3.1.0
 - **Profil nutritional** (Setari > Profil nutritional): sex, varsta, greutate, inaltime, nivel de activitate si etapa (mentinere, crestere masa musculara, definire). Din el se calculeaza tintele zilnice: calorii (formula Mifflin-St Jeor x nivel de activitate, +10% la crestere, -15% la definire), proteine (standard 0,83 / 1,6 / 2,0 g pe kg dupa etapa), grasimi (30% din calorii), carbohidrati (restul), fibre.
 - **Tintele de macro au standard recomandat, dar se pot edita:** calorii, proteine pe kg, grasimi in procente din calorii. Daca golesti un camp, revine la standard.
