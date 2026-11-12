@@ -1119,7 +1119,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="2.34.0";
+const APP_V="2.34.1";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1167,10 +1167,10 @@ $("#fdl").onchange=e=>{const n=e.target.dataset.fc;if(n===undefined)return;setCa
 $("#fdl").onclick=e=>{const n=e.target.dataset.fr;if(n===undefined)return;putCats(getCats().filter(x=>cn(x.n)!==cn(n)));drawFoods()};
 $("#pCats").onclick=()=>{show("setari");setSub("alimente");$("#cdet").open=true;window.scrollTo(0,0)};
 /* Setari: pagina de pornire cu lista si stari; Utilizare in fata, Tehnic pliat (2.24.1) */
-const SUBS=["aparate","pref","alimente","etichete","mese","cont","date","despre"];
-const SGMAP={aparate:["aparate"],pref:["pref"],alimente:["alimente"],etichete:["etichete"],mese:["mese"],cont:["cont"],date:["biblioteca","date"],despre:["despre"]};
-const STITLE={aparate:"Aparate",pref:"Preferinte alimente",alimente:"Categorii alimente",etichete:"Etichete retete",mese:"Mese",cont:"AI si cheie",date:"Carti si date",despre:"Despre"};
-const SUBOF={biblioteca:"date",tehnic:"cont"},TABOF=e=>SUBOF[e]||e,WIDE=window.matchMedia("(min-width:900px)");
+const SUBS=["aparate","pref","alimente","etichete","mese","cont","carti","backup","despre"];
+const SGMAP={aparate:["aparate"],pref:["pref"],alimente:["alimente"],etichete:["etichete"],mese:["mese"],cont:["cont"],carti:["biblioteca"],backup:["bkfile","bksnap","bkdb"],despre:["despre"]};
+const STITLE={aparate:"Aparate",pref:"Preferinte alimente",alimente:"Categorii alimente",etichete:"Etichete retete",mese:"Mese",cont:"AI si cheie",carti:"Carti",backup:"Backup",despre:"Despre"};
+const SUBOF={biblioteca:"carti",date:"carti",tehnic:"cont"},TABOF=e=>SUBOF[e]||e,WIDE=window.matchMedia("(min-width:900px)");
 let SUB=null;
 const sEff=()=>SUB||(WIDE.matches?"aparate":null);
 function setSub(s){s=TABOF(s);SUB=SUBS.includes(s)?s:null;sRender()}
@@ -1183,13 +1183,14 @@ function sStat(id){try{
  if(id==="etichete")return TAGS.length+" etichete";
  if(id==="mese"){const n=Object.keys(getPxc()).length;return n?n+(n===1?" categorie cu masa aleasa":" categorii cu masa aleasa"):"mese automate"}
  if(id==="cont")return (LS("rk")?"Cheie setata":"Cheie lipsa")+" \u00b7 "+((LS("rm1")||"claude-haiku-4-5").replace("claude-",""));
- if(id==="date"){const t=Math.max(+LS("rbk")||0,+LS("rdbl")||0),n=(()=>{try{return STORED.length}catch(e){return 0}})();return (n?n+" retete in biblioteca \u00b7 ":"")+(t?"backup: "+new Date(t).toLocaleDateString("ro-RO",{day:"numeric",month:"short"}):"niciun backup")}
+ if(id==="carti"){const n=(()=>{try{return STORED.length}catch(e){return 0}})();return n?n+" retete in biblioteca":"nicio carte incarcata"}
+ if(id==="backup"){const t=Math.max(+LS("rbk")||0,+LS("rdbl")||0);return (t?"ultimul backup: "+new Date(t).toLocaleDateString("ro-RO",{day:"numeric",month:"short"}):"niciun backup")+(dbOn()?" \u00b7 Dropbox conectat":"")}
  if(id==="despre")return "Versiunea "+APP_V}catch(e){}return""}
-function sRow(id,e){const w=id==="cont"&&!LS("rk")||id==="date"&&bkDue();return`<button type="button" class="srow${e===id?" on":""}" data-s="${id}"><span class="srt"><b>${STITLE[id]}</b><span class="srs${w?" warn2":""}">${esc(sStat(id))}</span></span><span class="chev" aria-hidden="true">&rsaquo;</span></button>`}
+function sRow(id,e){const w=id==="cont"&&!LS("rk")||id==="backup"&&bkDue();return`<button type="button" class="srow${e===id?" on":""}" data-s="${id}"><span class="srt"><b>${STITLE[id]}</b><span class="srs${w?" warn2":""}">${esc(sStat(id))}</span></span><span class="chev" aria-hidden="true">&rsaquo;</span></button>`}
 let TOPEN=false; /* 2.24.1: Tehnic ramane deschis daca l-ai deschis tu, chiar daca lista se redeseneaza */
-function renderSnav(e){const at=sAttn(),tech=["cont","date","despre"],inT=tech.includes(e);
+function renderSnav(e){const at=sAttn(),tech=["cont","carti","backup","despre"],inT=tech.includes(e);
  $("#snav").innerHTML=`<div class="shd"><h2 class="stt">Utilizare</h2><p class="muted" style="margin:2px 0 0">Cum gatesti si cum planifici</p></div><div class="sgrp">${["aparate","pref","alimente","etichete","mese"].map(i=>sRow(i,e)).join("")}</div>
- <details class="adv"${inT||TOPEN?" open":""}><summary><span class="chev" aria-hidden="true">&rsaquo;</span><span style="flex:1">Tehnic: cheie AI, carti si date, despre</span><span class="${at.length?"warn2":"okk"}">${at.length?"&bull; "+esc(at.join(", ")):"in ordine"}</span></summary><div class="sgrp">${tech.map(i=>sRow(i,e)).join("")}</div></details>`}
+ <details class="adv"${inT||TOPEN?" open":""}><summary><span class="chev" aria-hidden="true">&rsaquo;</span><span style="flex:1">Tehnic: cheie AI, carti, backup, despre</span><span class="${at.length?"warn2":"okk"}">${at.length?"&bull; "+esc(at.join(", ")):"in ordine"}</span></summary><div class="sgrp">${tech.map(i=>sRow(i,e)).join("")}</div></details>`}
 function sRender(){const e=sEff();$("#v-setari").classList.toggle("sm-det",!!SUB);renderSnav(e);
  document.querySelectorAll("#v-setari [data-sg]").forEach(c=>c.classList.toggle("hidden",!(e&&SGMAP[e].includes(c.dataset.sg))));
  $("#sbt").textContent=e?STITLE[e]:"";document.querySelectorAll("#sdet .card h2").forEach(x=>x.classList.remove("dup"));if(SUB){const cs=document.querySelectorAll("#sdet .card[data-sg]:not(.hidden)"),x=cs.length===1&&cs[0].querySelector(":scope>h2");if(x)x.classList.add("dup")}
@@ -1289,9 +1290,9 @@ async function dbBackup(){const f=bkBuild();
  try{for(const x of(await dbList()).slice(DBN))await dbApi("https://api.dropboxapi.com/2/files/delete_v2",{path:x.path_lower})}catch(e){}
  bkBadge();return f.info}
 async function snDraw(){const el=$("#snbox");if(!el)return;const L=await snapList();
- el.innerHTML=`<h3 style="margin:16px 0 4px">Copii automate in acest browser</h3><p class="muted" style="margin:0 0 8px">Aplicatia isi face singura o copie (cel mult una la 20 de ore) si le pastreaza pe ultimele ${SNAPN}. Te ajuta daca stergi sau strici ceva; nu te ajuta daca stergi datele browserului.</p>`+
+ el.innerHTML=`<p class="muted" style="margin:0 0 8px">Aplicatia isi face singura o copie (cel mult una la 20 de ore) si le pastreaza pe ultimele ${SNAPN}. Te ajuta daca stergi sau strici ceva; nu te ajuta daca stergi datele browserului.</p>`+
   (IDBOK&&DB?(L.length?L.map(k=>`<div class="apr"><span>${esc(fmtDT(k.slice(5)))}</span><button class="alt" type="button" data-snr="${esc(k)}">Restaureaza</button></div>`).join(""):'<p class="muted">Inca nu exista nicio copie.</p>')+`<button class="alt" type="button" data-snmk="1" style="margin-top:8px">Fa o copie acum</button>`:'<p class="muted">Browserul nu permite baza de date locala, deci copiile automate nu sunt disponibile.</p>')}
-async function dbDraw(msg){const el=$("#dbbox");if(!el)return;const k=DBK();let h=`<h3 style="margin:16px 0 4px">Backup in Dropbox</h3>`;
+async function dbDraw(msg){const el=$("#dbbox");if(!el)return;const k=DBK();let h="";
  if(!k){h+=`<p class="muted" style="margin:0 0 8px">Creezi o data o aplicatie in Dropbox (pasii sunt in README) si lipesti aici "App key". Nu e o parola. Backup-urile ajung doar in folderul aplicatiei, in Dropbox-ul tau.</p><label for="dbk">App key Dropbox</label><input id="dbk" autocomplete="off" placeholder="App key"><button class="alt" type="button" data-dbks="1" style="margin-top:8px">Salveaza cheia</button>`}
  else if(!dbOn()){h+=`<p class="muted" style="margin:0 0 8px">App key salvat. Adresa de redirectionare pe care o adaugi in aplicatia Dropbox: <b>${esc(dbRedirect())}</b></p><button class="go" type="button" data-dbc="1" style="margin:0">Conecteaza Dropbox</button> <button class="alt" type="button" data-dbkx="1">Schimba cheia</button>`}
  else{h+=`<p class="muted" style="margin:0 0 8px">Conectat. ${LS("rdbl")?"Ultimul backup in Dropbox: "+esc(fmtDT(+LS("rdbl")))+".":"Nu ai facut inca un backup in Dropbox."}${LS("rdbe")?" Ultima incercare automata a esuat: "+esc(LS("rdbe"))+".":""}</p><button class="go" type="button" data-dbs="1" style="margin:0">Salveaza acum in Dropbox</button> <button class="alt" type="button" data-dbx="1">Deconecteaza</button>
@@ -1314,9 +1315,9 @@ $("#dbbox").onclick=async e=>{const b=e.target,d=b.dataset;
 $("#dbbox").onchange=e=>{if(e.target.id==="dba")LS("rdba",e.target.checked?"1":"0")};
 /* intoarcere din Dropbox dupa autorizare: ?code=... */
 (async()=>{const q=new URLSearchParams(location.search),c=q.get("code"),v=sessionStorage.getItem("rdbv");if(!(c&&v)&&!q.get("error"))return;
- try{history.replaceState(null,"",location.pathname)}catch(e){}try{sessionStorage.removeItem("rdbv")}catch(e){}if(!c||!v){show("setari");setSub("date");toast("Conectarea Dropbox a fost anulata.");return}
- try{const j=await dbToken({grant_type:"authorization_code",code:c,code_verifier:v,client_id:DBK(),redirect_uri:dbRedirect()});LS("rdbt",j.refresh_token);DBAT=j.access_token;DBAX=Date.now()+(j.expires_in||14400)*1000;show("setari");setSub("date");toast("Dropbox conectat.");dbDraw()}
- catch(x){show("setari");setSub("date");dbDraw("Nu am putut conecta Dropbox: "+(x.message||x))}})();
+ try{history.replaceState(null,"",location.pathname)}catch(e){}try{sessionStorage.removeItem("rdbv")}catch(e){}if(!c||!v){show("setari");setSub("backup");toast("Conectarea Dropbox a fost anulata.");return}
+ try{const j=await dbToken({grant_type:"authorization_code",code:c,code_verifier:v,client_id:DBK(),redirect_uri:dbRedirect()});LS("rdbt",j.refresh_token);DBAT=j.access_token;DBAX=Date.now()+(j.expires_in||14400)*1000;show("setari");setSub("backup");toast("Dropbox conectat.");dbDraw()}
+ catch(x){show("setari");setSub("backup");dbDraw("Nu am putut conecta Dropbox: "+(x.message||x))}})();
 snDraw();dbDraw();
 /* copii automate la pornire (dupa ce biblioteca e incarcata) */
 setTimeout(async()=>{await snapMake(false);snDraw();

@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.34.1
+- Setari > Tehnic: pagina "Carti si date" e impartita in doua. "Carti" pastreaza incarcarea, fisierul de corectii si descarcarea/stergerea (pe carte si toate). "Backup" are trei carduri separate: "Backup in fisier", "Copii automate in acest browser" si "Backup in Dropbox". Randul Backup arata "ultimul backup: data · Dropbox conectat" si poarta avertizarea de backup vechi; randul Carti arata numarul de retete din biblioteca.
+- Doar aranjare: nicio functie si nicio data nu s-au schimbat.
+
 ## 2.34.0
 - Setari > Date: copii automate in acest browser. Aplicatia isi face singura o copie (cel mult una la 20 de ore, la pornire) si le pastreaza pe ultimele 3, cu "Restaureaza" si "Fa o copie acum". Inainte de orice restaurare se face o copie a starii curente. Nu te ajuta daca stergi datele browserului.
 - Setari > Date: backup in Dropbox. Lipesti o data "App key" din aplicatia ta Dropbox, conectezi contul (autentificare PKCE, fara secret in cod), apoi "Salveaza acum in Dropbox" sau copie automata o data pe zi la deschidere (poate fi oprita). Se pastreaza ultimele 10 copii in folderul aplicatiei; poti restaura oricare, cu previzualizare si confirmare ca la restaurarea din fisier.

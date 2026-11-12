@@ -16,11 +16,11 @@ Aplicatie personala pentru retete: le gasesti, le adaptezi, le planifici si faci
   - *Masuri*: cat cantareste o lingura, o lingurita sau o cana din alimentele care se masoara asa.
   - *Gatire*: sfaturi generale pentru cine invata sa gateasca, pe teme pliabile: tehnici de baza, timpi si temperaturi, siguranta alimentara, inlocuiri si cum repari o mancare.
   - Sursa: USDA National Nutrient Database for Standard Reference, versiunea 28 (domeniu public), plus drojdia inactiva dupa eticheta produsului.
-- **Setari**: AI si cheie (cheia API, modele), Aparate, Preferinte alimente, Categorii alimente, Etichete retete, Mese (la ce masa se potriveste fiecare categorie), Carti si date (incarcarea si descarcarea cartilor, copie de siguranta) si Despre (versiune si istoric).
+- **Setari**: AI si cheie (cheia API, modele), Aparate, Preferinte alimente, Categorii alimente, Etichete retete, Mese (la ce masa se potriveste fiecare categorie), Carti (incarcarea, corectiile si descarcarea cartilor), Backup (in fisier, copii automate in browser, Dropbox) si Despre (versiune si istoric).
 
 AI-ul (Anthropic) se foloseste doar cand apesi: idei, reteta completa, adaptare, estimare de macro si, optional, un meniu generat. Restul (cautare, meniu propus, liste, debara, Info) merge local si gratuit.
 
-Portii: numarul se confirma separat de restul verificarilor (buton "Confirma numarul de portii" in editor); "-" inseamna ca nu se aplica. Corectii in masa (portii, marcaje) se aplica din Setari > Date, "Aplica un fisier de corectii", fara sa inlocuiasca retetele.
+Portii: numarul se confirma separat de restul verificarilor (buton "Confirma numarul de portii" in editor); "-" inseamna ca nu se aplica. Corectii in masa (portii, marcaje) se aplica din Setari > Carti, "Aplica un fisier de corectii", fara sa inlocuiasca retetele.
 
 Macro pe reteta: butonul "Calculeaza din Info" (in reteta deschisa) calculeaza local din Info > Ingrediente. Ingredientele fara date le cauti cu AI sau le completezi manual; se salveaza local (cheia `rfd`, inclusa in backup) si apar in Info > Ingrediente, "Adaugate de tine". Greutatile pe bucata si cuvintele fara calorii sunt in `nutri.js` (`NUTRI.P`, `NUTRI.Z`).
 
@@ -28,13 +28,13 @@ Macro pe reteta: butonul "Calculeaza din Info" (in reteta deschisa) calculeaza l
 
 Datele tale stau in browser (localStorage si IndexedDB), nu in fisierele aplicatiei. Incarcarea unei versiuni noi in repo nu le sterge, inclusiv cheia API (`rk`) ramane in browser.
 
-**Backup complet** (Setari > Date, "Descarca backup"): biblioteca intreaga cu toate retetele asa cum sunt (portii, `pna`, marcaje de verificat, etichete, text editat, macro), alimentele adaugate de tine (`rfd`, cu cei 27 de nutrienti si marca AI/manual), retete salvate, favorite, jurnal si notite, meniu, tinte de macro, preferinte de alimente, mese pe categorie, definitiile etichetelor, aparate, debara, lista de cumparaturi, categoriile alimentelor, modelele AI alese. Nu include cheia API si datele de conectare Dropbox (intentionat) si nici datele Info din `nutri.js` (vin cu aplicatia). Se restaureaza din Setari > Date, nu reincarcand fisierele cartilor.
+**Backup complet** (Setari > Backup > Backup in fisier, "Descarca backup"): biblioteca intreaga cu toate retetele asa cum sunt (portii, `pna`, marcaje de verificat, etichete, text editat, macro), alimentele adaugate de tine (`rfd`, cu cei 27 de nutrienti si marca AI/manual), retete salvate, favorite, jurnal si notite, meniu, tinte de macro, preferinte de alimente, mese pe categorie, definitiile etichetelor, aparate, debara, lista de cumparaturi, categoriile alimentelor, modelele AI alese. Nu include cheia API si datele de conectare Dropbox (intentionat) si nici datele Info din `nutri.js` (vin cu aplicatia). Se restaureaza din Setari > Backup, nu reincarcand fisierele cartilor.
 
-**Copii automate si Dropbox** (Setari > Date): copiile automate sunt in IndexedDB (ultimele 3, cel mult una la 20 de ore). Dropbox: creezi o aplicatie la dropbox.com/developers/apps (Create app > Scoped access > App folder, cu un nume unic), la Permissions bifezi `files.metadata.read`, `files.content.read`, `files.content.write` si apesi Submit, la Settings adaugi la "Redirect URIs" exact adresa afisata in aplicatie (https://utilizator.github.io/repo/), copiezi "App key" si il lipesti in Setari > Date > Backup in Dropbox, apoi "Conecteaza Dropbox". Nu e nevoie de "App secret" (PKCE). Daca schimbi permisiunile dupa conectare, deconecteaza si conecteaza din nou. Se pastreaza ultimele 10 copii. Cheile `rdbk` (app key), `rdbt` (token), `rdbl` si `rdba` nu intra in backup.
+**Copii automate si Dropbox** (Setari > Backup): copiile automate sunt in IndexedDB (ultimele 3, cel mult una la 20 de ore). Dropbox: creezi o aplicatie la dropbox.com/developers/apps (Create app > Scoped access > App folder, cu un nume unic), la Permissions bifezi `files.metadata.read`, `files.content.read`, `files.content.write` si apesi Submit, la Settings adaugi la "Redirect URIs" exact adresa afisata in aplicatie (https://utilizator.github.io/repo/), copiezi "App key" si il lipesti in Setari > Backup > Backup in Dropbox, apoi "Conecteaza Dropbox". Nu e nevoie de "App secret" (PKCE). Daca schimbi permisiunile dupa conectare, deconecteaza si conecteaza din nou. Se pastreaza ultimele 10 copii. Cheile `rdbk` (app key), `rdbt` (token), `rdbl` si `rdba` nu intra in backup.
 
-**Backup per carte** (Setari > Date, "Descarca JSON" langa carte): doar retetele acelei carti, cu tot ce e scris pe ele (portii, marcaje, macro, text editat). Nu include alimentele tale (`rfd`), favoritele, jurnalul, notitele, meniul sau preferintele. Reincarcarea lui inlocuieste cartea respectiva.
+**Backup per carte** (Setari > Carti, "Descarca JSON" langa carte): doar retetele acelei carti, cu tot ce e scris pe ele (portii, marcaje, macro, text editat). Nu include alimentele tale (`rfd`), favoritele, jurnalul, notitele, meniul sau preferintele. Reincarcarea lui inlocuieste cartea respectiva.
 
-**Fisierul de corectii** (Setari > Date, "Aplica un fisier de corectii"): aplica portii si marcaje pe retetele deja incarcate, fara sa le inlocuiasca. E un fisier privat, nu se pune in repo.
+**Fisierul de corectii** (Setari > Carti, "Aplica un fisier de corectii"): aplica portii si marcaje pe retetele deja incarcate, fara sa le inlocuiasca. E un fisier privat, nu se pune in repo.
 
 Avertizare in Meniu: daca macro-ul din carte difera mult de calculul din Info, apare o nota sub reteta; "E in regula" o ascunde (campul `mok` pe reteta).
 
@@ -46,7 +46,7 @@ Avertizare in Meniu: daca macro-ul din carte difera mult de calculul din Info, a
 - `sw.js`, `manifest.webmanifest`, `icon-*.png` - instalare ca aplicatie si functionare fara net (se urca langa `index.html`)
 - `CHANGELOG.md` - istoricul versiunilor (cel mai nou primul)
 - `tests/` - teste automate cu Playwright (`test_*.py`, ajutor comun in `_h.py`)
-- Cartile tale (fisiere JSON) NU intra in repo public: le incarci din Setari > Carti si date. `retete.json`, daca exista, este doar un exemplu.
+- Cartile tale (fisiere JSON) NU intra in repo public: le incarci din Setari > Carti. `retete.json`, daca exista, este doar un exemplu.
 
 ## Cand modifici ceva
 1. Schimba `APP_V` in `app.js` si numarul `?v=...` din `index.html` (pentru ca GitHub Pages sa nu serveasca fisiere vechi din cache).
