@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.0.1
+- Sincronizare: cand aceeasi reteta (sau acelasi camp) e modificata pe ambele dispozitive, se pastreaza varianta de aici si esti anuntat. In Setari > Backup > Sincronizare Dropbox apare lista (reteta, camp, ce s-a pastrat, ce era pe celalalt dispozitiv), iar in aplicatie o bara cu "Vezi". "Am inteles" o sterge. Nu se creeaza versiuni duplicate.
+- Setari, randul Backup: cu Dropbox conectat scrie "sincronizat cu Dropbox: data", nu "ultimul backup".
+
 ## 3.0.0
 - **Sincronizare intre dispozitive prin Dropbox** (Setari > Backup > Sincronizare Dropbox). Un singur fisier `sync.json` in Dropbox-ul tau; se sincronizeaza tot ce intra in backup: biblioteca cu corectiile ei, retete salvate, favorite, etichete, aparate, lista, debara, meniu, notite, preferinte, alimente proprii. Nu se sincronizeaza cheia AI si cheile Dropbox.
 - Combinare in 3 pasi (starea de la ultima sincronizare, starea de aici, starea din Dropbox): modificarile facute pe dispozitive diferite se pastreaza amandoua; pe acelasi element castiga varianta de pe dispozitivul care sincronizeaza; o reteta modificata pe un dispozitiv si stearsa pe altul ramane; stergerile se propaga.

@@ -1119,7 +1119,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.0.0";
+const APP_V="3.0.1";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1191,7 +1191,7 @@ function sStat(id){try{
  if(id==="mese"){const n=Object.keys(getPxc()).length;return n?n+(n===1?" categorie cu masa aleasa":" categorii cu masa aleasa"):"mese automate"}
  if(id==="cont")return (LS("rk")?"Cheie setata":"Cheie lipsa")+" \u00b7 "+((LS("rm1")||"claude-haiku-4-5").replace("claude-",""));
  if(id==="carti"){const n=(()=>{try{return STORED.length}catch(e){return 0}})();return n?n+" retete in biblioteca":"nicio carte incarcata"}
- if(id==="backup"){const t=Math.max(+LS("rbk")||0,+LS("rdbl")||0);return (t?"ultimul backup: "+new Date(t).toLocaleDateString("ro-RO",{day:"numeric",month:"short"}):"niciun backup")+(dbOn()?" \u00b7 Dropbox conectat":"")}
+ if(id==="backup"){const f=t=>new Date(t).toLocaleDateString("ro-RO",{day:"numeric",month:"short"});if(dbOn())return +LS("rdbl")?"sincronizat cu Dropbox: "+f(+LS("rdbl")):"Dropbox conectat";const t=+LS("rbk")||0;return t?"ultimul backup: "+f(t):"niciun backup"}
  if(id==="despre")return "Versiunea "+APP_V}catch(e){}return""}
 function sRow(id,e){const w=id==="cont"&&!LS("rk")||id==="backup"&&bkDue();return`<button type="button" class="srow${e===id?" on":""}" data-s="${id}"><span class="srt"><b>${STITLE[id]}</b><span class="srs${w?" warn2":""}">${esc(sStat(id))}</span></span><span class="chev" aria-hidden="true">&rsaquo;</span></button>`}
 let TOPEN=false; /* 2.24.1: Tehnic ramane deschis daca l-ai deschis tu, chiar daca lista se redeseneaza */
@@ -1314,17 +1314,18 @@ function sySet(b,l,r){const J=JSON.stringify,mk=a=>new Map((Array.isArray(a)?a:[
  ml.forEach((x,k)=>{if(!(mb.has(k)&&!mr.has(k)))out.push(x)});mr.forEach((x,k)=>{if(!ml.has(k)&&!mb.has(k))out.push(x)});return out}
 function syIdArr(b,l,r,f,key,path){const idf=x=>{const v=f(x);return v==null?JSON.stringify(x):String(v)},mk=a=>new Map((Array.isArray(a)?a:[]).map(x=>[idf(x),x])),
  mb=mk(b),ml=mk(l),mr=mk(r),out=[],seen=new Set();
- const h=id=>{if(seen.has(id))return;seen.add(id);const m=syM(mb.get(id),ml.get(id),mr.get(id),key,path.concat("#"));if(m!==undefined)out.push(m)};
+ const h=id=>{if(seen.has(id))return;seen.add(id);const e=ml.get(id)||mr.get(id)||{},pc=SYCTX;SYCTX=e.titlu||e.n||String(id);const m=syM(mb.get(id),ml.get(id),mr.get(id),key,path.concat("#"));SYCTX=pc;if(m!==undefined)out.push(m)};
  ml.forEach((_,id)=>h(id));mr.forEach((_,id)=>h(id));return out}
+var SYC=[],SYCTX="";
 function syM(b,l,r,key,path){
  if(syEq(l,r))return l;if(syEq(l,b))return r;if(syEq(r,b))return l;
  if(l===undefined)return r;if(r===undefined)return l;
  const al=Array.isArray(l),ar=Array.isArray(r);
- if(al&&ar){const f=syId(key,path);if(f==="set")return sySet(b,l,r);if(f)return syIdArr(b,l,r,f,key,path);return l}
+ if(al&&ar){const f=syId(key,path);if(f==="set")return sySet(b,l,r);if(f)return syIdArr(b,l,r,f,key,path);SYC.push({k:key,nm:SYCTX,f:path[path.length-1],l,r});return l}
  if(!al&&!ar&&l&&r&&typeof l==="object"&&typeof r==="object"){const o={},bb=b&&typeof b==="object"&&!Array.isArray(b)?b:{};
   new Set([...Object.keys(l),...Object.keys(r)]).forEach(k=>{const v=syM(bb[k],l[k],r[k],key,path.concat(k));if(v!==undefined)o[k]=v});return o}
- return l}
-function syMerge(base,loc,rem){const o={};new Set([...Object.keys(base||{}),...Object.keys(loc||{}),...Object.keys(rem||{})]).forEach(k=>{const v=syM((base||{})[k],(loc||{})[k],(rem||{})[k],k,[]);if(v!==undefined)o[k]=v});return o}
+ SYC.push({k:key,nm:SYCTX,f:path[path.length-1],l,r});return l}
+function syMerge(base,loc,rem){SYC=[];SYCTX="";const o={};new Set([...Object.keys(base||{}),...Object.keys(loc||{}),...Object.keys(rem||{})]).forEach(k=>{const v=syM((base||{})[k],(loc||{})[k],(rem||{})[k],k,[]);if(v!==undefined)o[k]=v});return o}
 const syEqO=(a,b)=>{const ks=new Set([...Object.keys(a||{}),...Object.keys(b||{})]);for(const k of ks)if(!syEq((a||{})[k],(b||{})[k]))return false;return true};
 const syDiff=(a,b)=>[...new Set(BK_KEYS.filter(k=>!syEq((a||{})[k],(b||{})[k])).map(k=>SY_LAB[k]))];
 /* frana: refuza o sincronizare care ar sterge mai mult de jumatate din biblioteca sau din retetele salvate */
@@ -1354,14 +1355,20 @@ async function syncRun(o){o=o||{};if(SYBUSY)return{busy:true};SYBUSY=true;SYLAST
    if(!o.force){const bl=syBrake(loc,remD,mer);if(bl)return{blocked:bl}}
    let rev=rem?rem.rev:null;
    if(!syEqO(mer,remD)){try{rev=await syPut(mer,rem?rem.rev:null)}catch(e){if(/conflict/.test(e.message||"")&&t<2)continue;throw e}}
+   const conf=SYC.slice();if(conf.length)syConfSave(conf);
    const chg=!syEqO(mer,loc);
-   if(chg&&!o.apply){LS("rdbl",String(Date.now()));return{ok:true,pending:true,diff:syDiff(loc,mer)}}
+   if(chg&&!o.apply){LS("rdbl",String(Date.now()));return{ok:true,pending:true,diff:syDiff(loc,mer),conf:conf.length}}
    if(chg)await syApplyLocal(mer,loc);
    await idbPut("syncbase",mer);if(rev)LS("rdbr",rev);LS("rdbl",String(Date.now()));try{localStorage.removeItem("rdbe")}catch(e){}bkBadge();
-   return{ok:true,applied:chg,diff:chg?syDiff(loc,mer):[]}}
+   return{ok:true,applied:chg,diff:chg?syDiff(loc,mer):[],conf:conf.length}}
   return{err:"Dropbox s-a schimbat in timpul sincronizarii. Incearca din nou."}}
  catch(e){return{err:e.message||"Eroare la sincronizare."}}
  finally{SYBUSY=false}}
+const SY_FL={portii:"portii",etichete:"etichete",ingrediente:"ingrediente",pasi_carte:"mod de preparare",macro:"macro",titlu:"titlu",categorie:"categorie",capitol:"capitol",sfaturi:"sfaturi",verifica:"marcaje de verificat",pna:"portii (nu se aplica)",mok:"avertizare macro"};
+const syVal=v=>v==null?"(gol)":typeof v==="object"?"(diferit)":String(v).slice(0,40);
+function syConfSave(c){let o=[];try{o=JSON.parse(LS("rsyc")||"[]")}catch(e){}if(!Array.isArray(o))o=[];
+ c.forEach(x=>o.push({t:Date.now(),nm:x.nm||SY_LAB[x.k]||x.k,f:SY_FL[x.f]||x.f||"",l:syVal(x.l),r:syVal(x.r)}));LS("rsyc",JSON.stringify(o.slice(-30)))}
+const syConfGet=()=>{try{const o=JSON.parse(LS("rsyc")||"[]");return Array.isArray(o)?o:[]}catch(e){return[]}};
 function syBar(txt,btn){const b=$("#sybar");if(!b)return;if(!txt){b.hidden=true;return}$("#sytxt").textContent=txt;$("#syGo").hidden=!btn;$("#syGo").textContent=btn||"";b.hidden=false}
 const syMsg=r=>r.err?r.err:r.blocked?"Sincronizare oprita: ar sterge peste jumatate din "+r.blocked+". Verifica datele inainte sa continui.":r.pending?"Sunt modificari noi de pe alt dispozitiv ("+r.diff.join(", ")+").":r.applied?"Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".":"Sincronizat.";
 async function syAuto(apply){if(!dbOn()||LS("rdba")==="0"||!hasData()&&!apply)return null;
@@ -1372,13 +1379,15 @@ async function syAuto(apply){if(!dbOn()||LS("rdba")==="0"||!hasData()&&!apply)re
  if(r.pending)syBar("Sunt modificari noi de pe alt dispozitiv ("+r.diff.join(", ")+").","Aplica acum");
  else if(r.blocked)syBar(syMsg(r),"");
  else syBar("");
+ if(syConfGet().length&&!r.pending&&!r.blocked)syBar(syConfGet().length+" modificari facute pe ambele dispozitive. Am pastrat varianta de aici.","Vezi");
  dbDraw();return r}
 /* marcheaza ca s-a schimbat ceva aici; trimite dupa 15 secunde de liniste */
 function syMark(k){if(!SYREADY||SYAPPLY||!dbOn())return;clearTimeout(SYT);SYT=setTimeout(()=>{if(Date.now()-SYLAST>5000)syAuto(false)},15000)}
 document.addEventListener("visibilitychange",()=>{if(!SYREADY||!dbOn())return;
  if(document.visibilityState==="hidden"){if(SYT){clearTimeout(SYT);SYT=0;syAuto(false)}}
  else if(Date.now()-SYLAST>SY_MIN)syAuto(false)});
-$("#syGo").onclick=async()=>{$("#syGo").disabled=true;const r=await syncRun({apply:true});$("#syGo").disabled=false;
+$("#syGo").onclick=async()=>{if($("#syGo").textContent==="Vezi"){show("setari");setSub("backup");return}
+ $("#syGo").disabled=true;const r=await syncRun({apply:true});$("#syGo").disabled=false;
  if(r.applied){try{sessionStorage.setItem("rsyt","Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".")}catch(e){}location.reload();return}
  syBar(r.err||"");if(!r.err)toast(syMsg(r));dbDraw()};
 const DEFK="7hvolba2cog2zy8";
@@ -1386,6 +1395,7 @@ async function dbDraw(msg){const el=$("#dbbox");if(!el)return;let h="";
  if(!dbOn()){h+=`<p class="muted" style="margin:0 0 8px">Sincronizeaza retetele, meniul, lista si celelalte date intre telefon si laptop, prin Dropbox-ul tau. Datele ajung doar in folderul aplicatiei din contul tau. Te conectezi o data pe fiecare dispozitiv.</p><button class="go" type="button" data-dbc="1" style="margin:0">Conecteaza Dropbox</button>`}
  else{h+=`<p class="muted" style="margin:0 0 8px">Conectat. ${LS("rdbl")?"Ultima sincronizare: "+esc(fmtDT(+LS("rdbl")))+".":"Inca nu s-a sincronizat."}${LS("rdbe")?" Ultima incercare a esuat: "+esc(LS("rdbe"))+".":""}</p><button class="go" type="button" data-dbs="1" style="margin:0">Sincronizeaza acum</button> <button class="alt" type="button" data-dbx="1">Deconecteaza</button>
   <label style="display:flex;gap:8px;align-items:center;margin-top:10px"><input type="checkbox" id="dba"${LS("rdba")==="0"?"":" checked"} style="width:auto"> Sincronizare automata (la deschidere, dupa modificari si cand revii in aplicatie)</label>`}
+ const cf=syConfGet();if(cf.length)h+=`<div class="warn" style="margin-top:10px"><b>Modificate pe ambele dispozitive (${cf.length}).</b> Am pastrat varianta de aici; pe celalalt dispozitiv era alta.${cf.slice(-8).map(x=>`<div>${esc(x.nm)}${x.f?" - "+esc(x.f):""}: pastrat "${esc(x.l)}", pe celalalt "${esc(x.r)}"</div>`).join("")}<button class="alt" type="button" data-syc="1" style="margin-top:8px">Am inteles</button></div>`;
  h+=`<details style="margin-top:10px"><summary class="muted">Avansat: aplicatie Dropbox proprie</summary><p class="muted" style="margin:8px 0">Implicit se foloseste aplicatia Dropbox a acestei aplicatii. Daca ai creat una proprie, scrie aici App key. Adresa de redirectionare: <b>${esc(dbRedirect())}</b></p><input id="dbk" autocomplete="off" placeholder="App key" value="${esc(LS("rdbk")||"")}" aria-label="App key Dropbox"><button class="alt" type="button" data-dbks="1" style="margin-top:8px">${LS("rdbk")?"Salveaza cheia":"Foloseste cheia"}</button>${LS("rdbk")?' <button class="alt" type="button" data-dbkx="1" style="margin-top:8px">Revino la cea implicita</button>':""}</details>`;
  el.innerHTML=h+(msg?`<div class="muted" style="margin-top:8px" role="status">${esc(msg)}</div>`:"")}
 function bkPreview(txt,name){try{IMP=bkParse(txt,name);impDraw();$("#bkm").textContent="Verifica previzualizarea de mai jos si confirma restaurarea.";const p=$("#bipv");if(p&&p.scrollIntoView)p.scrollIntoView({block:"center"})}
@@ -1398,6 +1408,7 @@ $("#dbbox").onclick=async e=>{const b=e.target,d=b.dataset;
   if(v!==DBK()||LS("rdbt")){["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;try{await idbDel("syncbase")}catch(x){}}
   LS("rdbk",v);dbDraw("Cheia a fost schimbata. Conecteaza din nou.");return}
  if(d.dbkx!==undefined){try{localStorage.removeItem("rdbk")}catch(x){}["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;try{await idbDel("syncbase")}catch(x){}dbDraw("Se foloseste din nou aplicatia implicita. Conecteaza din nou.");return}
+ if(d.syc!==undefined){try{localStorage.removeItem("rsyc")}catch(x){}syBar("");dbDraw();return}
  if(d.dbc!==undefined){try{await dbConnect()}catch(x){dbDraw("Nu am putut porni conectarea: "+(x.message||x))}return}
  if(d.dbx!==undefined){["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;try{await idbDel("syncbase")}catch(x){}syBar("");bkBadge();dbDraw("Deconectat. Fisierul sync.json a ramas in Dropbox; datele de aici nu s-au schimbat.");return}
  if(d.dbs!==undefined){b.disabled=true;dbDraw("Se sincronizeaza...");const r=await syncRun({apply:true});
