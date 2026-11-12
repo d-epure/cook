@@ -1119,7 +1119,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.0.1";
+const APP_V="3.0.2";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1316,16 +1316,19 @@ function syIdArr(b,l,r,f,key,path){const idf=x=>{const v=f(x);return v==null?JSO
  mb=mk(b),ml=mk(l),mr=mk(r),out=[],seen=new Set();
  const h=id=>{if(seen.has(id))return;seen.add(id);const e=ml.get(id)||mr.get(id)||{},pc=SYCTX;SYCTX=e.titlu||e.n||String(id);const m=syM(mb.get(id),ml.get(id),mr.get(id),key,path.concat("#"));SYCTX=pc;if(m!==undefined)out.push(m)};
  ml.forEach((_,id)=>h(id));mr.forEach((_,id)=>h(id));return out}
-var SYC=[],SYCTX="";
+var SYC=[],SYCTX="",SYFIRST=false;
+const syEmp=v=>v==null||v===""||(Array.isArray(v)&&!v.length)||(typeof v==="object"&&!Array.isArray(v)&&!Object.keys(v).length);
 function syM(b,l,r,key,path){
  if(syEq(l,r))return l;if(syEq(l,b))return r;if(syEq(r,b))return l;
  if(l===undefined)return r;if(r===undefined)return l;
+ if(syEmp(l)&&!syEmp(r))return r;if(syEmp(r)&&!syEmp(l))return l;
  const al=Array.isArray(l),ar=Array.isArray(r);
- if(al&&ar){const f=syId(key,path);if(f==="set")return sySet(b,l,r);if(f)return syIdArr(b,l,r,f,key,path);SYC.push({k:key,nm:SYCTX,f:path[path.length-1],l,r});return l}
+ if(al&&ar){const f=syId(key,path);if(f==="set")return sySet(b,l,r);if(f)return syIdArr(b,l,r,f,key,path);return syAt(key,path,l,r)}
  if(!al&&!ar&&l&&r&&typeof l==="object"&&typeof r==="object"){const o={},bb=b&&typeof b==="object"&&!Array.isArray(b)?b:{};
   new Set([...Object.keys(l),...Object.keys(r)]).forEach(k=>{const v=syM(bb[k],l[k],r[k],key,path.concat(k));if(v!==undefined)o[k]=v});return o}
- SYC.push({k:key,nm:SYCTX,f:path[path.length-1],l,r});return l}
-function syMerge(base,loc,rem){SYC=[];SYCTX="";const o={};new Set([...Object.keys(base||{}),...Object.keys(loc||{}),...Object.keys(rem||{})]).forEach(k=>{const v=syM((base||{})[k],(loc||{})[k],(rem||{})[k],k,[]);if(v!==undefined)o[k]=v});return o}
+ return syAt(key,path,l,r)}
+function syAt(key,path,l,r){const c=SYFIRST?r:l;SYC.push({k:key,nm:SYCTX,f:path[path.length-1],l:c,r:SYFIRST?l:r});return c}
+function syMerge(base,loc,rem,first){SYC=[];SYCTX="";SYFIRST=!!first;const o={};new Set([...Object.keys(base||{}),...Object.keys(loc||{}),...Object.keys(rem||{})]).forEach(k=>{const v=syM((base||{})[k],(loc||{})[k],(rem||{})[k],k,[]);if(v!==undefined)o[k]=v});return o}
 const syEqO=(a,b)=>{const ks=new Set([...Object.keys(a||{}),...Object.keys(b||{})]);for(const k of ks)if(!syEq((a||{})[k],(b||{})[k]))return false;return true};
 const syDiff=(a,b)=>[...new Set(BK_KEYS.filter(k=>!syEq((a||{})[k],(b||{})[k])).map(k=>SY_LAB[k]))];
 /* frana: refuza o sincronizare care ar sterge mai mult de jumatate din biblioteca sau din retetele salvate */
@@ -1351,7 +1354,7 @@ async function syncRun(o){o=o||{};if(SYBUSY)return{busy:true};SYBUSY=true;SYLAST
  try{if(!(IDBOK&&DB))return{err:"Sincronizarea cere baza de date locala a browserului."};if(!dbOn())return{err:"Dropbox nu e conectat."};
   for(let t=0;t<3;t++){const loc=syLocal(),base=(await idbGet("syncbase"))||null;
    if(base&&syEqO(base,loc)&&!o.force){const rv=await syRev();if(rv&&rv===LS("rdbr")){LS("rdbl",String(Date.now()));return{ok:true,same:true}}}
-   const rem=await syFetch(),remD=rem?rem.data:{},mer=syMerge(base||{},loc,remD);
+   const rem=await syFetch(),remD=rem?rem.data:{},mer=syMerge(base||{},loc,remD,!base);
    if(!o.force){const bl=syBrake(loc,remD,mer);if(bl)return{blocked:bl}}
    let rev=rem?rem.rev:null;
    if(!syEqO(mer,remD)){try{rev=await syPut(mer,rem?rem.rev:null)}catch(e){if(/conflict/.test(e.message||"")&&t<2)continue;throw e}}
@@ -1379,7 +1382,7 @@ async function syAuto(apply){if(!dbOn()||LS("rdba")==="0"||!hasData()&&!apply)re
  if(r.pending)syBar("Sunt modificari noi de pe alt dispozitiv ("+r.diff.join(", ")+").","Aplica acum");
  else if(r.blocked)syBar(syMsg(r),"");
  else syBar("");
- if(syConfGet().length&&!r.pending&&!r.blocked)syBar(syConfGet().length+" modificari facute pe ambele dispozitive. Am pastrat varianta de aici.","Vezi");
+ if(syConfGet().length&&!r.pending&&!r.blocked)syBar(syConfGet().length+" modificari facute pe ambele dispozitive. Am pastrat o singura varianta.","Vezi");
  dbDraw();return r}
 /* marcheaza ca s-a schimbat ceva aici; trimite dupa 15 secunde de liniste */
 function syMark(k){if(!SYREADY||SYAPPLY||!dbOn())return;clearTimeout(SYT);SYT=setTimeout(()=>{if(Date.now()-SYLAST>5000)syAuto(false)},15000)}
@@ -1395,7 +1398,7 @@ async function dbDraw(msg){const el=$("#dbbox");if(!el)return;let h="";
  if(!dbOn()){h+=`<p class="muted" style="margin:0 0 8px">Sincronizeaza retetele, meniul, lista si celelalte date intre telefon si laptop, prin Dropbox-ul tau. Datele ajung doar in folderul aplicatiei din contul tau. Te conectezi o data pe fiecare dispozitiv.</p><button class="go" type="button" data-dbc="1" style="margin:0">Conecteaza Dropbox</button>`}
  else{h+=`<p class="muted" style="margin:0 0 8px">Conectat. ${LS("rdbl")?"Ultima sincronizare: "+esc(fmtDT(+LS("rdbl")))+".":"Inca nu s-a sincronizat."}${LS("rdbe")?" Ultima incercare a esuat: "+esc(LS("rdbe"))+".":""}</p><button class="go" type="button" data-dbs="1" style="margin:0">Sincronizeaza acum</button> <button class="alt" type="button" data-dbx="1">Deconecteaza</button>
   <label style="display:flex;gap:8px;align-items:center;margin-top:10px"><input type="checkbox" id="dba"${LS("rdba")==="0"?"":" checked"} style="width:auto"> Sincronizare automata (la deschidere, dupa modificari si cand revii in aplicatie)</label>`}
- const cf=syConfGet();if(cf.length)h+=`<div class="warn" style="margin-top:10px"><b>Modificate pe ambele dispozitive (${cf.length}).</b> Am pastrat varianta de aici; pe celalalt dispozitiv era alta.${cf.slice(-8).map(x=>`<div>${esc(x.nm)}${x.f?" - "+esc(x.f):""}: pastrat "${esc(x.l)}", pe celalalt "${esc(x.r)}"</div>`).join("")}<button class="alt" type="button" data-syc="1" style="margin-top:8px">Am inteles</button></div>`;
+ const cf=syConfGet();if(cf.length)h+=`<div class="warn" style="margin-top:10px"><b>Modificate pe ambele dispozitive (${cf.length}).</b> Am pastrat o singura varianta (cealalta e aratata mai jos).${cf.slice(-8).map(x=>`<div>${esc(x.nm)}${x.f?" - "+esc(x.f):""}: pastrat "${esc(x.l)}", cealalta era "${esc(x.r)}"</div>`).join("")}<button class="alt" type="button" data-syc="1" style="margin-top:8px">Am inteles</button></div>`;
  h+=`<details style="margin-top:10px"><summary class="muted">Avansat: aplicatie Dropbox proprie</summary><p class="muted" style="margin:8px 0">Implicit se foloseste aplicatia Dropbox a acestei aplicatii. Daca ai creat una proprie, scrie aici App key. Adresa de redirectionare: <b>${esc(dbRedirect())}</b></p><input id="dbk" autocomplete="off" placeholder="App key" value="${esc(LS("rdbk")||"")}" aria-label="App key Dropbox"><button class="alt" type="button" data-dbks="1" style="margin-top:8px">${LS("rdbk")?"Salveaza cheia":"Foloseste cheia"}</button>${LS("rdbk")?' <button class="alt" type="button" data-dbkx="1" style="margin-top:8px">Revino la cea implicita</button>':""}</details>`;
  el.innerHTML=h+(msg?`<div class="muted" style="margin-top:8px" role="status">${esc(msg)}</div>`:"")}
 function bkPreview(txt,name){try{IMP=bkParse(txt,name);impDraw();$("#bkm").textContent="Verifica previzualizarea de mai jos si confirma restaurarea.";const p=$("#bipv");if(p&&p.scrollIntoView)p.scrollIntoView({block:"center"})}
@@ -1424,7 +1427,8 @@ $("#dbbox").onchange=e=>{if(e.target.id==="dba")LS("rdba",e.target.checked?"1":"
  catch(x){show("setari");setSub("backup");dbDraw("Nu am putut conecta Dropbox: "+(x.message||x))}})();
 snDraw();dbDraw();
 /* copii automate la pornire (dupa ce biblioteca e incarcata) */
-setTimeout(async()=>{await snapMake(false);snDraw();SYREADY=true;await syAuto(true)},3000);
+setTimeout(async()=>{await snapMake(false);snDraw();if(LS("rsyv")!=="2"){try{if(IDBOK&&DB)await idbDel("syncbase")}catch(e){}["rdbr","rsyc"].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});LS("rsyv","2")}
+ SYREADY=true;await syAuto(true)},3000);
 try{const t=sessionStorage.getItem("rsyt");if(t){sessionStorage.removeItem("rsyt");setTimeout(()=>toast(t),600)}}catch(e){}
 $("#bflt").open=innerWidth>700;
 renderTagUI();

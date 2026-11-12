@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.0.2
+- **Reparatie in sincronizare (important):** la prima sincronizare a unui dispozitiv, o valoare goala de aici (de exemplu portii necompletate) suprascria o valoare existenta din Dropbox. Acum o valoare goala nu mai bate niciodata o valoare completata, iar la prima sincronizare, cand exista doua valori diferite, castiga cea din Dropbox si esti anuntat.
+- La prima pornire a acestei versiuni, baza de sincronizare se reseteaza o data (pe fiecare dispozitiv) si lista de conflicte se goleste, ca sa se repare automat datele suprascrise gresit in 3.0.0 / 3.0.1.
+- Mesajul de conflict nu mai spune "varianta de aici", ci arata ce s-a pastrat si ce era pe celalalt dispozitiv.
+
 ## 3.0.1
 - Sincronizare: cand aceeasi reteta (sau acelasi camp) e modificata pe ambele dispozitive, se pastreaza varianta de aici si esti anuntat. In Setari > Backup > Sincronizare Dropbox apare lista (reteta, camp, ce s-a pastrat, ce era pe celalalt dispozitiv), iar in aplicatie o bara cu "Vezi". "Am inteles" o sterge. Nu se creeaza versiuni duplicate.
 - Setari, randul Backup: cu Dropbox conectat scrie "sincronizat cu Dropbox: data", nu "ultimul backup".
