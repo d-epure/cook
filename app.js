@@ -1119,7 +1119,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="2.34.2";
+const APP_V="2.34.3";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1141,7 +1141,7 @@ function instHint(){const ua=navigator.userAgent||"",ios=/iPhone|iPad|iPod/.test
  sa=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone===true;
  if(sa)return"Aplicatia e instalata.";
  if(ios)return'Pe iPhone sau iPad: Partajeaza, apoi "Adauga pe ecranul principal".';
- if(/Android/.test(ua))return'Pe Android: din meniul browserului (trei puncte) alege "Instaleaza aplicatia" sau "Adauga pe ecranul principal".';
+ if(/Android/.test(ua))return'Pe Android: deschide meniul browserului (trei puncte), apoi "Adauga pe ecranul principal" (in engleza "Add to Home screen") sau "Instaleaza aplicatia".';
  return"Pe laptop: in Chrome sau Edge, apasa pictograma de instalare din bara de adrese, daca apare."}
 $("#pst").onclick=e=>{if(e.target.id==="pwaI"&&INST){INST.prompt();INST.userChoice.finally(()=>{INST=null;updPst()})}};
 persistStore();

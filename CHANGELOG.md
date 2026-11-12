@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.34.3
+- Indicatia de instalare pe Android spune explicit "Adauga pe ecranul principal" (in engleza "Add to Home screen"), ca in meniul browserului.
+
 ## 2.34.2
 - Setari > Backup > "Stocare si instalare": indicatia de instalare se potriveste dispozitivului. Pe iPhone/iPad ramane "Partajeaza, apoi Adauga pe ecranul principal"; pe Android si pe laptop apare indicatia lor (inainte aparea doar cea pentru iPhone). Daca aplicatia e deja instalata, scrie asta. Se arata un singur text, nu toate. Butonul "Instaleaza aplicatia" apare doar cand browserul il permite.
 - Spatiul disponibil se arata in GB cand e mare (inainte "din ~282718 MB").
