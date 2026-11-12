@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.34.2
+- Setari > Backup > "Stocare si instalare": indicatia de instalare se potriveste dispozitivului. Pe iPhone/iPad ramane "Partajeaza, apoi Adauga pe ecranul principal"; pe Android si pe laptop apare indicatia lor (inainte aparea doar cea pentru iPhone). Daca aplicatia e deja instalata, scrie asta. Se arata un singur text, nu toate. Butonul "Instaleaza aplicatia" apare doar cand browserul il permite.
+- Spatiul disponibil se arata in GB cand e mare (inainte "din ~282718 MB").
+
 ## 2.34.1
 - Setari > Tehnic: pagina "Carti si date" e impartita in doua. "Carti" pastreaza incarcarea, fisierul de corectii si descarcarea/stergerea (pe carte si toate). "Backup" are trei carduri separate: "Backup in fisier", "Copii automate in acest browser" si "Backup in Dropbox". Randul Backup arata "ultimul backup: data · Dropbox conectat" si poarta avertizarea de backup vechi; randul Carti arata numarul de retete din biblioteca.
 - Doar aranjare: nicio functie si nicio data nu s-au schimbat.

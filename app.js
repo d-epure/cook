@@ -1119,7 +1119,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="2.34.1";
+const APP_V="2.34.2";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1131,11 +1131,18 @@ window.addEventListener("appinstalled",()=>{INST=null;updPst()});
 async function persistStore(){try{if(navigator.storage&&navigator.storage.persist&&!(await navigator.storage.persisted()))await navigator.storage.persist()}catch(e){}}
 async function updPst(){const el=$("#pst");if(!el)return;let per=null,txt="";
  try{if(navigator.storage&&navigator.storage.persisted)per=await navigator.storage.persisted()}catch(e){}
- try{if(navigator.storage&&navigator.storage.estimate){const s=await navigator.storage.estimate();if(s&&s.usage!=null)txt=" Folosit: "+(s.usage/1048576).toFixed(1)+" MB"+(s.quota?" din ~"+Math.round(s.quota/1048576)+" MB":"")+"."}}catch(e){}
+ try{if(navigator.storage&&navigator.storage.estimate){const s=await navigator.storage.estimate();const mb=v=>v>=1048576*1024?Math.round(v/1073741824)+" GB":(v/1048576).toFixed(1)+" MB";if(s&&s.usage!=null)txt=" Folosit: "+mb(s.usage)+(s.quota?" din ~"+mb(s.quota)+" disponibili pe dispozitiv":"")+"."}}catch(e){}
  const lsk=(()=>{let n=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);n+=k.length+(localStorage.getItem(k)||"").length}}catch(e){}return n})();
  const bk=STORED.length?JSON.stringify(STORED).length*1:0;
  el.innerHTML="<details><summary><b>Stocare si instalare</b></summary>"+(per===true?"protejata (browserul nu o sterge singur)":per===false?"nu e protejata (browserul o poate sterge cand ramane fara spatiu; descarca backup des)":"necunoscuta pe acest browser")+"."+txt+" Setari, liste, meniu: "+(lsk*2/1048576).toFixed(1)+" MB din ~5 MB disponibili (localStorage)."+(IDBOK?" Biblioteca ("+STORED.length+" retete, ~"+(bk/1048576).toFixed(1)+" MB) e in baza de date a browserului, fara limita de 5 MB.":"")
-  +(INST?` <button class="alt" id="pwaI" type="button">Instaleaza aplicatia</button>`:"")+` <span class="muted">Pe iPhone: Partajeaza, apoi "Adauga pe ecranul principal".</span></details>`}
+  +(INST?` <button class="alt" id="pwaI" type="button">Instaleaza aplicatia</button>`:` <span class="muted">${instHint()}</span>`)+`</details>`}
+/* indicatie de instalare potrivita dispozitivului (un singur text, nu toate) */
+function instHint(){const ua=navigator.userAgent||"",ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1),
+ sa=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone===true;
+ if(sa)return"Aplicatia e instalata.";
+ if(ios)return'Pe iPhone sau iPad: Partajeaza, apoi "Adauga pe ecranul principal".';
+ if(/Android/.test(ua))return'Pe Android: din meniul browserului (trei puncte) alege "Instaleaza aplicatia" sau "Adauga pe ecranul principal".';
+ return"Pe laptop: in Chrome sau Edge, apasa pictograma de instalare din bara de adrese, daca apare."}
 $("#pst").onclick=e=>{if(e.target.id==="pwaI"&&INST){INST.prompt();INST.userChoice.finally(()=>{INST=null;updPst()})}};
 persistStore();
 
