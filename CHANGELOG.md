@@ -2,6 +2,14 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.0.0
+- **Sincronizare intre dispozitive prin Dropbox** (Setari > Backup > Sincronizare Dropbox). Un singur fisier `sync.json` in Dropbox-ul tau; se sincronizeaza tot ce intra in backup: biblioteca cu corectiile ei, retete salvate, favorite, etichete, aparate, lista, debara, meniu, notite, preferinte, alimente proprii. Nu se sincronizeaza cheia AI si cheile Dropbox.
+- Combinare in 3 pasi (starea de la ultima sincronizare, starea de aici, starea din Dropbox): modificarile facute pe dispozitive diferite se pastreaza amandoua; pe acelasi element castiga varianta de pe dispozitivul care sincronizeaza; o reteta modificata pe un dispozitiv si stearsa pe altul ramane; stergerile se propaga.
+- Cheia aplicatiei Dropbox e in aplicatie: ai nevoie doar de "Conecteaza Dropbox" si logare, o data pe dispozitiv (fara sa mai scrii cheia). Cheia proprie ramane la Avansat.
+- Sincronizare automata: la deschidere (preia singura si se reincarca o data), la 15 secunde dupa o modificare, cand inchizi sau revii in aplicatie. In timpul folosirii, modificarile noi de pe alt dispozitiv apar intr-o bara cu "Aplica acum". Buton "Sincronizeaza acum" si comutator pentru sincronizarea automata.
+- Frana de siguranta: o sincronizare care ar sterge peste jumatate din biblioteca sau din retetele salvate se opreste si cere "Sincronizeaza oricum". Inainte de orice preluare se face o copie locala.
+- Inlocuieste backup-urile multiple din Dropbox (cele 10 fisiere `retete-backup-...`); cele vechi raman in Dropbox, nu se mai creeaza altele. Backup-ul in fisier si copiile automate din browser raman.
+
 ## 2.34.3
 - Indicatia de instalare pe Android spune explicit "Adauga pe ecranul principal" (in engleza "Add to Home screen"), ca in meniul browserului.
 

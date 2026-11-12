@@ -12,11 +12,12 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=2.34.3">
+<link rel="stylesheet" href="style.css?v=3.0.0">
 
 </head>
 <body>
 <main>
+<div id="sybar" class="card" hidden role="status"><span id="sytxt"></span> <button class="go" id="syGo" type="button" style="margin:8px 0 0">Aplica acum</button></div>
 <h1>Cartea mea de retete</h1>
 <nav id="gnav" aria-label="Sectiuni"><button data-g="ret" class="on">Retete</button><button data-g="plan">Planific</button><button data-g="info">Info</button><button data-g="set">Setari</button></nav>
 <nav id="nav" aria-label="Pagini">
@@ -102,7 +103,7 @@
  <div class="card" id="tgcard" data-sg="etichete"><h2>Etichete retete</h2><div id="tgl"></div></div>
  <div class="card" id="bkcard" data-sg="bkfile"><h2>Backup in fisier</h2><div id="pst" class="muted" style="margin:0 0 10px"></div><p class="muted" style="margin:0 0 10px">Datele tale stau doar in acest browser. Descarca periodic un backup: retete salvate, favorite, etichete, aparate, biblioteca incarcata si modelele alese. Cheia API NU se include.</p><button class="go" id="bExp" style="margin:0">Descarca backup</button> <button class="alt" id="bShare" type="button" hidden>Trimite backup</button><div id="bkm" class="muted" style="margin:8px 0"></div><label for="bimp">Restaureaza dintr-un backup</label><input id="bimp" type="file" accept=".json,application/json"><div id="bipv"></div></div>
  <div class="card" id="sncard" data-sg="bksnap"><h2>Copii automate in acest browser</h2><div id="snbox"></div></div>
- <div class="card" id="dbcard" data-sg="bkdb"><h2>Backup in Dropbox</h2><div id="dbbox"></div></div>
+ <div class="card" id="dbcard" data-sg="bkdb"><h2>Sincronizare Dropbox</h2><div id="dbbox"></div></div>
  <div class="card" id="pxcard" data-sg="mese"><h2>Categorii si mese</h2><p class="muted" style="margin:0 0 10px">Pentru "Propune-mi un meniu": la ce masa se potriveste fiecare categorie. "Automat" e o ghicire dupa nume; alege tu daca e gresita. "Nu propune" scoate categoria din propuneri.</p><div id="pxl"></div></div>
  <div class="card" id="bscard" data-sg="biblioteca"><h2>Carti</h2><label for="bfile">Incarca baza de retete (retete.json)</label><input id="bfile" type="file" accept=".json,application/json"><div id="bm" class="muted" style="margin:6px 0 12px"></div><div id="bpv"></div><label for="bpatch">Aplica un fisier de corectii (portii, marcaje)</label><input id="bpatch" type="file" accept=".json,application/json"><div id="bpm" class="muted" style="margin:6px 0 12px"></div><div id="bpp"></div><div id="bsn"></div><p class="muted">Stergerea afecteaza doar retetele incarcate in Biblioteca mea. Aparatele, retetele salvate si cheia API raman. Fisierul tau retete.json ramane neatins.</p></div>
  <div class="card" id="abcard" data-sg="despre"><h2>Despre</h2><p id="abv" style="margin:0 0 8px"></p><p class="muted" style="margin:0 0 6px">Istoric modificari:</p><pre id="chg" class="chg" tabindex="0"></pre></div>
@@ -114,7 +115,7 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=2.34.3"></script>
-<script src="app.js?v=2.34.3"></script>
+<script src="nutri.js?v=3.0.0"></script>
+<script src="app.js?v=3.0.0"></script>
 </body>
 </html>

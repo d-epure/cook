@@ -10,7 +10,7 @@
    cumparaturi, Setari si Info (Ingrediente, Masuri, Gatire) nu au titlu "=====": cauta functiile drawList, renderSaved, renderSnav, drawIngr, drawMas, drawGat.
    Regula de baza: orice text venit de la model sau din JSON trece prin esc() (sau ed(), fara diacritice) inainte de innerHTML. */
 const $=s=>document.querySelector(s);
-const LS=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){if(v!==undefined){try{toast("Nu am putut salva: memoria browserului e plina sau blocata. Descarca o copie de siguranta si sterge ce nu mai folosesti.")}catch(x){}}return null}};
+const LS=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);if(/^(rs|rfav|rtags|ra|rm1|rm2b|rl|rp|rcat|rcg|rmen|rmt|rnote|rpf|rpxc|rfd)$/.test(k))syMark(k)}catch(e){if(v!==undefined){try{toast("Nu am putut salva: memoria browserului e plina sau blocata. Descarca o copie de siguranta si sterge ce nu mai folosesti.")}catch(x){}}return null}};
 const COL=["#1f9aa8","#b06ccf","#d2703d","#4f9a49","#4f7be8","#c75a7c","#a8975f"];
 const DEF=[
 {id:"MC",nume:"Monsieur Cuisine Smart",on:1,backup:0,strict:1,tmin:37,tmax:130,maxMin:99,maxMl:3000,moduri:"gatit, sotat, abur, framantat, mixat, tocat, sous vide, slow cook, cantarire",note:"taie, toaca, mixeaza, framanta, sosuri, supe-crema; treapta 1-10 sau turbo; sens normal/invers; max 3 l continut"},
@@ -568,7 +568,7 @@ const idbGet=k=>new Promise((res,rej)=>{const r=DB.transaction("kv").objectStore
 const idbPut=(k,v)=>new Promise((res,rej)=>{const t=DB.transaction("kv","readwrite");t.objectStore("kv").put(v,k);t.oncomplete=()=>res();t.onerror=()=>rej(t.error);t.onabort=()=>rej(t.error)});
 const getStored=()=>cl(STORED);
 /* salveaza biblioteca; intoarce o promisiune (true/false); scrierile se executa pe rand */
-function saveStored(a){STORED=a;
+function saveStored(a){STORED=a;syMark("rbook");
  if(IDBOK&&DB){LIBW=LIBW.then(()=>idbPut("book",a)).then(()=>{LS("rlib","1");return true}).catch(()=>{toast("Nu am putut salva biblioteca in baza de date a browserului.");return false});return LIBW}
  try{if(a.length)localStorage.setItem("rbook",JSON.stringify(a));else localStorage.removeItem("rbook")}catch(e){toast("Nu am putut salva biblioteca: memoria browserului e plina.");return Promise.resolve(false)}
  return Promise.resolve(true)}
@@ -1119,7 +1119,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;if(e.target.id==="mtk"||e.target.id==="mtp"){const t=getMT();if(e.target.id==="mtk")t.k=+e.target.value||0;else t.p=+e.target.value||0;LS("rmt",JSON.stringify(t));MTO=true;drawMenu();return}
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="2.34.3";
+const APP_V="3.0.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1274,7 +1274,7 @@ async function snapMake(force){if(!(IDBOK&&DB)||!hasData())return false;
   await idbPut("snap:"+new Date().toISOString(),bkBuild().json);for(const k of(await snapList()).slice(SNAPN))await idbDel(k);return true}catch(e){return false}}
 const fmtDT=t=>{const d=new Date(t);return isNaN(d)?String(t):d.toLocaleString("ro-RO",{dateStyle:"short",timeStyle:"short"})};
 const b64u=b=>btoa(String.fromCharCode(...new Uint8Array(b))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
-const DBK=()=>(LS("rdbk")||"").trim(),dbRedirect=()=>location.origin+location.pathname,dbOn=()=>!!(DBK()&&LS("rdbt"));
+const DBK=()=>(LS("rdbk")||"").trim()||DEFK,dbRedirect=()=>location.origin+location.pathname,dbOn=()=>!!LS("rdbt");
 async function dbConnect(){const v=b64u(crypto.getRandomValues(new Uint8Array(32))),ch=b64u(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(v)));
  sessionStorage.setItem("rdbv",v);
  location.href="https://www.dropbox.com/oauth2/authorize?"+new URLSearchParams({client_id:DBK(),response_type:"code",code_challenge:ch,code_challenge_method:"S256",token_access_type:"offline",redirect_uri:dbRedirect()})}
@@ -1288,47 +1288,133 @@ async function dbApi(url,arg,body,content){const t=await dbAccess(),h={Authoriza
  if(content){h["Dropbox-API-Arg"]=JSON.stringify(arg);if(body!=null)h["Content-Type"]="application/octet-stream"}else h["Content-Type"]="application/json";
  const r=await fetch(url,{method:"POST",headers:h,body:content?body:JSON.stringify(arg)});
  if(!r.ok){let m="Eroare Dropbox ("+r.status+")";try{const j=await r.json();if(j.error_summary)m+=": "+j.error_summary}catch(e){}throw new Error(m)}return r}
-const dbStamp=()=>{const d=new Date(),p=n=>String(n).padStart(2,"0");return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+"-"+p(d.getHours())+p(d.getMinutes())};
-async function dbList(){const j=await(await dbApi("https://api.dropboxapi.com/2/files/list_folder",{path:""})).json();
- return(j.entries||[]).filter(x=>x[".tag"]==="file"&&/^retete-backup-.*\.json$/.test(x.name)).sort((a,b)=>b.name.localeCompare(a.name))}
-async function dbBackup(){const f=bkBuild();
- await dbApi("https://content.dropboxapi.com/2/files/upload",{path:"/retete-backup-"+dbStamp()+".json",mode:"add",autorename:true,mute:true},f.json,true);
- LS("rdbl",String(Date.now()));try{localStorage.removeItem("rdbe")}catch(e){}
- try{for(const x of(await dbList()).slice(DBN))await dbApi("https://api.dropboxapi.com/2/files/delete_v2",{path:x.path_lower})}catch(e){}
- bkBadge();return f.info}
 async function snDraw(){const el=$("#snbox");if(!el)return;const L=await snapList();
  el.innerHTML=`<p class="muted" style="margin:0 0 8px">Aplicatia isi face singura o copie (cel mult una la 20 de ore) si le pastreaza pe ultimele ${SNAPN}. Te ajuta daca stergi sau strici ceva; nu te ajuta daca stergi datele browserului.</p>`+
   (IDBOK&&DB?(L.length?L.map(k=>`<div class="apr"><span>${esc(fmtDT(k.slice(5)))}</span><button class="alt" type="button" data-snr="${esc(k)}">Restaureaza</button></div>`).join(""):'<p class="muted">Inca nu exista nicio copie.</p>')+`<button class="alt" type="button" data-snmk="1" style="margin-top:8px">Fa o copie acum</button>`:'<p class="muted">Browserul nu permite baza de date locala, deci copiile automate nu sunt disponibile.</p>')}
-async function dbDraw(msg){const el=$("#dbbox");if(!el)return;const k=DBK();let h="";
- if(!k){h+=`<p class="muted" style="margin:0 0 8px">Creezi o data o aplicatie in Dropbox (pasii sunt in README) si lipesti aici "App key". Nu e o parola. Backup-urile ajung doar in folderul aplicatiei, in Dropbox-ul tau.</p><label for="dbk">App key Dropbox</label><input id="dbk" autocomplete="off" placeholder="App key"><button class="alt" type="button" data-dbks="1" style="margin-top:8px">Salveaza cheia</button>`}
- else if(!dbOn()){h+=`<p class="muted" style="margin:0 0 8px">App key salvat. Adresa de redirectionare pe care o adaugi in aplicatia Dropbox: <b>${esc(dbRedirect())}</b></p><button class="go" type="button" data-dbc="1" style="margin:0">Conecteaza Dropbox</button> <button class="alt" type="button" data-dbkx="1">Schimba cheia</button>`}
- else{h+=`<p class="muted" style="margin:0 0 8px">Conectat. ${LS("rdbl")?"Ultimul backup in Dropbox: "+esc(fmtDT(+LS("rdbl")))+".":"Nu ai facut inca un backup in Dropbox."}${LS("rdbe")?" Ultima incercare automata a esuat: "+esc(LS("rdbe"))+".":""}</p><button class="go" type="button" data-dbs="1" style="margin:0">Salveaza acum in Dropbox</button> <button class="alt" type="button" data-dbx="1">Deconecteaza</button>
-  <label style="display:flex;gap:8px;align-items:center;margin-top:10px"><input type="checkbox" id="dba"${LS("rdba")==="0"?"":" checked"} style="width:auto"> Copie automata o data pe zi (cand deschizi aplicatia)</label><div id="dbl" class="muted" style="margin-top:8px">Se incarca lista...</div>`}
- el.innerHTML=h+(msg?`<div class="muted" style="margin-top:8px" role="status">${esc(msg)}</div>`:"");
- if(k&&dbOn()){const box=$("#dbl");try{const L=await dbList();if(!$("#dbl"))return;box.innerHTML=L.length?`<div>Copii in Dropbox (ultimele ${DBN}):</div>`+L.map(x=>`<div class="apr"><span>${esc(x.name.replace(/^retete-backup-|\.json$/g,""))} <span class="muted">${Math.round((x.size||0)/1024)} KB</span></span><button class="alt" type="button" data-dbr="${esc(x.path_lower)}" data-dbn="${esc(x.name)}">Restaureaza</button></div>`).join(""):"Nu exista copii in Dropbox.";}
-  catch(e){if($("#dbl"))$("#dbl").textContent=e.message||"Nu am putut citi lista."}}}
+/* ===== 3.0.0: sincronizare prin Dropbox =====
+   Un singur fisier /sync.json in folderul aplicatiei. La fiecare sincronizare se combina in 3 pasi: ce era la ultima sincronizare (baza, in IndexedDB),
+   ce ai acum aici, ce e acum in Dropbox. Ce s-a schimbat doar pe o parte se preia; ce s-a schimbat pe ambele parti, pe elemente diferite, se pastreaza amandoua;
+   pe acelasi element castiga varianta de aici. Modificarea bate stergerea. Cheia AI si cheile Dropbox nu se sincronizeaza. */
+const SY_RAW=["rm1","rm2b"],SY_MIN=60000;
+const SY_LAB={rbook:"biblioteca",rs:"retete salvate",rfav:"favorite",rtags:"etichete",ra:"aparate",rm1:"setari AI",rm2b:"setari AI",rl:"lista de cumparaturi",rp:"debara",rcat:"debara",rcg:"debara",rmen:"meniu",rmt:"meniu",rnote:"notite",rpf:"preferinte alimente",rpxc:"meniu",rfd:"alimente proprii"};
+function syLocal(){const o={};BK_KEYS.forEach(k=>{if(k==="rbook"){o.rbook=cl(STORED);return}
+ const v=LS(k);if(v==null)return;if(SY_RAW.includes(k)){o[k]=v;return}try{o[k]=JSON.parse(v)}catch(e){}});return o}
+function syEq(a,b){if(a===b)return true;if(typeof a!=="object"||typeof b!=="object"||!a||!b)return false;
+ if(Array.isArray(a)!==Array.isArray(b))return false;
+ if(Array.isArray(a)){if(a.length!==b.length)return false;for(let i=0;i<a.length;i++)if(!syEq(a[i],b[i]))return false;return true}
+ const ka=Object.keys(a),kb=Object.keys(b);if(ka.length!==kb.length)return false;for(const k of ka)if(!(k in b)||!syEq(a[k],b[k]))return false;return true}
+function syId(key,path){const p=path.length;
+ if(key==="rbook"&&p===0)return bKey;if(key==="rs"&&p===0)return sKey;if(key==="rfav"&&p===0)return"set";
+ if((key==="rtags"||key==="rl"||key==="rp"||key==="rcat")&&p===0)return x=>x&&x.n;
+ if((key==="ra"||key==="rcg")&&p===0)return x=>x&&x.id;
+ if(key==="rmen"&&p===2)return x=>x&&x.s+"|"+x.t;
+ if(key==="rpf"&&p===1)return"set";
+ if(key==="rnote"&&p===2&&path[1]==="h")return"set";return null}
+function sySet(b,l,r){const J=JSON.stringify,mk=a=>new Map((Array.isArray(a)?a:[]).map(x=>[J(x),x])),mb=mk(b),ml=mk(l),mr=mk(r),out=[];
+ ml.forEach((x,k)=>{if(!(mb.has(k)&&!mr.has(k)))out.push(x)});mr.forEach((x,k)=>{if(!ml.has(k)&&!mb.has(k))out.push(x)});return out}
+function syIdArr(b,l,r,f,key,path){const idf=x=>{const v=f(x);return v==null?JSON.stringify(x):String(v)},mk=a=>new Map((Array.isArray(a)?a:[]).map(x=>[idf(x),x])),
+ mb=mk(b),ml=mk(l),mr=mk(r),out=[],seen=new Set();
+ const h=id=>{if(seen.has(id))return;seen.add(id);const m=syM(mb.get(id),ml.get(id),mr.get(id),key,path.concat("#"));if(m!==undefined)out.push(m)};
+ ml.forEach((_,id)=>h(id));mr.forEach((_,id)=>h(id));return out}
+function syM(b,l,r,key,path){
+ if(syEq(l,r))return l;if(syEq(l,b))return r;if(syEq(r,b))return l;
+ if(l===undefined)return r;if(r===undefined)return l;
+ const al=Array.isArray(l),ar=Array.isArray(r);
+ if(al&&ar){const f=syId(key,path);if(f==="set")return sySet(b,l,r);if(f)return syIdArr(b,l,r,f,key,path);return l}
+ if(!al&&!ar&&l&&r&&typeof l==="object"&&typeof r==="object"){const o={},bb=b&&typeof b==="object"&&!Array.isArray(b)?b:{};
+  new Set([...Object.keys(l),...Object.keys(r)]).forEach(k=>{const v=syM(bb[k],l[k],r[k],key,path.concat(k));if(v!==undefined)o[k]=v});return o}
+ return l}
+function syMerge(base,loc,rem){const o={};new Set([...Object.keys(base||{}),...Object.keys(loc||{}),...Object.keys(rem||{})]).forEach(k=>{const v=syM((base||{})[k],(loc||{})[k],(rem||{})[k],k,[]);if(v!==undefined)o[k]=v});return o}
+const syEqO=(a,b)=>{const ks=new Set([...Object.keys(a||{}),...Object.keys(b||{})]);for(const k of ks)if(!syEq((a||{})[k],(b||{})[k]))return false;return true};
+const syDiff=(a,b)=>[...new Set(BK_KEYS.filter(k=>!syEq((a||{})[k],(b||{})[k])).map(k=>SY_LAB[k]))];
+/* frana: refuza o sincronizare care ar sterge mai mult de jumatate din biblioteca sau din retetele salvate */
+function syBrake(loc,rem,mer){for(const k of["rbook","rs"]){const n=x=>Array.isArray(x)?x.length:0;
+ if((n(rem[k])>=10&&n(mer[k])<n(rem[k])*.5)||(n(loc[k])>=10&&n(mer[k])<n(loc[k])*.5))return SY_LAB[k]}return null}
+async function syFetch(){try{const r=await dbApi("https://content.dropboxapi.com/2/files/download",{path:"/sync.json"},null,true);
+  let rev=null;try{rev=(JSON.parse(r.headers.get("dropbox-api-result")||"{}")).rev||null}catch(e){}
+  const j=JSON.parse(await r.text());if(j.app!=="retete-dana"||!j.data||typeof j.data!=="object")throw new Error("Fisierul sync.json din Dropbox nu apartine acestei aplicatii.");
+  if(!rev)rev=await syRev();return{rev,data:j.data}}
+ catch(e){if(/not_found/.test(e.message||""))return null;throw e}}
+async function syRev(){try{return(await(await dbApi("https://api.dropboxapi.com/2/files/get_metadata",{path:"/sync.json"})).json()).rev||null}catch(e){if(/not_found/.test(e.message||""))return null;throw e}}
+const syDev=()=>{const u=navigator.userAgent||"";return/iPhone|iPad/.test(u)?"iPhone":/Android/.test(u)?"Android":"laptop"};
+async function syPut(data,rev){const r=await dbApi("https://content.dropboxapi.com/2/files/upload",{path:"/sync.json",mode:rev?{".tag":"update",update:rev}:"add",autorename:false,mute:true},
+  JSON.stringify({app:"retete-dana",sync:1,saved:new Date().toISOString(),dev:syDev(),data}),true);return(await r.json().catch(()=>({}))).rev||null}
+async function syApplyLocal(mer,loc){await snapMake(true);SYAPPLY=true;
+ try{for(const k of BK_KEYS){if(syEq(mer[k],loc[k]))continue;
+   if(k==="rbook"){if(!(await saveStored(Array.isArray(mer.rbook)?mer.rbook:[])))throw new Error("Nu am putut salva biblioteca.");continue}
+   const v=mer[k];try{if(v===undefined)localStorage.removeItem(k);else localStorage.setItem(k,SY_RAW.includes(k)?v:JSON.stringify(v))}catch(e){throw new Error("Nu am putut scrie in browser (spatiu insuficient).")}}}
+ finally{SYAPPLY=false}}
+var SYAPPLY=false,SYBUSY=false,SYT=0,SYREADY=false,SYLAST=0;
+/* rezultat: {ok, applied?, pending?, blocked?, diff?, err?} */
+async function syncRun(o){o=o||{};if(SYBUSY)return{busy:true};SYBUSY=true;SYLAST=Date.now();
+ try{if(!(IDBOK&&DB))return{err:"Sincronizarea cere baza de date locala a browserului."};if(!dbOn())return{err:"Dropbox nu e conectat."};
+  for(let t=0;t<3;t++){const loc=syLocal(),base=(await idbGet("syncbase"))||null;
+   if(base&&syEqO(base,loc)&&!o.force){const rv=await syRev();if(rv&&rv===LS("rdbr")){LS("rdbl",String(Date.now()));return{ok:true,same:true}}}
+   const rem=await syFetch(),remD=rem?rem.data:{},mer=syMerge(base||{},loc,remD);
+   if(!o.force){const bl=syBrake(loc,remD,mer);if(bl)return{blocked:bl}}
+   let rev=rem?rem.rev:null;
+   if(!syEqO(mer,remD)){try{rev=await syPut(mer,rem?rem.rev:null)}catch(e){if(/conflict/.test(e.message||"")&&t<2)continue;throw e}}
+   const chg=!syEqO(mer,loc);
+   if(chg&&!o.apply){LS("rdbl",String(Date.now()));return{ok:true,pending:true,diff:syDiff(loc,mer)}}
+   if(chg)await syApplyLocal(mer,loc);
+   await idbPut("syncbase",mer);if(rev)LS("rdbr",rev);LS("rdbl",String(Date.now()));try{localStorage.removeItem("rdbe")}catch(e){}bkBadge();
+   return{ok:true,applied:chg,diff:chg?syDiff(loc,mer):[]}}
+  return{err:"Dropbox s-a schimbat in timpul sincronizarii. Incearca din nou."}}
+ catch(e){return{err:e.message||"Eroare la sincronizare."}}
+ finally{SYBUSY=false}}
+function syBar(txt,btn){const b=$("#sybar");if(!b)return;if(!txt){b.hidden=true;return}$("#sytxt").textContent=txt;$("#syGo").hidden=!btn;$("#syGo").textContent=btn||"";b.hidden=false}
+const syMsg=r=>r.err?r.err:r.blocked?"Sincronizare oprita: ar sterge peste jumatate din "+r.blocked+". Verifica datele inainte sa continui.":r.pending?"Sunt modificari noi de pe alt dispozitiv ("+r.diff.join(", ")+").":r.applied?"Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".":"Sincronizat.";
+async function syAuto(apply){if(!dbOn()||LS("rdba")==="0"||!hasData()&&!apply)return null;
+ const r=await syncRun({apply});
+ if(r.busy)return r;
+ if(r.err){LS("rdbe",r.err.slice(0,120))}
+ if(r.applied){try{sessionStorage.setItem("rsyt","Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".")}catch(e){}location.reload();return r}
+ if(r.pending)syBar("Sunt modificari noi de pe alt dispozitiv ("+r.diff.join(", ")+").","Aplica acum");
+ else if(r.blocked)syBar(syMsg(r),"");
+ else syBar("");
+ dbDraw();return r}
+/* marcheaza ca s-a schimbat ceva aici; trimite dupa 15 secunde de liniste */
+function syMark(k){if(!SYREADY||SYAPPLY||!dbOn())return;clearTimeout(SYT);SYT=setTimeout(()=>{if(Date.now()-SYLAST>5000)syAuto(false)},15000)}
+document.addEventListener("visibilitychange",()=>{if(!SYREADY||!dbOn())return;
+ if(document.visibilityState==="hidden"){if(SYT){clearTimeout(SYT);SYT=0;syAuto(false)}}
+ else if(Date.now()-SYLAST>SY_MIN)syAuto(false)});
+$("#syGo").onclick=async()=>{$("#syGo").disabled=true;const r=await syncRun({apply:true});$("#syGo").disabled=false;
+ if(r.applied){try{sessionStorage.setItem("rsyt","Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".")}catch(e){}location.reload();return}
+ syBar(r.err||"");if(!r.err)toast(syMsg(r));dbDraw()};
+const DEFK="7hvolba2cog2zy8";
+async function dbDraw(msg){const el=$("#dbbox");if(!el)return;let h="";
+ if(!dbOn()){h+=`<p class="muted" style="margin:0 0 8px">Sincronizeaza retetele, meniul, lista si celelalte date intre telefon si laptop, prin Dropbox-ul tau. Datele ajung doar in folderul aplicatiei din contul tau. Te conectezi o data pe fiecare dispozitiv.</p><button class="go" type="button" data-dbc="1" style="margin:0">Conecteaza Dropbox</button>`}
+ else{h+=`<p class="muted" style="margin:0 0 8px">Conectat. ${LS("rdbl")?"Ultima sincronizare: "+esc(fmtDT(+LS("rdbl")))+".":"Inca nu s-a sincronizat."}${LS("rdbe")?" Ultima incercare a esuat: "+esc(LS("rdbe"))+".":""}</p><button class="go" type="button" data-dbs="1" style="margin:0">Sincronizeaza acum</button> <button class="alt" type="button" data-dbx="1">Deconecteaza</button>
+  <label style="display:flex;gap:8px;align-items:center;margin-top:10px"><input type="checkbox" id="dba"${LS("rdba")==="0"?"":" checked"} style="width:auto"> Sincronizare automata (la deschidere, dupa modificari si cand revii in aplicatie)</label>`}
+ h+=`<details style="margin-top:10px"><summary class="muted">Avansat: aplicatie Dropbox proprie</summary><p class="muted" style="margin:8px 0">Implicit se foloseste aplicatia Dropbox a acestei aplicatii. Daca ai creat una proprie, scrie aici App key. Adresa de redirectionare: <b>${esc(dbRedirect())}</b></p><input id="dbk" autocomplete="off" placeholder="App key" value="${esc(LS("rdbk")||"")}" aria-label="App key Dropbox"><button class="alt" type="button" data-dbks="1" style="margin-top:8px">${LS("rdbk")?"Salveaza cheia":"Foloseste cheia"}</button>${LS("rdbk")?' <button class="alt" type="button" data-dbkx="1" style="margin-top:8px">Revino la cea implicita</button>':""}</details>`;
+ el.innerHTML=h+(msg?`<div class="muted" style="margin-top:8px" role="status">${esc(msg)}</div>`:"")}
 function bkPreview(txt,name){try{IMP=bkParse(txt,name);impDraw();$("#bkm").textContent="Verifica previzualizarea de mai jos si confirma restaurarea.";const p=$("#bipv");if(p&&p.scrollIntoView)p.scrollIntoView({block:"center"})}
  catch(x){IMP=null;impDraw();$("#bkm").textContent="Copia nu e un backup valid al acestei aplicatii."}}
 $("#snbox").onclick=async e=>{const d=e.target.dataset;
  if(d.snmk!==undefined){await snapMake(true);snDraw();toast("Copie facuta.");return}
  if(d.snr){try{bkPreview(await idbGet(d.snr),"copie "+fmtDT(d.snr.slice(5)))}catch(x){toast("Nu am putut citi copia.")}}};
 $("#dbbox").onclick=async e=>{const b=e.target,d=b.dataset;
- if(d.dbks!==undefined){const v=($("#dbk").value||"").trim();if(!/^[a-z0-9]{8,40}$/i.test(v)){toast("App key nu pare valid (litere si cifre).");return}LS("rdbk",v);dbDraw();return}
- if(d.dbkx!==undefined){try{localStorage.removeItem("rdbk")}catch(x){}dbDraw();return}
+ if(d.dbks!==undefined){const v=($("#dbk").value||"").trim();if(!/^[a-z0-9]{8,40}$/i.test(v)){toast("App key nu pare valid (litere si cifre).");return}
+  if(v!==DBK()||LS("rdbt")){["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;try{await idbDel("syncbase")}catch(x){}}
+  LS("rdbk",v);dbDraw("Cheia a fost schimbata. Conecteaza din nou.");return}
+ if(d.dbkx!==undefined){try{localStorage.removeItem("rdbk")}catch(x){}["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;try{await idbDel("syncbase")}catch(x){}dbDraw("Se foloseste din nou aplicatia implicita. Conecteaza din nou.");return}
  if(d.dbc!==undefined){try{await dbConnect()}catch(x){dbDraw("Nu am putut porni conectarea: "+(x.message||x))}return}
- if(d.dbx!==undefined){["rdbt","rdbl","rdbe"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;bkBadge();dbDraw("Deconectat. Copiile ramase in Dropbox nu au fost sterse.");return}
- if(d.dbs!==undefined){b.disabled=true;try{const i=await dbBackup();dbDraw(bkMsg(i,"Salvat in Dropbox: "))}catch(x){b.disabled=false;dbDraw(x.message||"Nu am putut salva in Dropbox.")}return}
- if(d.dbr){b.disabled=true;try{const t=await(await dbApi("https://content.dropboxapi.com/2/files/download",{path:d.dbr},null,true)).text();b.disabled=false;bkPreview(t,d.dbn)}catch(x){b.disabled=false;toast(x.message||"Nu am putut descarca copia.")}}};
+ if(d.dbx!==undefined){["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;try{await idbDel("syncbase")}catch(x){}syBar("");bkBadge();dbDraw("Deconectat. Fisierul sync.json a ramas in Dropbox; datele de aici nu s-au schimbat.");return}
+ if(d.dbs!==undefined){b.disabled=true;dbDraw("Se sincronizeaza...");const r=await syncRun({apply:true});
+  if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){}location.reload();return}
+  if(r.blocked){dbDraw(syMsg(r));$("#dbbox").insertAdjacentHTML("beforeend",'<button class="alt" type="button" data-syf="1" style="margin-top:8px">Sincronizeaza oricum</button>');return}
+  if(r.err)LS("rdbe",r.err.slice(0,120));syBar("");dbDraw(syMsg(r));return}
+ if(d.syf!==undefined){b.disabled=true;const r=await syncRun({apply:true,force:true});if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){}location.reload();return}dbDraw(syMsg(r))}};
 $("#dbbox").onchange=e=>{if(e.target.id==="dba")LS("rdba",e.target.checked?"1":"0")};
 /* intoarcere din Dropbox dupa autorizare: ?code=... */
 (async()=>{const q=new URLSearchParams(location.search),c=q.get("code"),v=sessionStorage.getItem("rdbv");if(!(c&&v)&&!q.get("error"))return;
  try{history.replaceState(null,"",location.pathname)}catch(e){}try{sessionStorage.removeItem("rdbv")}catch(e){}if(!c||!v){show("setari");setSub("backup");toast("Conectarea Dropbox a fost anulata.");return}
- try{const j=await dbToken({grant_type:"authorization_code",code:c,code_verifier:v,client_id:DBK(),redirect_uri:dbRedirect()});LS("rdbt",j.refresh_token);DBAT=j.access_token;DBAX=Date.now()+(j.expires_in||14400)*1000;show("setari");setSub("backup");toast("Dropbox conectat.");dbDraw()}
+ try{const j=await dbToken({grant_type:"authorization_code",code:c,code_verifier:v,client_id:DBK(),redirect_uri:dbRedirect()});LS("rdbt",j.refresh_token);DBAT=j.access_token;DBAX=Date.now()+(j.expires_in||14400)*1000;show("setari");setSub("backup");toast("Dropbox conectat. Sincronizez...");dbDraw();const r=await syncRun({apply:true});if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){}location.reload();return}if(r.blocked)dbDraw(syMsg(r));else if(r.err)dbDraw(r.err);else{toast(syMsg(r));dbDraw()}}
  catch(x){show("setari");setSub("backup");dbDraw("Nu am putut conecta Dropbox: "+(x.message||x))}})();
 snDraw();dbDraw();
 /* copii automate la pornire (dupa ce biblioteca e incarcata) */
-setTimeout(async()=>{await snapMake(false);snDraw();
- if(dbOn()&&LS("rdba")!=="0"&&hasData()&&Date.now()-(+LS("rdbl")||0)>AUTOH){try{await dbBackup();dbDraw()}catch(e){LS("rdbe",(e.message||"eroare").slice(0,120));dbDraw()}}},3000);
+setTimeout(async()=>{await snapMake(false);snDraw();SYREADY=true;await syAuto(true)},3000);
+try{const t=sessionStorage.getItem("rsyt");if(t){sessionStorage.removeItem("rsyt");setTimeout(()=>toast(t),600)}}catch(e){}
 $("#bflt").open=innerWidth>700;
 renderTagUI();
 renderBox();
