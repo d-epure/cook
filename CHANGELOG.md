@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 2.32.0
+- Numarul de portii se confirma separat: o reteta marcata "numar de portii" (in coada "De verificat") arata un avertisment propriu, iar in editor apare butonul "Confirma numarul de portii", care scoate doar acest marcaj si salveaza imediat, fara sa atinga restul retetei. "Salveaza ca verificata" nu mai sterge marcajul de portii.
+- Campul "Portii" din editor e gol cand reteta nu are numar (inainte aparea 1, ceea ce ascundea problema). Poti scrie "-" daca numarul nu se aplica: reteta ramane fara portii, fara "Macro per portie" calculat si fara scalare.
+- Setari > Date > "Aplica un fisier de corectii": aplica portii si marcaje pe retetele deja incarcate, potrivite dupa numar si titlu, fara sa le inlocuiasca. Retetele ale caror portii le-ai schimbat intre timp sunt sarite; se vede o previzualizare inainte de aplicare.
+- Retetele marcate doar pentru portii raman in propunerile de meniu.
+
 ## 2.31.3
 - Biblioteca: pe randul "Cauta in retetele tale" apare "Rezultat: x retete gasite din y retete in baza locala". Linia separata cu totalul si cu "de verificat" a fost scoasa (numarul de verificat ramane pe butonul "Parcurge retetele de verificat (n)"); au ramas doar notele despre filtrul Din debara.
 
