@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.3.0
+- Cos: pe fiecare card din Biblioteca apare un icon de cos; apesi (confirmi apasand inca o data) si reteta se muta in cos, cu "Anuleaza" 8 secunde. Si din reteta deschisa, la Mai multe actiuni: "Muta in cos". Reteta din cos ramane in biblioteca, cu jurnal, notite si stea, dar nu mai apare in cautare, in alegerea retetelor pentru meniu, in "De verificat" si in "Propune-mi un meniu"; numaratoarile ignora cosul.
+- Cosul se vede in Colectia mea, la filtrul "Cos (N)": "Restaureaza" (cu Anuleaza), "Sterge definitiv" si "Goleste cosul", ambele cu confirmare si Anuleaza. Stergerea definitiva scoate si steaua si jurnalul retetei. In meniu, o reteta aflata in cos are nota "Reteta e in cos".
+- Fisierul de corectii (Setari > Carti) accepta acum si `"sterge": true` (stergere definitiva, cu copie automata a bibliotecii inainte si avertizare in cardul de aplicare) si `"titlu_nou"` (schimbare de titlu).
+
 ## 3.2.3
 - Sursa retetei (cartea, numarul, "adaptata din") apare intr-o singura linie, imediat sub titlu, inainte de etichete: in Biblioteca, in reteta deschisa si in Colectia mea (acelasi format peste tot: "Din BT FIT Cookbook V2, reteta 43"). Linia "Sursa:" de la sfarsitul retetei deschise a fost scoasa, ca sa nu apara de doua ori.
 
