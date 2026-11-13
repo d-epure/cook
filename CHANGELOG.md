@@ -2,6 +2,26 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.5.0
+- Setari are doua taburi: Administrare (Profil nutritional, Aparate, Preferinte alimente, Categorii alimente, Etichete retete, Mese) si Tehnic (Carti, Backup, AI si cheie, Despre). Sectiunea pliabila "Tehnic" a fost inlocuita de tab. Tabul ales se tine minte; un punct pe tabul Tehnic arata ca ceva cere atentie (cheie lipsa, backup vechi), iar detaliul e pe randul respectiv.
+
+## 3.4.2
+- Cumparaturi: butonul se numeste "Am in debara"; dupa confirmare produsul dispare din lista de cumparaturi si apare in Debara (se poate anula).
+- Setari: "AI si cheie" a revenit sub Tehnic, inainte de Despre (ordine: Carti, Backup, AI si cheie, Despre). "Cheie lipsa" apare iar in rezumatul Tehnic.
+- Corectie la 3.4.1: randul "Muta in debara" si "AI si cheie" in lista principala sunt anulate.
+
+## 3.4.1
+- Tasta Inapoi (Android / browser) merge pas cu pas: din reteta deschisa te duce la lista, din subpagina Setari la lista Setari, apoi la pagina anterioara. Butoanele "Inapoi" din aplicatie nu mai umplu istoricul.
+- Taste mai mari (min. 40 px): butoanele din Debara si link-ul "Schimba aparatele" din Idei. Controalele fara text au aria-label (verificat; semnalarile din testul de utilizare erau in mare parte false).
+
+## 3.4.0
+- Cautare in Biblioteca: retetele cu acelasi titlu (si din carti diferite, si din aceeasi carte; fara diacritice, fara diferente de litere) apar intr-un singur card. Exemplarul principal e cel mai complet (fara marcaj "de verificat", cu pasi, cu cele mai multe ingrediente, cu macro si portii); celelalte sunt in linia "Mai e si in: carte, nr." (cu "(de verificat)" cand e cazul), fiecare cu deschidere directa. Gruparea se face dupa filtre (pe o singura carte, grupul are doar exemplarele din ea); retetele din cos nu intra. Numaratoarea spune cate s-au grupat.
+- Biblioteca > Filtre > Stare: "Fara numar de portii (N)" (retetele marcate "nu se aplica" nu intra).
+- Setari > Backup: daca alegi un fisier de corectii in loc de backup, mesajul spune ca e un fisier de corectii si ca se aplica din Setari > Carti.
+
+## 3.3.1
+- Cos: iconul de cos nu mai e pe lista de rezultate, ci pe reteta deschisa, sus, langa Favorita (nu mai e si la Mai multe actiuni, ca sa fie un singur loc). Confirmarea e cu X si bifa: dupa clic pe cos apar "Muta in cos? X ✓", raman pana alegi (fara revenire automata). La fel la "Sterge definitiv" si "Goleste cosul" din Cos. Dupa bifa, revine la lista, cu "Anuleaza" 8 secunde.
+
 ## 3.3.0
 - Cos: pe fiecare card din Biblioteca apare un icon de cos; apesi (confirmi apasand inca o data) si reteta se muta in cos, cu "Anuleaza" 8 secunde. Si din reteta deschisa, la Mai multe actiuni: "Muta in cos". Reteta din cos ramane in biblioteca, cu jurnal, notite si stea, dar nu mai apare in cautare, in alegerea retetelor pentru meniu, in "De verificat" si in "Propune-mi un meniu"; numaratoarile ignora cosul.
 - Cosul se vede in Colectia mea, la filtrul "Cos (N)": "Restaureaza" (cu Anuleaza), "Sterge definitiv" si "Goleste cosul", ambele cu confirmare si Anuleaza. Stergerea definitiva scoate si steaua si jurnalul retetei. In meniu, o reteta aflata in cos are nota "Reteta e in cos".
