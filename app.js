@@ -978,7 +978,7 @@ const MIC=[[4,"Fibre","g","m",1],[8,"Sodiu","mg","x",1],[6,"Grasimi saturate","g
  [20,"Vitamina B1","mg","m",0],[21,"Vitamina B2","mg","m",0],[22,"Vitamina B3","mg","m",0],[23,"Vitamina B6","mg","m",0],[7,"Colesterol","mg",null,0]];
 /* valori EFSA (PRI sau AI) pentru adulti de 18+ ani; tinta pentru "x" e o limita, nu un minim */
 function micT(p,t){if(!t||!t.ok)return null;const m=p.s==="m",a=+p.a,MJ=t.k*4.184/1000;
- return{4:25,8:2000,6:t.k*.10/9,5:t.k*.10/4,10:m?11:(a<=50?16:11),9:a<25?1000:950,18:15,25:4,24:330,13:3500,11:m?350:300,12:550,14:m?11.7:9.3,15:70,16:m?750:650,17:m?13:11,19:m?110:95,26:t.w,20:.1*MJ,21:1.6,22:1.6*MJ,23:m?1.7:1.6}}
+ return{4:25,8:2000,6:t.k*.10/9,5:t.k*.10/4,10:m?11:(a<=50?16:11),9:a<25?1000:950,18:15,25:4,24:330,13:3500,11:m?350:300,12:550,14:m?11.7:9.3,15:70,16:m?750:650,17:m?13:11,19:m?110:95,26:70,20:.1*MJ,21:1.6,22:1.6*MJ,23:m?1.7:1.6}}
 function micOf(ings,por){const S=new Array(27).fill(0);let n=0,ok=0,nov=0;
  (ings||[]).forEach(x=>{if(!x||x.c==null)return;n++;const f=fdMatch(x.n);if(!f)return;const q=fdGrams(x,f);if(!q)return;ok++;if(f.zero)return;if(!f.v){nov++;return}for(let j=0;j<27;j++)S[j]+=q.g*f.v[j]/100});
  const d=por>0?por:1;return{s:S.map(v=>v/d),n,ok,nov}}
@@ -1224,7 +1224,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.5.0";
+const APP_V="3.5.1";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1619,7 +1619,7 @@ const fdBase=()=>FB||(FB=(()=>{const MM={};NUTRI.M.forEach(m=>{MM[dn(m[0]).toLow
  return{R:NUTRI.R.map(r=>{const nm=dn(r[0]).toLowerCase();return{n:r[0],nm,t:mTok(r[0]),k:[r[3],r[4],r[5],r[6]].map(v=>v==null?0:+v),v:r.slice(3).map(v=>v==null?0:+v),mm:MM[nm]}}),
   PM:Object.fromEntries(Object.entries(NUTRI.P).map(([k,v])=>[mSt(k),v])),Z:new Set(NUTRI.Z.map(mSt))}})());
 const FPREF=["ulei de floarea-soarelui","faina alba","orez alb","lapte 3,5%","smantana 20%","zahar","oua de gaina","unt","branza de vaci"],FST=/fiert|copt|prajit|gatit|fript/;
-function fdMatch(name){const it=mTok(name);if(!it.length)return null;const S=new Set(it),B=fdBase(),raw=dn(name).toLowerCase();
+function fdMatch(name){name=dn(name).replace(/\b(fara|fără)\s+\S+(\s+adaug\S*)?/gi," ");const it=mTok(name);if(!it.length)return null;const S=new Set(it),B=fdBase(),raw=dn(name).toLowerCase();
  const ok=f=>!FST.test(f.nm)||FST.test(raw),pr=f=>{const j=FPREF.indexOf(f.nm);return j<0?99:j};
  const sub=L=>{const c=L.filter(f=>f.t.length&&f.t.every(w=>S.has(w))&&ok(f));if(!c.length)return null;const m=Math.max(...c.map(f=>f.t.length));return c.filter(f=>f.t.length===m).sort((a,b)=>pr(a)-pr(b))[0]};
  const U=Object.values(FD).map(f=>({n:f.n,nm:dn(f.n).toLowerCase(),t:f.t||mTok(f.n),k:f.k,cv:f.cv,user:1,v:(f.x&&f.x.length===23&&f.k&&f.k.length===4)?f.k.map(v=>+v||0).concat(f.x.map(v=>v==null||v===""?0:+v)):null}));

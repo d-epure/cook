@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.5.1
+- Valorile de referinta pentru adulti au fost verificate pe sursele EFSA (magneziu 350/300 mg, vitamina E 13/11 mg, vitamina D 15 µg, sodiu 2000 mg, vitamina K 70 µg). O singura corectie: tinta pentru vitamina K era calculata din greutate (1 µg/kg); EFSA da 70 µg pe zi pentru adulti, indiferent de greutate.
+- Reparatie in calculul de macro: in ingrediente, "fara zahar", "fara sare" etc. nu mai sunt potrivite cu zaharul sau cu sarea (ex: "sos de rosii fara zahar adaugat" aduna 50 g de zahar). Se corecteaza si meniul, si micronutrientii. Macro-ul deja salvat al unei retete se schimba doar daca apesi "Recalculeaza din Info".
+
 ## 3.5.0
 - Setari are doua taburi: Administrare (Profil nutritional, Aparate, Preferinte alimente, Categorii alimente, Etichete retete, Mese) si Tehnic (Carti, Backup, AI si cheie, Despre). Sectiunea pliabila "Tehnic" a fost inlocuita de tab. Tabul ales se tine minte; un punct pe tabul Tehnic arata ca ceva cere atentie (cheie lipsa, backup vechi), iar detaliul e pe randul respectiv.
 
