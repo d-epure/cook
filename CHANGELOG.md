@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.2.2
+- Corecteaza reteta: daca extragerea automata a esuat (ingrediente sau pasi goi) dar textul paginii din carte e pastrat, casetele pornesc de la liniile detectate in text (ingrediente din zona de dinainte de "Instructiuni", pasi uniti pe propozitii, cu "Varianta 1/2" cand pagina are doua variante; fara liniile de macro). Apare o singura nota ca s-a completat automat; nu se salveaza nimic pana nu apesi Salveaza. Retetele cu ingrediente sau pasi deja extrasi nu se schimba.
+
 ## 3.2.1
 - Toate retetele au acelasi camp "Portii (reteta)", inclusiv cele fara numar de portii ("nu se aplica" sau necunoscut): campul apare gol, cu indicatia potrivita. Scrii un numar, vezi macro la N portii fata de valoarea pentru toata reteta, apesi "Salveaza N portii" (scoate si marcajul "nu se aplica"). Mesajul "Cantitatile sunt cele din carte" a disparut, fiind inlocuit de o singura indicatie sub camp.
 

@@ -455,13 +455,23 @@ const ingLine=x=>[x.c!=null?x.c:"",x.u||"",x.n||""].join(" ").replace(/\s+/g," "
 function persistBook(r){let st=getStored();const k=bKey(r),j=st.findIndex(x=>bKey(x)===k);
  if(!st.length)st=BOOK.slice();else if(j>=0)st[j]=r;else st.push(r);
  saveStored(st);return true}
-function editForm(r,i,sel){const m=r.macro||{},cats=[...new Set([...BOOK.map(x=>x.categorie),r.categorie,"Retetele mele"].filter(Boolean))].sort(),mv=k=>m[k]!=null?m[k]:"";
+/* 3.2.2: cand extragerea automata a esuat (ingrediente sau pasi goi) dar textul paginii e pastrat, editorul porneste de la liniile detectate ca sa le corectezi, nu sa scrii de la zero */
+function guessFromText(t){t=String(t||"");const L=t.split(/\r?\n/).map(x=>x.replace(/^[\s\u2022\u25CF\-]+/,"").trim()).filter(Boolean);
+ const noise=x=>/^(MACRO PER PORTIE|V\d+\s*\(|TIPS?\b|RE[TȚŢ]ETA\s*\d+)/i.test(x)||/^(Calorii|Proteine|Carbohidra[tțţ]i|Gr[ăa]simi|Fibre)\s*:?\s*[\d.,]+/i.test(x);
+ const isIns=x=>/^INSTRUC[TȚŢ]IUNI/i.test(x),q=x=>/^\(?\d/.test(x);
+ const a=L.findIndex(q),b=L.findIndex(isIns);const ing=[];
+ if(a>=0)for(let k=a;k<(b>=0?b:L.length);k++){if(!noise(L[k])&&!isIns(L[k]))ing.push(L[k])}
+ const steps=[];let buf="",pre="";const flush=()=>{if(buf){steps.push(pre+buf);pre=""}buf=""};
+ if(b>=0)for(let k=b;k<L.length;k++){const x=L[k];if(isIns(x)){flush();const v=x.match(/VARIANTA\s*(\d+)/i);pre=v?"Varianta "+v[1]+": ":"";continue}
+  if(noise(x)||/^TIPS?:?$/i.test(x))continue;buf+=(buf?" ":"")+x;if(/[.!?:]$/.test(x))flush()}
+ flush();return{ing,steps}}
+function editForm(r,i,sel){const m=r.macro||{},cats=[...new Set([...BOOK.map(x=>x.categorie),r.categorie,"Retetele mele"].filter(Boolean))].sort(),mv=k=>m[k]!=null?m[k]:"",gz=r.text_brut&&(!(r.ingrediente||[]).length||!(r.pasi_carte||[]).length)?guessFromText(r.text_brut):null,gI=gz&&!(r.ingrediente||[]).length?gz.ing:null,gS=gz&&!(r.pasi_carte||[]).length?gz.steps:null;
  $(sel).innerHTML=`<div class="bv" data-bi="${i}"><div style="margin-bottom:10px"><button class="alt" data-ecancel="1">Renunta</button></div>${VQ&&r.verifica?`<div class="card" style="margin-bottom:10px;background:var(--soft)"><b>De verificat: mai sunt ${BOOK.filter(x=>x.verifica).length}</b> (${esc(r.verifica.join(", "))})<div class="row" style="gap:8px;margin-top:8px"><button class="alt" type="button" data-vqskip="1" style="margin:0">Sari peste</button><button class="alt" type="button" data-vqstop="1" style="margin:0">Opreste</button></div></div>`:""}<div class="card"><h2>${r.nou?"Reteta noua":"Corecteaza: "+esc(r.titlu)}</h2>${r.nou?"":`<p class="muted" style="margin:0 0 8px"><b>${r.din?"Adaptata din:":"Din:"}</b> ${r.din?esc(r.din.sursa||"carte necunoscuta")+(r.din.nr!==""&&r.din.nr!=null?", reteta nr. "+esc(r.din.nr):""):esc(r.sursa||"carte necunoscuta")+(r.nr!=null&&r.nr!==""?", reteta nr. "+esc(r.nr):"")}${(r.pagina||r.pag||r.page)?", pagina "+esc(r.pagina||r.pag||r.page):""}. Cauta in carte dupa acest numar si compara.</p>`}
 
  <label for="ef-t${i}">Titlu</label><input id="ef-t${i}" data-ef="titlu" value="${esc(r.titlu)}" maxlength="120"${r.nou?' placeholder="ex: Papanasi cu smantana"':""}>
  <div class="row"><div><label for="ef-p${i}">Portii (- = nu se aplica)</label><input id="ef-p${i}" data-ef="portii" type="text" inputmode="numeric" maxlength="3" placeholder="ex: 4 sau -" value="${r.pna?"-":esc(r.portii==null?"":r.portii)}"><div data-pcbox>${(r.verifica||[]).includes(PVR)?`<div class="warn" style="margin-top:6px">Numarul de portii nu e confirmat. <button class="alt" type="button" data-pconf="1" style="margin:4px 0 0">Confirma numarul de portii</button></div>`:""}</div></div><div><label for="ef-c${i}">Categorie</label><select id="ef-c${i}" data-ef="categorie">${cats.map(c=>`<option${c===r.categorie?" selected":""}>${esc(c)}</option>`).join("")}</select></div></div>
- <label for="ef-i${i}">Ingrediente (unul pe linie)</label><textarea id="ef-i${i}" data-ef="ing" rows="8" placeholder="200 g faina&#10;2 oua&#10;## Sos&#10;1 lingura smantana">${esc(ingText(r.ingrediente))}</textarea>
- <label for="ef-s${i}">Mod de preparare (un pas pe linie)</label><textarea id="ef-s${i}" data-ef="pasi" rows="8" placeholder="Amesteca faina cu ouale.&#10;Coace 30 de minute.">${esc((r.pasi_carte||[]).join("\n"))}</textarea>
+ ${(gI&&gI.length)||(gS&&gS.length)?`<div class="warn" style="margin:10px 0 0">Extragerea automata a esuat. Am completat de mai jos ce am detectat in textul paginii (${[gI&&gI.length?"ingrediente":"",gS&&gS.length?"pasi":""].filter(Boolean).join(" si ")}). Compara cu cartea si corecteaza; nu se salveaza pana nu apesi Salveaza.</div>`:""}<label for="ef-i${i}">Ingrediente (unul pe linie)</label><textarea id="ef-i${i}" data-ef="ing" rows="8" placeholder="200 g faina&#10;2 oua&#10;## Sos&#10;1 lingura smantana">${esc(gI&&gI.length?gI.join("\n"):ingText(r.ingrediente))}</textarea>
+ <label for="ef-s${i}">Mod de preparare (un pas pe linie)</label><textarea id="ef-s${i}" data-ef="pasi" rows="8" placeholder="Amesteca faina cu ouale.&#10;Coace 30 de minute.">${esc(gS&&gS.length?gS.join("\n"):(r.pasi_carte||[]).join("\n"))}</textarea>
  <div class="row" style="margin-top:12px;align-items:center;gap:8px"><button class="alt" type="button" data-emac="1" style="margin:0">Calculeaza macro (AI)</button><span class="muted">Estimare per portie, din ingredientele de mai sus.</span></div><div data-mres aria-live="polite"></div>
  <div class="row"><div><label>kcal</label><input data-ef="kcal" type="number" step="any" value="${esc(mv("kcal"))}"></div><div><label>Proteine g</label><input data-ef="proteine" type="number" step="any" value="${esc(mv("proteine"))}"></div><div><label>Carbo g</label><input data-ef="carbo" type="number" step="any" value="${esc(mv("carbo"))}"></div><div><label>Grasimi g</label><input data-ef="grasimi" type="number" step="any" value="${esc(mv("grasimi"))}"></div></div>
  <div class="acts">${vx(r).length?'<button class="go" data-esave="v">Salveaza ca verificata</button><button class="alt" data-esave="1">Salveaza, raman de verificat</button>':'<button class="go" data-esave="1">Salveaza</button>'}<button class="alt" data-ecancel="1">Renunta</button>${r.manual&&!r.nou?'<button class="alt" data-edel="1">Sterge reteta</button>':""}</div></div></div>`}
@@ -1190,7 +1200,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.2.1";
+const APP_V="3.2.2";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
