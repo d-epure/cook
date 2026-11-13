@@ -1235,7 +1235,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.7.0";
+const APP_V="3.7.1";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1685,7 +1685,7 @@ const XCAP={g:100,mg:20000,mcg:200000};
 function fdFormShow(bv,j){const z=bv._ml.miss[j];bv.querySelector(`[data-mrow="${j}"] [data-mform]`).innerHTML=fdFormHtml(z,j)}
 function fdFormHtml(z,j){const f=z.f?z.f.k:["","","",""],cv=fdNeedCv(z.x),xv=(z.fd&&z.fd.x)||[],gr=(z.fd&&z.fd.gr)||"";
  const inp=(k,l,v,at)=>`<div><label>${l}</label><input data-${at||"mf"}="${k}" type="number" min="0" step="any" value="${v==null?"":esc(v)}"></div>`;
- return`<p class="muted" style="margin:8px 0 4px">Valori la 100 g de ${esc(dn(z.x.n))}:</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${inp("kcal","kcal",f[0])}${inp("p","Proteine g",f[1])}${inp("c","Carbo g",f[3])}${inp("g","Grasimi g",f[2])}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">${inp("up","Unitate (ex: cub, felie)",(z.fd&&z.fd.up)||"","mf").replace('type="number" min="0" step="any"','type="text" maxlength="20"')}${inp("ug","Grame pe unitate (ex: 4)",(z.fd&&z.fd.ug)||"")}</div>${cv?`<div style="margin-top:8px">${inp("cv","Grame intr-o "+(z.x.u||"bucata"),"")}</div>`:""}<details style="margin-top:8px"><summary>Alte valori: fibre, minerale, vitamine (optional)</summary><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${XK.map((k,n)=>inp(k,XI[k][0]+" ("+XI[k][1]+")",xv[n],"mx")).join("")}</div></details><div style="margin-top:8px"><label>Grupa (optional)</label><select data-mf="gr"><option value="">-</option>${IGR.map(g=>`<option${g===gr?" selected":""}>${esc(g)}</option>`).join("")}</select></div><div data-merr class="warn" hidden></div><button class="go" type="button" data-mms="${j}" style="margin-top:8px">Salveaza local</button>`}
+ return`${String(j).startsWith("e:")?`<div style="margin:8px 0">${inp("nm","Nume",(z.fd&&z.fd.n)||z.x.n).replace('type="number" min="0" step="any"','type="text" maxlength="60"')}</div>`:""}<p class="muted" style="margin:8px 0 4px">Valori la 100 g de ${esc(dn(z.x.n))}:</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${inp("kcal","kcal",f[0])}${inp("p","Proteine g",f[1])}${inp("c","Carbo g",f[3])}${inp("g","Grasimi g",f[2])}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">${inp("up","Unitate (ex: cub, felie)",(z.fd&&z.fd.up)||"","mf").replace('type="number" min="0" step="any"','type="text" maxlength="20"')}${inp("ug","Grame pe unitate (ex: 4)",(z.fd&&z.fd.ug)||"")}</div>${cv?`<div style="margin-top:8px">${inp("cv","Grame intr-o "+(z.x.u||"bucata"),"")}</div>`:""}<details style="margin-top:8px"><summary>Alte valori: fibre, minerale, vitamine (optional)</summary><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${XK.map((k,n)=>inp(k,XI[k][0]+" ("+XI[k][1]+")",xv[n],"mx")).join("")}</div></details><div style="margin-top:8px"><label>Grupa (optional)</label><select data-mf="gr"><option value="">-</option>${IGR.map(g=>`<option${g===gr?" selected":""}>${esc(g)}</option>`).join("")}</select></div><div data-merr class="warn" hidden></div><button class="go" type="button" data-mms="${j}" style="margin-top:8px">Salveaza local</button>`}
 function fdPut(z,k,cv,src,gr,x,keep){const key=mTok(z.x.n).join(" ")||dn(z.x.n).toLowerCase(),old=FD[key]||{},u=dn(z.x.u||"").toLowerCase().trim(),c=Object.assign({},old.cv);if(cv)c[u]=cv;
  FD[key]={n:old.n||z.x.n,t:key.split(" "),k,src:keep?(old.src||src):src||old.src||"manual",cv:c,gr:gr||old.gr||"",x:x||old.x||null};fdSave()}
 function fdManSave(bv,i,j,btn){fdManZ(bv._ml.miss[j],btn.closest("[data-mrow]"),()=>macPanel(bv,i))}
@@ -1696,8 +1696,11 @@ function fdManZ(z,row,after){const g=k=>{const e=row.querySelector(`[data-mf=${k
  if(bad){er.textContent=bad;er.hidden=false;return}
  const ugv=g("ug"),upe=row.querySelector("[data-mf=up]"),upv=upe?dn(upe.value).toLowerCase().trim().slice(0,20):"";
  if(Number.isFinite(ugv)&&!(ugv>0&&ugv<5000)){er.textContent="Grame pe unitate: un numar intre 0 si 5000.";er.hidden=false;return}
- fdPut(z,k.map(r1),need?cv:null,"manual",(row.querySelector("[data-mf=gr]")||{}).value,x.some(v=>v!=null)?x:null);
- {const key=mTok(z.x.n).join(" ")||dn(z.x.n).toLowerCase(),f=FD[key];if(f){if(Number.isFinite(ugv)){f.ug=r1(ugv);f.up=upv||"bucata";f.cv=Object.assign({},f.cv);f.cv[f.up]=f.ug}else if(upe&&upe.value===""&&row.querySelector("[data-mf=ug]")){delete f.ug;delete f.up}fdSave()}}
+ const nme=row.querySelector("[data-mf=nm]"),ok0=mTok(z.x.n).join(" ")||dn(z.x.n).toLowerCase();let nn="",nk=ok0;
+ if(nme){nn=nme.value.trim().slice(0,60);if(!nn){er.textContent="Numele nu poate fi gol.";er.hidden=false;return}nk=mTok(nn).join(" ")||dn(nn).toLowerCase();if(nk!==ok0&&FD[nk]){er.textContent="Exista deja un aliment cu acest nume.";er.hidden=false;return}}
+ fdPut(z,k.map(r1),need?cv:null,"manual",(row.querySelector("[data-mf=gr]")||{}).value,x.some(v=>v!=null)?x:null,!!(z.fd&&z.fd.src==="ai"));
+ if(nme&&FD[ok0]&&nn&&(nn!==FD[ok0].n||nk!==ok0)){const e=FD[ok0];e.n=nn;e.t=nk.split(" ");if(nk!==ok0){FD[nk]=e;delete FD[ok0];IOPEN.delete("u"+ok0);IOPEN.add("u"+nk)}fdSave()}
+ {const key=nk,f=FD[key];if(f){if(Number.isFinite(ugv)){f.ug=r1(ugv);f.up=upv||"bucata";f.cv=Object.assign({},f.cv);f.cv[f.up]=f.ug}else if(upe&&upe.value===""&&row.querySelector("[data-mf=ug]")){delete f.ug;delete f.up}fdSave()}}
  toast("Salvat local: "+dn(z.x.n)+".");after()}
 function fdOk(j,need){const n=k=>{const v=+j[k];return Number.isFinite(v)&&v>=0?r1(v):null},k=[n("kcal"),n("proteine"),n("grasimi"),n("carbo")];
  if(k.some(v=>v==null)||k[0]>950||k[1]+k[2]+k[3]>105)return null;const cv=+j.grame_unitate;if(need&&!(cv>0&&cv<5000))return null;

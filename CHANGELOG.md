@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.7.1
+- Info > Ingrediente > Editeaza: poti schimba numele alimentului adaugat de tine (un nume deja folosit de alt aliment e refuzat). Un aliment venit de la AI ramane marcat AI chiar daca ii corectezi valorile manual; "manual" ramane doar pentru alimentele introduse de la inceput de tine.
+
 ## 3.7.0
 - Alimente adaugate de tine: in Info > Ingrediente > Editeaza ai doua campuri noi, unitatea (ex: cub) si cate grame are (ex: 4). Randul din Info arata atunci valorile pe unitate ("pentru 1 cub (4 g)"), nu la 100 g (daca schimbi campul "Pentru ... g", se foloseste cantitatea ceruta). In retete, un ingredient fara unitate sau cu "bucata" (ex: "1 cub zahar") se calculeaza cu greutatea setata, in loc sa ramana fara date.
 
