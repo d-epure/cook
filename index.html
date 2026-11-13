@@ -12,7 +12,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=3.7.1">
+<link rel="stylesheet" href="style.css?v=3.8.0">
 
 </head>
 <body>
@@ -33,7 +33,7 @@
  <button data-v="setari">Setari</button>
 </nav>
 
-<section id="v-idei"><div id="onb"></div>
+<section id="v-idei"><h2 class="sr">Idei</h2><div id="onb"></div>
  <div class="card">
   <label for="ing">Ingrediente pe care le ai</label>
   <textarea id="ing" placeholder="ex: piept de pui, broccoli, orez, smantana"></textarea>
@@ -55,13 +55,13 @@
 <section id="v-carti" class="hidden"><div id="bnewrow" style="margin-bottom:12px"><button class="go" id="bnew" type="button" style="margin:0;width:100%">+ Reteta noua (o scrii tu)</button></div><div class="card" id="bsearch"><div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 12px"><label for="bq" style="margin:0">Cauta in retetele tale</label><span id="bcnt" class="muted" style="font-size:.85rem"></span></div><input id="bq" placeholder="ingrediente sau nume, ex: vita, cartofi">
  <details id="bflt" class="mre"><summary id="bfsum">Filtre</summary><div class="fgrid"><div><label for="bs">Carte</label><select id="bs"></select></div><div><label for="bc">Categorie</label><select id="bc"></select></div><div><label for="bf">Eticheta</label><select id="bf"></select></div><div><label for="bv">Stare</label><select id="bv"><option value="">Toate</option><option value="v">De verificat (ingrediente si text)</option><option value="p">Portii de verificat</option><option value="m">Macro de verificat</option><option value="ok">Fara semn de intrebare</option></select></div><details id="bflt2" class="mre" style="grid-column:1/-1"><summary id="bfsum2">Mai multe filtre</summary><div class="fgrid" style="margin-top:8px"><div><label for="bd">Din debara</label><select id="bd"><option value="">Toate retetele</option><option value="0">Am tot ce trebuie</option><option value="1">Lipseste cel mult 1</option><option value="2">Lipsesc cel mult 2</option><option value="3">Lipsesc cel mult 3</option></select></div><div><label for="bj">Jurnal</label><select id="bj"><option value="">Toate</option><option value="4">Apreciate (4-5 stele)</option><option value="ok">Gatite pana acum</option><option value="g0">Negatite inca</option><option value="old">Negatite sau demult (peste 60 zile)</option></select></div><div><label for="bp">Preferinte</label><select id="bp"><option value="">Toate</option><option value="ok">Fara alimente evitate</option><option value="lk">Cu alimente care imi plac</option></select></div></div></details></div></details>
  <div id="bn" class="muted" style="margin-top:10px"></div><button class="alt" id="bvq" type="button" hidden style="margin-top:8px">Parcurge retetele de verificat</button></div><div id="bres"></div></section>
-<section id="v-salvate" class="hidden"><div id="sfilt"><div><label for="fk">Arata</label><select id="fk"><option value="">Toate</option><option value="fav">Favorite</option><option value="ai">Generate de AI</option><option value="mine">Scrise de mine</option><option value="cos">Cos</option></select></div><div><label for="fs">Eticheta</label><select id="fs"></select></div></div><div id="salvate" style="margin-top:12px"></div></section>
+<section id="v-salvate" class="hidden"><h2 class="sr">Colectia mea</h2><div id="sfilt"><div><label for="fk">Arata</label><select id="fk"><option value="">Toate</option><option value="fav">Favorite</option><option value="ai">Generate de AI</option><option value="mine">Scrise de mine</option><option value="cos">Cos</option></select></div><div><label for="fs">Eticheta</label><select id="fs"></select></div></div><div id="salvate" style="margin-top:12px"></div></section>
 
 <section id="v-debara" class="hidden"><div class="card lst"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px"><div><h2 style="margin:0">Debaraua mea</h2><div class="muted" id="pcn"></div></div><button class="alt" id="pCats" type="button">Schimba categoriile</button></div><details class="pdet"><summary>Cum functioneaza Debaraua</summary><ul class="muted pinfo"><li><b>Ce pui aici:</b> produse pe care le ai deja sau care se consuma greu (sare, oua, faina, orez, conserve). Nu retin cantitati.</li><li><b>De la inceput:</b> sarea, piperul, uleiul, zaharul si faina sunt deja puse; le poti scoate.</li><li><b>Categorii si marcaje:</b> categoriile se schimba din Setari. La legume, fructe si cereale poti marca proaspat, congelat, uscat, conserva sau altceva (borcan).</li><li><b>In Cumparaturi:</b> bifa "Ascunde produsele din debara" le scoate din lista.</li></ul></details><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="pin" maxlength="60" placeholder="cauta sau adauga" aria-label="Cauta in debara sau adauga un produs nou" style="flex:1;min-width:160px"><button class="go" id="pAdd" style="margin:0">Adauga</button></div><div id="pl"></div></div></section>
-<section id="v-meniu" class="hidden"><div id="mw"></div></section>
+<section id="v-meniu" class="hidden"><h2 class="sr">Meniu</h2><div id="mw"></div></section>
 <div id="mdlg" class="mdlg hidden"></div>
 <div id="cook" class="cook hidden"></div>
-<section id="v-lista" class="hidden"><div class="card lst"><div id="ll"></div></div></section>
+<section id="v-lista" class="hidden"><h2 class="sr">Lista de cumparaturi</h2><div class="card lst"><div id="ll"></div></div></section>
 
 <section id="v-ingr" class="hidden"><div class="card"><h2 style="margin:0 0 4px">Ingrediente</h2><p class="muted" style="margin:0 0 10px">Calorii si macro pentru alimente comune; atinge un aliment pentru fibre, minerale si vitamine.</p>
 <div class="row nctl"><input id="nq" placeholder="cauta un aliment, ex: ou, orez" aria-label="Cauta aliment" autocomplete="off"><label class="nam">Pentru <input id="nam" type="number" min="1" max="5000" value="100" aria-label="Cantitate in grame"> g</label><select id="ns" aria-label="Sortare"><option value="nume">Nume A-Z</option><option value="kcal">Calorii</option><option value="p">Proteine</option><option value="pk">Proteine la 100 kcal</option><option value="c">Carbohidrati</option><option value="g">Grasimi</option><option value="fib">Fibre</option></select><select id="ngc" aria-label="Grupa"></select></div>
@@ -116,7 +116,7 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=3.7.1"></script>
-<script src="app.js?v=3.7.1"></script>
+<script src="nutri.js?v=3.8.0"></script>
+<script src="app.js?v=3.8.0"></script>
 </body>
 </html>

@@ -46,7 +46,7 @@ Marcaje de verificat (trei, separate): *De verificat* = ingrediente neclare sau 
 
 **Fisierul de corectii** (Setari > Carti, "Aplica un fisier de corectii"): aplica portii si marcaje pe retetele deja incarcate, fara sa le inlocuiasca. E un fisier privat, nu se pune in repo.
 
-Avertizare in Meniu: daca macro-ul din carte difera mult de calculul din Info, apare o nota sub reteta; "E in regula" o ascunde (campul `mok` pe reteta).
+Sursa macro (campul `macro.sursa` pe reteta: `local` = calculat din Info, `ai` = estimat de AI, `manual` = scris de tine; fara camp pe o reteta scrisa de tine = "sursa necunoscuta"). Avertizare in Meniu: daca macro-ul din carte difera mult de calculul din Info, apare o nota sub reteta; "E in regula" o ascunde (campul `mok` pe reteta).
 
 ## Fisiere
 - `index.html` - structura paginii (sectiuni, pagini, formulare)
@@ -56,7 +56,7 @@ Avertizare in Meniu: daca macro-ul din carte difera mult de calculul din Info, a
 - `sw.js`, `manifest.webmanifest`, `icon-*.png` - instalare ca aplicatie si functionare fara net (se urca langa `index.html`)
 - `CHANGELOG.md` - istoricul versiunilor (cel mai nou primul)
 - `tests/` - teste automate cu Playwright (`test_*.py`, ajutor comun in `_h.py`)
-- Cartile tale (fisiere JSON) NU intra in repo public: le incarci din Setari > Carti. `retete.json`, daca exista, este doar un exemplu.
+- Cartile tale (fisiere JSON) NU intra in repo public: le incarci din Setari > Carti. `retete.json`, daca exista, este doar un exemplu. Fara nicio carte incarcata, aplicatia arata 6 retete demo originale (dispar cand incarci o carte sau scrii prima ta reteta).
 
 ## Cand modifici ceva
 0. La fiecare pachet zip: versiunea (`APP_V`, `?v=`, `CHANGELOG.md`), README-ul (sectiunile Ce face, Backup, Fisiere), comentariul de la inceputul `app.js` si testele trebuie sa spuna acelasi lucru. `release.sh` verifica automat versiunea, cheile din `BK_KEYS` si paginile din Setari fata de README.
@@ -70,5 +70,5 @@ Avertizare in Meniu: daca macro-ul din carte difera mult de calculul din Info, a
 - Biblioteca (cartile incarcate) sta in IndexedDB (`saveStored` / `getStored` / `STORED`); nu scrie direct `localStorage.rbook`.
 - Datele noi in localStorage: adauga cheia in `BK_KEYS` (copia de siguranta) si in comentariul de la inceputul `app.js`.
 - Cheia API nu intra niciodata in fisiere din repo; sta doar in localStorage (`rk`) si se trimite doar catre api.anthropic.com.
-- Text in romana fara diacritice in interfata.
+- Text in romana fara diacritice, in interfata si in date: `nd()`/`ndo()` (in app.js) curata la fiecare salvare, la restaurare din backup, la sincronizare si la incarcarea cartilor; la prima pornire cu 3.8.0 o migrare unica curata ce exista deja, dupa o copie de siguranta automata (marcaj local `rnd`, nu intra in backup). In cod nu se scriu diacritice: regexurile folosesc `\u....`.
 - Fara informatie afisata de doua ori si fara ceva de corectat in doua locuri: o sectiune pentru fiecare scop.

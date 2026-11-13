@@ -2,6 +2,14 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.8.0
+- Fara diacritice peste tot: ce scrii, ce vine de la AI, ce incarci din carti, ce restaurezi din backup sau primesti prin sincronizare se curata automat la salvare. Regula: a, s, t simple; "i" cu semn la inceput de cuvant sau dupa ne/re/pre/de/dez devine i ("neindulcita", "preincalzeste"), in vechea scriere devine a ("paine", "pana").
+- Migrare unica la prima pornire: curata ce ai deja (retete din carti, debara, meniuri, cumparaturi, alimente). Inainte face o copie de siguranta (Setari > Tehnic > Backup > copii automate, "Restaureaza" daca vrei sa revii). Intrarile care devin identice dupa curatare (ex: "mazare" si "mazare" cu diacritice in debara) se unesc, cu formele pastrate. Descarcarea unei carti da acum un JSON curat.
+- Retete demo (6, scrise original, fara drepturi de autor) in locul retetei de test din cod: apar cat timp nu ai incarcat nicio carte; dispar cand incarci o carte sau scrii prima ta reteta. Una are numarul de portii de verificat, una ingrediente neclare, ca sa poti testa marcajele.
+- Macro: sursa se salveaza acum pe toate caile (Info, AI, scris de mana). O reteta scrisa de tine cu macro fara sursa nu mai spune "Valori din carte", ci "Sursa necunoscuta (apasa Recalculeaza din Info)"; apare si "Estimat de AI" si "Scrise de tine".
+- Audit UI/UX (corecturi): butoanele de actiune au minim 40 px (Lista, Colectia mea, Aparate, Debara); textul secundar are contrast de minim 4.5:1 in tema luminoasa, iar avertizarea din Setari are contrast bun si in tema intunecata; o singura forma pentru aceeasi actiune ("Adauga la meniu", "Anuleaza", "Sterge" pentru aparate, "Goleste biblioteca"); Idei, Colectia mea, Meniu si Lista au titlu de pagina pentru cititoare de ecran (invizibil pe ecran); sagetile "▾/▸" din Meniu sunt ascunse de cititoare de ecran.
+- Teste noi: test_normalizare.py, test_demo_si_sursa.py; adaptat test_meniu.py (reteta demo).
+
 ## 3.7.1
 - Info > Ingrediente > Editeaza: poti schimba numele alimentului adaugat de tine (un nume deja folosit de alt aliment e refuzat). Un aliment venit de la AI ramane marcat AI chiar daca ii corectezi valorile manual; "manual" ramane doar pentru alimentele introduse de la inceput de tine.
 
