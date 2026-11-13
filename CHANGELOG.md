@@ -2,6 +2,14 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.2.1
+- Toate retetele au acelasi camp "Portii (reteta)", inclusiv cele fara numar de portii ("nu se aplica" sau necunoscut): campul apare gol, cu indicatia potrivita. Scrii un numar, vezi macro la N portii fata de valoarea pentru toata reteta, apesi "Salveaza N portii" (scoate si marcajul "nu se aplica"). Mesajul "Cantitatile sunt cele din carte" a disparut, fiind inlocuit de o singura indicatie sub camp.
+
+## 3.2.0
+- Reteta deschisa: campul "Portii" a devenit "Portii (reteta)" si nu mai scaleaza cantitatile (ingredientele raman cele din carte). Daca schimbi numarul, apare imediat macro la N portii, langa valoarea salvata, si un buton "Salveaza N portii" (sau "Confirma N portii" cand numarul e cel salvat dar neconfirmat). Salvarea se face direct, fara "Corecteaza reteta", scoate marcajul "numar de portii" de la verificat si recalculeaza macro-ul daca era calculat local sau lipsea (macro-ul din carte nu se atinge).
+- "Mod gatit", "Adauga la cumparaturi", "Adauga la meniu" si "Adapteaza" folosesc numarul de portii salvat.
+- Scalarea cantitatilor pentru gatit a ramas in backlog, pentru Info > Gatire.
+
 ## 3.1.4
 - README aliniat cu aplicatia: profil nutritional, tinte, micronutrienti, bare, chei de backup (`rprof`). Comentariul de la inceputul `app.js` actualizat.
 - `release.sh` verifica la fiecare pachet ca versiunea, CHANGELOG-ul, cheile de backup si paginile din Setari sunt in README.

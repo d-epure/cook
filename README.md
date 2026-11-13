@@ -20,7 +20,7 @@ Aplicatie personala pentru retete: le gasesti, le adaptezi, le planifici si faci
 
 AI-ul (Anthropic) se foloseste doar cand apesi: idei, reteta completa, adaptare, estimare de macro si, optional, un meniu generat. Restul (cautare, meniu propus, liste, debara, Info) merge local si gratuit.
 
-Portii: numarul se confirma separat de restul verificarilor (buton "Confirma numarul de portii" in editor); "-" inseamna ca nu se aplica. Corectii in masa (portii, marcaje) se aplica din Setari > Carti, "Aplica un fisier de corectii", fara sa inlocuiasca retetele.
+Portii: in reteta deschisa, campul "Portii (reteta)" arata macro la numarul scris (fara sa schimbe cantitatile) si butonul "Salveaza N portii" il salveaza direct si recalculeaza macro-ul calculat local; campul exista pe toate retetele, si pe cele fara numar de portii (gol); numarul se mai poate confirma si in editor ("Confirma numarul de portii"); "-" inseamna ca nu se aplica. Corectii in masa (portii, marcaje) se aplica din Setari > Carti, "Aplica un fisier de corectii", fara sa inlocuiasca retetele.
 
 Tinte si micronutrienti: din profil (formula Mifflin-St Jeor x nivel de activitate, ajustata dupa scop; proteine pe kg la alegere: 0,83 / 1,6 / 2,0 sau valoare proprie; grasimi 30% din calorii, restul carbohidrati). Barele au o singura culoare (verde); linia marcheaza 100%; terracotta apare doar peste tinta la limite (sodiu, grasimi saturate, zaharuri) si la calorii, carbohidrati si grasimi. Valorile magneziu, vitamina E, D, K si sodiu sunt din memorie si merita verificate fata de EFSA.
 
