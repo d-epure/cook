@@ -499,13 +499,19 @@ function editForm(r,i,sel){const m=r.macro||{},cats=[...new Set([...BOOK.map(x=>
  <div class="row"><div><label for="ef-p${i}">Portii (- = nu se aplica)</label><input id="ef-p${i}" data-ef="portii" type="text" inputmode="numeric" maxlength="3" placeholder="ex: 4 sau -" value="${r.pna?"-":esc(r.portii==null?"":r.portii)}"><div data-pcbox>${(r.verifica||[]).includes(PVR)?`<div class="warn" style="margin-top:6px">Numarul de portii nu e confirmat. <button class="alt" type="button" data-pconf="1" style="margin:4px 0 0">Confirma numarul de portii</button></div>`:""}</div></div><div><label for="ef-c${i}">Categorie</label><select id="ef-c${i}" data-ef="categorie">${cats.map(c=>`<option${c===r.categorie?" selected":""}>${esc(c)}</option>`).join("")}</select></div></div>
  ${(gI&&gI.length)||(gS&&gS.length)?`<div class="warn" style="margin:10px 0 0">Extragerea automata a esuat. Am completat de mai jos ce am detectat in textul paginii (${[gI&&gI.length?"ingrediente":"",gS&&gS.length?"pasi":""].filter(Boolean).join(" si ")}). Compara cu cartea si corecteaza; nu se salveaza pana nu apesi Salveaza.</div>`:""}<label for="ef-i${i}">Ingrediente (unul pe linie)</label><textarea id="ef-i${i}" data-ef="ing" rows="8" placeholder="200 g faina&#10;2 oua&#10;## Sos&#10;1 lingura smantana">${esc(gI&&gI.length?gI.join("\n"):ingText(r.ingrediente))}</textarea>
  <label for="ef-s${i}">Mod de preparare (un pas pe linie)</label><textarea id="ef-s${i}" data-ef="pasi" rows="8" placeholder="Amesteca faina cu ouale.&#10;Coace 30 de minute.">${esc(gS&&gS.length?gS.join("\n"):(r.pasi_carte||[]).join("\n"))}</textarea>
- <div class="row" style="margin-top:12px;align-items:center;gap:8px"><button class="alt" type="button" data-emac="1" style="margin:0">Calculeaza macro (AI)</button><span class="muted">Estimare per portie, din ingredientele de mai sus.</span></div><div data-mres aria-live="polite"></div>
+ <div class="row" style="margin-top:12px;align-items:center;gap:8px"><button class="alt" type="button" data-emacl="1" style="margin:0">Calculeaza din Info</button><button class="alt" type="button" data-emac="1" style="margin:0">Calculeaza macro (AI)</button><span class="muted">Per portie, din ingredientele de mai sus. "Din Info" foloseste datele salvate in aplicatie; AI estimeaza.</span></div><div data-mres aria-live="polite"></div>
  <div class="row"><div><label>kcal</label><input data-ef="kcal" type="number" step="any" value="${esc(mv("kcal"))}"></div><div><label>Proteine g</label><input data-ef="proteine" type="number" step="any" value="${esc(mv("proteine"))}"></div><div><label>Carbo g</label><input data-ef="carbo" type="number" step="any" value="${esc(mv("carbo"))}"></div><div><label>Grasimi g</label><input data-ef="grasimi" type="number" step="any" value="${esc(mv("grasimi"))}"></div></div>
  <div class="acts">${vx(r).length?'<button class="go" data-esave="v">Salveaza ca verificata</button><button class="alt" data-esave="1">Salveaza, raman de verificat</button>':'<button class="go" data-esave="1">Salveaza</button>'}<button class="alt" data-ecancel="1">Renunta</button>${r.manual&&!r.nou?'<button class="alt" data-edel="1">Sterge reteta</button>':""}</div></div></div>`}
 /* ===== Calcul macronutrienti cu AI (doar la apasare), in editorul retetei ===== */
 const MACK=["kcal","proteine","carbo","grasimi"],MACL={kcal:"kcal",proteine:"proteine",carbo:"carbohidrati",grasimi:"grasimi"};
 const macTxt=o=>MACK.map(k=>o[k]!=null&&o[k]!==""?`${MACL[k]} ${o[k]}${k==="kcal"?"":" g"}`:null).filter(Boolean).join(", ")||"(nimic)";
-function macApply(bv,o,tags){MACK.forEach(k=>{const el=bv.querySelector(`[data-ef=${k}]`);if(el)el.value=o[k]!=null?o[k]:""});bv.dataset.stags=JSON.stringify(tags||[]);
+function macLoc(bv){const g=k=>bv.querySelector(`[data-ef=${k}]`).value,box=bv.querySelector("[data-mres]"),pp=pParse(g("portii"));
+ if(pp.bad||pp.na||pp.n==null){box.innerHTML='<div class="warn">Scrie mai intai numarul de portii (campul Portii de mai sus), ca sa calculez per portie.</div>';return}
+ const ings=parseIngText(g("ing"));if(!ings.length){box.innerHTML='<div class="warn">Nu sunt ingrediente de calculat.</div>';return}
+ const L=macLocal({ingrediente:ings,portii:pp.n},pp.n);if(!L.ok){box.innerHTML='<div class="warn">Nu am gasit date in Info pentru niciun ingredient. Foloseste AI sau completeaza manual.</div>';return}
+ macApply(bv,L.o,[]);bv.dataset.msrc=L.ok+" din "+L.n;
+ box.innerHTML=`<p class="muted" style="margin:6px 0">Calculat din Info: ${esc(macTxt(L.o))} per portie (${L.ok} din ${L.n} ingrediente).${L.miss.length?" Fara date: "+esc(L.miss.slice(0,6).map(m=>dn(m.x.n)).join(", "))+(L.miss.length>6?"...":"")+".":""} Valorile sunt in campurile de mai jos; se salveaza cand salvezi reteta.</p>`}
+function macApply(bv,o,tags){delete bv.dataset.msrc;MACK.forEach(k=>{const el=bv.querySelector(`[data-ef=${k}]`);if(el)el.value=o[k]!=null?o[k]:""});bv.dataset.stags=JSON.stringify(tags||[]);
  const au=autoTags({macro:o}),t=[...new Set([...(tags||[]),...au])];
  const box=bv.querySelector("[data-mres]");box.innerHTML=`<p class="muted" style="margin:8px 0">Completat: ${esc(macTxt(o))} (per portie).${t.length?" Etichete dupa salvare: "+esc(t.join(", "))+".":""} Verifica valorile si apasa Salveaza.</p>`}
 async function macCalc(bv,btn){const g=k=>bv.querySelector(`[data-ef=${k}]`).value,box=bv.querySelector("[data-mres]");
@@ -533,7 +539,7 @@ function editSave(bv,i,sel,verif){const r=BOOK[i],g=k=>bv.querySelector(`[data-e
  const t=g("titlu").trim();if(!t){toast("Titlul nu poate fi gol.");return}
  {const pp=pParse(g("portii"));if(pp.bad){toast("Portii: scrie un numar (1-200) sau - daca nu se aplica.");return}const op=r.portii,opn=r.pna;r.portii=pp.na?null:pp.n;if(pp.na)r.pna=true;else delete r.pna;if(op!==r.portii||!!opn!==!!r.pna)clrV(r,PRT)}r.titlu=t;if(g("categorie"))r.categorie=g("categorie");
  r.ingrediente=parseIngText(g("ing"));r.pasi_carte=g("pasi").split("\n").map(x=>x.trim()).filter(Boolean);
- const om=JSON.stringify(r.macro||{});r.macro=Object.assign({},r.macro);["kcal","proteine","carbo","grasimi"].forEach(k=>{const v=g(k);r.macro[k]=v===""?null:+v});if(JSON.stringify(r.macro)!==om)clrV(r,MCT);
+ const om=JSON.stringify(r.macro||{});r.macro=Object.assign({},r.macro);["kcal","proteine","carbo","grasimi"].forEach(k=>{const v=g(k);r.macro[k]=v===""?null:+v});if(JSON.stringify(r.macro)!==om)clrV(r,MCT);if(bv.dataset.msrc){r.macro.sursa="local";r.macro.acoperire=bv.dataset.msrc}
  {let st=[];try{st=JSON.parse(bv.dataset.stags||"[]")}catch(e){}if(st.length)r.etichete=[...new Set([...normTags(r.etichete),...normTags(st)])]}
  if(!r.manual)r.corectata=true;if(verif){r.verifica=(r.verifica||[]).filter(x=>PRT.has(x)||MCT.has(x));if(!r.verifica.length)delete r.verifica;delete r.text_brut;delete r.text_orig}
  if(r.nou){delete r.nou;const st=getStored();if(!st.length)BOOK=[r];st.push(r);saveStored(st);EDIT=null;updBS();openBook(BOOK.indexOf(r),r.portii,sel);return}
@@ -554,6 +560,7 @@ function bvClick(e,sel){const bv=e.target.closest(".bv");if(!bv)return false;con
  if(d.vqstop!==undefined){VQ=null;EDIT=null;drawBook();return true}
  if(d.ecancel!==undefined){VQ=null;EDIT=null;if(BOOK[i].nou){BOOK=BOOK.filter(x=>!x.nou);drawBook();return true}openBook(i,BOOK[i].portii,sel);return true}
  if(d.emac!==undefined){macCalc(bv,e.target);return true}
+ if(d.emacl!==undefined){macLoc(bv);return true}
  if(d.pconf!==undefined){pConfirm(bv,i);return true}
  if(d.mcl!==undefined){macPanel(bv,i);return true}
  if(d.mai!==undefined){fdAI(bv,i,+d.mai,e.target);return true}
@@ -1228,7 +1235,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.6.0";
+const APP_V="3.7.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1558,15 +1565,15 @@ const IMIC=[["Alte valori",[["fib","Fibre","g"],["zah","Zaharuri","g"],["sat","G
 let IGS="",IGP="",ISORT="nume",IAMT=100,IOPEN=new Set();
 const iN=(x,f)=>x==null?"-":(x=x*f,x>=100?String(Math.round(x)):x>=10?String(+x.toFixed(1)):String(+x.toFixed(2)));
 function drawIngr(){
- const f=(+IAMT>0?+IAMT:100)/100,q=norm(IGS).trim().split(/\s+/).filter(Boolean);
+ const fa=(+IAMT>0?+IAMT:100)/100,q=norm(IGS).trim().split(/\s+/).filter(Boolean);
  if($("#ngc").dataset.k!=="1"){$("#ngc").dataset.k="1";$("#ngc").innerHTML=["",...IGR].map(g=>`<option value="${esc(g)}">${esc(g||"Toate grupele")}</option>`).join("");$("#mgc").innerHTML=$("#ngc").innerHTML}$("#ngc").value=IGP;
  let L=NUTRI.R.map((r,i)=>[r,i]).concat(Object.entries(FD).filter(([k])=>!fdBase().R.some(b=>b.t.join(" ")===k)).map(([k,x])=>[[cap(dn(x.n)),x.gr||"","",...x.k,...(x.x||Array(23).fill(null))],"u"+k])).filter(([r,i])=>(!IGP||r[1]===IGP)&&q.every(w=>norm(r[0]).includes(w)||(typeof i==="number"&&norm(NUTRI.E[i]||"").includes(w))));
  const key={kcal:r=>iv(r,"kcal"),p:r=>iv(r,"p"),c:r=>iv(r,"c"),g:r=>iv(r,"g"),fib:r=>iv(r,"fib"),pk:r=>iv(r,"kcal")>=20?iv(r,"p")/iv(r,"kcal"):-1}[ISORT];
  if(key)L.sort((a,b)=>(key(b[0])||0)-(key(a[0])||0)||a[0][0].localeCompare(b[0][0],"ro"));else L.sort((a,b)=>a[0][0].localeCompare(b[0][0],"ro"));
- const nd=r=>IMIC.map(([t,a])=>`<div class="ng"><h4>${t}</h4>${a.map(([k,n,u])=>`<div class="nv"><span>${n}</span><b>${iN(iv(r,k),f)}${iv(r,k)==null?"":" "+u}</b></div>`).join("")}</div>`).join("");
- const row=([r,i])=>{if(typeof i==="string"){const key=i.slice(1),uf=FD[key]||{},op=IOPEN.has(i),hk=!!LS("rk");return`<div class="nr"><button type="button" class="nrb" data-ni="${esc(i)}" aria-expanded="${op}"><span class="nn"><b>${esc(r[0])}</b> <span class="muted">${uf.src==="ai"?"AI":"manual"}</span></span><span class="nk">${iN(iv(r,"kcal"),f)}</span><span>${iN(iv(r,"p"),f)}</span><span>${iN(iv(r,"c"),f)}</span><span>${iN(iv(r,"g"),f)}</span></button>`+(op?`<div class="nd">${nd(r)}</div><div style="padding:0 8px 10px"><p class="muted" style="margin:0 0 6px">${uf.src==="ai"?"Valori estimate de AI; verifica-le la nevoie.":"Valori introduse de tine."}${uf.x?"":" Fara fibre, minerale si vitamine inca."}</p><div class="row" style="gap:6px"><button class="fdx alt" type="button" data-fdai="${esc(key)}"${hk?"":" disabled"}>Completeaza cu AI</button><button class="fdx alt" type="button" data-fded="${esc(key)}">Editeaza</button><button class="fdx alt" type="button" data-fdd="${esc(key)}" aria-label="Sterge ${esc(r[0])}">Sterge</button></div><div data-fdbox></div></div>`:"")+`</div>`}const op=IOPEN.has(i);
-  return`<div class="nr"><button type="button" class="nrb" data-ni="${i}" aria-expanded="${op}"><span class="nn"><b>${esc(r[0])}</b></span><span class="nk">${iN(iv(r,"kcal"),f)}</span><span>${iN(iv(r,"p"),f)}</span><span>${iN(iv(r,"c"),f)}</span><span>${iN(iv(r,"g"),f)}</span></button>`+
-  (op?`<p class="muted" style="margin:0 0 8px">${esc(NUTRI.E[i]||"")}</p><div class="nd">${nd(r)}</div>`:"")+`</div>`};
+ const nd=(r,f)=>IMIC.map(([t,a])=>`<div class="ng"><h4>${t}</h4>${a.map(([k,n,u])=>`<div class="nv"><span>${n}</span><b>${iN(iv(r,k),f)}${iv(r,k)==null?"":" "+u}</b></div>`).join("")}</div>`).join("");
+ const row=([r,i])=>{if(typeof i==="string"){const key=i.slice(1),uf=FD[key]||{},op=IOPEN.has(i),hk=!!LS("rk"),pu=uf.ug&&+IAMT===100,f=pu?uf.ug/100:fa;return`<div class="nr"><button type="button" class="nrb" data-ni="${esc(i)}" aria-expanded="${op}"><span class="nn"><b>${esc(r[0])}</b> <span class="muted">${uf.src==="ai"?"AI":"manual"}</span>${pu?`<br><span class="muted">pentru 1 ${esc(uf.up||"bucata")} (${uf.ug} g)</span>`:""}</span><span class="nk">${iN(iv(r,"kcal"),f)}</span><span>${iN(iv(r,"p"),f)}</span><span>${iN(iv(r,"c"),f)}</span><span>${iN(iv(r,"g"),f)}</span></button>`+(op?`<div class="nd">${nd(r,f)}</div><div style="padding:0 8px 10px"><p class="muted" style="margin:0 0 6px">${uf.src==="ai"?"Valori estimate de AI; verifica-le la nevoie.":"Valori introduse de tine."}${uf.x?"":" Fara fibre, minerale si vitamine inca."}</p><div class="row" style="gap:6px"><button class="fdx alt" type="button" data-fdai="${esc(key)}"${hk?"":" disabled"}>Completeaza cu AI</button><button class="fdx alt" type="button" data-fded="${esc(key)}">Editeaza</button><button class="fdx alt" type="button" data-fdd="${esc(key)}" aria-label="Sterge ${esc(r[0])}">Sterge</button></div><div data-fdbox></div></div>`:"")+`</div>`}const op=IOPEN.has(i);
+  return`<div class="nr"><button type="button" class="nrb" data-ni="${i}" aria-expanded="${op}"><span class="nn"><b>${esc(r[0])}</b></span><span class="nk">${iN(iv(r,"kcal"),fa)}</span><span>${iN(iv(r,"p"),fa)}</span><span>${iN(iv(r,"c"),fa)}</span><span>${iN(iv(r,"g"),fa)}</span></button>`+
+  (op?`<p class="muted" style="margin:0 0 8px">${esc(NUTRI.E[i]||"")}</p><div class="nd">${nd(r,fa)}</div>`:"")+`</div>`};
  drawNu();
  $("#nl").innerHTML=L.length?`<div class="nh"><span>Aliment</span><span>kcal</span><span>Prot.</span><span>Carb.</span><span>Gras.</span></div>`+L.map(row).join(""):`<p class="muted">Nu am gasit niciun aliment${IGS?" pentru \""+esc(IGS)+"\"":""}.</p>`+(IGS.trim()&&!IGP?`<div data-irow><p class="muted" style="margin:0 0 6px">Il poti cauta cu AI sau completa tu; ramane salvat in lista ta, marcat AI sau manual.</p><div class="row" style="gap:8px"><button class="alt" type="button" data-iai="1" style="margin:0"${LS("rk")?"":" disabled"}>Cauta cu AI</button><button class="alt" type="button" data-iman="1" style="margin:0">Completeaza manual</button></div>${LS("rk")?"":'<p class="muted" style="margin:6px 0 0">Pentru AI adauga cheia API in Setari.</p>'}<div data-mform></div></div>`:"")}
 $("#nq").oninput=e=>{IGS=e.target.value;drawIngr()};
@@ -1624,7 +1631,7 @@ const FPREF=["ulei de floarea-soarelui","faina alba","orez alb","lapte 3,5%","sm
 function fdMatch(name){name=dn(name).replace(/\b(fara|fără)\s+\S+(\s+adaug\S*)?/gi," ");const it=mTok(name);if(!it.length)return null;const S=new Set(it),B=fdBase(),raw=dn(name).toLowerCase();
  const ok=f=>!FST.test(f.nm)||FST.test(raw),pr=f=>{const j=FPREF.indexOf(f.nm);return j<0?99:j};
  const sub=L=>{const c=L.filter(f=>f.t.length&&f.t.every(w=>S.has(w))&&ok(f));if(!c.length)return null;const m=Math.max(...c.map(f=>f.t.length));return c.filter(f=>f.t.length===m).sort((a,b)=>pr(a)-pr(b))[0]};
- const U=Object.values(FD).map(f=>({n:f.n,nm:dn(f.n).toLowerCase(),t:f.t||mTok(f.n),k:f.k,cv:f.cv,user:1,v:(f.x&&f.x.length===23&&f.k&&f.k.length===4)?f.k.map(v=>+v||0).concat(f.x.map(v=>v==null||v===""?0:+v)):null}));
+ const U=Object.values(FD).map(f=>({n:f.n,nm:dn(f.n).toLowerCase(),t:f.t||mTok(f.n),k:f.k,cv:f.cv,ug:f.ug,user:1,v:(f.x&&f.x.length===23&&f.k&&f.k.length===4)?f.k.map(v=>+v||0).concat(f.x.map(v=>v==null||v===""?0:+v)):null}));
  let f=sub(U)||sub(B.R);if(f)return f;
  if(it.every(w=>B.Z.has(w)))return{zero:1,n:"fara aport caloric"};
  if(it.length===1){const c=B.R.filter(f=>f.t.includes(it[0])&&ok(f));if(c.length){c.sort((a,b)=>(b.t[0]===it[0])-(a.t[0]===it[0])||pr(a)-pr(b)||a.t.length-b.t.length);return Object.assign({loose:1},c[0])}}
@@ -1634,6 +1641,7 @@ const FDW={g:1,gr:1,gram:1,grame:1,kg:1000,ml:1,l:1000,dl:100,cl:10};
 function fdGrams(x,f){const B=fdBase();if(f.zero)return{g:0};const u=dn(x.u||"").toLowerCase().trim();
  if(FDW[u]!=null)return{g:x.c*FDW[u]};
  if(f.cv&&f.cv[u]!=null)return{g:x.c*f.cv[u]};
+ if(f.ug&&(u===""||/^bucat/.test(u)))return{g:x.c*f.ug};
  const m=f.mm;
  if(/^lingurit/.test(u))return m&&m[1]!=null?{g:x.c*m[1]}:{g:x.c*5,ap:1};
  if(/^lingur/.test(u))return m&&m[0]!=null?{g:x.c*m[0]}:{g:x.c*15,ap:1};
@@ -1677,7 +1685,7 @@ const XCAP={g:100,mg:20000,mcg:200000};
 function fdFormShow(bv,j){const z=bv._ml.miss[j];bv.querySelector(`[data-mrow="${j}"] [data-mform]`).innerHTML=fdFormHtml(z,j)}
 function fdFormHtml(z,j){const f=z.f?z.f.k:["","","",""],cv=fdNeedCv(z.x),xv=(z.fd&&z.fd.x)||[],gr=(z.fd&&z.fd.gr)||"";
  const inp=(k,l,v,at)=>`<div><label>${l}</label><input data-${at||"mf"}="${k}" type="number" min="0" step="any" value="${v==null?"":esc(v)}"></div>`;
- return`<p class="muted" style="margin:8px 0 4px">Valori la 100 g de ${esc(dn(z.x.n))}:</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${inp("kcal","kcal",f[0])}${inp("p","Proteine g",f[1])}${inp("c","Carbo g",f[3])}${inp("g","Grasimi g",f[2])}</div>${cv?`<div style="margin-top:8px">${inp("cv","Grame intr-o "+(z.x.u||"bucata"),"")}</div>`:""}<details style="margin-top:8px"><summary>Alte valori: fibre, minerale, vitamine (optional)</summary><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${XK.map((k,n)=>inp(k,XI[k][0]+" ("+XI[k][1]+")",xv[n],"mx")).join("")}</div></details><div style="margin-top:8px"><label>Grupa (optional)</label><select data-mf="gr"><option value="">-</option>${IGR.map(g=>`<option${g===gr?" selected":""}>${esc(g)}</option>`).join("")}</select></div><div data-merr class="warn" hidden></div><button class="go" type="button" data-mms="${j}" style="margin-top:8px">Salveaza local</button>`}
+ return`<p class="muted" style="margin:8px 0 4px">Valori la 100 g de ${esc(dn(z.x.n))}:</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${inp("kcal","kcal",f[0])}${inp("p","Proteine g",f[1])}${inp("c","Carbo g",f[3])}${inp("g","Grasimi g",f[2])}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">${inp("up","Unitate (ex: cub, felie)",(z.fd&&z.fd.up)||"","mf").replace('type="number" min="0" step="any"','type="text" maxlength="20"')}${inp("ug","Grame pe unitate (ex: 4)",(z.fd&&z.fd.ug)||"")}</div>${cv?`<div style="margin-top:8px">${inp("cv","Grame intr-o "+(z.x.u||"bucata"),"")}</div>`:""}<details style="margin-top:8px"><summary>Alte valori: fibre, minerale, vitamine (optional)</summary><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${XK.map((k,n)=>inp(k,XI[k][0]+" ("+XI[k][1]+")",xv[n],"mx")).join("")}</div></details><div style="margin-top:8px"><label>Grupa (optional)</label><select data-mf="gr"><option value="">-</option>${IGR.map(g=>`<option${g===gr?" selected":""}>${esc(g)}</option>`).join("")}</select></div><div data-merr class="warn" hidden></div><button class="go" type="button" data-mms="${j}" style="margin-top:8px">Salveaza local</button>`}
 function fdPut(z,k,cv,src,gr,x,keep){const key=mTok(z.x.n).join(" ")||dn(z.x.n).toLowerCase(),old=FD[key]||{},u=dn(z.x.u||"").toLowerCase().trim(),c=Object.assign({},old.cv);if(cv)c[u]=cv;
  FD[key]={n:old.n||z.x.n,t:key.split(" "),k,src:keep?(old.src||src):src||old.src||"manual",cv:c,gr:gr||old.gr||"",x:x||old.x||null};fdSave()}
 function fdManSave(bv,i,j,btn){fdManZ(bv._ml.miss[j],btn.closest("[data-mrow]"),()=>macPanel(bv,i))}
@@ -1686,7 +1694,11 @@ function fdManZ(z,row,after){const g=k=>{const e=row.querySelector(`[data-mf=${k
  const x=XK.map(q=>{const e=row.querySelector(`[data-mx=${q}]`),v=e&&e.value!==""?+e.value:NaN;return Number.isFinite(v)&&v>=0&&v<=XCAP[XI[q][1]]?Math.round(v*100)/100:null});
  const bad=k.some(v=>!Number.isFinite(v)||v<0)||k[0]>950||k[1]+k[2]+k[3]>105?"Completeaza cele patru valori (la 100 g); proteine+grasimi+carbo nu pot depasi 100 g.":need&&!(cv>0)?"Spune cate grame are o unitate.":"";
  if(bad){er.textContent=bad;er.hidden=false;return}
- fdPut(z,k.map(r1),need?cv:null,"manual",(row.querySelector("[data-mf=gr]")||{}).value,x.some(v=>v!=null)?x:null);toast("Salvat local: "+dn(z.x.n)+".");after()}
+ const ugv=g("ug"),upe=row.querySelector("[data-mf=up]"),upv=upe?dn(upe.value).toLowerCase().trim().slice(0,20):"";
+ if(Number.isFinite(ugv)&&!(ugv>0&&ugv<5000)){er.textContent="Grame pe unitate: un numar intre 0 si 5000.";er.hidden=false;return}
+ fdPut(z,k.map(r1),need?cv:null,"manual",(row.querySelector("[data-mf=gr]")||{}).value,x.some(v=>v!=null)?x:null);
+ {const key=mTok(z.x.n).join(" ")||dn(z.x.n).toLowerCase(),f=FD[key];if(f){if(Number.isFinite(ugv)){f.ug=r1(ugv);f.up=upv||"bucata";f.cv=Object.assign({},f.cv);f.cv[f.up]=f.ug}else if(upe&&upe.value===""&&row.querySelector("[data-mf=ug]")){delete f.ug;delete f.up}fdSave()}}
+ toast("Salvat local: "+dn(z.x.n)+".");after()}
 function fdOk(j,need){const n=k=>{const v=+j[k];return Number.isFinite(v)&&v>=0?r1(v):null},k=[n("kcal"),n("proteine"),n("grasimi"),n("carbo")];
  if(k.some(v=>v==null)||k[0]>950||k[1]+k[2]+k[3]>105)return null;const cv=+j.grame_unitate;if(need&&!(cv>0&&cv<5000))return null;
  const x=XK.map(q=>{const v=j[q]==null||j[q]===""?NaN:+j[q];return Number.isFinite(v)&&v>=0&&v<=XCAP[XI[q][1]]?Math.round(v*100)/100:null});
@@ -1714,14 +1726,14 @@ $("#nu").onclick=e=>{const b=e.target.closest("button");if(!b)return;
 {const m=getMen(),t=dKey(new Date());if(SLOTS.some(([s])=>((m[t]||{})[s]||[]).length)){show("meniu")}else syncNav("idei")}
 
 /* 3.4.1: butonul Inapoi (Android / browser) merge pas cu pas: reteta deschisa -> lista, subpagina Setari -> Setari, pagina -> pagina anterioara */
-(function(){let HS=[],SKIP=false;
+(function(){let HS=[],SKIP=0;
  const vis=()=>{const x=[...document.querySelectorAll("main section, section")].find(e=>!e.classList.contains("hidden"));return x?x.id.replace("v-",""):""};
  const key=()=>{const v=vis();return v+"|"+(v==="setari"&&SUB?SUB:"")+"|"+(document.querySelector("section:not(.hidden) [data-bback],section:not(.hidden) [data-rback]")?"o":"")};
  const st=()=>{const k=key().split("|");return{v:k[0],s:k[1],o:!!k[2]}};
- let ON=false;window.hsync=function(){if(!ON)return;const k=key();if(k===HS[HS.length-1])return;
-  if(HS.length>1&&HS[HS.length-2]===k){HS.pop();SKIP=true;history.back();return}
+ let ON=false;window.hsync=function(){if(!ON||SKIP)return;const k=key();if(k===HS[HS.length-1])return;
+  if(HS.length>1&&HS[HS.length-2]===k){HS.pop();SKIP++;history.back();return}
   HS.push(k);history.pushState(st(),"")};
- window.addEventListener("popstate",e=>{if(!ON)return;if(SKIP){SKIP=false;return}HS.pop();const t=e.state||{v:window.hv0,s:null,o:false};
+ window.addEventListener("popstate",e=>{if(!ON)return;if(SKIP){SKIP--;setTimeout(window.hsync,0);return}HS.pop();const t=e.state||{v:window.hv0,s:null,o:false};
   if(t.v!==vis())show(t.v);
   if(t.v==="setari"){const n=t.s||null;if(n!==SUB){SUB=n;sRender()}}
   else if(!t.o){const b=document.querySelector("section:not(.hidden) [data-bback],section:not(.hidden) [data-rback]");if(b)b.click()}

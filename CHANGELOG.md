@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.7.0
+- Alimente adaugate de tine: in Info > Ingrediente > Editeaza ai doua campuri noi, unitatea (ex: cub) si cate grame are (ex: 4). Randul din Info arata atunci valorile pe unitate ("pentru 1 cub (4 g)"), nu la 100 g (daca schimbi campul "Pentru ... g", se foloseste cantitatea ceruta). In retete, un ingredient fara unitate sau cu "bucata" (ex: "1 cub zahar") se calculeaza cu greutatea setata, in loc sa ramana fara date.
+
+## 3.6.1
+- Corecteaza reteta: langa "Calculeaza macro (AI)" e din nou "Calculeaza din Info", care completeaza campurile de macro per portie din datele salvate in aplicatie (pe ingredientele din editor, cu numarul de portii din camp). Arata cate ingrediente au date si care lipsesc; se salveaza ca "calculat din Info" cand salvezi reteta.
+
 ## 3.6.0
 - Marcajele de verificare sunt acum trei, separate: ingrediente si text (ingrediente neclare, ingrediente rupte, text OCR gresit, ingrediente_ou, cantitate_ingredient), portii (numar de portii neconfirmat sau lipsa) si macro (macro nesigur). Biblioteca > Filtre > Stare are cate un filtru cu numaratoare pentru fiecare ("Fara numar de portii" a fost inclus in "Portii de verificat").
 - "Parcurge retetele de verificat" trece doar prin retetele cu ingrediente sau text de verificat. In reteta deschisa, portiile si macro-ul au avertisment propriu, in alta culoare.
