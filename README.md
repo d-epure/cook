@@ -5,7 +5,7 @@ Aplicatie personala pentru retete: le gasesti, le adaptezi, le planifici si faci
 ## Ce face (pe sectiuni)
 - **Retete**
   - *Idei*: retete generate de AI din ce ai in casa, cu aparatele tale active, sau cautate pe web. Cat timp lipsesc pasi esentiali apare "Primii pasi".
-  - *Biblioteca*: cartile tale de retete, cu cautare, filtre (carte, categorie, eticheta, stare, ce ai in debara, jurnal, preferinte), paginare ("Arata mai multe"), corectarea retetelor si jurnal (stele, "Am gatit", notite) pe fiecare reteta. Retetele se afiseaza fara diacritice.
+  - *Biblioteca*: cartile tale de retete (sursa fiecarei retete, adica cartea si numarul, apare sub titlu), cu cautare, filtre (carte, categorie, eticheta, stare, ce ai in debara, jurnal, preferinte), paginare ("Arata mai multe"), corectarea retetelor si jurnal (stele, "Am gatit", notite) pe fiecare reteta. Retetele se afiseaza fara diacritice.
   - *Colectia mea*: ce pastrezi, intr-o lista cu filtrele Toate / Favorite / Generate de AI / Scrise de mine.
 - **Planific**
   - *Meniu*: azi si maine sau saptamana. Pe fiecare zi: macro (calorii, proteine, carbohidrati, grasimi) cu bare fata de tintele tale si cat mai ramane, plus un panou "Micronutrienti" (25 de nutrienti fata de valorile de referinta EFSA pentru adulti). Fiecare reteta din meniu conteaza o portie. "Propune-mi un meniu" (din Biblioteca, Debara, preferinte si Mese). "Am gatit" scrie in jurnalul retetei.

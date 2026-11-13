@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.2.3
+- Sursa retetei (cartea, numarul, "adaptata din") apare intr-o singura linie, imediat sub titlu, inainte de etichete: in Biblioteca, in reteta deschisa si in Colectia mea (acelasi format peste tot: "Din BT FIT Cookbook V2, reteta 43"). Linia "Sursa:" de la sfarsitul retetei deschise a fost scoasa, ca sa nu apara de doua ori.
+
 ## 3.2.2
 - Corecteaza reteta: daca extragerea automata a esuat (ingrediente sau pasi goi) dar textul paginii din carte e pastrat, casetele pornesc de la liniile detectate in text (ingrediente din zona de dinainte de "Instructiuni", pasi uniti pe propozitii, cu "Varianta 1/2" cand pagina are doua variante; fara liniile de macro). Apare o singura nota ca s-a completat automat; nu se salveaza nimic pana nu apesi Salveaza. Retetele cu ingrediente sau pasi deja extrasi nu se schimba.
 
