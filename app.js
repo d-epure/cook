@@ -1,7 +1,7 @@
 /* Cartea mea de retete - logica aplicatiei (vanilla JS, fara build).
    Datele stau in localStorage: rk cheie API, rm1/rm2b modele, ra aparate, rtags etichete,
    rs retete salvate, rfav favorite, rnote jurnal si notite pe retete, rbook biblioteca incarcata (in IndexedDB; rlib = marcaj in localStorage),
-   rmen meniu, rmv vedere meniu (azi/saptamana), rmt tinte de macro, rl cumparaturi, rlv vedere lista (produse/retete),
+   rmen meniu, rmv vedere meniu (azi/saptamana), rmt tinte de macro (vechi), rprof profil nutritional si tinte, rl cumparaturi, rlv vedere lista (produse/retete),
    pna = nr. de portii "nu se aplica" (pe reteta), rfd alimente adaugate de tine (macro la 100 g), rp debara, rcg categorii alimente, rcat categoria fiecarui aliment, rpf preferinte alimente, rpxc mese pe categorie,
    ru consum, ronb "Primii pasi" ascuns, rbk data ultimei copii. Datele Info (Ingrediente, Masuri, Gatire) sunt in nutri.js, nu in localStorage.
    Cuprins (cauta "=====" sau comentariile de sectiune): etichete, favorite si chei, jurnal pe reteta, aparate,
@@ -82,7 +82,7 @@ const favBtn=(k,txt,st)=>`<button class="alt${isFav(k)?" on":""}" data-fav="${es
 function showRecipe(){RC["#reteta"]={r:cur,kind:"gen"};show("idei");renderRecipe("#reteta");const el=$("#reteta");if(el.firstChild)el.scrollIntoView({behavior:"smooth",block:"start"})}
 
 var LBN=null;
-function show(v){if(v!=="lista")LBN=null;document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));$("#v-"+v).classList.remove("hidden");
+function show(v){if(v!=="lista")LBN=null;toastHide();document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));$("#v-"+v).classList.remove("hidden");
  document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));syncNav(v);if(v==="salvate")renderSaved();if(v==="carti"&&($("#bd").value||pfOn()||_pfv!==(LS("rpf")||"")))drawBook();if(v==="lista")drawList();if(v==="meniu")drawMenu();if(v==="ingr")drawIngr();if(v==="masuri")drawMas();if(v==="gatire")drawGat();if(v==="debara")drawPantry();if(v==="setari"){drawPf();drawPxc();updPst();useDraw();renderCfg();renderTagCfg();updBS();setSub(LS("rk")?SUB:"cont")}bkBadge();if(v==="idei"){renderBox();drawOnb()}}
 /* navigare in doua trepte: sectiuni (Retete / Planific / Setari) si pagini in sectiune */
 const GROUPS={ret:["idei","carti","salvate"],plan:["meniu","lista","debara"],info:["ingr","masuri","gatire"],set:["setari"]},LASTV={};
@@ -162,7 +162,9 @@ function rulesFor(L,n){
 const SYS="Esti un bucatar practic care adapteaza retete la aparate. Scrii in romana, FARA diacritice. Raspunzi DOAR cu JSON valid, fara text in plus.";
 function timer(b,txt){const t0=Date.now(),bar=$("#busy");const up=()=>{const sec=Math.round((Date.now()-t0)/1000);b.textContent=txt+" "+sec+"s";$("#busyt").textContent=txt+" "+sec+"s"};
  bar.classList.remove("hidden");up();const i=setInterval(up,500);return()=>{clearInterval(i);bar.classList.add("hidden")}}
-let TT=0;function toast(m){const el=$("#toast");el.textContent=m;el.classList.remove("hidden");clearTimeout(TT);TT=setTimeout(()=>el.classList.add("hidden"),8000)}
+let TT=0;function toastHide(){clearTimeout(TT);const el=$("#toast");if(el)el.classList.add("hidden")}
+document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#toast")&&!e.target.closest("#toast button"))toastHide()});
+function toast(m){const el=$("#toast");el.textContent=m;el.classList.remove("hidden");clearTimeout(TT);TT=setTimeout(()=>el.classList.add("hidden"),8000)}
 function fail(e){$("#eIdei").textContent=e.message;if(e.message!=="Anulat.")toast(e.message)}
 
 /* consum (estimare locala, doar in acest browser) */
@@ -342,7 +344,6 @@ $("#tgl").onclick=e=>{const b=e.target,d=b.dataset;
 let BOOK=[{"sursa":"Reteta de test","nr":13,"titlu":"Ciorba de vacuta","categorie":"Ciorbe","portii":1,"etichete":["traditional romanesc"],
 "ingrediente":[{"c":175,"u":"g","n":"pulpa de vita cruda"},{"c":130,"u":"g","n":"cartofi albi"},{"c":60,"u":"g","n":"morcovi"},{"c":50,"u":"g","n":"telina"},{"c":30,"u":"g","n":"ceapa"},{"c":50,"u":"g","n":"sos de rosii fara zahar adaugat"},{"c":5,"u":"ml","n":"ulei de masline"},{"c":500,"u":"ml","n":"apa"},{"n":"dupa gust: sare, piper, patrunjel proaspat"}],
 "pasi_carte":["Pune carnea de vita la fiert in 500 ml apa rece si spumeaza pana supa devine limpede.","Adauga legumele taiate cubulete si fierbe ~30 min, pana carnea se fragezeste.","Pune sosul de rosii, uleiul, sare si piper.","La final presara patrunjel verde si serveste fierbinte."],
-"macro":{"kcal":270,"proteine":27,"carbo":20,"fibre":4,"grasimi":9,"saturate":3},
 "sfaturi":["Poti adauga si bors acru sau zeama de lamaie pentru o varianta mai acrisoara.","Pentru extra aroma, pune si foi de dafin sau piper boabe.","Se serveste excelent cu ardei iute murat."],
 "alergeni":["telina"],"variante":["Inlocuieste cartofii cu dovlecel sau conopida pentru mai putini carbohidrati."]}];
 let bi=0;
@@ -792,7 +793,7 @@ function drawList(){const l=getList(),pan=getPan().length,vis=l.map((x,i)=>[x,i]
    return`<div class="lrg"><div class="lrh"><h3 class="lgh">${esc(s)}</h3><button class="alt" data-lsr="${j}" aria-label="Scoate ${esc(s)} din lista">Scoate</button></div>`+its.map(x=>{const pt=x.parts&&x.parts.find(p=>p.s===s);const t=pt?itTxt({c:pt.c,u:x.u,n:x.n}):itTxt(x);return`<div class="lri"><span>${esc(t)}</span>${!pt&&x.src.length>1?` <span class="muted">(total, impreuna cu alte retete)</span>`:""}</div>`}).join("")+`</div>`}).join("")||`<p class="muted">Totul e bifat.</p>`;LSRC=srcs}
  else if(GRP)body=CATS.map(([id,lab])=>{const g=vis.filter(([x])=>catOf(x.n)===id);return g.length?`<h3 class="lgh">${esc(lab)}</h3>`+g.map(rowH).join(""):""}).join("");
  else body=vis.map(rowH).join("");
- const bn=LBN?`<div class="lbn"><span>Adaugat din meniu (${esc(LBN.label)}): <b>${LBN.n}</b> produse noi din ${LBN.r} retete${LBN.sk?` (${LBN.sk} fara ingrediente)`:""}${LBN.old?`; ${LBN.old} erau deja adaugate`:""}.</span><button class="alt" data-lbk="1">Inapoi la meniu</button><button class="alt" data-lbx="1" aria-label="Inchide">&times;</button></div>`:"";
+ const bn=LBN?`<div class="lbn"><span>Adaugat din meniu (${esc(LBN.label)}): <b>${LBN.n}</b> produse noi din ${LBN.r} retete${np?` (${np} ascunse, le ai in debara)`:""}${LBN.sk?` (${LBN.sk} fara ingrediente)`:""}${LBN.old?`; ${LBN.old} erau deja adaugate`:""}.</span><button class="alt" data-lbk="1">Inapoi la meniu</button><button class="alt" data-lbx="1" aria-label="Inchide">&times;</button></div>`:"";
  $("#ll").innerHTML=bn+`<div class="row ladd"><input id="lAddI" maxlength="120" placeholder="Adauga produs, ex: 2 l lapte, paine" aria-label="Produs nou in lista" autocomplete="off"><button class="go" id="lAddB">Adauga</button></div>`+(l.length?`<div class="row mseg lseg"><button class="alt${LV==="p"?" on":""}" data-lv="p">Pe produse</button><button class="alt${LV==="r"?" on":""}" data-lv="r">Pe retete</button></div><div class="row lact"><button class="alt" id="lCp">Copiaza lista</button>${canShare()?`<button class="alt" id="lSh">Trimite lista</button>`:""}<details class="mre lmore"><summary>Mai multe</summary><div class="row lact2"><button class="alt" id="lDn">Sterge bifate</button><button class="alt" id="lAll">Goleste lista</button></div></details></div>
  <label style="font-weight:400;margin:2px 0;display:flex;align-items:center;gap:8px"><input type="checkbox" id="lHp" style="width:auto" ${HP?"checked":""}> Ascunde produsele din debara${pan?"":" (debaraua e goala)"}${np?" - "+np+" ascunse":""}</label><div id="lmsg" class="muted"></div>`:"")+body}
 $("#ll").onchange=e=>{const d=e.target.dataset; if(e.target.id==="lHp"){HP=e.target.checked;PE=null;drawList();navCount();return}
@@ -1186,7 +1187,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.1.2";
+const APP_V="3.1.4";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){

@@ -2,6 +2,15 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.1.4
+- README aliniat cu aplicatia: profil nutritional, tinte, micronutrienti, bare, chei de backup (`rprof`). Comentariul de la inceputul `app.js` actualizat.
+- `release.sh` verifica la fiecare pachet ca versiunea, CHANGELOG-ul, cheile de backup si paginile din Setari sunt in README.
+
+## 3.1.3
+- Reteta de test (Ciorba de vacuta): scos macro-ul din carte (270 kcal), care nu se potrivea cu ingredientele (686 kcal); un utilizator nou nu mai vede avertismentul rosu dupa ce o pune in meniu. Macro-ul se calculeaza din ingrediente.
+- Balonul de confirmare (ex: "Adaugat in meniu") dispare cand schimbi pagina si la atingere.
+- Cumparaturi: mesajul dupa "Cumparaturi azi si maine" spune cate produse sunt ascunse pentru ca sunt in debara, ca numarul sa se potriveasca cu cel din meniu.
+
 ## 3.1.2
 - Barele de nutrienti si macro: o singura culoare (verdele aplicatiei) in loc de gradient. Bara arata cat din tinta ai atins; linia marcheaza 100%; terracotta apare doar peste tinta la limite (sodiu, saturate, zaharuri) si la calorii, carbohidrati si grasimi. Pentru proteine si micronutrienti de atins, peste 100% ramane verde.
 - Macro in Meniu: bloc propriu, cu bare mai groase, valoare, tinta, procent si "mai ramane" (sau "peste tinta cu ..."). Fara tinte ramane linia de total ca inainte.

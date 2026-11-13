@@ -8,7 +8,7 @@ Aplicatie personala pentru retete: le gasesti, le adaptezi, le planifici si faci
   - *Biblioteca*: cartile tale de retete, cu cautare, filtre (carte, categorie, eticheta, stare, ce ai in debara, jurnal, preferinte), paginare ("Arata mai multe"), corectarea retetelor si jurnal (stele, "Am gatit", notite) pe fiecare reteta. Retetele se afiseaza fara diacritice.
   - *Colectia mea*: ce pastrezi, intr-o lista cu filtrele Toate / Favorite / Generate de AI / Scrise de mine.
 - **Planific**
-  - *Meniu*: azi si maine sau saptamana, cu macro estimate si "Propune-mi un meniu" (din Biblioteca, Debara, preferinte si Mese). "Am gatit" scrie in jurnalul retetei.
+  - *Meniu*: azi si maine sau saptamana. Pe fiecare zi: macro (calorii, proteine, carbohidrati, grasimi) cu bare fata de tintele tale si cat mai ramane, plus un panou "Micronutrienti" (25 de nutrienti fata de valorile de referinta EFSA pentru adulti). Fiecare reteta din meniu conteaza o portie. "Propune-mi un meniu" (din Biblioteca, Debara, preferinte si Mese). "Am gatit" scrie in jurnalul retetei.
   - *Cumparaturi*: lista pe produse sau pe retete (cu sursa fiecarui produs), grupata pe categorii, cu bifare, "In debara" si ascunderea produselor din debara.
   - *Debara*: ce ai deja, pe categorii, cu marcaje (proaspat, congelat, uscat, conserva); un singur camp pentru cautare si adaugare. "Am terminat" trimite produsul inapoi in Cumparaturi.
 - **Info** (date din `nutri.js`, fara legatura cu restul datelor)
@@ -16,19 +16,21 @@ Aplicatie personala pentru retete: le gasesti, le adaptezi, le planifici si faci
   - *Masuri*: cat cantareste o lingura, o lingurita sau o cana din alimentele care se masoara asa.
   - *Gatire*: sfaturi generale pentru cine invata sa gateasca, pe teme pliabile: tehnici de baza, timpi si temperaturi, siguranta alimentara, inlocuiri si cum repari o mancare.
   - Sursa: USDA National Nutrient Database for Standard Reference, versiunea 28 (domeniu public), plus drojdia inactiva dupa eticheta produsului.
-- **Setari**: AI si cheie (cheia API, modele), Aparate, Preferinte alimente, Categorii alimente, Etichete retete, Mese (la ce masa se potriveste fiecare categorie), Carti (incarcarea, corectiile si descarcarea cartilor), Backup (in fisier, copii automate in browser, Dropbox) si Despre (versiune si istoric).
+- **Setari**: Profil nutritional (sex, varsta, greutate, inaltime, activitate, scop; din ele se calculeaza tintele zilnice de calorii si macro, pe care le poti edita; micronutrientii urmeaza standardul EFSA), AI si cheie (cheia API, modele), Aparate, Preferinte alimente, Categorii alimente, Etichete retete, Mese (la ce masa se potriveste fiecare categorie), Carti (incarcarea, corectiile si descarcarea cartilor), Backup (in fisier, copii automate in browser, Dropbox) si Despre (versiune si istoric).
 
 AI-ul (Anthropic) se foloseste doar cand apesi: idei, reteta completa, adaptare, estimare de macro si, optional, un meniu generat. Restul (cautare, meniu propus, liste, debara, Info) merge local si gratuit.
 
 Portii: numarul se confirma separat de restul verificarilor (buton "Confirma numarul de portii" in editor); "-" inseamna ca nu se aplica. Corectii in masa (portii, marcaje) se aplica din Setari > Carti, "Aplica un fisier de corectii", fara sa inlocuiasca retetele.
 
-Macro pe reteta: butonul "Calculeaza din Info" (in reteta deschisa) calculeaza local din Info > Ingrediente. Ingredientele fara date le cauti cu AI sau le completezi manual; se salveaza local (cheia `rfd`, inclusa in backup) si apar in Info > Ingrediente, "Adaugate de tine". Greutatile pe bucata si cuvintele fara calorii sunt in `nutri.js` (`NUTRI.P`, `NUTRI.Z`).
+Tinte si micronutrienti: din profil (formula Mifflin-St Jeor x nivel de activitate, ajustata dupa scop; proteine pe kg la alegere: 0,83 / 1,6 / 2,0 sau valoare proprie; grasimi 30% din calorii, restul carbohidrati). Barele au o singura culoare (verde); linia marcheaza 100%; terracotta apare doar peste tinta la limite (sodiu, grasimi saturate, zaharuri) si la calorii, carbohidrati si grasimi. Valorile magneziu, vitamina E, D, K si sodiu sunt din memorie si merita verificate fata de EFSA.
+
+Macro pe reteta: butonul "Calculeaza din Info" / "Recalculeaza din Info" (in reteta deschisa) calculeaza local din Info > Ingrediente. Ingredientele fara date le cauti cu AI sau le completezi manual; se salveaza local (cheia `rfd`, inclusa in backup) si apar in Info > Ingrediente, "Adaugate de tine". Greutatile pe bucata si cuvintele fara calorii sunt in `nutri.js` (`NUTRI.P`, `NUTRI.Z`).
 
 ## Backup si actualizari
 
 Datele tale stau in browser (localStorage si IndexedDB), nu in fisierele aplicatiei. Incarcarea unei versiuni noi in repo nu le sterge, inclusiv cheia API (`rk`) ramane in browser.
 
-**Backup complet** (Setari > Backup > Backup in fisier, "Descarca backup"): biblioteca intreaga cu toate retetele asa cum sunt (portii, `pna`, marcaje de verificat, etichete, text editat, macro), alimentele adaugate de tine (`rfd`, cu cei 27 de nutrienti si marca AI/manual), retete salvate, favorite, jurnal si notite, meniu, tinte de macro, preferinte de alimente, mese pe categorie, definitiile etichetelor, aparate, debara, lista de cumparaturi, categoriile alimentelor, modelele AI alese. Nu include cheia API si datele de conectare Dropbox (intentionat) si nici datele Info din `nutri.js` (vin cu aplicatia). Se restaureaza din Setari > Backup, nu reincarcand fisierele cartilor.
+**Backup complet** (Setari > Backup > Backup in fisier, "Descarca backup"): biblioteca intreaga cu toate retetele asa cum sunt (portii, `pna`, marcaje de verificat, etichete, text editat, macro), alimentele adaugate de tine (`rfd`, cu cei 27 de nutrienti si marca AI/manual), retete salvate, favorite, jurnal si notite, meniu, tinte de macro si profil nutritional (`rmt`, `rprof`), preferinte de alimente, mese pe categorie, definitiile etichetelor, aparate, debara, lista de cumparaturi, categoriile alimentelor, modelele AI alese. Nu include cheia API si datele de conectare Dropbox (intentionat) si nici datele Info din `nutri.js` (vin cu aplicatia). Se restaureaza din Setari > Backup, nu reincarcand fisierele cartilor.
 
 **Copii automate** (Setari > Backup): in IndexedDB, ultimele 3, cel mult una la 20 de ore, plus una inainte de orice restaurare sau preluare din Dropbox.
 
@@ -51,6 +53,7 @@ Avertizare in Meniu: daca macro-ul din carte difera mult de calculul din Info, a
 - Cartile tale (fisiere JSON) NU intra in repo public: le incarci din Setari > Carti. `retete.json`, daca exista, este doar un exemplu.
 
 ## Cand modifici ceva
+0. La fiecare pachet zip: versiunea (`APP_V`, `?v=`, `CHANGELOG.md`), README-ul (sectiunile Ce face, Backup, Fisiere), comentariul de la inceputul `app.js` si testele trebuie sa spuna acelasi lucru. `release.sh` verifica automat versiunea, cheile din `BK_KEYS` si paginile din Setari fata de README.
 1. Schimba `APP_V` in `app.js` si numarul `?v=...` din `index.html` (pentru ca GitHub Pages sa nu serveasca fisiere vechi din cache).
 2. Ruleaza testele, de exemplu `python tests/test_info.py` sau toate cu `for f in tests/test_*.py; do python $f; done`. Fiecare test afiseaza `OK`/`FAIL` si `probleme=N`; trebuie `probleme=0`.
 3. Adauga o nota in `CHANGELOG.md` (versiunea noua sus).
