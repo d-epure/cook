@@ -381,10 +381,14 @@ const srcLine=r=>`<div class="muted org">${srcTxt(r)}</div>`;
 const bChips=r=>(r.categorie?`<span class="lb" style="font-weight:700;color:var(--ink)">${esc(r.categorie)}</span>`:"")+bLab(r).map(t=>`<span class="lb">${esc(t)}</span>`).join("");
 /* contorul "N de verificat" se actualizeaza si fara sa redesenez lista (editorul sta in aceeasi zona) */
 let _bnA=["",false];
-function bnDraw(bd,usePan){const nv=BOOK.filter(r=>r.verifica&&!r.cos).length;{const o=$("#bv").querySelector("[value=np]");if(o)o.textContent="Fara numar de portii ("+BOOK.filter(r=>!r.cos&&!r.nou&&r.portii==null&&!r.pna).length+")"}{const bq=$("#bvq");bq.hidden=!nv;bq.textContent="Parcurge retetele de verificat ("+nv+")"}{const bn=$("#bn"),t=(bd!==""&&!usePan?"Filtrul \"Din debara\" nu face nimic cat timp Debaraua e goala.":usePan?"Ce lipseste se calculeaza aproximativ (\"cartofi albi\" e acoperit de \"cartofi\"); verifica lista inainte sa cumperi.":"");bn.textContent=t;bn.hidden=!t}}
+/* 3.6.0: trei marcaje separate in r.verifica: ingrediente/text (vx), portii (vp), macro (vm) */
+const PVR="numar de portii",PRT=new Set([PVR,"portii","portii_estimate"]),MCT=new Set(["macro","macro_neclar"]);
+const vx=r=>(r.verifica||[]).filter(x=>!PRT.has(x)&&!MCT.has(x)),vpf=r=>(r.verifica||[]).some(x=>PRT.has(x)),vp=r=>vpf(r)||(r.portii==null&&!r.pna),vm=r=>(r.verifica||[]).some(x=>MCT.has(x));
+const clrV=(r,S)=>{r.verifica=(r.verifica||[]).filter(x=>!S.has(x));if(!r.verifica.length)delete r.verifica};
+function bnDraw(bd,usePan){const L=BOOK.filter(r=>!r.cos&&!r.nou),nv=L.filter(r=>vx(r).length).length;{const q=$("#bv");[["v","De verificat (ingrediente si text)",nv],["p","Portii de verificat",L.filter(vp).length],["m","Macro de verificat",L.filter(vm).length]].forEach(([k,t,n])=>{const o=q.querySelector(`[value=${k}]`);if(o)o.textContent=t+" ("+n+")"})}{const bq=$("#bvq");bq.hidden=!nv;bq.textContent="Parcurge retetele de verificat ("+nv+")"}{const bn=$("#bn"),t=(bd!==""&&!usePan?"Filtrul \"Din debara\" nu face nimic cat timp Debaraua e goala.":usePan?"Ce lipseste se calculeaza aproximativ (\"cartofi albi\" e acoperit de \"cartofi\"); verifica lista inainte sa cumperi.":"");bn.textContent=t;bn.hidden=!t}}
 const updVC=()=>bnDraw(..._bnA);
 const FAVV="*fav",inSrc=(r,v)=>v===FAVV?isFav(bKey(r)):(r.sursa||"necunoscuta")===v;
-const stOk=r=>{const v=$("#bv").value;return v===""||(v==="np"?(r.portii==null&&!r.pna):(v==="v")===!!r.verifica)};
+const stOk=r=>{const v=$("#bv").value;return v===""||(v==="v"?vx(r).length>0:v==="p"?vp(r):v==="m"?vm(r):!r.verifica&&!vp(r))};
 function drawBook(){
  if(!LIBREADY){$("#bres").innerHTML='<p class="muted">Se incarca biblioteca...</p>';return}
  const srcs=[...new Set(BOOK.filter(r=>!r.cos).map(r=>r.sursa||"necunoscuta"))],sel=$("#bs"),prev=sel.value;
@@ -414,7 +418,7 @@ function openBook(i,p,sel){sel=sel||"#bres";bi=i;if(p===undefined)p=BOOK[i].port
  const ul=a=>L(a)?"<ul>"+a.map(x=>`<li>${ed(x)}</li>`).join("")+"</ul>":"";
  $(sel).innerHTML=`<div class="bv" data-bi="${i}"><div style="margin-bottom:10px"><button class="alt" data-bback="1">${sel==="#bres"?"Inapoi la rezultate":"Inapoi la favorite"}</button> ${favBtn(bKey(r))} <button class="alt cosb" data-cosb="1" aria-label="Muta in cos" title="Muta in cos">${TRASH}</button></div><div class="card"><h2>${ed(r.titlu)}</h2>${srcLine(r)}<div>${bChips(r)}</div>
  ${pfHtml(r)}
- ${(()=>{const v=vx(r),src=`${esc(r.sursa||"carte necunoscuta")}${r.nr!=null&&r.nr!==""?", reteta nr. "+esc(r.nr):""}`;return(v.length?`<div class="warn">Extragerea automata a acestei retete e nesigura (${esc(v.join(", "))}). Verifica in carte: ${src}. Daca difera, corecteaz-o din Mai multe actiuni > Corecteaza reteta.</div>`:"")+((r.verifica||[]).includes(PVR)?`<div class="warn">Numarul de portii (${r.pna?"-":r.portii==null?"necunoscut":esc(r.portii)}) nu e confirmat. Verifica in carte: ${src}. Il confirmi scriind numarul in campul Portii, mai jos, si apasand butonul de salvare.</div>`:"")})()}
+ ${(()=>{const v=vx(r),src=`${esc(r.sursa||"carte necunoscuta")}${r.nr!=null&&r.nr!==""?", reteta nr. "+esc(r.nr):""}`;return(v.length?`<div class="warn">Extragerea automata a acestei retete e nesigura (${esc(v.join(", "))}). Verifica in carte: ${src}. Daca difera, corecteaz-o din Mai multe actiuni > Corecteaza reteta.</div>`:"")+(vpf(r)?`<div class="warn wp">Numarul de portii (${r.pna?"-":r.portii==null?"necunoscut":esc(r.portii)}) nu e confirmat. Verifica in carte: ${src}. Il confirmi scriind numarul in campul Portii, mai jos, si apasand butonul de salvare.</div>`:"")+(vm(r)?`<div class="warn wm">Macro-ul din carte e nesigur. Verifica in carte: ${src}. Marcajul dispare cand recalculezi macro-ul din Info sau il corectezi si salvezi.</div>`:"")})()}
  <div class="acts">${(r.pasi_carte||[]).length?`<button class="go" data-cookb="1">Mod gatit</button>`:""}<button class="alt" data-mnb="1">Adauga la meniu</button></div><details class="mre"><summary>Mai multe actiuni</summary><div class="acts"><button class="alt" data-cumb="1">Adauga la cumparaturi</button><button class="alt" data-edit="1">Corecteaza reteta</button>${r.manual?"":`<button class="alt" data-copyme="1">Salveaza ca reteta mea</button>`}${((r.pasi_carte||[]).length||(r.verifica&&r.text_brut))?`<button class="alt" data-adp="1" ${hasRobot()?"":"disabled"}>Adapteaza la aparatele mele</button>`:""}</div></details>${((r.pasi_carte||[]).length||(r.verifica&&r.text_brut))?`<p class="muted adphint" ${hasRobot()?"hidden":""} style="margin:6px 0 0">Adaptarea e activa doar daca bifezi Thermomix sau Monsieur Cuisine in Idei, la Aparate pentru adaptare.</p>`:""}<label for="${pid}">Portii (reteta)</label><input id="${pid}" data-bp="1" type="number" min="1" max="200" value="${p==null?"":esc(p)}" placeholder="${r.pna?"nu se aplica":"necunoscut"}" style="max-width:140px">${r.portii==null?`<p class="muted" style="margin:6px 0 0">Fara numar de portii, valorile de macro sunt pentru toata reteta. Scrie numarul ca sa vezi macro pe portie.</p>`:""}
  <h2 style="margin-top:14px">Ingrediente</h2>${(r.ingrediente||[]).length?`<ul class="ing">${ingHtml(r,f)}</ul>`:`<p class="muted">Reteta nu are o lista proprie de ingrediente. Cantitatile sunt in modul de preparare sau in reteta la care trimite.</p>`}
  <h2>Mod de preparare</h2><ol>${(r.pasi_carte||[]).map(x=>`<li>${ed(x)}</li>`).join("")}</ol>
@@ -527,11 +531,11 @@ async function macCalc(bv,btn){const g=k=>bv.querySelector(`[data-ef=${k}]`).val
  finally{btn.disabled=false;btn.textContent="Calculeaza macro (AI)"}}
 function editSave(bv,i,sel,verif){const r=BOOK[i],g=k=>bv.querySelector(`[data-ef=${k}]`).value;
  const t=g("titlu").trim();if(!t){toast("Titlul nu poate fi gol.");return}
- {const pp=pParse(g("portii"));if(pp.bad){toast("Portii: scrie un numar (1-200) sau - daca nu se aplica.");return}r.portii=pp.na?null:pp.n;if(pp.na)r.pna=true;else delete r.pna}r.titlu=t;if(g("categorie"))r.categorie=g("categorie");
+ {const pp=pParse(g("portii"));if(pp.bad){toast("Portii: scrie un numar (1-200) sau - daca nu se aplica.");return}const op=r.portii,opn=r.pna;r.portii=pp.na?null:pp.n;if(pp.na)r.pna=true;else delete r.pna;if(op!==r.portii||!!opn!==!!r.pna)clrV(r,PRT)}r.titlu=t;if(g("categorie"))r.categorie=g("categorie");
  r.ingrediente=parseIngText(g("ing"));r.pasi_carte=g("pasi").split("\n").map(x=>x.trim()).filter(Boolean);
- r.macro=Object.assign({},r.macro);["kcal","proteine","carbo","grasimi"].forEach(k=>{const v=g(k);r.macro[k]=v===""?null:+v});
+ const om=JSON.stringify(r.macro||{});r.macro=Object.assign({},r.macro);["kcal","proteine","carbo","grasimi"].forEach(k=>{const v=g(k);r.macro[k]=v===""?null:+v});if(JSON.stringify(r.macro)!==om)clrV(r,MCT);
  {let st=[];try{st=JSON.parse(bv.dataset.stags||"[]")}catch(e){}if(st.length)r.etichete=[...new Set([...normTags(r.etichete),...normTags(st)])]}
- if(!r.manual)r.corectata=true;if(verif){r.verifica=(r.verifica||[]).filter(x=>x===PVR);if(!r.verifica.length)delete r.verifica;delete r.text_brut;delete r.text_orig}
+ if(!r.manual)r.corectata=true;if(verif){r.verifica=(r.verifica||[]).filter(x=>PRT.has(x)||MCT.has(x));if(!r.verifica.length)delete r.verifica;delete r.text_brut;delete r.text_orig}
  if(r.nou){delete r.nou;const st=getStored();if(!st.length)BOOK=[r];st.push(r);saveStored(st);EDIT=null;updBS();openBook(BOOK.indexOf(r),r.portii,sel);return}
  if(persistBook(r)){EDIT=null;updVC();if(VQ&&verif){VQ.done++;vqNext(VQ.pos+1);return}openBook(i,r.portii,sel)}}
 function setBookTag(i,n,on){const r=BOOK[i],a=new Set(normTags(r.etichete));on?a.add(n):a.delete(n);r.etichete=[...a];
@@ -564,8 +568,8 @@ function bvClick(e,sel){const bv=e.target.closest(".bv");if(!bv)return false;con
  if(d.bback!==undefined){VQ=null;EDIT=null;BOOK=BOOK.filter(x=>!x.nou);if(sel==="#bres")drawBook();else{SV=null;renderSaved()}return true}
  if(d.fav!==undefined){favT(d.fav,()=>openBook(i,p,sel));return true}
  {const cb=e.target.closest("[data-cosb]");if(cb){const r=BOOK[i];cosAsk(cb,()=>cosMove(r,()=>{VQ=null;EDIT=null;if(sel==="#bres")drawBook();else{SV=null;renderSaved()}}),"Muta in cos?");return true}}
- if(d.psv!==undefined){const r=BOOK[i];if(p==null)return true;r.portii=p;delete r.pna;r.verifica=(r.verifica||[]).filter(x=>x!==PVR);if(!r.verifica.length)delete r.verifica;
-  let t="Portii salvate: "+p+".";if(!r.macro||r.macro.kcal==null||r.macro.sursa==="local"){const L=macLocal(r);if(L.ok){r.macro={kcal:L.o.kcal,proteine:L.o.proteine,carbo:L.o.carbo,grasimi:L.o.grasimi,sursa:"local",acoperire:L.ok+" din "+L.n};t+=" Macro recalculat: "+L.o.kcal+" kcal per portie."}}
+ if(d.psv!==undefined){const r=BOOK[i];if(p==null)return true;r.portii=p;delete r.pna;clrV(r,PRT);
+  let t="Portii salvate: "+p+".";if(!r.macro||r.macro.kcal==null||r.macro.sursa==="local"){const L=macLocal(r);if(L.ok){r.macro={kcal:L.o.kcal,proteine:L.o.proteine,carbo:L.o.carbo,grasimi:L.o.grasimi,sursa:"local",acoperire:L.ok+" din "+L.n};clrV(r,MCT);t+=" Macro recalculat: "+L.o.kcal+" kcal per portie."}}
   if(persistBook(r)){updVC();openBook(i,p,sel);toast(t)}return true}
  if(d.adp!==undefined){adaptBook(i,BOOK[i].portii||p||1,sel,e.target);return true}
  if(d.cookb!==undefined){const r=BOOK[i];cookOpen(r.titlu,cookSteps(r,"b"),ingBook(r,1));return true}
@@ -579,10 +583,10 @@ function bvChange(e,sel){const bv=e.target.closest(".bv");if(!bv)return false;co
  return false}
 /* ===== Coada "De verificat": parcurgi pe rand retetele cu extragere nesigura, direct in editor ===== */
 let VQ=null;
-function vqOpen(j){const k=VQ.keys[j];const i=BOOK.findIndex(r=>bKey(r)===k&&r.verifica);if(i<0)return false;VQ.pos=j;EDIT={sel:"#bres",i};openBook(i,BOOK[i].portii||1,"#bres");$("#bres").scrollIntoView({block:"start"});return true}
+function vqOpen(j){const k=VQ.keys[j];const i=BOOK.findIndex(r=>bKey(r)===k&&vx(r).length);if(i<0)return false;VQ.pos=j;EDIT={sel:"#bres",i};openBook(i,BOOK[i].portii||1,"#bres");$("#bres").scrollIntoView({block:"start"});return true}
 function vqNext(from){if(!VQ)return;for(let j=from;j<VQ.keys.length;j++)if(vqOpen(j))return;
  const done=VQ.done;VQ=null;EDIT=null;drawBook();toast(done?"Ai verificat "+done+(done===1?" reteta.":" retete.")+" Nu mai sunt retete de verificat in coada.":"Nu mai sunt retete de verificat in coada.")}
-function vqStart(){const keys=BOOK.filter(r=>r.verifica&&!r.cos).map(bKey);if(!keys.length){toast("Nu ai retete de verificat.");return}VQ={keys,pos:0,done:0};vqNext(0)}
+function vqStart(){const keys=BOOK.filter(r=>vx(r).length&&!r.cos).map(bKey);if(!keys.length){toast("Nu ai retete de verificat.");return}VQ={keys,pos:0,done:0};vqNext(0)}
 $("#bvq").onclick=vqStart;
 function newBook(){BOOK=BOOK.filter(x=>!x.nou);const S="Retetele mele",nr=Math.max(0,...BOOK.filter(x=>x.sursa===S).map(x=>+x.nr||0))+1;
  const r={sursa:S,nr,titlu:"",categorie:S,portii:2,ingrediente:[],pasi_carte:[],macro:{},etichete:[],manual:true,nou:true};
@@ -1106,7 +1110,7 @@ function pxAuto(r){const t=norm((r.categorie||"")+" "+(r.titlu||""));if(PX_EXC.t
  return"pranz"}
 const pxIngs=(s,r)=>(s==="b"?(r.ingrediente||[]):(r.ingrediente||[])).filter(x=>(x.n||x.nume)).length;
 function pxPool(){const out=[];
- BOOK.forEach((r,i)=>{if(r.nou||r.cos||vx(r).length||!pxIngs("b",r))return;const sl=pxSlot(r);if(sl)out.push({s:"b",r,sl,key:bKey(r)})});
+ BOOK.forEach((r,i)=>{if(r.nou||r.cos||(r.verifica||[]).some(x=>x!==PVR)||!pxIngs("b",r))return;const sl=pxSlot(r);if(sl)out.push({s:"b",r,sl,key:bKey(r)})});
  getSaved().forEach(r=>{if(!pxIngs("s",r))return;const sl=pxSlot(r);if(sl)out.push({s:"s",r,sl,key:sKey(r)})});return out}
 function pxScore(c,slot,ctx){const r=c.r,why=[];let s=0;const pf=recPref(r);
  if(pf.av.length)return null;
@@ -1224,7 +1228,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.5.1";
+const APP_V="3.6.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1579,13 +1583,11 @@ function drawGat(){const el=$("#gl");if(el.dataset.k==="1")return;el.dataset.k="
  el.innerHTML=NUTRI.G.map(([g,t])=>`<h3 class="gg">${esc(g)}</h3>`+t.map(([n,r])=>`<details class="gd"><summary>${esc(n)}</summary><ul>${r.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></details>`).join("")).join("")}
 
 /* ===== 2.32.0: numar de portii confirmat separat, "-" = nu se aplica, fisier de corectii ===== */
-const PVR="numar de portii";
-const vx=r=>(r.verifica||[]).filter(x=>x!==PVR);
 function pParse(v){v=String(v==null?"":v).trim();if(v==="-"||v==="\u2013")return{na:true};if(v==="")return{n:null};if(!/^\d{1,3}$/.test(v)||+v<1||+v>200)return{bad:true};return{n:+v}}
 function pConfirm(bv,i){const r=BOOK[i],pp=pParse(bv.querySelector("[data-ef=portii]").value);
  if(pp.bad||(!pp.na&&pp.n==null)){toast("Scrie numarul de portii (1-200) sau - daca nu se aplica.");return}
  r.portii=pp.na?null:pp.n;if(pp.na)r.pna=true;else delete r.pna;
- r.verifica=(r.verifica||[]).filter(x=>x!==PVR);if(!r.verifica.length)delete r.verifica;
+ clrV(r,PRT);
  if(persistBook(r)){updVC();bv.querySelector("[data-pcbox]").innerHTML='<span class="muted">Portii confirmate'+(pp.na?" (nu se aplica).":": "+pp.n+".")+"</span>";toast("Portii confirmate.")}}
 let PATCH=null;
 const pcMatch=(c,st)=>st.findIndex(r=>String(r.nr)===String(c.n)&&dn(r.titlu).toLowerCase()===dn(c.t||"").toLowerCase());
@@ -1648,7 +1650,7 @@ function macLocal(r,por0){const por=por0||r.portii||1,S=[0,0,0,0],det=[],miss=[]
   det.push({x,f,g:q.g,ap:q.ap})});
  return{o:{kcal:Math.round(S[0]/por),proteine:r1(S[1]/por),grasimi:r1(S[2]/por),carbo:r1(S[3]/por)},n,ok:det.length,miss,det,ap}}
 /* 3.2.0: numarul de portii se poate schimba direct in reteta deschisa: arata macro la N portii (fara sa scaleze cantitatile) si se salveaza dintr-un buton */
-function pWhat(r,p){if(!(r.ingrediente||[]).length||p==null)return"";const sv0=r.pna||r.portii==null,same=!sv0&&p===r.portii,unc=(r.verifica||[]).includes(PVR);if(same&&!unc)return"";
+function pWhat(r,p){if(!(r.ingrediente||[]).length||p==null)return"";const sv0=r.pna||r.portii==null,same=!sv0&&p===r.portii,unc=vpf(r);if(same&&!unc)return"";
  const L=same?null:macLocal(r,p),sv=r.macro&&r.macro.kcal!=null?r.macro.kcal:macLocal(r).o.kcal,was=sv0?"acum, fara numar de portii, pentru toata reteta":"salvat, la "+esc(r.portii)+" portii";
  const line=same?`<p class="muted">Numarul de portii (${esc(p)}) nu e confirmat.</p>`:L.ok?`<p><b>La ${esc(p)} portii:</b> ${esc(L.o.kcal)} kcal, proteine ${esc(L.o.proteine)} g, carbohidrati ${esc(L.o.carbo)} g, grasimi ${esc(L.o.grasimi)} g per portie <span class="muted">(${was}: ${esc(sv)} kcal)</span></p>`:`<p class="muted">La ${esc(p)} portii: nu pot calcula (ingredientele nu au date in Info).</p>`;
  return line+`<button class="go" type="button" data-psv="1">${same?"Confirma":"Salveaza"} ${esc(p)} portii</button>`}
@@ -1701,7 +1703,7 @@ async function fdAIZ(z,btn,box,after){const need=fdNeedCv(z.x);
  catch(e){box.innerHTML=`<div class="warn" style="margin-top:6px">${esc(e.message||"Eroare")}</div>`}
  finally{if(btn.isConnected){btn.disabled=false;btn.textContent=z.fd?"Completeaza cu AI":"Cauta cu AI"}}}
 function macSaveRec(bv,i,sel,p){const r=BOOK[i],L=bv._ml;if(!L||!L.ok)return;
- r.macro={kcal:L.o.kcal,proteine:L.o.proteine,carbo:L.o.carbo,grasimi:L.o.grasimi,sursa:"local",acoperire:L.ok+" din "+L.n};
+ r.macro={kcal:L.o.kcal,proteine:L.o.proteine,carbo:L.o.carbo,grasimi:L.o.grasimi,sursa:"local",acoperire:L.ok+" din "+L.n};clrV(r,MCT);
  if(persistBook(r)){openBook(i,p,sel);toast("Macro salvat pe reteta.")}}
 function drawNu(){const n=Object.keys(FD).length;$("#nu").innerHTML=n?`<p class="muted" style="margin:6px 0">${n===1?"1 aliment adaugat de tine apare":n+" alimente adaugate de tine apar"} in lista, marcate AI sau manual (la 100 g; sunt in backup). <button class="alt" type="button" data-fdcp="1" style="margin:0 0 0 6px">Copiaza lista</button></p>`:""}
 $("#nu").onclick=e=>{const b=e.target.closest("button");if(!b)return;
