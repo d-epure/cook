@@ -2,6 +2,23 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.13.1
+- Meniu: numarul de portii din fiecare masa are eticheta "gatesc N portii" si inseamna un singur lucru: cate portii gatesti, deci ce cantitati ajung la cumparaturi (implicit portiile retetei). Macro si micronutrientii raman pentru o portie pe masa.
+- Meal prep nu mai trimite ingrediente la cumparaturi (caseta a fost scoasa): ingredientele se cumpara din Meniu, o singura cale. Meal prep inseamna "ce am gatit".
+- Cand adaugi un lot in Meal prep, toate mesele din Meniu de azi inainte cu aceeasi reteta devin "din Meal prep" (fara a numara portii: scoti tu mesele care nu mai intra). Ingredientele lor nu se mai cumpara a doua oara; cele din trecut nu se schimba.
+- Teste adaptate: test_meal_prep.py (conversia mesei), test_lista_unificare_link.py.
+
+## 3.13.0
+- Cumparaturi: singularul si pluralul se unesc ("castravete" + "castraveti" = un singur produs, cantitatile se aduna; la fel rosie/rosii, cartof dulce/cartofi dulci, ardei gras/ardei grasi). Regula (`lkey`): fiecare cuvant pierde terminatia -ie/-ii/-i/-e/-a la comparare; nu se schimba numele afisat. Pe cele 1767 de nume de ingrediente din carti, regula uneste doar 20 de perechi, toate corecte. O lista veche cu dubluri se uneste singura la deschidere.
+- Cumparaturi: sursa fiecarui produs (si titlul din "Pe retete") e link: deschide reteta (din Colectia mea sau din Biblioteca), ca sa verifici cantitatea. Daca reteta nu mai exista, apare un mesaj.
+- Meal prep: daca adaugi a doua oara aceeasi reteta cu caseta de cumparaturi, cantitatile se inlocuiesc, nu se aduna.
+- Test nou: test_lista_unificare_link.py.
+
+## 3.12.1
+- Meal prep: randurile sunt mai compacte (pe ecran lat, butoanele Deschide / Terminat stau in dreapta titlului; fara spatiul gol deasupra titlului sectiunii).
+- O masa din Meal prep nu mai are campul de portii: nu schimba nimic (macro e pentru o portie, iar ingredientele nu se adauga la cumparaturi), deci doar prea sa insemne cate portii mananci.
+- Test extins: test_meal_prep.py.
+
 ## 3.12.0
 - Meal prep (in Meniu, deasupra lui "Azi si maine / Saptamana", pliat): lista simpla a retetelor gatite in loturi pentru mai multe zile. Fiecare rand: reteta, data gatirii, portii gatite (doar informativ), Deschide, Terminat (cu Anuleaza 8 secunde). "+ Adauga la Meal prep": alegi reteta, data (implicit azi) si portiile (implicit cele din reteta), si optional bifezi "Adauga ingredientele pentru N portii la cumparaturi" (cantitati scalate, ca la scalarea din 3.9.0). Adaugarea scrie si "gatit" in jurnalul retetei, la data aleasa.
 - In "+ Adauga" din Meniu: filtru nou "Meal prep". O masa luata de acolo are eticheta "din Meal prep", nu mai are butonul "Am gatit" (gatitul s-a scris la Meal prep) si nu adauga ingredientele la cumparaturile meniului (le-ai cumparat la gatit). Macro se calculeaza ca la orice masa; nu scade nimic automat, "Terminat" il apesi tu.

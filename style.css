@@ -457,6 +457,13 @@ button{min-height:var(--h-n)}
 .aileg b{display:inline-block;padding:1px 7px;border-radius:var(--r-p);background:var(--ai-bg);color:var(--ai-fg);font-size:var(--fs-xs)}
 
 /* 3.12.0: Meal prep */
-.mpr{flex-wrap:wrap}.mpr .mn{flex:1 1 100%}
+.mpr{flex-wrap:wrap;gap:6px 12px}.mpr .mn{flex:1 1 220px}.mpd{margin:0}.mpd>summary{padding-top:0;padding-bottom:6px;min-height:0}
 .chkl{display:flex;align-items:flex-start;gap:10px}.chkl input{margin:2px 0 0;flex:0 0 auto}
 .mpb{display:flex;flex-wrap:wrap;gap:8px}.mpb button{margin:0}
+
+/* 3.13.0: sursa produsului din lista = link catre reteta */
+.srcl{background:none;border:0;padding:6px 2px;min-height:32px;color:var(--pri);text-decoration:underline;font:inherit;cursor:pointer;text-align:left}
+.lgh .srcl{font-weight:inherit;font-size:inherit;color:inherit}
+
+/* 3.13.1: numarul de portii din meniu are eticheta */
+.mpw{display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-xs)}

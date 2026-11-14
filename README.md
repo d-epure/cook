@@ -23,7 +23,7 @@ AI-ul (Anthropic) se foloseste doar cand apesi: idei, reteta completa, adaptare,
 
 Corectarea unei retete (Mai multe actiuni > Corecteaza reteta): daca ingredientele sau pasii lipsesc pentru ca extragerea din carte a esuat, dar textul paginii e pastrat, casetele se completa din liniile detectate in text, ca sa le corectezi in loc sa scrii de la zero.
 
-Meal prep (Meniu): `rmp` = [{id,s,k,t,d,p}] (reteta gatita in lot, data, portii informative); `mpHtml`, `mpOpen`, `mpForm`, `mpSave`; mesele luate din Meal prep au `en.mp=1` (fara "Am gatit", fara ingrediente in cumparaturile meniului). Nimic nu scade automat; "Terminat" scoate lotul.
+Cumparaturi: produsele se compara dupa `lkey` (singular/plural ignorat) in `addList` si `listDedupe`; sursa produsului e link (`data-lsrc`) catre reteta, cautata dupa titlu. Meal prep (Meniu): `rmp` = [{id,s,k,t,d,p}] (reteta gatita in lot, data, portii informative); `mpHtml`, `mpOpen`, `mpForm`, `mpSave`; la adaugarea unui lot, mesele de azi inainte cu aceeasi reteta primesc `en.mp=1`; mesele cu `en.mp=1` (fara "Am gatit", fara ingrediente in cumparaturile meniului). Nimic nu scade automat; "Terminat" scoate lotul.
 
 Marcaj AI: orice buton care cheama modelul (costa tokeni) are `data-ai="1"` si primeste un chip "✦ AI" din CSS; cand adaugi un apel `ask(...)` nou, marcheaza-i butonul (testul `test_marcaj_ai_si_cumparaturi.py` numara apelurile). Cumparaturi: butonul retetei e comutator (`cumBtn`, `cartToggle`, `cartRemove`, dupa titlul retetei). Macro in Meniu (`menMac`, `menLocal`): macro-ul retetei, apoi cel estimat cu AI din intrarea de meniu, apoi calculul din Info (>= 80% din ingrediente recunoscute); AI doar pentru restul. Cronologia arata timpul de start doar cand exista pasi in paralel.
 
