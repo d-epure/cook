@@ -2,6 +2,15 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.13.3
+- Meniu zilnic, mai compact: fiecare aliment are in fata un buton "-" (scoate din meniu, cu "Anuleaza" ca inainte), iar langa numele fiecarei mese (Mic dejun, Pranz ...) e un singur "+" pentru adaugat. Dispar butoanele late "Scoate" si "+ Adauga"; ramane loc pentru "gatesc N portii", "Am gatit" si "Deschide".
+- Teste: test_meniu_compact.py extins.
+
+## 3.13.2
+- Meal prep: caseta "Adauga ingredientele pentru N portii la cumparaturi" e inapoi (bifata implicit; scoasa din greseala in 3.13.1). Daca ingredientele retetei sunt deja in cumparaturi (din reteta sau din meniu), nu apare caseta, ci nota "Ingredientele retetei sunt deja in cumparaturi", ca sa nu se dubleze.
+- Adauga la meniu: filtrul "Meal prep" e primul si e selectat de la inceput cand ai loturi active. Orice reteta cu lot activ intra in meniu ca "din Meal prep", indiferent pe ce cale o adaugi (Meal prep, Colectia mea, Biblioteca, din reteta deschisa).
+- Teste: test_meal_prep.py extins.
+
 ## 3.13.1
 - Meniu: numarul de portii din fiecare masa are eticheta "gatesc N portii" si inseamna un singur lucru: cate portii gatesti, deci ce cantitati ajung la cumparaturi (implicit portiile retetei). Macro si micronutrientii raman pentru o portie pe masa.
 - Meal prep nu mai trimite ingrediente la cumparaturi (caseta a fost scoasa): ingredientele se cumpara din Meniu, o singura cale. Meal prep inseamna "ce am gatit".

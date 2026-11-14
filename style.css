@@ -467,3 +467,9 @@ button{min-height:var(--h-n)}
 
 /* 3.13.1: numarul de portii din meniu are eticheta */
 .mpw{display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-xs)}
+
+/* 3.14.0: meniu zilnic compact: "-" in fata alimentului, "+" langa numele mesei */
+.mt{display:flex;justify-content:space-between;align-items:center}
+.mday .mt .ib,.me .mrm{margin:0;min-width:36px;width:36px;min-height:36px;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:var(--fs-l,1.2rem);font-weight:700;line-height:1}
+.me{flex-wrap:nowrap}.me .mn{min-width:0}
+@media (max-width:700px){.me{flex-wrap:wrap}.me .mn{flex:1 1 calc(100% - 52px)}}
