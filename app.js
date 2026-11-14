@@ -675,6 +675,12 @@ async function ndRun(){
   LS("rnd","1");ND_MSG="Am scos diacriticele din "+NDC+" cuvinte"+(un?" si am unit "+un+" intrari identice":"")+". Am facut inainte o copie de siguranta: Setari > Tehnic > Backup, daca vrei sa revii."
  }catch(e){}}
 let ND_MSG="";
+/* 3.18.1: macro calculat din Info ("local") se reface o singura data cand se schimba baza Info sau potrivirea (altfel ramane cel vechi dupa o actualizare); fibre/saturate se scot de aici, ele se calculeaza live la Micronutrienti */
+async function mcRun(){try{const v=NUTRI.R.length+":"+NUTRI.M.length+":2";if(LS("rnv")===v)return;
+ const fx=(a,s)=>{let n=0;(a||[]).forEach(r=>{const m=r&&r.macro;if(!m||m.sursa!=="local"||!(r.ingrediente||[]).length)return;const L=macLocal(r,null,rawIngs(s,r));if(!L.ok)return;
+  const o=L.o,ac=L.ok+" din "+L.n;if(m.kcal!==o.kcal||m.proteine!==o.proteine||m.carbo!==o.carbo||m.grasimi!==o.grasimi||m.acoperire!==ac||"fibre" in m||"saturate" in m){m.kcal=o.kcal;m.proteine=o.proteine;m.carbo=o.carbo;m.grasimi=o.grasimi;m.acoperire=ac;delete m.fibre;delete m.saturate;n++}});return n};
+ const nb=fx(STORED,"b");if(nb)await saveStored(STORED);const sv=getSaved(),ns=fx(sv,"s");if(ns)LS("rs",JSON.stringify(sv));
+ LS("rnv",v);if(nb+ns)setTimeout(()=>toast("Am actualizat macro la "+(nb+ns)+" retete, dupa noua baza Info."),900)}catch(e){}}
 async function libInit(){
  let legacy=null;try{const s=localStorage.getItem("rbook");if(s){const j=JSON.parse(s);if(Array.isArray(j)&&j.length)legacy=j}}catch(e){}
  try{DB=await idbOpen();IDBOK=true;
@@ -684,6 +690,7 @@ async function libInit(){
   else STORED=[] /* fara marcaj: ce ramane in IndexedDB e orfan (datele aplicatiei au fost sterse) */
  }catch(e){IDBOK=false;STORED=legacy||[]}
  await ndRun();
+ await mcRun();
  if(STORED.length){try{BOOK=cl(STORED).map(fixRec)}catch(e){}}
  LIBREADY=true;try{drawBook();updBS();drawOnb();if(!$("#v-meniu").classList.contains("hidden"))drawMenu()}catch(e){}
  if(ND_MSG)setTimeout(()=>toast(ND_MSG),600);window.__ready=true}
@@ -1368,7 +1375,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.18.0";
+const APP_V="3.18.1";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){

@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.18.1
+- Reparat: macro-ul retetelor calculat din Info ramanea cel vechi dupa ce se schimba baza Info sau potrivirea ingredientelor, deci aratai o valoare sus si alta la "Recalculeaza din Info" (ex. Bol cu quinoa: 642 sus, 515 jos, pentru ca valoarea veche numara nautul fiert ca uscat). Acum, la prima deschidere dupa o schimbare a bazei Info, toate retetele cu macro calculat local (biblioteca si salvate) se recalculeaza o singura data si apare un mesaj cu numarul lor. Valorile scrise de tine sau estimate de AI nu se ating.
+- Macro per portie nu mai tine fibre si saturate stocate (se afisau doar la unele retete si puteau fi vechi); ele raman in Micronutrienti, calculate live.
+
 ## 3.18.0
 - Etichete noi: meal-prep, air fryer, one pot (tip dieta, se aplica toate odata la generarea ideilor). Cine are deja lista de etichete salvata le primeste o singura data la prima deschidere; daca le stergi, nu revin.
 - Setari > Etichete: fiecare eticheta are bifa "Afiseaza". Debifata, eticheta nu mai apare in filtre, pe cardurile retetelor, in cautare dupa eticheta si la alegerea etichetelor pentru idei AI. Retetele o pastreaza, iar o bifezi inapoi oricand. Etichetele automate (high-protein, keto) pot fi ascunse la fel.
