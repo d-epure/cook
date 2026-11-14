@@ -12,25 +12,21 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=3.9.0">
+<link rel="stylesheet" href="style.css?v=3.10.0">
 
 </head>
 <body>
 <main>
 <div id="sybar" class="card" hidden role="status"><span id="sytxt"></span> <button class="go mt8 mb0" id="syGo" type="button" >Aplica acum</button></div>
 <h1>Cartea mea de retete</h1>
-<nav id="gnav" aria-label="Sectiuni"><button data-g="ret" class="on">Retete</button><button data-g="plan">Planific</button><button data-g="info">Info</button><button data-g="set">Setari</button></nav>
+<nav id="gnav" aria-label="Sectiuni"><button data-g="ret" class="on"><span class="ic" aria-hidden="true">&#127858;</span><span class="nlb">Retete</span></button><button data-g="men"><span class="ic" aria-hidden="true">&#128197;</span><span class="nlb">Meniu</span></button><button data-g="lis"><span class="ic" aria-hidden="true">&#128722;</span><span class="nlb">Cumparaturi</span></button><button data-g="deb"><span class="ic" aria-hidden="true">&#129363;</span><span class="nlb">Debara</span></button><button data-g="mai"><span class="ic" aria-hidden="true">&#8943;</span><span class="nlb">Mai mult</span></button></nav>
 <nav id="nav" aria-label="Pagini">
  <button data-v="idei" class="on">Idei</button>
  <button data-v="carti">Biblioteca</button>
  <button data-v="salvate">Colectia mea</button>
- <button data-v="meniu">Meniu</button>
- <button data-v="lista">Cumparaturi</button>
- <button data-v="debara">Debara</button>
  <button data-v="ingr">Ingrediente</button>
  <button data-v="masuri">Masuri</button>
-  <button data-v="gatire">Gatire</button>
- <button data-v="setari">Setari</button>
+ <button data-v="gatire">Gatire</button>
 </nav>
 
 <section id="v-idei"><h2 class="sr">Idei</h2><div id="onb"></div>
@@ -73,6 +69,7 @@
 
 <section id="v-gatire" class="hidden"><div class="card"><h2 class="mt0 mb4">Gatire</h2><p class="muted mt0 mb12" >Sfaturi generale pentru cine invata sa gateasca. Timpii sunt orientativi: urmeaza mereu reteta si instructiunile de pe ambalaj. Temperaturile de siguranta pentru carne urmeaza recomandarile USDA.</p><div id="gl"></div></div></section>
 
+<section id="v-mai" class="hidden"><h2 class="sr">Mai mult</h2><div class="card"><button class="alt mmb" data-go="ingr"><b>Ghid nutritie</b><span class="muted">Ingrediente, Masuri, Gatire</span></button><button class="alt mmb" data-go="setari"><b class="stl">Setari</b><span class="muted">Administrare, Tehnic</span></button></div></section>
 <section id="v-setari" class="hidden">
  <div id="sgrid"><div id="shome"><div id="snav" class="snav"></div></div><div id="sdet"><div id="sback"><button id="sbk" type="button">&lsaquo; Toate setarile</button><h2 id="sbt"></h2></div>
  <div class="card" data-sg="cont">
@@ -116,7 +113,7 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=3.9.0"></script>
-<script src="app.js?v=3.9.0"></script>
+<script src="nutri.js?v=3.10.0"></script>
+<script src="app.js?v=3.10.0"></script>
 </body>
 </html>

@@ -3,15 +3,16 @@
 Aplicatie personala pentru retete: le gasesti, le adaptezi, le planifici si faci lista de cumparaturi, plus tabele de nutritie si masuri. Fara server si fara build. Publicata pe GitHub Pages. Datele tale raman in browser; nimic nu se trimite nicaieri in afara de cererile catre Anthropic, facute doar cand apesi un buton.
 
 ## Ce face (pe sectiuni)
+Navigare: bara cu 5 destinatii (Retete, Meniu, Cumparaturi, Debara, Mai mult): jos pe telefon (sub 700 px), sus pe ecran lat. Sub "Retete" sunt pilulele Idei / Biblioteca / Colectia mea; "Mai mult" duce la Ghid nutritie (Ingrediente, Masuri, Gatire) si la Setari. Cod: `GROUPS`, `syncNav` in `app.js`, `#gnav` in `style.css`.
 - **Retete**
   - *Idei*: retete generate de AI din ce ai in casa, cu aparatele tale active, sau cautate pe web. Cat timp lipsesc pasi esentiali apare "Primii pasi".
   - *Biblioteca*: cartile tale de retete (sursa fiecarei retete, adica cartea si numarul, apare sub titlu), cu cautare, filtre (carte, categorie, eticheta, stare: "De verificat" (ingrediente si text), "Portii de verificat", "Macro de verificat", "Fara semn de intrebare" - ce ai in debara, jurnal, preferinte), gruparea retetelor cu acelasi titlu intr-un singur card (exemplarul cel mai complet, cu "Mai e si in: ..." pentru celelalte), paginare ("Arata mai multe"), corectarea retetelor si jurnal (stele, "Am gatit", notite) pe fiecare reteta. Retetele se afiseaza fara diacritice.
   - *Colectia mea*: ce pastrezi, intr-o lista cu filtrele Toate / Favorite / Generate de AI / Scrise de mine si Cos. Etichetele retetei sunt pliate (si in Biblioteca), cu cele alese afisate pe linie. Mesajele scurte au chenar verde cand a reusit ceva si rosu cand nu a mers. In reteta deschisa, iconul de cos de langa Favorita (confirmi cu bifa, renunti cu X) ascunde reteta din cautare, meniu si propuneri, fara sa o stearga; din Cos o restaurezi sau o stergi definitiv (cu X / bifa si Anuleaza).
-- **Planific**
+- **Meniu, Cumparaturi, Debara** (pagini separate pe bara)
   - *Meniu*: azi si maine sau saptamana. Pe fiecare zi: macro (calorii, proteine, carbohidrati, grasimi) cu bare fata de tintele tale si cat mai ramane, plus un panou "Micronutrienti" (25 de nutrienti fata de valorile de referinta EFSA pentru adulti). Fiecare reteta din meniu conteaza o portie. "Propune-mi un meniu" (din Biblioteca, Debara, preferinte si Mese). "Am gatit" scrie in jurnalul retetei.
   - *Cumparaturi*: lista pe produse sau pe retete (cu sursa fiecarui produs), grupata pe categorii, cu bifare, "Am in debara" si ascunderea produselor din debara.
   - *Debara*: ce ai deja, pe categorii, cu marcaje (proaspat, congelat, uscat, conserva); un singur camp pentru cautare si adaugare. "Am terminat" trimite produsul inapoi in Cumparaturi.
-- **Info** (date din `nutri.js`, fara legatura cu restul datelor)
+- **Ghid nutritie** (sub Mai mult; fostul Info; date din `nutri.js`, fara legatura cu restul datelor)
   - *Ingrediente*: calorii, proteine, carbohidrati, grasimi, iar la atingere fibre, minerale si vitamine, pentru o cantitate la alegere; filtru pe grupa, sortare si cautare.
   - *Masuri*: cat cantareste o lingura, o lingurita sau o cana din alimentele care se masoara asa.
   - *Gatire*: sfaturi generale pentru cine invata sa gateasca, pe teme pliabile: tehnici de baza, timpi si temperaturi, siguranta alimentara, inlocuiri si cum repari o mancare.

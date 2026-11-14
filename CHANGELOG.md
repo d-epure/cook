@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.10.0
+- Navigare noua: o singura bara cu 5 destinatii (Retete, Meniu, Cumparaturi, Debara, Mai mult), in locul celor 4 grupuri de pilule si a celei de-a doua linii. Pe telefon (sub 700 px) bara e lipita jos; pe ecran lat e sus, lipita de marginea ferestrei. Pilulele Idei / Biblioteca / Colectia mea raman doar la Retete.
+- "Mai mult" deschide o pagina cu doua intrari: Ghid nutritie (fostul Info: Ingrediente, Masuri, Gatire) si Setari. "Planific" nu mai exista ca denumire: Meniu, Cumparaturi si Debara sunt pagini separate.
+- Contorul de cumparaturi si semnul de backup vechi stau pe bara (Cumparaturi (N), punct pe Mai mult si pe Setari). Mesajele scurte si butonul Anuleaza stau deasupra barii pe telefon. Butonul Inapoi de pe Android ramane pas cu pas, "Mai mult" fiind o pagina normala in istoric.
+- Teste adaptate: _h.py (nav), test_navigare.py (bara jos pe telefon / sus pe desktop), test_info.py, test_submeniu.py, test_meniu.py.
+
 ## 3.9.0
 - Scalarea cantitatilor la gatit: in reteta deschisa (Biblioteca si Colectia mea), sub Ingrediente, "Gatesc pentru [-] N [+] portii". Cantitatile din lista se recalculeaza, iar Mod gatit primeste lista scalata (cu o nota). Nu se salveaza nimic: reteta, macro-ul, portiile si timpii raman cei din carte; la alta reteta sau la inchidere revine la portiile retetei. Cantitatile scrise in textul pasilor nu se scaleaza (nota le spune asta). Fara numar de portii nu exista control, doar explicatia.
 - Uniformizare vizuala: o singura scara de fonturi (--fs-xs/s/m/l/xl/t), o singura scara de inaltimi (--h-n 44 px, --h-l 48 px), raze si culori ca tokeni (--r-xs, --r-p, --star, --on), culoarea ambra pentru avertismente blande (.warn2), 180 de stiluri inline mutate in clase (raman 42, specifice unui singur loc sau dinamice), clase utilitare pentru spatieri. Acelasi font in toate meniurile.

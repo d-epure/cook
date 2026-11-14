@@ -94,13 +94,14 @@ function showRecipe(){RC["#reteta"]={r:cur,kind:"gen"};show("idei");renderRecipe
 var LBN=null;
 function show(v){if(v!=="lista")LBN=null;toastHide();document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));$("#v-"+v).classList.remove("hidden");
  document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));syncNav(v);if(v==="salvate")renderSaved();if(v==="carti"&&($("#bd").value||pfOn()||_pfv!==(LS("rpf")||"")))drawBook();if(v==="lista")drawList();if(v==="meniu")drawMenu();if(v==="ingr")drawIngr();if(v==="masuri")drawMas();if(v==="gatire")drawGat();if(v==="debara")drawPantry();if(v==="setari"){drawPf();drawPxc();updPst();useDraw();renderCfg();renderTagCfg();updBS();setSub(LS("rk")?SUB:"cont")}bkBadge();if(v==="idei"){renderBox();drawOnb()}}
-/* navigare in doua trepte: sectiuni (Retete / Planific / Setari) si pagini in sectiune */
-const GROUPS={ret:["idei","carti","salvate"],plan:["meniu","lista","debara"],info:["ingr","masuri","gatire"],set:["setari"]},LASTV={};
+/* 3.10.0: bara cu 5 destinatii (Retete, Meniu, Cumparaturi, Debara, Mai mult); pilule doar la Retete si la Ghid nutritie */
+const GROUPS={ret:["idei","carti","salvate"],men:["meniu"],lis:["lista"],deb:["debara"],mai:["mai","ingr","masuri","gatire","setari"]},LASTV={},INFO=["ingr","masuri","gatire"];
 const groupOf=v=>Object.keys(GROUPS).find(g=>GROUPS[g].includes(v))||"ret";
 function syncNav(v){const g=groupOf(v);LASTV[g]=v;
  document.querySelectorAll("#gnav button").forEach(b=>{const on=b.dataset.g===g;b.classList.toggle("on",on);b.setAttribute("aria-pressed",String(on))});
- document.querySelectorAll("#nav button").forEach(b=>{b.hidden=!GROUPS[g].includes(b.dataset.v)});$("#nav").hidden=GROUPS[g].length<2}
-$("#gnav").onclick=e=>{const g=e.target.dataset.g;if(!g)return;const v=LASTV[g]||GROUPS[g][0];if(g==="ret"&&!$("#v-"+v).classList.contains("hidden"))SV=null;show(v);if(g==="set"){setHome();window.scrollTo(0,0)}};
+ const pv=g==="ret"?GROUPS.ret:INFO.includes(v)?INFO:[];document.querySelectorAll("#nav button").forEach(b=>{b.hidden=!pv.includes(b.dataset.v)});$("#nav").hidden=!pv.length}
+$("#gnav").onclick=e=>{const b=e.target.closest("button[data-g]");if(!b)return;const g=b.dataset.g,v=g==="mai"?"mai":(LASTV[g]||GROUPS[g][0]);if(g==="ret"&&!$("#v-"+v).classList.contains("hidden"))SV=null;show(v);window.scrollTo(0,0)};
+$("#v-mai").onclick=e=>{const b=e.target.closest("[data-go]");if(!b)return;show(b.dataset.go);if(b.dataset.go==="setari")setHome();window.scrollTo(0,0)};
 $("#nav").onclick=e=>{const v=e.target.dataset.v;if(!v)return;
  if(!$("#v-"+v).classList.contains("hidden")){if(v==="salvate")SV=null;if(v==="carti")drawBook()}
  show(v)};
@@ -794,7 +795,7 @@ $("#pl").onclick=e=>{const b=e.target.closest("[data-pf],[data-pdone],[data-pdel
  if(d.pf!==undefined){const l=getPan(),p=l.find(x=>x.n===d.pn);if(p){p.f=p.f.includes(d.pf)?p.f.filter(x=>x!==d.pf):[...p.f,d.pf];putPan(l);drawPantry()}return}
  if(d.pdel!==undefined){const u=undoMark(["rp","rcat"]);putPan(getPan().filter(x=>x.n!==d.pdel));drawPantry();navCount();undoShow("Scos din debara: "+d.pdel+".",u,redrawAll)}
  if(d.pdone!==undefined){const u=undoMark(["rp","rcat","rl"]);putPan(getPan().filter(x=>x.n!==d.pdone));addList([{n:d.pdone,u:"",c:null}],"Debara");drawPantry();undoShow("\""+d.pdone+"\" a fost pus inapoi in Cumparaturi.",u,redrawAll)}};
-function navCount(){const n=getList().filter(x=>!x.done&&!hid(x)).length;document.querySelector('#nav [data-v=lista]').textContent="Cumparaturi"+(n?" ("+n+")":"")}
+function navCount(){const n=getList().filter(x=>!x.done&&!hid(x)).length;document.querySelector('#gnav [data-g=lis] .nlb').textContent="Cumparaturi"+(n?" ("+n+")":"")}
 /* scoate din ingrediente ce nu se cumpara: antete (VARIANTE DE CARNE, "Pentru sos:"), trimiteri, texte de pas; desparte liste scurte cu virgula ("sare, piper") */
 const PUN=["g","kg","ml","l","cl","lingura","linguri","lingurita","lingurite","catel","catei","cana","cani","ceasca","cesti","buc","bucata","bucati","felie","felii","praf","varf","pachet","pachete","conserva","conserve","legatura","legaturi","fir","fire","cub","cuburi"];
 /* "1 lingurita sare" -> {c:1,u:"lingurita",n:"sare"}; fara cantitate -> doar nume (fara "dupa gust") */
@@ -1269,7 +1270,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.9.0";
+const APP_V="3.10.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1369,7 +1370,7 @@ const DOT='<span class="dot" title="Backup-ul e vechi"></span>';
 function bkAge(){const t=Math.max(+LS("rbk")||0,+LS("rdbl")||0);return t?Math.floor((Date.now()-t)/864e5):null}
 function bkDue(){let has=false;try{has=getSaved().length>0||getStored().length>0}catch(e){}if(!has)return false;const g=bkAge();return g===null||g>14}
 function bkBadge(){const d=bkDue(),g=bkAge();
- document.querySelector("#nav [data-v=setari]").innerHTML="Setari"+(d?DOT:"");document.querySelector("#gnav [data-g=set]").innerHTML="Setari"+(d?DOT:"");
+ [["#gnav [data-g=mai] .nlb","Mai mult"],["#v-mai .stl","Setari"]].forEach(([s,t])=>{const el=document.querySelector(s);if(el)el.innerHTML=t+(d?DOT:"")});
  if(typeof sRender==="function")sRender();
  $("#bkwarn").textContent=d?(g===null?"":"Ultimul backup are "+g+" de zile. Descarca unul nou."):""}
 bkBadge();
