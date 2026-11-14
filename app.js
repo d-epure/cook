@@ -1121,7 +1121,7 @@ const mpRec=e=>{if(e.s==="b"){const i=BOOK.findIndex(x=>bKey(x)===e.k);return i>
 const mpBtn=(st,r)=>{const k=st==="b"?bKey(r):sKey(r);return getMP().some(x=>x.k===k)?"":`<button class="alt" data-mpr="1">Meal prep</button>`};
 const mpInMen=k=>{const m=getMen(),t=dKey(new Date());let n=0;Object.keys(m).forEach(dk=>{if(dk<t)return;SLOTS.forEach(([sl])=>(m[dk][sl]||[]).forEach(en=>{if(en.k===k&&en.mp&&en.s!=="x")n++}))});return n};
 function mpHtml(){const l=getMP();
- return`<div class="card"><details class="mre mpd" id="mpd"${MPO?" open":""}><summary>Meal prep (${l.length})</summary>`+(l.length?l.map(x=>`<div class="me mpr"><div class="mn"><div class="tx">${esc(x.t)}</div><div class="src">gatit ${esc(dLab(x.d).toLowerCase())}${x.p?", "+esc(x.p)+(+x.p===1?" portie":" portii"):""}${(n=>n?", "+n+(n===1?" masa in meniu":" mese in meniu"):"")(mpInMen(x.k))}</div></div><div class="mpb">${mpRec(x)?`<button class="alt" data-mpmen="${esc(x.id)}">La meniu</button><button class="alt" data-mpopen="${esc(x.id)}">Deschide</button>`:""}<button class="alt" data-mpdone="${esc(x.id)}">Terminat</button></div></div>`).join(""):`<p class="muted">Nu ai nimic pregatit. Adaugi aici ce gatesti pentru mai multe zile.</p>`)+`<button class="alt mt8 mb0" data-mpadd="1">+ Adauga la Meal prep</button></details></div>`}
+ return`<div class="card"><details class="mre mpd" id="mpd"${MPO?" open":""}><summary>Meal prep (${l.length})</summary>`+(l.length?l.map(x=>`<div class="me mpr"><div class="mn"><div class="tx">${esc(x.t)}</div><div class="src">gatit ${esc(dLab(x.d).toLowerCase())}${x.p?", "+esc(x.p)+(+x.p===1?" portie":" portii"):""}${(n=>n?", "+n+(n===1?" masa in meniu":" mese in meniu"):"")(mpInMen(x.k))}</div></div><div class="mpb">${mpRec(x)?`<button class="alt" data-mpopen="${esc(x.id)}">Deschide</button>`:""}<button class="alt" data-mpdone="${esc(x.id)}">Terminat</button></div></div>`).join(""):`<p class="muted">Nu ai nimic pregatit. Adaugi aici ce gatesti pentru mai multe zile.</p>`)+`<button class="alt mt8 mb0" data-mpadd="1">+ Adauga la Meal prep</button></details></div>`}
 function mpOpen(){MD={mp:1,f:null,q:"",r:null};
  $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Adauga la Meal prep"><h2 class="m0">Adauga la Meal prep</h2><label for="mdq" class="mt12">Cauta o reteta (nume sau ingrediente)</label><input id="mdq" placeholder="ex: ciorba, piept de pui" autocomplete="off"><div id="mdres"></div><div class="row mt16"><button class="alt" data-mdx="1">Inchide</button></div></div>`;
  $("#mdlg").classList.remove("hidden");mdSearch();setTimeout(()=>{const e=$("#mdq");if(e)e.focus()},0)}
@@ -1158,7 +1158,7 @@ function mdSearch(){if(!MD||!$("#mdres"))return;
  else if(f==="f"){BOOK.forEach((r,i)=>{if(fv(r)&&!r.cos)add({s:"b",i,r})})}
  else if(f==="m"){const sn=new Set();getMP().forEach(x=>{const rc=mpRec(x);if(rc&&!sn.has(x.k)){sn.add(x.k);add({s:rc.s,i:rc.i,r:rc.r,mp:1})}})}
  else if(f==="b"&&MD.bk){BOOK.forEach((r,i)=>{if((r.sursa||"necunoscuta")===MD.bk&&!r.cos)add({s:"b",i,r})})}
- const lab=x=>x.mp?"Din Meal prep":x.s==="s"?"Colectia mea (generata)":wr(x.r)?"Scrisa de tine":(fv(x.r)?"&#9733; Favorita - ":"Din ")+esc(x.r.sursa||"biblioteca");
+ const lab=x=>x.mp?(l=>l?"gatit "+esc(dLab(l.d).toLowerCase())+(l.p?", "+esc(l.p)+(+l.p===1?" portie":" portii"):""):"")(getMP().find(l=>l.k===(x.s==="b"?bKey(x.r):sKey(x.r)))):x.s==="s"?"Colectia mea (generata)":wr(x.r)?"Scrisa de tine":(fv(x.r)?"&#9733; Favorita - ":"Din ")+esc(x.r.sursa||"biblioteca");
  const chip=(k,t)=>`<button type="button" class="fchip${f===k?" on":""}" data-mdf="${k}" aria-pressed="${f===k}">${t}</button>`;
  const srcs=[...new Set(BOOK.filter(r=>!r.cos).map(r=>r.sursa||"necunoscuta"))].sort((x,y)=>x.localeCompare(y,"ro"));
  const bsel=f==="b"?`<select id="mdbk" aria-label="Alege cartea" class="mt8 mb8"><option value="">Alege cartea</option>${srcs.map(x=>`<option value="${esc(x)}"${x===MD.bk?" selected":""}>${esc(x)}</option>`).join("")}</select>`:"";
@@ -1297,7 +1297,6 @@ function menShop(btn,ds,label){
 $("#v-meniu").onclick=e=>{const b=e.target.closest("button")||e.target,d=b.dataset;
  if(d.mpadd!==undefined){mpOpen();return}
  if(d.mpdone!==undefined){const u=undoMark(["rmp"]),x=getMP().find(y=>y.id===d.mpdone);putMP(getMP().filter(y=>y.id!==d.mpdone));drawMenu();undoShow("Terminat: "+(x?x.t:"lot")+".",u,drawMenu);return}
- if(d.mpmen!==undefined){const x=getMP().find(y=>y.id===d.mpmen),rc=x&&mpRec(x);if(rc)menOpen({s:rc.s,r:rc.r,p:rc.r.portii||1});return}
  if(d.mpopen!==undefined){const x=getMP().find(y=>y.id===d.mpopen),rc=x&&mpRec(x);if(!rc)return;if(rc.s==="b"){show("carti");drawBook();openBook(rc.i,rc.r.portii,"#bres")}else{SV=x.k;show("salvate")}window.scrollTo(0,0);return}
  if(d.mest!==undefined){menEst(d.day,b);return}
  if(d.mtog!==undefined){const m=getMen(),dm=m[d.day]||{},cur=MDO[d.day]!==undefined?MDO[d.day]:b.getAttribute("aria-expanded")==="true";MDO[d.day]=!cur;drawMenu();return}
@@ -1320,7 +1319,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.14.0";
+const APP_V="3.14.1";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
