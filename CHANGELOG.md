@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.14.2
+- Retete cu pasi pe aparate (generate cu AI, din Idei, din Colectia mea / Favorite, adaptate din carte): al treilea buton langa Cronologie si Pe aparat, "Pasi" = lista compacta numerotata, fara minute si fara grupare pe aparat; aparatul ramane ca eticheta mica in pas, iar treapta/durata ca text sub pas. Cronologie ramane vederea implicita; alegerea nu se salveaza.
+- Idei: doua mesaje distincte. Lista goala: "Nu am gasit retete pentru aceste ingrediente si etichete. Incearca fara o eticheta sau cu alte ingrediente." Raspuns stricat: "Raspuns invalid de la model. Incearca din nou." (inainte ambele spuneau "nu a returnat idei valide").
+- Teste: test_pasi_compact.py.
+
 ## 3.14.1
 - Meal prep: scos butonul "La meniu" de pe lot (redundant: in "Adauga la meniu" filtrul "Meal prep" e deja primul si selectat). Ramane "N mese in meniu" pe lot.
 - Adauga la meniu, filtrul Meal prep: randurile nu mai repeta "Din Meal prep" (filtrul spune deja asta); arata data gatirii si portiile lotului.

@@ -209,7 +209,7 @@ Raspunde DOAR cu JSON: {"idei":[{"titlu":"","timp_total_min":0,"ai":[""],"lipses
    r=await ask($("#m1").value||"claude-haiku-4-5",SYS,uw,5000,0.3,[{type:"web_search_20250305",name:"web_search",max_uses:3}]);
    r.idei=(r.idei||[]).map(x=>Object.assign(x,{url:safeUrl(x.url)}));}
   else r=await ask($("#m1").value||"claude-haiku-4-5",SYS,u,2500,0.4);
-  const nou=Array.isArray(r.idei)?r.idei.filter(x=>x&&typeof x==="object"&&x.titlu):[];if(!nou.length)throw new Error("Modelul nu a returnat idei valide. Incearca din nou.");
+  const nou=Array.isArray(r.idei)?r.idei.filter(x=>x&&typeof x==="object"&&x.titlu):[];if(!nou.length)throw new Error(Array.isArray(r.idei)&&!r.idei.length?"Nu am gasit retete pentru aceste ingrediente si etichete. Incearca fara o eticheta sau cu alte ingrediente.":"Raspuns invalid de la model. Incearca din nou.");
   window._idei=old.concat(nou).slice(0,30);drawIdei();
  }catch(e){fail(e)}
  stop();bbs.forEach(x=>x.disabled=false);b.disabled=false;b.textContent=lbl;
@@ -267,6 +267,7 @@ function stepHtml(s,showMin,par,noTag){
 function renderRecipe(sel){
  const c=RC[sel];if(!c||!$(sel))return;const r=c.r,tl=timeline(r.pasi||[]),tot=Math.max(0,...tl.map(s=>s._e)),ids=[...new Set(tl.map(s=>s.aparat))],plain=tl.length>0&&tl.every(s=>s.aparat==="manual"&&!(+s.durata_min));let body;
  if(plain)body=`<ol class="plst">`+tl.map(s=>`<li>${esc(s.text)}${params(s)?`<div class="par">${esc(params(s))}</div>`:""}${check(s).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}</li>`).join("")+`</ol>`;
+ else if(mode==="pasi")body=`<ol class="plst">`+tl.map(s=>`<li>${s.aparat!=="manual"?tag(s.aparat)+" ":""}${esc(s.text)}${params(s)?`<div class="par">${esc(params(s))}</div>`:""}${check(s).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}</li>`).join("")+`</ol>`;
  else if(mode==="cron"){const pr=s=>tl.some(o=>o!==s&&o.aparat!==s.aparat&&o.aparat!=="manual"&&s.aparat!=="manual"&&o._s<s._e&&o._e>s._s),anyp=tl.some(pr);body=tl.map(s=>stepHtml(s,anyp,pr(s))).join("")}
  else body=ids.map(a=>`<h2>${tag(a)}</h2>`+tl.filter(s=>s.aparat===a).map(s=>stepHtml(s,false,false,true)).join("")).join("");
  const top=c.kind==="saved"?`<div class="mb12"><button class="alt" data-rback="1">Inapoi la lista</button> ${favBtn(sKey(r))}</div>`:"";
@@ -275,7 +276,7 @@ function renderRecipe(sel){
  <ul class="ing">${(r.ingrediente||[]).map(i=>`<li>${esc(i.cantitate)} ${esc(i.unitate)} ${esc(cap(i.nume))}</li>`).join("")}</ul>
  ${(r.avertismente||[]).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}
  ${tagPicker(r,"data-tgr",c.kind==="gen"?"Etichete (se salveaza odata cu reteta)":"Etichete",c.kind!=="gen")}${c.kind!=="gen"?jrHtml(sKey(r)):""}
- <div class="row mt12" >${plain?"":`<button class="alt${mode==='cron'?' on':''}" aria-pressed="${mode==='cron'}" data-m="cron">Cronologie</button><button class="alt${mode==='ap'?' on':''}" aria-pressed="${mode==='ap'}" data-m="ap">Pe aparat</button>`}${save}${cumBtn(r.titlu,"cum")}<button class="alt" data-mn="1">Adauga la meniu</button>${mpBtn("s",r)}<button class="alt" data-cook="1">Mod gatit</button></div></div><div class="card">${body}</div>`;
+ <div class="row mt12" >${plain?"":`<button class="alt${mode==='cron'?' on':''}" aria-pressed="${mode==='cron'}" data-m="cron">Cronologie</button><button class="alt${mode==='ap'?' on':''}" aria-pressed="${mode==='ap'}" data-m="ap">Pe aparat</button><button class="alt${mode==='pasi'?' on':''}" aria-pressed="${mode==='pasi'}" data-m="pasi">Pasi</button>`}${save}${cumBtn(r.titlu,"cum")}<button class="alt" data-mn="1">Adauga la meniu</button>${mpBtn("s",r)}<button class="alt" data-cook="1">Mod gatit</button></div></div><div class="card">${body}</div>`;
 }
 function saveGen(btn){const r=JSON.parse(JSON.stringify(cur));r.etichete=normTags(r.etichete);
  let l=getSaved();const ex=l.find(x=>sKey(x)===sKey(r));
@@ -1319,7 +1320,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.14.1";
+const APP_V="3.14.2";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
