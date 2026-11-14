@@ -2,6 +2,14 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.17.0
+- Info (Ingrediente) are acum 1145 de alimente, de la 202: toate grupele esentiale din USDA SR Legacy (domeniu public) cu denumiri in romana: legume (inclusiv verdeturi, ciuperci, conserve, congelate), fructe, leguminoase (inclusiv tofu, tempeh, miso), nuci si seminte (tahini, unt de arahide, seminte), lactate si branzeturi, oua, grasimi, sosuri si condimente (chimen, curry, boia afumata, coriandru, capere, masline), cereale, paste si paine, carne (taieturi de vita, porc, miel, pui, curcan, rata, vanat, organe), mezeluri, peste si fructe de mare, bauturi (grupa noua: cafea, ceai, vin, bere, lapte vegetal). Fiecare aliment are valori la 100 g, 27 de nutrienti, masuri pe lingura/lingurita/ceasca (acum 478 de alimente) si denumirea USDA in engleza (se vede la detaliu si merge la cautare).
+- Potrivirea ingredientelor din retete (macro local, fara AI): acoperirea pe ingredientele din cartile tale a crescut de la 66% la 80% dintre denumirile distincte. Fara interogari AI pentru aceste alimente.
+- Reparat: starea de gatit conta doar din intamplare. "Naut fiert" nimerea nautul uscat (378 kcal in loc de 164), la fel "fasole fiarta", "linte fiarta", "piept de pui fiert", "orez fiert". Acum fiert/fiarta, copt/prajit/fript/la cuptor/la gratar si gatit sunt cuvinte de potrivire: un aliment gatit se alege doar cand ingredientul spune ca e gatit, iar daca spune "fiert" si nu exista varianta fiarta, se foloseste varianta de baza.
+- Denumiri alternative in Info: "(aprox. X)" sau "(sin. X)" din numele unui aliment il fac sa fie gasit si dupa X (telemea, cascaval, zeama de carne, carne macra, cumin, cayenne). Reparat: "telemea" si "cascaval" nu se potriveau cu nimic.
+- Cuvintele "intreg/intregi", "crud/cruda/crude" nu mai conteaza la potrivire ("oua intregi", "pui intreg"). Fara aport caloric: bors, verdeata, leustean, arpagic. Indulcitor si eritritol/stevia sunt 0 kcal.
+- Teste: adaptate test_info, test_macro_local (Peste, sortare, masuri, un ingredient nepotrivit mai sigur).
+
 ## 3.16.0
 - Setari > Carti: butonul "Gaseste dubluri". Doua retete sunt dubluri daca au acelasi titlu si ingrediente (aproape) identice, sau aceleasi ingrediente si titluri apropiate (comparatia e pe continut, nu doar pe nume). Lista arata fiecare pereche, motivul si ce copie ramane; poti debifa ce vrei sa pastrezi, iar eliminarea se poate anula.
 - Se pastreaza copia folosita (favorite, Meal prep, meniu, jurnal), apoi cea mai completa (pasi, ingrediente, macro, portii). "Retetele mele" nu se ating niciodata. Retetele diferite cu aceleasi ingrediente (de exemplu "Supa cu turnatei" si "Supa cu puf de ou") raman.

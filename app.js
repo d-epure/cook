@@ -1363,7 +1363,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.16.0";
+const APP_V="3.17.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1687,7 +1687,7 @@ renderBox();
 drawOnb();
 
 /* 2.24.1: Info > Ingrediente si Masuri (datele sunt in nutri.js) */
-const IGR=["Legume","Fructe","Carne","Peste","Oua si lactate","Cereale si paste","Leguminoase","Nuci si seminte","Grasimi","Condimente","Dulciuri si altele"];
+const IGR=["Legume","Fructe","Carne","Peste","Oua si lactate","Cereale si paste","Leguminoase","Nuci si seminte","Grasimi","Condimente","Bauturi","Dulciuri si altele"];
 const ICOL=NUTRI.C,iv=(r,k)=>r[3+ICOL.indexOf(k)];
 const IMIC=[["Alte valori",[["fib","Fibre","g"],["zah","Zaharuri","g"],["sat","Grasimi saturate","g"],["col","Colesterol","mg"]]],["Minerale",[["na","Sodiu","mg"],["ca","Calciu","mg"],["fe","Fier","mg"],["mg","Magneziu","mg"],["fo","Fosfor","mg"],["k","Potasiu","mg"],["zn","Zinc","mg"],["se","Seleniu","mcg"]]],["Vitamine",[["va","Vitamina A","mcg"],["vc","Vitamina C","mg"],["vd","Vitamina D","mcg"],["ve","Vitamina E","mg"],["vk","Vitamina K","mcg"],["b1","B1 (tiamina)","mg"],["b2","B2 (riboflavina)","mg"],["b3","B3 (niacina)","mg"],["b6","B6","mg"],["b9","B9 (folat)","mcg"],["b12","B12","mcg"]]]];
 let IGS="",IGP="",ISORT="nume",IAMT=100,IOPEN=new Set();
@@ -1746,24 +1746,29 @@ $("#bpp").onclick=async e=>{const d=e.target.dataset.pcx;if(!d)return;
 const FDK="rfd";
 let FD={};try{const j=JSON.parse(LS(FDK)||"{}");if(j&&typeof j==="object"&&!Array.isArray(j))FD=j}catch(e){}
 const fdSave=()=>LS(FDK,JSON.stringify(FD));
-const MSYN={oua:"ou",cepe:"ceapa",catei:"catel",cateii:"catel",mere:"mar",rosii:"rosie",lamai:"lamaie",dovlecei:"dovlecel",felii:"felie"};
-const MSTOP=new Set("de cu si din la pe fara sau un o mare mici mic mica mijlocii mijlocie proaspat proaspata proaspete fiert fiarta fierte tocat tocata tocate ras rasa rase rece calduta caldute fierbinte taiat taiata taiate foi boabe".split(" "));
+const MSYN={oua:"ou",cepe:"ceapa",catei:"catel",cateii:"catel",mere:"mar",rosii:"rosie",lamai:"lamaie",dovlecei:"dovlecel",felii:"felie",fiarta:"fiert",fierte:"fiert",fierti:"fiert",coapta:"copt",coapte:"copt",copta:"copt",copte:"copt",copti:"copt",rascopt:"fiert",rascoapte:"fiert",rascoapta:"fiert",fripta:"copt",fripte:"copt",fripti:"copt",fript:"copt",cuptor:"copt",gratar:"copt",prajita:"prajit",prajite:"prajit",prajiti:"prajit",gatita:"gatit",gatite:"gatit",gatiti:"gatit"};
+/* 3.17.0: starea de gatit (fiert/copt/prajit/gatit) ramane in cuvinte: "naut fiert" nu mai nimereste naut uscat; alias "(aprox. X)" / "(sin. X)" din numele alimentului */
+const COOKW=new Set(["fiert","copt","prajit","gatit"]);
+const MSTOP=new Set("de cu si din la pe fara sau un o mare mici mic mica mijlocii mijlocie proaspat proaspata proaspete intreg intregi intreaga crud cruda crude tocat tocata tocate ras rasa rase rece calduta caldute fierbinte taiat taiata taiate foi boabe".split(" "));
 const mSt=w=>{w=MSYN[w]||w;const a=w.replace(/(ilor|elor|urile|uri|ele|ului|ul)$/,"");if(a!==w&&a.length>=3)return a;const b=w.replace(/[aeiu]+$/,"");return b.length>=3?b:w};
 const mTok=s=>dn(String(s||"")).toLowerCase().replace(/\([^)]*\)/g," ").split(/[^a-z]+/).filter(w=>w.length>1&&!MSTOP.has(w)).map(mSt);
+const mAl=n=>(String(n).match(/\((?:aprox|sin)\.?[^)]*\)/gi)||[]).map(x=>mTok(x.replace(/^\((?:aprox|sin)\.?\s*/i,"").replace(/\)$/,""))).filter(a=>a.length);
 const r1=v=>Math.round(v*10)/10;
 let FB=null;
 const fdBase=()=>FB||(FB=(()=>{const MM={};NUTRI.M.forEach(m=>{MM[dn(m[0]).toLowerCase()]=m[2]});
- return{R:NUTRI.R.map(r=>{const nm=dn(r[0]).toLowerCase();return{n:r[0],nm,t:mTok(r[0]),k:[r[3],r[4],r[5],r[6]].map(v=>v==null?0:+v),v:r.slice(3).map(v=>v==null?0:+v),mm:MM[nm]}}),
+ return{R:NUTRI.R.map(r=>{const nm=dn(r[0]).toLowerCase();return{n:r[0],nm,t:mTok(r[0]),al:mAl(r[0]),k:[r[3],r[4],r[5],r[6]].map(v=>v==null?0:+v),v:r.slice(3).map(v=>v==null?0:+v),mm:MM[nm]}}),
   PM:Object.fromEntries(Object.entries(NUTRI.P).map(([k,v])=>[mSt(k),v])),Z:new Set(NUTRI.Z.map(mSt))}})());
-const FPREF=["ulei de floarea-soarelui","faina alba","orez alb","lapte 3,5%","smantana 20%","zahar","oua de gaina","unt","branza de vaci"],FST=/fiert|copt|prajit|gatit|fript/;
-function fdMatch(name){name=dn(name).replace(/\b(fara|f\u0103r\u0103)\s+\S+(\s+adaug\S*)?/gi," ");const it=mTok(name);if(!it.length)return null;const S=new Set(it),B=fdBase(),raw=dn(name).toLowerCase();
- const ok=f=>!FST.test(f.nm)||FST.test(raw),pr=f=>{const j=FPREF.indexOf(f.nm);return j<0?99:j};
- const sub=L=>{const c=L.filter(f=>f.t.length&&f.t.every(w=>S.has(w))&&ok(f));if(!c.length)return null;const m=Math.max(...c.map(f=>f.t.length));return c.filter(f=>f.t.length===m).sort((a,b)=>pr(a)-pr(b))[0]};
+const FPREF=["ulei de floarea-soarelui","faina alba","orez alb","lapte 3,5%","smantana 20%","zahar","oua de gaina","unt","branza de vaci","pui intreg","porc carne tocata","vita carne tocata 90/10","miel","vitel","curcan piept","somon","ton in apa","ardei gras","ciuperci champignon","vin alb"];
+function fdMatch(name){name=dn(name).replace(/\b(fara|f\u0103r\u0103)\s+\S+(\s+adaug\S*)?/gi," ");const it=mTok(name);if(!it.length)return null;const S=new Set(it),B=fdBase();
+ const it0=it.filter(w=>!COOKW.has(w));if(!it0.length)return null;const ick=it0.length<it.length;
+ const ck=f=>f.ck||(f.ck=(f.t||[]).filter(w=>COOKW.has(w))),tb=f=>f.tb||(f.tb=(f.t||[]).filter(w=>!COOKW.has(w)));
+ const ok=f=>!ck(f).length||ck(f).some(w=>S.has(w)||S.has("gatit")),pr=f=>{const j=FPREF.indexOf(f.nm);return j<0?99:j},sc=f=>ick&&ck(f).length?0:1;
+ const ml=f=>{let m=0;const t=tb(f);if(t.length&&t.every(w=>S.has(w)))m=t.length;(f.al||[]).forEach(a=>{const b=a.filter(w=>!COOKW.has(w));if(b.length>m&&b.every(w=>S.has(w)))m=b.length});return m};
+ const sub=L=>{const c=L.map(f=>[f,ml(f)]).filter(([f,m])=>m&&ok(f));if(!c.length)return null;const m=Math.max(...c.map(x=>x[1]));return c.filter(x=>x[1]===m).map(x=>x[0]).sort((a,b)=>sc(a)-sc(b)||pr(a)-pr(b))[0]};
  const U=Object.values(FD).map(f=>({n:f.n,nm:dn(f.n).toLowerCase(),t:f.t||mTok(f.n),k:f.k,cv:f.cv,ug:f.ug,user:1,v:(f.x&&f.x.length===23&&f.k&&f.k.length===4)?f.k.map(v=>+v||0).concat(f.x.map(v=>v==null||v===""?0:+v)):null}));
  let f=sub(U)||sub(B.R);if(f)return f;
- if(it.every(w=>B.Z.has(w)))return{zero:1,n:"fara aport caloric"};
- if(it.length===1){const c=B.R.filter(f=>f.t.includes(it[0])&&ok(f));if(c.length){c.sort((a,b)=>(b.t[0]===it[0])-(a.t[0]===it[0])||pr(a)-pr(b)||a.t.length-b.t.length);return Object.assign({loose:1},c[0])}}
- if(it.every(w=>B.Z.has(w)))return{zero:1,n:"fara aport caloric"};
+ if(it0.every(w=>B.Z.has(w)))return{zero:1,n:"fara aport caloric"};
+ if(it0.length===1){const c=B.R.filter(f=>tb(f).includes(it0[0])&&ok(f));if(c.length){c.sort((a,b)=>sc(a)-sc(b)||(b.t[0]===it0[0])-(a.t[0]===it0[0])||pr(a)-pr(b)||a.t.length-b.t.length);return Object.assign({loose:1},c[0])}}
  return null}
 const FDW={g:1,gr:1,gram:1,grame:1,kg:1000,ml:1,l:1000,dl:100,cl:10};
 function fdGrams(x,f){const B=fdBase();if(f.zero)return{g:0};const u=dn(x.u||"").toLowerCase().trim();
