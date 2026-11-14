@@ -47,8 +47,10 @@ const tagNames=()=>TAGS.map(t=>t.n);
 const canon=n=>{const k=norm(n),t=TAGS.find(x=>norm(x.n)===k||(x.al||[]).some(a=>norm(a)===k));return t?t.n:null};
 const normTags=a=>[...new Set((a||[]).map(canon).filter(Boolean))];
 function autoTags(r){const m=r.macro||{},s=[];TAGS.forEach(t=>{if(t.auto==="protein"&&m.proteine!=null&&m.proteine>=25)s.push(t.n);if(t.auto==="keto"&&m.carbo!=null&&m.carbo<10)s.push(t.n)});return s}
-const tagPicker=(r,attr,note)=>{const au=new Set(autoTags(r)),on=new Set(normTags(r.etichete));
- return `<div class="muted" style="margin:10px 0 2px">${note||"Etichete"}</div><div class="chk">`+TAGS.map(t=>`<label><input type="checkbox" ${attr}="${esc(t.n)}"${on.has(t.n)||au.has(t.n)?" checked":""}${au.has(t.n)?" disabled":""}>${esc(t.n)}${au.has(t.n)?" (automat)":""}</label>`).join("")+`</div>`};
+const tagPicker=(r,attr,note,fold)=>{const au=new Set(autoTags(r)),on=new Set(normTags(r.etichete));
+ const bx=`<div class="chk">`+TAGS.map(t=>`<label><input type="checkbox" ${attr}="${esc(t.n)}"${on.has(t.n)||au.has(t.n)?" checked":""}${au.has(t.n)?" disabled":""}>${esc(t.n)}${au.has(t.n)?" (automat)":""}</label>`).join("")+`</div>`;
+ if(fold){const ch=TAGS.map(t=>t.n).filter(n=>on.has(n)||au.has(n));return `<details class="mre" data-tgd="1"><summary>${note||"Etichete"}: ${ch.length?esc(ch.join(", ")):"nicio eticheta"}</summary>${bx}</details>`}
+ return `<div class="muted" style="margin:10px 0 2px">${note||"Etichete"}</div>`+bx};
 
 /* ===== FAVORITE SI CHEI DE IDENTIFICARE A RETETELOR ===== */
 const getSaved=()=>{try{const j=JSON.parse(LS("rs")||"[]");return Array.isArray(j)?j:[]}catch(e){return[]}};
@@ -172,8 +174,10 @@ function timer(b,txt){const t0=Date.now(),bar=$("#busy");const up=()=>{const sec
  bar.classList.remove("hidden");up();const i=setInterval(up,500);return()=>{clearInterval(i);bar.classList.add("hidden")}}
 let TT=0;function toastHide(){clearTimeout(TT);const el=$("#toast");if(el)el.classList.add("hidden")}
 document.addEventListener("click",e=>{if(e.target.closest&&e.target.closest("#toast")&&!e.target.closest("#toast button"))toastHide()});
-function toast(m){const el=$("#toast");el.textContent=m;el.classList.remove("hidden");clearTimeout(TT);TT=setTimeout(()=>el.classList.add("hidden"),8000)}
-function fail(e){$("#eIdei").textContent=e.message;if(e.message!=="Anulat.")toast(e.message)}
+/* culori: verde = reusit/informatie, rosu = nu a mers sau ceva cere atentie (regula pentru toate mesajele scurte) */
+const TBAD=/^(Nu |Eroare|Scrie |Alege |Titlul nu|Portii: scrie|Exista deja|Produsul e deja|Debaraua are deja|App key nu|Reteta asta nu|Adauga cheia|Conectarea Dropbox a fost anulata|Adaptarea cere|Ai peste|Sincroniz\w+ (a esuat|nu))/i;
+function toast(m,bad){const el=$("#toast");m=String(m==null?"":m);el.textContent=m;el.classList.toggle("bad",bad===undefined?TBAD.test(m):!!bad);el.classList.remove("hidden");clearTimeout(TT);TT=setTimeout(()=>el.classList.add("hidden"),8000)}
+function fail(e){$("#eIdei").textContent=e.message;if(e.message!=="Anulat.")toast(e.message,true)}
 
 /* consum (estimare locala, doar in acest browser) */
 const useGet=()=>{try{return Object.assign({n:0,i:0,o:0},JSON.parse(LS("ru")))}catch(e){return{n:0,i:0,o:0}}};
@@ -269,7 +273,7 @@ function renderRecipe(sel){
  $(sel).innerHTML=top+`<div class="card"><h2>${esc(r.titlu)}</h2><div class="muted">${esc(r.portii)} portii${plain?"":" - aprox. "+Math.round(tot)+" min"}</div>${r.din_carte?`<div class="muted">Adaptata din: ${esc(r.din_carte)} (reteta din carte ramane neschimbata)</div>`:""}<div style="margin-top:6px">${lbH(r.etichete)}</div>${r.sursa_web&&safeUrl(r.sursa_web.url)?`<div class="muted">Inspirata de: <a href="${esc(r.sursa_web.url)}" target="_blank" rel="noopener noreferrer">${esc(r.sursa_web.nume||r.sursa_web.url)}</a> (adaptata, nu copiata)</div>`:""}
  <ul class="ing">${(r.ingrediente||[]).map(i=>`<li>${esc(i.cantitate)} ${esc(i.unitate)} ${esc(cap(i.nume))}</li>`).join("")}</ul>
  ${(r.avertismente||[]).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}
- ${tagPicker(r,"data-tgr",c.kind==="gen"?"Etichete (se salveaza odata cu reteta)":"Etichete")}${c.kind!=="gen"?jrHtml(sKey(r)):""}
+ ${tagPicker(r,"data-tgr",c.kind==="gen"?"Etichete (se salveaza odata cu reteta)":"Etichete",c.kind!=="gen")}${c.kind!=="gen"?jrHtml(sKey(r)):""}
  <div class="row" style="margin-top:12px">${plain?"":`<button class="alt${mode==='cron'?' on':''}" aria-pressed="${mode==='cron'}" data-m="cron">Cronologie</button><button class="alt${mode==='ap'?' on':''}" aria-pressed="${mode==='ap'}" data-m="ap">Pe aparat</button>`}${save}<button class="alt" data-cum="1">Adauga la cumparaturi</button><button class="alt" data-mn="1">Adauga la meniu</button><button class="alt" data-cook="1">Mod gatit</button></div></div><div class="card">${body}</div>`;
 }
 function saveGen(btn){const r=JSON.parse(JSON.stringify(cur));r.etichete=normTags(r.etichete);
@@ -428,7 +432,7 @@ function openBook(i,p,sel){sel=sel||"#bres";bi=i;if(p===undefined)p=BOOK[i].port
  <h2>Mod de preparare</h2><ol>${(r.pasi_carte||[]).map(x=>`<li>${ed(x)}</li>`).join("")}</ol>
  ${(m&&m.kcal!=null)||(r.ingrediente||[]).length?`<h2>Macro per portie</h2><div data-mac>${macHead(r,p)}</div><div data-macp aria-live="polite"></div>${micHead(r)}`:""}
  ${L(r.sfaturi)?"<h2>Sfaturi practice</h2>"+ul(r.sfaturi):""}${L(r.alergeni)?"<p><b>Alergeni:</b> "+esc(r.alergeni.join(", "))+"</p>":""}${L(r.variante)?"<p><b>Variante:</b></p>"+ul(r.variante):""}
- <div class="bsec">${tagPicker(r,"data-tgb")}${jrHtml(bKey(r))}</div>
+ <div class="bsec">${tagPicker(r,"data-tgb","Etichete",true)}${jrHtml(bKey(r))}</div>
 </div><div id="adp${sel.slice(1)}"></div></div>`;
  const key="#adp"+sel.slice(1),en=RC[key],ad=$(key);
  if(en&&(en.bi!==i||en.p!==p))RC[key]=null;
@@ -455,7 +459,7 @@ Format: {"titlu":"","portii":0,"ingrediente":[{"nume":"","cantitate":0,"unitate"
   a.ingrediente=Array.isArray(a.ingrediente)?a.ingrediente.filter(x=>x&&typeof x==="object"):[];a.avertismente=Array.isArray(a.avertismente)?a.avertismente:[];
   if(vx(r).length)a.avertismente.unshift("Extragerea din carte e nesigura: compara cu reteta originala de mai sus.");a.titlu=r.titlu+" (adaptat)";a.portii=p;a.etichete=normTags(r.etichete);a.din_carte=(r.sursa||"")+(r.nr?", reteta "+r.nr:"");
   cur=a;RC[key]={r:a,kind:"gen",bi:i,p};renderRecipe(key);box.scrollIntoView({behavior:"smooth",block:"start"})}
- catch(e){if(e.message!=="Anulat."){box.innerHTML='<div class="warn"></div>';box.firstChild.textContent=e.message;if(/cheia API/.test(e.message)){const kb=document.createElement("button");kb.className="alt";kb.dataset.gosub="cont";kb.textContent="Seteaza cheia";box.firstChild.appendChild(document.createTextNode(" "));box.firstChild.appendChild(kb)}toast(e.message)}}
+ catch(e){if(e.message!=="Anulat."){box.innerHTML='<div class="warn"></div>';box.firstChild.textContent=e.message;if(/cheia API/.test(e.message)){const kb=document.createElement("button");kb.className="alt";kb.dataset.gosub="cont";kb.textContent="Seteaza cheia";box.firstChild.appendChild(document.createTextNode(" "));box.firstChild.appendChild(kb)}toast(e.message,true)}}
  stop();delete btn.dataset.busy;bbs.forEach(b=>b.disabled=false);btn.textContent="Adapteaza la aparatele mele";syncAdp();
 }
 /* curata o reteta importata: tipuri sigure, ca un JSON gresit sa nu strice aplicatia */
@@ -1186,7 +1190,7 @@ async function pxGen(i,btn){const R=PRP.res,r=R.rows[i],pf=getPf(),slot=SLOTS.fi
   g.etichete=normTags(g.etichete);const blob=norm(g.titlu+" "+g.ingrediente.map(x=>x.nume).join(" ")),P=pfCheck();
   if(P.e.some(([n,pt])=>pt.every(w=>blob.includes(w))))throw new Error("Reteta generata continea un aliment evitat; am renuntat la ea. Incearca din nou.");
   r.gen=g;r.off=false;pxDraw()}
- catch(e){toast(e.message||"Eroare");pxDraw()}}
+ catch(e){toast(e.message||"Eroare",true);pxDraw()}}
 function pxApply(){const R=PRP.res,m=getMen();let n=0,sv=getSaved(),savedNew=false;
  R.rows.forEach(r=>{if(r.off)return;let en=null;
   if(r.gen){const g=JSON.parse(JSON.stringify(r.gen));let t=g.titlu,k=2;while(sv.some(x=>x.titlu===t))t=g.titlu+" ("+k++ +")";g.titlu=t;sv.unshift(g);savedNew=true;en=mkEntry("s",g)}
@@ -1261,7 +1265,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.8.0";
+const APP_V="3.8.2";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1537,7 +1541,7 @@ document.addEventListener("visibilitychange",()=>{if(!SYREADY||!dbOn())return;
 $("#syGo").onclick=async()=>{if($("#syGo").textContent==="Vezi"){show("setari");setSub("backup");return}
  $("#syGo").disabled=true;const r=await syncRun({apply:true});$("#syGo").disabled=false;
  if(r.applied){try{sessionStorage.setItem("rsyt","Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".")}catch(e){}location.reload();return}
- syBar(r.err||"");if(!r.err)toast(syMsg(r));dbDraw()};
+ syBar(r.err||"");if(!r.err)toast(syMsg(r),!!(r.err||r.blocked));dbDraw()};
 const DEFK="7hvolba2cog2zy8";
 async function dbDraw(msg){const el=$("#dbbox");if(!el)return;let h="";
  if(!dbOn()){h+=`<p class="muted" style="margin:0 0 8px">Sincronizeaza retetele, meniul, lista si celelalte date intre telefon si laptop, prin Dropbox-ul tau. Datele ajung doar in folderul aplicatiei din contul tau. Te conectezi o data pe fiecare dispozitiv.</p><button class="go" type="button" data-dbc="1" style="margin:0">Conecteaza Dropbox</button>`}
@@ -1568,7 +1572,7 @@ $("#dbbox").onchange=e=>{if(e.target.id==="dba")LS("rdba",e.target.checked?"1":"
 /* intoarcere din Dropbox dupa autorizare: ?code=... */
 (async()=>{const q=new URLSearchParams(location.search),c=q.get("code"),v=sessionStorage.getItem("rdbv");if(!(c&&v)&&!q.get("error"))return;
  try{history.replaceState(null,"",location.pathname)}catch(e){}try{sessionStorage.removeItem("rdbv")}catch(e){}if(!c||!v){show("setari");setSub("backup");toast("Conectarea Dropbox a fost anulata.");return}
- try{const j=await dbToken({grant_type:"authorization_code",code:c,code_verifier:v,client_id:DBK(),redirect_uri:dbRedirect()});LS("rdbt",j.refresh_token);DBAT=j.access_token;DBAX=Date.now()+(j.expires_in||14400)*1000;show("setari");setSub("backup");toast("Dropbox conectat. Sincronizez...");dbDraw();const r=await syncRun({apply:true});if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){}location.reload();return}if(r.blocked)dbDraw(syMsg(r));else if(r.err)dbDraw(r.err);else{toast(syMsg(r));dbDraw()}}
+ try{const j=await dbToken({grant_type:"authorization_code",code:c,code_verifier:v,client_id:DBK(),redirect_uri:dbRedirect()});LS("rdbt",j.refresh_token);DBAT=j.access_token;DBAX=Date.now()+(j.expires_in||14400)*1000;show("setari");setSub("backup");toast("Dropbox conectat. Sincronizez...");dbDraw();const r=await syncRun({apply:true});if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){}location.reload();return}if(r.blocked)dbDraw(syMsg(r));else if(r.err)dbDraw(r.err);else{toast(syMsg(r),!!(r.err||r.blocked));dbDraw()}}
  catch(x){show("setari");setSub("backup");dbDraw("Nu am putut conecta Dropbox: "+(x.message||x))}})();
 snDraw();dbDraw();
 /* copii automate la pornire (dupa ce biblioteca e incarcata) */
@@ -1606,7 +1610,7 @@ $("#nq").oninput=e=>{IGS=e.target.value;drawIngr()};
 $("#nam").oninput=e=>{IAMT=e.target.value;drawIngr()};
 $("#ns").onchange=e=>{ISORT=e.target.value;drawIngr()};
 $("#ngc").onchange=e=>{IGP=e.target.value;drawIngr()};$("#mgc").onchange=drawMas;
-$("#nl").onclick=e=>{const b=e.target.closest("button");if(b&&b.dataset.fdd!==undefined){const n=(FD[b.dataset.fdd]||{}).n;delete FD[b.dataset.fdd];fdSave();drawIngr();toast("Sters din lista ta: "+dn(n||"")+".");return}const INZ=()=>({x:{n:IGS.trim(),c:100,u:"g",nr:1}});if(b&&b.dataset.iai!==undefined){fdAIZ(INZ(),b,$("#nl [data-mform]"),drawIngr);return}if(b&&b.dataset.iman!==undefined){$("#nl [data-mform]").innerHTML=fdFormHtml(INZ(),"i");return}if(b&&b.dataset.mms==="i"){fdManZ(INZ(),$("#nl [data-irow]"),drawIngr);return}const FZ=k=>({x:{n:FD[k].n,c:100,u:"g",nr:1},f:{k:FD[k].k},fd:FD[k]});if(b&&b.dataset.fdai!==undefined){fdAIZ(FZ(b.dataset.fdai),b,b.closest(".nr").querySelector("[data-fdbox]"),drawIngr);return}if(b&&b.dataset.fded!==undefined){b.closest(".nr").querySelector("[data-fdbox]").innerHTML=fdFormHtml(FZ(b.dataset.fded),"e:"+b.dataset.fded);return}if(b&&String(b.dataset.mms).startsWith("e:")){fdManZ(FZ(b.dataset.mms.slice(2)),b.closest("[data-fdbox]"),drawIngr);return}if(!b||b.dataset.ni===undefined)return;const i=isNaN(+b.dataset.ni)?b.dataset.ni:+b.dataset.ni;IOPEN.has(i)?IOPEN.delete(i):IOPEN.add(i);drawIngr()};
+$("#nl").onclick=e=>{const b=e.target.closest("button");if(b&&b.dataset.fdd!==undefined){const n=(FD[b.dataset.fdd]||{}).n,sn=undoMark([FDK]);delete FD[b.dataset.fdd];fdSave();drawIngr();undoShow("Sters din lista ta: "+dn(n||"")+".",sn,()=>{try{const j=JSON.parse(LS(FDK)||"{}");FD=j&&typeof j==="object"&&!Array.isArray(j)?j:{}}catch(x){FD={}}drawIngr()});return}const INZ=()=>({x:{n:IGS.trim(),c:100,u:"g",nr:1}});if(b&&b.dataset.iai!==undefined){fdAIZ(INZ(),b,$("#nl [data-mform]"),drawIngr);return}if(b&&b.dataset.iman!==undefined){$("#nl [data-mform]").innerHTML=fdFormHtml(INZ(),"i");return}if(b&&b.dataset.mms==="i"){fdManZ(INZ(),$("#nl [data-irow]"),drawIngr);return}const FZ=k=>({x:{n:FD[k].n,c:100,u:"g",nr:1},f:{k:FD[k].k},fd:FD[k]});if(b&&b.dataset.fdai!==undefined){fdAIZ(FZ(b.dataset.fdai),b,b.closest(".nr").querySelector("[data-fdbox]"),drawIngr);return}if(b&&b.dataset.fded!==undefined){b.closest(".nr").querySelector("[data-fdbox]").innerHTML=fdFormHtml(FZ(b.dataset.fded),"e:"+b.dataset.fded);return}if(b&&String(b.dataset.mms).startsWith("e:")){fdManZ(FZ(b.dataset.mms.slice(2)),b.closest("[data-fdbox]"),drawIngr);return}if(!b||b.dataset.ni===undefined)return;const i=isNaN(+b.dataset.ni)?b.dataset.ni:+b.dataset.ni;IOPEN.has(i)?IOPEN.delete(i):IOPEN.add(i);drawIngr()};
 function drawMas(){const q=norm($("#mq").value||"").trim().split(/\s+/).filter(Boolean);
  const mg=$("#mgc").value,L=NUTRI.M.filter(m=>m[2].some(x=>x!=null)&&(!mg||m[1]===mg)&&q.every(w=>norm(m[0]).includes(w))).sort((a,b)=>a[0].localeCompare(b[0],"ro"));
  const v=x=>x==null?"-":x;

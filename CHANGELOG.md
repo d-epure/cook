@@ -2,6 +2,16 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.8.2
+- Culori consecvente la mesajele scurte (toast): chenar verde pentru ce a reusit sau e doar informatie ("Anulat.", "Salvat", "Sters din lista ta"), chenar rosu pentru ce nu a mers sau cere atentie ("Nu am putut...", campuri necompletate, "Exista deja..."). Inainte toate aveau chenar rosu, si "Anulat." parea o eroare.
+- Etichetele sunt pliate si in Biblioteca (reteta deschisa), la fel ca in Colectia mea, cu cele alese afisate pe linie.
+- Test extins: test_info_sterge_anulare.py (culori, etichete pliate in Biblioteca).
+
+## 3.8.1
+- Info: stergerea unui aliment adaugat de tine se poate anula timp de 8 secunde (butonul "Anuleaza", ca la celelalte stergeri); inainte disparea fara cale de intoarcere.
+- Colectia mea: blocul "Etichete" e pliat; pe linia lui vezi etichetele alese ("Etichete: vegan, keto"), iar casetele de bifat se deschid la apasare. La o adaptare nesalvata ramane deschis, pentru ca se salveaza odata cu reteta.
+- Test nou: test_info_sterge_anulare.py.
+
 ## 3.8.0
 - Fara diacritice peste tot: ce scrii, ce vine de la AI, ce incarci din carti, ce restaurezi din backup sau primesti prin sincronizare se curata automat la salvare. Regula: a, s, t simple; "i" cu semn la inceput de cuvant sau dupa ne/re/pre/de/dez devine i ("neindulcita", "preincalzeste"), in vechea scriere devine a ("paine", "pana").
 - Migrare unica la prima pornire: curata ce ai deja (retete din carti, debara, meniuri, cumparaturi, alimente). Inainte face o copie de siguranta (Setari > Tehnic > Backup > copii automate, "Restaureaza" daca vrei sa revii). Intrarile care devin identice dupa curatare (ex: "mazare" si "mazare" cu diacritice in debara) se unesc, cu formele pastrate. Descarcarea unei carti da acum un JSON curat.
