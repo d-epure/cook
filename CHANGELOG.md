@@ -2,6 +2,17 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.15.0
+- Acelasi ecran pentru orice reteta, indiferent de sursa (carte, scrisa de tine, generata cu AI, salvata, Favorite, adaptata): titlu, etichete, "Mod gatit" / "Adauga la meniu" / "Meal prep", "Mai multe actiuni" (cumparaturi), Ingrediente cu "Gatesc pentru - N +", Mod de preparare, Macro per portie si Micronutrienti per portie, Etichete pliate, Jurnal. Retetele generate nu aveau scalare, macro, micronutrienti, sectiunea "Mod de preparare" si jurnal; acum le au.
+- Macro si micronutrienti la retetele generate/salvate: calculati din Info, direct, fara AI si fara tokeni (nu se salveaza pe reteta).
+- Scalarea portiilor la retetele generate/salvate muta si "Adauga la cumparaturi" si lista din "Mod gatit" la numarul ales de portii.
+- "Pasi" si "Pe aparat" sunt acum in sectiunea Mod de preparare. La retetele adaptate dintr-o carte apare sectiunea pliata "Pasii originali din carte" (pasii clasici ai retetei de baza).
+- Previzualizarea adaptarii, afisata sub reteta din carte, nu repeta scalarea si macro-ul (sunt deja in reteta de mai sus).
+- Teste: test_reteta_unificata.py; adaptate test_cumparaturi, test_marcaj_ai_si_cumparaturi, test_pasi_simpli.
+
+## 3.14.3
+- Retete cu pasi pe aparate: "Cronologie" si "Pasi" erau aproape la fel, asa ca au fost unite. Raman doua vederi: "Pasi" (implicita: lista numerotata, aparat ca eticheta mica, treapta/durata sub pas; cand doua aparate lucreaza in paralel apar si "Start / dupa N min" si "in paralel cu alt aparat") si "Pe aparat". Butonul "Cronologie" a disparut.
+
 ## 3.14.2
 - Retete cu pasi pe aparate (generate cu AI, din Idei, din Colectia mea / Favorite, adaptate din carte): al treilea buton langa Cronologie si Pe aparat, "Pasi" = lista compacta numerotata, fara minute si fara grupare pe aparat; aparatul ramane ca eticheta mica in pas, iar treapta/durata ca text sub pas. Cronologie ramane vederea implicita; alegerea nu se salveaza.
 - Idei: doua mesaje distincte. Lista goala: "Nu am gasit retete pentru aceste ingrediente si etichete. Incearca fara o eticheta sau cu alte ingrediente." Raspuns stricat: "Raspuns invalid de la model. Incearca din nou." (inainte ambele spuneau "nu a returnat idei valide").

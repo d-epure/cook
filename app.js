@@ -35,7 +35,7 @@ const saveAP=()=>LS("ra",JSON.stringify(AP));
 const col=id=>{const i=AP.findIndex(a=>a.id===id);return i<0?"#a8975f":COL[i%COL.length]};
 const tag=id=>`<span class="tag" style="--c:${col(id)}">${esc(id)}</span>`;
 const esc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let cur=null,mode="cron",SV=null,SVP=0;const RC={};
+let cur=null,mode="pasi",SV=null,SVP=0;const RC={};
 
 /* ===== ETICHETE (lista centrala, normalizare, cautare) ===== */
 const dn=s=>String(s==null?"":s).normalize("NFD").replace(/[\u0300-\u036f]/g,"");const ed=x=>esc(dn(x));
@@ -264,19 +264,28 @@ function params(s){
 function stepHtml(s,showMin,par,noTag){
  return `<div class="step${noTag?" nt":""}" style="--c:${col(s.aparat)}">${noTag?"":`<div><div class="min">${showMin?(s._s<=0?"Start":"dupa "+Math.round(s._s)+" min"):""}</div>${tag(s.aparat)}</div>`}<div>${esc(s.text)}<div class="par">${par?"in paralel cu alt aparat - ":""}${esc(params(s))}</div>${check(s).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}</div></div>`;
 }
+/* 3.15.0: acelasi ecran pentru orice reteta (carte, scrisa, generata, salvata): portii, ingrediente, mod de preparare, macro/micro din Info, etichete, jurnal */
+function rcNut(ings,por){
+ const L=macLocal({portii:por},por,ings);
+ const mac=L.ok?`<p class="muted">Calculat din baza Info, aproximativ: ${esc(macTxt(L.o))} per portie (din ${L.ok} din ${L.n} ingrediente).</p>`:`<p class="muted">Nu pot calcula: ingredientele nu au date in Info.</p>`;
+ return`<h2>Macro per portie</h2>${mac}${micHead({ingrediente:ings,portii:por})}`}
 function renderRecipe(sel){
  const c=RC[sel];if(!c||!$(sel))return;const r=c.r,tl=timeline(r.pasi||[]),tot=Math.max(0,...tl.map(s=>s._e)),ids=[...new Set(tl.map(s=>s.aparat))],plain=tl.length>0&&tl.every(s=>s.aparat==="manual"&&!(+s.durata_min));let body;
+ const prev=c.bi!==undefined,ings=rawIngs("s",r),base=+r.portii>0?+r.portii:null,k=sKey(r),sn=base?(!prev&&BSC&&BSC.k===k?BSC.n:base):null,f=base?sn/base:1;
  if(plain)body=`<ol class="plst">`+tl.map(s=>`<li>${esc(s.text)}${params(s)?`<div class="par">${esc(params(s))}</div>`:""}${check(s).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}</li>`).join("")+`</ol>`;
- else if(mode==="pasi")body=`<ol class="plst">`+tl.map(s=>`<li>${s.aparat!=="manual"?tag(s.aparat)+" ":""}${esc(s.text)}${params(s)?`<div class="par">${esc(params(s))}</div>`:""}${check(s).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}</li>`).join("")+`</ol>`;
- else if(mode==="cron"){const pr=s=>tl.some(o=>o!==s&&o.aparat!==s.aparat&&o.aparat!=="manual"&&s.aparat!=="manual"&&o._s<s._e&&o._e>s._s),anyp=tl.some(pr);body=tl.map(s=>stepHtml(s,anyp,pr(s))).join("")}
+ else if(mode!=="ap"){const pr=s=>tl.some(o=>o!==s&&o.aparat!==s.aparat&&o.aparat!=="manual"&&s.aparat!=="manual"&&o._s<s._e&&o._e>s._s),anyp=tl.some(pr);body=`<ol class="plst">`+tl.map(s=>{const pa=[anyp?(s._s<=0?"Start":"dupa "+Math.round(s._s)+" min"):"",pr(s)?"in paralel cu alt aparat":"",params(s)].filter(Boolean).join(" - ");return`<li>${s.aparat!=="manual"?tag(s.aparat)+" ":""}${esc(s.text)}${pa?`<div class="par">${esc(pa)}</div>`:""}${check(s).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}</li>`}).join("")+`</ol>`}
  else body=ids.map(a=>`<h2>${tag(a)}</h2>`+tl.filter(s=>s.aparat===a).map(s=>stepHtml(s,false,false,true)).join("")).join("");
- const top=c.kind==="saved"?`<div class="mb12"><button class="alt" data-rback="1">Inapoi la lista</button> ${favBtn(sKey(r))}</div>`:"";
+ const top=c.kind==="saved"?`<div class="mb12"><button class="alt" data-rback="1">Inapoi la lista</button> ${favBtn(k)}</div>`:"";
  const save=c.kind==="gen"?`<button class="go m0" id="bSave" >Salveaza</button>`:"";
+ const tg=plain?"":`<div class="acts mb8"><button class="alt${mode!=='ap'?' on':''}" aria-pressed="${mode!=='ap'}" data-m="pasi">Pasi</button><button class="alt${mode==='ap'?' on':''}" aria-pressed="${mode==='ap'}" data-m="ap">Pe aparat</button></div>`;
+ const orig=r.din_carte?(()=>{const o=BOOK.find(x=>x.titlu===r.din_carte&&(x.pasi_carte||[]).length);return o?`<details class="mre"><summary>Pasii originali din carte</summary><ol>${o.pasi_carte.map(x=>`<li>${esc(x)}</li>`).join("")}</ol></details>`:""})():"";
  $(sel).innerHTML=top+`<div class="card"><h2>${esc(r.titlu)}</h2><div class="muted">${esc(r.portii)} portii${plain?"":" - aprox. "+Math.round(tot)+" min"}</div>${r.din_carte?`<div class="muted">Adaptata din: ${esc(r.din_carte)} (reteta din carte ramane neschimbata)</div>`:""}<div class="mt8">${lbH(r.etichete)}</div>${r.sursa_web&&safeUrl(r.sursa_web.url)?`<div class="muted">Inspirata de: <a href="${esc(r.sursa_web.url)}" target="_blank" rel="noopener noreferrer">${esc(r.sursa_web.nume||r.sursa_web.url)}</a> (adaptata, nu copiata)</div>`:""}
- <ul class="ing">${(r.ingrediente||[]).map(i=>`<li>${esc(i.cantitate)} ${esc(i.unitate)} ${esc(cap(i.nume))}</li>`).join("")}</ul>
  ${(r.avertismente||[]).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}
- ${tagPicker(r,"data-tgr",c.kind==="gen"?"Etichete (se salveaza odata cu reteta)":"Etichete",c.kind!=="gen")}${c.kind!=="gen"?jrHtml(sKey(r)):""}
- <div class="row mt12" >${plain?"":`<button class="alt${mode==='cron'?' on':''}" aria-pressed="${mode==='cron'}" data-m="cron">Cronologie</button><button class="alt${mode==='ap'?' on':''}" aria-pressed="${mode==='ap'}" data-m="ap">Pe aparat</button><button class="alt${mode==='pasi'?' on':''}" aria-pressed="${mode==='pasi'}" data-m="pasi">Pasi</button>`}${save}${cumBtn(r.titlu,"cum")}<button class="alt" data-mn="1">Adauga la meniu</button>${mpBtn("s",r)}<button class="alt" data-cook="1">Mod gatit</button></div></div><div class="card">${body}</div>`;
+ <div class="acts">${save}<button class="${save?"alt":"go"}" data-cook="1">Mod gatit</button><button class="alt" data-mn="1">Adauga la meniu</button>${mpBtn("s",r)}</div><details class="mre"><summary>Mai multe actiuni</summary><div class="acts">${cumBtn(r.titlu,"cum")}</div></details>
+ <h2 class="mt16">Ingrediente</h2>${base&&!prev?sclHtml(base,sn,"reteta"):""}<ul class="ing">${ingHtml({ingrediente:ings},f)}</ul>
+ <h2>Mod de preparare</h2>${tg}${body}${orig}
+ ${prev||!ings.length?"":rcNut(ings,base||1)}
+ <div class="bsec">${tagPicker(r,"data-tgr",c.kind==="gen"?"Etichete (se salveaza odata cu reteta)":"Etichete",true)}${c.kind!=="gen"?jrHtml(k):""}</div></div>`;
 }
 function saveGen(btn){const r=JSON.parse(JSON.stringify(cur));r.etichete=normTags(r.etichete);
  let l=getSaved();const ex=l.find(x=>sKey(x)===sKey(r));
@@ -287,13 +296,14 @@ function saveGen(btn){const r=JSON.parse(JSON.stringify(cur));r.etichete=normTag
 function rcClick(e,sel){const c=RC[sel];if(!c)return false;const d=e.target.dataset;
  if(c.kind!=="gen"&&jrAct(d,sKey(c.r))){renderRecipe(sel);return true}
  if(d.m){mode=d.m;renderRecipe(sel);return true}
+ if(d.bsc!==undefined){const r=c.r,bs=+r.portii>0?+r.portii:null;if(bs){const k=sKey(r),cu=BSC&&BSC.k===k?BSC.n:bs,nn=d.bsc==="0"?bs:Math.min(200,Math.max(1,cu+(+d.bsc)));BSC=nn===bs?null:{k,n:nn}}renderRecipe(sel);return true}
  if(d.rback!==undefined){if(c.back)c.back();return true}
  if(d.fav!==undefined){favT(d.fav,()=>renderRecipe(sel));return true}
  if(e.target.id==="bSave"){saveGen(e.target);return true}
- if(d.cook!==undefined){cookOpen(c.r.titlu,cookSteps(c.r,"g"),ingGen(c.r));return true}
+ if(d.cook!==undefined){const r=c.r,bs=+r.portii>0?+r.portii:null,sc=bs&&c.bi===undefined&&BSC&&BSC.k===sKey(r)?BSC.n:bs,ff=bs?sc/bs:1;cookOpen(r.titlu,cookSteps(r,"g"),ff!==1?ingBook({ingrediente:rawIngs("s",r)},ff):ingGen(r),ff!==1?`Lista de ingrediente e scalata la ${sc} portii (reteta: ${bs}). Cantitatile din textul pasilor sunt cele din reteta.`:"");return true}
  if(d.mpr!==undefined){let r=c.r;if(c.kind==="gen"){cur=r;saveGen({});r=getSaved()[0]||r}MD={mp:1,f:null,q:"",r:null,after:()=>renderRecipe(sel)};$("#mdlg").classList.remove("hidden");mpForm("s",r);return true}
  if(d.mn!==undefined){let r=c.r;if(c.kind==="gen"){cur=r;saveGen({});r=getSaved()[0]||r}menOpen({s:"s",r});return true}
- if(d.cum!==undefined){cartToggle(c.r.titlu,(c.r.ingrediente||[]).map(x=>({c:x.cantitate,u:x.unitate,n:x.nume})),()=>renderRecipe(sel));return true}
+ if(d.cum!==undefined){const r=c.r,bs=+r.portii>0?+r.portii:null,ff=bs&&c.bi===undefined&&BSC&&BSC.k===sKey(r)?BSC.n/bs:1;cartToggle(r.titlu,rawIngs("s",r).map(x=>({c:x.c!=null?+(x.c*ff).toFixed(2):null,u:x.u,n:x.n,g:x.g})),()=>renderRecipe(sel));return true}
  return false}
 function rcChange(e,sel){const c=RC[sel],n=e.target.dataset.tgr;if(c&&c.kind!=="gen"&&e.target.dataset.jnt!==undefined){setNote(sKey(c.r),{nt:e.target.value.slice(0,600)});return true}
  if(!c||n===undefined)return false;
@@ -480,8 +490,8 @@ function toNum(s){s=String(s).trim().replace(",",".");let t=0;const fr={"\u00bd"
  s=s.replace(/[\u00bd\u00bc\u00be]/g,c=>{t+=fr[c];return""});const f=s.match(/(\d+)\s*\/\s*(\d+)/);if(f){t+=f[1]/f[2];s=s.replace(f[0],"")}
  const n=parseFloat(s);if(!isNaN(n))t+=n;return +t.toFixed(3)}
 let BSC=null;
-function sclHtml(base,n){if(!base)return`<p class="muted">Ca sa scalezi cantitatile, scrie numarul de portii al retetei (campul Portii, mai sus).</p>`;
- return`<div class="scl"><span>Gatesc pentru</span><button class="alt" data-bsc="-1" aria-label="Mai putine portii" ${n<=1?"disabled":""}>-</button><b aria-live="polite">${n}</b><button class="alt" data-bsc="1" aria-label="Mai multe portii" ${n>=200?"disabled":""}>+</button><span>portii</span>${n!==base?`<button class="alt" data-bsc="0">Inapoi la ${base}</button>`:""}</div>${n!==base?`<p class="muted">Cantitatile din lista sunt scalate de la ${base} la ${n} portii. Cantitatile scrise in pasii de preparare si timpii raman cele din carte.</p>`:""}`}
+function sclHtml(base,n,src){src=src||"carte";if(!base)return`<p class="muted">Ca sa scalezi cantitatile, scrie numarul de portii al retetei (campul Portii, mai sus).</p>`;
+ return`<div class="scl"><span>Gatesc pentru</span><button class="alt" data-bsc="-1" aria-label="Mai putine portii" ${n<=1?"disabled":""}>-</button><b aria-live="polite">${n}</b><button class="alt" data-bsc="1" aria-label="Mai multe portii" ${n>=200?"disabled":""}>+</button><span>portii</span>${n!==base?`<button class="alt" data-bsc="0">Inapoi la ${base}</button>`:""}</div>${n!==base?`<p class="muted">Cantitatile din lista sunt scalate de la ${base} la ${n} portii. Cantitatile scrise in pasii de preparare si timpii raman cele din ${src==="carte"?"carte":"reteta"}.</p>`:""}`}
 function ingHtml(r,f){let g=null,o="";(r.ingrediente||[]).forEach(x=>{const gg=x.g||null;if(gg!==g){g=gg;if(g)o+=`<li class="gh"><b>${ed(g)}</b></li>`}
   o+=`<li>${x.c!=null?fmtQ(x.c*f)+" "+(x.u?ed(x.u)+" ":""):""}${ed(cap(x.n))}</li>`});return o}
 function ingText(list){let g=null;return (list||[]).map(x=>{const gg=x.g||null;let h="";if(gg!==g){g=gg;if(g)h="## "+g+"\n"}return h+ingLine(x)}).join("\n")}
@@ -1320,7 +1330,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.14.2";
+const APP_V="3.15.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
