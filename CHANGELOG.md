@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.18.0
+- Etichete noi: meal-prep, air fryer, one pot (tip dieta, se aplica toate odata la generarea ideilor). Cine are deja lista de etichete salvata le primeste o singura data la prima deschidere; daca le stergi, nu revin.
+- Setari > Etichete: fiecare eticheta are bifa "Afiseaza". Debifata, eticheta nu mai apare in filtre, pe cardurile retetelor, in cautare dupa eticheta si la alegerea etichetelor pentru idei AI. Retetele o pastreaza, iar o bifezi inapoi oricand. Etichetele automate (high-protein, keto) pot fi ascunse la fel.
+- Teste: test_etichete_ascunse (etichete noi, migrare o singura data, ascundere si reafisare).
+
 ## 3.17.0
 - Info (Ingrediente) are acum 1145 de alimente, de la 202: toate grupele esentiale din USDA SR Legacy (domeniu public) cu denumiri in romana: legume (inclusiv verdeturi, ciuperci, conserve, congelate), fructe, leguminoase (inclusiv tofu, tempeh, miso), nuci si seminte (tahini, unt de arahide, seminte), lactate si branzeturi, oua, grasimi, sosuri si condimente (chimen, curry, boia afumata, coriandru, capere, masline), cereale, paste si paine, carne (taieturi de vita, porc, miel, pui, curcan, rata, vanat, organe), mezeluri, peste si fructe de mare, bauturi (grupa noua: cafea, ceai, vin, bere, lapte vegetal). Fiecare aliment are valori la 100 g, 27 de nutrienti, masuri pe lingura/lingurita/ceasca (acum 478 de alimente) si denumirea USDA in engleza (se vede la detaliu si merge la cautare).
 - Potrivirea ingredientelor din retete (macro local, fara AI): acoperirea pe ingredientele din cartile tale a crescut de la 66% la 80% dintre denumirile distincte. Fara interogari AI pentru aceste alimente.

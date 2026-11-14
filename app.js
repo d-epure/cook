@@ -40,15 +40,19 @@ let cur=null,mode="pasi",SV=null,SVP=0;const RC={};
 /* ===== ETICHETE (lista centrala, normalizare, cautare) ===== */
 const dn=s=>String(s==null?"":s).normalize("NFD").replace(/[\u0300-\u036f]/g,"");const ed=x=>esc(dn(x));
 const norm=s=>String(s||"").toLowerCase().replace(/(\w)\u00ee(?=\w)/g,"$1a").normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-const TDEF=[{n:"traditional romanesc",t:"bucatarie"},{n:"asiatic",t:"bucatarie"},{n:"vegan",t:"dieta"},{n:"vegetarian",t:"dieta"},{n:"high-protein",t:"dieta",auto:"protein"},{n:"keto",t:"dieta",auto:"keto"}];
+const TDEF=[{n:"traditional romanesc",t:"bucatarie"},{n:"asiatic",t:"bucatarie"},{n:"vegan",t:"dieta"},{n:"vegetarian",t:"dieta"},{n:"high-protein",t:"dieta",auto:"protein"},{n:"keto",t:"dieta",auto:"keto"},{n:"meal-prep",t:"dieta"},{n:"air fryer",t:"dieta"},{n:"one pot",t:"dieta"}];
 let TAGS;try{TAGS=JSON.parse(LS("rtags"))}catch(e){}if(!Array.isArray(TAGS)||!TAGS.length)TAGS=JSON.parse(JSON.stringify(TDEF));
 const saveTags=()=>LS("rtags",JSON.stringify(TAGS));
+/* 3.18.0: etichete noi (meal-prep, air fryer, one pot) adaugate o singura data la cei care au deja lista salvata; h=1 inseamna ascunsa (nu apare in filtre, carduri, alegere la generare; retetele o pastreaza) */
+try{if(!localStorage.getItem("rtv")){["meal-prep","air fryer","one pot"].forEach(n=>{if(!TAGS.some(t=>norm(t.n)===norm(n)))TAGS.push({n,t:"dieta"})});localStorage.setItem("rtags",JSON.stringify(TAGS));localStorage.setItem("rtv","1")}}catch(e){}
+const hidT=()=>new Set(TAGS.filter(t=>t.h).map(t=>t.n));
+const tagShown=a=>{const h=hidT();return a.filter(n=>!h.has(n))};
 const tagNames=()=>TAGS.map(t=>t.n);
 const canon=n=>{const k=norm(n),t=TAGS.find(x=>norm(x.n)===k||(x.al||[]).some(a=>norm(a)===k));return t?t.n:null};
 const normTags=a=>[...new Set((a||[]).map(canon).filter(Boolean))];
 function autoTags(r){const m=r.macro||{},s=[];TAGS.forEach(t=>{if(t.auto==="protein"&&m.proteine!=null&&m.proteine>=25)s.push(t.n);if(t.auto==="keto"&&m.carbo!=null&&m.carbo<10)s.push(t.n)});return s}
 const tagPicker=(r,attr,note,fold)=>{const au=new Set(autoTags(r)),on=new Set(normTags(r.etichete));
- const bx=`<div class="chk">`+TAGS.map(t=>`<label><input type="checkbox" ${attr}="${esc(t.n)}"${on.has(t.n)||au.has(t.n)?" checked":""}${au.has(t.n)?" disabled":""}>${esc(t.n)}${au.has(t.n)?" (automat)":""}</label>`).join("")+`</div>`;
+ const bx=`<div class="chk">`+TAGS.filter(t=>!t.h||on.has(t.n)||au.has(t.n)).map(t=>`<label><input type="checkbox" ${attr}="${esc(t.n)}"${on.has(t.n)||au.has(t.n)?" checked":""}${au.has(t.n)?" disabled":""}>${esc(t.n)}${au.has(t.n)?" (automat)":""}</label>`).join("")+`</div>`;
  if(fold){const ch=TAGS.map(t=>t.n).filter(n=>on.has(n)||au.has(n));return `<details class="mre" data-tgd="1"><summary>${note||"Etichete"}: ${ch.length?esc(ch.join(", ")):"nicio eticheta"}</summary>${bx}</details>`}
  return `<div class="muted mt12 mb4" >${note||"Etichete"}</div>`+bx};
 
@@ -334,16 +338,16 @@ $("#salvate").onclick=e=>{if(rcClick(e,"#salvate")||bvClick(e,"#salvate"))return
  if(d.o!==undefined){const r=l[d.o];if(r){SV=sKey(r);renderSaved();window.scrollTo(0,0)}}
  if(d.d!==undefined){const u=undoMark(["rs"]),t=(l[d.d]||{}).titlu||"reteta";l.splice(d.d,1);LS("rs",JSON.stringify(l));renderSaved();undoShow("Reteta stearsa: "+t+".",u,()=>{SV=null;renderSaved()})}};
 $("#salvate").onchange=e=>{rcChange(e,"#salvate")||bvChange(e,"#salvate")};
-const lbH=a=>normTags(a).map(x=>`<span class="lb">${esc(x)}</span>`).join("");
+const lbH=a=>tagShown(normTags(a)).map(x=>`<span class="lb">${esc(x)}</span>`).join("");
 function lblRule(){const s=[...document.querySelectorAll("#lbbox input:checked")].map(i=>i.value),isC=n=>{const t=TAGS.find(x=>x.n===n);return t&&t.t==="bucatarie"},c=s.filter(isC),d=s.filter(x=>!isC(x));
- return (c.length?`Bucatarie: ${c.join(" sau ")}. `:"")+(d.length?`Fiecare reteta trebuie sa respecte TOATE: ${d.join(", ")}. `:"")+`Campul etichete: doar valori din [${tagNames().join(", ")}], doar cele care se potrivesc cu adevarat.`}
+ return (c.length?`Bucatarie: ${c.join(" sau ")}. `:"")+(d.length?`Fiecare reteta trebuie sa respecte TOATE: ${d.join(", ")}. `:"")+`Campul etichete: doar valori din [${TAGS.filter(t=>!t.h).map(t=>t.n).join(", ")}], doar cele care se potrivesc cu adevarat.`}
 function renderTagUI(){
  const sel=new Set([...document.querySelectorAll("#lbbox input:checked")].map(i=>i.value));
- $("#lbbox").innerHTML=TAGS.map(t=>`<label><input type="checkbox" value="${esc(t.n)}" ${sel.has(t.n)?"checked":""}>${esc(t.n)}</label>`).join("");
- ["#fs"].forEach(s=>{const el=$(s),v=el.value;el.innerHTML='<option value="">Toate</option>'+TAGS.map(t=>`<option>${esc(t.n)}</option>`).join("");el.value=tagNames().includes(v)?v:""});try{drawBook()}catch(e){}}
+ $("#lbbox").innerHTML=TAGS.filter(t=>!t.h).map(t=>`<label><input type="checkbox" value="${esc(t.n)}" ${sel.has(t.n)?"checked":""}>${esc(t.n)}</label>`).join("");
+ ["#fs"].forEach(s=>{const el=$(s),v=el.value;el.innerHTML='<option value="">Toate</option>'+TAGS.filter(t=>!t.h).map(t=>`<option>${esc(t.n)}</option>`).join("");el.value=tagNames().includes(v)?v:""});try{drawBook()}catch(e){}}
 function renderTagCfg(){
- $("#tgl").innerHTML=TAGS.map((t,i)=>`<div class="apr"><input data-tn="${i}" value="${esc(t.n)}" aria-label="Nume eticheta" style="flex:1;min-width:0"><select data-tt="${i}" aria-label="Tip" class="wauto"><option value="bucatarie"${t.t==="bucatarie"?" selected":""}>bucatarie</option><option value="dieta"${t.t!=="bucatarie"?" selected":""}>dieta</option></select><button class="alt" data-tx="${i}">Sterge</button></div>`).join("")+
- `<p class="muted">Bucatarie: alternative la generarea ideilor (romanesc sau asiatic). Dieta: se aplica toate odata (vegan si keto). Redenumirea sau stergerea se aplica in toate retetele: idei, salvate si biblioteca.</p>
+ $("#tgl").innerHTML=TAGS.map((t,i)=>`<div class="apr"><input data-tn="${i}" value="${esc(t.n)}" aria-label="Nume eticheta" style="flex:1;min-width:0"><select data-tt="${i}" aria-label="Tip" class="wauto"><option value="bucatarie"${t.t==="bucatarie"?" selected":""}>bucatarie</option><option value="dieta"${t.t!=="bucatarie"?" selected":""}>dieta</option></select><label class="muted"><input type="checkbox" data-th="${i}"${t.h?"":" checked"}> Afiseaza</label><button class="alt" data-tx="${i}">Sterge</button></div>`).join("")+
+ `<p class="muted">Bucatarie: alternative la generarea ideilor (romanesc sau asiatic). Dieta: se aplica toate odata (vegan si keto). Afiseaza: debifeaza o eticheta ca sa nu mai apara in filtre, pe carduri si la alegerea ideilor (retetele o pastreaza). Redenumirea sau stergerea se aplica in toate retetele: idei, salvate si biblioteca.</p>
  <h2 class="mt12">Eticheta noua</h2><div class="apr"><input id="tnn" aria-label="Numele etichetei noi" placeholder="ex: fara gluten" style="flex:1;min-width:0"><select id="tnt" aria-label="Tipul etichetei noi" class="wauto"><option value="dieta">dieta</option><option value="bucatarie">bucatarie</option></select><button class="alt" id="tAdd">Adauga</button></div><div id="tmsg" class="muted"></div>`}
 const tmsg=t=>{const el=$("#tmsg");if(el)el.textContent=t};
 function retag(old,nw){
@@ -360,7 +364,8 @@ $("#tgl").onchange=e=>{const d=e.target.dataset;
   if(!nw){e.target.value=old;return}
   if(TAGS.some((t,j)=>j!==i&&norm(t.n)===norm(nw))){e.target.value=old;tmsg("Exista deja o eticheta cu acest nume.");return}
   if(nw!==old){TAGS[i].n=nw;TAGS[i].al=[...new Set([...(TAGS[i].al||[]),old])];saveTags();retag(old,nw);afterTags();tmsg("Redenumita: "+old+" -> "+nw+".")}}
- if(d.tt!==undefined){TAGS[+d.tt].t=e.target.value;saveTags();afterTags()}};
+ if(d.tt!==undefined){TAGS[+d.tt].t=e.target.value;saveTags();afterTags()}
+ if(d.th!==undefined){const t=TAGS[+d.th];if(e.target.checked)delete t.h;else t.h=1;saveTags();afterTags()}};
 $("#tgl").onclick=e=>{const b=e.target,d=b.dataset;
  if(d.tx!==undefined){if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Confirma stergerea";setTimeout(()=>{if(b.isConnected){b.dataset.arm="";b.textContent="Sterge"}},4000);return}
   const old=TAGS[+d.tx].n;TAGS.splice(+d.tx,1);saveTags();retag(old,null);afterTags();tmsg("Stearsa: "+old+". A fost scoasa din toate retetele.")}
@@ -383,7 +388,7 @@ function bSearchTxt(r){let o=_bsm.get(r);if(o&&o.k===r.titlu+"|"+(r.ingrediente|
 const hasW=(txt,w)=>(" "+txt.replace(/[^a-z0-9]+/g," ")).includes(" "+w);
 /* scor: titlu 2, ingredient 1, per cuvant cautat; hits = cate cuvinte s-au gasit */
 function bScore(r,q){const o=bSearchTxt(r);let s=0,h=0;q.forEach(w=>{if(hasW(o.t,w)){s+=2;h++}else if(hasW(o.i,w)){s+=1;h++}});return{s,h}}
-function bLab(r){return[...new Set([...normTags(r.etichete),...autoTags(r)])]}
+function bLab(r){return tagShown([...new Set([...normTags(r.etichete),...autoTags(r)])])}
 /* 3.2.3: sursa retetei (carte, numar, adaptata din) intr-o singura linie, sub titlu, inainte de etichete: in Biblioteca, Colectia mea si reteta deschisa */
 /* 3.3.0: Cos. Reteta mutata in cos primeste r.cos=true: ramane in biblioteca (cu jurnal, notite, favorite), dar nu mai apare in cautare, meniu, "De verificat" si "Propune-mi un meniu". Din cos: Restaureaza sau Sterge definitiv. */
 const TRASH='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v5M14 11v5"/></svg>';
@@ -543,7 +548,7 @@ async function macCalc(bv,btn){const g=k=>bv.querySelector(`[data-ef=${k}]`).val
  if(!LS("rk")){box.innerHTML='<div class="warn">Adauga cheia API in Setari ca sa folosesti calculul.</div>';return}
  const ings=parseIngText(g("ing")).filter(x=>x.n);if(!ings.length){box.innerHTML='<div class="warn">Scrie mai intai ingredientele.</div>';return}
  const por=Math.max(1,+g("portii")||1),old={};MACK.forEach(k=>{const v=g(k);old[k]=v===""?null:+v});
- const names=TAGS.filter(t=>!t.auto).map(t=>t.n);
+ const names=TAGS.filter(t=>!t.auto&&!t.h).map(t=>t.n);
  const sys='Esti nutritionist. Estimezi valorile nutritionale pentru o reteta. Raspunzi DOAR cu JSON valid, fara text in plus, fara diacritice.';
  const u=`Reteta: ${g("titlu")||"fara titlu"}\nPortii: ${por}\nIngrediente (cantitatile sunt pentru toata reteta):\n${ings.map(ingLine).join("\n")}\n\nCalculeaza valorile PER PORTIE (total / ${por}), tinand cont de starea alimentului asa cum e scris (crud, gatit). Daca un ingredient nu are cantitate, estimeaza una uzuala si adauga-l in "nesigur". Ignora apa, sarea si condimentele fara aport. Rotunjeste: kcal la intreg, restul la o zecimala.\nTrimite JSON: {"kcal":numar,"proteine":numar,"carbo":numar,"grasimi":numar,"nesigur":["ingredient neclar",...],"etichete":[...]}\nIn "etichete" pune doar etichete care se potrivesc cu siguranta din aceasta lista: ${JSON.stringify(names)} (gol daca nu esti sigur).`;
  btn.disabled=true;btn.textContent="Calculez...";box.innerHTML="";
@@ -1363,7 +1368,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.17.0";
+const APP_V="3.18.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
