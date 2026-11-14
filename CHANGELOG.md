@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.16.0
+- Setari > Carti: butonul "Gaseste dubluri". Doua retete sunt dubluri daca au acelasi titlu si ingrediente (aproape) identice, sau aceleasi ingrediente si titluri apropiate (comparatia e pe continut, nu doar pe nume). Lista arata fiecare pereche, motivul si ce copie ramane; poti debifa ce vrei sa pastrezi, iar eliminarea se poate anula.
+- Se pastreaza copia folosita (favorite, Meal prep, meniu, jurnal), apoi cea mai completa (pasi, ingrediente, macro, portii). "Retetele mele" nu se ating niciodata. Retetele diferite cu aceleasi ingrediente (de exemplu "Supa cu turnatei" si "Supa cu puf de ou") raman.
+- Numaratoarea din Biblioteca e mai clara: "1759 retete (172 exemplare cu acelasi titlu sunt grupate)"; cu cautare sau filtre: "42 retete gasite din 1759".
+- Teste: test_dubluri.py; adaptate test_grupare, test_biblioteca_pagini.
+
 ## 3.15.0
 - Acelasi ecran pentru orice reteta, indiferent de sursa (carte, scrisa de tine, generata cu AI, salvata, Favorite, adaptata): titlu, etichete, "Mod gatit" / "Adauga la meniu" / "Meal prep", "Mai multe actiuni" (cumparaturi), Ingrediente cu "Gatesc pentru - N +", Mod de preparare, Macro per portie si Micronutrienti per portie, Etichete pliate, Jurnal. Retetele generate nu aveau scalare, macro, micronutrienti, sectiunea "Mod de preparare" si jurnal; acum le au.
 - Macro si micronutrienti la retetele generate/salvate: calculati din Info, direct, fara AI si fara tokeni (nu se salveaza pe reteta).

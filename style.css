@@ -473,3 +473,6 @@ button{min-height:var(--h-n)}
 .mday .mt .ib,.me .mrm{margin:0;min-width:36px;width:36px;min-height:36px;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:var(--fs-l,1.2rem);font-weight:700;line-height:1}
 .me{flex-wrap:nowrap}.me .mn{min-width:0}
 @media (max-width:700px){.me{flex-wrap:wrap}.me .mn{flex:1 1 calc(100% - 52px)}}
+
+/* 3.16.0: lista de dubluri */
+.dupr{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);font-weight:400}.dupr input{flex:none;width:auto;margin-top:3px}.dupr>span{min-width:0}

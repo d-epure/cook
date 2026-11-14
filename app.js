@@ -430,7 +430,8 @@ function drawBook(){
  l.forEach((x,n)=>{const k=gk(x.r)||"#"+n;if(!gm.has(k))gm.set(k,[]);gm.get(k).push(x)});
  const ls=[...gm.values()].map(g=>{if(g.length===1)return g[0];const best=g.reduce((a,b)=>cmp(b.r)>cmp(a.r)?b:a);return Object.assign({},best,{others:g.filter(y=>y!==best)})});
  _bnA=[bd,usePan];bnDraw(bd,usePan);
- $("#bcnt").textContent="Rezultat: "+ls.length+(ls.length===1?" reteta gasita":" retete gasite")+(l.length>ls.length?" ("+(l.length-ls.length)+" grupate cu exemplare cu acelasi titlu)":"")+" din "+BOOK.filter(r=>!r.cos).length+" retete in baza locala"+(BOOK===BOOK0?". Sunt retete demo: dispar cand incarci o carte sau scrii prima ta reteta.":"");
+ {const tot=new Set(BOOK.filter(r=>!r.cos&&!r.nou).map((r,n)=>gk(r)||"#"+n)).size,all=BOOK.filter(r=>!r.cos&&!r.nou).length;
+ $("#bcnt").textContent="Rezultat: "+(ls.length===tot?ls.length+(ls.length===1?" reteta":" retete")+(all>tot?(all-tot===1?" (1 exemplar cu acelasi titlu este grupat)":" ("+(all-tot)+" exemplare cu acelasi titlu sunt grupate)"):""):ls.length+(ls.length===1?" reteta gasita":" retete gasite")+" din "+tot)+(BOOK===BOOK0?". Sunt retete demo: dispar cand incarci o carte sau scrii prima ta reteta.":"")}
  $("#bres").innerHTML=ls.length?ls.slice(0,BLIM).map(x=>`<div class="card"><h2>${ed(x.r.titlu)}</h2>${srcLine(x.r)}<div>${bChips(x.r)}</div>${jrLine(bKey(x.r))}${pfLine(x.r)}${x.ms?`<div class="miss${x.ms.miss.length?"":" ok"}">${x.ms.miss.length?"Iti lipsesc ("+x.ms.miss.length+"): "+esc(x.ms.miss.join(", ")):"Ai tot ce trebuie din debara"}</div>`:""}${(()=>{const t=`${q.length?"Potriviri: "+x.sc+"/"+q.length+" - ":""}${x.r.macro&&x.r.macro.kcal!=null?`~${esc(x.r.macro.kcal)} kcal, ${esc(x.r.macro.proteine??"?")} g proteine, ${esc(x.r.macro.carbo??"?")} g carbohidrati`:""}${x.r.verifica?" - verifica fisa":""}`;return t?`<p class="muted">${t}</p>`:""})()}${x.others?`<div class="muted mt8 mb12" >Mai e si in: ${x.others.map(o=>`<button type="button" class="lk" data-b="${o.i}">${esc(o.r.sursa||"necunoscuta")}${o.r.nr!=null&&o.r.nr!==""?", nr. "+esc(o.r.nr):""}${o.r.verifica?" (de verificat)":""}</button>`).join(" ")}</div>`:""}<button class="go" data-b="${x.i}">Deschide</button> ${favBtn(bKey(x.r),"Favorita")}</div>`).join("")+(ls.length>BLIM?`<div class="card"><button class="alt" data-bmore="1">Arata mai multe</button></div>`:""):'<p class="muted">Nicio reteta gasita. Incearca alt ingredient sau scoate filtrul.</p>';
 }
 function openBook(i,p,sel){sel=sel||"#bres";bi=i;if(p===undefined)p=BOOK[i].portii;if(sel==="#salvate"){SV=bKey(BOOK[i]);SVP=p}
@@ -683,7 +684,7 @@ async function libInit(){
  if(ND_MSG)setTimeout(()=>toast(ND_MSG),600);window.__ready=true}
 function putStored(a){saveStored(a);BOOK=a.length?a:BOOK0;SV=null;drawBook();updBS()}
 function updBS(){const s=STORED,c={};s.forEach(r=>{const k=r.sursa||"necunoscuta";c[k]=(c[k]||0)+1});const k=Object.keys(c);
- $("#bsn").innerHTML=k.length?k.map(x=>`<div class="apr"><b>${esc(x)}</b><span class="muted">${c[x]} retete</span><button class="alt" data-dl="${esc(x)}">Descarca JSON</button><button class="alt" data-src="${esc(x)}">Sterge</button></div>`).join("")+`<div class="row mt12 g8" ><button class="go m0" data-dlall="1" >Descarca toate (${s.length} retete)</button><button class="alt" data-all="1">Goleste biblioteca</button></div>`:'<p class="muted">Nu ai nicio baza incarcata (apare doar reteta de test).</p>'}
+ $("#bsn").innerHTML=k.length?k.map(x=>`<div class="apr"><b>${esc(x)}</b><span class="muted">${c[x]} retete</span><button class="alt" data-dl="${esc(x)}">Descarca JSON</button><button class="alt" data-src="${esc(x)}">Sterge</button></div>`).join("")+`<div class="row mt12 g8" ><button class="go m0" data-dlall="1" >Descarca toate (${s.length} retete)</button><button class="alt" data-all="1">Goleste biblioteca</button></div>`:'<p class="muted">Nu ai nicio baza incarcata (apare doar reteta de test).</p>';dupDraw()}
 /* descarca o carte (cu corecturile tale) in acelasi format in care o incarci: o lista de retete, reincarcabila ca atare */
 function dlBook(src){const all=src===null,l=getStored().filter(r=>all||(r.sursa||"necunoscuta")===src).map(r=>{const o=JSON.parse(JSON.stringify(r));delete o.nou;return o});
  if(!l.length){toast("Nu am gasit retete in aceasta carte.");return}
@@ -693,6 +694,38 @@ function dlBook(src){const all=src===null,l=getStored().filter(r=>all||(r.sursa|
 $("#bscard").onclick=e=>{const b=e.target,d=b.dataset;if(d.dl!==undefined){dlBook(d.dl);return}if(d.dlall!==undefined){dlBook(null);return}if(d.src===undefined&&!d.all)return;
  if(b.dataset.arm!=="1"){const t=b.textContent;b.dataset.arm="1";b.textContent="Confirma stergerea";setTimeout(()=>{if(b.isConnected){b.dataset.arm="";b.textContent=t}},4000);return}
  putStored(d.all?[]:getStored().filter(r=>(r.sursa||"necunoscuta")!==d.src))};
+
+/* 3.16.0: dubluri intre carti. Doua retete sunt dubluri daca au acelasi titlu si ingrediente (aproape) identice, sau aceleasi ingrediente si titluri apropiate. Se pastreaza copia folosita (favorite, Meal prep, meniu, jurnal), apoi cea mai completa. "Retetele mele" nu se ating niciodata. */
+const dupNm=s=>norm(s).replace(/[^a-z0-9]+/g," ").trim(),dupIng=r=>new Set((r.ingrediente||[]).map(x=>dupNm(x&&x.n)).filter(Boolean)),
+ dupJac=(a,b)=>{let i=0;a.forEach(x=>{if(b.has(x))i++});const u=a.size+b.size-i;return u?i/u:0},
+ dupCmp=r=>((r.verifica&&r.verifica.length)?0:100)+((r.pasi_carte||[]).length?50:0)+Math.min((r.ingrediente||[]).length,20)+(r.macro&&r.macro.kcal!=null?5:0)+(r.portii!=null?3:0);
+let DUP=null,DUPU=null;
+function dupUsed(){const s=new Set(getFav());getMP().forEach(x=>{if(x.s==="b")s.add(x.k)});Object.keys(getNotes()).forEach(k=>s.add(k));
+ try{const m=getMen();Object.values(m).forEach(d=>Object.values(d).forEach(a=>{if(Array.isArray(a))a.forEach(e=>{if(e&&e.s==="b"&&e.k)s.add(e.k)})}))}catch(e){}return s}
+function dupFind(){const L=getStored(),used=dupUsed(),S=L.map(dupIng),T=L.map(r=>dupNm(r.titlu)),P=L.map((_,i)=>i),f=x=>{while(P[x]!==x){P[x]=P[P[x]];x=P[x]}return x},why={};
+ const tj=(a,b)=>{const x=new Set(a.split(" ")),y=new Set(b.split(" "));return dupJac(x,y)},same=(a,b)=>S[a].size===S[b].size&&dupJac(S[a],S[b])===1;
+ for(let a=0;a<L.length;a++){if(S[a].size<3)continue;for(let b=a+1;b<L.length;b++){if(S[b].size<3)continue;
+  const j=dupJac(S[a],S[b]);if(j<.7)continue;
+  if(T[a]===T[b]||(same(a,b)&&tj(T[a],T[b])>=.5)){const ra=f(a),rb=f(b);if(ra!==rb){P[rb]=ra}why[b]=T[a]===T[b]?"acelasi titlu":"aceleasi ingrediente, titlu apropiat"}}}
+ const G={};L.forEach((_,i)=>{const r=f(i);(G[r]=G[r]||[]).push(i)});
+ return Object.values(G).filter(g=>g.length>1).map(g=>{const keep=g.slice().sort((a,b)=>(used.has(bKey(L[b]))-used.has(bKey(L[a])))||(L[b].sursa==="Retetele mele")-(L[a].sursa==="Retetele mele")||(dupCmp(L[b])-dupCmp(L[a]))||(a-b))[0];
+  const rm=g.filter(i=>i!==keep&&!used.has(bKey(L[i]))&&L[i].sursa!=="Retetele mele");return rm.length?{keep,rm,why:why[rm[0]]||why[g[1]]||"",L}:null}).filter(Boolean)}
+const dupLbl=r=>esc(r.titlu)+' <span class="muted">('+esc(r.sursa||"necunoscuta")+(r.nr!=null&&r.nr!==""?", nr. "+esc(r.nr):"")+')</span>';
+function dupDraw(){const el=$("#bdup");if(!el)return;
+ if(!STORED.length){el.innerHTML="";return}
+ if(!DUP){el.innerHTML='<div class="row mt12 g8"><button class="alt" data-dup="find">Gaseste dubluri</button></div>'+(DUPU&&DUPU.old?'<p class="ok mt8">Am eliminat '+(DUPU.old.length-STORED.length)+' dubluri. Au ramas '+STORED.length+' retete. <button class="alt" data-dup="undo">Anuleaza eliminarea</button></p>':typeof DUPU==="string"&&DUPU?'<p class="ok mt8">'+DUPU+'</p>':"");return}
+ if(!DUP.length){el.innerHTML='<p class="ok mt12">Nu am gasit dubluri.</p><button class="alt" data-dup="no">Inchide</button>';return}
+ const n=DUP.filter(g=>g.on).reduce((s,g)=>s+g.rm.length,0);
+ el.innerHTML='<div class="card mt12"><b>'+DUP.reduce((s,g)=>s+g.rm.length,0)+' dubluri gasite</b><p class="muted">Pastrez copia folosita (favorite, Meal prep, meniu, jurnal), apoi cea mai completa. Debifeaza ce vrei sa ramana.</p>'
+ +DUP.map((g,k)=>'<label class="dupr"><input type="checkbox" data-dupk="'+k+'"'+(g.on?" checked":"")+'><span>'+g.rm.map(i=>dupLbl(g.L[i])).join("<br>")+'<br><span class="ok">se pastreaza: </span>'+dupLbl(g.L[g.keep])+' <span class="muted">- '+esc(g.why)+'</span></span></label>').join("")
+ +'<div class="row mt12 g8"><button class="go m0" data-dup="del"'+(n?"":" disabled")+'>Elimina '+n+' dubluri</button><button class="alt" data-dup="no">Anuleaza</button></div></div>'}
+$("#bdup").onclick=e=>{const d=e.target.dataset;
+ if(d.dup==="find"){DUP=dupFind().map(g=>Object.assign(g,{on:true}));DUPU="";dupDraw();return}
+ if(d.dup==="no"){DUP=null;dupDraw();return}
+ if(d.dupk!==undefined){DUP[+d.dupk].on=e.target.checked;dupDraw();return}
+ if(d.dup==="undo"){if(DUPU&&DUPU.old){const o=DUPU.old;DUPU="Eliminarea a fost anulata: "+o.length+" retete la loc.";putStored(o)}return}
+ if(d.dup==="del"){const L=getStored(),rm=new Set();DUP.filter(g=>g.on).forEach(g=>g.rm.forEach(i=>rm.add(i)));if(!rm.size)return;
+  const old=L.slice(),st=L.filter((_,i)=>!rm.has(i));DUP=null;DUPU={old};putStored(st);return}};
 libInit();
 let PEND=null;
 const srcOf=(r,f)=>((PEND&&PEND.nm)||"").trim()||r.sursa||f.name.replace(/\.json$/i,"");
@@ -1330,7 +1363,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.15.0";
+const APP_V="3.16.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
