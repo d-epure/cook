@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.14.0
+- Meal prep conectat cu retetele: buton "Meal prep" langa "Adauga la meniu" pe orice reteta deschisa (Biblioteca, Colectia mea, retete generate din Idei; cea generata se salveaza automat in Colectia mea). Deschide acelasi formular (data, portii, caseta de cumparaturi). Butonul dispare cand reteta are deja un lot activ.
+- Pe fiecare lot din Meal prep: buton "La meniu" (adauga o masa din lot, deja marcata "din Meal prep") si "N mese in meniu" langa data si portii.
+- Documentatie: harta conexiunilor dintre sectiuni (harta-conexiuni.html, nu face parte din aplicatie).
+- Teste: test_meal_prep_conexiuni.py.
+
 ## 3.13.3
 - Meniu zilnic, mai compact: fiecare aliment are in fata un buton "-" (scoate din meniu, cu "Anuleaza" ca inainte), iar langa numele fiecarei mese (Mic dejun, Pranz ...) e un singur "+" pentru adaugat. Dispar butoanele late "Scoate" si "+ Adauga"; ramane loc pentru "gatesc N portii", "Am gatit" si "Deschide".
 - Teste: test_meniu_compact.py extins.

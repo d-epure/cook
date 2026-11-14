@@ -275,7 +275,7 @@ function renderRecipe(sel){
  <ul class="ing">${(r.ingrediente||[]).map(i=>`<li>${esc(i.cantitate)} ${esc(i.unitate)} ${esc(cap(i.nume))}</li>`).join("")}</ul>
  ${(r.avertismente||[]).map(x=>`<div class="warn">${esc(x)}</div>`).join("")}
  ${tagPicker(r,"data-tgr",c.kind==="gen"?"Etichete (se salveaza odata cu reteta)":"Etichete",c.kind!=="gen")}${c.kind!=="gen"?jrHtml(sKey(r)):""}
- <div class="row mt12" >${plain?"":`<button class="alt${mode==='cron'?' on':''}" aria-pressed="${mode==='cron'}" data-m="cron">Cronologie</button><button class="alt${mode==='ap'?' on':''}" aria-pressed="${mode==='ap'}" data-m="ap">Pe aparat</button>`}${save}${cumBtn(r.titlu,"cum")}<button class="alt" data-mn="1">Adauga la meniu</button><button class="alt" data-cook="1">Mod gatit</button></div></div><div class="card">${body}</div>`;
+ <div class="row mt12" >${plain?"":`<button class="alt${mode==='cron'?' on':''}" aria-pressed="${mode==='cron'}" data-m="cron">Cronologie</button><button class="alt${mode==='ap'?' on':''}" aria-pressed="${mode==='ap'}" data-m="ap">Pe aparat</button>`}${save}${cumBtn(r.titlu,"cum")}<button class="alt" data-mn="1">Adauga la meniu</button>${mpBtn("s",r)}<button class="alt" data-cook="1">Mod gatit</button></div></div><div class="card">${body}</div>`;
 }
 function saveGen(btn){const r=JSON.parse(JSON.stringify(cur));r.etichete=normTags(r.etichete);
  let l=getSaved();const ex=l.find(x=>sKey(x)===sKey(r));
@@ -290,6 +290,7 @@ function rcClick(e,sel){const c=RC[sel];if(!c)return false;const d=e.target.data
  if(d.fav!==undefined){favT(d.fav,()=>renderRecipe(sel));return true}
  if(e.target.id==="bSave"){saveGen(e.target);return true}
  if(d.cook!==undefined){cookOpen(c.r.titlu,cookSteps(c.r,"g"),ingGen(c.r));return true}
+ if(d.mpr!==undefined){let r=c.r;if(c.kind==="gen"){cur=r;saveGen({});r=getSaved()[0]||r}MD={mp:1,f:null,q:"",r:null,after:()=>renderRecipe(sel)};$("#mdlg").classList.remove("hidden");mpForm("s",r);return true}
  if(d.mn!==undefined){let r=c.r;if(c.kind==="gen"){cur=r;saveGen({});r=getSaved()[0]||r}menOpen({s:"s",r});return true}
  if(d.cum!==undefined){cartToggle(c.r.titlu,(c.r.ingrediente||[]).map(x=>({c:x.cantitate,u:x.unitate,n:x.nume})),()=>renderRecipe(sel));return true}
  return false}
@@ -428,7 +429,7 @@ function openBook(i,p,sel){sel=sel||"#bres";bi=i;if(p===undefined)p=BOOK[i].port
  $(sel).innerHTML=`<div class="bv" data-bi="${i}"><div class="mb12"><button class="alt" data-bback="1">${sel==="#bres"?"Inapoi la rezultate":"Inapoi la favorite"}</button> ${favBtn(bKey(r))} <button class="alt cosb" data-cosb="1" aria-label="Muta in cos" title="Muta in cos">${TRASH}</button></div><div class="card"><h2>${ed(r.titlu)}</h2>${srcLine(r)}<div>${bChips(r)}</div>
  ${pfHtml(r)}
  ${(()=>{const v=vx(r),src=`${esc(r.sursa||"carte necunoscuta")}${r.nr!=null&&r.nr!==""?", reteta nr. "+esc(r.nr):""}`;return(v.length?`<div class="warn">Extragerea automata a acestei retete e nesigura (${esc(v.join(", "))}). Verifica in carte: ${src}. Daca difera, corecteaz-o din Mai multe actiuni > Corecteaza reteta.</div>`:"")+(vpf(r)?`<div class="warn wp">Numarul de portii (${r.pna?"-":r.portii==null?"necunoscut":esc(r.portii)}) nu e confirmat. Verifica in carte: ${src}. Il confirmi scriind numarul in campul Portii, mai jos, si apasand butonul de salvare.</div>`:"")+(vm(r)?`<div class="warn wm">Macro-ul din carte e nesigur. Verifica in carte: ${src}. Marcajul dispare cand recalculezi macro-ul din Info sau il corectezi si salvezi.</div>`:"")})()}
- <div class="acts">${(r.pasi_carte||[]).length?`<button class="go" data-cookb="1">Mod gatit</button>`:""}<button class="alt" data-mnb="1">Adauga la meniu</button></div><details class="mre"><summary>Mai multe actiuni</summary><div class="acts">${cumBtn(r.titlu,"cumb")}<button class="alt" data-edit="1">Corecteaza reteta</button>${r.manual?"":`<button class="alt" data-copyme="1">Salveaza ca reteta mea</button>`}${((r.pasi_carte||[]).length||(r.verifica&&r.text_brut))?`<button class="alt" data-adp="1" data-ai="1" ${hasRobot()?"":"disabled"}>Adapteaza la aparatele mele</button>`:""}</div></details>${((r.pasi_carte||[]).length||(r.verifica&&r.text_brut))?`<p class="muted adphint mt8 mb0" ${hasRobot()?"hidden":""} >Adaptarea e activa doar daca bifezi Thermomix sau Monsieur Cuisine in Idei, la Aparate pentru adaptare.</p>`:""}<label for="${pid}">Portii (reteta)</label><input id="${pid}" data-bp="1" type="number" min="1" max="200" value="${p==null?"":esc(p)}" placeholder="${r.pna?"nu se aplica":"necunoscut"}" style="max-width:140px">${r.portii==null?`<p class="muted mt8 mb0" >Fara numar de portii, valorile de macro sunt pentru toata reteta. Scrie numarul ca sa vezi macro pe portie.</p>`:""}
+ <div class="acts">${(r.pasi_carte||[]).length?`<button class="go" data-cookb="1">Mod gatit</button>`:""}<button class="alt" data-mnb="1">Adauga la meniu</button>${mpBtn("b",r)}</div><details class="mre"><summary>Mai multe actiuni</summary><div class="acts">${cumBtn(r.titlu,"cumb")}<button class="alt" data-edit="1">Corecteaza reteta</button>${r.manual?"":`<button class="alt" data-copyme="1">Salveaza ca reteta mea</button>`}${((r.pasi_carte||[]).length||(r.verifica&&r.text_brut))?`<button class="alt" data-adp="1" data-ai="1" ${hasRobot()?"":"disabled"}>Adapteaza la aparatele mele</button>`:""}</div></details>${((r.pasi_carte||[]).length||(r.verifica&&r.text_brut))?`<p class="muted adphint mt8 mb0" ${hasRobot()?"hidden":""} >Adaptarea e activa doar daca bifezi Thermomix sau Monsieur Cuisine in Idei, la Aparate pentru adaptare.</p>`:""}<label for="${pid}">Portii (reteta)</label><input id="${pid}" data-bp="1" type="number" min="1" max="200" value="${p==null?"":esc(p)}" placeholder="${r.pna?"nu se aplica":"necunoscut"}" style="max-width:140px">${r.portii==null?`<p class="muted mt8 mb0" >Fara numar de portii, valorile de macro sunt pentru toata reteta. Scrie numarul ca sa vezi macro pe portie.</p>`:""}
  <h2 class="mt16">Ingrediente</h2>${(r.ingrediente||[]).length?sclHtml(base,sn)+'':""}${(r.ingrediente||[]).length?`<ul class="ing">${ingHtml(r,f)}</ul>`:`<p class="muted">Reteta nu are o lista proprie de ingrediente. Cantitatile sunt in modul de preparare sau in reteta la care trimite.</p>`}
  <h2>Mod de preparare</h2><ol>${(r.pasi_carte||[]).map(x=>`<li>${ed(x)}</li>`).join("")}</ol>
  ${(m&&m.kcal!=null)||(r.ingrediente||[]).length?`<h2>Macro per portie</h2><div data-mac>${macHead(r,p)}</div><div data-macp aria-live="polite"></div>${micHead(r)}`:""}
@@ -593,6 +594,7 @@ function bvClick(e,sel){const bv=e.target.closest(".bv");if(!bv)return false;con
  if(d.adp!==undefined){adaptBook(i,BOOK[i].portii||p||1,sel,e.target);return true}
  if(d.bsc!==undefined){const r=BOOK[i],bs=+r.portii>0?+r.portii:null;if(bs){const k=bKey(r),cur=BSC&&BSC.k===k?BSC.n:bs,nn=d.bsc==="0"?bs:Math.min(200,Math.max(1,cur+(+d.bsc)));BSC=nn===bs?null:{k,n:nn}}openBook(i,p,sel);return true}
  if(d.cookb!==undefined){const r=BOOK[i],k=bKey(r),bs=+r.portii>0?+r.portii:null,sc=bs&&BSC&&BSC.k===k?BSC.n:bs,ff=bs?sc/bs:1;cookOpen(r.titlu,cookSteps(r,"b"),ingBook(r,ff),ff!==1?`Lista de ingrediente e scalata la ${sc} portii (reteta: ${bs}). Cantitatile din textul pasilor sunt cele din carte.`:"");return true}
+ if(d.mpr!==undefined){MD={mp:1,f:null,q:"",r:null,after:()=>openBook(i,p,sel)};$("#mdlg").classList.remove("hidden");mpForm("b",BOOK[i]);return true}
  if(d.mnb!==undefined){menOpen({s:"b",r:BOOK[i],p:BOOK[i].portii||p||1});return true}
  if(d.cumb!==undefined){const r=BOOK[i],bs=+r.portii>0?+r.portii:null,ff=bs&&BSC&&BSC.k===bKey(r)?BSC.n/bs:1;cartToggle(r.titlu,(r.ingrediente||[]).map(x=>({c:x.c!=null?+(x.c*ff).toFixed(2):null,u:x.u,n:x.n,g:x.g})),()=>openBook(i,p,sel));return true}
  return false}
@@ -1116,8 +1118,10 @@ const getMP=()=>{try{const j=JSON.parse(LS("rmp")||"[]");return Array.isArray(j)
 const putMP=l=>LS("rmp",JSON.stringify(l));
 let MPO=false;
 const mpRec=e=>{if(e.s==="b"){const i=BOOK.findIndex(x=>bKey(x)===e.k);return i>=0?{s:"b",i,r:BOOK[i]}:null}const sv=getSaved(),i=sv.findIndex(x=>sKey(x)===e.k);return i>=0?{s:"s",i,r:sv[i]}:null};
+const mpBtn=(st,r)=>{const k=st==="b"?bKey(r):sKey(r);return getMP().some(x=>x.k===k)?"":`<button class="alt" data-mpr="1">Meal prep</button>`};
+const mpInMen=k=>{const m=getMen(),t=dKey(new Date());let n=0;Object.keys(m).forEach(dk=>{if(dk<t)return;SLOTS.forEach(([sl])=>(m[dk][sl]||[]).forEach(en=>{if(en.k===k&&en.mp&&en.s!=="x")n++}))});return n};
 function mpHtml(){const l=getMP();
- return`<div class="card"><details class="mre mpd" id="mpd"${MPO?" open":""}><summary>Meal prep (${l.length})</summary>`+(l.length?l.map(x=>`<div class="me mpr"><div class="mn"><div class="tx">${esc(x.t)}</div><div class="src">gatit ${esc(dLab(x.d).toLowerCase())}${x.p?", "+esc(x.p)+(+x.p===1?" portie":" portii"):""}</div></div><div class="mpb">${mpRec(x)?`<button class="alt" data-mpopen="${esc(x.id)}">Deschide</button>`:""}<button class="alt" data-mpdone="${esc(x.id)}">Terminat</button></div></div>`).join(""):`<p class="muted">Nu ai nimic pregatit. Adaugi aici ce gatesti pentru mai multe zile.</p>`)+`<button class="alt mt8 mb0" data-mpadd="1">+ Adauga la Meal prep</button></details></div>`}
+ return`<div class="card"><details class="mre mpd" id="mpd"${MPO?" open":""}><summary>Meal prep (${l.length})</summary>`+(l.length?l.map(x=>`<div class="me mpr"><div class="mn"><div class="tx">${esc(x.t)}</div><div class="src">gatit ${esc(dLab(x.d).toLowerCase())}${x.p?", "+esc(x.p)+(+x.p===1?" portie":" portii"):""}${(n=>n?", "+n+(n===1?" masa in meniu":" mese in meniu"):"")(mpInMen(x.k))}</div></div><div class="mpb">${mpRec(x)?`<button class="alt" data-mpmen="${esc(x.id)}">La meniu</button><button class="alt" data-mpopen="${esc(x.id)}">Deschide</button>`:""}<button class="alt" data-mpdone="${esc(x.id)}">Terminat</button></div></div>`).join(""):`<p class="muted">Nu ai nimic pregatit. Adaugi aici ce gatesti pentru mai multe zile.</p>`)+`<button class="alt mt8 mb0" data-mpadd="1">+ Adauga la Meal prep</button></details></div>`}
 function mpOpen(){MD={mp:1,f:null,q:"",r:null};
  $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Adauga la Meal prep"><h2 class="m0">Adauga la Meal prep</h2><label for="mdq" class="mt12">Cauta o reteta (nume sau ingrediente)</label><input id="mdq" placeholder="ex: ciorba, piept de pui" autocomplete="off"><div id="mdres"></div><div class="row mt16"><button class="alt" data-mdx="1">Inchide</button></div></div>`;
  $("#mdlg").classList.remove("hidden");mdSearch();setTimeout(()=>{const e=$("#mdq");if(e)e.focus()},0)}
@@ -1131,7 +1135,7 @@ function mpSave(){const r=MD.r,s=MD.s,k=s==="b"?bKey(r):sKey(r),p=clampP($("#mpp
  let n=0;if($("#mpc")&&$("#mpc").checked){const base=+r.portii>0?+r.portii:null,f=base?p/base:1;if(inCart(r.titlu))removeSrc(r.titlu);n=addList(rawIngs(s,r).map(x=>({c:x.c!=null?+(x.c*f).toFixed(2):null,u:x.u,n:x.n,g:x.g})),r.titlu)}
  /* mesele planificate (de azi inainte) cu aceeasi reteta devin "din Meal prep": ingredientele nu se mai cumpara a doua oara */
  const m=getMen();let nm=0;Object.keys(m).forEach(dk=>{if(dk<today)return;SLOTS.forEach(([sl])=>(m[dk][sl]||[]).forEach(en=>{if(en.k===k&&!en.mp&&en.s!=="x"){en.mp=1;nm++}}))});if(nm)putMen(m);
- MPO=true;menClose();toast("Adaugat la Meal prep"+(n?"; "+n+" produse la cumparaturi":"")+(nm?". "+nm+(nm===1?" masa din meniu e acum":" mese din meniu sunt acum")+" \"din Meal prep\"":"")+".");drawMenu()}
+ MPO=true;const af=MD&&MD.after;menClose();if(af)af();toast("Adaugat la Meal prep"+(n?"; "+n+" produse la cumparaturi":"")+(nm?". "+nm+(nm===1?" masa din meniu e acum":" mese din meniu sunt acum")+" \"din Meal prep\"":"")+".");drawMenu()}
 let MD=null;
 function menOpen(o){const r=o.r||null;MD={day:o.day||dKey(new Date()),slot:o.slot||(r?guessSlot(r):"pranz"),s:o.s||null,r,p:o.p||null,q:"",f:!r&&getMP().length?"m":null};
  const today=dKey(new Date()),mt=monOf(today);let st=MD.day<mt?monOf(MD.day):mt;if(MD.day>dAdd(st,34))st=monOf(MD.day);
@@ -1293,6 +1297,7 @@ function menShop(btn,ds,label){
 $("#v-meniu").onclick=e=>{const b=e.target.closest("button")||e.target,d=b.dataset;
  if(d.mpadd!==undefined){mpOpen();return}
  if(d.mpdone!==undefined){const u=undoMark(["rmp"]),x=getMP().find(y=>y.id===d.mpdone);putMP(getMP().filter(y=>y.id!==d.mpdone));drawMenu();undoShow("Terminat: "+(x?x.t:"lot")+".",u,drawMenu);return}
+ if(d.mpmen!==undefined){const x=getMP().find(y=>y.id===d.mpmen),rc=x&&mpRec(x);if(rc)menOpen({s:rc.s,r:rc.r,p:rc.r.portii||1});return}
  if(d.mpopen!==undefined){const x=getMP().find(y=>y.id===d.mpopen),rc=x&&mpRec(x);if(!rc)return;if(rc.s==="b"){show("carti");drawBook();openBook(rc.i,rc.r.portii,"#bres")}else{SV=x.k;show("salvate")}window.scrollTo(0,0);return}
  if(d.mest!==undefined){menEst(d.day,b);return}
  if(d.mtog!==undefined){const m=getMen(),dm=m[d.day]||{},cur=MDO[d.day]!==undefined?MDO[d.day]:b.getAttribute("aria-expanded")==="true";MDO[d.day]=!cur;drawMenu();return}
@@ -1315,7 +1320,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.13.3";
+const APP_V="3.14.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
