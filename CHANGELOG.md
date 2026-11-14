@@ -2,6 +2,15 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.9.0
+- Scalarea cantitatilor la gatit: in reteta deschisa (Biblioteca si Colectia mea), sub Ingrediente, "Gatesc pentru [-] N [+] portii". Cantitatile din lista se recalculeaza, iar Mod gatit primeste lista scalata (cu o nota). Nu se salveaza nimic: reteta, macro-ul, portiile si timpii raman cei din carte; la alta reteta sau la inchidere revine la portiile retetei. Cantitatile scrise in textul pasilor nu se scaleaza (nota le spune asta). Fara numar de portii nu exista control, doar explicatia.
+- Uniformizare vizuala: o singura scara de fonturi (--fs-xs/s/m/l/xl/t), o singura scara de inaltimi (--h-n 44 px, --h-l 48 px), raze si culori ca tokeni (--r-xs, --r-p, --star, --on), culoarea ambra pentru avertismente blande (.warn2), 180 de stiluri inline mutate in clase (raman 42, specifice unui singur loc sau dinamice), clase utilitare pentru spatieri. Acelasi font in toate meniurile.
+- Test nou: test_scalare.py.
+
+## 3.8.3
+- Setari > Tehnic > Despre: istoricul modificarilor e pliat sub titlul "Pentru dezvoltare: istoric modificari" si nu mai e primul lucru pe care il vede un utilizator; versiunea ramane afisata. Istoricul complet ramane in CHANGELOG.md.
+- Test adaptat: test_submeniu.py.
+
 ## 3.8.2
 - Culori consecvente la mesajele scurte (toast): chenar verde pentru ce a reusit sau e doar informatie ("Anulat.", "Salvat", "Sters din lista ta"), chenar rosu pentru ce nu a mers sau cere atentie ("Nu am putut...", campuri necompletate, "Exista deja..."). Inainte toate aveau chenar rosu, si "Anulat." parea o eroare.
 - Etichetele sunt pliate si in Biblioteca (reteta deschisa), la fel ca in Colectia mea, cu cele alese afisate pe linie.
