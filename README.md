@@ -23,6 +23,10 @@ AI-ul (Anthropic) se foloseste doar cand apesi: idei, reteta completa, adaptare,
 
 Corectarea unei retete (Mai multe actiuni > Corecteaza reteta): daca ingredientele sau pasii lipsesc pentru ca extragerea din carte a esuat, dar textul paginii e pastrat, casetele se completa din liniile detectate in text, ca sa le corectezi in loc sa scrii de la zero.
 
+Meal prep (Meniu): `rmp` = [{id,s,k,t,d,p}] (reteta gatita in lot, data, portii informative); `mpHtml`, `mpOpen`, `mpForm`, `mpSave`; mesele luate din Meal prep au `en.mp=1` (fara "Am gatit", fara ingrediente in cumparaturile meniului). Nimic nu scade automat; "Terminat" scoate lotul.
+
+Marcaj AI: orice buton care cheama modelul (costa tokeni) are `data-ai="1"` si primeste un chip "✦ AI" din CSS; cand adaugi un apel `ask(...)` nou, marcheaza-i butonul (testul `test_marcaj_ai_si_cumparaturi.py` numara apelurile). Cumparaturi: butonul retetei e comutator (`cumBtn`, `cartToggle`, `cartRemove`, dupa titlul retetei). Macro in Meniu (`menMac`, `menLocal`): macro-ul retetei, apoi cel estimat cu AI din intrarea de meniu, apoi calculul din Info (>= 80% din ingrediente recunoscute); AI doar pentru restul. Cronologia arata timpul de start doar cand exista pasi in paralel.
+
 Scalare la gatit: in reteta deschisa, sub Ingrediente, "Gatesc pentru [-] N [+] portii" scaleaza cantitatile din lista (`BSC`, `sclHtml`, `ingHtml(r,f)`, `ingBook(r,f)`) si le trimite scalate in Mod gatit; nu se salveaza si nu atinge portiile, macro-ul sau timpii; nu scaleaza numerele din textul pasilor. Fara numar de portii nu se poate scala.
 
 Portii: in reteta deschisa, campul "Portii (reteta)" arata macro la numarul scris (fara sa schimbe cantitatile) si butonul "Salveaza N portii" il salveaza direct si recalculeaza macro-ul calculat local; campul exista pe toate retetele, si pe cele fara numar de portii (gol); numarul se mai poate confirma si in editor ("Confirma numarul de portii"); "-" inseamna ca nu se aplica. Corectii in masa (portii, marcaje, titluri noi `titlu_nou`, stergeri definitive `sterge`, cu copie automata inainte) se aplica din Setari > Carti, "Aplica un fisier de corectii", fara sa inlocuiasca retetele.

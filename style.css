@@ -71,7 +71,9 @@ ul.ing .gh{list-style:none;margin:8px 0 2px -18px;break-inside:avoid}
 ul.ing{columns:2;padding-left:20px;margin:8px 0}
 .step{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:12px 0 12px 12px;border-left:5px solid var(--c,var(--line));border-bottom:1px solid var(--line)}
 .step:last-child{border-bottom:0}
-.min{font-weight:800;font-size:var(--fs-m);white-space:nowrap}
+.min{font-weight:600;font-size:var(--fs-xs);color:var(--mut);white-space:nowrap}
+.step.nt{grid-template-columns:1fr}
+.catb{font-weight:700;color:var(--ink)}
 .par{font-size:var(--fs-s);color:var(--mut)}
 pre{background:var(--bg);border-radius:var(--r-s);padding:12px}
 
@@ -445,3 +447,16 @@ button{min-height:var(--h-n)}
  main{padding-bottom:calc(88px + env(safe-area-inset-bottom,0))}
  #busy,#toast,#undo{bottom:calc(72px + env(safe-area-inset-bottom,0))}
 }
+
+/* 3.11.0: butoanele care cheama modelul (costa tokeni) poarta un chip "AI" */
+[data-ai]::after{content:"\2726 AI";display:inline-block;margin-left:8px;padding:1px 7px;border-radius:var(--r-p);background:var(--ai-bg);color:var(--ai-fg);font-size:var(--fs-xs);font-weight:700;vertical-align:middle}
+:root{--ai-bg:#e7e1fb;--ai-fg:#4b3a9a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ai-bg:#3a3260;--ai-fg:#d8ceff}}
+:root[data-theme="dark"]{--ai-bg:#3a3260;--ai-fg:#d8ceff}
+.aileg{font-size:var(--fs-s);color:var(--mut)}
+.aileg b{display:inline-block;padding:1px 7px;border-radius:var(--r-p);background:var(--ai-bg);color:var(--ai-fg);font-size:var(--fs-xs)}
+
+/* 3.12.0: Meal prep */
+.mpr{flex-wrap:wrap}.mpr .mn{flex:1 1 100%}
+.chkl{display:flex;align-items:flex-start;gap:10px}.chkl input{margin:2px 0 0;flex:0 0 auto}
+.mpb{display:flex;flex-wrap:wrap;gap:8px}.mpb button{margin:0}

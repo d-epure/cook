@@ -2,6 +2,24 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.12.0
+- Meal prep (in Meniu, deasupra lui "Azi si maine / Saptamana", pliat): lista simpla a retetelor gatite in loturi pentru mai multe zile. Fiecare rand: reteta, data gatirii, portii gatite (doar informativ), Deschide, Terminat (cu Anuleaza 8 secunde). "+ Adauga la Meal prep": alegi reteta, data (implicit azi) si portiile (implicit cele din reteta), si optional bifezi "Adauga ingredientele pentru N portii la cumparaturi" (cantitati scalate, ca la scalarea din 3.9.0). Adaugarea scrie si "gatit" in jurnalul retetei, la data aleasa.
+- In "+ Adauga" din Meniu: filtru nou "Meal prep". O masa luata de acolo are eticheta "din Meal prep", nu mai are butonul "Am gatit" (gatitul s-a scris la Meal prep) si nu adauga ingredientele la cumparaturile meniului (le-ai cumparat la gatit). Macro se calculeaza ca la orice masa; nu scade nimic automat, "Terminat" il apesi tu.
+- Date: cheie noua `rmp` (in backup si sincronizare). Nu exista termene de pastrare, componente (orez fiert, legume taiate) sau numarare de portii: scoase din plan ca sa ramana simplu.
+- Test nou: test_meal_prep.py.
+
+## 3.11.1
+- Meniu: daca o reteta nu are macro, se calculeaza din baza Info (gratuit, offline) cand Info recunoaste cel putin 80% din ingredientele cu cantitate (acelasi prag ca la avertismentul de diferente). Nu se salveaza nimic pe reteta. Merge si pentru retetele AI salvate si pentru intrarile cu ingrediente trecute direct in meniu. In nota zilei apare "N calculate din Info", separat de "N estimate cu AI".
+- Butonul "Estimeaza macro ✦ AI" ramane doar pentru retetele pe care Info nu le acopera, cu numarul lor.
+- Teste: nou test_macro_meniu_local.py; adaptate test_meniu_surse_macro.py (ingredient neacoperit de Info) si test_meniu.py.
+
+## 3.11.0
+- Butoanele care cheama modelul (costa tokeni) au un chip lila "✦ AI": Genereaza idei, Cauta pe web, Mai multe idei, Alege reteta, Adapteaza la aparatele mele, Calculeaza macro, Estimeaza macro (Meniu), Genereaza / Alta generata (propunere de meniu), Completeaza / Cauta (Info). Chipul e pus din CSS (atributul `data-ai`), deci ramane si cand textul butonului se schimba ("Calculez..."). Textul "cu AI" din etichete a fost scos ca sa nu se repete. Legenda e in Idei. Un test verifica in cod ca fiecare buton care cheama modelul il are.
+- Cumparaturi: butonul e comutator. "Adauga la cumparaturi" devine "✓ In cumparaturi" (stil activ); al doilea click scoate reteta din lista (doar cantitatile ei), cu Anuleaza 8 secunde. Starea se vede si cand redeschizi reteta. A disparat "Adaugat (N) - vezi Cumparaturi". La retetele din carte se adauga cantitatile scalate la portiile alese.
+- Cronologie: timpul de start nu se mai arata cand pasii sunt pe rand; cand exista pasi in paralel apare mic si estompat, "Start" / "dupa N min". In vederea "Pe aparat" eticheta aparatului nu se mai repeta pe fiecare pas (era deja in titlul grupului).
+- Carduri (Colectia mea, Biblioteca, reteta deschisa): categoria sau aparatele pe un rand, etichetele (vegetarian, keto...) pe alt rand.
+- Test nou: test_marcaj_ai_si_cumparaturi.py; adaptat test_meniu_surse_macro.py.
+
 ## 3.10.0
 - Navigare noua: o singura bara cu 5 destinatii (Retete, Meniu, Cumparaturi, Debara, Mai mult), in locul celor 4 grupuri de pilule si a celei de-a doua linii. Pe telefon (sub 700 px) bara e lipita jos; pe ecran lat e sus, lipita de marginea ferestrei. Pilulele Idei / Biblioteca / Colectia mea raman doar la Retete.
 - "Mai mult" deschide o pagina cu doua intrari: Ghid nutritie (fostul Info: Ingrediente, Masuri, Gatire) si Setari. "Planific" nu mai exista ca denumire: Meniu, Cumparaturi si Debara sunt pagini separate.
