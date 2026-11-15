@@ -1,9 +1,9 @@
 # Backlog - Cartea mea de retete
 
-Starea la versiunea 4.7.0 (15 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
+Starea la versiunea 4.7.1 (15 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
 
 ## De verificat pe dispozitiv real
-Versiunile 3.20.0 - 4.7.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop:
+Versiunile 3.20.0 - 4.7.1 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop:
 - Dupa actualizare: favoritele, jurnalul, meniul si "Retetele mele" sunt la locul lor; Biblioteca are 856 de retete livrate plus ale tale.
 - Consola browserului (F12) fara erori "Content Security Policy" la: Idei cu AI, backup in Dropbox, descarcarea unui backup, butonul WhatsApp.
 - Aplicatia porneste in mod avion dupa prima incarcare (service worker cu cache propriu).
@@ -50,4 +50,4 @@ Versiunile 3.20.0 - 4.7.0 au fost testate doar in browser simulat (teste in fold
 - 3.20.0 cumparaturi si debara fara dubluri, Meal prep fara blocaj. 3.21.0 masa Cina.
 - 4.0.0 id stabil pe retetele salvate, tinta de proteine pe kg. 4.1.0 carti livrate cu aplicatia, corectii de continut, backup mic. 4.1.1 corectiile din auditul de calitate.
 - 4.2.0 timp si dificultate, pilule in Biblioteca, aplicatia fara cheie API, cumparaturi. 4.3.0 categorii implicite, Leguminoase, ghid pentru alimente uscate, WhatsApp. 4.3.1 butonul "Vezi". 4.3.2 sincronizarea loturilor de Meal prep.
-- 4.4.0 etichete automate (keto pe carbohidrati neti, gluten-free), tipul "metoda", linguri adunate cu grame. 4.5.0 36 de retete noi la air fryer. 4.6.0 60 de retete noi (asiatic, traditional romanesc, mic dejun cu carne, gustari, peste); biblioteca livrata are 856 de retete. 4.7.0 marcajele din debara legate de lista de cumparaturi.
+- 4.4.0 etichete automate (keto pe carbohidrati neti, gluten-free), tipul "metoda", linguri adunate cu grame. 4.5.0 36 de retete noi la air fryer. 4.6.0 60 de retete noi (asiatic, traditional romanesc, mic dejun cu carne, gustari, peste); biblioteca livrata are 856 de retete. 4.7.0 marcajele din debara legate de lista de cumparaturi. 4.7.1 fara dubluri la aceeasi masa, lista de cumparaturi fara orfani.

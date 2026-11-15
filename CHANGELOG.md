@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.7.1
+- Meniu: aceeasi reteta nu mai poate fi adaugata de doua ori la aceeasi masa (primesti un mesaj); la pranz si la cina poate fi aceeasi reteta. Dublurile vechi se aduna intr-una la pornire, la restaurare si la sincronizare, cu un mesaj.
+- Cumparaturi: produsele unei mese scoase din meniu pleaca singure din lista (la pornire si la deschiderea listei). Un mesaj spune cate produse si care au plecat. La scoaterea unei retete pleaca si produsele ei bifate (inainte ramaneau orfane). Cand nu mai ai nimic de cumparat apare mesajul verde "Nu mai ai nimic de cumparat", fara comutatorul de debara, fara contorul "ascunse" si fara butoanele Copiaza, Trimite si Sterge bifate; daca au ramas produse bifate, ramane doar "Goleste lista". Lista goala arata doar campul de adaugare.
+
 ## 4.7.0
 - Debara si Cumparaturi: marcajele (proaspat, congelat, uscat, conserva) conteaza la potrivire. Produsul ramane pe o singura linie in debara, cu iconitele lui. Cand reteta cere o forma anume ("rosii uscate", "rosii deshidratate", "mazare congelata", "rosii conserva", "rosii in suc propriu"), produsul e "in debara" doar daca ai bifat forma aceea. Exemplu: ai rosii cu proaspat si conserva bifate; pe lista raman doar rosiile uscate.
 - Reguli: un ingredient fara forma ("rosii") se potriveste cu orice marcaj; un produs fara niciun marcaj bifat (sau dintr-o categorie fara marcaje) acopera orice forma. "Fiert" nu e o forma de produs si nu conteaza.
