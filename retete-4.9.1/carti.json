@@ -1,0 +1,40 @@
+{
+ "carti": [
+  {
+   "sursa": "Retete vegetariene",
+   "f": "carti/retete_vegetariene.json",
+   "v": 4,
+   "n": 216
+  },
+  {
+   "sursa": "Retete cu carne",
+   "f": "carti/retete_cu_carne.json",
+   "v": 4,
+   "n": 110
+  },
+  {
+   "sursa": "Deserturi rapide",
+   "f": "carti/deserturi_rapide.json",
+   "v": 2,
+   "n": 30
+  },
+  {
+   "sursa": "Retete keto",
+   "f": "carti/retete_keto.json",
+   "v": 2,
+   "n": 200
+  },
+  {
+   "sursa": "Supe si ciorbe keto",
+   "f": "carti/supe_ciorbe_keto.json",
+   "v": 2,
+   "n": 300
+  },
+  {
+   "sursa": "Retete high-volume",
+   "f": "carti/retete_high_volume.json",
+   "v": 1,
+   "n": 100
+  }
+ ]
+}
