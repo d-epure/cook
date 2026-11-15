@@ -2,6 +2,33 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.1.0
+- Cartile de baza vin acum cu aplicatia: Retete vegetariene (170), Retete cu carne (60), Deserturi rapide (30), Retete keto (200), Supe si ciorbe keto (300). Fisierele stau in folderul `carti/`, iar `carti.json` spune ce carti exista si ce versiune are fiecare. La prima deschidere se instaleaza singure, fara pasul din Setari > Carti. Cand o carte primeste o versiune noua, retetele neschimbate se actualizeaza, cele noi se adauga, iar ce ai corectat, mutat in cos sau sters tu ramane cum ai lasat.
+- Daca aveai deja aceste carti incarcate de mana, retetele neatinse trec pe versiunea livrata (cu corectiile de mai jos); retetele corectate de tine, cele din cos si "Retetele mele" nu se ating. Sursa "Retete keto 2 luni" din fisierul vechi se numeste "Retete keto", ca in aplicatie.
+- Backup mai mic: retetele livrate si neschimbate nu mai intra in backup (doar lista lor); intra retetele tale si cele pe care le-ai schimbat. La restaurare, cartile se reinstaleaza din fisierele aplicatiei, deci e nevoie de internet o data. Un backup vechi, cu tot cu carti, se restaureaza in continuare. Un backup facut cu 4.1.0 nu poate fi restaurat intr-o versiune mai veche a aplicatiei.
+- Setari > Carti: daca stergi o carte livrata, nu mai revine singura; apare butonul "Readu cartile aplicatiei". "Descarca JSON" da fisierul fara marcajele interne.
+- Corectii de continut in cartile livrate (626 de retete atinse):
+  - mierea din "Taitei cu legume si sos de arahide" (reteta vegana) e inlocuita cu sirop de artar;
+  - eticheta "vegetarian" adaugata la 37 de supe keto fara carne sau peste;
+  - categorii unificate: "Fel principal" devine "Feluri principale" (100), "Desert" devine "Deserturi" (6); "Desert rapid" ramane separat;
+  - "sare si piper" e acum doua ingrediente, sare si piper (350 de retete), la fel "sare, piper si patrunjel verde" si "sare si zeama de lime";
+  - o singura forma: "catei de usturoi" / "catel de usturoi" (154), "patrunjel verde" (36), "linguri" si "lingurite" la cantitati de la 2 in sus (258);
+  - pasi aliniati cu ingredientele: "cheddar" in loc de "cascaval" unde lista are cheddar (16); "Caleste" in loc de "Sote", "amesteca ouale" in loc de "framanta ouale" (6);
+  - "Mousse de ciocolata cu avocado" din Retete keto se numeste "Mousse keto de ciocolata cu avocado" (titlul era si in Deserturi rapide).
+- Macro-ul retetelor livrate e calculat din baza Info a aplicatiei, fara alimentele adaugate de utilizator. Fata de ce era in aplicatie, difera la retetele cu ou (alimentul propriu "Ou fiert" inlocuia oul crud) si, cu cel mult 5 kcal, la cele 37 de retete unde s-a schimbat patrunjelul sau mierea.
+- Cod: `shipRun`, `shipDone`, `shHash`, `shUnmod`, `getBv`; chei locale `rbv`, `rbneed` (nu intra in backup); cheie noua in backup `rliv`.
+
+## 4.0.0
+Schimbare de structura a datelor. Actualizeaza toate dispozitivele pe care folosesti aplicatia inainte de a sincroniza intre ele.
+- Retetele salvate (Colectia mea) au un id stabil. Favoritele, jurnalul, mesele din meniu si loturile de Meal prep tin de id, nu de titlu, deci nu se mai pierd daca titlul se schimba. La prima deschidere aplicatia face o copie automata in browser, da id fiecarei retete salvate si muta legaturile vechi; mesajul verde spune cate retete au fost actualizate. Id-ul retetelor existente e dedus din titlu, deci e acelasi pe toate dispozitivele. Un backup vechi restaurat sau o sincronizare cu un dispozitiv neactualizat sunt aduse la noul format automat. Cod: `sKey`, `sid`, `sidT`, `sidRun`.
+- Tintele zilnice vin doar din Profilul nutritional: proteinele se stabilesc in g pe kg, iar totalul se calculeaza din greutate. Cheia veche `rmt` (tinta ca total, ex. 110 g) nu se mai citeste si se sterge.
+- Reteta stearsa din Biblioteca: mesele din meniu si loturile de Meal prep raman, cu acelasi mesaj peste tot, "Reteta nu mai e in Biblioteca". In meniu se folosesc in continuare ingredientele si macro-ul salvate in masa.
+- Fara schimbare, dupa verificare: ordinea valorilor la alimentele adaugate de tine (kcal, proteine, grasimi, carbohidrati) e ordinea coloanelor din baza Info (`nutri.js`) si ramane asa; backup-ul contine in continuare cartile, pentru ca in 4.0.0 ele nu sunt inca incluse in aplicatie (se incarca din fisiere separate); vezi 4.1.0.
+
+## 3.21.0
+- Meniu: masa noua "Cina", intre Pranz si Desert. Apare in fiecare zi, la "Adauga la meniu", in macro-ul zilei, in "Propune-mi un meniu" si in Setari > Categorii si mese. Pranzul si cina se propun din aceleasi retete (fara repetari in aceeasi propunere); o categorie poate fi atribuita explicit cinei. Dupa ora 16, "Adauga la meniu" propune Cina in loc de Pranz. Mesele existente nu se schimba.
+- Reparat: "Propune-mi un meniu" propunea supe crema la desert (categoria "Supe crema" continea cuvantul "crema"). Supele si ciorbele nu mai sunt niciodata desert.
+
 ## 3.20.0
 - Meal prep: a disparut blocajul "Ingredientele retetei sunt deja in cumparaturi". Aparea si cand lista parea goala, pentru ca produsele pe care le ai in debara raman ascunse in lista. Acum produsele ascunse nu mai conteaza, iar formularul spune ce e de fapt: "Ai toate ingredientele in debara, nu e nimic de cumparat", sau bifa de cumparaturi cu "N din M le ai deja in debara". Daca reteta e deja (vizibil) in lista, bifa devine "Actualizeaza in cumparaturi cantitatile pentru N portii" si inlocuieste partea retetei, fara dublare.
 - Meal prep: mesajul de dupa salvare numara separat produsele de cumparat si pe cele pe care le ai in debara. Avertisment in formular cand gatesti de peste 4 ori reteta (ex. 40 de portii la o reteta de 2).
