@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.19.0
+- Baza de retete nu mai e doar vegetariana: sursa veche "Baza de retete" se numeste acum "Retete vegetariene" (170 retete, 98 vegane) si exista o sursa noua, "Retete cu carne" (60 retete, multe perechi cu varianta vegetariana, cu trimitere reciproca). Aplicatia redenumeste automat sursa veche la prima deschidere, fara sa piarda favorite, notite, meal prep sau meniu; importa apoi cele doua fisiere noi din Setari > Tehnic > Carti.
+- Gatire: teme noi - Gateste fara reteta (frittata, supa, salata de cereale, sos de rosii, paste, legume, vinegreta, tocanita, fiecare cu varianta vegetariana si cu carne), Metode de baza pas cu pas (oua, cereale, cartofi, sosuri), Congelare, Organizare si economie, Gatit vegetarian (proteine complete, valori din Info, inlocuiri, fier/B12/omega 3). Formulele sunt scrise de la zero, fara text copiat din surse.
+- Reparat: regula pentru orezul gatit spunea o zi, iar retetele 4 zile; acum e aliniata (3-4 zile, racit in cel mult o ora, reincalzit o singura data).
+
 ## 3.18.3
 - Greutati pe bucata in Info pentru pere (170 g), piersici (150 g), kiwi (75 g) si smochine (50 g); macro-ul retetelor care le folosesc se recalculeaza o singura data la prima deschidere.
 
