@@ -44,17 +44,29 @@ let cur=null,mode="pasi",SV=null,SVP=0;const RC={};
 /* ===== ETICHETE (lista centrala, normalizare, cautare) ===== */
 const dn=s=>String(s==null?"":s).normalize("NFD").replace(/[\u0300-\u036f]/g,"");const ed=x=>esc(dn(x));
 const norm=s=>String(s||"").toLowerCase().replace(/(\w)\u00ee(?=\w)/g,"$1a").normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-const TDEF=[{n:"traditional romanesc",t:"bucatarie"},{n:"asiatic",t:"bucatarie"},{n:"vegan",t:"dieta"},{n:"vegetarian",t:"dieta"},{n:"high-protein",t:"dieta",auto:"protein"},{n:"keto",t:"dieta",auto:"keto"},{n:"meal-prep",t:"dieta"},{n:"air fryer",t:"dieta"},{n:"one pot",t:"dieta"}];
+const TDEF=[{n:"traditional romanesc",t:"bucatarie"},{n:"asiatic",t:"bucatarie"},{n:"vegan",t:"dieta"},{n:"vegetarian",t:"dieta"},{n:"high-protein",t:"dieta",auto:"protein"},{n:"keto",t:"dieta",auto:"keto"},{n:"gluten-free",t:"dieta",auto:"gluten"},{n:"meal-prep",t:"metoda"},{n:"air fryer",t:"metoda"},{n:"one pot",t:"metoda"}];
 let TAGS;try{TAGS=JSON.parse(LS("rtags"))}catch(e){dbg(e)}if(!Array.isArray(TAGS)||!TAGS.length)TAGS=JSON.parse(JSON.stringify(TDEF));
 const saveTags=()=>LS("rtags",JSON.stringify(TAGS));
 /* 3.18.0: etichete noi (meal-prep, air fryer, one pot) adaugate o singura data la cei care au deja lista salvata; h=1 inseamna ascunsa (nu apare in filtre, carduri, alegere la generare; retetele o pastreaza) */
 try{if(!localStorage.getItem("rtv")){["meal-prep","air fryer","one pot"].forEach(n=>{if(!TAGS.some(t=>norm(t.n)===norm(n)))TAGS.push({n,t:"dieta"})});localStorage.setItem("rtags",JSON.stringify(TAGS));localStorage.setItem("rtv","1")}}catch(e){dbg(e)}
+/* 4.4.0, o singura data: meal-prep / air fryer / one pot trec la tipul nou "metoda" (daca nu le-ai schimbat tu tipul); eticheta gluten-free (sau "fara gluten") devine automata, iar cine nu o are o primeste */
+try{if(!localStorage.getItem("rtv2")){TAGS.forEach(t=>{if(["meal-prep","air fryer","one pot"].includes(norm(t.n))&&t.t==="dieta")t.t="metoda"});
+ const g=TAGS.find(t=>/^(gluten-free|fara gluten)$/.test(norm(t.n)));if(g)g.auto="gluten";else TAGS.push({n:"gluten-free",t:"dieta",auto:"gluten"});
+ localStorage.setItem("rtags",JSON.stringify(TAGS));localStorage.setItem("rtv2","1")}}catch(e){dbg(e)}
 const hidT=()=>new Set(TAGS.filter(t=>t.h).map(t=>t.n));
 const tagShown=a=>{const h=hidT();return a.filter(n=>!h.has(n))};
 const tagNames=()=>TAGS.map(t=>t.n);
 const canon=n=>{const k=norm(n),t=TAGS.find(x=>norm(x.n)===k||(x.al||[]).some(a=>norm(a)===k));return t?t.n:null};
 const normTags=a=>[...new Set((a||[]).map(canon).filter(Boolean))];
-function autoTags(r){const m=r.macro||{},s=[];TAGS.forEach(t=>{if(t.auto==="protein"&&m.proteine!=null&&m.proteine>=25)s.push(t.n);if(t.auto==="keto"&&m.carbo!=null&&m.carbo<10)s.push(t.n)});return s}
+/* 4.4.0: keto se judeca pe carbohidrati neti (carbohidrati minus fibre, fibrele calculate din Info); gluten-free = niciun ingredient cu gluten in lista. Rezultatul se tine minte pe reteta. */
+const GLUT=/\b(faina(?! de (migdale|cocos|naut|orez|porumb|hrisca|in|susan|tapioca))|grau|gris|paste|spaghete|penne|fusilli|lasagna|taitei(?! de orez)|paine|pesmet|cuscus|bulgur|orz|arpacas|secara|tortilla|lipie|pita|naan|biscuit|blat|foi de (plac|lasagn|napolitan|tort|aluat)|covrig|chifl|bagheta|crutoane|sos de soia|bere|seitan|musli|granola|cereale|ovaz|malt)/;
+const aIngs=r=>(r.ingrediente||[]).map(x=>({c:x.c!=null?x.c:x.cantitate,u:x.u||x.unitate||"",n:String(x.n||x.nume||"")})).filter(x=>x.n);
+function netCarb(r){const m=r.macro||{};if(m.carbo==null)return null;let fib=0;try{const q=micOf(aIngs(r),r.pna?1:(r.portii||1));if(q&&q.ok)fib=q.s[4]||0}catch(e){dbg(e)}return Math.max(0,m.carbo-fib)}
+const hasGluten=r=>{const a=aIngs(r);return!a.length?null:a.some(x=>{const n=norm(x.n);return!/fara gluten/.test(n)&&GLUT.test(n)})};
+const _atc=new WeakMap();
+function autoTags(r){const m=r.macro||{},k=m.proteine+"|"+m.carbo+"|"+(r.ingrediente||[]).length+"|"+r.portii+"|"+TAGS.map(t=>t.auto?t.n+":"+t.auto:"").join(",");let o=_atc.get(r);if(o&&o.k===k)return o.v;
+ const s=[];TAGS.forEach(t=>{if(t.auto==="protein"&&m.proteine!=null&&m.proteine>=25)s.push(t.n);if(t.auto==="keto"){const nc=netCarb(r);if(nc!=null&&nc<10)s.push(t.n)}if(t.auto==="gluten"&&hasGluten(r)===false)s.push(t.n)});
+ _atc.set(r,{k,v:s});return s}
 const tagPicker=(r,attr,note,fold)=>{const au=new Set(autoTags(r)),on=new Set(normTags(r.etichete));
  const bx=`<div class="chk">`+TAGS.filter(t=>!t.h||on.has(t.n)||au.has(t.n)).map(t=>`<label><input type="checkbox" ${attr}="${esc(t.n)}"${on.has(t.n)||au.has(t.n)?" checked":""}${au.has(t.n)?" disabled":""}>${esc(t.n)}${au.has(t.n)?" (automat)":""}</label>`).join("")+`</div>`;
  if(fold){const ch=TAGS.map(t=>t.n).filter(n=>on.has(n)||au.has(n));return `<details class="mre" data-tgd="1"><summary>${note||"Etichete"}: ${ch.length?esc(ch.join(", ")):"nicio eticheta"}</summary>${bx}</details>`}
@@ -375,9 +387,9 @@ function renderTagUI(){
  $("#lbbox").innerHTML=TAGS.filter(t=>!t.h).map(t=>`<label><input type="checkbox" value="${esc(t.n)}" ${sel.has(t.n)?"checked":""}>${esc(t.n)}</label>`).join("");
  ["#fs"].forEach(s=>{const el=$(s),v=el.value;el.innerHTML='<option value="">Toate</option>'+TAGS.filter(t=>!t.h).map(t=>`<option>${esc(t.n)}</option>`).join("");el.value=tagNames().includes(v)?v:""});try{drawBook()}catch(e){dbg(e)}}
 function renderTagCfg(){
- $("#tgl").innerHTML=TAGS.map((t,i)=>`<div class="apr"><input data-tn="${i}" value="${esc(t.n)}" aria-label="Nume eticheta" style="flex:1;min-width:0"><select data-tt="${i}" aria-label="Tip" class="wauto"><option value="bucatarie"${t.t==="bucatarie"?" selected":""}>bucatarie</option><option value="dieta"${t.t!=="bucatarie"?" selected":""}>dieta</option></select><label class="muted"><input type="checkbox" data-th="${i}"${t.h?"":" checked"}> Afiseaza</label><button class="alt" data-tx="${i}">Sterge</button></div>`).join("")+
- `<p class="muted">Bucatarie: alternative la generarea ideilor (romanesc sau asiatic). Dieta: se aplica toate odata (vegan si keto). Afiseaza: debifeaza o eticheta ca sa nu mai apara in filtre, pe carduri si la alegerea ideilor (retetele o pastreaza). Redenumirea sau stergerea se aplica in toate retetele: idei, salvate si biblioteca.</p>
- <h2 class="mt12">Eticheta noua</h2><div class="apr"><input id="tnn" aria-label="Numele etichetei noi" placeholder="ex: fara gluten" style="flex:1;min-width:0"><select id="tnt" aria-label="Tipul etichetei noi" class="wauto"><option value="dieta">dieta</option><option value="bucatarie">bucatarie</option></select><button class="alt" id="tAdd">Adauga</button></div><div id="tmsg" class="muted"></div>`}
+ $("#tgl").innerHTML=TAGS.map((t,i)=>`<div class="apr"><input data-tn="${i}" value="${esc(t.n)}" aria-label="Nume eticheta" style="flex:1;min-width:0"><select data-tt="${i}" aria-label="Tip" class="wauto"><option value="bucatarie"${t.t==="bucatarie"?" selected":""}>bucatarie</option><option value="dieta"${t.t!=="bucatarie"&&t.t!=="metoda"?" selected":""}>dieta</option><option value="metoda"${t.t==="metoda"?" selected":""}>metoda</option></select><label class="muted"><input type="checkbox" data-th="${i}"${t.h?"":" checked"}> Afiseaza</label><button class="alt" data-tx="${i}">Sterge</button></div>`).join("")+
+ `<p class="muted">Bucatarie: alternative la generarea ideilor (romanesc sau asiatic). Dieta si metoda: se aplica toate odata (vegan si keto; meal-prep, air fryer, one pot). Etichetele automate se pun singure: high-protein (cel putin 25 g proteine pe portie), keto (sub 10 g carbohidrati neti pe portie, adica fara fibre) si gluten-free (niciun ingredient cu gluten in lista; nu tine cont de urme sau de contaminare, deci verifica eticheta produselor daca ai boala celiaca). Afiseaza: debifeaza o eticheta ca sa nu mai apara in filtre, pe carduri si la alegerea ideilor (retetele o pastreaza). Redenumirea sau stergerea se aplica in toate retetele: idei, salvate si biblioteca.</p>
+ <h2 class="mt12">Eticheta noua</h2><div class="apr"><input id="tnn" aria-label="Numele etichetei noi" placeholder="ex: fara gluten" style="flex:1;min-width:0"><select id="tnt" aria-label="Tipul etichetei noi" class="wauto"><option value="dieta">dieta</option><option value="bucatarie">bucatarie</option><option value="metoda">metoda</option></select><button class="alt" id="tAdd">Adauga</button></div><div id="tmsg" class="muted"></div>`}
 const tmsg=t=>{const el=$("#tmsg");if(el)el.textContent=t};
 function retag(old,nw){
  const f=a=>{const x=(a||[]).filter(n=>n!==old);return nw?[...new Set([...x,nw])]:x},has=r=>(r.etichete||[]).includes(old);
@@ -1032,9 +1044,18 @@ const cumBtn=(t,at)=>inCart(t)?`<button class="alt on" data-${at}="1" aria-press
 function cartRemove(t){const l=getList();l.forEach(x=>{if(!(x.src||[]).includes(t))return;const pt=(x.parts||[]).find(p=>p.s===t);if(pt&&x.c!=null&&pt.c!=null)x.c=+(x.c-pt.c).toFixed(2);x.parts=(x.parts||[]).filter(p=>p.s!==t);x.src=x.src.filter(s=>s!==t)});putList(l.filter(x=>x.src.length));navCount()}
 function cartToggle(t,ings,redraw){if(inCart(t)){const u=undoMark(["rl"]);cartRemove(t);redraw();undoShow("Scoasa din cumparaturi: "+t+".",u,()=>{navCount();redraw()})}else{const n=addList(ings,t);redraw();toast("Adaugat la cumparaturi ("+n+" produse).")}}
 const lPrep=ings=>prepIngs((ings||[]).map(x=>x&&typeof x.n==="string"?Object.assign({},x,{n:x.n.replace(/[,\s]+(dupa gust|optional)\s*$/i,"")}):x));
+/* 4.4.0: "1 lingura ulei" si "5 g ulei" sunt acelasi produs. Cand in lista exista deja produsul in grame (sau il adaugi in grame peste linguri), lingurile, lingurite si canile se transforma in grame dupa tabelul Masuri si se aduna. */
+const SPOON=/^(lingur|cana|cani|ceasc|cest)/;
+function toG(n,u,c){if(c==null)return null;try{const f=fdMatch(n);if(!f)return null;const q=fdGrams({c,u,n},f);return q&&q.g>0?Math.round(q.g):null}catch(e){dbg(e);return null}}
+const nKey=n=>lkey(n,"").split("|")[0];
+function lUnify(l,nm,u,c){if(c==null)return null;const sp=SPOON.test(norm(u)),isG=/^g$/i.test(u);if(!sp&&!isG)return null;const k=nKey(nm);
+ const y=l.find(z=>!z.done&&z.c!=null&&nKey(z.n)===k&&(sp?/^g$/i.test(z.u||""):SPOON.test(norm(z.u||""))));if(!y)return null;
+ if(sp){const g=toG(nm,u,c);return g?{c:g,u:"g"}:null}
+ const g=toG(y.n,y.u,y.c);if(!g)return null;const f=g/y.c;(y.parts||[]).forEach(p=>{if(p.c!=null)p.c=Math.round(p.c*f)});y.c=g;y.u="g";y.k=lkey(y.n,"g");return{c,u:"g"}}
 function addList(ings,title){const l=getList();let n=0;ings=lPrep(ings);
  ings.forEach(x=>{const cl=lClean(x.n,x.u),nm=cl.n;if(!nm)return;let u=cl.u,c=(x.c===""||x.c==null||isNaN(+x.c))?null:+x.c;
   if(c!=null&&/^kg$/i.test(u)){c=+(c*1000).toFixed(2);u="g"}else if(c!=null&&/^l$/i.test(u)){c=+(c*1000).toFixed(2);u="ml"}
+  {const un=lUnify(l,nm,u,c);if(un){c=un.c;u=un.u}}
   const k=lkey(nm,u);
   let it=l.find(y=>lkey(y.n,y.u)===k&&!y.done);
   if(it&&!it.parts&&it.src.length===1)it.parts=[{s:it.src[0],c:it.c}];
@@ -1535,7 +1556,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="4.3.0";
+const APP_V="4.4.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1720,7 +1741,7 @@ async function snDraw(){const el=$("#snbox");if(!el)return;const L=await snapLis
    ce ai acum aici, ce e acum in Dropbox. Ce s-a schimbat doar pe o parte se preia; ce s-a schimbat pe ambele parti, pe elemente diferite, se pastreaza amandoua;
    pe acelasi element castiga varianta de aici. Modificarea bate stergerea. Cheia AI si cheile Dropbox nu se sincronizeaza. */
 const SY_RAW=["rm1","rm2b"],SY_MIN=60000;
-const SY_LAB={rbook:"biblioteca",rs:"retete salvate",rfav:"favorite",rtags:"etichete",ra:"aparate",rm1:"setari AI",rm2b:"setari AI",rl:"lista de cumparaturi",rp:"debara",rcat:"debara",rcg:"debara",rmen:"meniu",rmt:"meniu",rnote:"notite",rpf:"preferinte alimente",rpxc:"meniu",rfd:"alimente proprii",rprof:"profil nutritional"};
+const SY_LAB={rbook:"biblioteca",rs:"retete salvate",rfav:"favorite",rtags:"etichete",ra:"aparate",rm1:"setari AI",rm2b:"setari AI",rl:"lista de cumparaturi",rp:"debara",rcat:"debara",rcg:"debara",rmen:"meniu",rmp:"Meal prep",rmt:"meniu",rnote:"notite",rpf:"preferinte alimente",rpxc:"meniu",rfd:"alimente proprii",rprof:"profil nutritional"};
 function syLocal(){const o={};BK_KEYS.forEach(k=>{if(k==="rbook"){o.rbook=cl(STORED);return}
  const v=LS(k);if(v==null)return;if(SY_RAW.includes(k)){o[k]=v;return}try{o[k]=JSON.parse(v)}catch(e){dbg(e)}});return o}
 function syEq(a,b){if(a===b)return true;if(typeof a!=="object"||typeof b!=="object"||!a||!b)return false;
@@ -1730,7 +1751,7 @@ function syEq(a,b){if(a===b)return true;if(typeof a!=="object"||typeof b!=="obje
 function syId(key,path){const p=path.length;
  if(key==="rbook"&&p===0)return bKey;if(key==="rs"&&p===0)return sKey;if(key==="rfav"&&p===0)return"set";
  if((key==="rtags"||key==="rl"||key==="rp"||key==="rcat")&&p===0)return x=>x&&x.n;
- if((key==="ra"||key==="rcg")&&p===0)return x=>x&&x.id;
+ if((key==="ra"||key==="rcg"||key==="rmp")&&p===0)return x=>x&&x.id; /* 4.3.2: loturile de Meal prep se unesc dupa id; inainte, daca ambele dispozitive adaugau loturi, ramanea lista unuia singur */
  if(key==="rmen"&&p===2)return x=>x&&x.s+"|"+x.t;
  if(key==="rpf"&&p===1)return"set";
  if(key==="rnote"&&p===2&&path[1]==="h")return"set";return null}
@@ -1792,7 +1813,9 @@ async function syncRun(o){o=o||{};if(SYBUSY)return{busy:true};SYBUSY=true;SYLAST
  catch(e){return{err:e.message||"Eroare la sincronizare."}}
  finally{SYBUSY=false}}
 const SY_FL={portii:"portii",etichete:"etichete",ingrediente:"ingrediente",pasi_carte:"mod de preparare",macro:"macro",titlu:"titlu",categorie:"categorie",capitol:"capitol",sfaturi:"sfaturi",verifica:"marcaje de verificat",pna:"portii (nu se aplica)",mok:"avertizare macro"};
-const syVal=v=>v==null?"(gol)":typeof v==="object"?"(diferit)":String(v).slice(0,40);
+/* 4.3.2: valoarea aratata la o modificare facuta pe ambele dispozitive e citibila si pentru liste (titluri sau nume), nu doar "(diferit)" */
+const syNm=x=>x&&typeof x==="object"?String(x.t||x.titlu||x.n||x.nume||"(diferit)"):String(x);
+const syVal=v=>v==null?"(gol)":Array.isArray(v)?(v.length?(v.slice(0,3).map(syNm).join(", ")+(v.length>3?" si inca "+(v.length-3):"")).slice(0,90):"(gol)"):typeof v==="object"?syNm(v).slice(0,60):String(v).slice(0,40);
 function syConfSave(c){let o=[];try{o=JSON.parse(LS("rsyc")||"[]")}catch(e){dbg(e)}if(!Array.isArray(o))o=[];
  c.forEach(x=>o.push({t:Date.now(),nm:x.nm||SY_LAB[x.k]||x.k,f:SY_FL[x.f]||x.f||"",l:syVal(x.l),r:syVal(x.r)}));LS("rsyc",JSON.stringify(o.slice(-30)))}
 const syConfGet=()=>{try{const o=JSON.parse(LS("rsyc")||"[]");return Array.isArray(o)?o:[]}catch(e){return[]}};
@@ -1806,14 +1829,16 @@ async function syAuto(apply){if(!dbOn()||LS("rdba")==="0"||!hasData()&&!apply)re
  if(r.pending)syBar("Sunt modificari noi de pe alt dispozitiv ("+r.diff.join(", ")+").","Aplica acum");
  else if(r.blocked)syBar(syMsg(r),"");
  else syBar("");
- if(syConfGet().length&&!r.pending&&!r.blocked)syBar(syConfGet().length+" modificari facute pe ambele dispozitive. Am pastrat o singura varianta.","Vezi");
+ if(syConfGet().length&&!r.pending&&!r.blocked)syBar((n=>n===1?"O modificare facuta pe ambele dispozitive. Am pastrat o singura varianta.":n+" modificari facute pe ambele dispozitive. Am pastrat cate o singura varianta.")(syConfGet().length),"Vezi");
  dbDraw();return r}
 /* marcheaza ca s-a schimbat ceva aici; trimite dupa 15 secunde de liniste */
 function syMark(k){if(!SYREADY||SYAPPLY||!dbOn())return;clearTimeout(SYT);SYT=setTimeout(()=>{if(Date.now()-SYLAST>5000)syAuto(false)},15000)}
 document.addEventListener("visibilitychange",()=>{if(!SYREADY||!dbOn())return;
  if(document.visibilityState==="hidden"){if(SYT){clearTimeout(SYT);SYT=0;syAuto(false)}}
  else if(Date.now()-SYLAST>SY_MIN)syAuto(false)});
-$("#syGo").onclick=async()=>{if($("#syGo").textContent==="Vezi"){show("setari");setSub("backup");return}
+$("#syGo").onclick=async()=>{if($("#syGo").textContent==="Vezi"){show("setari");setSub("backup");dbDraw();
+  /* 4.3.1: detaliile sunt in caseta Sincronizare Dropbox, mai jos pe pagina; inainte butonul deschidea pagina si parea ca nu face nimic */
+  setTimeout(()=>{const el=document.querySelector("#dbcard .warn")||$("#dbcard");if(el&&el.scrollIntoView)el.scrollIntoView({behavior:"smooth",block:"center"})},60);return}
  $("#syGo").disabled=true;const r=await syncRun({apply:true});$("#syGo").disabled=false;
  if(r.applied){try{sessionStorage.setItem("rsyt","Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".")}catch(e){dbg(e)}location.reload();return}
  syBar(r.err||"");if(!r.err)toast(syMsg(r),!!(r.err||r.blocked));dbDraw()};
@@ -1822,7 +1847,7 @@ async function dbDraw(msg){const el=$("#dbbox");if(!el)return;let h="";
  if(!dbOn()){h+=`<p class="muted mt0 mb8" >Sincronizeaza retetele, meniul, lista si celelalte date intre telefon si laptop, prin Dropbox-ul tau. Datele ajung doar in folderul aplicatiei din contul tau. Te conectezi o data pe fiecare dispozitiv.</p><button class="go m0" type="button" data-dbc="1" >Conecteaza Dropbox</button>`}
  else{h+=`<p class="muted mt0 mb8" >Conectat. ${LS("rdbl")?"Ultima sincronizare: "+esc(fmtDT(+LS("rdbl")))+".":"Inca nu s-a sincronizat."}${LS("rdbe")?" Ultima incercare a esuat: "+esc(LS("rdbe"))+".":""}</p><button class="go m0" type="button" data-dbs="1" >Sincronizeaza acum</button> <button class="alt" type="button" data-dbx="1">Deconecteaza</button>
   <label style="display:flex;gap:8px;align-items:center;margin-top:10px"><input type="checkbox" id="dba"${LS("rdba")==="0"?"":" checked"} class="wauto"> Sincronizare automata (la deschidere, dupa modificari si cand revii in aplicatie)</label>`}
- const cf=syConfGet();if(cf.length)h+=`<div class="warn mt12" ><b>Modificate pe ambele dispozitive (${cf.length}).</b> Am pastrat o singura varianta (cealalta e aratata mai jos).${cf.slice(-8).map(x=>`<div>${esc(x.nm)}${x.f?" - "+esc(x.f):""}: pastrat "${esc(x.l)}", cealalta era "${esc(x.r)}"</div>`).join("")}<button class="alt mt8" type="button" data-syc="1" >Am inteles</button></div>`;
+ const cf=syConfGet();if(cf.length)h+=`<div class="warn mt12" ><b>Modificate pe ambele dispozitive (${cf.length}).</b> Am pastrat o singura varianta (cealalta e aratata mai jos).${cf.slice(-8).map(x=>`<div>${esc(SY_LAB[x.nm]||x.nm)}${x.f?" - "+esc(x.f):""}: pastrat "${esc(x.l)}", cealalta era "${esc(x.r)}"</div>`).join("")}<button class="alt mt8" type="button" data-syc="1" >Am inteles</button></div>`;
  h+=`<details class="mt12"><summary class="muted">Avansat: aplicatie Dropbox proprie</summary><p class="muted mt8 mb8" >Implicit se foloseste aplicatia Dropbox a acestei aplicatii. Daca ai creat una proprie, scrie aici App key. Adresa de redirectionare: <b>${esc(dbRedirect())}</b></p><input id="dbk" autocomplete="off" placeholder="App key" value="${esc(LS("rdbk")||"")}" aria-label="App key Dropbox"><button class="alt mt8" type="button" data-dbks="1" >${LS("rdbk")?"Salveaza cheia":"Foloseste cheia"}</button>${LS("rdbk")?' <button class="alt mt8" type="button" data-dbkx="1" >Revino la cea implicita</button>':""}</details>`;
  el.innerHTML=h+(msg?`<div class="muted mt8"  role="status">${esc(msg)}</div>`:"")}
 function bkPreview(txt,name){try{IMP=bkParse(txt,name);impDraw();$("#bkm").textContent="Verifica previzualizarea de mai jos si confirma restaurarea.";const p=$("#bipv");if(p&&p.scrollIntoView)p.scrollIntoView({block:"center"})}

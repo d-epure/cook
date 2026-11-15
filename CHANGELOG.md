@@ -2,6 +2,24 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.4.0
+- Etichete: tip nou, "metoda", pentru meal-prep, air fryer si one pot (inainte erau "dieta"). La generarea ideilor se aplica la fel ca dietele, toate odata. Cine are etichetele salvate primeste schimbarea o singura data; un tip schimbat de tine ramane.
+- Eticheta gluten-free e automata: apare pe retetele care nu au niciun ingredient cu gluten in lista (633 din cele 760 livrate). E prudenta: ovazul si sosul de soia conteaza ca gluten, daca nu scrie "fara gluten". Nu tine cont de urme sau contaminare; in Setari > Etichete scrie sa verifici eticheta produselor daca ai boala celiaca.
+- Eticheta keto se judeca pe carbohidrati neti (carbohidrati minus fibre, fibrele calculate din Info): sub 10 g pe portie. Budincile de chia si alte retete cu multe fibre sunt acum keto; in total 524 de retete livrate.
+- Cumparaturi: lingurile, lingurite si canile se aduna cu gramele. Cand produsul exista deja in lista in grame (sau il adaugi in grame peste linguri), cantitatea se transforma dupa tabelul Masuri si ramane un singur rand ("5 g ulei" + "2 linguri ulei" = "32 g ulei"). Daca toate sunt in linguri, raman linguri.
+- Pachetul contine de acum si `BACKLOG.md`: ce urmeaza, ce e nedecis, ce e amanat, limitele cunoscute si ce e de verificat pe dispozitiv real.
+- Teste: `teste/test_4_4_0.js` (9 verificari).
+- Cod: `netCarb`, `hasGluten`, `GLUT`, `autoTags` (cu rezultat tinut minte pe reteta), `lUnify`, `toG`.
+
+## 4.3.2
+- Sincronizare, reparat: loturile de Meal prep adaugate pe doua dispozitive se unesc acum (dupa id). Inainte, daca ambele dispozitive schimbau lista de loturi intre doua sincronizari, ramanea lista unuia singur, iar cealalta se pierdea, cu mesajul "rmp: pastrat (diferit), cealalta era (diferit)".
+- Mesajul "Modificate pe ambele dispozitive" e citibil: spune "Meal prep" in loc de "rmp" si arata titlurile sau numele din fiecare varianta, nu "(diferit)".
+- Teste: `teste/test_4_3_2.js`.
+
+## 4.3.1
+- Reparat: butonul "Vezi" din mesajul "modificari facute pe ambele dispozitive" deschidea Setari > Backup, dar detaliile sunt mai jos, in caseta Sincronizare Dropbox, asa ca parea ca nu face nimic. Acum pagina merge direct la caseta cu ce s-a pastrat si ce s-a inlocuit; mesajul de sus dispare cand apesi acolo "Am inteles".
+- Mesajul e corect si la singular: "O modificare facuta pe ambele dispozitive".
+
 ## 4.3.0
 - Debara, categorii implicite corectate: Carne are marcaje (proaspat, congelat, uscat, conserva, altceva), Cereale nu mai are. Categorie noua, Leguminoase, cu marcaje: fasolea, lintea, nautul, bobul si soia se incadreaza acolo automat (fasolea verde ramane la Legume). Cine si-a salvat deja categoriile primeste doar categoria noua, o singura data; bifele lui raman, iar daca o sterge nu revine.
 - Ghid nutritie > Gatire: tema noua "Leguminoase si cereale uscate" (fasole, linte, naut, mazare, grau, orz): inmuiere, timpi de fierbere orientativi, siguranta la fasolea rosie si alba (clocot cel putin 10 minute, nu direct la slow cooker), sare / acid / bicarbonat, cat iese din 100 g uscate si cum transformi o reteta scrisa cu conserve, pastrare si congelare.
