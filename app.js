@@ -827,7 +827,9 @@ const putPan=l=>LS("rp",JSON.stringify(l.map(p=>({n:p.n,f:p.f}))));
 /* legaturi: forme care apartin aceluiasi produs (extinde dupa nevoie) */
 const ALIAS={ou:"ou",oua:"ou",ouale:"ou",galbenus:"ou",galbenusuri:"ou",galbenusul:"ou",albus:"ou",albusuri:"ou",albusul:"ou"};
 const ALIAS_NUME={ou:"oua"};
-const STOPW=new Set(["de","din","cu","la","si","sau","in","pe","un","o","fiert","fierte","fiarta","fiarte","proaspat","proaspata","proaspete","tocat","tocata","tocati","tocate","ras","rasa","rase","gatit","gatita","mare","mici","mic","mica","bucati","felii","optional","dupa","gust"]);
+const STOPW=new Set(["de","din","cu","la","si","sau","in","pe","un","o","fiert","fierte","fiarta","fiarte","proaspat","proaspata","proaspete","tocat","tocata","tocati","tocate","ras","rasa","rase","gatit","gatita","mare","mici","mic","mica","bucati","felii","optional","dupa","gust",
+ /* 3.20.0: felul in care e taiat sau masurat un aliment tine de gatire, nu de produs */
+ "taiat","taiata","taiati","taiate","marunt","maruntit","maruntita","maruntiti","maruntite","cuburi","cubulete","cubulet","feliat","feliata","feliati","feliate","rondele","fasii","pisat","pisata","pisati","pisate","zdrobit","zdrobita","zdrobiti","zdrobite","curatat","curatata","curatati","curatate","catei","catel"]);
 function stem(w){if(ALIAS[w])return ALIAS[w];if(w.length>5&&w.endsWith("uri"))w=w.slice(0,-3);else if(w.length>4&&w.endsWith("ii"))w=w.slice(0,-2);else if(w.length>4&&/[ie]$/.test(w))w=w.slice(0,-1);return ALIAS[w]||w}
 const toks=n=>norm(String(n||"").replace(/\([^)]*\)/g," ")).split(/[^a-z0-9]+/).filter(w=>w&&!STOPW.has(w)&&!/^\d+$/.test(w)).map(stem);
 const tokEq=(a,b)=>a===b||(Math.min(a.length,b.length)>=3&&(a.startsWith(b)||b.startsWith(a)));
@@ -890,7 +892,19 @@ function prepIngs(ings){const out=[];let skip=false;
  return out}
 /* 3.13.0: cheie de produs care ignora singular/plural (castravete = castraveti, rosie = rosii): fiecare cuvant pierde terminatia -ie/-ii/-i/-e/-a */
 const stemW=w=>w.length>4?w.replace(/(ie|ii|i|e|a)$/,""):w;
-const lkey=(n,u)=>norm(String(n||"")).split(/\s+/).filter(Boolean).map(stemW).join(" ")+"|"+norm(String(u||"")).split(/\s+/).filter(Boolean).map(stemW).join(" ");
+/* 3.20.0: produsul din lista nu tine cont de cum e taiat ("ceapa tocata marunt" = "ceapa", "cartofi, taiati cuburi" = "cartofi"), de "de" de la inceput ("de usturoi" = "usturoi") si de unde sta cuvantul de masura ("3 catei usturoi" = "usturoi, 3 catei"). Carnea tocata ramane carne tocata. */
+const PREPW=new Set(["taiat","taiata","taiati","taiate","tocat","tocata","tocati","tocate","marunt","maruntit","maruntita","maruntiti","maruntite","fin","cuburi","cubulete","cubulet","feliat","feliata","feliati","feliate","felii","rondele","fasii","pisat","pisata","pisati","pisate","zdrobit","zdrobita","zdrobiti","zdrobite","curatat","curatata","curatati","curatate","ras","rasa","rase","dupa","gust","optional"]);
+function lClean(n,u){let t=String(n||"").replace(/\s+/g," ").trim();u=String(u||"").trim();
+ t=t.replace(/^de\s+/i,"");
+ const m=/^(catei|catel)\s+(?:de\s+)?(\S.*)$/i.exec(t);if(m&&(!u||/^cate[il]$/i.test(u))){t=m[2];u="catei"}
+ if(/^catel$/i.test(u))u="catei";
+ const meat=/\b(carne|vita|porc|pui|curcan|miel|peste)\b/.test(norm(t));
+ const isP=w=>{w=norm(w).replace(/[^a-z]/g,"");return w==="in"||w==="si"||w==="foarte"||(PREPW.has(w)&&!(meat&&/^tocat/.test(w)))};
+ const segs=t.split(",").map(x=>x.trim()).filter(Boolean);if(!segs.length)return{n:t,u};
+ const keep=segs.filter((x,i)=>i===0||!x.split(/\s+/).every(isP));
+ const w=keep[0].split(/\s+/);while(w.length>1&&isP(w[w.length-1]))w.pop();keep[0]=w.join(" ");
+ return{n:keep.join(", "),u}}
+const lkey=(n,u)=>{const c=lClean(n,u);return norm(c.n).split(/\s+/).filter(Boolean).map(stemW).join(" ")+"|"+norm(c.u).split(/\s+/).filter(Boolean).map(stemW).join(" ")};
 function listDedupe(){const l=getList(),out=[];let ch=false;
  const mp=new Map();l.forEach(x=>{const kk=x.done?null:lkey(x.n,x.u),t=kk?mp.get(kk):null;if(!t){out.push(x);if(kk)mp.set(kk,x);return}ch=true;
   const tp=Array.isArray(t.parts)?t.parts:t.src.length===1?[{s:t.src[0],c:t.c}]:null,xp=Array.isArray(x.parts)?x.parts:x.src.length===1?[{s:x.src[0],c:x.c}]:null;
@@ -898,13 +912,16 @@ function listDedupe(){const l=getList(),out=[];let ch=false;
   x.src.forEach(s=>{if(!t.src.includes(s))t.src.push(s)});
   if(tp&&xp){xp.forEach(p=>{const q=tp.find(z=>z.s===p.s);if(q)q.c=q.c!=null&&p.c!=null?+(q.c+p.c).toFixed(2):(q.c==null?p.c:q.c);else tp.push(p)});t.parts=tp}else delete t.parts});
  if(ch)putList(out);return ch}
-const inCartAny=t=>getList().some(x=>(x.src||[]).some(s=>s===t||s.startsWith(t+" (meniu ")));
+const inCartAny=t=>getList().some(x=>!hid(x)&&(x.src||[]).some(s=>s===t||s.startsWith(t+" (meniu "))); /* 3.20.0: produsele ascunse (le ai in debara) nu mai inseamna "deja in cumparaturi" */
 const inCart=t=>getList().some(x=>(x.src||[]).includes(t));
 const cumBtn=(t,at)=>inCart(t)?`<button class="alt on" data-${at}="1" aria-pressed="true">&#10003; In cumparaturi</button>`:`<button class="alt" data-${at}="1" aria-pressed="false">Adauga la cumparaturi</button>`;
 function cartRemove(t){const l=getList();l.forEach(x=>{if(!(x.src||[]).includes(t))return;const pt=(x.parts||[]).find(p=>p.s===t);if(pt&&x.c!=null&&pt.c!=null)x.c=+(x.c-pt.c).toFixed(2);x.parts=(x.parts||[]).filter(p=>p.s!==t);x.src=x.src.filter(s=>s!==t)});putList(l.filter(x=>x.src.length));navCount()}
 function cartToggle(t,ings,redraw){if(inCart(t)){const u=undoMark(["rl"]);cartRemove(t);redraw();undoShow("Scoasa din cumparaturi: "+t+".",u,()=>{navCount();redraw()})}else{const n=addList(ings,t);redraw();toast("Adaugat la cumparaturi ("+n+" produse).")}}
-function addList(ings,title){const l=getList();let n=0;ings=prepIngs(ings);
- ings.forEach(x=>{const nm=String(x.n||"").trim();if(!nm)return;const u=String(x.u||"").trim(),c=(x.c===""||x.c==null||isNaN(+x.c))?null:+x.c,k=lkey(nm,u);
+const lPrep=ings=>prepIngs((ings||[]).map(x=>x&&typeof x.n==="string"?Object.assign({},x,{n:x.n.replace(/[,\s]+(dupa gust|optional)\s*$/i,"")}):x));
+function addList(ings,title){const l=getList();let n=0;ings=lPrep(ings);
+ ings.forEach(x=>{const cl=lClean(x.n,x.u),nm=cl.n;if(!nm)return;let u=cl.u,c=(x.c===""||x.c==null||isNaN(+x.c))?null:+x.c;
+  if(c!=null&&/^kg$/i.test(u)){c=+(c*1000).toFixed(2);u="g"}else if(c!=null&&/^l$/i.test(u)){c=+(c*1000).toFixed(2);u="ml"}
+  const k=lkey(nm,u);
   let it=l.find(y=>lkey(y.n,y.u)===k&&!y.done);
   if(it&&!it.parts&&it.src.length===1)it.parts=[{s:it.src[0],c:it.c}];
   if(it){if(it.c!=null&&c!=null)it.c=+(it.c+c).toFixed(2);else if(it.c==null)it.c=c;if(!it.src.includes(title))it.src.push(title);
@@ -1191,17 +1208,17 @@ function mpHtml(){const l=getMP();
 function mpOpen(){MD={mp:1,f:null,q:"",r:null};
  $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Adauga la Meal prep"><h2 class="m0">Adauga la Meal prep</h2><label for="mdq" class="mt12">Cauta o reteta (nume sau ingrediente)</label><input id="mdq" placeholder="ex: ciorba, piept de pui" autocomplete="off"><div id="mdres"></div><div class="row mt16"><button class="alt" data-mdx="1">Inchide</button></div></div>`;
  $("#mdlg").classList.remove("hidden");mdSearch();setTimeout(()=>{const e=$("#mdq");if(e)e.focus()},0)}
-function mpForm(s,r){MD.s=s;MD.r=r;const today=dKey(new Date()),base=+r.portii>0?+r.portii:null,has=rawIngs(s,r).length>0,inc=has&&inCartAny(r.titlu);
- $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Adauga la Meal prep"><h2 class="m0">Adauga la Meal prep</h2><p class="mt12 mb0"><b>${esc(r.titlu)}</b></p><div class="fgrid mt8"><div><label for="mpd1">Data gatirii</label><input id="mpd1" type="date" value="${today}" max="${today}"></div><div><label for="mpp">Portii gatite</label><input id="mpp" type="number" min="1" max="99" value="${base||1}"></div></div>${has?(inc?`<p class="muted mt12 mb0">Ingredientele retetei sunt deja in cumparaturi.</p>`:`<label class="mt12 chkl" for="mpc"><input id="mpc" type="checkbox" checked> Adauga ingredientele pentru <span id="mpn">${base||1}</span> portii la cumparaturi</label>`):""}<div class="row mt16"><button class="go m0" data-mpok="1">Adauga la Meal prep</button><button class="alt" data-mdx="1">Anuleaza</button></div></div>`;
+function mpForm(s,r){MD.s=s;MD.r=r;const today=dKey(new Date()),base=+r.portii>0?+r.portii:null,ri=lPrep(rawIngs(s,r)),has=ri.length>0,inc=has&&inCartAny(r.titlu),np=ri.filter(x=>inPantry(lClean(x.n,x.u).n)).length;
+ $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Adauga la Meal prep"><h2 class="m0">Adauga la Meal prep</h2><p class="mt12 mb0"><b>${esc(r.titlu)}</b></p><div class="fgrid mt8"><div><label for="mpd1">Data gatirii</label><input id="mpd1" type="date" value="${today}" max="${today}"></div><div><label for="mpp">Portii gatite</label><input id="mpp" type="number" min="1" max="99" value="${base||1}"></div></div>${has?(np===ri.length?`<p class="muted mt12 mb0">Ai toate ingredientele in debara, nu e nimic de cumparat.</p>`:`<label class="mt12 chkl" for="mpc"><input id="mpc" type="checkbox" checked> ${inc?"Actualizeaza in cumparaturi cantitatile pentru":"Adauga ingredientele pentru"} <span id="mpn">${base||1}</span> portii${inc?"":" la cumparaturi"}</label>${np?`<p class="muted mt4 mb0">${np} din ${ri.length} le ai deja in debara.</p>`:""}`):""}<p id="mpw" class="mt8 mb0" style="color:var(--amb)" data-base="${base||0}" hidden></p><div class="row mt16"><button class="go m0" data-mpok="1">Adauga la Meal prep</button><button class="alt" data-mdx="1">Anuleaza</button></div></div>`;
  setTimeout(()=>{const e=$("#mpp");if(e)e.focus()},0)}
 function mpSave(){const r=MD.r,s=MD.s,k=s==="b"?bKey(r):sKey(r),p=clampP($("#mpp").value),today=dKey(new Date());let d=$("#mpd1").value;if(!/^\d{4}-\d{2}-\d{2}$/.test(d)||d>today)d=today;
  const l=getMP();l.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),s,k,t:r.titlu,d,p});putMP(l);
  setNote(k,{h:(getNote(k).h||[]).concat([d])});
 
- let n=0;if($("#mpc")&&$("#mpc").checked){const base=+r.portii>0?+r.portii:null,f=base?p/base:1;if(inCart(r.titlu))removeSrc(r.titlu);n=addList(rawIngs(s,r).map(x=>({c:x.c!=null?+(x.c*f).toFixed(2):null,u:x.u,n:x.n,g:x.g})),r.titlu)}
+ let n=0,nh=0;if($("#mpc")&&$("#mpc").checked){const base=+r.portii>0?+r.portii:null,f=base?p/base:1;if(inCart(r.titlu))removeSrc(r.titlu);n=addList(rawIngs(s,r).map(x=>({c:x.c!=null?+(x.c*f).toFixed(2):null,u:x.u,n:x.n,g:x.g})),r.titlu);nh=getList().filter(x=>hid(x)&&(x.src||[]).includes(r.titlu)).length}
  /* mesele planificate (de azi inainte) cu aceeasi reteta devin "din Meal prep": ingredientele nu se mai cumpara a doua oara */
  const m=getMen();let nm=0;Object.keys(m).forEach(dk=>{if(dk<today)return;SLOTS.forEach(([sl])=>(m[dk][sl]||[]).forEach(en=>{if(en.k===k&&!en.mp&&en.s!=="x"){en.mp=1;nm++}}))});if(nm)putMen(m);
- MPO=true;const af=MD&&MD.after;menClose();if(af)af();toast("Adaugat la Meal prep"+(n?"; "+n+" produse la cumparaturi":"")+(nm?". "+nm+(nm===1?" masa din meniu e acum":" mese din meniu sunt acum")+" \"din Meal prep\"":"")+".");drawMenu()}
+ MPO=true;const af=MD&&MD.after;menClose();if(af)af();toast("Adaugat la Meal prep"+(n?"; "+(n-nh)+" produse la cumparaturi"+(nh?" (alte "+nh+" le ai in debara)":""):"")+(nm?". "+nm+(nm===1?" masa din meniu e acum":" mese din meniu sunt acum")+" \"din Meal prep\"":"")+".");drawMenu()}
 let MD=null;
 function menOpen(o){const r=o.r||null;MD={day:o.day||dKey(new Date()),slot:o.slot||(r?guessSlot(r):"pranz"),s:o.s||null,r,p:o.p||null,q:"",f:!r&&getMP().length?"m":null};
  const today=dKey(new Date()),mt=monOf(today);let st=MD.day<mt?monOf(MD.day):mt;if(MD.day>dAdd(st,34))st=monOf(MD.day);
@@ -1241,7 +1258,7 @@ $("#mdlg").onclick=e=>{if(PRP){pxClick(e);return}const b=e.target,d=b.dataset;
  if(d.mpok!==undefined){mpSave();return}
  if(d.mdtxt!==undefined){const t=($("#mdt").value||"").trim().slice(0,80);if(!t){$("#mdt").focus();return}menAdd({t,s:"x",k:"",p:0,L:0})}};
 $("#mdlg").onchange=e=>{if(e.target.id==="mdbk"&&MD){MD.bk=e.target.value;mdSearch();return}if(PRP){if(e.target.dataset.pxs!==undefined)PRP.slots[e.target.dataset.pxs]=e.target.checked;return}if(!MD)return;if(e.target.id==="mdday")MD.day=e.target.value;if(e.target.id==="mdslot")MD.slot=e.target.value};
-$("#mdlg").oninput=e=>{if(e.target.id==="mdq"){MD.q=e.target.value;mdSearch()}if(e.target.id==="mpp"&&$("#mpn"))$("#mpn").textContent=clampP(e.target.value)};
+$("#mdlg").oninput=e=>{if(e.target.id==="mdq"){MD.q=e.target.value;mdSearch()}if(e.target.id==="mpp"){const p=clampP(e.target.value),w=$("#mpw"),b=w?+w.dataset.base:0;if($("#mpn"))$("#mpn").textContent=p;if(w){const big=b>0&&p/b>4;w.hidden=!big;w.textContent=big?"Gatesti de "+(+(p/b).toFixed(1))+" ori reteta ("+p+" portii, reteta e pentru "+b+"). Verifica numarul de portii.":""}}};
 $("#mdlg").onkeydown=e=>{if(e.key==="Escape"){menClose();return}
  if(e.key==="Enter"&&MD){if(e.target.id==="mdt"){e.preventDefault();const b=document.querySelector("[data-mdtxt]");if(b)b.click()}if(e.target.id==="mdp"){e.preventDefault();const b=document.querySelector("[data-mdok]");if(b)b.click()}}};
 
@@ -1385,7 +1402,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="3.19.0";
+const APP_V="3.20.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){

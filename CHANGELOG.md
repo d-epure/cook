@@ -2,6 +2,13 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 3.20.0
+- Meal prep: a disparut blocajul "Ingredientele retetei sunt deja in cumparaturi". Aparea si cand lista parea goala, pentru ca produsele pe care le ai in debara raman ascunse in lista. Acum produsele ascunse nu mai conteaza, iar formularul spune ce e de fapt: "Ai toate ingredientele in debara, nu e nimic de cumparat", sau bifa de cumparaturi cu "N din M le ai deja in debara". Daca reteta e deja (vizibil) in lista, bifa devine "Actualizeaza in cumparaturi cantitatile pentru N portii" si inlocuieste partea retetei, fara dublare.
+- Meal prep: mesajul de dupa salvare numara separat produsele de cumparat si pe cele pe care le ai in debara. Avertisment in formular cand gatesti de peste 4 ori reteta (ex. 40 de portii la o reteta de 2).
+- Cumparaturi: acelasi produs nu mai apare de doua ori din cauza felului in care e scris. Nu mai conteaza cum e taiat ("ceapa tocata marunt" = "ceapa", "cartofi, taiati cuburi" = "cartofi"), "de" de la inceput ("de usturoi" = "usturoi"), "dupa gust" / "optional" de la final si locul cuvantului de masura ("3 catei usturoi" = "usturoi, 3 catei"). Carnea tocata ramane carne tocata. Kilogramele se aduna cu gramele si litrii cu mililitrii (1 kg + 500 g = 1500 g). Cod: `lClean`, `lkey`, `lPrep`, `addList`.
+- Debara: felul in care e taiat sau masurat un aliment tine de gatire, nu de produs. "Cartofi, taiati cuburi", "piept de pui taiat cubulete" si "3 catei de usturoi" sunt recunoscute ca fiind in debara daca ai cartofi, piept de pui si usturoi. Marcajele proaspat / congelat / uscat / conserva nu se schimba.
+- Neschimbat, de stiut: "Goleste lista" si "Sterge bifate" sunt in Cumparaturi, sub "Mai multe"; "Goleste lista" sterge si produsele ascunse.
+
 ## 3.19.0
 - Baza de retete nu mai e doar vegetariana: sursa veche "Baza de retete" se numeste acum "Retete vegetariene" (170 retete, 98 vegane) si exista o sursa noua, "Retete cu carne" (60 retete, multe perechi cu varianta vegetariana, cu trimitere reciproca). Aplicatia redenumeste automat sursa veche la prima deschidere, fara sa piarda favorite, notite, meal prep sau meniu; importa apoi cele doua fisiere noi din Setari > Tehnic > Carti.
 - Gatire: teme noi - Gateste fara reteta (frittata, supa, salata de cereale, sos de rosii, paste, legume, vinegreta, tocanita, fiecare cu varianta vegetariana si cu carne), Metode de baza pas cu pas (oua, cereale, cartofi, sosuri), Congelare, Organizare si economie, Gatit vegetarian (proteine complete, valori din Info, inlocuiri, fier/B12/omega 3). Formulele sunt scrise de la zero, fara text copiat din surse.
