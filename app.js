@@ -895,7 +895,7 @@ const putList=l=>LS("rl",JSON.stringify(l));
 let HP=true,PE=null,PED=null;
 /* categorii debara; marcaje (proaspat/congelat/uscat/conserva/altceva) doar unde au sens */
 /* categorii alimente: editabile in Setari -> Alimente > Categorii alimente (rcg); "altele" ramane mereu ultima */
-const DEFCATS=[{id:"condimente",n:"Condimente",f:0},{id:"legume",n:"Legume",f:1},{id:"carne",n:"Carne",f:0},{id:"fructe",n:"Fructe",f:1},{id:"cereale",n:"Cereale",f:1},{id:"lactate",n:"Lactate",f:0},{id:"altele",n:"Altele",f:0}];
+const DEFCATS=[{id:"condimente",n:"Condimente",f:0},{id:"legume",n:"Legume",f:1},{id:"carne",n:"Carne",f:1},{id:"fructe",n:"Fructe",f:1},{id:"cereale",n:"Cereale",f:0},{id:"leguminoase",n:"Leguminoase",f:1},{id:"lactate",n:"Lactate",f:0},{id:"altele",n:"Altele",f:0}];
 const FI={proaspat:["Proaspat",'<path d="M5 19C5 10 10 5 20 4c0 10-4 15-13 15z" fill="#3f9d4e"/><path d="M5 19L14 10" stroke="#fff" stroke-width="1.4" fill="none" stroke-linecap="round"/>'],
  congelat:["Congelat",'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" fill="#bfe6f7" stroke="#4aa3cc" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9" fill="none" stroke="#4aa3cc" stroke-width="1.2"/>'],
  uscat:["Uscat",'<path d="M5 19C5 10 10 5 20 4c0 10-4 15-13 15z" fill="#e0a82e"/><path d="M5 19L14 10" stroke="#fff" stroke-width="1.4" fill="none" stroke-linecap="round"/>'],
@@ -906,20 +906,24 @@ function loadCats(){let l=null;try{l=JSON.parse(LS("rcg"))}catch(e){dbg(e)}if(!A
  const seen=new Set();l=l.filter(x=>x&&typeof x.id==="string"&&x.id&&typeof x.n==="string"&&x.n.trim()&&!seen.has(x.id)&&seen.add(x.id)).map(x=>({id:x.id,n:x.n.trim().slice(0,30),f:x.f?1:0}));
  if(!l.some(x=>x.id==="altele"))l.push({id:"altele",n:"Altele",f:0});l.sort((a,b)=>(a.id==="altele")-(b.id==="altele"));
  CATS=l.map(x=>[x.id,x.n]);FCAT=l.filter(x=>x.f).map(x=>x.id);return l}
+/* 4.3.0: valorile implicite corectate (Carne cu marcaje, Cereale fara) si categoria noua Leguminoase, cu marcaje. Cine si-a salvat deja categoriile primeste doar categoria noua, o singura data; bifele lui raman. */
+try{if(!localStorage.getItem("rcgv")){const raw=localStorage.getItem("rcg");if(raw){const l=JSON.parse(raw);if(Array.isArray(l)&&!l.some(x=>x&&x.id==="leguminoase")){const i=l.findIndex(x=>x&&x.id==="altele");l.splice(i<0?l.length:i,0,{id:"leguminoase",n:"Leguminoase",f:1});LS("rcg",JSON.stringify(l))}}localStorage.setItem("rcgv","1")}}catch(e){dbg(e)}
 loadCats();
 const CATKW={
+ leguminoase:"fasole linte naut bob soia edamame lupin",
  condimente:"sare piper boia cimbru cimbrisor oregano busuioc tarhon dafin nucsoara scortisoara vanilie rozmarin chimen ghimbir turmeric curcuma paprika ienibahar mustar patrunjel marar leustean menta salvie cuisoare coriandru fenicul",
  lactate:"lapte iaurt branza smantana unt telemea cascaval mozzarella parmezan kefir urda mascarpone ricotta cheddar brie gorgonzola lapte frisca",
  carne:"pui piept pulpa pulpe curcan vita porc miel carne carnat carnati sunca bacon cabanos salam crenvurst crenvursti peste somon ton cod macrou pastrav crap creveti calamar fileu ficat inima slanina costita costite mici muschi ciolan aripioare",
  fructe:"mar mere para pere banana banane portocal portocale lamaie lamai lime grapefruit mandarin mandarine clementin capsun capsuni zmeura afin afine visin visine cires cirese piersic piersici caisa caise prun prune struguri strugure pepene kiwi ananas mango avocado rodie smochin smochine curmal curmale stafid stafide fruct fructe",
- cereale:"orez paste spaghete penne fusilli gris malai mamaliga ovaz fulgi quinoa bulgur cuscus grau secara orz mei hrisca faina pesmet paine fasole linte naut cereale musli granola amidon",
+ cereale:"orez paste spaghete penne fusilli gris malai mamaliga ovaz fulgi quinoa bulgur cuscus grau secara orz mei hrisca faina pesmet paine cereale musli granola amidon arpacas",
  legume:"morcov morcovi cartof cartofi ceapa usturoi rosie rosii tomate castravete castraveti ardei varza vinete vanata dovlecel dovleci dovleac broccoli conopida spanac salata mazare sfecla telina pastarnac ridiche ridichi praz ciuperci ciuperca porumb kale andive rucola sparanghel masline legume ghiveci"};
 function guessCat(name){const t=norm(String(name||"").replace(/\([^)]*\)/g," ")).split(/[^a-z0-9]+/).filter(Boolean);
  const has=c=>CATS.some(x=>x[0]===c);if(t.some(w=>["ulei","otet"].includes(w)))return"altele";
  if(t.some(w=>["arahide","alune","migdale","nuca","nuci","fistic","tahini","seminte","susan","chia","caju"].includes(w)))return"altele";
  if(t.some(w=>["ou","oua","ouale","galbenus","galbenusuri","albus","albusuri"].includes(w)))return has("lactate")?"lactate":"altele";
  if(t.some(w=>w==="paste"||w==="pasta")&&t.some(w=>/^(rosi|tomat)/.test(w)))return has("legume")?"legume":"altele";
- for(const c of ["condimente","lactate","carne","fructe","cereale","legume"]){if(!has(c))continue;const kw=CATKW[c].split(" ");if(t.some(w=>kw.some(k=>w===k||(k.length>=5&&w.startsWith(k)))))return c}return"altele"}
+ if(t.includes("fasole")&&t.includes("verde"))return has("legume")?"legume":"altele"; /* fasolea verde e leguma, nu leguminoasa uscata */
+ for(const c of ["condimente","lactate","carne","fructe","leguminoase","cereale","legume"]){if(!has(c))continue;const kw=CATKW[c].split(" ");if(t.some(w=>kw.some(k=>w===k||(k.length>=5&&w.startsWith(k)))))return c}return"altele"}
 /* categoria unui aliment: alegerea ta din Setari -> Alimente (rcat) sau potrivirea automata */
 const cn=n=>norm(String(n||"").replace(/\([^)]*\)/g," ").replace(/\s+/g," ").trim());
 const getCats=()=>{try{const j=JSON.parse(LS("rcat")||"[]");return Array.isArray(j)?j.filter(x=>x&&typeof x.n==="string"&&CATS.some(c=>c[0]===x.c)):[]}catch(e){return[]}};
@@ -1103,7 +1107,7 @@ function drawList(){listDedupe();const l=getList(),pan=getPan().length,vis=l.map
  else if(GRP)body=CATS.map(([id,lab])=>{const g=vis.filter(([x])=>catOf(x.n)===id);return g.length?`<h3 class="lgh">${esc(lab)}</h3>`+g.map(rowH).join(""):""}).join("");
  else body=vis.map(rowH).join("");
  const bn=LBN?`<div class="lbn"><span>Adaugat din meniu (${esc(LBN.label)}): <b>${LBN.n}</b> produse noi din ${LBN.r} retete${np?` (${np} ascunse, le ai in debara)`:""}${LBN.sk?` (${LBN.sk} fara ingrediente)`:""}${LBN.old?`; ${LBN.old} erau deja adaugate`:""}.</span><button class="alt" data-lbk="1">Inapoi la meniu</button><button class="alt" data-lbx="1" aria-label="Inchide">&times;</button></div>`:"";
- $("#ll").innerHTML=bn+`<div class="row ladd"><input id="lAddI" maxlength="120" placeholder="Adauga produs, ex: 2 l lapte, paine" aria-label="Produs nou in lista" autocomplete="off"><button class="go" id="lAddB">Adauga</button></div>`+(l.length?`<div class="row mseg lseg"><button class="alt${LV==="p"?" on":""}" data-lv="p">Pe produse</button><button class="alt${LV==="r"?" on":""}" data-lv="r">Pe retete</button></div><div class="row lact"><button class="alt" id="lCp">Copiaza lista</button>${canShare()?`<button class="alt" id="lSh">Trimite lista</button>`:""}<button class="alt" id="lDn">Sterge bifate</button><button class="alt" id="lAll">Goleste lista</button></div>
+ $("#ll").innerHTML=bn+`<div class="row ladd"><input id="lAddI" maxlength="120" placeholder="Adauga produs, ex: 2 l lapte, paine" aria-label="Produs nou in lista" autocomplete="off"><button class="go" id="lAddB">Adauga</button></div>`+(l.length?`<div class="row mseg lseg"><button class="alt${LV==="p"?" on":""}" data-lv="p">Pe produse</button><button class="alt${LV==="r"?" on":""}" data-lv="r">Pe retete</button></div><div class="row lact"><button class="alt" id="lCp">Copiaza lista</button>${canShare()?`<button class="alt" id="lSh">Trimite lista</button>`:`<button class="alt" id="lWa">Trimite pe WhatsApp</button>`}<button class="alt" id="lDn">Sterge bifate</button><button class="alt" id="lAll">Goleste lista</button></div>
  <label style="font-weight:400;margin:2px 0;display:flex;align-items:center;gap:8px"><input type="checkbox" id="lHp" class="wauto" ${HP?"checked":""}> Ascunde produsele din debara${pan?"":" (debaraua e goala)"}${np?" - "+np+" ascunse":""}</label><div id="lmsg" class="muted"></div>`:"")+body}
 $("#ll").onchange=e=>{const d=e.target.dataset; if(e.target.id==="lHp"){HP=e.target.checked;PE=null;drawList();navCount();return}
  
@@ -1122,6 +1126,8 @@ $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
  if(d.lx!==undefined){const l=getList(),ix=lIx(l,d,+d.lx);if(ix<0){lStale();return}const u=undoMark(["rl"]),nm=(l[ix]||{}).n;l.splice(ix,1);putList(l);navCount();drawList();undoShow("Scos din lista: "+nm+".",u,redrawAll);return}
  if(id==="lAddB"){lAdd();return}
  if(id==="lSh"){const t=listTxt();if(!t){$("#lmsg").textContent="Nu ai nimic de trimis.";return}navigator.share({title:"Lista de cumparaturi",text:t}).catch(()=>{});return}
+ /* 4.3.0: pe calculator (fara meniul de trimitere al telefonului) lista se deschide direct in WhatsApp */
+ if(id==="lWa"){const t=listTxt();if(!t){$("#lmsg").textContent="Nu ai nimic de trimis.";return}window.open("https://wa.me/?text="+encodeURIComponent("Lista de cumparaturi\n"+t),"_blank","noopener");return}
  if(id==="lCp"){const t=listTxt(),m=$("#lmsg");
   const ok=()=>{m.textContent="Copiat. Poti lipi lista oriunde."};
   const manual=()=>{m.innerHTML='Nu pot copia automat in acest browser. Textul e selectat mai jos: apasa Ctrl+C (sau tine apasat si alege Copiaza).<textarea id="lTa" readonly rows="'+Math.min(12,t.split("\n").length+1)+'" style="width:100%;margin-top:6px"></textarea>';const ta=$("#lTa");ta.value=t;ta.focus();ta.select()};
@@ -1529,7 +1535,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="4.2.0";
+const APP_V="4.3.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){

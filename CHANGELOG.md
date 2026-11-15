@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.3.0
+- Debara, categorii implicite corectate: Carne are marcaje (proaspat, congelat, uscat, conserva, altceva), Cereale nu mai are. Categorie noua, Leguminoase, cu marcaje: fasolea, lintea, nautul, bobul si soia se incadreaza acolo automat (fasolea verde ramane la Legume). Cine si-a salvat deja categoriile primeste doar categoria noua, o singura data; bifele lui raman, iar daca o sterge nu revine.
+- Ghid nutritie > Gatire: tema noua "Leguminoase si cereale uscate" (fasole, linte, naut, mazare, grau, orz): inmuiere, timpi de fierbere orientativi, siguranta la fasolea rosie si alba (clocot cel putin 10 minute, nu direct la slow cooker), sare / acid / bicarbonat, cat iese din 100 g uscate si cum transformi o reteta scrisa cu conserve, pastrare si congelare.
+- Cumparaturi: pe calculator, unde nu exista meniul de trimitere al telefonului, apare butonul "Trimite pe WhatsApp", care deschide WhatsApp cu lista. Pe telefon ramane "Trimite lista" (WhatsApp e printre aplicatiile din meniul telefonului), iar "Copiaza lista" merge peste tot.
+- Teste: `teste/test_4_3_0.js` (8 verificari).
+
 ## 4.2.0
 - Timp total si dificultate pe fiecare reteta. Cele 760 de retete livrate au acum `timp` (minute) si `dif` (usor / mediu); apar pe card si in reteta ("aprox. 35 min", "usor"). Sunt estimari automate, de aceea "aprox.": timpul se aduna din minutele scrise in pasi plus cateva minute de pregatire, dificultatea vine din numarul de pasi, de ingrediente si din tehnici. In "Corecteaza reteta" sunt doua campuri noi, Timp total si Dificultate; ce scrii tu are prioritate si nu mai e marcat "aprox.". Retetele fara aceste campuri (scrise de tine, generate, carti incarcate de mana) sunt estimate la afisare, cu aceeasi regula. Cu regula actuala nicio reteta livrata nu iese "avansat".
 - Deserturi rapide: "Timp activ: N minute" nu mai e text in sfaturi, e camp (`activ`) si apare langa timpul total ("aprox. 35 min, 5 min activ").
