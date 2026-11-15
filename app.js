@@ -44,7 +44,7 @@ let cur=null,mode="pasi",SV=null,SVP=0;const RC={};
 /* ===== ETICHETE (lista centrala, normalizare, cautare) ===== */
 const dn=s=>String(s==null?"":s).normalize("NFD").replace(/[\u0300-\u036f]/g,"");const ed=x=>esc(dn(x));
 const norm=s=>String(s||"").toLowerCase().replace(/(\w)\u00ee(?=\w)/g,"$1a").normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-const TDEF=[{n:"traditional romanesc",t:"bucatarie"},{n:"asiatic",t:"bucatarie"},{n:"vegan",t:"dieta"},{n:"vegetarian",t:"dieta"},{n:"high-protein",t:"dieta",auto:"protein"},{n:"keto",t:"dieta",auto:"keto"},{n:"gluten-free",t:"dieta",auto:"gluten"},{n:"meal-prep",t:"metoda"},{n:"air fryer",t:"metoda"},{n:"one pot",t:"metoda"}];
+const TDEF=[{n:"traditional romanesc",t:"bucatarie"},{n:"asiatic",t:"bucatarie"},{n:"vegan",t:"dieta"},{n:"vegetarian",t:"dieta"},{n:"high-protein",t:"dieta",auto:"protein"},{n:"keto",t:"dieta",auto:"keto"},{n:"gluten-free",t:"dieta",auto:"gluten"},{n:"meal-prep",t:"metoda"},{n:"air fryer",t:"metoda"},{n:"one pot",t:"metoda"},{n:"high-volume",t:"dieta"}];
 let TAGS;try{TAGS=JSON.parse(LS("rtags"))}catch(e){dbg(e)}if(!Array.isArray(TAGS)||!TAGS.length)TAGS=JSON.parse(JSON.stringify(TDEF));
 const saveTags=()=>LS("rtags",JSON.stringify(TAGS));
 /* 3.18.0: etichete noi (meal-prep, air fryer, one pot) adaugate o singura data la cei care au deja lista salvata; h=1 inseamna ascunsa (nu apare in filtre, carduri, alegere la generare; retetele o pastreaza) */
@@ -53,6 +53,8 @@ try{if(!localStorage.getItem("rtv")){["meal-prep","air fryer","one pot"].forEach
 try{if(!localStorage.getItem("rtv2")){TAGS.forEach(t=>{if(["meal-prep","air fryer","one pot"].includes(norm(t.n))&&t.t==="dieta")t.t="metoda"});
  const g=TAGS.find(t=>/^(gluten-free|fara gluten)$/.test(norm(t.n)));if(g)g.auto="gluten";else TAGS.push({n:"gluten-free",t:"dieta",auto:"gluten"});
  localStorage.setItem("rtags",JSON.stringify(TAGS));localStorage.setItem("rtv2","1")}}catch(e){dbg(e)}
+/* 4.8.0, o singura data: eticheta high-volume (portii mari, calorii putine) adaugata la cine are deja lista de etichete */
+try{if(!localStorage.getItem("rtv3")){if(!TAGS.some(t=>norm(t.n)==="high-volume"))TAGS.push({n:"high-volume",t:"dieta"});localStorage.setItem("rtags",JSON.stringify(TAGS));localStorage.setItem("rtv3","1")}}catch(e){dbg(e)}
 const hidT=()=>new Set(TAGS.filter(t=>t.h).map(t=>t.n));
 const tagShown=a=>{const h=hidT();return a.filter(n=>!h.has(n))};
 const tagNames=()=>TAGS.map(t=>t.n);
@@ -1580,7 +1582,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="4.7.1";
+const APP_V="4.8.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){

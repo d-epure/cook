@@ -3,9 +3,9 @@ const {boot,eq,done,dir,fs}=require("./_boot.js");
 (async()=>{
  const names=["getStored","BOOK","shipRun","shUnmod","bKey"];
  let w=await boot({},{names}),T=w.__t,B=T.BOOK;
- const af=B.filter(r=>(r.etichete||[]).includes("air fryer"));
+ const af=B.filter(r=>r.sursa!=="Retete high-volume"&&(r.etichete||[]).includes("air fryer"));
  const tot=JSON.parse(fs.readFileSync(dir+"/carti.json","utf8")).carti.reduce((a,b)=>a+b.n,0);
- eq([B.length,af.length,new Set(B.map(T.bKey)).size===B.length,new Set(B.map(r=>r.titlu)).size===B.length],[tot,50,true,true],"toate retetele livrate, 50 la air fryer, fara chei sau titluri dublate");
+ eq([B.length,af.length,new Set(B.map(T.bKey)).size===B.length,new Set(B.map(r=>r.titlu)).size===B.length],[tot,50,true,true],"toate retetele livrate, 50 la air fryer (fara cartea high-volume), fara chei sau titluri dublate");
  const nou=B.filter(r=>r.capitol==="Air fryer");
  eq([nou.length,nou.every(r=>+r.timp>0&&r.dif&&r.macro&&r.macro.kcal>0&&/ din /.test(r.macro.acoperire)&&r.macro.acoperire.split(" din ")[0]===r.macro.acoperire.split(" din ")[1]),nou.every(r=>(r.sfaturi||[]).length>=2&&(r.pasi_carte||[]).length>=3)],[36,true,true],"retetele noi au timp, dificultate, macro complet, pasi si sfaturi");
  eq(nou.filter(r=>r.etichete.includes("vegan")).every(r=>r.etichete.includes("vegetarian")&&!/\b(miere|ou|oua|iaurt|branza|parmezan|feta|mozzarella)\b/.test(r.ingrediente.map(i=>i.n).join(" "))),true,"cele vegane sunt si vegetariene si nu au produse animale");

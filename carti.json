@@ -29,6 +29,12 @@
    "f": "carti/supe_ciorbe_keto.json",
    "v": 2,
    "n": 300
+  },
+  {
+   "sursa": "Retete high-volume",
+   "f": "carti/retete_high_volume.json",
+   "v": 1,
+   "n": 100
   }
  ]
 }

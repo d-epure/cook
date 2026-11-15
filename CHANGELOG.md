@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.8.0
+- Carte noua, **Retete high-volume**: 100 de retete cu portii mari si calorii putine (supe, salate si boluri, cuptor si air fryer, paste si orez cu legume multe, one pot, mic dejun, deserturi usoare, wrap-uri). Fiecare portie are cel mult 500 kcal si cel mult circa 1,1 kcal pe gram dupa gatire (greutate estimata: cerealele si pastele isi dubleaza-tripleaza greutatea, carnea pierde un sfert); mesele principale au in general 350-500 kcal si cel putin 22 g proteine. Macro e calculat cu baza Info, ca la celelalte carti. Fiecare reteta are varianta pereche (vegetariana, cu carne sau vegana), cu macro recalculat in sfaturi, si o linie despre volumul portiei.
+- Eticheta noua **high-volume** (tip dieta), adaugata o singura data si la cei care au deja lista de etichete; se poate ascunde din Setari, ca celelalte.
+- Gatire: tema noua **Volum mare, calorii putine** (ce umple farfuria, trucuri de gatit, cum citesti volumul portiei, cand nu e potrivit), cu valori din Info.
+- Retetele sunt scrise din cunostinte culinare generale, nu au fost gatite si verificate; timpii si cantitatile se pot corecta din "Corecteaza reteta".
+
 ## 4.7.1
 - Meniu: aceeasi reteta nu mai poate fi adaugata de doua ori la aceeasi masa (primesti un mesaj); la pranz si la cina poate fi aceeasi reteta. Dublurile vechi se aduna intr-una la pornire, la restaurare si la sincronizare, cu un mesaj.
 - Cumparaturi: produsele unei mese scoase din meniu pleaca singure din lista (la pornire si la deschiderea listei). Un mesaj spune cate produse si care au plecat. La scoaterea unei retete pleaca si produsele ei bifate (inainte ramaneau orfane). Cand nu mai ai nimic de cumparat apare mesajul verde "Nu mai ai nimic de cumparat", fara comutatorul de debara, fara contorul "ascunse" si fara butoanele Copiaza, Trimite si Sterge bifate; daca au ramas produse bifate, ramane doar "Goleste lista". Lista goala arata doar campul de adaugare.
