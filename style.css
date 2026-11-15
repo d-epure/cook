@@ -476,3 +476,11 @@ button{min-height:var(--h-n)}
 
 /* 3.16.0: lista de dubluri */
 .dupr{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);font-weight:400}.dupr input{flex:none;width:auto;margin-top:3px}.dupr>span{min-width:0}
+/* 4.2.0: pilule rapide in Biblioteca */
+.bpl{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.bpill{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-p);padding:5px 12px;min-height:var(--h-n);font:inherit;font-size:var(--fs-s);font-weight:600;cursor:pointer;margin:0;width:auto}
+.bpill.on{background:var(--soft);border:2px solid var(--pri);padding:4px 11px}
+/* 4.2.0: fara cheie API, ce cheama modelul nu se vede */
+body.nokey [data-ai],body.nokey .aileg,body.nokey .adphint{display:none!important}
+body.nokey #v-idei>.card:not(#nokey){display:none}
+body:not(.nokey) #nokey{display:none}

@@ -2,6 +2,31 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.2.0
+- Timp total si dificultate pe fiecare reteta. Cele 760 de retete livrate au acum `timp` (minute) si `dif` (usor / mediu); apar pe card si in reteta ("aprox. 35 min", "usor"). Sunt estimari automate, de aceea "aprox.": timpul se aduna din minutele scrise in pasi plus cateva minute de pregatire, dificultatea vine din numarul de pasi, de ingrediente si din tehnici. In "Corecteaza reteta" sunt doua campuri noi, Timp total si Dificultate; ce scrii tu are prioritate si nu mai e marcat "aprox.". Retetele fara aceste campuri (scrise de tine, generate, carti incarcate de mana) sunt estimate la afisare, cu aceeasi regula. Cu regula actuala nicio reteta livrata nu iese "avansat".
+- Deserturi rapide: "Timp activ: N minute" nu mai e text in sfaturi, e camp (`activ`) si apare langa timpul total ("aprox. 35 min, 5 min activ").
+- Biblioteca: pilule rapide sub cautare - Mic dejun, Pranz / Cina, Desert, Sub 30 min, Am tot in debara, Favorite. Se combina intre ele si cu filtrele. "Am tot in debara" si "Favorite" apasa pe filtrele existente (Din debara, Carte), deci nu exista doua stari pentru acelasi lucru; cu "Am tot in debara" retetele raman sortate dupa cate ingrediente lipsesc.
+- Aplicatia fara cheie API: tot ce cheama modelul (butoanele cu AI, legenda, adaptarea la aparate, estimarea de macro) e ascuns pana adaugi o cheie. Pagina Idei arata o singura caseta cu "Deschide Biblioteca" si "Adauga o cheie", iar aplicatia porneste in Biblioteca. "Primii pasi" a devenit "Primul pas": doar debaraua (cheia nu mai e ceruta, cartile vin singure).
+- Cumparaturi: "Sterge bifate" si "Goleste lista" sunt la vedere, nu sub "Mai multe". Sugestie de ambalaj langa cantitate ("870 g Faina - cumperi 1 kg") pentru cateva produse vandute la marime fixa: faina, zahar, orez, malai, gris, paste, lapte, unt, smantana, rosii conserva, lapte de cocos. Cantitatea din lista ramane cea exacta.
+- Cartile livrate sunt la versiunea 2 (campurile noi); retetele neschimbate de tine se actualizeaza singure la prima deschidere.
+- Teste in repo, toate pe date inventate: `teste/test_cumparaturi_meniu_id.js` (31 verificari), `teste/test_carti.js` (11), `teste/test_4_1_1.js` (17), `teste/test_4_2_0.js` (22); ajutor comun in `teste/_boot.js`.
+- Cod: `stepMin`, `recT`, `recD`, `recTEst`, `recDEst`, `tChips`, `bplDraw`, `bplOk`, `keyUpd`, `packTxt`, `PACK`.
+
+## 4.1.1
+Corectii dupa auditul de calitate (securitate, cazuri limita, performanta).
+- Securitate: `index.html` are Content-Security-Policy (scripturi doar din aplicatie; conexiuni doar catre aplicatie, Anthropic si Dropbox). `esc` escapeaza si apostroful. Service worker-ul are cache propriu ("cook-") si sterge doar cache-urile acestei aplicatii, nu orice cache "retete-" de pe aceeasi adresa. La restaurare, backup-ul e verificat si ca structura (lista unde trebuie lista, obiect unde trebuie obiect).
+- Cumparaturi si Colectia mea: butoanele (bifa, x, "Am in debara", Deschide, Sterge) cauta produsul sau reteta dupa cheie, nu dupa pozitia din lista. Daca lista s-a schimbat intre timp, nu mai e atins alt rand; daca randul a disparut, lista se redeseneaza cu un mesaj.
+- Doua taburi: cand alt tab al aplicatiei schimba datele, listele se redeseneaza singure (nu in timp ce scrii sau ai un dialog deschis). Pentru setarile tinute in memorie (etichete, aparate, categorii, profil) apare mesajul "Reincarca pagina".
+- Anuleaza: daca datele s-au schimbat intre actiune si apasarea pe Anuleaza (alt tab, sincronizare), anularea e refuzata cu mesaj, in loc sa scrie peste ele.
+- Retete salvate, limita de 200: se sterg cele mai vechi nefolosite; favoritele si cele din meniu sau din Meal prep raman. Mesajul apare si la "Propune-mi un meniu" (inainte taia fara mesaj).
+- Portii: mereu numere intregi intre 1 si 99. Avertismentul "Gatesti de N ori reteta" apare si la "Gatesc pentru", nu doar la Meal prep.
+- Cartile aplicatiei: daca nu se pot descarca la prima deschidere apare un mesaj, iar instalarea se reincearca singura cand revine internetul.
+- Fara internet bun: daca reteaua nu raspunde in 4 secunde, aplicatia porneste din copia salvata.
+- Performanta: cautarea din Biblioteca asteapta 180 ms dupa ultima tasta; la macro-ul zilei, reteta fiecarei mese se cauta o singura data (inainte de pana la cinci ori).
+- Cod: o singura lista cu cheile de date (`DKEYS`, din care se deduc `LSK` si `BK_KEYS`); cele 74 de blocuri `catch` goale scriu acum eroarea in consola daca pui in localStorage cheia `rdebug` = "1"; numele fisierului de backup foloseste data locala.
+- Teste in repo: `teste/test_4_1_1.js` (18 verificari cu date inventate; cum se ruleaza scrie in fisier).
+- Nefacut, cu motiv: fontul ramane de la Google Fonts; cheile din localStorage nu au prefix (celelalte aplicatii de pe aceeasi adresa folosesc alte chei); impartirea codului pe module, o singura structura pentru ingrediente, un registru de migrari si scrierea partiala a bibliotecii raman pentru o versiune dedicata.
+
 ## 4.1.0
 - Cartile de baza vin acum cu aplicatia: Retete vegetariene (170), Retete cu carne (60), Deserturi rapide (30), Retete keto (200), Supe si ciorbe keto (300). Fisierele stau in folderul `carti/`, iar `carti.json` spune ce carti exista si ce versiune are fiecare. La prima deschidere se instaleaza singure, fara pasul din Setari > Carti. Cand o carte primeste o versiune noua, retetele neschimbate se actualizeaza, cele noi se adauga, iar ce ai corectat, mutat in cos sau sters tu ramane cum ai lasat.
 - Daca aveai deja aceste carti incarcate de mana, retetele neatinse trec pe versiunea livrata (cu corectiile de mai jos); retetele corectate de tine, cele din cos si "Retetele mele" nu se ating. Sursa "Retete keto 2 luni" din fisierul vechi se numeste "Retete keto", ca in aplicatie.

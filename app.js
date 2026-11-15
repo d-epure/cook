@@ -1,3 +1,5 @@
+/* 4.1.1: erorile inghitite pana acum in tacere se vad in consola daca pui in localStorage cheia rdebug = "1" */
+const dbg=e=>{try{if(localStorage.getItem("rdebug")==="1")console.warn(e)}catch(x){/* fara localStorage nu avem unde scrie */}};
 /* Cartea mea de retete - logica aplicatiei (vanilla JS, fara build).
    Datele stau in localStorage: rk cheie API, rm1/rm2b modele, ra aparate, rtags etichete,
    rs retete salvate, rfav favorite, rnote jurnal si notite pe retete, rbook biblioteca incarcata (in IndexedDB; rlib = marcaj in localStorage),
@@ -17,8 +19,10 @@ const ndw=w=>{NDC++;w=w.replace(/^(ne|re|pre|de|dez)\u00ee/i,(m,p)=>p+"i").repla
 const nd=s=>{if(typeof s!=="string")return s;if(/[̧̦̆̂]/.test(s))s=s.normalize("NFC");return ND_RE.test(s)?s.replace(/\p{L}+/gu,w=>ND_RE.test(w)?ndw(w):w):s};
 const ndo=o=>{if(typeof o==="string")return nd(o);if(Array.isArray(o)){for(let i=0;i<o.length;i++){const v=o[i];if(typeof v==="string"){const n=nd(v);if(n!==v)o[i]=n}else if(v&&typeof v==="object")ndo(v)}}
  else if(o&&typeof o==="object"){for(const k of Object.keys(o)){const v=o[k];if(typeof v==="string"){const n=nd(v);if(n!==v)o[k]=n}else if(v&&typeof v==="object")ndo(v)}}return o};
-const LSK=/^(rs|rfav|rtags|ra|rm1|rm2b|rl|rp|rcat|rcg|rmen|rmp|rmt|rnote|rpf|rpxc|rfd|rprof)$/;
-const LS=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(LSK.test(k))v=nd(v);localStorage.setItem(k,v);if(LSK.test(k))syMark(k)}catch(e){if(v!==undefined){try{toast("Nu am putut salva: memoria browserului e plina sau blocata. Descarca o copie de siguranta si sterge ce nu mai folosesti.")}catch(x){}}return null}};
+/* 4.1.1: o singura lista cu cheile de date; din ea se deduc LSK (chei normalizate si sincronizate) si BK_KEYS (backup) */
+const DKEYS=["rs","rfav","rtags","ra","rbook","rm1","rm2b","rl","rp","rcat","rcg","rmen","rmp","rmt","rnote","rpf","rpxc","rfd","rprof"];
+const LSK=new RegExp("^("+DKEYS.filter(k=>k!=="rbook").join("|")+")$");
+const LS=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(LSK.test(k))v=nd(v);localStorage.setItem(k,v);if(LSK.test(k))syMark(k)}catch(e){if(v!==undefined){try{toast("Nu am putut salva: memoria browserului e plina sau blocata. Descarca o copie de siguranta si sterge ce nu mai folosesti.")}catch(x){dbg(x)}}return null}};
 const COL=["#1f9aa8","#b06ccf","#d2703d","#4f9a49","#4f7be8","#c75a7c","#a8975f"];
 const DEF=[
 {id:"MC",nume:"Monsieur Cuisine Smart",on:1,backup:0,strict:1,tmin:37,tmax:130,maxMin:99,maxMl:3000,moduri:"gatit, sotat, abur, framantat, mixat, tocat, sous vide, slow cook, cantarire",note:"taie, toaca, mixeaza, framanta, sosuri, supe-crema; treapta 1-10 sau turbo; sens normal/invers; max 3 l continut"},
@@ -27,24 +31,24 @@ const DEF=[
 {id:"aragaz",nume:"Aragaz pe gaz",on:1,backup:1,moduri:"foc mic, foc mediu, foc mare",note:"tigaie sau oala, fara temperatura exacta"},
 {id:"fierbator",nume:"Fierbator de apa",on:1,backup:1,moduri:"fierbere apa",note:"apa fierbinte rapid"},
 {id:"cuptor",nume:"Cuptor clasic pe gaz",on:1,backup:1,tmin:120,tmax:250,moduri:"copt",note:"temperatura aproximativa, fara ventilator"}];
-let AP;try{AP=JSON.parse(LS("ra"))}catch(e){}if(!Array.isArray(AP)||!AP.length)AP=JSON.parse(JSON.stringify(DEF));
+let AP;try{AP=JSON.parse(LS("ra"))}catch(e){dbg(e)}if(!Array.isArray(AP)||!AP.length)AP=JSON.parse(JSON.stringify(DEF));
 /* migrare: Thermomix adaugat in lista implicita (o singura data, daca lipseste) */
 if(!LS("rdef2")){const k=AP.findIndex(a=>a&&a.id==="Thermomix");if(k>=0){const t=JSON.parse(JSON.stringify(DEF.find(a=>a.id==="Thermomix")));t.on=AP[k].on;AP[k]=t;LS("ra",JSON.stringify(AP))}LS("rdef2","1")}
 if(!LS("rdef1")){if(!AP.some(a=>a&&a.id==="Thermomix")){const t=DEF.find(a=>a.id==="Thermomix"),i=AP.findIndex(a=>a&&a.id==="aragaz");AP.splice(i<0?AP.length:i,0,JSON.parse(JSON.stringify(t)));LS("ra",JSON.stringify(AP))}LS("rdef1","1")}
 const saveAP=()=>LS("ra",JSON.stringify(AP));
 const col=id=>{const i=AP.findIndex(a=>a.id===id);return i<0?"#a8975f":COL[i%COL.length]};
 const tag=id=>`<span class="tag" style="--c:${col(id)}">${esc(id)}</span>`;
-const esc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const esc=t=>String(t==null?"":t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let cur=null,mode="pasi",SV=null,SVP=0;const RC={};
 
 /* ===== ETICHETE (lista centrala, normalizare, cautare) ===== */
 const dn=s=>String(s==null?"":s).normalize("NFD").replace(/[\u0300-\u036f]/g,"");const ed=x=>esc(dn(x));
 const norm=s=>String(s||"").toLowerCase().replace(/(\w)\u00ee(?=\w)/g,"$1a").normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 const TDEF=[{n:"traditional romanesc",t:"bucatarie"},{n:"asiatic",t:"bucatarie"},{n:"vegan",t:"dieta"},{n:"vegetarian",t:"dieta"},{n:"high-protein",t:"dieta",auto:"protein"},{n:"keto",t:"dieta",auto:"keto"},{n:"meal-prep",t:"dieta"},{n:"air fryer",t:"dieta"},{n:"one pot",t:"dieta"}];
-let TAGS;try{TAGS=JSON.parse(LS("rtags"))}catch(e){}if(!Array.isArray(TAGS)||!TAGS.length)TAGS=JSON.parse(JSON.stringify(TDEF));
+let TAGS;try{TAGS=JSON.parse(LS("rtags"))}catch(e){dbg(e)}if(!Array.isArray(TAGS)||!TAGS.length)TAGS=JSON.parse(JSON.stringify(TDEF));
 const saveTags=()=>LS("rtags",JSON.stringify(TAGS));
 /* 3.18.0: etichete noi (meal-prep, air fryer, one pot) adaugate o singura data la cei care au deja lista salvata; h=1 inseamna ascunsa (nu apare in filtre, carduri, alegere la generare; retetele o pastreaza) */
-try{if(!localStorage.getItem("rtv")){["meal-prep","air fryer","one pot"].forEach(n=>{if(!TAGS.some(t=>norm(t.n)===norm(n)))TAGS.push({n,t:"dieta"})});localStorage.setItem("rtags",JSON.stringify(TAGS));localStorage.setItem("rtv","1")}}catch(e){}
+try{if(!localStorage.getItem("rtv")){["meal-prep","air fryer","one pot"].forEach(n=>{if(!TAGS.some(t=>norm(t.n)===norm(n)))TAGS.push({n,t:"dieta"})});localStorage.setItem("rtags",JSON.stringify(TAGS));localStorage.setItem("rtv","1")}}catch(e){dbg(e)}
 const hidT=()=>new Set(TAGS.filter(t=>t.h).map(t=>t.n));
 const tagShown=a=>{const h=hidT();return a.filter(n=>!h.has(n))};
 const tagNames=()=>TAGS.map(t=>t.n);
@@ -78,10 +82,10 @@ function sidRun(){try{let sv=JSON.parse(localStorage.getItem("rs")||"[]");if(!Ar
  if(chs)LS("rs",JSON.stringify(sv));
  const map={};sv.forEach(r=>{if(!r||!r.id)return;const o="salvat|"+r.titlu;if(!Object.prototype.hasOwnProperty.call(map,o))map[o]="salvat|"+r.id});
  const mv=k=>typeof k==="string"&&Object.prototype.hasOwnProperty.call(map,k)?map[k]:k,wr=(key,o,was)=>{const v=JSON.stringify(o);if(v!==was)LS(key,v)};
- try{const was=localStorage.getItem("rfav"),f=JSON.parse(was||"[]");if(Array.isArray(f))wr("rfav",[...new Set(f.map(mv))],was)}catch(e){}
- try{const was=localStorage.getItem("rnote"),j=JSON.parse(was||"{}");if(j&&typeof j==="object"&&!Array.isArray(j)){const o={};Object.keys(j).forEach(k=>{const nk=mv(k);if(!(nk in o)||nk===k)o[nk]=j[k]});wr("rnote",o,was)}}catch(e){}
- try{const was=localStorage.getItem("rmp"),l=JSON.parse(was||"[]");if(Array.isArray(l)){l.forEach(x=>{if(x&&x.s==="s")x.k=mv(x.k)});wr("rmp",l,was)}}catch(e){}
- try{const was=localStorage.getItem("rmen"),m=JSON.parse(was||"{}");if(m&&typeof m==="object"&&!Array.isArray(m)){Object.keys(m).forEach(d=>{const dm=m[d];if(dm&&typeof dm==="object")Object.keys(dm).forEach(sl=>{if(Array.isArray(dm[sl]))dm[sl].forEach(en=>{if(en&&en.s==="s")en.k=mv(en.k)})})});wr("rmen",m,was)}}catch(e){}
+ try{const was=localStorage.getItem("rfav"),f=JSON.parse(was||"[]");if(Array.isArray(f))wr("rfav",[...new Set(f.map(mv))],was)}catch(e){dbg(e)}
+ try{const was=localStorage.getItem("rnote"),j=JSON.parse(was||"{}");if(j&&typeof j==="object"&&!Array.isArray(j)){const o={};Object.keys(j).forEach(k=>{const nk=mv(k);if(!(nk in o)||nk===k)o[nk]=j[k]});wr("rnote",o,was)}}catch(e){dbg(e)}
+ try{const was=localStorage.getItem("rmp"),l=JSON.parse(was||"[]");if(Array.isArray(l)){l.forEach(x=>{if(x&&x.s==="s")x.k=mv(x.k)});wr("rmp",l,was)}}catch(e){dbg(e)}
+ try{const was=localStorage.getItem("rmen"),m=JSON.parse(was||"{}");if(m&&typeof m==="object"&&!Array.isArray(m)){Object.keys(m).forEach(d=>{const dm=m[d];if(dm&&typeof dm==="object")Object.keys(dm).forEach(sl=>{if(Array.isArray(dm[sl]))dm[sl].forEach(en=>{if(en&&en.s==="s")en.k=mv(en.k)})})});wr("rmen",m,was)}}catch(e){dbg(e)}
  return n}catch(e){return 0}}
 /* ajutoare de data (folosite de meniu, jurnal, filtre); definite devreme, ca sa existe la prima randare */
 const ZILE=["Duminica","Luni","Marti","Miercuri","Joi","Vineri","Sambata"],LUNI=["ian","feb","mar","apr","mai","iun","iul","aug","sep","oct","nov","dec"];
@@ -90,7 +94,7 @@ const dFrom=k=>{const[a,b,c]=k.split("-").map(Number);return new Date(a,b-1,c)};
 const dAdd=(k,n)=>{const d=dFrom(k);d.setDate(d.getDate()+n);return dKey(d)};
 const monOf=k=>{const d=dFrom(k);d.setDate(d.getDate()-(d.getDay()+6)%7);return dKey(d)};
 const dLab=k=>{const d=dFrom(k);return ZILE[d.getDay()]+" "+d.getDate()+" "+LUNI[d.getMonth()]};
-const clampP=v=>{v=+v;return isFinite(v)&&v>0?Math.min(99,v):1};
+const clampP=v=>{v=Math.round(+v);return isFinite(v)&&v>0?Math.min(99,v):1}; /* 4.1.1: portii intregi, 1-99 */
 /* ===== Jurnal pe reteta: stele, notite, cand ai gatit-o ===== */
 const getNotes=()=>{try{const j=JSON.parse(LS("rnote")||"{}");return j&&typeof j==="object"&&!Array.isArray(j)?j:{}}catch(e){return{}}};
 const getNote=k=>{const n=getNotes()[k];return n&&typeof n==="object"?n:{}};
@@ -124,6 +128,7 @@ function syncNav(v){const g=groupOf(v);LASTV[g]=v;
  document.querySelectorAll("#gnav button").forEach(b=>{const on=b.dataset.g===g;b.classList.toggle("on",on);b.setAttribute("aria-pressed",String(on))});
  const pv=g==="ret"?GROUPS.ret:INFO.includes(v)?INFO:[];document.querySelectorAll("#nav button").forEach(b=>{b.hidden=!pv.includes(b.dataset.v)});$("#nav").hidden=!pv.length}
 $("#gnav").onclick=e=>{const b=e.target.closest("button[data-g]");if(!b)return;const g=b.dataset.g,v=g==="mai"?"mai":(LASTV[g]||GROUPS[g][0]);if(g==="ret"&&!$("#v-"+v).classList.contains("hidden"))SV=null;show(v);window.scrollTo(0,0)};
+$("#nokey").onclick=e=>{const b=e.target.closest("[data-go]");if(b){show(b.dataset.go);window.scrollTo(0,0)}};
 $("#v-mai").onclick=e=>{const b=e.target.closest("[data-go]");if(!b)return;show(b.dataset.go);if(b.dataset.go==="setari")setHome();window.scrollTo(0,0)};
 $("#nav").onclick=e=>{const v=e.target.dataset.v;if(!v)return;
  if(!$("#v-"+v).classList.contains("hidden")){if(v==="salvate")SV=null;if(v==="carti")drawBook()}
@@ -157,7 +162,7 @@ const RULE="Foloseste aparatele preferate oricand pot face pasul. Aparatele back
 
 /* setari */
 $("#key").value=LS("rk")||"";$("#m1").value=LS("rm1")||"claude-haiku-4-5";$("#m2").value=LS("rm2b")||"claude-haiku-4-5";
-$("#bSet").onclick=()=>{LS("rk",$("#key").value.trim());LS("rm1",$("#m1").value.trim());LS("rm2b",$("#m2").value.trim());$("#bSet").textContent="Salvat";setTimeout(()=>$("#bSet").textContent="Salveaza setarile",1200)};
+$("#bSet").onclick=()=>{LS("rk",$("#key").value.trim());keyUpd();LS("rm1",$("#m1").value.trim());LS("rm2b",$("#m2").value.trim());$("#bSet").textContent="Salvat";setTimeout(()=>$("#bSet").textContent="Salveaza setarile",1200)};
 
 /* API */
 let ABORT=null;
@@ -310,12 +315,16 @@ function renderRecipe(sel){
  ${prev||!ings.length?"":rcNut(ings,base||1)}
  <div class="bsec">${tagPicker(r,"data-tgr",c.kind==="gen"?"Etichete (se salveaza odata cu reteta)":"Etichete",true)}${c.kind!=="gen"?jrHtml(k):""}</div></div>`;
 }
+/* 4.1.1: peste 200 de retete salvate se sterg cele mai vechi nefolosite; favoritele si cele din meniu sau Meal prep raman */
+function svTrim(l){if(l.length<=200)return l;const keep=new Set(getFav());getMP().forEach(x=>keep.add(x.k));const m=getMen();Object.keys(m).forEach(d=>SLOTS.forEach(([s])=>(m[d][s]||[]).forEach(en=>{if(en.k)keep.add(en.k)})));
+ let n=0;for(let i=l.length-1;i>0&&l.length>200;i--){if(!keep.has(sKey(l[i]))){l.splice(i,1);n++}}
+ if(n)toast("Ai peste 200 de retete salvate: "+(n===1?"cea mai veche nefolosita a fost stearsa":"cele mai vechi "+n+" nefolosite au fost sterse")+". Favoritele si cele din meniu raman.");return l}
 function saveGen(btn){const r=JSON.parse(JSON.stringify(cur));r.etichete=normTags(r.etichete);
  let l=getSaved();const ex=l.find(x=>x.titlu===r.titlu);
  if(ex&&JSON.stringify(ex.pasi)!==JSON.stringify(r.pasi)){let n=2,t=r.titlu;while(l.some(x=>x.titlu===t+" ("+n+")"))n++;r.titlu=t+" ("+n+")";r.id=sid()}
  else r.id=ex&&ex.id?ex.id:(r.id||sid()); /* 4.0.0: aceeasi reteta salvata din nou isi pastreaza id-ul */
  l=l.filter(x=>x.id!==r.id);l.unshift(r);
- if(l.length>200){toast("Ai peste 200 de retete salvate: cea mai veche a fost stearsa.");l=l.slice(0,200)}
+ l=svTrim(l);
  LS("rs",JSON.stringify(l));btn.textContent="Salvat"}
 function rcClick(e,sel){const c=RC[sel];if(!c)return false;const d=e.target.dataset;
  if(c.kind!=="gen"&&jrAct(d,sKey(c.r))){renderRecipe(sel);return true}
@@ -346,7 +355,7 @@ function renderSaved(){
  getSaved().forEach((r,i)=>out.push({r,i,t:"s",k:sKey(r)}));
  BOOK.forEach(r=>{if(r.nou)return;const kk=bKey(r);if(!r.cos&&(isFav(kk)||r.sursa==="Retetele mele")||(r.cos&&$("#fk").value==="cos"))out.push({r,t:"b",k:kk})});{const o=$("#fk").querySelector("[value=cos]");if(o)o.textContent="Cos ("+cosN()+")"}
  const l=out.filter(x=>(!f||normTags(x.r.etichete).includes(f))&&(k==="cos"?!!x.r.cos:k==="fav"?isFav(x.k):k==="ai"?x.t==="s":k==="mine"?(x.t==="b"&&x.r.sursa==="Retetele mele"):true));
- $("#salvate").innerHTML=(k==="cos"&&l.length?`<div class="card"><p class="muted mt0 mb8" >${l.length} ${l.length===1?"reteta":"retete"} in cos. Nu apar in cautare, meniu si propuneri. Restaurezi sau stergi definitiv (se pierd si jurnalul, notitele si steaua).</p><button class="alt" data-cclr="1">Goleste cosul</button></div>`:"")+(l.length?l.map(x=>{const r=x.r,s=x.t==="s";return `<div class="card sc"><h2>${ed(r.titlu)}</h2>${s?`<div class="muted org">Generata de AI</div>`:srcLine(r)}${(()=>{const r1=s?[...new Set((r.pasi||[]).map(p=>p.aparat))].map(tag).join(""):(r.categorie&&r.categorie!=="Retetele mele"?`<span class="lb catb">${esc(r.categorie)}</span>`:""),r2=s?lbH(r.etichete):bLab(r).map(t=>`<span class="lb">${esc(t)}</span>`).join("");return(r1?`<div class="chips">${r1}</div>`:"")+(r2?`<div class="chips">${r2}</div>`:"")})()}${jrLine(x.k)}${s?`<button class="alt" data-o="${x.i}">Deschide</button>`:`<button class="alt" data-bo="${esc(x.k)}">Deschide</button>`}${r.cos?` <button class="go" data-crest="${esc(x.k)}">Restaureaza</button> <button class="alt" data-cdel="${esc(x.k)}">Sterge definitiv</button>`:` ${favBtn(x.k)}`}${s?` <button class="alt" data-d="${x.i}">Sterge</button>`:""}</div>`}).join(""):(k==="cos"?'<p class="muted">Cosul e gol.</p>':'<p class="muted">Nu ai retete de afisat. Salveaza o idee, pune o stea unei retete din biblioteca sau scrie una a ta.</p>'));
+ $("#salvate").innerHTML=(k==="cos"&&l.length?`<div class="card"><p class="muted mt0 mb8" >${l.length} ${l.length===1?"reteta":"retete"} in cos. Nu apar in cautare, meniu si propuneri. Restaurezi sau stergi definitiv (se pierd si jurnalul, notitele si steaua).</p><button class="alt" data-cclr="1">Goleste cosul</button></div>`:"")+(l.length?l.map(x=>{const r=x.r,s=x.t==="s";return `<div class="card sc"><h2>${ed(r.titlu)}</h2>${s?`<div class="muted org">Generata de AI</div>`:srcLine(r)}${(()=>{const r1=s?[...new Set((r.pasi||[]).map(p=>p.aparat))].map(tag).join(""):(r.categorie&&r.categorie!=="Retetele mele"?`<span class="lb catb">${esc(r.categorie)}</span>`:""),r2=s?lbH(r.etichete):bLab(r).map(t=>`<span class="lb">${esc(t)}</span>`).join("");return(r1?`<div class="chips">${r1}</div>`:"")+(r2?`<div class="chips">${r2}</div>`:"")})()}${jrLine(x.k)}${s?`<button class="alt" data-o="${x.i}" data-sk="${esc(x.k)}">Deschide</button>`:`<button class="alt" data-bo="${esc(x.k)}">Deschide</button>`}${r.cos?` <button class="go" data-crest="${esc(x.k)}">Restaureaza</button> <button class="alt" data-cdel="${esc(x.k)}">Sterge definitiv</button>`:` ${favBtn(x.k)}`}${s?` <button class="alt" data-d="${x.i}" data-sk="${esc(x.k)}">Sterge</button>`:""}</div>`}).join(""):(k==="cos"?'<p class="muted">Cosul e gol.</p>':'<p class="muted">Nu ai retete de afisat. Salveaza o idee, pune o stea unei retete din biblioteca sau scrie una a ta.</p>'));
 }
 $("#fs").onchange=renderSaved;$("#fk").onchange=renderSaved;
 $("#salvate").onclick=e=>{if(rcClick(e,"#salvate")||bvClick(e,"#salvate"))return;const l=getSaved(),d=e.target.dataset;
@@ -355,8 +364,8 @@ $("#salvate").onclick=e=>{if(rcClick(e,"#salvate")||bvClick(e,"#salvate"))return
  if(d.cclr!==undefined){const rs=BOOK.filter(x=>x.cos);if(rs.length)cosAsk(e.target,()=>cosDelete(rs,renderSaved),"Sterg "+rs.length+" definitiv?");return}
  if(d.fav!==undefined){favT(d.fav,renderSaved);return}
  if(d.bo!==undefined){const i=BOOK.findIndex(x=>bKey(x)===d.bo);if(i>=0){SV=d.bo;SVP=BOOK[i].portii;renderSaved();window.scrollTo(0,0)}return}
- if(d.o!==undefined){const r=l[d.o];if(r){SV=sKey(r);renderSaved();window.scrollTo(0,0)}}
- if(d.d!==undefined){const u=undoMark(["rs"]),t=(l[d.d]||{}).titlu||"reteta";l.splice(d.d,1);LS("rs",JSON.stringify(l));renderSaved();undoShow("Reteta stearsa: "+t+".",u,()=>{SV=null;renderSaved()})}};
+ if(d.o!==undefined){const r=d.sk!==undefined?l.find(x=>sKey(x)===d.sk):l[d.o];if(r){SV=sKey(r);renderSaved();window.scrollTo(0,0)}else renderSaved()}
+ if(d.d!==undefined){const ix=d.sk!==undefined?l.findIndex(x=>sKey(x)===d.sk):+d.d;if(ix<0||!l[ix]){renderSaved();return}const u=undoMark(["rs"]),t=l[ix].titlu||"reteta";l.splice(ix,1);LS("rs",JSON.stringify(l));renderSaved();undoShow("Reteta stearsa: "+t+".",u,()=>{SV=null;renderSaved()})}};
 $("#salvate").onchange=e=>{rcChange(e,"#salvate")||bvChange(e,"#salvate")};
 const lbH=a=>tagShown(normTags(a)).map(x=>`<span class="lb">${esc(x)}</span>`).join("");
 function lblRule(){const s=[...document.querySelectorAll("#lbbox input:checked")].map(i=>i.value),isC=n=>{const t=TAGS.find(x=>x.n===n);return t&&t.t==="bucatarie"},c=s.filter(isC),d=s.filter(x=>!isC(x));
@@ -364,7 +373,7 @@ function lblRule(){const s=[...document.querySelectorAll("#lbbox input:checked")
 function renderTagUI(){
  const sel=new Set([...document.querySelectorAll("#lbbox input:checked")].map(i=>i.value));
  $("#lbbox").innerHTML=TAGS.filter(t=>!t.h).map(t=>`<label><input type="checkbox" value="${esc(t.n)}" ${sel.has(t.n)?"checked":""}>${esc(t.n)}</label>`).join("");
- ["#fs"].forEach(s=>{const el=$(s),v=el.value;el.innerHTML='<option value="">Toate</option>'+TAGS.filter(t=>!t.h).map(t=>`<option>${esc(t.n)}</option>`).join("");el.value=tagNames().includes(v)?v:""});try{drawBook()}catch(e){}}
+ ["#fs"].forEach(s=>{const el=$(s),v=el.value;el.innerHTML='<option value="">Toate</option>'+TAGS.filter(t=>!t.h).map(t=>`<option>${esc(t.n)}</option>`).join("");el.value=tagNames().includes(v)?v:""});try{drawBook()}catch(e){dbg(e)}}
 function renderTagCfg(){
  $("#tgl").innerHTML=TAGS.map((t,i)=>`<div class="apr"><input data-tn="${i}" value="${esc(t.n)}" aria-label="Nume eticheta" style="flex:1;min-width:0"><select data-tt="${i}" aria-label="Tip" class="wauto"><option value="bucatarie"${t.t==="bucatarie"?" selected":""}>bucatarie</option><option value="dieta"${t.t!=="bucatarie"?" selected":""}>dieta</option></select><label class="muted"><input type="checkbox" data-th="${i}"${t.h?"":" checked"}> Afiseaza</label><button class="alt" data-tx="${i}">Sterge</button></div>`).join("")+
  `<p class="muted">Bucatarie: alternative la generarea ideilor (romanesc sau asiatic). Dieta: se aplica toate odata (vegan si keto). Afiseaza: debifeaza o eticheta ca sa nu mai apara in filtre, pe carduri si la alegerea ideilor (retetele o pastreaza). Redenumirea sau stergerea se aplica in toate retetele: idei, salvate si biblioteca.</p>
@@ -420,11 +429,36 @@ function cosAsk(btn,go,lab){const w=document.createElement("span");w.className="
  w.querySelector(".cx").onclick=ev=>{ev.stopPropagation();w.remove();btn.hidden=false};w.querySelector(".cv").onclick=ev=>{ev.stopPropagation();w.remove();btn.hidden=false;go()}}
 function cosDelete(rs,redraw){const keys=rs.map(bKey),u=undoMark(["rfav","rnote"]),old=getStored().slice();
  const st=getStored().filter(x=>!keys.includes(bKey(x)));saveStored(st);BOOK=st.length?st:BOOK0;
- try{const f=getFav().filter(k=>!keys.includes(k));LS("rfav",JSON.stringify(f));const n=getNotes();keys.forEach(k=>delete n[k]);LS("rnote",JSON.stringify(n))}catch(e){}
+ try{const f=getFav().filter(k=>!keys.includes(k));LS("rfav",JSON.stringify(f));const n=getNotes();keys.forEach(k=>delete n[k]);LS("rnote",JSON.stringify(n))}catch(e){dbg(e)}
  redraw();undoShow(rs.length===1?"Stearsa definitiv: "+(rs[0].titlu||"reteta")+".":"Cos golit: "+rs.length+" retete sterse definitiv.",u,()=>{saveStored(old);BOOK=old.length?old:BOOK0;redraw()})}
 const srcTxt=r=>(r.sursa==="Retetele mele"?"Scrisa de tine":"Din "+esc(r.sursa||"biblioteca")+(r.nr!=null&&r.nr!==""?", reteta "+esc(r.nr):""))+(r.din?" (adaptata din "+esc(r.din.sursa||"-")+(r.din.nr!==""&&r.din.nr!=null?", reteta "+esc(r.din.nr):"")+")":"");
+/* ===== 4.2.0: timp total si dificultate =====
+   r.timp (minute) si r.dif (usor / mediu / avansat) sunt scrise in cartile livrate si se pot corecta din "Corecteaza reteta".
+   Cand lipsesc (retete scrise de tine, generate, carti incarcate de mana), se estimeaza la afisare din pasi, cu aceeasi regula. r.activ = timp activ, unde e cunoscut. */
+const T_WAIT=/frigider|congelator|la rece|peste noapte|sa se (aseze|ingroase|hidrateze|raceasca|intareasca)|odihn|dospi|marin/;
+function stepMin(t){t=norm(t).replace(/(\d+)\s*-\s*(\d+)(?=\s*(?:de\s+)?(?:minute|minut|min|ore|ora|secunde|sec)\b)/g,"$2");let m=0;
+ t.replace(/(\d+(?:[.,]\d+)?)\s*(?:de\s+)?(minute|minut|min|ore|ora|secunde|sec)\b/g,(_,n,u)=>{n=+n.replace(",",".");m+=/^or/.test(u)?n*60:/^sec/.test(u)?n/60:n;return""});
+ if(/\bo ora\b/.test(t))m+=60;if(/jumatate de ora/.test(t))m+=30;if(/\bun minut\b/.test(t))m+=1;if(/peste noapte/.test(t))m=Math.max(m,480);
+ if(/pe fiecare parte/.test(t))m*=2;return m}
+const recSteps=r=>(r.pasi_carte&&r.pasi_carte.length)?r.pasi_carte.map(String):(Array.isArray(r.pasi)?r.pasi.map(x=>x&&typeof x==="object"?String(x.text||""):String(x||"")):[]);
+function recTEst(r){const st=recSteps(r);if(!st.length)return null;
+ if(+r.activ>0){const wt=st.filter(x=>T_WAIT.test(norm(x))).reduce((a,x)=>a+stepMin(x),0);return wt?Math.max(+r.activ,Math.round((+r.activ+wt)/5)*5):+r.activ}
+ let m=Array.isArray(r.pasi)&&!(r.pasi_carte&&r.pasi_carte.length)&&r.pasi.some(x=>x&&+x.durata_min>0)?r.pasi.reduce((a,x)=>a+(+(x&&x.durata_min)||0),0):st.reduce((a,x)=>a+stepMin(x),0);
+ const ni=(r.ingrediente||[]).filter(x=>{const n=norm(x.n||x.nume||""),u=norm(x.u||x.unitate||"");return n&&!/^(sare|piper|apa|ulei)\b/.test(n)&&!/^lingur/.test(u)}).length;
+ return Math.max(5,Math.round((m+Math.min(20,3+1.5*ni))/5)*5)}
+const _tc=new WeakMap();
+function recT(r){if(+r.timp>0)return +r.timp;let o=_tc.get(r);const k=recSteps(r).length+"|"+(r.ingrediente||[]).length;if(!o||o.k!==k){o={k,v:recTEst(r)};_tc.set(r,o)}return o.v}
+function recDEst(r,t){const st=recSteps(r);if(!st.length)return null;const x=norm(st.join(" ")+" "+(r.titlu||""));let s=st.length+(r.ingrediente||[]).length/3;
+ if(/cuptor|air fryer/.test(x))s+=1;if(/perisoare|chiftel|aluat|framanta|rulada|ruleaza|bain-marie|tempereaza|blat|caramel|umple|impatureste|clatit/.test(x))s+=2;if((t||0)>90)s+=1;
+ return s<=8?"usor":s<=12?"mediu":"avansat"}
+const DIFS=["usor","mediu","avansat"];
+const recD=r=>DIFS.includes(r.dif)?r.dif:recDEst(r,recT(r));
+const tTxt=m=>m<60?m+" min":Math.floor(m/60)+" h"+(m%60?" "+(m%60)+" min":"");
+/* "aprox." apare cat timp valoarea e estimata; dispare cand ai scris-o tu */
+function tChips(r){const t=recT(r),d=recD(r);if(!t&&!d)return"";const own=(r.manual||r.corectata)&&+r.timp>0;
+ return(t?`<span class="lb">${own?"":"aprox. "}${tTxt(t)}${+r.activ>0&&+r.activ<t?", "+esc(r.activ)+" min activ":""}</span>`:"")+(d?`<span class="lb">${esc(d)}</span>`:"")}
 const srcLine=r=>`<div class="muted org">${srcTxt(r)}</div>`;
-const bChips=r=>(r.categorie?`<div class="mb4"><span class="lb catb">${esc(r.categorie)}</span></div>`:"")+(bLab(r).length?`<div>${bLab(r).map(t=>`<span class="lb">${esc(t)}</span>`).join("")}</div>`:"");
+const bChips=r=>(r.categorie||tChips(r)?`<div class="mb4">${r.categorie?`<span class="lb catb">${esc(r.categorie)}</span>`:""}${tChips(r)}</div>`:"")+(bLab(r).length?`<div>${bLab(r).map(t=>`<span class="lb">${esc(t)}</span>`).join("")}</div>`:"");
 /* contorul "N de verificat" se actualizeaza si fara sa redesenez lista (editorul sta in aceeasi zona) */
 let _bnA=["",false];
 /* 3.6.0: trei marcaje separate in r.verifica: ingrediente/text (vx), portii (vp), macro (vm) */
@@ -435,6 +469,15 @@ function bnDraw(bd,usePan){const L=BOOK.filter(r=>!r.cos&&!r.nou),nv=L.filter(r=
 const updVC=()=>bnDraw(..._bnA);
 const FAVV="*fav",inSrc=(r,v)=>v===FAVV?isFav(bKey(r)):(r.sursa||"necunoscuta")===v;
 const stOk=r=>{const v=$("#bv").value;return v===""||(v==="v"?vx(r).length>0:v==="p"?vp(r):v==="m"?vm(r):!r.verifica&&!vp(r))};
+/* 4.2.0: pilule rapide deasupra Bibliotecii. Masa si "Sub 30 min" sunt filtre noi; "Am tot in debara" si "Favorite" apasa pe filtrele existente (Din debara, Carte), ca sa nu existe doua stari pentru acelasi lucru. */
+let BPL={m:"",t:false};
+const bplSlot=r=>{const s=pxSlot(r)||pxAuto(r);return s==="cina"?"pranz":s};
+const bplOk=r=>(!BPL.m||bplSlot(r)===BPL.m)&&(!BPL.t||(recT(r)||9999)<=30);
+function bplDraw(){const el=$("#bpl");if(!el)return;const b=(k,v,t,on)=>`<button type="button" class="bpill${on?" on":""}" data-bpl="${k}" data-v="${v}" aria-pressed="${on}">${t}</button>`;
+ el.innerHTML=b("m","mic","Mic dejun",BPL.m==="mic")+b("m","pranz","Pranz / Cina",BPL.m==="pranz")+b("m","desert","Desert",BPL.m==="desert")+b("t","1","Sub 30 min",BPL.t)+b("p","1","Am tot in debara",$("#bd").value==="0")+b("f","1","Favorite",$("#bs").value===FAVV)}
+$("#bpl").onclick=e=>{const d=(e.target.closest("button")||{}).dataset;if(!d||!d.bpl)return;
+ if(d.bpl==="m")BPL.m=BPL.m===d.v?"":d.v;else if(d.bpl==="t")BPL.t=!BPL.t;else if(d.bpl==="p")$("#bd").value=$("#bd").value==="0"?"":"0";else if(d.bpl==="f")$("#bs").value=$("#bs").value===FAVV?"":FAVV;
+ bReset()};
 function drawBook(){
  if(!LIBREADY){$("#bres").innerHTML='<p class="muted">Se incarca biblioteca...</p>';return}
  const srcs=[...new Set(BOOK.filter(r=>!r.cos).map(r=>r.sursa||"necunoscuta"))],sel=$("#bs"),prev=sel.value;
@@ -444,12 +487,12 @@ function drawBook(){
  const sc0=sel.value,cat0=cs.value,bfs=$("#bf"),bfp=bfs.value; /* etichetele arata doar ce exista in cartea/categoria aleasa */
  const tg=[...new Set(BOOK.filter(r=>!r.cos&&(!sc0||inSrc(r,sc0))&&(!cat0||r.categorie===cat0)).flatMap(bLab))].sort((a,b)=>a.localeCompare(b,"ro"));
  if(bfs.dataset.k!==tg.join("|")){bfs.dataset.k=tg.join("|");bfs.innerHTML='<option value="">Toate</option>'+tg.map(x=>`<option>${esc(x)}</option>`).join("");bfs.value=tg.includes(bfp)?bfp:""}
- const q=qWords($("#bq").value),f=bfs.value;
+ const q=qWords($("#bq").value),f=bfs.value;bplDraw();
  const bp=$("#bp").value;
  {const n=["#bs","#bc","#bf","#bv","#bd","#bj","#bp"].filter(s=>$(s).value).length,n2=["#bd","#bj","#bp"].filter(s=>$(s).value).length;$("#bfsum2").textContent=n2?"Mai multe filtre ("+n2+")":"Mai multe filtre";if(n2)$("#bflt2").open=true;$("#bfsum").textContent=n?"Filtre ("+n+(n===1?" activ)":" active)"):"Filtre"}
  const bd=$("#bd").value,usePan=bd!==""&&getPan().length>0,bj=$("#bj").value,NT=bj?getNotes():null,lim60=dAdd(dKey(new Date()),-60);
  const jOk=r=>{if(!bj)return true;const n=NT[bKey(r)]||{},l=lastCooked(n);return bj==="4"?+n.st>=4:bj==="ok"?!!l:bj==="g0"?!l:!l||l<lim60};
- const l=BOOK.map((r,i)=>{const z=q.length?bScore(r,q):{s:0,h:0};return{r,i,sc:z.h,w:z.s,ms:usePan?missing(r):null}}).filter(x=>!x.r.nou&&!x.r.cos&&(!usePan||(x.ms.tot>0&&x.ms.miss.length<=+bd))&&jOk(x.r)&&(!bp||(bp==="ok"?!recPref(x.r).av.length:recPref(x.r).lk.length>0))&&(!q.length||x.sc>0)&&(!f||bLab(x.r).includes(f))&&(!sc0||inSrc(x.r,sc0))&&(!cat0||x.r.categorie===cat0)&&stOk(x.r)).sort((a,b)=>usePan?(a.ms.miss.length-b.ms.miss.length)||(b.w-a.w)||(b.sc-a.sc):(b.w-a.w)||(b.sc-a.sc));
+ const l=BOOK.map((r,i)=>{const z=q.length?bScore(r,q):{s:0,h:0};return{r,i,sc:z.h,w:z.s,ms:usePan?missing(r):null}}).filter(x=>!x.r.nou&&!x.r.cos&&(!usePan||(x.ms.tot>0&&x.ms.miss.length<=+bd))&&jOk(x.r)&&(!bp||(bp==="ok"?!recPref(x.r).av.length:recPref(x.r).lk.length>0))&&(!q.length||x.sc>0)&&(!f||bLab(x.r).includes(f))&&(!sc0||inSrc(x.r,sc0))&&(!cat0||x.r.categorie===cat0)&&stOk(x.r)&&bplOk(x.r)).sort((a,b)=>usePan?(a.ms.miss.length-b.ms.miss.length)||(b.w-a.w)||(b.sc-a.sc):(b.w-a.w)||(b.sc-a.sc));
 /* 3.4.0: retetele cu acelasi titlu (din orice carte, si din aceeasi) se grupeaza intr-un card; exemplarul principal e cel mai complet */
  const gk=r=>norm(r.titlu).replace(/[^a-z0-9]+/g," ").trim(),cmp=r=>(r.verifica?0:100)+((r.pasi_carte||[]).length?50:0)+Math.min((r.ingrediente||[]).length,20)+(r.macro&&r.macro.kcal!=null?5:0)+(r.portii!=null?3:0),gm=new Map();
  l.forEach((x,n)=>{const k=gk(x.r)||"#"+n;if(!gm.has(k))gm.set(k,[]);gm.get(k).push(x)});
@@ -517,7 +560,7 @@ function toNum(s){s=String(s).trim().replace(",",".");let t=0;const fr={"\u00bd"
  const n=parseFloat(s);if(!isNaN(n))t+=n;return +t.toFixed(3)}
 let BSC=null;
 function sclHtml(base,n,src){src=src||"carte";if(!base)return`<p class="muted">Ca sa scalezi cantitatile, scrie numarul de portii al retetei (campul Portii, mai sus).</p>`;
- return`<div class="scl"><span>Gatesc pentru</span><button class="alt" data-bsc="-1" aria-label="Mai putine portii" ${n<=1?"disabled":""}>-</button><b aria-live="polite">${n}</b><button class="alt" data-bsc="1" aria-label="Mai multe portii" ${n>=200?"disabled":""}>+</button><span>portii</span>${n!==base?`<button class="alt" data-bsc="0">Inapoi la ${base}</button>`:""}</div>${n!==base?`<p class="muted">Cantitatile din lista sunt scalate de la ${base} la ${n} portii. Cantitatile scrise in pasii de preparare si timpii raman cele din ${src==="carte"?"carte":"reteta"}.</p>`:""}`}
+ return`<div class="scl"><span>Gatesc pentru</span><button class="alt" data-bsc="-1" aria-label="Mai putine portii" ${n<=1?"disabled":""}>-</button><b aria-live="polite">${n}</b><button class="alt" data-bsc="1" aria-label="Mai multe portii" ${n>=200?"disabled":""}>+</button><span>portii</span>${n!==base?`<button class="alt" data-bsc="0">Inapoi la ${base}</button>`:""}</div>${n!==base?`<p class="muted">Cantitatile din lista sunt scalate de la ${base} la ${n} portii. Cantitatile scrise in pasii de preparare si timpii raman cele din ${src==="carte"?"carte":"reteta"}.</p>`:""}${n/base>4?`<p class="mt4 mb0" style="color:var(--amb)">Gatesti de ${+(n/base).toFixed(1)} ori reteta. Verifica numarul de portii.</p>`:""}`}
 function ingHtml(r,f){let g=null,o="";(r.ingrediente||[]).forEach(x=>{const gg=x.g||null;if(gg!==g){g=gg;if(g)o+=`<li class="gh"><b>${ed(g)}</b></li>`}
   o+=`<li>${x.c!=null?fmtQ(x.c*f)+" "+(x.u?ed(x.u)+" ":""):""}${ed(cap(x.n))}</li>`});return o}
 function ingText(list){let g=null;return (list||[]).map(x=>{const gg=x.g||null;let h="";if(gg!==g){g=gg;if(g)h="## "+g+"\n"}return h+ingLine(x)}).join("\n")}
@@ -547,6 +590,7 @@ function editForm(r,i,sel){const m=r.macro||{},cats=[...new Set([...BOOK.map(x=>
 
  <label for="ef-t${i}">Titlu</label><input id="ef-t${i}" data-ef="titlu" value="${esc(r.titlu)}" maxlength="120"${r.nou?' placeholder="ex: Papanasi cu smantana"':""}>
  <div class="row"><div><label for="ef-p${i}">Portii (- = nu se aplica)</label><input id="ef-p${i}" data-ef="portii" type="text" inputmode="numeric" maxlength="3" placeholder="ex: 4 sau -" value="${r.pna?"-":esc(r.portii==null?"":r.portii)}"><div data-pcbox>${(r.verifica||[]).includes(PVR)?`<div class="warn mt8" >Numarul de portii nu e confirmat. <button class="alt mt4 mb0" type="button" data-pconf="1" >Confirma numarul de portii</button></div>`:""}</div></div><div><label for="ef-c${i}">Categorie</label><select id="ef-c${i}" data-ef="categorie">${cats.map(c=>`<option${c===r.categorie?" selected":""}>${esc(c)}</option>`).join("")}</select></div></div>
+ <div class="row"><div><label for="ef-tm${i}">Timp total (minute)</label><input id="ef-tm${i}" data-ef="timp" type="number" min="1" max="2880" step="1" value="${esc(+r.timp>0?r.timp:"")}" placeholder="${recTEst(r)?"estimat: "+recTEst(r):"ex: 30"}"></div><div><label for="ef-df${i}">Dificultate</label><select id="ef-df${i}" data-ef="dif"><option value="">Estimata automat</option>${DIFS.map(d=>`<option${d===r.dif?" selected":""}>${d}</option>`).join("")}</select></div></div>
  ${(gI&&gI.length)||(gS&&gS.length)?`<div class="warn mt12 mb0" >Extragerea automata a esuat. Am completat de mai jos ce am detectat in textul paginii (${[gI&&gI.length?"ingrediente":"",gS&&gS.length?"pasi":""].filter(Boolean).join(" si ")}). Compara cu cartea si corecteaza; nu se salveaza pana nu apesi Salveaza.</div>`:""}<label for="ef-i${i}">Ingrediente (unul pe linie)</label><textarea id="ef-i${i}" data-ef="ing" rows="8" placeholder="200 g faina&#10;2 oua&#10;## Sos&#10;1 lingura smantana">${esc(gI&&gI.length?gI.join("\n"):ingText(r.ingrediente))}</textarea>
  <label for="ef-s${i}">Mod de preparare (un pas pe linie)</label><textarea id="ef-s${i}" data-ef="pasi" rows="8" placeholder="Amesteca faina cu ouale.&#10;Coace 30 de minute.">${esc(gS&&gS.length?gS.join("\n"):(r.pasi_carte||[]).join("\n"))}</textarea>
  <div class="row" style="margin-top:12px;align-items:center;gap:8px"><button class="alt m0" type="button" data-emacl="1" >Calculeaza din Info</button><button class="alt m0" type="button" data-emac="1" data-ai="1" >Calculeaza macro</button><span class="muted">Per portie, din ingredientele de mai sus. "Din Info" foloseste datele salvate in aplicatie; AI estimeaza.</span></div><div data-mres aria-live="polite"></div>
@@ -588,9 +632,10 @@ async function macCalc(bv,btn){const g=k=>bv.querySelector(`[data-ef=${k}]`).val
 function editSave(bv,i,sel,verif){const r=BOOK[i],g=k=>bv.querySelector(`[data-ef=${k}]`).value;
  const t=g("titlu").trim();if(!t){toast("Titlul nu poate fi gol.");return}
  {const pp=pParse(g("portii"));if(pp.bad){toast("Portii: scrie un numar (1-200) sau - daca nu se aplica.");return}const op=r.portii,opn=r.pna;r.portii=pp.na?null:pp.n;if(pp.na)r.pna=true;else delete r.pna;if(op!==r.portii||!!opn!==!!r.pna)clrV(r,PRT)}r.titlu=t;if(g("categorie"))r.categorie=g("categorie");
+ {const tv=String(g("timp")).trim(),n=Math.round(+tv);if(tv==="")delete r.timp;else if(n>0&&n<=2880)r.timp=n;const dv=g("dif");if(DIFS.includes(dv))r.dif=dv;else delete r.dif}
  r.ingrediente=parseIngText(g("ing"));r.pasi_carte=g("pasi").split("\n").map(x=>x.trim()).filter(Boolean);
  const om=JSON.stringify(r.macro||{});r.macro=Object.assign({},r.macro);["kcal","proteine","carbo","grasimi"].forEach(k=>{const v=g(k);r.macro[k]=v===""?null:+v});if(JSON.stringify(r.macro)!==om)clrV(r,MCT);if(bv.dataset.msrc){r.macro.sursa="local";r.macro.acoperire=bv.dataset.msrc}else if(JSON.stringify(r.macro)!==om){if(bv.dataset.masrc==="ai")r.macro.sursa="ai";else r.macro.sursa="manual";delete r.macro.acoperire}
- {let st=[];try{st=JSON.parse(bv.dataset.stags||"[]")}catch(e){}if(st.length)r.etichete=[...new Set([...normTags(r.etichete),...normTags(st)])]}
+ {let st=[];try{st=JSON.parse(bv.dataset.stags||"[]")}catch(e){dbg(e)}if(st.length)r.etichete=[...new Set([...normTags(r.etichete),...normTags(st)])]}
  if(!r.manual)r.corectata=true;if(verif){r.verifica=(r.verifica||[]).filter(x=>PRT.has(x)||MCT.has(x));if(!r.verifica.length)delete r.verifica;delete r.text_brut;delete r.text_orig}
  if(r.nou){delete r.nou;const st=getStored();if(!st.length)BOOK=[r];st.push(r);saveStored(st);EDIT=null;updBS();openBook(BOOK.indexOf(r),r.portii,sel);return}
  if(persistBook(r)){EDIT=null;updVC();if(VQ&&verif){VQ.done++;vqNext(VQ.pos+1);return}openBook(i,r.portii,sel)}}
@@ -652,7 +697,7 @@ function newBook(){BOOK=BOOK.filter(x=>!x.nou);const S="Retetele mele",nr=Math.m
  BOOK=BOOK.concat([r]);const i=BOOK.length-1;EDIT={sel:"#bres",i};openBook(i,2,"#bres");$("#bres").scrollIntoView({block:"start"})}
 $("#bnew").onclick=newBook;
 var BLIM=60;const bReset=()=>{BLIM=60;drawBook()};
-$("#bq").oninput=bReset;$("#bf").onchange=bReset;$("#bs").onchange=bReset;$("#bc").onchange=bReset;$("#bv").onchange=bReset;$("#bd").onchange=bReset;$("#bj").onchange=bReset;$("#bp").onchange=bReset;
+let BQT=0;$("#bq").oninput=()=>{clearTimeout(BQT);BQT=setTimeout(bReset,180)}; /* 4.1.1: nu redesenez la fiecare tasta */$("#bf").onchange=bReset;$("#bs").onchange=bReset;$("#bc").onchange=bReset;$("#bv").onchange=bReset;$("#bd").onchange=bReset;$("#bj").onchange=bReset;$("#bp").onchange=bReset;
 $("#bres").onclick=e=>{if(bvClick(e,"#bres"))return;const d=e.target.dataset;
  if(d.bmore!==undefined){BLIM+=60;drawBook();return}
  if(d.fav!==undefined){favT(d.fav,drawBook);return}
@@ -680,10 +725,10 @@ async function ndRun(){
  try{if(LS("rnd")==="1")return;
   const keys=BK_KEYS.filter(k=>k!=="rbook");let need=false;
   keys.forEach(k=>{const v=localStorage.getItem(k);if(v&&ND_RE.test(v))need=true});
-  if(!need&&STORED.length){try{need=ND_RE.test(JSON.stringify(STORED))}catch(e){}}
+  if(!need&&STORED.length){try{need=ND_RE.test(JSON.stringify(STORED))}catch(e){dbg(e)}}
   const dedupe=()=>{let un=0;
-  try{const p=JSON.parse(localStorage.getItem("rp")||"[]");if(Array.isArray(p)){const m=new Map();p.forEach(x=>{const k=norm(x.n);if(m.has(k)){un++;const o=m.get(k);o.f=[...new Set([...(o.f||[]),...(x.f||[])])]}else m.set(k,x)});if(un)LS("rp",JSON.stringify([...m.values()]))}}catch(e){}
-  try{const p=JSON.parse(localStorage.getItem("rcat")||"[]");if(Array.isArray(p)){const m=new Map();p.forEach(x=>{const k=norm(x.n);if(m.has(k))un++;else m.set(k,x)});if(m.size!==p.length)LS("rcat",JSON.stringify([...m.values()]))}}catch(e){}
+  try{const p=JSON.parse(localStorage.getItem("rp")||"[]");if(Array.isArray(p)){const m=new Map();p.forEach(x=>{const k=norm(x.n);if(m.has(k)){un++;const o=m.get(k);o.f=[...new Set([...(o.f||[]),...(x.f||[])])]}else m.set(k,x)});if(un)LS("rp",JSON.stringify([...m.values()]))}}catch(e){dbg(e)}
+  try{const p=JSON.parse(localStorage.getItem("rcat")||"[]");if(Array.isArray(p)){const m=new Map();p.forEach(x=>{const k=norm(x.n);if(m.has(k))un++;else m.set(k,x)});if(m.size!==p.length)LS("rcat",JSON.stringify([...m.values()]))}}catch(e){dbg(e)}
    return un};
   if(!need){const u=dedupe();if(u)ND_MSG="Am unit "+u+" intrari identice din debara si categorii.";LS("rnd","1");return}
   if(IDBOK&&DB&&hasData()&&!(await snapMake(true)))return; /* fara copie de siguranta nu schimb nimic; incerc la urmatoarea pornire */
@@ -693,7 +738,7 @@ async function ndRun(){
   const un=dedupe();
   if(STORED.length&&ND_RE.test(JSON.stringify(STORED)))await saveStored(STORED);
   LS("rnd","1");ND_MSG="Am scos diacriticele din "+NDC+" cuvinte"+(un?" si am unit "+un+" intrari identice":"")+". Am facut inainte o copie de siguranta: Setari > Tehnic > Backup, daca vrei sa revii."
- }catch(e){}}
+ }catch(e){dbg(e)}}
 let ND_MSG="";
 /* 3.19.0: sursa "Baza de retete" se numeste acum "Retete vegetariene"; se muta si cheile sursa|nr din favorite, notite, meal prep si meniu (text brut: cheile apar intre ghilimele) */
 const SRC_REN=[["Baza de retete","Retete vegetariene"]];
@@ -703,29 +748,29 @@ async function srcRun(){try{let ch=0;
   if(keep.length!==STORED.length){STORED.length=0;keep.forEach(r=>STORED.push(r));ch++}
   STORED.forEach(r=>{if(r&&r.sursa===o){r.sursa=n;ch++}});
   ["rfav","rnote","rmp","rmen"].forEach(k=>{const v=LS(k);if(v&&v.indexOf('"'+o+'|')>=0){LS(k,v.split('"'+o+'|').join('"'+n+'|'));ch++}})});
- if(ch){if(STORED.length)await saveStored(STORED);setTimeout(()=>toast("Sursa Baza de retete se numeste acum Retete vegetariene."),1200)}}catch(e){}}
+ if(ch){if(STORED.length)await saveStored(STORED);setTimeout(()=>toast("Sursa Baza de retete se numeste acum Retete vegetariene."),1200)}}catch(e){dbg(e)}}
 /* 3.18.1: macro calculat din Info ("local") se reface o singura data cand se schimba baza Info sau potrivirea (altfel ramane cel vechi dupa o actualizare); fibre/saturate se scot de aici, ele se calculeaza live la Micronutrienti */
 async function mcRun(){try{const v=NUTRI.R.length+":"+NUTRI.M.length+":4";if(LS("rnv")===v)return;
  const fx=(a,s)=>{let n=0;(a||[]).forEach(r=>{const m=r&&r.macro;if(!m||m.sursa!=="local"||!(r.ingrediente||[]).length)return;const L=macLocal(r,null,rawIngs(s,r));if(!L.ok)return;
   const o=L.o,ac=L.ok+" din "+L.n;if(m.kcal!==o.kcal||m.proteine!==o.proteine||m.carbo!==o.carbo||m.grasimi!==o.grasimi||m.acoperire!==ac||"fibre" in m||"saturate" in m){m.kcal=o.kcal;m.proteine=o.proteine;m.carbo=o.carbo;m.grasimi=o.grasimi;m.acoperire=ac;delete m.fibre;delete m.saturate;n++}});return n};
  const nb=fx(STORED,"b");if(nb)await saveStored(STORED);const sv=getSaved(),ns=fx(sv,"s");if(ns)LS("rs",JSON.stringify(sv));
- LS("rnv",v);if(nb+ns)setTimeout(()=>toast("Am actualizat macro la "+(nb+ns)+" retete, dupa noua baza Info."),900)}catch(e){}}
+ LS("rnv",v);if(nb+ns)setTimeout(()=>toast("Am actualizat macro la "+(nb+ns)+" retete, dupa noua baza Info."),900)}catch(e){dbg(e)}}
 async function libInit(){
- let legacy=null;try{const s=localStorage.getItem("rbook");if(s){const j=JSON.parse(s);if(Array.isArray(j)&&j.length)legacy=j}}catch(e){}
+ let legacy=null;try{const s=localStorage.getItem("rbook");if(s){const j=JSON.parse(s);if(Array.isArray(j)&&j.length)legacy=j}}catch(e){dbg(e)}
  try{DB=await idbOpen();IDBOK=true;
   if(legacy){await idbPut("book",legacy);const back=await idbGet("book");
-   if(Array.isArray(back)&&back.length===legacy.length){STORED=back;LS("rlib","1");try{localStorage.removeItem("rbook")}catch(e){}}else{IDBOK=false;STORED=legacy}}
+   if(Array.isArray(back)&&back.length===legacy.length){STORED=back;LS("rlib","1");try{localStorage.removeItem("rbook")}catch(e){dbg(e)}}else{IDBOK=false;STORED=legacy}}
   else if(LS("rlib")==="1"){const v=await idbGet("book");STORED=Array.isArray(v)?v:[]}
   else STORED=[] /* fara marcaj: ce ramane in IndexedDB e orfan (datele aplicatiei au fost sterse) */
  }catch(e){IDBOK=false;STORED=legacy||[]}
  await ndRun();
  /* 4.0.0: copie automata inainte de trecerea pe id-uri stabile */
- try{if(sidNeed()){await snapMake(true);const n=sidRun();if(n)setTimeout(()=>toast("Am actualizat "+n+(n===1?" reteta salvata":" retete salvate")+" la noul format (id stabil). O copie automata a fost facuta inainte."),1500)}else sidRun()}catch(e){}
- try{localStorage.removeItem("rmt")}catch(e){}
+ try{if(sidNeed()){await snapMake(true);const n=sidRun();if(n)setTimeout(()=>toast("Am actualizat "+n+(n===1?" reteta salvata":" retete salvate")+" la noul format (id stabil). O copie automata a fost facuta inainte."),1500)}else sidRun()}catch(e){dbg(e)}
+ try{localStorage.removeItem("rmt")}catch(e){dbg(e)}
  await srcRun();
  await mcRun();
- if(STORED.length){try{BOOK=cl(STORED).map(fixRec)}catch(e){}}
- LIBREADY=true;try{drawBook();updBS();drawOnb();if(!$("#v-meniu").classList.contains("hidden"))drawMenu()}catch(e){}
+ if(STORED.length){try{BOOK=cl(STORED).map(fixRec)}catch(e){dbg(e)}}
+ LIBREADY=true;try{drawBook();updBS();drawOnb();if(!$("#v-meniu").classList.contains("hidden"))drawMenu()}catch(e){dbg(e)}
  if(ND_MSG)setTimeout(()=>toast(ND_MSG),600);window.__ready=true;
  shipRun().then(r=>shipDone(r,true)).catch(()=>{})}
 function putStored(a){saveStored(a);BOOK=a.length?a:BOOK0;SV=null;drawBook();updBS()}
@@ -736,18 +781,18 @@ function putStored(a){saveStored(a);BOOK=a.length?a:BOOK0;SV=null;drawBook();upd
 const shHash=r=>{const c=JSON.parse(JSON.stringify(r));delete c.liv;delete c.lh;if(c.macro&&c.macro.sursa==="local")delete c.macro;fixRec(c);let h=5381;const z=JSON.stringify(c);for(let i=0;i<z.length;i++)h=((h*33)^z.charCodeAt(i))>>>0;return h.toString(36)};
 const shUnmod=r=>!!(r&&r.liv&&r.lh&&r.lh===shHash(r));
 const getBv=()=>{try{const j=JSON.parse(localStorage.getItem("rbv")||"{}");return j&&typeof j==="object"&&!Array.isArray(j)?j:{}}catch(e){return{}}};
-const putBv=o=>{try{localStorage.setItem("rbv",JSON.stringify(o))}catch(e){}};
+const putBv=o=>{try{localStorage.setItem("rbv",JSON.stringify(o))}catch(e){dbg(e)}};
 let SHIPPING=false;
 async function shipRun(force){if(SHIPPING)return null;SHIPPING=true;let add=0,upd=0;
  try{const res=await fetch("carti.json",{cache:"no-cache"});if(!res.ok)return null;const man=await res.json();if(!man||!Array.isArray(man.carti))return null;
-  const bv=getBv();let need=null;try{need=JSON.parse(localStorage.getItem("rbneed")||"null")}catch(e){}if(!need||typeof need!=="object"||Array.isArray(need))need=null;
+  const bv=getBv();let need=null;try{need=JSON.parse(localStorage.getItem("rbneed")||"null")}catch(e){dbg(e)}if(!need||typeof need!=="object"||Array.isArray(need))need=null;
   const st=getStored();let ch=false,fail=false;
   for(const b of man.carti){if(!b||typeof b.sursa!=="string"||typeof b.f!=="string"||!(+b.v>0))continue;
    let s=bv[b.sursa];if(s&&s.del){if(!force)continue;s=null}
    const nd=need&&Array.isArray(need[b.sursa])?need[b.sursa]:null;
    if(need&&!s&&!nd&&!force&&!st.some(r=>r&&r.sursa===b.sursa)){bv[b.sursa]={del:1};continue} /* backup-ul nu avea cartea: fusese stearsa */
    if(s&&s.v===b.v&&!nd)continue;
-   let recs=null;try{const rr=await fetch(b.f,{cache:"no-cache"});if(rr.ok)recs=await rr.json()}catch(e){}
+   let recs=null;try{const rr=await fetch(b.f,{cache:"no-cache"});if(rr.ok)recs=await rr.json()}catch(e){dbg(e)}
    if(!Array.isArray(recs)){fail=true;continue}
    const have=new Map();st.forEach((r,i)=>{if(r&&r.sursa===b.sursa)have.set(bKey(r),i)});
    const ndSet=nd?new Set(nd.map(String)):null,first=!s,mx=s&&+s.max||0;
@@ -763,9 +808,11 @@ async function shipRun(force){if(SHIPPING)return null;SHIPPING=true;let add=0,up
   if(ch){if(!(await saveStored(st)))return null;BOOK=cl(STORED).map(fixRec)}
   return{add,upd}}
  catch(e){return null}finally{SHIPPING=false}}
-function shipDone(r,quiet){if(!r||!(r.add+r.upd)){if(!quiet)toast("Cartile aplicatiei sunt deja la zi.");return}
- try{drawBook();updBS();drawOnb();if(!$("#v-meniu").classList.contains("hidden"))drawMenu()}catch(e){}
+function shipDone(r,quiet){if(!r){const first=!Object.keys(getBv()).length;if(first||!quiet)toast(first?"Nu am putut descarca retetele aplicatiei. Verifica internetul; reincerc singur cand revine conexiunea.":"Nu am putut verifica acum cartile aplicatiei. Incearca mai tarziu.",true);return}
+ if(!(r.add+r.upd)){if(!quiet)toast("Cartile aplicatiei sunt deja la zi.");return}
+ try{drawBook();updBS();drawOnb();if(!$("#v-meniu").classList.contains("hidden"))drawMenu()}catch(e){dbg(e)}
  toast("Cartile aplicatiei: "+(r.add?r.add+(r.add===1?" reteta noua":" retete noi"):"")+(r.add&&r.upd?", ":"")+(r.upd?r.upd+(r.upd===1?" reteta actualizata":" retete actualizate"):"")+".")}
+window.addEventListener("online",()=>{if(window.__ready)shipRun().then(r=>{if(r)shipDone(r,true)}).catch(dbg)}); /* 4.1.1 */
 function updBS(){const s=STORED,c={};s.forEach(r=>{const k=r.sursa||"necunoscuta";c[k]=(c[k]||0)+1});const k=Object.keys(c);
  const shDel=Object.values(getBv()).some(x=>x&&x.del)?`<div class="mt12"><button class="alt" data-ship="1">Readu cartile aplicatiei</button><p class="muted mt4 mb0">Ai sters carti care vin cu aplicatia. Butonul le aduce inapoi; retetele tale raman neatinse.</p></div>`:"";
  $("#bsn").innerHTML=shDel+(k.length?k.map(x=>`<div class="apr"><b>${esc(x)}</b><span class="muted">${c[x]} retete</span><button class="alt" data-dl="${esc(x)}">Descarca JSON</button><button class="alt" data-src="${esc(x)}">Sterge</button></div>`).join("")+`<div class="row mt12 g8" ><button class="go m0" data-dlall="1" >Descarca toate (${s.length} retete)</button><button class="alt" data-all="1">Goleste biblioteca</button></div>`:'<p class="muted">Nu ai nicio baza incarcata (apare doar reteta de test).</p>');dupDraw()}
@@ -786,7 +833,7 @@ const dupNm=s=>norm(s).replace(/[^a-z0-9]+/g," ").trim(),dupIng=r=>new Set((r.in
  dupCmp=r=>((r.verifica&&r.verifica.length)?0:100)+((r.pasi_carte||[]).length?50:0)+Math.min((r.ingrediente||[]).length,20)+(r.macro&&r.macro.kcal!=null?5:0)+(r.portii!=null?3:0);
 let DUP=null,DUPU=null;
 function dupUsed(){const s=new Set(getFav());getMP().forEach(x=>{if(x.s==="b")s.add(x.k)});Object.keys(getNotes()).forEach(k=>s.add(k));
- try{const m=getMen();Object.values(m).forEach(d=>Object.values(d).forEach(a=>{if(Array.isArray(a))a.forEach(e=>{if(e&&e.s==="b"&&e.k)s.add(e.k)})}))}catch(e){}return s}
+ try{const m=getMen();Object.values(m).forEach(d=>Object.values(d).forEach(a=>{if(Array.isArray(a))a.forEach(e=>{if(e&&e.s==="b"&&e.k)s.add(e.k)})}))}catch(e){dbg(e)}return s}
 function dupFind(){const L=getStored(),used=dupUsed(),S=L.map(dupIng),T=L.map(r=>dupNm(r.titlu)),P=L.map((_,i)=>i),f=x=>{while(P[x]!==x){P[x]=P[P[x]];x=P[x]}return x},why={};
  const tj=(a,b)=>{const x=new Set(a.split(" ")),y=new Set(b.split(" "));return dupJac(x,y)},same=(a,b)=>S[a].size===S[b].size&&dupJac(S[a],S[b])===1;
  for(let a=0;a<L.length;a++){if(S[a].size<3)continue;for(let b=a+1;b<L.length;b++){if(S[b].size<3)continue;
@@ -855,7 +902,7 @@ const FI={proaspat:["Proaspat",'<path d="M5 19C5 10 10 5 20 4c0 10-4 15-13 15z" 
  conserva:["Conserva",'<rect x="5" y="5" width="14" height="15" rx="2.5" fill="#d96b5a"/><rect x="5" y="5" width="14" height="3" rx="1.5" fill="#b4b4b4"/><rect x="5" y="17" width="14" height="3" rx="1.5" fill="#b4b4b4"/><rect x="8" y="10" width="8" height="5" rx="1" fill="#fff" opacity=".85"/>'],
  altceva:["Altceva (borcan, gem, sos...)",'<rect x="8" y="3" width="8" height="3.5" rx="1" fill="#9a7b4f"/><path d="M7 7h10c1 1 1.5 2 1.5 3.5v7.5a2.5 2.5 0 0 1-2.5 2.5H8A2.5 2.5 0 0 1 5.5 18v-7.5C5.5 9 6 8 7 7z" fill="#e7d9b8" stroke="#9a7b4f" stroke-width="1.3"/><rect x="8" y="11" width="8" height="5" rx="1" fill="#fff" opacity=".7"/>']};
 const CART='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2 10.5h10L19.5 8H6.5"/><circle cx="9" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/></svg>',FORMS=Object.keys(FI),fIco=f=>`<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">${FI[f][1]}</svg>`;let CATS=[],FCAT=[];
-function loadCats(){let l=null;try{l=JSON.parse(LS("rcg"))}catch(e){}if(!Array.isArray(l)||!l.length)l=DEFCATS;
+function loadCats(){let l=null;try{l=JSON.parse(LS("rcg"))}catch(e){dbg(e)}if(!Array.isArray(l)||!l.length)l=DEFCATS;
  const seen=new Set();l=l.filter(x=>x&&typeof x.id==="string"&&x.id&&typeof x.n==="string"&&x.n.trim()&&!seen.has(x.id)&&seen.add(x.id)).map(x=>({id:x.id,n:x.n.trim().slice(0,30),f:x.f?1:0}));
  if(!l.some(x=>x.id==="altele"))l.push({id:"altele",n:"Altele",f:0});l.sort((a,b)=>(a.id==="altele")-(b.id==="altele"));
  CATS=l.map(x=>[x.id,x.n]);FCAT=l.filter(x=>x.f).map(x=>x.id);return l}
@@ -898,7 +945,7 @@ const toks=n=>norm(String(n||"").replace(/\([^)]*\)/g," ")).split(/[^a-z0-9]+/).
 const tokEq=(a,b)=>a===b||(Math.min(a.length,b.length)>=3&&(a.startsWith(b)||b.startsWith(a)));
 /* un produs e "in debara" daca are aceleasi cuvinte ca o intrare din debara (ulei != ulei de masline) */
 function inPantry(name){const t=[...new Set(toks(name))];if(!t.length)return false;return panTok().some(pt=>pt.length&&pt.every(w=>t.some(x=>tokEq(w,x)))&&t.every(x=>pt.some(w=>tokEq(w,x))))}
-if(!LS("rdef4")){try{(JSON.parse(LS("rp")||"[]")||[]).forEach(x=>{if(x&&typeof x.n==="string"&&CATS.some(c=>c[0]===x.cat)&&x.cat!==guessCat(x.n))setCat(x.n,x.cat)})}catch(e){}LS("rdef4","1")}
+if(!LS("rdef4")){try{(JSON.parse(LS("rp")||"[]")||[]).forEach(x=>{if(x&&typeof x.n==="string"&&CATS.some(c=>c[0]===x.cat)&&x.cat!==guessCat(x.n))setCat(x.n,x.cat)})}catch(e){dbg(e)}LS("rdef4","1")}
 if(!LS("rdef3")){BASE.forEach(addPan);LS("rdef3","1")} /* 1.8.1: produsele de baza intra in debara, o singura data */
 const hid=x=>!x.done&&HP&&inPantry(x.n);
 const cleanName=n=>String(n||"").replace(/\([^)]*\)/g," ").replace(/\s+/g," ").trim();
@@ -1004,14 +1051,23 @@ function removeSrc(title){const l=getList(),out=[];let rem=0,red=0,kept=0;
  navCount();return{rem,red,kept}}
 const srcMsg=(t,r)=>"Scos: "+t+" ("+r.rem+" produse scoase"+(r.red?", "+r.red+" cu cantitate redusa":"")+(r.kept?"; "+r.kept+" comune cu alte retete, cantitatea ramane (lista veche)":"")+").";
 /* 2.24.1: produsele vechi cu o singura sursa primesc evidenta pe retete (cantitatea e exacta); cele cu mai multe surse nu pot fi impartite */
-(function(){try{const l=getList();let ch=0;l.forEach(x=>{if(!x.parts&&x.src&&x.src.length===1){x.parts=[{s:x.src[0],c:x.c}];ch++}});if(ch)LS("rl",JSON.stringify(l))}catch(e){}})();
+(function(){try{const l=getList();let ch=0;l.forEach(x=>{if(!x.parts&&x.src&&x.src.length===1){x.parts=[{s:x.src[0],c:x.c}];ch++}});if(ch)LS("rl",JSON.stringify(l))}catch(e){dbg(e)}})();
 /* Anuleaza: instantaneu la stergere, cu 8 secunde pentru a reveni (in loc de "Confirma") */
 let UDO=null,UDT=0;
 const undoMark=keys=>{const s={};keys.forEach(k=>{try{s[k]=localStorage.getItem(k)}catch(e){s[k]=null}});return s};
 function undoHide(){UDO=null;clearTimeout(UDT);$("#undo").classList.add("hidden")}
-function undoShow(msg,snap,redraw){UDO={snap,redraw};$("#undot").textContent=msg;$("#undo").classList.remove("hidden");clearTimeout(UDT);UDT=setTimeout(undoHide,8000)}
+function undoShow(msg,snap,redraw){UDO={snap,redraw,after:undoMark(Object.keys(snap||{}))}; /* 4.1.1: tin minte si starea de dupa actiune */$("#undot").textContent=msg;$("#undo").classList.remove("hidden");clearTimeout(UDT);UDT=setTimeout(undoHide,8000)}
 const redrawAll=()=>{navCount();drawList();drawPantry();drawMenu()};
+/* 4.1.1: alt tab al aplicatiei a schimbat datele. Listele se redeseneaza (nu in timp ce scrii sau ai un dialog deschis); setarile tinute in memorie cer reincarcarea paginii. */
+let STT=0,STN=0;const ST_CFG=/^(rtags|ra|rcg|rprof|rfd|rpf|rpxc)$/;
+function stApply(){clearTimeout(STT);const a=document.activeElement,busy=(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))||!$("#mdlg").classList.contains("hidden")||!$("#cook").classList.contains("hidden");
+ if(busy&&STN++<60){STT=setTimeout(stApply,1000);return}STN=0;
+ try{redrawAll();if(!$("#v-salvate").classList.contains("hidden")&&!SV)renderSaved()}catch(e){dbg(e)}}
+window.addEventListener("storage",e=>{if(!e.key||e.storageArea!==localStorage||!LSK.test(e.key)||typeof SYAPPLY!=="undefined"&&SYAPPLY)return;
+ if(ST_CFG.test(e.key)){toast("Setarile s-au schimbat in alt tab. Reincarca pagina ca sa le vezi aici.");return}
+ clearTimeout(STT);STN=0;STT=setTimeout(stApply,200)});
 $("#undob").onclick=()=>{if(!UDO)return;const u=UDO;undoHide();
+ {let same=true;try{Object.keys(u.after||{}).forEach(k=>{if(localStorage.getItem(k)!==u.after[k])same=false})}catch(e){dbg(e)}if(!same){toast("Nu mai pot anula: datele s-au schimbat intre timp (alt tab sau sincronizare).",true);return}}
  try{Object.keys(u.snap).forEach(k=>{if(u.snap[k]==null)localStorage.removeItem(k);else localStorage.setItem(k,u.snap[k])})}catch(e){toast("Nu am putut anula: memoria browserului nu mai raspunde.");return}
  u.redraw();toast("Anulat.")};
 const fmtQ=c=>c>=10?String(Math.round(c)):c>=1?String(+c.toFixed(1)):String(+c.toFixed(2));
@@ -1029,9 +1085,16 @@ function lAdd(){const el=$("#lAddI"),t=(el&&el.value||"").trim();if(!t)return;
  const items=t.split(/[,;]+/).map(s=>s.trim()).filter(Boolean).map(s=>bit(s)||{c:null,u:"",n:s});
  const n=addList(items,"Adaugat manual");drawList();const e2=$("#lAddI");if(e2){e2.focus()}
  if(!n)toast("Nu am adaugat nimic: apa de la robinet nu intra in lista.");else if(n<items.length)toast("Am adaugat "+n+" din "+items.length+" (cele ramase erau deja in lista sau nu se cumpara).")}
+/* 4.1.1: butoanele din lista tin si cheia produsului; daca lista s-a schimbat intre timp (alt tab), produsul e cautat dupa cheie, nu dupa pozitie */
+const lIx=(l,d,i)=>{const k=d.lk,m=x=>!!x&&lkey(x.n,x.u)===k;if(k===undefined)return l[i]?i:-1;return m(l[i])?i:l.findIndex(m)};
+/* 4.2.0: sugestie de ambalaj pentru cateva produse vandute la marime fixa (cantitatea din lista ramane cea exacta) */
+const PACK=[["faina",1000],["faina alba",1000],["zahar",1000],["orez",500],["malai",1000],["gris",500],["paste",500],["paste uscate",500],["paste integrale",500],["lapte",1000],["unt",200],["smantana",200],["smantana dulce",200],["rosii conserva",400],["lapte de cocos",400]].map(([n,g])=>[[...new Set(toks(n))].sort().join(" "),g]);
+function packTxt(x){if(x.done||x.c==null||!/^(g|ml)$/i.test(x.u||""))return"";const k=[...new Set(toks(lClean(x.n,x.u).n))].sort().join(" "),p=PACK.find(y=>y[0]===k);if(!p)return"";
+ const n=Math.ceil(x.c/p[1]-1e-9),u=x.u.toLowerCase();if(n<1||n*p[1]===x.c)return"";return p[1]>=1000?fmtQ(n*p[1]/1000)+(u==="g"?" kg":" l"):(n>1?n+" x ":"")+p[1]+" "+u}
+function lStale(){drawList();navCount();toast("Lista s-a schimbat intre timp; am actualizat-o. Incearca din nou.")}
 function drawList(){listDedupe();const l=getList(),pan=getPan().length,vis=l.map((x,i)=>[x,i]).filter(([x])=>!hid(x)),np=l.filter(x=>!x.done&&HP&&inPantry(x.n)).length;
  vis.sort((a,b)=>a[0].done-b[0].done);
- const rowH=([x,i])=>PE===i?`<div class="it"><div style="flex-basis:100%"><div class="muted mb4" >Adauga in debara ca (nume general) si categorie:</div><input id="lpn" maxlength="60" value="${esc(sugName(x.n))}" aria-label="Nume in debara"></div><select id="lpc" class="lcs" aria-label="Categorie in debara">${CATS.map(([id,lab])=>`<option value="${esc(id)}"${catOf(sugName(x.n))===id?" selected":""}>${esc(lab)}</option>`).join("")}</select><button class="go m0" data-lpok="${i}" >Muta</button><button class="alt" data-lpno="1">Anuleaza</button></div>`:`<div class="it${x.done?" done":""}"><input type="checkbox" data-ld="${i}" ${x.done?"checked":""} aria-label="Cumparat"><div><div class="tx">${esc(itTxt(x))}${!HP&&!x.done&&inPantry(x.n)?` <span class="lb">in debara</span>`:""}</div><div class="src">${x.src.map(s=>`<button class="srcl" data-lsrc="${esc(s)}">${esc(s)}</button>`).join(", ")}</div></div>${x.done?"":`<button class="alt" data-lp="${i}" title="Am deja produsul: il muta in Debaraua mea">Am in debara</button>`}<button class="alt" data-lx="${i}" aria-label="Scoate">x</button></div>`;
+ const rowH=([x,i])=>PE===i?`<div class="it"><div style="flex-basis:100%"><div class="muted mb4" >Adauga in debara ca (nume general) si categorie:</div><input id="lpn" maxlength="60" value="${esc(sugName(x.n))}" aria-label="Nume in debara"></div><select id="lpc" class="lcs" aria-label="Categorie in debara">${CATS.map(([id,lab])=>`<option value="${esc(id)}"${catOf(sugName(x.n))===id?" selected":""}>${esc(lab)}</option>`).join("")}</select><button class="go m0" data-lpok="${i}" data-lk="${esc(lkey(x.n,x.u))}" >Muta</button><button class="alt" data-lpno="1">Anuleaza</button></div>`:`<div class="it${x.done?" done":""}"><input type="checkbox" data-ld="${i}" data-lk="${esc(lkey(x.n,x.u))}" ${x.done?"checked":""} aria-label="Cumparat"><div><div class="tx">${esc(itTxt(x))}${(t=>t?` <span class="muted">- cumperi ${esc(t)}</span>`:"")(packTxt(x))}${!HP&&!x.done&&inPantry(x.n)?` <span class="lb">in debara</span>`:""}</div><div class="src">${x.src.map(s=>`<button class="srcl" data-lsrc="${esc(s)}">${esc(s)}</button>`).join(", ")}</div></div>${x.done?"":`<button class="alt" data-lp="${i}" data-lk="${esc(lkey(x.n,x.u))}" title="Am deja produsul: il muta in Debaraua mea">Am in debara</button>`}<button class="alt" data-lx="${i}" data-lk="${esc(lkey(x.n,x.u))}" aria-label="Scoate">x</button></div>`;
  let body;
  if(!vis.length)body=`<p class="muted">${l.length?"Totul e ascuns sau bifat.":"Lista e goala. Scrie mai sus un produs sau deschide o reteta si apasa Adauga la cumparaturi. Bifeaza ce ai deja in casa direct aici."}</p>`;
  else if(LV==="r"){const srcs=[];l.forEach(x=>{if(!x.done)x.src.forEach(s=>{if(!srcs.includes(s))srcs.push(s)})});
@@ -1040,11 +1103,11 @@ function drawList(){listDedupe();const l=getList(),pan=getPan().length,vis=l.map
  else if(GRP)body=CATS.map(([id,lab])=>{const g=vis.filter(([x])=>catOf(x.n)===id);return g.length?`<h3 class="lgh">${esc(lab)}</h3>`+g.map(rowH).join(""):""}).join("");
  else body=vis.map(rowH).join("");
  const bn=LBN?`<div class="lbn"><span>Adaugat din meniu (${esc(LBN.label)}): <b>${LBN.n}</b> produse noi din ${LBN.r} retete${np?` (${np} ascunse, le ai in debara)`:""}${LBN.sk?` (${LBN.sk} fara ingrediente)`:""}${LBN.old?`; ${LBN.old} erau deja adaugate`:""}.</span><button class="alt" data-lbk="1">Inapoi la meniu</button><button class="alt" data-lbx="1" aria-label="Inchide">&times;</button></div>`:"";
- $("#ll").innerHTML=bn+`<div class="row ladd"><input id="lAddI" maxlength="120" placeholder="Adauga produs, ex: 2 l lapte, paine" aria-label="Produs nou in lista" autocomplete="off"><button class="go" id="lAddB">Adauga</button></div>`+(l.length?`<div class="row mseg lseg"><button class="alt${LV==="p"?" on":""}" data-lv="p">Pe produse</button><button class="alt${LV==="r"?" on":""}" data-lv="r">Pe retete</button></div><div class="row lact"><button class="alt" id="lCp">Copiaza lista</button>${canShare()?`<button class="alt" id="lSh">Trimite lista</button>`:""}<details class="mre lmore"><summary>Mai multe</summary><div class="row lact2"><button class="alt" id="lDn">Sterge bifate</button><button class="alt" id="lAll">Goleste lista</button></div></details></div>
+ $("#ll").innerHTML=bn+`<div class="row ladd"><input id="lAddI" maxlength="120" placeholder="Adauga produs, ex: 2 l lapte, paine" aria-label="Produs nou in lista" autocomplete="off"><button class="go" id="lAddB">Adauga</button></div>`+(l.length?`<div class="row mseg lseg"><button class="alt${LV==="p"?" on":""}" data-lv="p">Pe produse</button><button class="alt${LV==="r"?" on":""}" data-lv="r">Pe retete</button></div><div class="row lact"><button class="alt" id="lCp">Copiaza lista</button>${canShare()?`<button class="alt" id="lSh">Trimite lista</button>`:""}<button class="alt" id="lDn">Sterge bifate</button><button class="alt" id="lAll">Goleste lista</button></div>
  <label style="font-weight:400;margin:2px 0;display:flex;align-items:center;gap:8px"><input type="checkbox" id="lHp" class="wauto" ${HP?"checked":""}> Ascunde produsele din debara${pan?"":" (debaraua e goala)"}${np?" - "+np+" ascunse":""}</label><div id="lmsg" class="muted"></div>`:"")+body}
 $("#ll").onchange=e=>{const d=e.target.dataset; if(e.target.id==="lHp"){HP=e.target.checked;PE=null;drawList();navCount();return}
  
- if(d.ld!==undefined){const l=getList();l[d.ld].done=e.target.checked?1:0;putList(l);navCount();drawList()}};
+ if(d.ld!==undefined){const l=getList(),ix=lIx(l,d,+d.ld);if(ix<0){lStale();return}l[ix].done=e.target.checked?1:0;putList(l);navCount();drawList()}};
 $("#ll").onkeydown=e=>{if(e.key==="Enter"&&e.target.id==="lAddI"){e.preventDefault();lAdd();return}if(e.key==="Enter"&&e.target.id==="lpn"){e.preventDefault();const b=document.querySelector("[data-lpok]");if(b)b.click()}if(e.key==="Escape"&&PE!==null){PE=null;drawList()}};
 $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
  if(d.lv){LV=d.lv;LS("rlv",LV);drawList();return}
@@ -1052,17 +1115,17 @@ $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
  if(d.lsr!==undefined){const s=LSRC[+d.lsr];if(s){const u=undoMark(["rl","rmen"]),r=removeSrc(s);drawList();drawMenu();undoShow(srcMsg(s,r),u,redrawAll)}return}
  if(d.lbk){LBN=null;show("meniu");return}
  if(d.lbx){LBN=null;drawList();return}
- if(d.lp!==undefined){PE=+d.lp;drawList();const el=$("#lpn");if(el){el.focus();el.select()}return}
+ if(d.lp!==undefined){const ix=lIx(getList(),d,+d.lp);if(ix<0){lStale();return}PE=ix;drawList();const el=$("#lpn");if(el){el.focus();el.select()}return}
  if(d.lpno!==undefined){PE=null;drawList();return}
- if(d.lpok!==undefined){const nm=($("#lpn")||{}).value||"",l=getList(),it=l[+d.lpok];if(!nm.trim()||!it)return;const u=undoMark(["rl","rp","rcat"]),cv=($("#lpc")||{}).value;if(cv&&cv!==catOf(nm.trim()))setCat(nm.trim(),cv);addPan(nm);l.splice(+d.lpok,1);putList(l);PE=null;navCount();drawList();$("#lmsg").textContent="\""+nm.trim()+"\" e acum in Debaraua mea.";undoShow("Mutat in debara: "+nm.trim()+".",u,redrawAll);return}
+ if(d.lpok!==undefined){const nm=($("#lpn")||{}).value||"",l=getList(),ix=lIx(l,d,+d.lpok),it=l[ix];if(ix<0){PE=null;lStale();return}if(!nm.trim()||!it)return;const u=undoMark(["rl","rp","rcat"]),cv=($("#lpc")||{}).value;if(cv&&cv!==catOf(nm.trim()))setCat(nm.trim(),cv);addPan(nm);l.splice(ix,1);putList(l);PE=null;navCount();drawList();$("#lmsg").textContent="\""+nm.trim()+"\" e acum in Debaraua mea.";undoShow("Mutat in debara: "+nm.trim()+".",u,redrawAll);return}
  if(PE!==null)PE=null;
- if(d.lx!==undefined){const u=undoMark(["rl"]),l=getList(),nm=(l[d.lx]||{}).n;l.splice(d.lx,1);putList(l);navCount();drawList();undoShow("Scos din lista: "+nm+".",u,redrawAll);return}
+ if(d.lx!==undefined){const l=getList(),ix=lIx(l,d,+d.lx);if(ix<0){lStale();return}const u=undoMark(["rl"]),nm=(l[ix]||{}).n;l.splice(ix,1);putList(l);navCount();drawList();undoShow("Scos din lista: "+nm+".",u,redrawAll);return}
  if(id==="lAddB"){lAdd();return}
  if(id==="lSh"){const t=listTxt();if(!t){$("#lmsg").textContent="Nu ai nimic de trimis.";return}navigator.share({title:"Lista de cumparaturi",text:t}).catch(()=>{});return}
  if(id==="lCp"){const t=listTxt(),m=$("#lmsg");
   const ok=()=>{m.textContent="Copiat. Poti lipi lista oriunde."};
   const manual=()=>{m.innerHTML='Nu pot copia automat in acest browser. Textul e selectat mai jos: apasa Ctrl+C (sau tine apasat si alege Copiaza).<textarea id="lTa" readonly rows="'+Math.min(12,t.split("\n").length+1)+'" style="width:100%;margin-top:6px"></textarea>';const ta=$("#lTa");ta.value=t;ta.focus();ta.select()};
-  const old=()=>{const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();let r=false;try{r=document.execCommand("copy")}catch(x){}ta.remove();r?ok():manual()};
+  const old=()=>{const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();let r=false;try{r=document.execCommand("copy")}catch(x){dbg(x)}ta.remove();r?ok():manual()};
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,old);else old();return}
  if(id==="lDn"||id==="lAll"){const u=undoMark(["rl"]),n0=getList().length;putList(id==="lAll"?[]:getList().filter(x=>!x.done));navCount();drawList();const n1=getList().length;if(n0!==n1)undoShow((id==="lAll"?"Lista a fost golita":"Produsele bifate au fost sterse")+" ("+(n0-n1)+").",u,redrawAll)}};
 if(!LS("rcl3")){const l0=getList(),l1=[];l0.forEach(x=>{const p=prepIngs([{c:x.c,u:x.u,n:x.n}]);p.forEach(q=>l1.push(Object.assign({},x,{n:q.n,k:norm(q.n)+"|"+norm(x.u||"")})))});if(l1.length!==l0.length||l1.some((q,i)=>q.n!==(l0[i]||{}).n))putList(l1);LS("rcl3","1")}
@@ -1080,10 +1143,10 @@ const ingGen=r=>(r.ingrediente||[]).map(i=>[i.cantitate,i.unitate,cap(i.nume)].f
 const ingBook=(r,f)=>(r.ingrediente||[]).map(x=>(x.c!=null?fmtQ(x.c*f)+" ":"")+(x.u?x.u+" ":"")+cap(x.n));
 const fmtT=s=>{s=Math.max(0,Math.ceil(s));const h=Math.floor(s/3600),m=Math.floor(s%3600/60);return(h?h+":"+String(m).padStart(2,"0"):m)+":"+String(s%60).padStart(2,"0")};
 async function wlOn(){try{if(navigator.wakeLock&&!WL){WL=await navigator.wakeLock.request("screen");WL.addEventListener&&WL.addEventListener("release",()=>{WL=null})}}catch(e){WL=null}}
-function wlOff(){try{WL&&WL.release()}catch(e){}WL=null}
+function wlOff(){try{WL&&WL.release()}catch(e){dbg(e)}WL=null}
 document.addEventListener("visibilitychange",()=>{if(CK&&document.visibilityState==="visible")wlOn()});
 function beep(n){try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;CTX=CTX||new A();if(CTX.state==="suspended")CTX.resume();
- for(let k=0;k<(n||3);k++)setTimeout(()=>{const o=CTX.createOscillator(),g=CTX.createGain();o.connect(g);g.connect(CTX.destination);o.frequency.value=880;g.gain.value=.25;o.start();o.stop(CTX.currentTime+.35)},k*550)}catch(e){}}
+ for(let k=0;k<(n||3);k++)setTimeout(()=>{const o=CTX.createOscillator(),g=CTX.createGain();o.connect(g);g.connect(CTX.destination);o.frequency.value=880;g.gain.value=.25;o.start();o.stop(CTX.currentTime+.35)},k*550)}catch(e){dbg(e)}}
 function cookOpen(title,steps,ing,note){if(!steps.length){toast("Reteta asta nu are pasi de afisat in modul gatit.");return}
  CK={title,steps,ing,note:note||"",i:0,arm:0};$("#cook").classList.remove("hidden");document.body.style.overflow="hidden";wlOn();drawCook();ckTimers();setTimeout(()=>{const b=document.querySelector("[data-ckn]");if(b)b.focus()},0)}
 function cookClose(force){if(!CK)return;if(!force&&CT.some(t=>!t.done)&&!CK.arm){CK.arm=1;drawCook();return}
@@ -1098,7 +1161,7 @@ function drawCook(){if(!CK)return;const s=CK.steps[CK.i],n=CK.steps.length,last=
 function ckTimers(){const el=$("#cktm");if(!el)return;
  el.innerHTML=CT.map(t=>`<div class="cktm${t.done?" fin":""}"><div class="fx1"><div class="muted">${esc(t.lab)}</div><b data-tmv="${t.id}">${t.done?"Gata!":fmtT((t.end-Date.now())/1000)}</b></div><button class="alt" data-cktx="${t.id}">${t.done?"OK":"Opreste"}</button></div>`).join("")}
 function ckTick(){if(!CK){clearInterval(CTI);CTI=0;return}let ch=false;
- CT.forEach(t=>{if(t.done)return;const left=(t.end-Date.now())/1000;if(left<=0){t.done=true;ch=true;beep(4);try{navigator.vibrate&&navigator.vibrate([400,200,400,200,400])}catch(e){}}
+ CT.forEach(t=>{if(t.done)return;const left=(t.end-Date.now())/1000;if(left<=0){t.done=true;ch=true;beep(4);try{navigator.vibrate&&navigator.vibrate([400,200,400,200,400])}catch(e){dbg(e)}}
   else{const e=document.querySelector('[data-tmv="'+t.id+'"]');if(e)e.textContent=fmtT(left)}});if(ch)ckTimers()}
 $("#cook").onclick=e=>{const d=e.target.dataset;if(!CK)return;
  if(d.ckx!==undefined){cookClose(false);return}
@@ -1108,12 +1171,12 @@ $("#cook").onclick=e=>{const d=e.target.dataset;if(!CK)return;
  if(d.cktx!==undefined){CT=CT.filter(t=>String(t.id)!==d.cktx);ckTimers();return}};
 document.addEventListener("keydown",e=>{if(!CK)return;if(e.key==="Escape"){cookClose(false)}else if(e.key==="ArrowRight"&&!/INPUT|TEXTAREA|SELECT/.test((e.target||{}).tagName||"")){const b=document.querySelector("[data-ckn]");if(b)b.click()}else if(e.key==="ArrowLeft"){const b=document.querySelector("[data-ckp]");if(b&&!b.disabled)b.click()}});
 /* ===== Primii pasi (apare doar cat mai lipsesc lucruri esentiale; se poate ascunde) ===== */
+/* 4.2.0: fara cheie API, tot ce cheama modelul e ascuns (body.nokey, vezi style.css); aplicatia e completa si asa */
+function keyUpd(){try{document.body.classList.toggle("nokey",!LS("rk"))}catch(e){dbg(e)}}
 function drawOnb(){const el=$("#onb");if(!el)return;
- const st=[["key","Adauga cheia API","Pentru idei si adaptari cu model (restul aplicatiei merge si fara).",!!LS("rk")],
-  ["lib","Incarca-ti cartile de retete","Fisierele JSON cu retetele tale; raman doar in browserul tau.",getStored().length>0],
-  ["pan","Spune ce ai in Debara","Ca sa vezi ce poti gati fara sa cumperi nimic.",getPan().some(p=>!BASE.includes(p.n))]],n=st.filter(x=>x[3]).length;
+ const st=[["pan","Spune ce ai in Debara","Ca sa vezi ce poti gati fara sa cumperi nimic.",getPan().some(p=>!BASE.includes(p.n))]],n=st.filter(x=>x[3]).length;
  if(LS("ronb")==="1"||n===st.length){el.innerHTML="";return}
- el.innerHTML=`<div class="card onb"><div class="mh"><h2>Primii pasi <span class="muted">(${n} din ${st.length})</span></h2><button class="alt" data-onbx="1">Ascunde</button></div>`+st.map(([id,t,d,ok])=>`<div class="me"><span class="onbc${ok?" ok":""}" aria-hidden="true">${ok?"\u2713":""}</span><div class="mn"><div class="tx">${esc(t)}</div><div class="muted">${esc(d)}</div></div>${ok?"":`<button class="alt" data-onb="${id}">Mergi</button>`}</div>`).join("")+`</div>`}
+ el.innerHTML=`<div class="card onb"><div class="mh"><h2>Primul pas</h2><button class="alt" data-onbx="1">Ascunde</button></div>`+st.map(([id,t,d,ok])=>`<div class="me"><span class="onbc${ok?" ok":""}" aria-hidden="true">${ok?"\u2713":""}</span><div class="mn"><div class="tx">${esc(t)}</div><div class="muted">${esc(d)}</div></div>${ok?"":`<button class="alt" data-onb="${id}">Mergi</button>`}</div>`).join("")+`</div>`}
 $("#onb").onclick=e=>{const d=e.target.dataset;
  if(d.onbx!==undefined){LS("ronb","1");drawOnb();return}
  if(d.onb==="key"){show("setari");setSub("cont");return}
@@ -1235,7 +1298,7 @@ function profDraw(){const el=$("#profbox");if(!el)return;const p=getPr(),t=profT
  else h+=`<p class="muted mt12 mb0" >Completeaza toate campurile ca sa apara tintele si procentele din necesar.</p>`;
  h+=`<p class="muted mt12 mb0 fss" >Valori de referinta EFSA pentru adulti sanatosi. Nu acopera sarcina, alaptarea sau boli care schimba necesarul. Energia se estimeaza cu formula Mifflin-St Jeor si nivelul de activitate; etapa o ajusteaza (crestere +10%, definire -15%). Proteinele standard: 0,83 g/kg (mentinere, minimul EFSA), 1,6 (crestere musculara), 2,0 (definire). Orientare, nu sfat medical.</p>`;
  el.innerHTML=h}
-function dayMac(dm){const s=[0,0,0,0];let n=0,nd=0,nm=0,ne=0,nl=0;SLOTS.forEach(([id])=>(dm[id]||[]).forEach(en=>{n++;const a=menMac(en);if(a){nd++;const rc=en.s==="b"&&menRec(en)&&menRec(en).r.macro&&menRec(en).r.macro.kcal!=null;if(!rc&&!Array.isArray(en.m))nl++;if(en.me&&!(en.s==="b"&&menRec(en)&&menRec(en).r.macro&&menRec(en).r.macro.kcal!=null))ne++;a.forEach((v,i)=>{if(v!=null)s[i]+=v})}else if(en.s!=="x")nm++}));return{n,nd,nm,ne,nl,s:s.map(Math.round)}}
+function dayMac(dm){const s=[0,0,0,0];let n=0,nd=0,nm=0,ne=0,nl=0;SLOTS.forEach(([id])=>(dm[id]||[]).forEach(en=>{n++;const a=menMac(en);if(a){nd++;const mr=en.s==="b"?menRec(en):null,rc=!!(mr&&mr.r.macro&&mr.r.macro.kcal!=null);if(!rc&&!Array.isArray(en.m))nl++;if(en.me&&!rc)ne++;a.forEach((v,i)=>{if(v!=null)s[i]+=v})}else if(en.s!=="x")nm++}));return{n,nd,nm,ne,nl,s:s.map(Math.round)}}
 /* estimare macro cu AI pentru intrarile fara macro dintr-o zi; valorile se pastreaza in intrarea din meniu, marcate "estimat" */
 async function menEst(day,btn){const m=getMen(),dm=m[day]||{},L=[];SLOTS.forEach(([id])=>(dm[id]||[]).forEach(en=>{if(en.s!=="x"&&!menMac(en)){const rec=menRec(en),ing=(en.i&&en.i.length?en.i:rec?rawIngs(en.s,rec.r):[]);if(ing.length)L.push({en,ing})}}));
  if(!L.length){toast("Nu am ingrediente pentru a estima macro.");return}
@@ -1336,7 +1399,7 @@ $("#pxcard").onchange=e=>{const n=e.target.dataset.pxc;if(n===undefined)return;c
 const PX_EXC=/\b(sos|sosuri|muraturi|conserv|marmelad|dulceat|retete casnice|glazur|sirop|bauturi|condiment|aluat|baza|gem|compot|lichior|cocktail|detox)/;
 const PX_MIC=/\b(mic dejun|brunch|omleta|oua|smoothie|tartinabil|granola|terci|clatite|toast)/;
 let _pxcv=null,_pxcm={};
-function getPxc(){const v=LS("rpxc")||"";if(v!==_pxcv){_pxcv=v;let j={};try{j=JSON.parse(v||"{}")}catch(e){}_pxcm={};if(j&&typeof j==="object")Object.keys(j).forEach(k=>{if(["mic","pranz","cina","desert","-"].includes(j[k]))_pxcm[k]=j[k]})}return _pxcm}
+function getPxc(){const v=LS("rpxc")||"";if(v!==_pxcv){_pxcv=v;let j={};try{j=JSON.parse(v||"{}")}catch(e){dbg(e)}_pxcm={};if(j&&typeof j==="object")Object.keys(j).forEach(k=>{if(["mic","pranz","cina","desert","-"].includes(j[k]))_pxcm[k]=j[k]})}return _pxcm}
 function pxSlot(r){const ov=r.categorie?getPxc()[r.categorie]:undefined;if(ov)return ov==="-"?null:ov;return pxAuto(r)}
 function pxAuto(r){const t=norm((r.categorie||"")+" "+(r.titlu||""));if(PX_EXC.test(norm(r.categorie||"")))return null;
  /* 3.21.0: supele si ciorbele nu sunt desert ("Supe crema" continea "crema") */
@@ -1394,7 +1457,7 @@ function pxApply(){const R=PRP.res,m=getMen();let n=0,sv=getSaved(),savedNew=fal
   if(r.gen){const g=JSON.parse(JSON.stringify(r.gen));let t=g.titlu,k=2;while(sv.some(x=>x.titlu===t))t=g.titlu+" ("+k++ +")";g.titlu=t;g.id=sid();sv.unshift(g);savedNew=true;en=mkEntry("s",g)}
   else if(r.ix>=0&&r.cand[r.ix]){const c=r.cand[r.ix].c;en=mkEntry(c.s,c.r)}
   if(en){const dm=(m[r.d]=m[r.d]||{});if((dm[r.sl]||[]).length)return;dm[r.sl]=[en];n++}});
- if(savedNew){if(sv.length>200)sv=sv.slice(0,200);LS("rs",JSON.stringify(sv))}
+ if(savedNew){sv=svTrim(sv);LS("rs",JSON.stringify(sv))}
  putMen(m);PRP=null;menClose();toast("Am adaugat "+n+(n===1?" masa":" mese")+" in meniu.");drawMenu()}
 function pxClick(e){const b=e.target,d=b.dataset,P=PRP;
  if(b===$("#mdlg")||d.pxx!==undefined){PRP=null;menClose();return true}
@@ -1466,7 +1529,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="4.1.0";
+const APP_V="4.2.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -1475,11 +1538,11 @@ if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
  window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js?v="+APP_V).catch(()=>{})})}
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();INST=e;updPst()});
 window.addEventListener("appinstalled",()=>{INST=null;updPst()});
-async function persistStore(){try{if(navigator.storage&&navigator.storage.persist&&!(await navigator.storage.persisted()))await navigator.storage.persist()}catch(e){}}
+async function persistStore(){try{if(navigator.storage&&navigator.storage.persist&&!(await navigator.storage.persisted()))await navigator.storage.persist()}catch(e){dbg(e)}}
 async function updPst(){const el=$("#pst");if(!el)return;let per=null,txt="";
- try{if(navigator.storage&&navigator.storage.persisted)per=await navigator.storage.persisted()}catch(e){}
- try{if(navigator.storage&&navigator.storage.estimate){const s=await navigator.storage.estimate();const mb=v=>v>=1048576*1024?Math.round(v/1073741824)+" GB":(v/1048576).toFixed(1)+" MB";if(s&&s.usage!=null)txt=" Folosit: "+mb(s.usage)+(s.quota?" din ~"+mb(s.quota)+" disponibili pe dispozitiv":"")+"."}}catch(e){}
- const lsk=(()=>{let n=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);n+=k.length+(localStorage.getItem(k)||"").length}}catch(e){}return n})();
+ try{if(navigator.storage&&navigator.storage.persisted)per=await navigator.storage.persisted()}catch(e){dbg(e)}
+ try{if(navigator.storage&&navigator.storage.estimate){const s=await navigator.storage.estimate();const mb=v=>v>=1048576*1024?Math.round(v/1073741824)+" GB":(v/1048576).toFixed(1)+" MB";if(s&&s.usage!=null)txt=" Folosit: "+mb(s.usage)+(s.quota?" din ~"+mb(s.quota)+" disponibili pe dispozitiv":"")+"."}}catch(e){dbg(e)}
+ const lsk=(()=>{let n=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);n+=k.length+(localStorage.getItem(k)||"").length}}catch(e){dbg(e)}return n})();
  const bk=STORED.length?JSON.stringify(STORED).length*1:0;
  el.innerHTML="<details><summary><b>Stocare si instalare</b></summary>"+(per===true?"protejata (browserul nu o sterge singur)":per===false?"nu e protejata (browserul o poate sterge cand ramane fara spatiu; descarca backup des)":"necunoscuta pe acest browser")+"."+txt+" Setari, liste, meniu: "+(lsk*2/1048576).toFixed(1)+" MB din ~5 MB disponibili (localStorage)."+(IDBOK?" Biblioteca ("+STORED.length+" retete, ~"+(bk/1048576).toFixed(1)+" MB) e in baza de date a browserului, fara limita de 5 MB.":"")
   +(INST?` <button class="alt" id="pwaI" type="button">Instaleaza aplicatia</button>`:` <span class="muted">${instHint()}</span>`)+`</details>`}
@@ -1540,11 +1603,11 @@ function sStat(id){try{
  if(id==="cont")return (LS("rk")?"Cheie setata":"Cheie lipsa")+" \u00b7 "+((LS("rm1")||"claude-haiku-4-5").replace("claude-",""));
  if(id==="carti"){const n=(()=>{try{return STORED.length}catch(e){return 0}})();return n?n+" retete in biblioteca":"nicio carte incarcata"}
  if(id==="backup"){const f=t=>new Date(t).toLocaleDateString("ro-RO",{day:"numeric",month:"short"});if(dbOn())return +LS("rdbl")?"sincronizat cu Dropbox: "+f(+LS("rdbl")):"Dropbox conectat";const t=+LS("rbk")||0;return t?"ultimul backup: "+f(t):"niciun backup"}
- if(id==="despre")return "Versiunea "+APP_V}catch(e){}return""}
+ if(id==="despre")return "Versiunea "+APP_V}catch(e){dbg(e)}return""}
 function sRow(id,e){const w=id==="cont"&&!LS("rk")||id==="backup"&&bkDue();return`<button type="button" class="srow${e===id?" on":""}" data-s="${id}"><span class="srt"><b>${STITLE[id]}</b><span class="srs${w?" warn2":""}">${esc(sStat(id))}</span></span><span class="chev" aria-hidden="true">&rsaquo;</span></button>`}
 const TEHN=["carti","backup","cont","despre"],ADMN=["profil","aparate","pref","alimente","etichete","mese"],tabOf=i=>TEHN.includes(i)?"teh":"adm";
 let STAB=(()=>{try{return localStorage.getItem("rst")==="teh"?"teh":"adm"}catch(x){return"adm"}})();
-function setTab(t){STAB=t==="teh"?"teh":"adm";try{localStorage.setItem("rst",STAB)}catch(x){}}
+function setTab(t){STAB=t==="teh"?"teh":"adm";try{localStorage.setItem("rst",STAB)}catch(x){dbg(x)}}
 function renderSnav(e){const at=sAttn();
  const tb=(t,l,dot)=>`<button type="button" role="tab" class="stab${STAB===t?" on":""}" data-tab="${t}" aria-selected="${STAB===t}">${l}${dot?'<span class="sdot" role="img" aria-label="necesita atentie"></span>':""}</button>`;
  $("#snav").innerHTML=`<div class="stabs" role="tablist">${tb("adm","Administrare")}${tb("teh","Tehnic",at.length)}</div><div class="sgrp">${(STAB==="teh"?TEHN:ADMN).map(i=>sRow(i,e)).join("")}</div>`}
@@ -1564,7 +1627,7 @@ document.addEventListener("click",e=>{const g=e.target.closest("[data-gosub]");i
 /* semn pentru copia de siguranta veche (peste 14 zile) */
 const DOT='<span class="dot" title="Backup-ul e vechi"></span>';
 function bkAge(){const t=Math.max(+LS("rbk")||0,+LS("rdbl")||0);return t?Math.floor((Date.now()-t)/864e5):null}
-function bkDue(){let has=false;try{has=getSaved().length>0||getStored().length>0}catch(e){}if(!has)return false;const g=bkAge();return g===null||g>14}
+function bkDue(){let has=false;try{has=getSaved().length>0||getStored().length>0}catch(e){dbg(e)}if(!has)return false;const g=bkAge();return g===null||g>14}
 function bkBadge(){const d=bkDue(),g=bkAge();
  [["#gnav [data-g=mai] .nlb","Mai mult"],["#v-mai .stl","Setari"]].forEach(([s,t])=>{const el=document.querySelector(s);if(el)el.innerHTML=t+(d?DOT:"")});
  if(typeof sRender==="function")sRender();
@@ -1572,7 +1635,7 @@ function bkBadge(){const d=bkDue(),g=bkAge();
 bkBadge();
 $("#bCancel").onclick=()=>{if(ABORT)ABORT.abort()};
 /* copie de siguranta */
-const BK_KEYS=["rs","rfav","rtags","ra","rbook","rm1","rm2b","rl","rp","rcat","rcg","rmen","rmp","rmt","rnote","rpf","rpxc","rfd","rprof"];
+const BK_KEYS=DKEYS;
 let IMP=null;
 function bkLast(){const t=LS("rbk");return t?"Ultimul backup descarcat: "+new Date(+t).toLocaleString("ro-RO")+".":"Nu ai descarcat niciun backup inca."}
 function bkInfo(d){const n=k=>{try{const j=JSON.parse(d[k]);return Array.isArray(j)?j.length:(j&&typeof j==="object"?Object.keys(j).length:0)}catch(e){return 0}};return{meniu:n("rmen"),salvate:n("rs"),favorite:n("rfav"),etichete:n("rtags"),aparate:n("ra"),biblioteca:n("rbook"),lista:n("rl"),debara:n("rp")}}
@@ -1581,7 +1644,7 @@ function bkBuild(){const d={},mine=STORED.filter(r=>!shUnmod(r)),liv={};STORED.f
  BK_KEYS.forEach(k=>{const v=k==="rbook"?(mine.length?JSON.stringify(mine):null):LS(k);if(v!=null)d[k]=v});if(Object.keys(liv).length)d.rliv=JSON.stringify(liv); /* 4.1.0: retetele livrate neschimbate nu intra in backup, doar lista lor (rliv) */d.rtags=JSON.stringify(TAGS);d.ra=JSON.stringify(AP);
  const o={app:"retete-dana",format:1,data_export:new Date().toISOString(),date:d};
  const info=bkInfo(d);info.biblioteca=STORED.length;
- return{json:JSON.stringify(o),name:"retete-backup-"+new Date().toISOString().slice(0,10)+".json",info}}
+ return{json:JSON.stringify(o),name:"retete-backup-"+dKey(new Date())+".json",info}}
 const bkMsg=(i,pre)=>pre+i.salvate+" retete salvate, "+i.favorite+" favorite, "+i.biblioteca+" retete in biblioteca, "+i.debara+" produse in debara, "+i.meniu+" zile in meniu. ";
 $("#bExp").onclick=()=>{const f=bkBuild();
  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([f.json],{type:"application/json"}));
@@ -1591,19 +1654,20 @@ $("#bExp").onclick=()=>{const f=bkBuild();
 $("#bShare").onclick=async()=>{const f=bkBuild(),file=new File([f.json],f.name,{type:"application/json"});
  try{await navigator.share({files:[file],title:"Backup Cartea mea de retete"});LS("rbk",String(Date.now()));bkBadge();$("#bkm").textContent=bkMsg(f.info,"Trimis: ")+bkLast()}
  catch(e){if(e&&e.name==="AbortError")return;$("#bkm").textContent="Nu am putut deschide partajarea. Foloseste \"Descarca backup\"."}};
-(()=>{try{const t=new File(["{}"],"a.json",{type:"application/json"});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[t]}))$("#bShare").hidden=false}catch(e){}})();
+(()=>{try{const t=new File(["{}"],"a.json",{type:"application/json"});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[t]}))$("#bShare").hidden=false}catch(e){dbg(e)}})();
 function impDraw(){const el=$("#bipv");if(!IMP){el.innerHTML="";return}const i=bkInfo(IMP.date);
  el.innerHTML=`<div class="card mt8 mb0" ><b>${esc(IMP.f.name)}</b><div class="muted mt8 mb12" >Backup din ${esc((IMP.data_export||"").slice(0,10))}: ${i.salvate} retete salvate, ${i.favorite} favorite, ${i.etichete} etichete, ${i.aparate} aparate, ${i.biblioteca} retete in biblioteca, ${i.debara} produse in debara, ${i.meniu} zile in meniu.<br><b>Inlocuieste</b> tot ce ai acum in aplicatie pentru aceste date (cheia API ramane).</div><button class="go m0" data-ip="ok" >Restaureaza</button> <button class="alt" data-ip="no">Anuleaza</button></div>`}
+const BK_ARR=["rs","rfav","rtags","ra","rbook","rl","rp","rcat","rcg","rmp"];
 function bkParse(txt,name){const j=JSON.parse(txt);if(j.app!=="retete-dana"||!j.date||typeof j.date!=="object")throw 0;
- for(const k of Object.keys(j.date)){if((!BK_KEYS.includes(k)&&k!=="rliv")||typeof j.date[k]!=="string")throw 0;if(!["rm1","rm2b"].includes(k))JSON.parse(j.date[k])}
+ for(const k of Object.keys(j.date)){if((!BK_KEYS.includes(k)&&k!=="rliv")||typeof j.date[k]!=="string")throw 0;if(!["rm1","rm2b"].includes(k)){const v=JSON.parse(j.date[k]),arr=Array.isArray(v);if(BK_ARR.includes(k)?!arr:(!v||typeof v!=="object"||arr))throw 0}} /* 4.1.1: lista unde trebuie lista, obiect unde trebuie obiect */
  return{date:j.date,data_export:j.data_export,f:{name}}}
 $("#bimp").onchange=async e=>{const f=e.target.files[0];IMP=null;$("#bkm").textContent=bkLast();if(!f){impDraw();return}
- try{const tx=await f.text();try{const j0=JSON.parse(tx);if(j0&&Array.isArray(j0.corectii)){impDraw();$("#bkm").textContent="Acesta e un fisier de corectii, nu un backup. Il aplici din Setari > Carti, la \"Aplica un fisier de corectii\".";return}}catch(_){}IMP=bkParse(tx,f.name);impDraw()}
+ try{const tx=await f.text();try{const j0=JSON.parse(tx);if(j0&&Array.isArray(j0.corectii)){impDraw();$("#bkm").textContent="Acesta e un fisier de corectii, nu un backup. Il aplici din Setari > Carti, la \"Aplica un fisier de corectii\".";return}}catch(_){dbg(_)}IMP=bkParse(tx,f.name);impDraw()}
  catch(x){impDraw();$("#bkm").textContent="Fisierul nu e un backup valid al acestei aplicatii."}};
 $("#bipv").onclick=async e=>{const d=e.target.dataset.ip;if(!d)return;
  if(d==="no"){IMP=null;$("#bimp").value="";impDraw();$("#bkm").textContent="Restaurare anulata.";return}
  const KL=BK_KEYS.filter(k=>k!=="rbook"),bak={},prev=STORED,date=IMP.date;KL.forEach(k=>{bak[k]=localStorage.getItem(k)});
- const back=()=>{try{KL.forEach(k=>{if(bak[k]!=null)localStorage.setItem(k,bak[k]);else localStorage.removeItem(k)})}catch(y){}};
+ const back=()=>{try{KL.forEach(k=>{if(bak[k]!=null)localStorage.setItem(k,bak[k]);else localStorage.removeItem(k)})}catch(y){dbg(y)}};
  let lib=[];try{const j=date.rbook!=null?JSON.parse(date.rbook):[];lib=Array.isArray(j)?j:[]}catch(x){lib=[]}
  $("#bkm").textContent="Restaurez...";await snapMake(true);
  /* biblioteca intai (cea mai mare); daca ceva esueaza, ramane tot ce era inainte */
@@ -1633,7 +1697,7 @@ async function dbConnect(){const v=b64u(crypto.getRandomValues(new Uint8Array(32
  sessionStorage.setItem("rdbv",v);
  location.href="https://www.dropbox.com/oauth2/authorize?"+new URLSearchParams({client_id:DBK(),response_type:"code",code_challenge:ch,code_challenge_method:"S256",token_access_type:"offline",redirect_uri:dbRedirect()})}
 async function dbToken(body){const r=await fetch("https://api.dropboxapi.com/oauth2/token",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(body)});
- const j=await r.json().catch(()=>({}));if(!r.ok){if(j.error==="invalid_grant"&&body.grant_type==="refresh_token")try{localStorage.removeItem("rdbt")}catch(e){}
+ const j=await r.json().catch(()=>({}));if(!r.ok){if(j.error==="invalid_grant"&&body.grant_type==="refresh_token")try{localStorage.removeItem("rdbt")}catch(e){dbg(e)}
   throw new Error(j.error==="invalid_grant"?"Conectarea Dropbox a expirat. Conecteaza din nou.":(j.error_description||j.error||"Eroare Dropbox"))}return j}
 let DBAT=null,DBAX=0;
 async function dbAccess(){if(DBAT&&Date.now()<DBAX-60000)return DBAT;const rt=LS("rdbt");if(!rt)throw new Error("Dropbox nu e conectat.");
@@ -1641,7 +1705,7 @@ async function dbAccess(){if(DBAT&&Date.now()<DBAX-60000)return DBAT;const rt=LS
 async function dbApi(url,arg,body,content){const t=await dbAccess(),h={Authorization:"Bearer "+t};
  if(content){h["Dropbox-API-Arg"]=JSON.stringify(arg);if(body!=null)h["Content-Type"]="application/octet-stream"}else h["Content-Type"]="application/json";
  const r=await fetch(url,{method:"POST",headers:h,body:content?body:JSON.stringify(arg)});
- if(!r.ok){let m="Eroare Dropbox ("+r.status+")";try{const j=await r.json();if(j.error_summary)m+=": "+j.error_summary}catch(e){}throw new Error(m)}return r}
+ if(!r.ok){let m="Eroare Dropbox ("+r.status+")";try{const j=await r.json();if(j.error_summary)m+=": "+j.error_summary}catch(e){dbg(e)}throw new Error(m)}return r}
 async function snDraw(){const el=$("#snbox");if(!el)return;const L=await snapList();
  el.innerHTML=`<p class="muted mt0 mb8" >Aplicatia isi face singura o copie (cel mult una la 20 de ore) si le pastreaza pe ultimele ${SNAPN}. Te ajuta daca stergi sau strici ceva; nu te ajuta daca stergi datele browserului.</p>`+
   (IDBOK&&DB?(L.length?L.map(k=>`<div class="apr"><span>${esc(fmtDT(k.slice(5)))}</span><button class="alt" type="button" data-snr="${esc(k)}">Restaureaza</button></div>`).join(""):'<p class="muted">Inca nu exista nicio copie.</p>')+`<button class="alt mt8" type="button" data-snmk="1" >Fa o copie acum</button>`:'<p class="muted">Browserul nu permite baza de date locala, deci copiile automate nu sunt disponibile.</p>')}
@@ -1652,7 +1716,7 @@ async function snDraw(){const el=$("#snbox");if(!el)return;const L=await snapLis
 const SY_RAW=["rm1","rm2b"],SY_MIN=60000;
 const SY_LAB={rbook:"biblioteca",rs:"retete salvate",rfav:"favorite",rtags:"etichete",ra:"aparate",rm1:"setari AI",rm2b:"setari AI",rl:"lista de cumparaturi",rp:"debara",rcat:"debara",rcg:"debara",rmen:"meniu",rmt:"meniu",rnote:"notite",rpf:"preferinte alimente",rpxc:"meniu",rfd:"alimente proprii",rprof:"profil nutritional"};
 function syLocal(){const o={};BK_KEYS.forEach(k=>{if(k==="rbook"){o.rbook=cl(STORED);return}
- const v=LS(k);if(v==null)return;if(SY_RAW.includes(k)){o[k]=v;return}try{o[k]=JSON.parse(v)}catch(e){}});return o}
+ const v=LS(k);if(v==null)return;if(SY_RAW.includes(k)){o[k]=v;return}try{o[k]=JSON.parse(v)}catch(e){dbg(e)}});return o}
 function syEq(a,b){if(a===b)return true;if(typeof a!=="object"||typeof b!=="object"||!a||!b)return false;
  if(Array.isArray(a)!==Array.isArray(b))return false;
  if(Array.isArray(a)){if(a.length!==b.length)return false;for(let i=0;i<a.length;i++)if(!syEq(a[i],b[i]))return false;return true}
@@ -1689,7 +1753,7 @@ const syDiff=(a,b)=>[...new Set(BK_KEYS.filter(k=>!syEq((a||{})[k],(b||{})[k])).
 function syBrake(loc,rem,mer){for(const k of["rbook","rs"]){const n=x=>Array.isArray(x)?x.length:0;
  if((n(rem[k])>=10&&n(mer[k])<n(rem[k])*.5)||(n(loc[k])>=10&&n(mer[k])<n(loc[k])*.5))return SY_LAB[k]}return null}
 async function syFetch(){try{const r=await dbApi("https://content.dropboxapi.com/2/files/download",{path:"/sync.json"},null,true);
-  let rev=null;try{rev=(JSON.parse(r.headers.get("dropbox-api-result")||"{}")).rev||null}catch(e){}
+  let rev=null;try{rev=(JSON.parse(r.headers.get("dropbox-api-result")||"{}")).rev||null}catch(e){dbg(e)}
   const j=JSON.parse(await r.text());if(j.app!=="retete-dana"||!j.data||typeof j.data!=="object")throw new Error("Fisierul sync.json din Dropbox nu apartine acestei aplicatii.");
   if(!rev)rev=await syRev();return{rev,data:j.data}}
  catch(e){if(/not_found/.test(e.message||""))return null;throw e}}
@@ -1701,7 +1765,7 @@ async function syApplyLocal(mer,loc){await snapMake(true);SYAPPLY=true;
  try{for(const k of BK_KEYS){if(syEq(mer[k],loc[k]))continue;
    if(k==="rbook"){if(!(await saveStored(Array.isArray(mer.rbook)?mer.rbook:[])))throw new Error("Nu am putut salva biblioteca.");continue}
    const v=mer[k];try{if(v===undefined)localStorage.removeItem(k);else localStorage.setItem(k,nd(SY_RAW.includes(k)?v:JSON.stringify(v)))}catch(e){throw new Error("Nu am putut scrie in browser (spatiu insuficient).")}}}
- finally{try{sidRun()}catch(e){}SYAPPLY=false}}
+ finally{try{sidRun()}catch(e){dbg(e)}SYAPPLY=false}}
 var SYAPPLY=false,SYBUSY=false,SYT=0,SYREADY=false,SYLAST=0;
 /* rezultat: {ok, applied?, pending?, blocked?, diff?, err?} */
 async function syncRun(o){o=o||{};if(SYBUSY)return{busy:true};SYBUSY=true;SYLAST=Date.now();
@@ -1716,14 +1780,14 @@ async function syncRun(o){o=o||{};if(SYBUSY)return{busy:true};SYBUSY=true;SYLAST
    const chg=!syEqO(mer,loc);
    if(chg&&!o.apply){LS("rdbl",String(Date.now()));return{ok:true,pending:true,diff:syDiff(loc,mer),conf:conf.length}}
    if(chg)await syApplyLocal(mer,loc);
-   await idbPut("syncbase",mer);if(rev)LS("rdbr",rev);LS("rdbl",String(Date.now()));try{localStorage.removeItem("rdbe")}catch(e){}bkBadge();
+   await idbPut("syncbase",mer);if(rev)LS("rdbr",rev);LS("rdbl",String(Date.now()));try{localStorage.removeItem("rdbe")}catch(e){dbg(e)}bkBadge();
    return{ok:true,applied:chg,diff:chg?syDiff(loc,mer):[],conf:conf.length}}
   return{err:"Dropbox s-a schimbat in timpul sincronizarii. Incearca din nou."}}
  catch(e){return{err:e.message||"Eroare la sincronizare."}}
  finally{SYBUSY=false}}
 const SY_FL={portii:"portii",etichete:"etichete",ingrediente:"ingrediente",pasi_carte:"mod de preparare",macro:"macro",titlu:"titlu",categorie:"categorie",capitol:"capitol",sfaturi:"sfaturi",verifica:"marcaje de verificat",pna:"portii (nu se aplica)",mok:"avertizare macro"};
 const syVal=v=>v==null?"(gol)":typeof v==="object"?"(diferit)":String(v).slice(0,40);
-function syConfSave(c){let o=[];try{o=JSON.parse(LS("rsyc")||"[]")}catch(e){}if(!Array.isArray(o))o=[];
+function syConfSave(c){let o=[];try{o=JSON.parse(LS("rsyc")||"[]")}catch(e){dbg(e)}if(!Array.isArray(o))o=[];
  c.forEach(x=>o.push({t:Date.now(),nm:x.nm||SY_LAB[x.k]||x.k,f:SY_FL[x.f]||x.f||"",l:syVal(x.l),r:syVal(x.r)}));LS("rsyc",JSON.stringify(o.slice(-30)))}
 const syConfGet=()=>{try{const o=JSON.parse(LS("rsyc")||"[]");return Array.isArray(o)?o:[]}catch(e){return[]}};
 function syBar(txt,btn){const b=$("#sybar");if(!b)return;if(!txt){b.hidden=true;return}$("#sytxt").textContent=txt;$("#syGo").hidden=!btn;$("#syGo").textContent=btn||"";b.hidden=false}
@@ -1732,7 +1796,7 @@ async function syAuto(apply){if(!dbOn()||LS("rdba")==="0"||!hasData()&&!apply)re
  const r=await syncRun({apply});
  if(r.busy)return r;
  if(r.err){LS("rdbe",r.err.slice(0,120))}
- if(r.applied){try{sessionStorage.setItem("rsyt","Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".")}catch(e){}location.reload();return r}
+ if(r.applied){try{sessionStorage.setItem("rsyt","Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".")}catch(e){dbg(e)}location.reload();return r}
  if(r.pending)syBar("Sunt modificari noi de pe alt dispozitiv ("+r.diff.join(", ")+").","Aplica acum");
  else if(r.blocked)syBar(syMsg(r),"");
  else syBar("");
@@ -1745,7 +1809,7 @@ document.addEventListener("visibilitychange",()=>{if(!SYREADY||!dbOn())return;
  else if(Date.now()-SYLAST>SY_MIN)syAuto(false)});
 $("#syGo").onclick=async()=>{if($("#syGo").textContent==="Vezi"){show("setari");setSub("backup");return}
  $("#syGo").disabled=true;const r=await syncRun({apply:true});$("#syGo").disabled=false;
- if(r.applied){try{sessionStorage.setItem("rsyt","Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".")}catch(e){}location.reload();return}
+ if(r.applied){try{sessionStorage.setItem("rsyt","Preluat de pe alt dispozitiv: "+r.diff.join(", ")+".")}catch(e){dbg(e)}location.reload();return}
  syBar(r.err||"");if(!r.err)toast(syMsg(r),!!(r.err||r.blocked));dbDraw()};
 const DEFK="7hvolba2cog2zy8";
 async function dbDraw(msg){const el=$("#dbbox");if(!el)return;let h="";
@@ -1762,31 +1826,31 @@ $("#snbox").onclick=async e=>{const d=e.target.dataset;
  if(d.snr){try{bkPreview(await idbGet(d.snr),"copie "+fmtDT(d.snr.slice(5)))}catch(x){toast("Nu am putut citi copia.")}}};
 $("#dbbox").onclick=async e=>{const b=e.target,d=b.dataset;
  if(d.dbks!==undefined){const v=($("#dbk").value||"").trim();if(!/^[a-z0-9]{8,40}$/i.test(v)){toast("App key nu pare valid (litere si cifre).");return}
-  if(v!==DBK()||LS("rdbt")){["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;try{await idbDel("syncbase")}catch(x){}}
+  if(v!==DBK()||LS("rdbt")){["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){dbg(x)}});DBAT=null;try{await idbDel("syncbase")}catch(x){dbg(x)}}
   LS("rdbk",v);dbDraw("Cheia a fost schimbata. Conecteaza din nou.");return}
- if(d.dbkx!==undefined){try{localStorage.removeItem("rdbk")}catch(x){}["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;try{await idbDel("syncbase")}catch(x){}dbDraw("Se foloseste din nou aplicatia implicita. Conecteaza din nou.");return}
- if(d.syc!==undefined){try{localStorage.removeItem("rsyc")}catch(x){}syBar("");dbDraw();return}
+ if(d.dbkx!==undefined){try{localStorage.removeItem("rdbk")}catch(x){dbg(x)}["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){dbg(x)}});DBAT=null;try{await idbDel("syncbase")}catch(x){dbg(x)}dbDraw("Se foloseste din nou aplicatia implicita. Conecteaza din nou.");return}
+ if(d.syc!==undefined){try{localStorage.removeItem("rsyc")}catch(x){dbg(x)}syBar("");dbDraw();return}
  if(d.dbc!==undefined){try{await dbConnect()}catch(x){dbDraw("Nu am putut porni conectarea: "+(x.message||x))}return}
- if(d.dbx!==undefined){["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){}});DBAT=null;try{await idbDel("syncbase")}catch(x){}syBar("");bkBadge();dbDraw("Deconectat. Fisierul sync.json a ramas in Dropbox; datele de aici nu s-au schimbat.");return}
+ if(d.dbx!==undefined){["rdbt","rdbl","rdbe","rdbr"].forEach(k=>{try{localStorage.removeItem(k)}catch(x){dbg(x)}});DBAT=null;try{await idbDel("syncbase")}catch(x){dbg(x)}syBar("");bkBadge();dbDraw("Deconectat. Fisierul sync.json a ramas in Dropbox; datele de aici nu s-au schimbat.");return}
  if(d.dbs!==undefined){b.disabled=true;dbDraw("Se sincronizeaza...");const r=await syncRun({apply:true});
-  if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){}location.reload();return}
+  if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){dbg(x)}location.reload();return}
   if(r.blocked){dbDraw(syMsg(r));$("#dbbox").insertAdjacentHTML("beforeend",'<button class="alt mt8" type="button" data-syf="1" >Sincronizeaza oricum</button>');return}
   if(r.err)LS("rdbe",r.err.slice(0,120));syBar("");dbDraw(syMsg(r));return}
- if(d.syf!==undefined){b.disabled=true;const r=await syncRun({apply:true,force:true});if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){}location.reload();return}dbDraw(syMsg(r))}};
+ if(d.syf!==undefined){b.disabled=true;const r=await syncRun({apply:true,force:true});if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){dbg(x)}location.reload();return}dbDraw(syMsg(r))}};
 $("#dbbox").onchange=e=>{if(e.target.id==="dba")LS("rdba",e.target.checked?"1":"0")};
 /* intoarcere din Dropbox dupa autorizare: ?code=... */
 (async()=>{const q=new URLSearchParams(location.search),c=q.get("code"),v=sessionStorage.getItem("rdbv");if(!(c&&v)&&!q.get("error"))return;
- try{history.replaceState(null,"",location.pathname)}catch(e){}try{sessionStorage.removeItem("rdbv")}catch(e){}if(!c||!v){show("setari");setSub("backup");toast("Conectarea Dropbox a fost anulata.");return}
- try{const j=await dbToken({grant_type:"authorization_code",code:c,code_verifier:v,client_id:DBK(),redirect_uri:dbRedirect()});LS("rdbt",j.refresh_token);DBAT=j.access_token;DBAX=Date.now()+(j.expires_in||14400)*1000;show("setari");setSub("backup");toast("Dropbox conectat. Sincronizez...");dbDraw();const r=await syncRun({apply:true});if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){}location.reload();return}if(r.blocked)dbDraw(syMsg(r));else if(r.err)dbDraw(r.err);else{toast(syMsg(r),!!(r.err||r.blocked));dbDraw()}}
+ try{history.replaceState(null,"",location.pathname)}catch(e){dbg(e)}try{sessionStorage.removeItem("rdbv")}catch(e){dbg(e)}if(!c||!v){show("setari");setSub("backup");toast("Conectarea Dropbox a fost anulata.");return}
+ try{const j=await dbToken({grant_type:"authorization_code",code:c,code_verifier:v,client_id:DBK(),redirect_uri:dbRedirect()});LS("rdbt",j.refresh_token);DBAT=j.access_token;DBAX=Date.now()+(j.expires_in||14400)*1000;show("setari");setSub("backup");toast("Dropbox conectat. Sincronizez...");dbDraw();const r=await syncRun({apply:true});if(r.applied){try{sessionStorage.setItem("rsyt",syMsg(r))}catch(x){dbg(x)}location.reload();return}if(r.blocked)dbDraw(syMsg(r));else if(r.err)dbDraw(r.err);else{toast(syMsg(r),!!(r.err||r.blocked));dbDraw()}}
  catch(x){show("setari");setSub("backup");dbDraw("Nu am putut conecta Dropbox: "+(x.message||x))}})();
 snDraw();dbDraw();
 /* copii automate la pornire (dupa ce biblioteca e incarcata) */
-setTimeout(async()=>{await snapMake(false);snDraw();if(LS("rsyv")!=="2"){try{if(IDBOK&&DB)await idbDel("syncbase")}catch(e){}["rdbr","rsyc"].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});LS("rsyv","2")}
+setTimeout(async()=>{await snapMake(false);snDraw();if(LS("rsyv")!=="2"){try{if(IDBOK&&DB)await idbDel("syncbase")}catch(e){dbg(e)}["rdbr","rsyc"].forEach(k=>{try{localStorage.removeItem(k)}catch(e){dbg(e)}});LS("rsyv","2")}
  SYREADY=true;await syAuto(true)},3000);
-try{const t=sessionStorage.getItem("rsyt");if(t){sessionStorage.removeItem("rsyt");setTimeout(()=>toast(t),600)}}catch(e){}
+try{const t=sessionStorage.getItem("rsyt");if(t){sessionStorage.removeItem("rsyt");setTimeout(()=>toast(t),600)}}catch(e){dbg(e)}
 $("#profbox").onchange=e=>{const k=e.target.dataset.pr;if(!k)return;const p=getPr(),v=e.target.value.trim();
  if(v==="")delete p[k];else if(k==="s"||k==="g")p[k]=v;else{const n=+v.replace(",",".");if(Number.isFinite(n))p[k]=n}
- putPr(p);profDraw();if(typeof drawMenu==="function"&&LIBREADY)try{drawMenu()}catch(x){}};
+ putPr(p);profDraw();if(typeof drawMenu==="function"&&LIBREADY)try{drawMenu()}catch(x){dbg(x)}};
 profDraw();
 $("#bflt").open=innerWidth>700;
 renderTagUI();
@@ -1847,11 +1911,11 @@ $("#bpp").onclick=async e=>{const d=e.target.dataset.pcx;if(!d)return;
  const dk=[];
  p.todo.forEach(([j,c])=>{const r=st[j];if(c.sterge){dk.push(bKey(r));return}if(c.titlu_nou)r.titlu=String(c.titlu_nou);if(c.portii!==undefined){if(c.portii==="-"){r.portii=null;r.pna=true}else{r.portii=+c.portii;delete r.pna}}
   if(Array.isArray(c.marcheaza))r.verifica=[...new Set([...(r.verifica||[]),...c.marcheaza.map(String)])]});
- if(dk.length){st=st.filter(x=>!dk.includes(bKey(x)));try{LS("rfav",JSON.stringify(getFav().filter(k=>!dk.includes(k))));const n=getNotes();dk.forEach(k=>delete n[k]);LS("rnote",JSON.stringify(n))}catch(e){}}
+ if(dk.length){st=st.filter(x=>!dk.includes(bKey(x)));try{LS("rfav",JSON.stringify(getFav().filter(k=>!dk.includes(k))));const n=getNotes();dk.forEach(k=>delete n[k]);LS("rnote",JSON.stringify(n))}catch(e){dbg(e)}}
  putStored(st);PATCH=null;$("#bpatch").value="";pcDraw();updVC();toast("Corectii aplicate la "+p.ok+" retete"+(p.del?" ("+p.del+" sterse definitiv)":"")+".")};
 /* ===== 2.28.0: macro local-first (din Info) + alimente adaugate de tine (rfd) ===== */
 const FDK="rfd";
-let FD={};try{const j=JSON.parse(LS(FDK)||"{}");if(j&&typeof j==="object"&&!Array.isArray(j))FD=j}catch(e){}
+let FD={};try{const j=JSON.parse(LS(FDK)||"{}");if(j&&typeof j==="object"&&!Array.isArray(j))FD=j}catch(e){dbg(e)}
 const fdSave=()=>LS(FDK,JSON.stringify(FD));
 const MSYN={oua:"ou",cepe:"ceapa",catei:"catel",cateii:"catel",mere:"mar",rosii:"rosie",lamai:"lamaie",dovlecei:"dovlecel",felii:"felie",fiarta:"fiert",fierte:"fiert",fierti:"fiert",coapta:"copt",coapte:"copt",copta:"copt",copte:"copt",copti:"copt",rascopt:"fiert",rascoapte:"fiert",rascoapta:"fiert",fripta:"copt",fripte:"copt",fripti:"copt",fript:"copt",cuptor:"copt",gratar:"copt",prajita:"prajit",prajite:"prajit",prajiti:"prajit",gatita:"gatit",gatite:"gatit",gatiti:"gatit"};
 /* 3.17.0: starea de gatit (fiert/copt/prajit/gatit) ramane in cuvinte: "naut fiert" nu mai nimereste naut uscat; alias "(aprox. X)" / "(sin. X)" din numele alimentului */
@@ -1984,3 +2048,5 @@ $("#nu").onclick=e=>{const b=e.target.closest("button");if(!b)return;
  const _s=show;show=function(v){_s(v);setTimeout(window.hsync,0)};
  document.addEventListener("click",()=>setTimeout(window.hsync,0));
  const V0=vis();setTimeout(()=>{HS=[key()];ON=true},700);window.hv0=V0})();
+/* 4.2.0: fara cheie API, aplicatia porneste in Biblioteca, nu in Idei */
+keyUpd();if(!LS("rk")){try{show("carti")}catch(e){dbg(e)}}
