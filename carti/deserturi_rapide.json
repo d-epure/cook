@@ -1,0 +1,1650 @@
+[
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 1,
+  "titlu": "Mousse de ciocolata cu avocado",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 4,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "avocado"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "cacao pudra"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 100,
+    "u": "ml",
+    "n": "lapte de migdale"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "vanilie"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "zmeura"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza avocado cu cacao, siropul, laptele si vanilia pana devine foarte neted.",
+   "Imparte in 4 pahare si lasa 30 de minute la frigider.",
+   "Serveste cu zmeura."
+  ],
+  "sfaturi": [
+   "Se pastreaza 2 zile la frigider.",
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 215,
+   "proteine": 4.1,
+   "carbo": 26.2,
+   "grasimi": 14.3,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "activ": 5,
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 2,
+  "titlu": "Inghetata de banane si cacao",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 3,
+    "u": "",
+    "n": "banane congelate"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "cacao pudra"
+   },
+   {
+    "c": 50,
+    "u": "ml",
+    "n": "lapte de soia"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "alune de padure"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza bananele congelate cu cacao si laptele pana devine cremoasa.",
+   "Serveste imediat cu alune tocate."
+  ],
+  "sfaturi": [
+   "Taie bananele felii inainte de congelare.",
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 249,
+   "proteine": 5.3,
+   "carbo": 47.4,
+   "grasimi": 7.9,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 5,
+  "timp": 5,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 3,
+  "titlu": "Inghetata de mango si banane",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "mango congelat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "banane congelate"
+   },
+   {
+    "c": 60,
+    "u": "ml",
+    "n": "lapte de cocos"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza fructele congelate cu laptele de cocos.",
+   "Serveste imediat sau pune 30 de minute la congelator."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 256,
+   "proteine": 3.1,
+   "carbo": 50.7,
+   "grasimi": 7.4,
+   "sursa": "local",
+   "acoperire": "3 din 3"
+  },
+  "activ": 5,
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 4,
+  "titlu": "Iaurt grecesc cu miere si nuci",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "miere"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "nuci"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   }
+  ],
+  "pasi_carte": [
+   "Imparte iaurtul in 2 boluri.",
+   "Adauga mierea, nucile tocate si scortisoara."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (18,5 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 286,
+   "proteine": 18.5,
+   "carbo": 26.5,
+   "grasimi": 13.6,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 2,
+  "timp": 2,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 5,
+  "titlu": "Mere sotate cu scortisoara si nuci",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 3,
+    "u": "",
+    "n": "mere"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de cocos"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "nuci"
+   }
+  ],
+  "pasi_carte": [
+   "Taie merele cuburi.",
+   "Caleste-le in ulei 6 minute pana se inmoaie.",
+   "Adauga scortisoara, siropul si nucile si mai amesteca 1 minut."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 354,
+   "proteine": 3,
+   "carbo": 53.8,
+   "grasimi": 17,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "activ": 10,
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 6,
+  "titlu": "Banane la tigaie cu unt de arahide",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de cocos"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "unt de arahide"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   }
+  ],
+  "pasi_carte": [
+   "Taie bananele in doua pe lung.",
+   "Rumeneste-le 2 minute pe fiecare parte in ulei.",
+   "Pune untul de arahide si scortisoara deasupra."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 290,
+   "proteine": 5.8,
+   "carbo": 32.9,
+   "grasimi": 17.4,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 7,
+  "timp": 7,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 7,
+  "titlu": "Bile de ovaz cu unt de arahide si ciocolata",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 6,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 150,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "unt de arahide"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "ciocolata neagra 70-85%"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "seminte de chia"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca ovazul cu untul, siropul si chia.",
+   "Adauga ciocolata tocata si formeaza 12 bile.",
+   "Lasa 20 de minute la frigider."
+  ],
+  "sfaturi": [
+   "Se pastreaza 7 zile la frigider.",
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 285,
+   "proteine": 8.3,
+   "carbo": 32.5,
+   "grasimi": 14.6,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "activ": 10,
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 8,
+  "titlu": "Crema de iaurt cu zmeura",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "zmeura congelata"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   }
+  ],
+  "pasi_carte": [
+   "Pisa jumatate din zmeura cu mierea.",
+   "Amesteca cu iaurtul.",
+   "Serveste cu restul de zmeura intreaga."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (15,9 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 198,
+   "proteine": 15.9,
+   "carbo": 33.7,
+   "grasimi": 0.7,
+   "sursa": "local",
+   "acoperire": "3 din 3"
+  },
+  "activ": 3,
+  "timp": 3,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 9,
+  "titlu": "Cupa de iaurt cu fructe si ovaz",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "capsuni"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   }
+  ],
+  "pasi_carte": [
+   "Taie capsunile.",
+   "Pune iaurtul in pahare cu capsuni si ovaz in straturi.",
+   "Picura miere deasupra."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (18,3 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 212,
+   "proteine": 18.3,
+   "carbo": 31.4,
+   "grasimi": 2,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 4,
+  "timp": 4,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 10,
+  "titlu": "Clatite cu banana si ou, doua ingrediente",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de cocos"
+   }
+  ],
+  "pasi_carte": [
+   "Pisa bananele si amesteca-le cu ouale.",
+   "Gateste cate o lingura de aluat in ulei, 1-2 minute pe fiecare parte."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 246,
+   "proteine": 8.2,
+   "carbo": 27.8,
+   "grasimi": 12.4,
+   "sursa": "local",
+   "acoperire": "3 din 3"
+  },
+  "activ": 10,
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 11,
+  "titlu": "Mug cake de ciocolata la microunde",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 1,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 40,
+    "u": "g",
+    "n": "faina alba"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "cacao pudra"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 40,
+    "u": "ml",
+    "n": "lapte"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "zahar"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "praf de copt"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca toate ingredientele intr-o cana mare pana nu mai are cocoloase.",
+   "Gateste la microunde 1 minut si jumatate, la putere maxima.",
+   "Lasa 1 minut sa se aseze."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (15,3 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 454,
+   "proteine": 15.3,
+   "carbo": 55.3,
+   "grasimi": 22.6,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "activ": 4,
+  "timp": 5,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 12,
+  "titlu": "Mug cake vegan cu banane si cacao",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 1,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 1,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "faina integrala"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "cacao pudra"
+   },
+   {
+    "c": 30,
+    "u": "ml",
+    "n": "lapte de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "praf de copt"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ciocolata neagra 70-85%"
+   }
+  ],
+  "pasi_carte": [
+   "Pisa banana in cana si amesteca cu faina, cacao, laptele si praful de copt.",
+   "Adauga ciocolata tocata.",
+   "Gateste la microunde 1 minut si 15 secunde."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 340,
+   "proteine": 9.4,
+   "carbo": 64.8,
+   "grasimi": 9.4,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "activ": 4,
+  "timp": 4,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 13,
+  "titlu": "Pere coapte la microunde cu scortisoara",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "pere"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "nuci"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "stafide"
+   }
+  ],
+  "pasi_carte": [
+   "Taie perele in doua si scobeste samburii.",
+   "Pune-le in vas cu siropul, scortisoara, nucile si stafidele.",
+   "Gateste la microunde 5 minute, acoperit."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 295,
+   "proteine": 3.4,
+   "carbo": 54.2,
+   "grasimi": 10.1,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "activ": 7,
+  "timp": 7,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 14,
+  "titlu": "Salata de fructe cu menta si lime",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 4,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "capsuni"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "kiwi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "struguri"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "portocale"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "menta proaspata"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   }
+  ],
+  "pasi_carte": [
+   "Taie fructele bucati.",
+   "Amesteca cu menta tocata si zeama de lime.",
+   "Lasa 10 minute la rece."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 122,
+   "proteine": 2.1,
+   "carbo": 30.9,
+   "grasimi": 0.6,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "activ": 10,
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 15,
+  "titlu": "Bark de ciocolata cu migdale si stafide",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 8,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ciocolata neagra 70-85%"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "migdale prajite"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "stafide"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   }
+  ],
+  "pasi_carte": [
+   "Topeste ciocolata la bain-marie sau 1 minut la microunde.",
+   "Intinde pe hartie de copt si presara migdale, stafide si scortisoara.",
+   "Lasa 20 de minute la rece si rupe in bucati."
+  ],
+  "sfaturi": [
+   "Se pastreaza 2 saptamani.",
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 210,
+   "proteine": 3.7,
+   "carbo": 17.3,
+   "grasimi": 14.6,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 8,
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 16,
+  "titlu": "Budinca de ovaz cu cacao",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 80,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 400,
+    "u": "ml",
+    "n": "lapte de soia"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "cacao pudra"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sirop de artar"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe ovazul cu laptele de soia 5 minute.",
+   "Adauga cacao si siropul si amesteca.",
+   "Serveste caldut sau rece."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (12,9 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 324,
+   "proteine": 12.9,
+   "carbo": 56.2,
+   "grasimi": 6.9,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 7,
+  "timp": 7,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 17,
+  "titlu": "Ricotta cu miere si capsuni",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 250,
+    "u": "g",
+    "n": "ricotta"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "miere"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "capsuni"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "fistic"
+   }
+  ],
+  "pasi_carte": [
+   "Pune ricotta in boluri.",
+   "Adauga capsunile taiate, mierea si fisticul tocat."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (16,9 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 369,
+   "proteine": 16.9,
+   "carbo": 31.5,
+   "grasimi": 21.1,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 4,
+  "timp": 4,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 18,
+  "titlu": "Smoothie bowl de capsuni si banane",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 250,
+    "u": "g",
+    "n": "capsuni congelate"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza capsunile, bananele si iaurtul pana devine gros.",
+   "Imparte in boluri si presara fulgi de ovaz."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (11,5 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 252,
+   "proteine": 11.5,
+   "carbo": 51.6,
+   "grasimi": 1.8,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 5,
+  "timp": 5,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 19,
+  "titlu": "Piersici la tigaie cu iaurt",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 3,
+    "u": "",
+    "n": "piersici"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "unt"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "zahar brun"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "migdale"
+   }
+  ],
+  "pasi_carte": [
+   "Taie piersicile felii si caleste-le in unt cu zahar 4 minute.",
+   "Pune iaurtul in boluri, adauga piersicile si migdalele."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (14,4 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 284,
+   "proteine": 14.4,
+   "carbo": 34.6,
+   "grasimi": 11.7,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "activ": 8,
+  "timp": 8,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 20,
+  "titlu": "Trufe de curmale si cocos",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 6,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "curmale"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "cocos razuit uscat (neindulcit)"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "nuci"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "cacao pudra"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza curmalele cu nucile si cacao.",
+   "Formeaza 12 bile si trece-le prin cocos.",
+   "Lasa 15 minute la frigider."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 173,
+   "proteine": 2.1,
+   "carbo": 28.2,
+   "grasimi": 7.8,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 10,
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 21,
+  "titlu": "Biscuiti fara coacere cu unt de migdale",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 8,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 120,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "unt de migdale"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "cacao pudra"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca toate ingredientele pana se leaga.",
+   "Formeaza 8 biscuiti si preseaza-i usor.",
+   "Lasa 20 de minute la frigider."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 162,
+   "proteine": 5.3,
+   "carbo": 19.7,
+   "grasimi": 8.4,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 8,
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 22,
+  "titlu": "Crema de cocos cu ananas",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "ml",
+    "n": "smantana de cocos"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "ananas"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "cocos razuit uscat (neindulcit)"
+   }
+  ],
+  "pasi_carte": [
+   "Bate smantana de cocos rece cu siropul pana devine pufoasa.",
+   "Taie ananasul cuburi si pune-l in pahare cu crema.",
+   "Presara cocos."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 468,
+   "proteine": 4.8,
+   "carbo": 31.5,
+   "grasimi": 39.7,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 7,
+  "timp": 7,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 23,
+  "titlu": "Branza dulce cu iaurt si coaja de portocala",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "branza de vaci"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "coaja de portocala"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "migdale"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca branza cu iaurtul, mierea si coaja de portocala.",
+   "Presara migdale tocate."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (19,4 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 247,
+   "proteine": 19.4,
+   "carbo": 17.3,
+   "grasimi": 12,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "activ": 3,
+  "timp": 3,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 24,
+  "titlu": "Felii de mar cu unt de arahide si scortisoara",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 3,
+    "u": "",
+    "n": "mere"
+   },
+   {
+    "c": 50,
+    "u": "g",
+    "n": "unt de arahide"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "stafide"
+   }
+  ],
+  "pasi_carte": [
+   "Taie merele felii.",
+   "Intinde untul de arahide pe felii si presara scortisoara si stafide."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 323,
+   "proteine": 6.6,
+   "carbo": 51.8,
+   "grasimi": 13.4,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "activ": 4,
+  "timp": 4,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 25,
+  "titlu": "Prajitura in cana cu mere si scortisoara",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 1,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 1,
+    "u": "",
+    "n": "mar"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "praf de copt"
+   }
+  ],
+  "pasi_carte": [
+   "Rade marul si amesteca-l cu ovazul, oul, scortisoara, siropul si praful de copt.",
+   "Gateste la microunde 2 minute.",
+   "Lasa 1 minut sa se aseze."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (12,8 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 350,
+   "proteine": 12.8,
+   "carbo": 60.2,
+   "grasimi": 8.2,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "activ": 4,
+  "timp": 5,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 26,
+  "titlu": "Gem rapid de chia cu zmeura",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 8,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "zmeura congelata"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "seminte de chia"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sirop de artar"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe zmeura 5 minute pana se desface.",
+   "Adauga chia si siropul si amesteca.",
+   "Lasa 15 minute sa se ingroase si pune intr-un borcan."
+  ],
+  "sfaturi": [
+   "Se pastreaza 7 zile la frigider.",
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 79,
+   "proteine": 1.2,
+   "carbo": 15.5,
+   "grasimi": 1.8,
+   "sursa": "local",
+   "acoperire": "3 din 3"
+  },
+  "activ": 8,
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 27,
+  "titlu": "Budinca de gris cu lapte si scortisoara",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 60,
+    "u": "g",
+    "n": "gris de grau (semolina)"
+   },
+   {
+    "c": 500,
+    "u": "ml",
+    "n": "lapte"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "zahar"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "unt"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe laptele cu zaharul.",
+   "Adauga grisul in ploaie, amestecand 4 minute pana se ingroasa.",
+   "Pune untul si presara scortisoara."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (11,8 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 363,
+   "proteine": 11.8,
+   "carbo": 47.4,
+   "grasimi": 14.2,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "activ": 8,
+  "timp": 8,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 28,
+  "titlu": "Tartine dulci cu ricotta, smochine si nuci",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ricotta"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "smochine proaspete"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "nuci"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   }
+  ],
+  "pasi_carte": [
+   "Prajeste painea.",
+   "Intinde ricotta si adauga smochinele feliate.",
+   "Presara nuci si miere."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune (19 g pe portie): poate completa o gustare."
+  ],
+  "macro": {
+   "kcal": 486,
+   "proteine": 19,
+   "carbo": 57.8,
+   "grasimi": 21.9,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "activ": 6,
+  "timp": 6,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 29,
+  "titlu": "Clatite de ovaz cu cacao",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 80,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 150,
+    "u": "ml",
+    "n": "lapte de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "cacao pudra"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "praf de copt"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de cocos"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza ovazul, banana, laptele, cacao si praful de copt.",
+   "Gateste cate o lingura de aluat in tigaie unsa, 2 minute pe fiecare parte."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 273,
+   "proteine": 8.9,
+   "carbo": 47.7,
+   "grasimi": 6.7,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "activ": 10,
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Deserturi rapide",
+  "nr": 30,
+  "titlu": "Struguri inghetati cu iaurt si ciocolata",
+  "categorie": "Desert rapid",
+  "capitol": "Deserturi rapide",
+  "portii": 4,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "struguri"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "ciocolata neagra 70-85%"
+   }
+  ],
+  "pasi_carte": [
+   "Spala strugurii si ia-i de pe ciorchine.",
+   "Intinge-i in iaurt amestecat cu ciocolata topita.",
+   "Pune-i pe tava 1 ora la congelator."
+  ],
+  "sfaturi": [
+   "Se pastreaza 2 saptamani la congelator.",
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata."
+  ],
+  "macro": {
+   "kcal": 126,
+   "proteine": 3.9,
+   "carbo": 19.1,
+   "grasimi": 4.5,
+   "sursa": "local",
+   "acoperire": "3 din 3"
+  },
+  "activ": 10,
+  "timp": 70,
+  "dif": "usor"
+ }
+]

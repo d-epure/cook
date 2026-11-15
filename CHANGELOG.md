@@ -2,6 +2,29 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.10.1
+- Teste: cele 17 fisiere pe versiuni sunt unite in 5 pe teme (`test_biblioteca`, `test_meniu_cumparaturi`, `test_carti`, `test_interfata_sync`, `test_robustez`), plus `toate.js` care le ruleaza pe toate (`node teste/toate.js`). Aceleasi 155 de verificari, dar folderul nu mai creste cu un fisier la fiecare versiune: verificarile noi se adauga in testul tematic potrivit. Aplicatia nu s-a schimbat.
+
+## 4.10.0
+- Biblioteca, **Din debara** unificat: o singura pilula "Din debara" (inlocuieste "Am tot in debara"). Apasata, apare randul "Lipsesc cel mult: 0 1 2 3" (implicit 0 = am tot). Lista "Din debara" din Filtre a disparut: o stare, un singur loc.
+- Rezultatele raman sortate dupa cele mai putine lipsuri; numarul din antet spune acum "cele mai potrivite primele".
+- Cu debaraua goala, filtrul nu mai pare stricat: apare "Debaraua e goala, asa ca nu filtrez. Adauga produse" (trimite in Debara).
+- Contorul "Filtre (n active)" nu mai numara filtrul debara (se vede pe pilula).
+
+## 4.9.2
+- Meniu: dupa refresh nu mai apare, pentru o clipa, "Reteta nu mai e in Biblioteca; folosesc ingredientele salvate in meniu". Meniul se desena inainte sa se incarce biblioteca si retetele pareau lipsa. Avertismentul apare acum doar dupa incarcarea bibliotecii si ramane pentru retetele sterse cu adevarat.
+
+## 4.9.1
+- "Sterge" de pe randuri (aparate, etichete, categorii, alimente proprii, Biblioteca, cos, carti din Setari) devine **cos de gunoi** (cu titlu si eticheta accesibila "Sterge"). Confirmarea ramane: unde cerea un al doilea tap, butonul arata "Confirma" si revine la cos daca nu apesi.
+- Raman cu text butoanele mari, cu efect asupra mai multor lucruri: "Sterge reteta", "Sterge bifate", "Descarca toate", "Goleste biblioteca", "Descarca backup".
+
+## 4.9.0
+- Marime text: butoane **A-** / **A+** in antet, vizibile pe toate paginile. Pasi: 90 / 100 / 115 / 130 / 150%; atingerea valorii din mijloc revine la 100%. Se scaleaza textul, butoanele si campurile. Se pastreaza pe dispozitiv (nu intra in backup si nu se sincronizeaza). Verificat in browser simulat la latime de telefon (390 px) la 90% si 150%, fara text taiat sau depasire pe orizontala.
+- Idei: sectiunea **Etichete** este pliabila (inchisa implicit), ca Aparatele; titlul arata cate etichete sunt active, de ex. "Etichete (2 active)" sau "(toate)".
+- Aparate: culorile fixe (paleta veche) au disparut; etichetele de aparat si marginea pasilor folosesc culorile temei.
+- Setari > Tehnic > Carti: randul unei carti are numele pe toata latimea, iar sub el numarul de retete, butonul de descarcare (iconita, cu titlu si eticheta "Descarca JSON") si "Sterge". Rezolva numele afisat cate o litera pe rand pe telefon. "1 reteta" in loc de "1 retete".
+- Nu s-a adaugat ghid la prima deschidere (decizie: nu se mai adauga).
+
 ## 4.8.1
 - Biblioteca, filtrul Carte: dispar "Air fryer (de verificat)" si "Retete noi (de verificat)". Erau copii vechi ale retetelor care sunt acum in cartile aplicatiei (96 de retete, toate cu pereche in Retete vegetariene sau Retete cu carne). Aplicatia le scoate singura dupa ce cartile sunt instalate, cu un mesaj, si doar daca nu au favorite, notite, meal prep sau meniu; ce nu are pereche ramane.
 
@@ -20,7 +43,7 @@ Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; 
 - Reguli: un ingredient fara forma ("rosii") se potriveste cu orice marcaj; un produs fara niciun marcaj bifat (sau dintr-o categorie fara marcaje) acopera orice forma. "Fiert" nu e o forma de produs si nu conteaza.
 - Aceeasi regula se aplica la filtrul "Am tot in debara" din Biblioteca si la "N din M le ai deja in debara" din Meal prep.
 - Debara > "Cum functioneaza Debaraua": explicatia noua, cu exemplul de mai sus.
-- Teste: `teste/test_4_7_0.js` (8 verificari). `BACKLOG.md` adus la zi: profilurile de adulti, sfaturile structurate, printul si data de expirare sunt amanate.
+- Teste: `teste/test_meniu_cumparaturi.js` (8 verificari). `BACKLOG.md` adus la zi: profilurile de adulti, sfaturile structurate, printul si data de expirare sunt amanate.
 - Cod: `FORMW`, `formSplit`, `panItems`, `formOk`, `inPantry`, `covered`.
 
 ## 4.6.0
@@ -30,14 +53,14 @@ Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; 
 - Eticheta automata gluten-free: pasta de miso conteaza acum ca ingredient cu gluten (contine uneori orz).
 - Cartile "Retete vegetariene" si "Retete cu carne" sunt la versiunea 4: retetele noi se adauga singure la prima deschidere; ce ai schimbat tu ramane neatins.
 - Daca ai incarcat fisierul de verificare, sterge sursa "Retete noi (de verificat)" din Setari > Carti, altfel cele 60 de retete apar de doua ori (grupate pe acelasi card).
-- Teste: `teste/test_4_6_0.js` (7 verificari); `BACKLOG.md` adus la zi.
+- Teste: `teste/test_carti.js` (7 verificari); `BACKLOG.md` adus la zi.
 
 ## 4.5.0
 - 36 de retete noi la air fryer in cartile livrate, verificate si aprobate inainte: 26 in "Retete vegetariene" (nr. 171-196, din care 10 vegane) si 10 in "Retete cu carne" (nr. 61-70). Pe categorii: 7 mic dejun, 17 feluri principale, 7 gustari, 5 deserturi. Eticheta air fryer are acum 50 de retete (inainte 14). Biblioteca livrata are 796 de retete.
 - Fiecare reteta noua are timp, dificultate, macro calculat din Info si, in sfaturi, daca proteina e completa sau cu ce sa o servesti. Temperaturile si timpii sunt cei uzuali pentru air fryer si pot diferi de la un aparat la altul.
 - Cartile "Retete vegetariene" si "Retete cu carne" sunt la versiunea 3: retetele noi se adauga singure la prima deschidere; ce ai schimbat tu ramane neatins.
 - Daca ai incarcat fisierul de verificare, sterge sursa "Air fryer (de verificat)" din Setari > Carti, altfel cele 36 de retete apar de doua ori (grupate pe acelasi card).
-- Teste: `teste/test_4_5_0.js`; `BACKLOG.md` adus la zi.
+- Teste: `teste/test_carti.js`; `BACKLOG.md` adus la zi.
 
 ## 4.4.0
 - Etichete: tip nou, "metoda", pentru meal-prep, air fryer si one pot (inainte erau "dieta"). La generarea ideilor se aplica la fel ca dietele, toate odata. Cine are etichetele salvate primeste schimbarea o singura data; un tip schimbat de tine ramane.
@@ -45,13 +68,13 @@ Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; 
 - Eticheta keto se judeca pe carbohidrati neti (carbohidrati minus fibre, fibrele calculate din Info): sub 10 g pe portie. Budincile de chia si alte retete cu multe fibre sunt acum keto; in total 524 de retete livrate.
 - Cumparaturi: lingurile, lingurite si canile se aduna cu gramele. Cand produsul exista deja in lista in grame (sau il adaugi in grame peste linguri), cantitatea se transforma dupa tabelul Masuri si ramane un singur rand ("5 g ulei" + "2 linguri ulei" = "32 g ulei"). Daca toate sunt in linguri, raman linguri.
 - Pachetul contine de acum si `BACKLOG.md`: ce urmeaza, ce e nedecis, ce e amanat, limitele cunoscute si ce e de verificat pe dispozitiv real.
-- Teste: `teste/test_4_4_0.js` (9 verificari).
+- Teste: `teste/test_biblioteca.js` (9 verificari).
 - Cod: `netCarb`, `hasGluten`, `GLUT`, `autoTags` (cu rezultat tinut minte pe reteta), `lUnify`, `toG`.
 
 ## 4.3.2
 - Sincronizare, reparat: loturile de Meal prep adaugate pe doua dispozitive se unesc acum (dupa id). Inainte, daca ambele dispozitive schimbau lista de loturi intre doua sincronizari, ramanea lista unuia singur, iar cealalta se pierdea, cu mesajul "rmp: pastrat (diferit), cealalta era (diferit)".
 - Mesajul "Modificate pe ambele dispozitive" e citibil: spune "Meal prep" in loc de "rmp" si arata titlurile sau numele din fiecare varianta, nu "(diferit)".
-- Teste: `teste/test_4_3_2.js`.
+- Teste: `teste/test_interfata_sync.js`.
 
 ## 4.3.1
 - Reparat: butonul "Vezi" din mesajul "modificari facute pe ambele dispozitive" deschidea Setari > Backup, dar detaliile sunt mai jos, in caseta Sincronizare Dropbox, asa ca parea ca nu face nimic. Acum pagina merge direct la caseta cu ce s-a pastrat si ce s-a inlocuit; mesajul de sus dispare cand apesi acolo "Am inteles".
@@ -61,7 +84,7 @@ Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; 
 - Debara, categorii implicite corectate: Carne are marcaje (proaspat, congelat, uscat, conserva, altceva), Cereale nu mai are. Categorie noua, Leguminoase, cu marcaje: fasolea, lintea, nautul, bobul si soia se incadreaza acolo automat (fasolea verde ramane la Legume). Cine si-a salvat deja categoriile primeste doar categoria noua, o singura data; bifele lui raman, iar daca o sterge nu revine.
 - Ghid nutritie > Gatire: tema noua "Leguminoase si cereale uscate" (fasole, linte, naut, mazare, grau, orz): inmuiere, timpi de fierbere orientativi, siguranta la fasolea rosie si alba (clocot cel putin 10 minute, nu direct la slow cooker), sare / acid / bicarbonat, cat iese din 100 g uscate si cum transformi o reteta scrisa cu conserve, pastrare si congelare.
 - Cumparaturi: pe calculator, unde nu exista meniul de trimitere al telefonului, apare butonul "Trimite pe WhatsApp", care deschide WhatsApp cu lista. Pe telefon ramane "Trimite lista" (WhatsApp e printre aplicatiile din meniul telefonului), iar "Copiaza lista" merge peste tot.
-- Teste: `teste/test_4_3_0.js` (8 verificari).
+- Teste: `teste/test_meniu_cumparaturi.js` (8 verificari).
 
 ## 4.2.0
 - Timp total si dificultate pe fiecare reteta. Cele 760 de retete livrate au acum `timp` (minute) si `dif` (usor / mediu); apar pe card si in reteta ("aprox. 35 min", "usor"). Sunt estimari automate, de aceea "aprox.": timpul se aduna din minutele scrise in pasi plus cateva minute de pregatire, dificultatea vine din numarul de pasi, de ingrediente si din tehnici. In "Corecteaza reteta" sunt doua campuri noi, Timp total si Dificultate; ce scrii tu are prioritate si nu mai e marcat "aprox.". Retetele fara aceste campuri (scrise de tine, generate, carti incarcate de mana) sunt estimate la afisare, cu aceeasi regula. Cu regula actuala nicio reteta livrata nu iese "avansat".
@@ -70,7 +93,7 @@ Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; 
 - Aplicatia fara cheie API: tot ce cheama modelul (butoanele cu AI, legenda, adaptarea la aparate, estimarea de macro) e ascuns pana adaugi o cheie. Pagina Idei arata o singura caseta cu "Deschide Biblioteca" si "Adauga o cheie", iar aplicatia porneste in Biblioteca. "Primii pasi" a devenit "Primul pas": doar debaraua (cheia nu mai e ceruta, cartile vin singure).
 - Cumparaturi: "Sterge bifate" si "Goleste lista" sunt la vedere, nu sub "Mai multe". Sugestie de ambalaj langa cantitate ("870 g Faina - cumperi 1 kg") pentru cateva produse vandute la marime fixa: faina, zahar, orez, malai, gris, paste, lapte, unt, smantana, rosii conserva, lapte de cocos. Cantitatea din lista ramane cea exacta.
 - Cartile livrate sunt la versiunea 2 (campurile noi); retetele neschimbate de tine se actualizeaza singure la prima deschidere.
-- Teste in repo, toate pe date inventate: `teste/test_cumparaturi_meniu_id.js` (31 verificari), `teste/test_carti.js` (11), `teste/test_4_1_1.js` (17), `teste/test_4_2_0.js` (22); ajutor comun in `teste/_boot.js`.
+- Teste in repo, toate pe date inventate: `teste/test_cumparaturi_meniu_id.js` (31 verificari), `teste/test_carti.js` (11), `teste/test_robustez.js` (17), `teste/test_biblioteca.js` (22); ajutor comun in `teste/_boot.js`.
 - Cod: `stepMin`, `recT`, `recD`, `recTEst`, `recDEst`, `tChips`, `bplDraw`, `bplOk`, `keyUpd`, `packTxt`, `PACK`.
 
 ## 4.1.1
@@ -85,7 +108,7 @@ Corectii dupa auditul de calitate (securitate, cazuri limita, performanta).
 - Fara internet bun: daca reteaua nu raspunde in 4 secunde, aplicatia porneste din copia salvata.
 - Performanta: cautarea din Biblioteca asteapta 180 ms dupa ultima tasta; la macro-ul zilei, reteta fiecarei mese se cauta o singura data (inainte de pana la cinci ori).
 - Cod: o singura lista cu cheile de date (`DKEYS`, din care se deduc `LSK` si `BK_KEYS`); cele 74 de blocuri `catch` goale scriu acum eroarea in consola daca pui in localStorage cheia `rdebug` = "1"; numele fisierului de backup foloseste data locala.
-- Teste in repo: `teste/test_4_1_1.js` (18 verificari cu date inventate; cum se ruleaza scrie in fisier).
+- Teste in repo: `teste/test_robustez.js` (18 verificari cu date inventate; cum se ruleaza scrie in fisier).
 - Nefacut, cu motiv: fontul ramane de la Google Fonts; cheile din localStorage nu au prefix (celelalte aplicatii de pe aceeasi adresa folosesc alte chei); impartirea codului pe module, o singura structura pentru ingrediente, un registru de migrari si scrierea partiala a bibliotecii raman pentru o versiune dedicata.
 
 ## 4.1.0
