@@ -2,6 +2,30 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.7.0
+- Debara si Cumparaturi: marcajele (proaspat, congelat, uscat, conserva) conteaza la potrivire. Produsul ramane pe o singura linie in debara, cu iconitele lui. Cand reteta cere o forma anume ("rosii uscate", "rosii deshidratate", "mazare congelata", "rosii conserva", "rosii in suc propriu"), produsul e "in debara" doar daca ai bifat forma aceea. Exemplu: ai rosii cu proaspat si conserva bifate; pe lista raman doar rosiile uscate.
+- Reguli: un ingredient fara forma ("rosii") se potriveste cu orice marcaj; un produs fara niciun marcaj bifat (sau dintr-o categorie fara marcaje) acopera orice forma. "Fiert" nu e o forma de produs si nu conteaza.
+- Aceeasi regula se aplica la filtrul "Am tot in debara" din Biblioteca si la "N din M le ai deja in debara" din Meal prep.
+- Debara > "Cum functioneaza Debaraua": explicatia noua, cu exemplul de mai sus.
+- Teste: `teste/test_4_7_0.js` (8 verificari). `BACKLOG.md` adus la zi: profilurile de adulti, sfaturile structurate, printul si data de expirare sunt amanate.
+- Cod: `FORMW`, `formSplit`, `panItems`, `formOk`, `inPantry`, `covered`.
+
+## 4.6.0
+- 60 de retete noi in cartile livrate, verificate si aprobate inainte: 18 asiatic, 9 traditional romanesc, 13 mic dejun cu carne, 12 gustari, 8 cu peste. 20 au intrat in "Retete vegetariene" (nr. 197-216, din care 8 vegane) si 40 in "Retete cu carne" (nr. 71-110). Biblioteca livrata are 856 de retete.
+- Etichetele asiatic, traditional romanesc si air fryer au acum cate 50 de retete; mic dejun cu carne are 20, gustarile 40. La peste s-au adaugat doar 8 feluri cu garnitura (orez, paste, naut, tortilla), pentru ca baza avea deja 46 de retete cu peste, majoritatea keto.
+- Fiecare reteta noua are timp, dificultate, macro calculat din Info si, in sfaturi, daca proteina e completa sau cu ce sa o servesti.
+- Eticheta automata gluten-free: pasta de miso conteaza acum ca ingredient cu gluten (contine uneori orz).
+- Cartile "Retete vegetariene" si "Retete cu carne" sunt la versiunea 4: retetele noi se adauga singure la prima deschidere; ce ai schimbat tu ramane neatins.
+- Daca ai incarcat fisierul de verificare, sterge sursa "Retete noi (de verificat)" din Setari > Carti, altfel cele 60 de retete apar de doua ori (grupate pe acelasi card).
+- Teste: `teste/test_4_6_0.js` (7 verificari); `BACKLOG.md` adus la zi.
+
+## 4.5.0
+- 36 de retete noi la air fryer in cartile livrate, verificate si aprobate inainte: 26 in "Retete vegetariene" (nr. 171-196, din care 10 vegane) si 10 in "Retete cu carne" (nr. 61-70). Pe categorii: 7 mic dejun, 17 feluri principale, 7 gustari, 5 deserturi. Eticheta air fryer are acum 50 de retete (inainte 14). Biblioteca livrata are 796 de retete.
+- Fiecare reteta noua are timp, dificultate, macro calculat din Info si, in sfaturi, daca proteina e completa sau cu ce sa o servesti. Temperaturile si timpii sunt cei uzuali pentru air fryer si pot diferi de la un aparat la altul.
+- Cartile "Retete vegetariene" si "Retete cu carne" sunt la versiunea 3: retetele noi se adauga singure la prima deschidere; ce ai schimbat tu ramane neatins.
+- Daca ai incarcat fisierul de verificare, sterge sursa "Air fryer (de verificat)" din Setari > Carti, altfel cele 36 de retete apar de doua ori (grupate pe acelasi card).
+- Teste: `teste/test_4_5_0.js`; `BACKLOG.md` adus la zi.
+
 ## 4.4.0
 - Etichete: tip nou, "metoda", pentru meal-prep, air fryer si one pot (inainte erau "dieta"). La generarea ideilor se aplica la fel ca dietele, toate odata. Cine are etichetele salvate primeste schimbarea o singura data; un tip schimbat de tine ramane.
 - Eticheta gluten-free e automata: apare pe retetele care nu au niciun ingredient cu gluten in lista (633 din cele 760 livrate). E prudenta: ovazul si sosul de soia conteaza ca gluten, daca nu scrie "fara gluten". Nu tine cont de urme sau contaminare; in Setari > Etichete scrie sa verifici eticheta produselor daca ai boala celiaca.

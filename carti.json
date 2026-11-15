@@ -3,14 +3,14 @@
   {
    "sursa": "Retete vegetariene",
    "f": "carti/retete_vegetariene.json",
-   "v": 2,
-   "n": 170
+   "v": 4,
+   "n": 216
   },
   {
    "sursa": "Retete cu carne",
    "f": "carti/retete_cu_carne.json",
-   "v": 2,
-   "n": 60
+   "v": 4,
+   "n": 110
   },
   {
    "sursa": "Deserturi rapide",

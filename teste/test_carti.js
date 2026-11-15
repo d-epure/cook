@@ -7,7 +7,7 @@ const {boot,eq,done,sleep,dir,fs}=require("./_boot.js");
  eq([st.length,st.every(r=>T.shUnmod(r)),T.BOOK.length],[tot,true,tot],"utilizator nou: toate retetele livrate, neschimbate, afisate");
  let b=JSON.parse(T.bkBuild().json);eq(b.date.rbook===undefined,true,"backup fara cartile livrate");
  const r0=T.BOOK.find(r=>r.sursa==="Retete cu carne"&&r.nr===1);T.cosSet(r0,true);await sleep(50);
- b=JSON.parse(T.bkBuild().json);eq([JSON.parse(b.date.rbook).length,JSON.parse(b.date.rliv)["Retete cu carne"].length],[1,59],"reteta schimbata intra in backup, restul doar ca lista");
+ b=JSON.parse(T.bkBuild().json);eq([JSON.parse(b.date.rbook).length,JSON.parse(b.date.rliv)["Retete cu carne"].length],[1,man0.carti.find(c=>c.sursa==="Retete cu carne").n-1],"reteta schimbata intra in backup, restul doar ca lista");
  const bv=T.getBv();bv["Deserturi rapide"]={del:1};T.putBv(bv);await T.saveStored(T.getStored().filter(r=>r.sursa!=="Deserturi rapide"));
  await T.shipRun();eq(T.getStored().filter(x=>x.sursa==="Deserturi rapide").length,0,"cartea stearsa nu revine singura");
  await T.shipRun(true);eq(T.getStored().filter(x=>x.sursa==="Deserturi rapide").length,30,"'Readu cartile aplicatiei' o aduce inapoi");

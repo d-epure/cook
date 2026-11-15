@@ -12774,5 +12774,3091 @@
   },
   "timp": 25,
   "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 171,
+  "titlu": "Frittata cu spanac si feta la air fryer",
+  "categorie": "Mic dejun",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "spanac"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "feta"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Unge cu ulei o forma rotunda de 16 cm care incape in cosul air fryer-ului.",
+   "Bate ouale cu sare si piper, apoi adauga spanacul tocat, ceapa verde taiata rondele si feta faramitata.",
+   "Toarna in forma si gateste la 160 de grade 12-14 minute, pana se incheaga in centru.",
+   "Lasa 2 minute, apoi taie in doua."
+  ],
+  "sfaturi": [
+   "Proteina completa: ouale si branza acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider; se mananca si rece."
+  ],
+  "macro": {
+   "kcal": 274,
+   "proteine": 19.9,
+   "carbo": 5.3,
+   "grasimi": 19.3,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 172,
+  "titlu": "Paine prajita frantuzeasca cu scortisoara la air fryer",
+  "categorie": "Mic dejun",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 100,
+    "u": "ml",
+    "n": "lapte"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "vanilie"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "unt"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "capsuni"
+   }
+  ],
+  "pasi_carte": [
+   "Bate ouale cu laptele, scortisoara si vanilia intr-o farfurie adanca.",
+   "Inmoaie feliile de paine cate 20 de secunde pe fiecare parte.",
+   "Unge cosul cu untul topit si aseaza feliile intr-un singur strat.",
+   "Gateste la 180 de grade 8 minute, intorcandu-le dupa 4 minute.",
+   "Serveste cu capsunile taiate felii."
+  ],
+  "sfaturi": [
+   "Proteina completa: ouale, laptele si painea acopera aminoacizii esentiali.",
+   "Se mananca imediat; painea de o zi tine mai bine forma."
+  ],
+  "macro": {
+   "kcal": 330,
+   "proteine": 16.4,
+   "carbo": 33.3,
+   "grasimi": 14.9,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 20,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 173,
+  "titlu": "Granola cu ovaz, nuci si miere la air fryer",
+  "categorie": "Mic dejun",
+  "capitol": "Air fryer",
+  "portii": 8,
+  "etichete": [
+   "vegetarian",
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "nuci"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "seminte de floarea soarelui"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "miere"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "ulei de cocos"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "stafide"
+   }
+  ],
+  "pasi_carte": [
+   "Topeste uleiul de cocos cu mierea si amesteca-le cu ovazul, nucile tocate mare, semintele si scortisoara.",
+   "Intinde amestecul intr-o forma tapetata cu hartie de copt care incape in cos.",
+   "Gateste la 150 de grade 12 minute, amestecand la fiecare 4 minute.",
+   "Adauga stafidele si lasa granola sa se raceasca complet: devine crocanta la rece."
+  ],
+  "sfaturi": [
+   "Ovazul singur are proteina incompleta: serveste cu 150 g de iaurt grecesc sau cu lapte ca sa fie completa.",
+   "Se pastreaza 2 saptamani intr-un borcan inchis."
+  ],
+  "macro": {
+   "kcal": 235,
+   "proteine": 5.7,
+   "carbo": 27.5,
+   "grasimi": 12.5,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 174,
+  "titlu": "Cartofi cu ardei si oua la air fryer",
+  "categorie": "Mic dejun",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Taie cartofii cubulete de 1,5 cm si amesteca-i cu uleiul, boiaua, sare si piper.",
+   "Gateste la 200 de grade 15 minute, scuturand cosul la jumatate.",
+   "Adauga ardeiul si ceapa taiate cubulete si mai gateste 5 minute.",
+   "Muta totul intr-o forma care incape in cos, fa 4 adancituri si sparge cate un ou in fiecare.",
+   "Gateste la 160 de grade 5-6 minute, pana se intareste albusul."
+  ],
+  "sfaturi": [
+   "Proteina completa: ouale acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 402,
+   "proteine": 18.9,
+   "carbo": 42.2,
+   "grasimi": 17.7,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 35,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 175,
+  "titlu": "Briose de ovaz cu banana si nuci la air fryer",
+  "categorie": "Mic dejun",
+  "capitol": "Air fryer",
+  "portii": 6,
+  "etichete": [
+   "vegetarian",
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 100,
+    "u": "ml",
+    "n": "lapte"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "praf de copt"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "nuci"
+   }
+  ],
+  "pasi_carte": [
+   "Paseaza bananele cu furculita si amesteca-le cu ouale si laptele.",
+   "Adauga ovazul, praful de copt, scortisoara si nucile tocate si lasa 5 minute sa se hidrateze.",
+   "Imparte in 6 forme de silicon.",
+   "Gateste la 160 de grade 15 minute, pana cand o scobitoare iese curata."
+  ],
+  "sfaturi": [
+   "Proteina completa: ovazul cu ou si lapte acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider sau 2 luni la congelator."
+  ],
+  "macro": {
+   "kcal": 201,
+   "proteine": 7.3,
+   "carbo": 28.2,
+   "grasimi": 7.3,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 176,
+  "titlu": "Tortilla cu ou, fasole neagra si cheddar la air fryer",
+  "categorie": "Mic dejun",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "tortilla integrala"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "fasole neagra fiarta"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "cheddar"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Bate ouale cu sare, toarna-le intr-o forma unsa cu ulei si gateste la 160 de grade 6 minute, pana se incheaga.",
+   "Taie omleta fasii si imparte-o pe jumatatea fiecarei tortilla, cu fasolea scursa, ceapa verde si cheddarul ras.",
+   "Indoaie tortilla in doua si apas-o usor.",
+   "Gateste la 190 de grade 5 minute, intorcand-o o data, pana devine crocanta."
+  ],
+  "sfaturi": [
+   "Proteina completa: ouale, fasolea si tortilla acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 469,
+   "proteine": 26.9,
+   "carbo": 35.6,
+   "grasimi": 24.4,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 177,
+  "titlu": "Vinete parmigiana la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 3,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "vinete"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "rosii conserva"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "mozzarella"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "pesmet"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Taie vinetele felii de 1 cm, sareaza-le si lasa-le 10 minute, apoi tamponeaza-le.",
+   "Trece feliile prin oul batut si prin pesmet, stropeste-le cu ulei si gateste-le la 200 de grade 10 minute, intorcandu-le la jumatate.",
+   "Aseaza-le intr-o forma, in straturi cu rosiile amestecate cu oregano si cu mozzarella.",
+   "Rade parmezanul deasupra si gateste la 180 de grade 6 minute."
+  ],
+  "sfaturi": [
+   "Proteina completa: branza si oul acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 344,
+   "proteine": 19.9,
+   "carbo": 23.4,
+   "grasimi": 19.8,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 178,
+  "titlu": "Dovlecei umpluti cu ricotta si rosii cherry la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "dovlecei mari"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ricotta"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "catel de usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Taie dovleceii in doua pe lung si scobeste miezul cu o lingurita.",
+   "Amesteca ricotta cu miezul tocat, usturoiul pisat, oregano, sare si piper.",
+   "Umple barcutele, pune rosiile cherry taiate in doua deasupra si rade parmezanul.",
+   "Stropeste cu ulei si gateste la 180 de grade 14-16 minute."
+  ],
+  "sfaturi": [
+   "Proteina completa: branzeturile acopera aminoacizii esentiali.",
+   "Se pastreaza 2 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 359,
+   "proteine": 21.5,
+   "carbo": 12.9,
+   "grasimi": 25.7,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 25,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 179,
+  "titlu": "Tofu cu ghimbir, broccoli si ardei la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 3,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "asiatic",
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "tofu ferm"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "seminte de susan"
+   }
+  ],
+  "pasi_carte": [
+   "Preseaza tofu intre servete 10 minute, apoi taie-l cuburi de 2 cm.",
+   "Amesteca sosul de soia, siropul de artar, ghimbirul ras si uleiul de susan si marineaza tofu 15 minute.",
+   "Gateste tofu la 200 de grade 10 minute, scuturand la jumatate.",
+   "Adauga broccoli si ardeiul taiate bucati si mai gateste 6 minute.",
+   "Presara susanul."
+  ],
+  "sfaturi": [
+   "Proteina completa: soia are toti aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider; serveste cu orez."
+  ],
+  "macro": {
+   "kcal": 327,
+   "proteine": 28.2,
+   "carbo": 19.9,
+   "grasimi": 18.3,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 50,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 180,
+  "titlu": "Cartofi dulci umpluti cu fasole neagra si porumb la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "cartofi dulci"
+   },
+   {
+    "c": 240,
+    "u": "g",
+    "n": "fasole neagra fiarta"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "porumb"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa rosie"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "coriandru proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Spala 2 cartofi dulci, inteapa-i cu furculita si unge-i cu ulei.",
+   "Gateste-i la 200 de grade 35-40 de minute, intorcandu-i o data, pana intra usor cutitul.",
+   "Amesteca fasolea scursa cu porumbul, ceapa tocata, chimenul, zeama de lime si sare.",
+   "Taie cartofii pe lung, desfa-i si umple-i cu amestecul de fasole.",
+   "Presara coriandru."
+  ],
+  "sfaturi": [
+   "Proteina completa: fasolea cu porumbul acopera aminoacizii esentiali.",
+   "Umplutura se pastreaza 4 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 573,
+   "proteine": 18.9,
+   "carbo": 110.3,
+   "grasimi": 9.2,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 50,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 181,
+  "titlu": "Ciuperci umplute cu crema de branza si usturoi la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "ciuperci champignon"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "crema de branza"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "patrunjel verde"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "pesmet"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Scoate picioarele ciupercilor si toaca-le marunt.",
+   "Amesteca-le cu crema de branza, usturoiul pisat, patrunjelul, sare si piper.",
+   "Umple palariile, presara pesmetul amestecat cu parmezanul ras.",
+   "Gateste la 180 de grade 10-12 minute, pana se rumenesc."
+  ],
+  "sfaturi": [
+   "Proteina e putina: serveste cu un ou fiert sau cu o salata de naut ca masa sa fie completa.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 345,
+   "proteine": 18.1,
+   "carbo": 18.8,
+   "grasimi": 23.6,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 25,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 182,
+  "titlu": "Conopida crocanta cu boia si sos de iaurt la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 3,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "conopida"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "faina de naut"
+   },
+   {
+    "c": 80,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "usturoi pudra"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "suc de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca faina de naut cu apa, boiaua, usturoiul pudra si sare pana obtii un aluat subtire.",
+   "Desfa conopida in buchetele si amestec-o cu aluatul si cu uleiul.",
+   "Gateste la 200 de grade 15 minute, scuturand cosul de doua ori.",
+   "Amesteca iaurtul cu sucul de lamaie si sare si serveste-l alaturi."
+  ],
+  "sfaturi": [
+   "Proteina e putina: serveste cu naut fiert sau cu un ou ca masa sa fie completa.",
+   "Se mananca imediat, cat e crocanta."
+  ],
+  "macro": {
+   "kcal": 178,
+   "proteine": 12.2,
+   "carbo": 21,
+   "grasimi": 6.3,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 25,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 183,
+  "titlu": "Quesadilla cu fasole rosie, porumb si cheddar la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "tortilla integrala"
+   },
+   {
+    "c": 240,
+    "u": "g",
+    "n": "fasole rosie fiarta"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "porumb"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "cheddar"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   }
+  ],
+  "pasi_carte": [
+   "Zdrobeste usor fasolea cu furculita si amestec-o cu porumbul, ardeiul taiat marunt si chimenul.",
+   "Intinde amestecul pe 2 tortilla, presara cheddarul ras si acopera cu celelalte 2.",
+   "Unge-le cu ulei si gateste-le pe rand la 190 de grade 6-8 minute, intorcandu-le o data.",
+   "Taie fiecare in 4."
+  ],
+  "sfaturi": [
+   "Proteina completa: fasolea, tortilla si branza acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 684,
+   "proteine": 32,
+   "carbo": 77.9,
+   "grasimi": 28.6,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 184,
+  "titlu": "Chiftele de linte rosie cu morcov la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 4,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "linte rosie"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 50,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe lintea 15 minute, scurge-o foarte bine si las-o sa se raceasca.",
+   "Rade morcovul si toaca marunt ceapa si usturoiul.",
+   "Amesteca lintea cu legumele, ovazul, chimenul, boiaua si sare si lasa 10 minute sa se lege.",
+   "Formeaza 16 chiftele, unge-le cu ulei si gateste-le la 190 de grade 12-14 minute, intorcandu-le la jumatate."
+  ],
+  "sfaturi": [
+   "Proteina completa: lintea cu ovazul acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider sau 3 luni la congelator."
+  ],
+  "macro": {
+   "kcal": 282,
+   "proteine": 14.4,
+   "carbo": 45.3,
+   "grasimi": 5.7,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 50,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 185,
+  "titlu": "Cartofi wedges cu boia si rozmarin la air fryer",
+  "categorie": "Gustari",
+  "capitol": "Air fryer",
+  "portii": 4,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "rozmarin"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Taie cartofii nedecojiti in felii groase, pe lung.",
+   "Tine-i 10 minute in apa rece, apoi usuca-i bine cu un prosop.",
+   "Amesteca-i cu uleiul, boiaua, rozmarinul si sare.",
+   "Gateste la 200 de grade 20-22 de minute, scuturand cosul de doua ori."
+  ],
+  "sfaturi": [
+   "Garnitura: aport mic de proteine; serveste langa carne, peste, oua sau leguminoase.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 147,
+   "proteine": 3.2,
+   "carbo": 26.6,
+   "grasimi": 3.6,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 186,
+  "titlu": "Chipsuri de kale la air fryer",
+  "categorie": "Gustari",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 150,
+    "u": "g",
+    "n": "kale"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Rupe frunzele de pe cotoare, spala-le si usuca-le foarte bine.",
+   "Maseaza-le cu uleiul si cu putina sare.",
+   "Gateste la 150 de grade 5-6 minute, scuturand la jumatate; nu le lasa sa se inchida la culoare."
+  ],
+  "sfaturi": [
+   "Gustare: aport mic de proteine, nu inlocuieste o masa.",
+   "Se mananca in aceeasi zi."
+  ],
+  "macro": {
+   "kcal": 96,
+   "proteine": 3.2,
+   "carbo": 6.6,
+   "grasimi": 7.4,
+   "sursa": "local",
+   "acoperire": "2 din 2"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 187,
+  "titlu": "Bastonase de dovlecel in crusta de parmezan la air fryer",
+  "categorie": "Gustari",
+  "capitol": "Air fryer",
+  "portii": 3,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 50,
+    "u": "g",
+    "n": "pesmet"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Taie dovleceii bastonase de 1 cm grosime.",
+   "Amesteca pesmetul cu parmezanul ras, oregano si sare.",
+   "Trece bastonasele prin oul batut si apoi prin pesmet.",
+   "Gateste la 200 de grade 10-12 minute, intorcandu-le la jumatate."
+  ],
+  "sfaturi": [
+   "Gustare: aport mic de proteine; serveste cu un sos de iaurt.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 168,
+   "proteine": 10.9,
+   "carbo": 16.9,
+   "grasimi": 6.5,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 188,
+  "titlu": "Migdale si caju cu boia la air fryer",
+  "categorie": "Gustari",
+  "capitol": "Air fryer",
+  "portii": 6,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 100,
+    "u": "g",
+    "n": "migdale"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "caju"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca migdalele si caju cu uleiul, boiaua si sare.",
+   "Gateste la 160 de grade 6-8 minute, scuturand cosul la jumatate.",
+   "Lasa-le sa se raceasca: devin crocante la rece."
+  ],
+  "sfaturi": [
+   "Gustare satioasa: o portie are cam 30 g.",
+   "Se pastreaza 2 saptamani intr-un borcan inchis."
+  ],
+  "macro": {
+   "kcal": 196,
+   "proteine": 6.6,
+   "carbo": 8.8,
+   "grasimi": 16.4,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 189,
+  "titlu": "Oua tari la air fryer",
+  "categorie": "Gustari",
+  "capitol": "Air fryer",
+  "portii": 3,
+  "etichete": [
+   "vegetarian",
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 6,
+    "u": "",
+    "n": "oua"
+   }
+  ],
+  "pasi_carte": [
+   "Aseaza ouale in cos, fara apa.",
+   "Gateste la 130 de grade 15 minute.",
+   "Muta-le imediat in apa cu gheata 5 minute, apoi curata-le."
+  ],
+  "sfaturi": [
+   "Proteina completa: oul are toti aminoacizii esentiali.",
+   "Nedecojite, se pastreaza 5 zile la frigider.",
+   "Timpul difera putin de la un aparat la altul: incearca intai cu un singur ou."
+  ],
+  "macro": {
+   "kcal": 157,
+   "proteine": 13.9,
+   "carbo": 0.8,
+   "grasimi": 10.5,
+   "sursa": "local",
+   "acoperire": "1 din 1"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 190,
+  "titlu": "Chipsuri de mere cu scortisoara la air fryer",
+  "categorie": "Gustari",
+  "capitol": "Air fryer",
+  "portii": 3,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 3,
+    "u": "",
+    "n": "mere"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   }
+  ],
+  "pasi_carte": [
+   "Taie merele felii foarte subtiri, de 2 mm, si scoate samburii.",
+   "Presara scortisoara si aseaza feliile intr-un singur strat.",
+   "Gateste la 150 de grade 15-18 minute, intorcandu-le la jumatate.",
+   "Lasa-le sa se raceasca pe un gratar: se intaresc la rece."
+  ],
+  "sfaturi": [
+   "Gustare: aport mic de proteine, nu inlocuieste o masa.",
+   "Se pastreaza 3 zile intr-o cutie inchisa."
+  ],
+  "macro": {
+   "kcal": 96,
+   "proteine": 0.5,
+   "carbo": 25.5,
+   "grasimi": 0.3,
+   "sursa": "local",
+   "acoperire": "2 din 2"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 191,
+  "titlu": "Paine cu usturoi si mozzarella la air fryer",
+  "categorie": "Gustari",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "mozzarella"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "unt"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "patrunjel verde"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca untul moale cu usturoiul pisat si patrunjelul tocat.",
+   "Unge feliile de paine si pune mozzarella deasupra.",
+   "Gateste la 180 de grade 4-5 minute, pana se topeste branza."
+  ],
+  "sfaturi": [
+   "Proteina completa: branza cu painea acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 330,
+   "proteine": 16.8,
+   "carbo": 28.1,
+   "grasimi": 16.9,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 192,
+  "titlu": "Mere coapte cu nuci si scortisoara la air fryer",
+  "categorie": "Deserturi",
+  "capitol": "Air fryer",
+  "portii": 4,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "mere"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "nuci"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "stafide"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   }
+  ],
+  "pasi_carte": [
+   "Scobeste cotorul merelor, fara sa ajungi pana la fund.",
+   "Amesteca nucile tocate cu stafidele, siropul de artar si scortisoara si umple merele.",
+   "Aseaza-le in cos si gateste la 170 de grade 15-18 minute, pana se inmoaie."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata.",
+   "Se pastreaza 2 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 209,
+   "proteine": 2.2,
+   "carbo": 39.4,
+   "grasimi": 6.9,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 193,
+  "titlu": "Banane coapte cu ciocolata neagra la air fryer",
+  "categorie": "Deserturi",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "ciocolata neagra 70-85%"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "alune de padure"
+   }
+  ],
+  "pasi_carte": [
+   "Cresteaza bananele pe lung, cu tot cu coaja, fara sa le tai pana jos.",
+   "Pune bucatele de ciocolata in taietura.",
+   "Gateste la 180 de grade 6-8 minute, pana se topeste ciocolata.",
+   "Presara alunele tocate si mananca din coaja, cu lingurita."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 259,
+   "proteine": 4,
+   "carbo": 35.9,
+   "grasimi": 12.9,
+   "sursa": "local",
+   "acoperire": "3 din 3"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 194,
+  "titlu": "Briose cu cacao si iaurt la air fryer",
+  "categorie": "Deserturi",
+  "capitol": "Air fryer",
+  "portii": 6,
+  "etichete": [
+   "vegetarian",
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 120,
+    "u": "g",
+    "n": "faina"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "cacao pudra"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "miere"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "ulei de cocos"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "praf de copt"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca faina cu cacao si praful de copt.",
+   "Bate ouale cu iaurtul, mierea si uleiul de cocos topit, apoi incorporeaza faina.",
+   "Imparte in 6 forme de silicon.",
+   "Gateste la 160 de grade 12-14 minute, pana cand o scobitoare iese curata."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata.",
+   "Se pastreaza 3 zile la frigider sau 2 luni la congelator."
+  ],
+  "macro": {
+   "kcal": 194,
+   "proteine": 7.6,
+   "carbo": 27.1,
+   "grasimi": 7,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 195,
+  "titlu": "Piersici coapte cu iaurt si miere la air fryer",
+  "categorie": "Deserturi",
+  "capitol": "Air fryer",
+  "portii": 4,
+  "etichete": [
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "piersici"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "migdale"
+   }
+  ],
+  "pasi_carte": [
+   "Taie piersicile in doua si scoate samburii.",
+   "Aseaza-le cu taietura in sus si gateste la 180 de grade 8 minute.",
+   "Pune cate o lingura de iaurt pe fiecare jumatate, picura mierea si presara migdalele tocate."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 133,
+   "proteine": 7.5,
+   "carbo": 21.5,
+   "grasimi": 3.1,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 196,
+  "titlu": "Fursecuri de ovaz cu banana si stafide la air fryer",
+  "categorie": "Deserturi",
+  "capitol": "Air fryer",
+  "portii": 6,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 150,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "stafide"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "nuci"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   }
+  ],
+  "pasi_carte": [
+   "Paseaza bananele si amesteca-le cu ovazul, stafidele, nucile tocate si scortisoara.",
+   "Lasa 5 minute, apoi formeaza 12 fursecuri pe hartie de copt.",
+   "Gateste la 170 de grade 8-10 minute, pana se rumenesc pe margini.",
+   "Lasa-le sa se raceasca inainte sa le muti."
+  ],
+  "sfaturi": [
+   "Desert: aport mic de proteine, nu inlocuieste o masa; combina-l cu o masa echilibrata.",
+   "Se pastreaza 4 zile intr-o cutie inchisa."
+  ],
+  "macro": {
+   "kcal": 184,
+   "proteine": 4.7,
+   "carbo": 32.4,
+   "grasimi": 5.1,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 197,
+  "titlu": "Salata de castraveti cu susan si ardei iute",
+  "categorie": "Salate",
+  "capitol": "Asiatic",
+  "portii": 4,
+  "etichete": [
+   "asiatic",
+   "vegan",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "otet de orez"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ardei iute fulgi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "seminte de susan"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Taie castravetii felii groase, sareaza-i si lasa-i 10 minute, apoi scurge apa.",
+   "Amesteca otetul, sosul de soia, uleiul de susan, siropul, ardeiul iute si usturoiul pisat.",
+   "Toarna peste castraveti, presara susanul si lasa 5 minute la rece."
+  ],
+  "sfaturi": [
+   "Garnitura: aport mic de proteine; serveste langa pui, peste, tofu sau oua.",
+   "Se pastreaza 1 zi la frigider."
+  ],
+  "macro": {
+   "kcal": 49,
+   "proteine": 1.5,
+   "carbo": 6.3,
+   "grasimi": 2.4,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 198,
+  "titlu": "Supa cu taitei, ou si ciuperci in zeama de miso",
+  "categorie": "Supe",
+  "capitol": "Asiatic",
+  "portii": 2,
+  "etichete": [
+   "asiatic",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "paste (taitei de ou)"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "spanac"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "pasta de miso"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 1000,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de susan"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe ouale 7 minute, raceste-le in apa rece si curata-le.",
+   "Pune apa la fiert cu ghimbirul feliat si sosul de soia, adauga ciupercile feliate si fierbe 5 minute.",
+   "Adauga taiteii si fierbe-i 4 minute (sau cat scrie pe ambalaj), apoi pune spanacul 1 minut.",
+   "Ia oala de pe foc si dizolva pasta de miso in supa.",
+   "Serveste cu ouale taiate in doua, ceapa verde si uleiul de susan."
+  ],
+  "sfaturi": [
+   "Proteina completa: ouale si taiteii acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 559,
+   "proteine": 28.6,
+   "carbo": 88.4,
+   "grasimi": 10.7,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 30,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 199,
+  "titlu": "Tofu in sos picant cu ciuperci",
+  "categorie": "Feluri principale",
+  "capitol": "Asiatic",
+  "portii": 3,
+  "etichete": [
+   "asiatic",
+   "vegan",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "tofu"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "sos sriracha"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "amidon de porumb"
+   },
+   {
+    "c": 200,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de floarea soarelui"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste usturoiul si ghimbirul tocate in ulei 1 minut, apoi adauga ciupercile tocate marunt si gateste 5 minute.",
+   "Adauga pasta de rosii, sosul sriracha si sosul de soia.",
+   "Amesteca amidonul cu apa, toarna in tigaie si fierbe 2 minute.",
+   "Pune tofu taiat cuburi si fierbe incet 5 minute, fara sa amesteci tare.",
+   "Presara ceapa verde."
+  ],
+  "sfaturi": [
+   "Proteina completa: soia are toti aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider; serveste cu orez."
+  ],
+  "macro": {
+   "kcal": 287,
+   "proteine": 27,
+   "carbo": 14.2,
+   "grasimi": 16.6,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 25,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 200,
+  "titlu": "Taitei de orez cu varza, morcov si ou",
+  "categorie": "Paste si orez",
+  "capitol": "Asiatic",
+  "portii": 3,
+  "etichete": [
+   "asiatic",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "taitei de orez"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "varza"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "germeni de soia"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "arahide"
+   }
+  ],
+  "pasi_carte": [
+   "Inmoaie taiteii in apa fierbinte 5 minute si scurge-i.",
+   "Caleste varza si morcovul taiate fasii subtiri in ulei 4 minute.",
+   "Da legumele la o parte, sparge ouale in tigaie si amesteca-le 1 minut.",
+   "Adauga taiteii, germenii, sosul de soia si zeama de lime si amesteca 2 minute.",
+   "Presara ceapa verde si arahidele tocate."
+  ],
+  "sfaturi": [
+   "Proteina completa: ouale cu taiteii si arahidele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 611,
+   "proteine": 25.4,
+   "carbo": 75.4,
+   "grasimi": 23.4,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 25,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 201,
+  "titlu": "Salata de varza rosie cu edamame si sos de arahide",
+  "categorie": "Salate",
+  "capitol": "Asiatic",
+  "portii": 3,
+  "etichete": [
+   "asiatic",
+   "vegan",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "varza rosie"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "edamame"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "unt de arahide"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "sirop de artar"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "arahide"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "coriandru proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe edamame 4 minute si raceste-l sub apa rece.",
+   "Taie varza, morcovul si ardeiul fasii subtiri.",
+   "Amesteca untul de arahide cu sosul de soia, zeama de lime, siropul si 3 linguri de apa.",
+   "Amesteca legumele cu edamame si cu sosul si presara arahidele si coriandrul."
+  ],
+  "sfaturi": [
+   "Proteina completa: soia (edamame) are toti aminoacizii esentiali.",
+   "Se pastreaza 2 zile la frigider, cu sosul separat."
+  ],
+  "macro": {
+   "kcal": 286,
+   "proteine": 14.7,
+   "carbo": 29.9,
+   "grasimi": 15,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 202,
+  "titlu": "Omleta cu ceapa verde si sos de soia, cu orez",
+  "categorie": "Mic dejun",
+  "capitol": "Asiatic",
+  "portii": 2,
+  "etichete": [
+   "asiatic",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "orez fiert"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "seminte de susan"
+   }
+  ],
+  "pasi_carte": [
+   "Bate ouale cu sosul de soia si ceapa verde tocata.",
+   "Incinge uleiul de floarea soarelui, toarna ouale si gateste 2 minute la foc mediu.",
+   "Ruleaza omleta si mai tine-o 1 minut.",
+   "Incalzeste orezul si serveste omleta feliata deasupra, cu uleiul de susan si susanul."
+  ],
+  "sfaturi": [
+   "Proteina completa: ouale acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 346,
+   "proteine": 17.8,
+   "carbo": 31.2,
+   "grasimi": 16.1,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 10,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 203,
+  "titlu": "Edamame cu usturoi si ardei iute",
+  "categorie": "Gustari",
+  "capitol": "Asiatic",
+  "portii": 3,
+  "etichete": [
+   "asiatic",
+   "vegan",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "edamame"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ardei iute fulgi"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe edamame 4 minute si scurge-l.",
+   "Caleste usturoiul tocat in uleiul de susan 30 de secunde.",
+   "Adauga edamame, sosul de soia si ardeiul iute si amesteca 1 minut."
+  ],
+  "sfaturi": [
+   "Proteina completa: soia are toti aminoacizii esentiali.",
+   "Se mananca imediat, cald sau rece."
+  ],
+  "macro": {
+   "kcal": 130,
+   "proteine": 11.9,
+   "carbo": 8.9,
+   "grasimi": 6.3,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 204,
+  "titlu": "Mamaliga cu branza si smantana",
+  "categorie": "Feluri principale",
+  "capitol": "Traditional romanesc",
+  "portii": 4,
+  "etichete": [
+   "traditional romanesc",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 250,
+    "u": "g",
+    "n": "malai"
+   },
+   {
+    "c": 1000,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "telemea"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "smantana"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "unt"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Pune apa cu sare la fiert si toarna malaiul in ploaie, amestecand cu telul.",
+   "Fierbe la foc mic 20 de minute, amestecand des, pana se desprinde de pe peretii oalei.",
+   "Adauga untul.",
+   "Pune mamaliga in farfurii, cu telemeaua rasa si smantana deasupra."
+  ],
+  "sfaturi": [
+   "Proteina completa: branza si smantana completeaza porumbul.",
+   "Se mananca imediat; mamaliga rece se poate rumeni felii in tigaie a doua zi."
+  ],
+  "macro": {
+   "kcal": 458,
+   "proteine": 13.1,
+   "carbo": 51.8,
+   "grasimi": 23,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 205,
+  "titlu": "Salata de vinete",
+  "categorie": "Gustari",
+  "capitol": "Traditional romanesc",
+  "portii": 6,
+  "etichete": [
+   "traditional romanesc",
+   "vegan",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 1000,
+    "u": "g",
+    "n": "vinete"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "suc de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Inteapa vinetele si coace-le la 220 de grade 40 de minute, intorcandu-le o data, pana se inmoaie complet.",
+   "Curata-le de coaja cat sunt calde si lasa-le 20 de minute la scurs.",
+   "Toaca miezul marunt cu un cutit de lemn sau de plastic.",
+   "Amesteca-l cu uleiul adaugat treptat, sucul de lamaie, sare si ceapa tocata marunt."
+  ],
+  "sfaturi": [
+   "Aport mic de proteine: serveste pe paine, langa oua, branza sau o salata de fasole.",
+   "Se pastreaza 3 zile la frigider; ceapa se adauga la servire."
+  ],
+  "macro": {
+   "kcal": 106,
+   "proteine": 1.8,
+   "carbo": 10.9,
+   "grasimi": 7.1,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 65,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 206,
+  "titlu": "Clatite cu branza dulce si stafide",
+  "categorie": "Deserturi",
+  "capitol": "Traditional romanesc",
+  "portii": 4,
+  "etichete": [
+   "traditional romanesc",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 150,
+    "u": "g",
+    "n": "faina"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 300,
+    "u": "ml",
+    "n": "lapte"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "branza de vaci"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "zahar"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "vanilie"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "stafide"
+   }
+  ],
+  "pasi_carte": [
+   "Bate ouale cu laptele, adauga faina si amesteca pana nu mai are cocoloase; lasa aluatul 15 minute.",
+   "Unge tigaia cu putin ulei si coace 8 clatite subtiri, cam 1 minut pe fiecare parte.",
+   "Amesteca branza cu zaharul, vanilia si stafidele.",
+   "Umple clatitele si ruleaza-le."
+  ],
+  "sfaturi": [
+   "Desert cu proteine bune: branza de vaci, ouale si laptele acopera aminoacizii esentiali.",
+   "Se pastreaza 2 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 379,
+   "proteine": 18.3,
+   "carbo": 49.1,
+   "grasimi": 12.1,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 30,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 207,
+  "titlu": "Bile energetice cu curmale, ovaz si cacao",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 6,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 150,
+    "u": "g",
+    "n": "curmale"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "migdale"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "cacao pudra"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "unt de arahide"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza curmalele fara samburi cu migdalele pana obtii o pasta grunjoasa.",
+   "Adauga ovazul, cacao si untul de arahide si mixeaza scurt.",
+   "Formeaza 12 bile si lasa-le 20 de minute la frigider."
+  ],
+  "sfaturi": [
+   "Gustare: aport mic de proteine, nu inlocuieste o masa.",
+   "Se pastreaza 7 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 180,
+   "proteine": 4.7,
+   "carbo": 31.3,
+   "grasimi": 5.9,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 208,
+  "titlu": "Sos de iaurt cu castravete si marar, cu bastonase de morcov",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 3,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "catel de usturoi"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "marar proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Rade castravetele, sareaza-l si stoarce-l bine dupa 5 minute.",
+   "Amesteca-l cu iaurtul, usturoiul pisat, mararul tocat si uleiul.",
+   "Taie morcovii bastonase si serveste-i cu sosul."
+  ],
+  "sfaturi": [
+   "Proteina completa: iaurtul grecesc acopera aminoacizii esentiali.",
+   "Sosul se pastreaza 2 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 137,
+   "proteine": 11.3,
+   "carbo": 12.5,
+   "grasimi": 5.1,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 209,
+  "titlu": "Rulouri de dovlecel cu crema de branza si rosii uscate",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 3,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "crema de branza"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "rosii uscate"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "busuioc proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Taie dovleceii pe lung in felii subtiri, cu un curatator de legume.",
+   "Rumeneste feliile intr-o tigaie uscata 1 minut pe fiecare parte si sareaza-le.",
+   "Amesteca crema de branza cu rosiile uscate si busuiocul tocate.",
+   "Intinde crema pe felii si ruleaza-le."
+  ],
+  "sfaturi": [
+   "Gustare: aport mic de proteine, nu inlocuieste o masa.",
+   "Se pastreaza 1 zi la frigider."
+  ],
+  "macro": {
+   "kcal": 160,
+   "proteine": 4.8,
+   "carbo": 10.6,
+   "grasimi": 12.1,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 210,
+  "titlu": "Tartine cu avocado si ou fiert",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "avocado"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua fierte"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "suc de lamaie"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ardei iute fulgi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Prajeste feliile de paine.",
+   "Zdrobeste avocado cu sucul de lamaie si sare si intinde-l pe paine.",
+   "Pune ouale feliate deasupra si presara ardei iute."
+  ],
+  "sfaturi": [
+   "Proteina completa: oul cu painea acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 242,
+   "proteine": 11.7,
+   "carbo": 18.1,
+   "grasimi": 14.2,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 211,
+  "titlu": "Branza de vaci cu rosii cherry si seminte de dovleac",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "branza de vaci"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "seminte de dovleac"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Pune branza in doua boluri.",
+   "Adauga rosiile cherry taiate in doua, semintele, uleiul si piper."
+  ],
+  "sfaturi": [
+   "Proteina completa: branza de vaci acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 154,
+   "proteine": 13,
+   "carbo": 6.7,
+   "grasimi": 8.7,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 5,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 212,
+  "titlu": "Salata mica de naut cu rosii si castravete",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 2,
+  "etichete": [
+   "vegan",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 240,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "suc de lamaie"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Scurge nautul si clateste-l.",
+   "Taie rosiile si castravetele cubulete.",
+   "Amesteca totul cu uleiul, sucul de lamaie, patrunjelul tocat si sare."
+  ],
+  "sfaturi": [
+   "Nautul singur nu are toti aminoacizii esentiali: mananca salata cu o felie de paine integrala ca proteina sa fie completa.",
+   "Se pastreaza 3 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 281,
+   "proteine": 11.8,
+   "carbo": 38.4,
+   "grasimi": 10.1,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 213,
+  "titlu": "Chipsuri de tortilla la cuptor cu salsa de rosii",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 2,
+  "etichete": [
+   "vegan",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "tortilla integrala"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "ceapa rosie"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "coriandru proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Unge tortilla cu ulei, presara boiaua si taie fiecare in 8 triunghiuri.",
+   "Coace-le la 180 de grade 8 minute, pana devin crocante.",
+   "Taie rosiile si ceapa cubulete mici si amesteca-le cu zeama de lime, coriandrul tocat si sare."
+  ],
+  "sfaturi": [
+   "Gustare: aport mic de proteine, nu inlocuieste o masa.",
+   "Chipsurile se pastreaza 3 zile intr-o cutie inchisa; salsa, 1 zi la frigider."
+  ],
+  "macro": {
+   "kcal": 184,
+   "proteine": 5.5,
+   "carbo": 28.3,
+   "grasimi": 6.6,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 214,
+  "titlu": "Batoane de ovaz cu miere si seminte",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 8,
+  "etichete": [
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "miere"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "unt de arahide"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "seminte de dovleac"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "stafide"
+   }
+  ],
+  "pasi_carte": [
+   "Incalzeste mierea cu untul de arahide 1 minut, pana devin fluide.",
+   "Amesteca-le cu ovazul, semintele si stafidele.",
+   "Preseaza amestecul intr-o tava mica tapetata cu hartie de copt, intr-un strat de 1,5 cm.",
+   "Coace la 170 de grade 18 minute.",
+   "Lasa sa se raceasca complet si taie in 8 batoane."
+  ],
+  "sfaturi": [
+   "Gustare: aport mic de proteine; cu un pahar de lapte sau un iaurt, proteina devine completa.",
+   "Se pastreaza 7 zile intr-o cutie inchisa."
+  ],
+  "macro": {
+   "kcal": 205,
+   "proteine": 6.7,
+   "carbo": 29.3,
+   "grasimi": 8,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 215,
+  "titlu": "Pasta de branza de vaci cu ceapa verde si boia",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "branza de vaci"
+   },
+   {
+    "c": 50,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca branza cu iaurtul, ceapa verde tocata, boiaua si sare.",
+   "Intinde pasta pe feliile de paine prajita."
+  ],
+  "sfaturi": [
+   "Proteina completa: branza de vaci acopera aminoacizii esentiali.",
+   "Pasta se pastreaza 2 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 196,
+   "proteine": 17.8,
+   "carbo": 18.8,
+   "grasimi": 5.6,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete vegetariene",
+  "nr": 216,
+  "titlu": "Frigarui mici cu rosii cherry, mozzarella si busuioc",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 2,
+  "etichete": [
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 150,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "mozzarella"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "busuioc proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet balsamic"
+   }
+  ],
+  "pasi_carte": [
+   "Taie mozzarella cuburi cat rosiile.",
+   "Infige pe scobitori cate o rosie, o frunza de busuioc si un cub de mozzarella.",
+   "Stropeste cu uleiul si otetul balsamic."
+  ],
+  "sfaturi": [
+   "Proteina completa: mozzarella acopera aminoacizii esentiali.",
+   "Se mananca in aceeasi zi."
+  ],
+  "macro": {
+   "kcal": 222,
+   "proteine": 14.2,
+   "carbo": 5.7,
+   "grasimi": 15.9,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 10,
+  "dif": "usor"
  }
 ]

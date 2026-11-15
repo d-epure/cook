@@ -4359,5 +4359,3686 @@
   },
   "timp": 10,
   "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 61,
+  "titlu": "Briose cu ou, sunca si cascaval la air fryer",
+  "categorie": "Mic dejun",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "sunca de curcan"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "cascaval"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Unge 4 forme de silicon cu ulei.",
+   "Taie sunca si ardeiul cubulete mici si imparte-le in forme.",
+   "Bate ouale cu sare si piper, toarna peste si rade cascavalul deasupra.",
+   "Gateste la 160 de grade 10-12 minute, pana se intaresc in centru."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider sau 2 luni la congelator; incalzeste 1 minut la microunde."
+  ],
+  "macro": {
+   "kcal": 351,
+   "proteine": 29.8,
+   "carbo": 4.9,
+   "grasimi": 23.1,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 62,
+  "titlu": "Piept de pui la air fryer cu boia si usturoi",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 3,
+  "etichete": [
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "usturoi pudra"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Daca bucatile sunt groase, taie-le pe lung ca sa aiba cam 2 cm grosime.",
+   "Unge-le cu ulei si freaca-le cu boiaua, usturoiul pudra, oregano, sare si piper.",
+   "Gateste la 190 de grade 16-18 minute, intorcandu-le la jumatate, pana ajung la 74 de grade in centru.",
+   "Lasa carnea 5 minute inainte sa o tai."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider; taiat felii, merge in salate si sandvisuri.",
+   "Serveste cu orez sau cu o salata mare."
+  ],
+  "macro": {
+   "kcal": 246,
+   "proteine": 37.8,
+   "carbo": 1.4,
+   "grasimi": 9,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 63,
+  "titlu": "Pulpe de pui cu miere si mustar la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 4,
+  "etichete": [
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "pulpe de pui dezosate"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "mustar"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca mierea, mustarul, sosul de soia, usturoiul pisat si piperul.",
+   "Unge pulpele cu sosul si lasa-le 20 de minute la rece.",
+   "Aseaza-le in cos intr-un singur strat si gateste la 200 de grade 18-20 minute, intorcandu-le la jumatate.",
+   "Sunt gata cand ajung la 74 de grade in centru."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider.",
+   "Mierea se rumeneste repede: verifica dupa 15 minute."
+  ],
+  "macro": {
+   "kcal": 207,
+   "proteine": 30.3,
+   "carbo": 5.6,
+   "grasimi": 6.5,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 64,
+  "titlu": "Somon cu lamaie, marar si sparanghel la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "somon"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "sparanghel"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "marar proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Rupe capetele tari ale sparanghelului, unge-l cu jumatate din ulei si gateste-l la 200 de grade 4 minute.",
+   "Unge somonul cu restul de ulei, sareaza-l si pipereaza-l.",
+   "Aseaza somonul peste sparanghel, cu pielea in jos, si gateste 8-10 minute.",
+   "Stoarce lamaia deasupra si presara mararul tocat."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat; rece, merge intr-o salata a doua zi."
+  ],
+  "macro": {
+   "kcal": 518,
+   "proteine": 44.7,
+   "carbo": 9.4,
+   "grasimi": 33.9,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 65,
+  "titlu": "Cotlet de porc cu cimbru si usturoi la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 3,
+  "etichete": [
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "porc cotlet / ceafa"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "cimbru uscat"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Freaca feliile de carne cu uleiul, cimbrul, boiaua, usturoiul pisat, sare si piper.",
+   "Aseaza-le in cos intr-un singur strat.",
+   "Gateste la 200 de grade 12-14 minute, intorcandu-le la jumatate, pana ajung la 63 de grade in centru.",
+   "Lasa carnea 3 minute inainte sa o servesti."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider.",
+   "Serveste cu cartofi wedges sau cu muraturi."
+  ],
+  "macro": {
+   "kcal": 377,
+   "proteine": 33.1,
+   "carbo": 1.5,
+   "grasimi": 25.6,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 66,
+  "titlu": "Creveti cu usturoi si ardei iute la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "creveti"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ardei iute fulgi"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca crevetii decojiti cu uleiul, usturoiul pisat, ardeiul iute si sare.",
+   "Intinde-i in cos intr-un singur strat.",
+   "Gateste la 200 de grade 6-8 minute, scuturand o data, pana devin roz si opaci.",
+   "Stoarce lime deasupra si presara patrunjel."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat.",
+   "Serveste cu orez fiert sau cu o salata."
+  ],
+  "macro": {
+   "kcal": 251,
+   "proteine": 41,
+   "carbo": 5.9,
+   "grasimi": 7.9,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 67,
+  "titlu": "Fasii de pui in crusta de pesmet si parmezan la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 4,
+  "etichete": [
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "pesmet"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "faina"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Taie pieptul de pui fasii de 2 cm grosime si sareaza-le.",
+   "Amesteca pesmetul cu parmezanul ras, boiaua si piperul.",
+   "Trece fasiile prin faina, apoi prin ouale batute si prin pesmet.",
+   "Stropeste-le cu ulei si gateste la 200 de grade 10-12 minute, intorcandu-le la jumatate."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider; reincalzeste 3 minute in air fryer ca sa fie crocante.",
+   "Se congeleaza gatite, pana la 2 luni."
+  ],
+  "macro": {
+   "kcal": 356,
+   "proteine": 38.3,
+   "carbo": 19.3,
+   "grasimi": 12.8,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 68,
+  "titlu": "Ardei umpluti cu vita si orez la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 4,
+  "etichete": [
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "ardei gras"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "vita carne tocata 90/10"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "orez fiert"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "rosii conserva"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "mozzarella"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Taie capacele ardeilor si scoate semintele.",
+   "Amesteca vita cu orezul fiert, ceapa tocata marunt, jumatate din rosii, oregano, sare si piper.",
+   "Umple ardeii, pune restul de rosii deasupra si aseaza-i in picioare in cos.",
+   "Gateste la 180 de grade 15 minute.",
+   "Pune mozzarella deasupra si mai gateste 3 minute."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider sau 3 luni la congelator."
+  ],
+  "macro": {
+   "kcal": 287,
+   "proteine": 21.4,
+   "carbo": 23.3,
+   "grasimi": 11.6,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 30,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 69,
+  "titlu": "Pui teriyaki cu broccoli la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 3,
+  "etichete": [
+   "asiatic",
+   "meal-prep",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "pulpe de pui dezosate"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet de orez"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "seminte de susan"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca sosul de soia, mierea, otetul, ghimbirul ras, usturoiul pisat si uleiul de susan.",
+   "Taie puiul bucati de 3 cm, amesteca-l cu jumatate din sos si lasa-l 15 minute.",
+   "Gateste puiul la 200 de grade 12 minute, scuturand la jumatate.",
+   "Adauga broccoli desfacut in buchetele, stropit cu restul de sos, si mai gateste 6 minute.",
+   "Presara susanul."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider; serveste cu orez."
+  ],
+  "macro": {
+   "kcal": 303,
+   "proteine": 37.7,
+   "carbo": 15.4,
+   "grasimi": 10.4,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 40,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 70,
+  "titlu": "Macrou cu lamaie si rozmarin la air fryer",
+  "categorie": "Feluri principale",
+  "capitol": "Air fryer",
+  "portii": 2,
+  "etichete": [
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "macrou"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "rozmarin"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Cresteaza pestii curatati (cam 400 g in total, fara cap si maruntaie) de trei ori pe fiecare parte.",
+   "Unge-i cu ulei si freaca-i cu rozmarin, sare si piper; pune felii de lamaie in burta.",
+   "Gateste la 200 de grade 12-14 minute, intorcandu-i la jumatate.",
+   "E gata cand carnea se desprinde usor de pe os."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat; serveste cu cartofi fierti sau cu salata."
+  ],
+  "macro": {
+   "kcal": 480,
+   "proteine": 37.6,
+   "carbo": 3.3,
+   "grasimi": 34.7,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 71,
+  "titlu": "Pui cu sos de arahide si taitei de orez",
+  "categorie": "Paste si orez",
+  "capitol": "Asiatic",
+  "portii": 4,
+  "etichete": [
+   "asiatic",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "taitei de orez"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "unt de arahide"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "arahide"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe taiteii 4 minute (sau cat scrie pe ambalaj), scurge-i si clateste-i cu apa rece.",
+   "Taie puiul fasii si rumeneste-l in uleiul de susan 6-7 minute.",
+   "Amesteca untul de arahide cu sosul de soia, zeama de lime, mierea si 4 linguri de apa calda.",
+   "Adauga morcovul ras si taiteii peste pui, toarna sosul si amesteca 2 minute pe foc.",
+   "Presara ceapa verde si arahidele tocate."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider; se mananca si rece."
+  ],
+  "macro": {
+   "kcal": 517,
+   "proteine": 32.8,
+   "carbo": 56.6,
+   "grasimi": 18.2,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 25,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 72,
+  "titlu": "Vita cu broccoli si ghimbir la tigaie",
+  "categorie": "Feluri principale",
+  "capitol": "Asiatic",
+  "portii": 3,
+  "etichete": [
+   "asiatic"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "vita muschi"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "amidon de porumb"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 100,
+    "u": "ml",
+    "n": "apa"
+   }
+  ],
+  "pasi_carte": [
+   "Taie vita felii subtiri, de-a curmezisul fibrei, si amestec-o cu o lingura de sos de soia si cu amidonul.",
+   "Rumeneste carnea in ulei la foc mare 2-3 minute si scoate-o.",
+   "In aceeasi tigaie pune broccoli desfacut in buchetele si apa, acopera si gateste 4 minute.",
+   "Adauga usturoiul si ghimbirul tocate, restul de sos de soia si carnea si amesteca 2 minute.",
+   "Stropeste cu uleiul de susan."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider; serveste cu orez."
+  ],
+  "macro": {
+   "kcal": 457,
+   "proteine": 31.5,
+   "carbo": 14.3,
+   "grasimi": 30.9,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 73,
+  "titlu": "Porc dulce-acrisor cu ananas si ardei",
+  "categorie": "Feluri principale",
+  "capitol": "Asiatic",
+  "portii": 4,
+  "etichete": [
+   "asiatic",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "porc muschi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ananas"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "otet de orez"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "amidon de porumb"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 150,
+    "u": "ml",
+    "n": "apa"
+   }
+  ],
+  "pasi_carte": [
+   "Taie porcul cuburi de 2 cm si rumeneste-l in ulei 6 minute.",
+   "Adauga ceapa si ardeiul taiate bucati mari si gateste 4 minute.",
+   "Amesteca sosul de soia, otetul, mierea, pasta de rosii, amidonul si apa si toarna in tigaie.",
+   "Adauga ananasul taiat cuburi si fierbe 5 minute, pana se leaga sosul."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider; serveste cu orez."
+  ],
+  "macro": {
+   "kcal": 253,
+   "proteine": 28.2,
+   "carbo": 20,
+   "grasimi": 6.4,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 74,
+  "titlu": "Supa de pui cu taitei de orez si ghimbir",
+  "categorie": "Supe",
+  "capitol": "Asiatic",
+  "portii": 4,
+  "etichete": [
+   "asiatic"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "taitei de orez"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1200,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   }
+  ],
+  "pasi_carte": [
+   "Pune apa la fiert cu ghimbirul feliat, usturoiul zdrobit si sosul de soia.",
+   "Adauga pieptul de pui intreg si fierbe 15 minute, apoi scoate-l si rupe-l fasii.",
+   "Pune in supa morcovul si ciupercile feliate si fierbe 5 minute.",
+   "Adauga taiteii si puiul si mai fierbe 3 minute.",
+   "Serveste cu ceapa verde si zeama de lime."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider; taiteii se inmoaie, deci adauga-i la servire daca gatesti in avans."
+  ],
+  "macro": {
+   "kcal": 262,
+   "proteine": 21.3,
+   "carbo": 37.8,
+   "grasimi": 2.5,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 40,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 75,
+  "titlu": "Curry rosu de creveti cu lapte de cocos",
+  "categorie": "Feluri principale",
+  "capitol": "Asiatic",
+  "portii": 3,
+  "etichete": [
+   "asiatic"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "creveti"
+   },
+   {
+    "c": 400,
+    "u": "ml",
+    "n": "lapte de cocos"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "pasta de curry rosu"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "fasole verde"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "coriandru proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de cocos"
+   }
+  ],
+  "pasi_carte": [
+   "Incinge uleiul de cocos si prajeste pasta de curry 1 minut.",
+   "Toarna laptele de cocos si sosul de soia si adu la fiert.",
+   "Adauga ardeiul si fasolea verde taiate bucati si fierbe 6 minute.",
+   "Pune crevetii decojiti si gateste 3-4 minute, pana devin roz.",
+   "Stoarce lime si presara coriandru."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 2 zile la frigider; serveste cu orez."
+  ],
+  "macro": {
+   "kcal": 461,
+   "proteine": 31.7,
+   "carbo": 13.8,
+   "grasimi": 34,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 76,
+  "titlu": "Somon glazurat cu miso si susan, cu spanac",
+  "categorie": "Cuptor",
+  "capitol": "Asiatic",
+  "portii": 2,
+  "etichete": [
+   "asiatic"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "somon"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "pasta de miso"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet de orez"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "seminte de susan"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "spanac"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca pasta de miso cu mierea si otetul si unge somonul.",
+   "Coace somonul la 200 de grade 12 minute.",
+   "Caleste spanacul in uleiul de susan 2 minute, pana scade.",
+   "Serveste somonul pe spanac, cu susan deasupra."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat; serveste cu orez."
+  ],
+  "macro": {
+   "kcal": 563,
+   "proteine": 48.1,
+   "carbo": 19.5,
+   "grasimi": 32.9,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 77,
+  "titlu": "Orez prajit cu creveti si ananas",
+  "categorie": "Paste si orez",
+  "capitol": "Asiatic",
+  "portii": 3,
+  "etichete": [
+   "asiatic"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "orez fiert"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "creveti"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ananas"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "mazare congelata"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "ulei de floarea soarelui"
+   }
+  ],
+  "pasi_carte": [
+   "Foloseste orez fiert cu o zi inainte, tinut la frigider.",
+   "Rumeneste crevetii in jumatate din ulei 3 minute si scoate-i.",
+   "Bate ouale si gateste-le in restul de ulei, amestecand, 1 minut.",
+   "Adauga orezul, mazarea si sosul de soia si prajeste 4 minute la foc mare.",
+   "Pune crevetii si ananasul taiat cuburi, amesteca 1 minut si presara ceapa verde."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 2 zile la frigider; incalzeste pana e fierbinte bine."
+  ],
+  "macro": {
+   "kcal": 543,
+   "proteine": 33.8,
+   "carbo": 70,
+   "grasimi": 13.9,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 78,
+  "titlu": "Pui cu caju si ardei",
+  "categorie": "Feluri principale",
+  "capitol": "Asiatic",
+  "portii": 4,
+  "etichete": [
+   "asiatic",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "caju"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "amidon de porumb"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 100,
+    "u": "ml",
+    "n": "apa"
+   }
+  ],
+  "pasi_carte": [
+   "Prajeste caju intr-o tigaie uscata 2 minute si scoate-l.",
+   "Taie puiul cuburi si rumeneste-l in ulei 6 minute.",
+   "Adauga ceapa, ardeiul, usturoiul si ghimbirul tocate si gateste 3 minute.",
+   "Amesteca sosul de soia, mierea, amidonul si apa, toarna in tigaie si fierbe 2 minute.",
+   "Adauga caju la final."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider; serveste cu orez."
+  ],
+  "macro": {
+   "kcal": 323,
+   "proteine": 32.8,
+   "carbo": 17.7,
+   "grasimi": 13.5,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 25,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 79,
+  "titlu": "Curry verde de pui cu fasole verde",
+  "categorie": "Feluri principale",
+  "capitol": "Asiatic",
+  "portii": 4,
+  "etichete": [
+   "asiatic",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "pulpe de pui dezosate"
+   },
+   {
+    "c": 400,
+    "u": "ml",
+    "n": "lapte de cocos"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "pasta de curry verde"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "fasole verde"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "busuioc proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Prajeste pasta de curry intr-o oala 1 minut, cu 3 linguri din laptele de cocos.",
+   "Adauga puiul taiat bucati si amesteca 3 minute.",
+   "Toarna restul de lapte de cocos si sosul de soia si fierbe 10 minute.",
+   "Adauga fasolea verde si dovleceii taiati bucati si mai fierbe 8 minute.",
+   "Stoarce lime si presara busuioc."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider sau 3 luni la congelator; serveste cu orez."
+  ],
+  "macro": {
+   "kcal": 388,
+   "proteine": 29,
+   "carbo": 11.2,
+   "grasimi": 27.2,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 80,
+  "titlu": "Chiftelute de porc cu ghimbir si sos de soia",
+  "categorie": "Chiftele si burgeri",
+  "capitol": "Asiatic",
+  "portii": 4,
+  "etichete": [
+   "asiatic",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "porc carne tocata"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "pesmet"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "seminte de susan"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca porcul cu ceapa verde, ghimbirul si usturoiul tocate, oul, pesmetul si o lingura de sos de soia.",
+   "Formeaza 20 de chiftelute si aseaza-le pe o tava cu hartie de copt.",
+   "Coace la 200 de grade 18 minute.",
+   "Amesteca restul de sos de soia cu mierea si uleiul de susan, unge chiftelutele calde si presara susan."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider sau 3 luni la congelator."
+  ],
+  "macro": {
+   "kcal": 376,
+   "proteine": 26.8,
+   "carbo": 13.7,
+   "grasimi": 24.1,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 30,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 81,
+  "titlu": "Bol cu vita, orez si castraveti cu otet",
+  "categorie": "Boluri",
+  "capitol": "Asiatic",
+  "portii": 4,
+  "etichete": [
+   "asiatic",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "vita carne tocata 90/10"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 3,
+    "u": "linguri",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "miere"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "otet de orez"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "seminte de susan"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe orezul 15 minute si lasa-l acoperit 5 minute.",
+   "Taie castravetii felii subtiri si amesteca-i cu otetul si un praf de sare.",
+   "Rumeneste vita in uleiul de susan 6 minute, desfacand-o cu lingura.",
+   "Adauga usturoiul si ghimbirul tocate, sosul de soia si mierea si gateste 2 minute.",
+   "Imparte orezul in 4 boluri, cu vita, castravetii, morcovul ras si susanul."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider, cu castravetii separat."
+  ],
+  "macro": {
+   "kcal": 473,
+   "proteine": 26.6,
+   "carbo": 60.8,
+   "grasimi": 12.9,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 40,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 82,
+  "titlu": "Ciorba de vacuta cu legume",
+  "categorie": "Ciorbe",
+  "capitol": "Traditional romanesc",
+  "portii": 6,
+  "etichete": [
+   "traditional romanesc",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "vita pulpa"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "telina (radacina)"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 300,
+    "u": "ml",
+    "n": "bors"
+   },
+   {
+    "c": 2000,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Taie vita cuburi si fierbe-o in apa cu sare 90 de minute, luand spuma.",
+   "Adauga morcovul, telina, ceapa si ardeiul taiate cubulete si fierbe 15 minute.",
+   "Pune cartofii taiati cubulete si rosiile tocate si mai fierbe 15 minute.",
+   "Fierbe borsul separat 2 minute, adauga-l in ciorba si mai lasa 5 minute.",
+   "Presara patrunjel."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider sau 3 luni la congelator."
+  ],
+  "macro": {
+   "kcal": 215,
+   "proteine": 20.7,
+   "carbo": 17.1,
+   "grasimi": 6.9,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 145,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 83,
+  "titlu": "Ostropel de pui",
+  "categorie": "Feluri principale",
+  "capitol": "Traditional romanesc",
+  "portii": 4,
+  "etichete": [
+   "traditional romanesc",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 800,
+    "u": "g",
+    "n": "pulpe superioare de pui"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "faina"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "foi de dafin"
+   },
+   {
+    "c": 200,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Rumeneste pulpele in ulei 4 minute pe fiecare parte si scoate-le.",
+   "Caleste ceapa tocata 4 minute, adauga faina si amesteca 1 minut.",
+   "Pune rosiile, apa, foaia de dafin, sare si piper si adu la fiert.",
+   "Adauga pulpele, acopera si fierbe la foc mic 30 de minute.",
+   "La final pune usturoiul pisat si otetul, mai fierbe 2 minute si presara patrunjel."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider; serveste cu mamaliga sau cu cartofi fierti."
+  ],
+  "macro": {
+   "kcal": 344,
+   "proteine": 41,
+   "carbo": 8.8,
+   "grasimi": 15.4,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 55,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 84,
+  "titlu": "Varza calita cu carnati afumati",
+  "categorie": "Feluri principale",
+  "capitol": "Traditional romanesc",
+  "portii": 4,
+  "etichete": [
+   "traditional romanesc",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 800,
+    "u": "g",
+    "n": "varza alba"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "carnati afumati de porc"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "cimbru uscat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "foi de dafin"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 200,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Taie varza fasii subtiri si freac-o cu putina sare.",
+   "Caleste ceapa tocata in ulei 4 minute, apoi adauga carnatii feliati 3 minute.",
+   "Pune varza, boiaua, cimbrul, foile de dafin si apa, acopera si gateste la foc mic 30 de minute, amestecand din cand in cand.",
+   "Adauga pasta de rosii si piper si mai gateste 10 minute fara capac."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider; e mai buna a doua zi."
+  ],
+  "macro": {
+   "kcal": 283,
+   "proteine": 9.3,
+   "carbo": 16.4,
+   "grasimi": 21.3,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 55,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 85,
+  "titlu": "Ciorba radauteana de pui",
+  "categorie": "Ciorbe",
+  "capitol": "Traditional romanesc",
+  "portii": 6,
+  "etichete": [
+   "traditional romanesc"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "telina (radacina)"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "smantana"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "galbenus de ou"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "otet"
+   },
+   {
+    "c": 2000,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pieptul de pui in apa cu sare 25 de minute, scoate-l si rupe-l fasii.",
+   "Pune in zeama morcovul, telina, ceapa si ardeiul intregi sau taiate mare si fierbe 20 de minute, apoi scoate-le si taie-le fasii subtiri.",
+   "Bate smantana cu galbenusurile si subtiaz-o cu 2 polonice de zeama fierbinte, turnate treptat.",
+   "Toarna amestecul in oala, adauga puiul si legumele si incalzeste 3 minute, fara sa mai clocoteasca.",
+   "Adauga usturoiul pisat si otetul si presara patrunjel."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider; reincalzeste la foc mic, fara sa fiarba, ca sa nu se taie smantana."
+  ],
+  "macro": {
+   "kcal": 242,
+   "proteine": 25.4,
+   "carbo": 9.3,
+   "grasimi": 11.1,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 65,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 86,
+  "titlu": "Pilaf de pui cu legume",
+  "categorie": "Paste si orez",
+  "capitol": "Traditional romanesc",
+  "portii": 4,
+  "etichete": [
+   "traditional romanesc",
+   "meal-prep",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "pulpe de pui dezosate"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 700,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Taie puiul bucati si rumeneste-l in ulei 5 minute.",
+   "Adauga ceapa, morcovul si ardeiul taiate cubulete si caleste 4 minute.",
+   "Pune orezul spalat, amesteca 1 minut, apoi toarna apa fierbinte, sare si piper.",
+   "Acopera si fierbe la foc mic 18 minute, fara sa amesteci.",
+   "Lasa 5 minute acoperit si presara patrunjel."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider; incalzeste pana e fierbinte bine."
+  ],
+  "macro": {
+   "kcal": 474,
+   "proteine": 30,
+   "carbo": 57.6,
+   "grasimi": 12.6,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 45,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 87,
+  "titlu": "Tocanita de pui cu mazare",
+  "categorie": "Feluri principale",
+  "capitol": "Traditional romanesc",
+  "portii": 4,
+  "etichete": [
+   "traditional romanesc",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "mazare congelata"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "faina"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 400,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "marar proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Taie puiul cuburi si rumeneste-l in ulei 5 minute.",
+   "Adauga ceapa tocata si morcovul taiat rondele si caleste 4 minute.",
+   "Presara faina, amesteca 1 minut, apoi pune pasta de rosii si apa.",
+   "Adauga mazarea, sare si piper si fierbe 15 minute.",
+   "Presara marar."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider sau 3 luni la congelator."
+  ],
+  "macro": {
+   "kcal": 352,
+   "proteine": 40.1,
+   "carbo": 21.5,
+   "grasimi": 11.3,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 35,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 88,
+  "titlu": "Omleta cu sunca, ciuperci si cascaval",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 1,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 3,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "sunca de porc"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "cascaval"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "unt"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ciupercile feliate in unt 3 minute.",
+   "Adauga sunca taiata fasii si ouale batute si gateste 2 minute la foc mediu.",
+   "Rade cascavalul deasupra, indoaie omleta si mai tine-o 1 minut."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 547,
+   "proteine": 42.4,
+   "carbo": 7.3,
+   "grasimi": 38.3,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 89,
+  "titlu": "Sandvis cald cu ou, sunca de curcan si avocado",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 1,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 50,
+    "u": "g",
+    "n": "sunca de curcan"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "avocado"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "unt"
+   }
+  ],
+  "pasi_carte": [
+   "Prajeste oul in unt 2 minute pe fiecare parte.",
+   "Prajeste feliile de paine.",
+   "Zdrobeste avocado pe o felie, adauga sunca, rosia feliata si oul si acopera cu a doua felie."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 419,
+   "proteine": 26.8,
+   "carbo": 34.1,
+   "grasimi": 20.4,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 90,
+  "titlu": "Oua ochi cu bacon si rosii cherry",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 1,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "bacon"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "felii paine integrala"
+   }
+  ],
+  "pasi_carte": [
+   "Rumeneste baconul intr-o tigaie fara ulei 3 minute si scoate-l.",
+   "In grasimea ramasa pune rosiile cherry taiate in doua 2 minute.",
+   "Sparge ouale langa rosii si gateste 3 minute, pana se intareste albusul.",
+   "Serveste cu baconul si cu felia de paine prajita."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 427,
+   "proteine": 23.9,
+   "carbo": 19.9,
+   "grasimi": 27.7,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 91,
+  "titlu": "Wrap cu pui, ou si salata",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 1,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 1,
+    "u": "",
+    "n": "tortilla integrala"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "piept de pui fiert"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou fiert"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "mustar"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca iaurtul cu mustarul si intinde-l pe tortilla.",
+   "Adauga puiul rupt fasii, oul feliat si salata.",
+   "Ruleaza strans si taie in doua."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 1 zi la frigider, invelit; bun de luat la pachet."
+  ],
+  "macro": {
+   "kcal": 358,
+   "proteine": 37.7,
+   "carbo": 20.8,
+   "grasimi": 12.9,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 92,
+  "titlu": "Terci de ovaz sarat cu ou si bacon",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 1,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 60,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 250,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "bacon"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe ovazul in apa cu un praf de sare 5 minute, amestecand.",
+   "Rumeneste baconul taiat fasii 3 minute si scoate-l.",
+   "In aceeasi tigaie prajeste oul 2 minute.",
+   "Pune terciul in bol, cu oul, baconul, ceapa verde si parmezanul ras deasupra."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 496,
+   "proteine": 24.4,
+   "carbo": 43.4,
+   "grasimi": 25,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 93,
+  "titlu": "Briose cu curcan, ou si dovlecel",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 4,
+  "etichete": [
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "carne tocata de curcan"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "cascaval"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Rade dovlecelul si stoarce-l bine de apa.",
+   "Amesteca curcanul cu ouale batute, dovlecelul, ardeiul taiat marunt, boiaua, sare si piper.",
+   "Imparte in 8 forme de briose unse si rade cascavalul deasupra.",
+   "Coace la 180 de grade 20 de minute."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider sau 2 luni la congelator; incalzeste 1 minut la microunde."
+  ],
+  "macro": {
+   "kcal": 241,
+   "proteine": 24.5,
+   "carbo": 2.7,
+   "grasimi": 14.5,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 94,
+  "titlu": "Cartofi la tigaie cu carnati si ou",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 2,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "carnati proaspeti de porc"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe cartofii taiati cubulete 8 minute si scurge-i.",
+   "Rumeneste carnatii feliati in ulei 5 minute, apoi adauga ceapa 3 minute.",
+   "Pune cartofii, boiaua si sare si prajeste 6 minute, pana prind crusta.",
+   "Fa doua adancituri, sparge ouale, acopera si gateste 3 minute."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 414,
+   "proteine": 18.2,
+   "carbo": 30.5,
+   "grasimi": 24.7,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 95,
+  "titlu": "Tartine cu pasta de ton si castravete",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 2,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "ton in apa (conserva)"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "mustar"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "ceapa verde"
+   }
+  ],
+  "pasi_carte": [
+   "Scurge tonul si zdrobeste-l cu furculita.",
+   "Amesteca-l cu iaurtul, mustarul si ceapa verde tocata.",
+   "Intinde pe feliile de paine prajita si pune felii de castravete deasupra."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Pasta de ton se pastreaza 2 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 222,
+   "proteine": 21.1,
+   "carbo": 28.5,
+   "grasimi": 2.9,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 96,
+  "titlu": "Omleta la tava cu sunca si spanac",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 4,
+  "etichete": [
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 8,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "sunca presata"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "spanac"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "mozzarella"
+   },
+   {
+    "c": 100,
+    "u": "ml",
+    "n": "lapte"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Incalzeste cuptorul la 180 de grade si tapeteaza o tava mica cu hartie de copt.",
+   "Bate ouale cu laptele, sare si piper.",
+   "Intinde in tava spanacul, sunca si ardeiul taiate marunt si toarna ouale peste.",
+   "Presara mozzarella si coace 25 de minute.",
+   "Taie in 4 portii."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 4 zile la frigider; se mananca si rece, intre doua felii de paine."
+  ],
+  "macro": {
+   "kcal": 311,
+   "proteine": 28.6,
+   "carbo": 5.5,
+   "grasimi": 18.8,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 35,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 97,
+  "titlu": "Burrito cu pui, fasole neagra si porumb, de congelat",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 4,
+  "etichete": [
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "tortilla integrala"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 240,
+    "u": "g",
+    "n": "fasole neagra fiarta"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "porumb"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "cheddar"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Taie puiul cubulete si rumeneste-l in ulei cu chimen si sare 7 minute.",
+   "Adauga fasolea scursa si porumbul si incalzeste 2 minute.",
+   "Imparte umplutura pe tortilla, presara cheddarul ras si ruleaza strans, cu capetele indoite inauntru.",
+   "Rumeneste rulourile in tigaie 1 minut pe fiecare parte."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider sau 2 luni la congelator, invelite individual; incalzeste 2 minute la microunde."
+  ],
+  "macro": {
+   "kcal": 430,
+   "proteine": 31.7,
+   "carbo": 38.4,
+   "grasimi": 16.8,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 20,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 98,
+  "titlu": "Clatite sarate cu sunca si cascaval",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 2,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 100,
+    "u": "g",
+    "n": "faina"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 200,
+    "u": "ml",
+    "n": "lapte"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "sunca de porc"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "cascaval"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Bate ouale cu laptele si un praf de sare, adauga faina si amesteca pana nu mai are cocoloase.",
+   "Unge tigaia cu ulei si coace 4 clatite, cam 1 minut pe fiecare parte.",
+   "Pune pe fiecare sunca si cascavalul ras, impatureste-le si mai tine-le 1 minut in tigaie, pana se topeste branza."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Clatitele simple se pastreaza 2 zile la frigider; umple-le inainte de servire."
+  ],
+  "macro": {
+   "kcal": 585,
+   "proteine": 32.7,
+   "carbo": 46.5,
+   "grasimi": 28.8,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 99,
+  "titlu": "Paine prajita cu pui, mozzarella si rosii",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 2,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "piept de pui fiert"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "mozzarella"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "unt"
+   }
+  ],
+  "pasi_carte": [
+   "Pune pe 2 felii de paine puiul rupt fasii, rosia feliata si mozzarella si acopera cu celelalte 2.",
+   "Unge tigaia cu unt si rumeneste sandvisurile 2 minute pe fiecare parte, apasand usor."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 362,
+   "proteine": 33,
+   "carbo": 27.4,
+   "grasimi": 12.9,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 100,
+  "titlu": "Omleta cu cabanos si ardei",
+  "categorie": "Mic dejun",
+  "capitol": "Mic dejun cu carne",
+  "portii": 1,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 3,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 50,
+    "u": "g",
+    "n": "cabanos"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de floarea soarelui"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ardeiul taiat cubulete si cabanosul feliat in ulei 3 minute.",
+   "Toarna ouale batute si gateste 2 minute la foc mediu.",
+   "Presara ceapa verde si indoaie omleta."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 520,
+   "proteine": 31.7,
+   "carbo": 8.4,
+   "grasimi": 39.4,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 101,
+  "titlu": "Ardei umpluti cu crema de branza si ton",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 2,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "ton in apa (conserva)"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "crema de branza"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Taie ardeii in sferturi, pe lung, si scoate semintele.",
+   "Amesteca tonul scurs cu crema de branza, ceapa verde tocata si piper.",
+   "Umple barcutele de ardei."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Umplutura se pastreaza 2 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 226,
+   "proteine": 15.3,
+   "carbo": 9,
+   "grasimi": 14.7,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 102,
+  "titlu": "Rulouri de sunca cu cascaval si castravete murat",
+  "categorie": "Gustari",
+  "capitol": "Gustari",
+  "portii": 2,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 100,
+    "u": "g",
+    "n": "sunca de porc"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "cascaval"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "castraveti murati"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "mustar"
+   }
+  ],
+  "pasi_carte": [
+   "Unge feliile de sunca cu putin mustar.",
+   "Pune pe fiecare un baton de cascaval si unul de castravete murat.",
+   "Ruleaza strans."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 1 zi la frigider."
+  ],
+  "macro": {
+   "kcal": 208,
+   "proteine": 15.4,
+   "carbo": 3.7,
+   "grasimi": 14.5,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 103,
+  "titlu": "Somon cu orez si mazare, la o singura oala",
+  "categorie": "Paste si orez",
+  "capitol": "Peste",
+  "portii": 4,
+  "etichete": [
+   "meal-prep",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "somon"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "mazare congelata"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 600,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "marar proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa tocata in ulei 3 minute, intr-o oala larga.",
+   "Adauga orezul spalat, apa fierbinte si sare, acopera si fierbe 10 minute.",
+   "Pune mazarea si somonul taiat cuburi mari deasupra, acopera si mai gateste 8 minute.",
+   "Stoarce lamaia, presara mararul si amesteca usor."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 2 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 507,
+   "proteine": 27.3,
+   "carbo": 58.3,
+   "grasimi": 17.4,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 104,
+  "titlu": "Paste cu somon si spanac in sos de iaurt",
+  "categorie": "Paste si orez",
+  "capitol": "Peste",
+  "portii": 3,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 250,
+    "u": "g",
+    "n": "paste integrale"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "somon"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "spanac"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pastele 10 minute (sau cat scrie pe ambalaj) si pastreaza o cana din apa lor.",
+   "Rumeneste somonul taiat cuburi in ulei 4 minute si scoate-l.",
+   "Caleste usturoiul tocat 30 de secunde, adauga spanacul si lasa-l 2 minute sa scada.",
+   "Ia tigaia de pe foc, amesteca iaurtul cu 4 linguri din apa pastelor si zeama de lamaie.",
+   "Adauga pastele si somonul, sare si piper."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat; iaurtul se taie daca fierbe."
+  ],
+  "macro": {
+   "kcal": 601,
+   "proteine": 38.6,
+   "carbo": 67.6,
+   "grasimi": 20.6,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 105,
+  "titlu": "Cod in sos de rosii cu naut",
+  "categorie": "Feluri principale",
+  "capitol": "Peste",
+  "portii": 3,
+  "etichete": [
+   "meal-prep",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cod"
+   },
+   {
+    "c": 240,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "rosii conserva"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa tocata in ulei 4 minute, apoi adauga usturoiul si boiaua 1 minut.",
+   "Pune rosiile si nautul scurs si fierbe 10 minute.",
+   "Aseaza bucatile de cod in sos, sareaza, acopera si gateste 8 minute.",
+   "Presara patrunjel."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 2 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 350,
+   "proteine": 38.6,
+   "carbo": 31.2,
+   "grasimi": 8.2,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 106,
+  "titlu": "Tacos cu cod si salata de varza rosie",
+  "categorie": "Sandvisuri",
+  "capitol": "Peste",
+  "portii": 2,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "cod"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "tortilla integrala"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "varza rosie"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "coriandru proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   }
+  ],
+  "pasi_carte": [
+   "Freaca codul cu chimenul, boiaua si sare si rumeneste-l in ulei 3 minute pe fiecare parte.",
+   "Taie varza fasii foarte subtiri si amestec-o cu jumatate din zeama de lime si un praf de sare.",
+   "Amesteca iaurtul cu restul de zeama de lime.",
+   "Incalzeste tortilla 30 de secunde pe fiecare parte.",
+   "Umple-le cu varza, codul rupt bucati, sosul de iaurt si coriandru."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 556,
+   "proteine": 50.9,
+   "carbo": 51.2,
+   "grasimi": 17,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 20,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 107,
+  "titlu": "Salata de paste cu ton, porumb si ardei",
+  "categorie": "Salate",
+  "capitol": "Peste",
+  "portii": 4,
+  "etichete": [
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 250,
+    "u": "g",
+    "n": "paste integrale"
+   },
+   {
+    "c": 240,
+    "u": "g",
+    "n": "ton in apa (conserva)"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "porumb"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "ceapa rosie"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "mustar"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "suc de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pastele 10 minute (sau cat scrie pe ambalaj), scurge-le si clateste-le cu apa rece.",
+   "Taie ardeiul si ceapa cubulete.",
+   "Amesteca iaurtul cu mustarul, sucul de lamaie, sare si piper.",
+   "Amesteca pastele cu tonul scurs, porumbul, legumele si sosul."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider."
+  ],
+  "macro": {
+   "kcal": 346,
+   "proteine": 24.6,
+   "carbo": 57.7,
+   "grasimi": 3.1,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 108,
+  "titlu": "Chiftele de somon cu cartof si marar",
+  "categorie": "Chiftele si burgeri",
+  "capitol": "Peste",
+  "portii": 4,
+  "etichete": [
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "somon"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "pesmet"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "marar proaspat"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe cartofii 15 minute si zdrobeste-i.",
+   "Coace somonul la 200 de grade 10 minute si desfa-l cu furculita.",
+   "Amesteca somonul cu cartofii, oul, pesmetul, mararul si ceapa verde tocate, sare si piper.",
+   "Formeaza 12 chiftele, unge-le cu ulei si coace-le la 200 de grade 15 minute, intorcandu-le o data."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se pastreaza 3 zile la frigider sau 2 luni la congelator."
+  ],
+  "macro": {
+   "kcal": 357,
+   "proteine": 25.2,
+   "carbo": 21,
+   "grasimi": 18.7,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 50,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 109,
+  "titlu": "Sardine pe paine prajita cu rosii",
+  "categorie": "Sandvisuri",
+  "capitol": "Peste",
+  "portii": 2,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "sardine in ulei"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "ceapa rosie"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "suc de lamaie"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "patrunjel verde"
+   }
+  ],
+  "pasi_carte": [
+   "Prajeste feliile de paine.",
+   "Taie rosiile si ceapa cubulete si amesteca-le cu sucul de lamaie si patrunjelul.",
+   "Pune sardinele scurse pe paine si salata de rosii deasupra."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 382,
+   "proteine": 33,
+   "carbo": 30.8,
+   "grasimi": 13.7,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete cu carne",
+  "nr": 110,
+  "titlu": "Pastrav la tigaie cu fasole verde si migdale",
+  "categorie": "Feluri principale",
+  "capitol": "Peste",
+  "portii": 2,
+  "etichete": [],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "pastrav"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "fasole verde"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": 2,
+    "u": "linguri",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "migdale"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe fasolea verde 5 minute si scurge-o.",
+   "Sareaza pastravul curatat (cam 400 g, fara cap si maruntaie) si rumeneste-l in jumatate din ulei 4 minute pe fiecare parte.",
+   "In alta tigaie caleste usturoiul feliat in restul de ulei 30 de secunde, adauga fasolea verde si migdalele tocate si amesteca 2 minute.",
+   "Serveste pestele cu fasolea si cu zeama de lamaie."
+  ],
+  "sfaturi": [
+   "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
+   "Se mananca imediat."
+  ],
+  "macro": {
+   "kcal": 525,
+   "proteine": 45.4,
+   "carbo": 17.9,
+   "grasimi": 31.3,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 25,
+  "dif": "usor"
  }
 ]

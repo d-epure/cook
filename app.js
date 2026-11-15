@@ -59,7 +59,7 @@ const tagNames=()=>TAGS.map(t=>t.n);
 const canon=n=>{const k=norm(n),t=TAGS.find(x=>norm(x.n)===k||(x.al||[]).some(a=>norm(a)===k));return t?t.n:null};
 const normTags=a=>[...new Set((a||[]).map(canon).filter(Boolean))];
 /* 4.4.0: keto se judeca pe carbohidrati neti (carbohidrati minus fibre, fibrele calculate din Info); gluten-free = niciun ingredient cu gluten in lista. Rezultatul se tine minte pe reteta. */
-const GLUT=/\b(faina(?! de (migdale|cocos|naut|orez|porumb|hrisca|in|susan|tapioca))|grau|gris|paste|spaghete|penne|fusilli|lasagna|taitei(?! de orez)|paine|pesmet|cuscus|bulgur|orz|arpacas|secara|tortilla|lipie|pita|naan|biscuit|blat|foi de (plac|lasagn|napolitan|tort|aluat)|covrig|chifl|bagheta|crutoane|sos de soia|bere|seitan|musli|granola|cereale|ovaz|malt)/;
+const GLUT=/\b(faina(?! de (migdale|cocos|naut|orez|porumb|hrisca|in|susan|tapioca))|grau|gris|paste|spaghete|penne|fusilli|lasagna|taitei(?! de orez)|paine|pesmet|cuscus|bulgur|orz|arpacas|secara|tortilla|lipie|pita|naan|biscuit|blat|foi de (plac|lasagn|napolitan|tort|aluat)|covrig|chifl|bagheta|crutoane|sos de soia|miso|bere|seitan|musli|granola|cereale|ovaz|malt)/;
 const aIngs=r=>(r.ingrediente||[]).map(x=>({c:x.c!=null?x.c:x.cantitate,u:x.u||x.unitate||"",n:String(x.n||x.nume||"")})).filter(x=>x.n);
 function netCarb(r){const m=r.macro||{};if(m.carbo==null)return null;let fib=0;try{const q=micOf(aIngs(r),r.pna?1:(r.portii||1));if(q&&q.ok)fib=q.s[4]||0}catch(e){dbg(e)}return Math.max(0,m.carbo-fib)}
 const hasGluten=r=>{const a=aIngs(r);return!a.length?null:a.some(x=>{const n=norm(x.n);return!/fara gluten/.test(n)&&GLUT.test(n)})};
@@ -894,7 +894,7 @@ drawBook();
 
 /* "Ce pot gati din debara": ingredientele unei retete care nu sunt acoperite de debara (potrivire putin mai larga decat la cumparaturi) */
 let _mv=null,_mm=new WeakMap();
-const covered=name=>{if(inPantry(name))return true;const t=[...new Set(toks(name))];if(!t.length)return true;return panTok().some(pt=>pt.length&&t.length<=pt.length+1&&pt.every(w=>t.some(x=>tokEq(w,x))))};
+const covered=name=>{if(inPantry(name))return true;const q=formSplit(name),t=q.t;if(!t.length)return true;return panItems().some(p=>p.t.length&&t.length<=p.t.length+1&&p.t.every(w=>t.some(x=>tokEq(w,x)))&&formOk(q,p))};
 function missing(r){const v=(LS("rp")||"")+"|"+(LS("rcat")||"")+"|"+(LS("rcg")||"");if(v!==_mv){_mv=v;_mm=new WeakMap()}
  let o=_mm.get(r);if(o)return o;
  const names=[...new Set(prepIngs((r.ingrediente||[]).map(x=>({c:x.c,u:x.u,n:x.n,g:x.g}))).map(x=>cleanName(x.n)).filter(Boolean))];
@@ -944,9 +944,9 @@ const catOf=n=>{const k=cn(n),o=getCats().find(x=>cn(x.n)===k);return o?o.c:gues
 function setCat(n,c){n=String(n||"").replace(/\s+/g," ").trim().slice(0,60);if(!n)return;const l=getCats().filter(x=>cn(x.n)!==cn(n));if(c&&c!==guessCat(n))l.push({n,c});putCats(l)}
 const mkPan=(n,f)=>{const c=catOf(n),fs=(Array.isArray(f)?f:[]).map(x=>x==="neprocesat"?"proaspat":x).filter((x,i,a)=>FORMS.includes(x)&&a.indexOf(x)===i);return{n,cat:c,f:FCAT.includes(c)?fs:[]}};
 /* getPan e apelat pentru fiecare produs din lista: parsarea se face o singura data pe valoare stocata (cache pe cheile rp, rcat, rcg) */
-let _pk=null,_pv=[],_pt=null;
+let _pk=null,_pv=[],_pt=null,_pi=null;_pi=null;
 const parsePan=()=>{try{const raw=LS("rp");if(raw===null)return BASE.map(n=>mkPan(n));const j=JSON.parse(raw||"[]");return Array.isArray(j)?j.filter(x=>x&&typeof x.n==="string"&&x.n.trim()).map(x=>mkPan(x.n.trim(),x.f)):[]}catch(e){return[]}};
-function panCache(){const k=LS("rp")+"\u0001"+LS("rcat")+"\u0001"+LS("rcg");if(k!==_pk){_pv=parsePan();_pk=k;_pt=null}return _pv}
+function panCache(){const k=LS("rp")+"\u0001"+LS("rcat")+"\u0001"+LS("rcg");if(k!==_pk){_pv=parsePan();_pk=k;_pt=null;_pi=null}return _pv}
 const getPan=()=>panCache().map(p=>({n:p.n,cat:p.cat,f:[...p.f]}));
 const panTok=()=>{panCache();return _pt||(_pt=_pv.map(p=>[...new Set(toks(p.n))]))};
 const putPan=l=>LS("rp",JSON.stringify(l.map(p=>({n:p.n,f:p.f}))));
@@ -960,7 +960,13 @@ function stem(w){if(ALIAS[w])return ALIAS[w];if(w.length>5&&w.endsWith("uri"))w=
 const toks=n=>norm(String(n||"").replace(/\([^)]*\)/g," ")).split(/[^a-z0-9]+/).filter(w=>w&&!STOPW.has(w)&&!/^\d+$/.test(w)).map(stem);
 const tokEq=(a,b)=>a===b||(Math.min(a.length,b.length)>=3&&(a.startsWith(b)||b.startsWith(a)));
 /* un produs e "in debara" daca are aceleasi cuvinte ca o intrare din debara (ulei != ulei de masline) */
-function inPantry(name){const t=[...new Set(toks(name))];if(!t.length)return false;return panTok().some(pt=>pt.length&&pt.every(w=>t.some(x=>tokEq(w,x)))&&t.every(x=>pt.some(w=>tokEq(w,x))))}
+/* 4.7.0: marcajele din debara conteaza la potrivire. Un ingredient care isi spune forma ("rosii uscate", "mazare congelata", "rosii conserva", "rosii in suc propriu") e "in debara" doar daca produsul are bifat marcajul acela (sau nu are niciun marcaj bifat). Un ingredient fara forma ("rosii") se potriveste cu orice marcaj. Produsul ramane pe o singura linie in debara. */
+const FORMW={congelat:"congelat",congelata:"congelat",congelate:"congelat",congelati:"congelat",uscat:"uscat",uscata:"uscat",uscate:"uscat",uscati:"uscat",deshidratat:"uscat",deshidratata:"uscat",deshidratate:"uscat",deshidratati:"uscat",conserva:"conserva",conserve:"conserva",proaspat:"proaspat",proaspata:"proaspat",proaspete:"proaspat",proaspeti:"proaspat"};
+function formSplit(name){const z=norm(String(name||"")),f=new Set();z.split(/[^a-z0-9]+/).forEach(w=>{if(FORMW[w])f.add(FORMW[w])});if(/in suc propriu/.test(z))f.add("conserva");
+ const base=norm(String(name||"").replace(/\([^)]*\)/g," ")).replace(/in suc propriu/g," ").split(/[^a-z0-9]+/).filter(w=>w&&!FORMW[w]).join(" ");return{t:[...new Set(toks(base))],f}}
+const panItems=()=>{panCache();return _pi||(_pi=_pv.map(p=>{const q=formSplit(p.n);(p.f||[]).forEach(x=>q.f.add(x));return q}))};
+const formOk=(q,p)=>!q.f.size||!p.f.size||[...q.f].some(x=>p.f.has(x));
+function inPantry(name){const q=formSplit(name),t=q.t;if(!t.length)return false;return panItems().some(p=>p.t.length&&p.t.every(w=>t.some(x=>tokEq(w,x)))&&t.every(x=>p.t.some(w=>tokEq(w,x)))&&formOk(q,p))}
 if(!LS("rdef4")){try{(JSON.parse(LS("rp")||"[]")||[]).forEach(x=>{if(x&&typeof x.n==="string"&&CATS.some(c=>c[0]===x.cat)&&x.cat!==guessCat(x.n))setCat(x.n,x.cat)})}catch(e){dbg(e)}LS("rdef4","1")}
 if(!LS("rdef3")){BASE.forEach(addPan);LS("rdef3","1")} /* 1.8.1: produsele de baza intra in debara, o singura data */
 const hid=x=>!x.done&&HP&&inPantry(x.n);
@@ -1556,7 +1562,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="4.4.0";
+const APP_V="4.7.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
