@@ -823,7 +823,13 @@ async function shipRun(force){if(SHIPPING)return null;SHIPPING=true;let add=0,up
   if(ch){if(!(await saveStored(st)))return null;BOOK=cl(STORED).map(fixRec)}
   return{add,upd}}
  catch(e){return null}finally{SHIPPING=false}}
-function shipDone(r,quiet){if(!r){const first=!Object.keys(getBv()).length;if(first||!quiet)toast(first?"Nu am putut descarca retetele aplicatiei. Verifica internetul; reincerc singur cand revine conexiunea.":"Nu am putut verifica acum cartile aplicatiei. Incearca mai tarziu.",true);return}
+/* 4.8.1: sursele vechi "Air fryer (de verificat)" si "Retete noi (de verificat)" erau retetele de azi din cartile livrate; dupa ce cartile sunt instalate, copiile vechi se scot (doar daca nu au favorite, notite, meal prep sau meniu) */
+const DV_SRC=["Air fryer (de verificat)","Retete noi (de verificat)"];
+async function dvRun(){try{const st=getStored();if(!st.some(r=>r&&DV_SRC.includes(r.sursa)))return 0;const T=s=>norm(s||""),have=new Set(st.filter(r=>r&&!DV_SRC.includes(r.sursa)&&r.titlu).map(r=>T(r.titlu)));
+ const used=["rfav","rnote","rmp","rmen"].map(k=>LS(k)||"").join("");let n=0;
+ const keep=st.filter(r=>{if(!(r&&DV_SRC.includes(r.sursa)))return true;if(!have.has(T(r.titlu))||used.indexOf('"'+r.sursa+"|"+r.nr+'"')>=0)return true;n++;return false});
+ if(n){await saveStored(keep);BOOK=keep.length?keep:BOOK0}return n}catch(e){dbg(e);return 0}}
+function shipDone(r,quiet){dvRun().then(n=>{if(n){try{drawBook();updBS()}catch(e){dbg(e)}toast("Am scos "+n+" retete vechi (de verificat), care exista deja in cartile aplicatiei.")}}).catch(dbg);if(!r){const first=!Object.keys(getBv()).length;if(first||!quiet)toast(first?"Nu am putut descarca retetele aplicatiei. Verifica internetul; reincerc singur cand revine conexiunea.":"Nu am putut verifica acum cartile aplicatiei. Incearca mai tarziu.",true);return}
  if(!(r.add+r.upd)){if(!quiet)toast("Cartile aplicatiei sunt deja la zi.");return}
  try{drawBook();updBS();drawOnb();if(!$("#v-meniu").classList.contains("hidden"))drawMenu()}catch(e){dbg(e)}
  toast("Cartile aplicatiei: "+(r.add?r.add+(r.add===1?" reteta noua":" retete noi"):"")+(r.add&&r.upd?", ":"")+(r.upd?r.upd+(r.upd===1?" reteta actualizata":" retete actualizate"):"")+".")}
@@ -1582,7 +1588,7 @@ $("#v-meniu").addEventListener("toggle",e=>{if(e.target.classList&&e.target.clas
 $("#v-meniu").onchange=e=>{const d=e.target.dataset;
  
  if(d.mp!==undefined){const m=getMen(),a=(m[d.day]||{})[d.slot],en=a&&a[+d.ix];if(!en)return;en.p=clampP(e.target.value);en.L=0;putMen(m);drawMenu()}};
-const APP_V="4.8.0";
+const APP_V="4.8.1";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){

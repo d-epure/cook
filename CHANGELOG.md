@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.8.1
+- Biblioteca, filtrul Carte: dispar "Air fryer (de verificat)" si "Retete noi (de verificat)". Erau copii vechi ale retetelor care sunt acum in cartile aplicatiei (96 de retete, toate cu pereche in Retete vegetariene sau Retete cu carne). Aplicatia le scoate singura dupa ce cartile sunt instalate, cu un mesaj, si doar daca nu au favorite, notite, meal prep sau meniu; ce nu are pereche ramane.
+
 ## 4.8.0
 - Carte noua, **Retete high-volume**: 100 de retete cu portii mari si calorii putine (supe, salate si boluri, cuptor si air fryer, paste si orez cu legume multe, one pot, mic dejun, deserturi usoare, wrap-uri). Fiecare portie are cel mult 500 kcal si cel mult circa 1,1 kcal pe gram dupa gatire (greutate estimata: cerealele si pastele isi dubleaza-tripleaza greutatea, carnea pierde un sfert); mesele principale au in general 350-500 kcal si cel putin 22 g proteine. Macro e calculat cu baza Info, ca la celelalte carti. Fiecare reteta are varianta pereche (vegetariana, cu carne sau vegana), cu macro recalculat in sfaturi, si o linie despre volumul portiei.
 - Eticheta noua **high-volume** (tip dieta), adaugata o singura data si la cei care au deja lista de etichete; se poate ascunde din Setari, ca celelalte.
