@@ -1,0 +1,7960 @@
+[
+ {
+  "sursa": "Retete high-volume",
+  "nr": 1,
+  "titlu": "Supa de pui cu legume si taitei",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "telina"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "paste (taitei de ou)"
+   },
+   {
+    "c": 1400,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "foi dafin"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pieptul de pui in apa cu ceapa, morcovii, telina si dafinul 20 de minute, spumand.",
+   "Scoate carnea, rup-o fasii si pune-o la loc.",
+   "Adauga dovleceii si taiteii si fierbe 6-8 minute.",
+   "Potriveste de sare si piper si presara patrunjel."
+  ],
+  "sfaturi": [
+   "Daca iei supa si a doua zi, fierbe taiteii separat ca sa nu se umfle.",
+   "Nu pune ulei sau smantana: legumele si carnea dau gustul.",
+   "Varianta vegetariana: 500 g tofu ferm in loc de 600 g piept de pui (~366 kcal si 28 g proteine pe portie). Taie tofu cuburi si adauga-l in ultimele 5 minute.",
+   "Volum: portia are circa 760 g dupa gatire (estimare) si 0.48 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 366,
+   "proteine": 40.2,
+   "carbo": 38.9,
+   "grasimi": 5,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 2,
+  "titlu": "Ciorba de legume cu linte rosie si lamaie",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 250,
+    "u": "g",
+    "n": "linte rosie"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 1500,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 2,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa si usturoiul 3 minute cu putina apa.",
+   "Adauga morcovii, cartofii, linte si apa si fierbe 20 de minute.",
+   "Pune dovleceii si fierbe 5 minute, apoi spanacul 2 minute.",
+   "Stoarce lamaia, adauga boia, sare si piper si serveste cu iaurt grecesc."
+  ],
+  "sfaturi": [
+   "Linte rosie se desface si ingroasa supa fara smantana.",
+   "Se tine 4 zile la frigider sau 3 luni la congelator.",
+   "Varianta cu carne: 350 g piept de pui in loc de 250 g linte rosie (~276 kcal si 32 g proteine pe portie). Taie pieptul cuburi, rumeneste-l 3 minute si fierbe-l cu legumele.",
+   "Volum: portia are circa 930 g dupa gatire (estimare) si 0.42 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 394,
+   "proteine": 27.7,
+   "carbo": 70.1,
+   "grasimi": 2.6,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 3,
+  "titlu": "Supa cremoasa de conopida cu naut",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 700,
+    "u": "g",
+    "n": "conopida"
+   },
+   {
+    "c": 600,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1200,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "turmeric"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa si usturoiul in ulei 4 minute.",
+   "Adauga conopida, jumatate din naut, turmericul si apa si fierbe 15 minute.",
+   "Mixeaza pana devine cremoasa.",
+   "Adauga restul de naut, zeama de lamaie, sare si piper si mai da un clocot; serveste cu iaurt grecesc."
+  ],
+  "sfaturi": [
+   "Conopida da cremozitatea, deci nu mai trebuie smantana.",
+   "Nautul intreg la final da textura si proteina.",
+   "Varianta cu carne: 400 g piept de pui in loc de 600 g naut fiert (~270 kcal si 34 g proteine pe portie). Fierbe pieptul separat 15 minute, ruperi-l fasii si pune-l in supa la servire.",
+   "Volum: portia are circa 770 g dupa gatire (estimare) si 0.51 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 396,
+   "proteine": 25.3,
+   "carbo": 60.3,
+   "grasimi": 8.2,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 4,
+  "titlu": "Ciorba de salata cu ou si iaurt",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 6,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 1000,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "marar proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe ouale 9 minute, racestele si taie-le.",
+   "Fierbe apa cu orezul 12 minute, apoi ceapa verde taiata 3 minute si salata taiata fasii 2 minute.",
+   "Stinge focul si amesteca iaurtul cu putina supa, apoi pune-l in oala.",
+   "Adauga castravetii, usturoiul, maraul, otetul si ouale; potriveste de sare."
+  ],
+  "sfaturi": [
+   "Nu fierbe supa dupa ce pui iaurtul ca sa nu se taie.",
+   "O gustare racoritoare, buna si rece.",
+   "Varianta cu carne: 200 g sunca de pui in loc de 300 g iaurt grecesc (~367 kcal si 25 g proteine pe portie). Taie sunca fasii si pune-o in supa la final; scoate iaurtul sau pastreaza 100 g.",
+   "Volum: portia are circa 710 g dupa gatire (estimare) si 0.43 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 304,
+   "proteine": 22.9,
+   "carbo": 33.9,
+   "grasimi": 8.9,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 5,
+  "titlu": "Supa de rosii cu pui si orz perlat",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "orz perlat"
+   },
+   {
+    "c": 600,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "telina"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 1200,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe orzul 15 minute in apa.",
+   "Adauga ceapa, morcovii, telina, usturoiul, rosiile si pieptul intreg si fierbe 25 de minute.",
+   "Scoate pieptul, rupe-l si pune-l la loc.",
+   "Condimenteaza cu oregano, sare si piper."
+  ],
+  "sfaturi": [
+   "Orzul perlat da satietate cu putine calorii.",
+   "Rosiile din conserva tin loc de pasta de rosii si de ulei.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 500 g piept de pui (~307 kcal si 22 g proteine pe portie). Adauga tofu cuburi in ultimele 8 minute.",
+   "Volum: portia are circa 750 g dupa gatire (estimare) si 0.42 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 313,
+   "proteine": 33.4,
+   "carbo": 36.1,
+   "grasimi": 4.3,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 55,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 6,
+  "titlu": "Supa tailandeza de legume cu creveti",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "asiatic"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "creveti curatati"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "taitei de orez"
+   },
+   {
+    "c": 800,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 200,
+    "u": "ml",
+    "n": "lapte de cocos light"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "pasta de curry rosu"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe apa cu ghimbirul, usturoiul si pasta de curry 5 minute.",
+   "Adauga ciupercile, morcovii si ardeiul si fierbe 6 minute.",
+   "Pune crevetii si fierbe 3 minute, apoi laptele de cocos si spanacul 1 minut.",
+   "Adauga sosul de soia si zeama de lime.",
+   "Fierbe taiteii de orez separat 4 minute si pune-i in boluri, apoi toarna supa peste ei."
+  ],
+  "sfaturi": [
+   "Crevetii se fac in 3 minute; nu-i fierbe mai mult ca sa nu devina cauciucati.",
+   "Foloseste lapte de cocos light, nu crema de cocos, pentru calorii putine.",
+   "Varianta vegetariana: 350 g tofu ferm in loc de 400 g creveti curatati (~396 kcal si 23 g proteine pe portie). Taie tofu cuburi si fierbe-l 4 minute; foloseste sos de soia in loc de sos de peste.",
+   "Volum: portia are circa 640 g dupa gatire (estimare) si 0.55 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 355,
+   "proteine": 28.3,
+   "carbo": 37.2,
+   "grasimi": 12.2,
+   "sursa": "local",
+   "acoperire": "13 din 13"
+  },
+  "timp": 35,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 7,
+  "titlu": "Supa de ciuperci cu orez brun si spanac",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "orez brun"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "tofu ferm"
+   },
+   {
+    "c": 1300,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   }
+  ],
+  "pasi_carte": [
+   "Soteaza ciupercile taiate felii cu ceapa si usturoi in ulei 8 minute.",
+   "Adauga orezul si apa si fierbe 30 de minute.",
+   "Pune spanacul si fierbe 2 minute.",
+   "Adauga tofu taiat cubulete, apoi bate ouale cu putina apa si toarna-le subtire in supa clocotita, amestecand.",
+   "Condimenteaza cu sos de soia si piper."
+  ],
+  "sfaturi": [
+   "Ouale facute fire dau proteina si volum.",
+   "Orezul brun se fierbe mai mult decat cel alb.",
+   "Varianta cu carne: 350 g piept de pui in loc de 300 g tofu ferm (~397 kcal si 36 g proteine pe portie). Taie pieptul cuburi si fierbe-l cu orezul.",
+   "Volum: portia are circa 790 g dupa gatire (estimare) si 0.50 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 400,
+   "proteine": 29.5,
+   "carbo": 38.2,
+   "grasimi": 16.9,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 55,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 8,
+  "titlu": "Supa de varza cu carnati de curcan",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "traditional romanesc",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "varza"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "carnati de curcan"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 1300,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "foi dafin"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa si carnatii feliati 5 minute fara ulei.",
+   "Adauga morcovii, pasta de rosii, boia, apa si dafinul si fierbe 10 minute.",
+   "Pune varza si cartofii si fierbe 20 de minute.",
+   "Potriveste de sare si piper."
+  ],
+  "sfaturi": [
+   "Carnatii de curcan au mult mai putine grasimi decat cei de porc.",
+   "Se imbunatateste a doua zi.",
+   "Varianta vegetariana: 400 g naut fiert in loc de 400 g carnati de curcan (~321 kcal si 14 g proteine pe portie). Adauga nautul in ultimele 10 minute.",
+   "Volum: portia are circa 730 g dupa gatire (estimare) si 0.41 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 301,
+   "proteine": 26.7,
+   "carbo": 36.2,
+   "grasimi": 6.1,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 9,
+  "titlu": "Ciorba de fasole verde cu ou",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "traditional romanesc"
+  ],
+  "ingrediente": [
+   {
+    "c": 700,
+    "u": "g",
+    "n": "fasole verde"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 6,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 1400,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe ceapa, morcovii, cartofii, orezul si fasolea in apa 20 de minute.",
+   "Amesteca iaurtul cu usturoiul si cu putina supa fierbinte.",
+   "Sparge ouale intr-o cana si pune-le pe rand in supa la clocot slab, 3 minute.",
+   "Scoate oala de pe foc, adauga iaurtul, otetul, patrunjelul, sare si piper."
+  ],
+  "sfaturi": [
+   "Ouale poseate in ciorba sunt traditionale si dau proteina.",
+   "Pune iaurtul pe foc oprit.",
+   "Varianta cu carne: 400 g piept de pui in loc de 6 oua (~378 kcal si 35 g proteine pe portie). Fierbe pieptul intreg cu legumele, apoi rupe-l fasii.",
+   "Volum: portia are circa 880 g dupa gatire (estimare) si 0.43 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 376,
+   "proteine": 22.6,
+   "carbo": 53.5,
+   "grasimi": 8.8,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 10,
+  "titlu": "Minestrone cu fasole alba si paste mici",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 480,
+    "u": "g",
+    "n": "fasole alba fiarta"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "paste mici"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "telina"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 1200,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa, usturoiul, morcovii si telina in ulei 6 minute.",
+   "Adauga rosiile, apa si fierbe 15 minute.",
+   "Pune dovleceii, fasolea si pastele si fierbe 10 minute.",
+   "Serveste cu parmezan ras."
+  ],
+  "sfaturi": [
+   "Pastele mici se pot inlocui cu orez sau bulgur.",
+   "Se congeleaza fara paste; fierbe-le proaspete la servire.",
+   "Varianta cu carne: 300 g carnati de curcan in loc de 60 g paste mici (~471 kcal si 33 g proteine pe portie). Taie carnatii rondele si rumeneste-i 4 minute la inceput.",
+   "Volum: portia are circa 800 g dupa gatire (estimare) si 0.52 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 418,
+   "proteine": 19.1,
+   "carbo": 63.7,
+   "grasimi": 11.2,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 50,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 11,
+  "titlu": "Supa de linte cu legume la oala",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 280,
+    "u": "g",
+    "n": "linte verde"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "telina"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 1500,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa, usturoiul, morcovii si telina cu putina apa 5 minute.",
+   "Adauga pasta de rosii, chimen, linte si apa si fierbe 30 de minute.",
+   "Pune spanacul si fierbe 2 minute.",
+   "Adauga otetul, sare si piper si serveste cu iaurt grecesc."
+  ],
+  "sfaturi": [
+   "Otetul la final ridica gustul lintei.",
+   "Se tine 5 zile la frigider.",
+   "Varianta cu carne: 400 g piept de curcan in loc de 280 g linte verde (~243 kcal si 33 g proteine pe portie). Fierbe curcanul intreg cu legumele 20 de minute, apoi rupe-l fasii.",
+   "Volum: portia are circa 840 g dupa gatire (estimare) si 0.45 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 376,
+   "proteine": 26.5,
+   "carbo": 67.5,
+   "grasimi": 1.8,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 50,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 12,
+  "titlu": "Ciorba radauteana usoara cu pui si iaurt",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "traditional romanesc"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "telina"
+   },
+   {
+    "c": 1500,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pieptul cu ceapa, morcovii si telina 25 de minute.",
+   "Scoate pieptul si rupe-l fasii.",
+   "Amesteca iaurtul cu ouale si cu o cana de supa fierbinte, apoi toarna in oala pe foc mic.",
+   "Adauga usturoiul, otetul si carnea si nu mai fierbe."
+  ],
+  "sfaturi": [
+   "Iaurtul inlocuieste smantana si taie jumatate din calorii.",
+   "Tempereaza iaurtul cu supa ca sa nu se taie.",
+   "Varianta vegetariana: 600 g ciuperci in loc de 600 g piept de pui (~172 kcal si 15 g proteine pe portie). Taie ciupercile si fierbe-le 10 minute cu legumele; pune si 2 oua in plus.",
+   "Volum: portia are circa 730 g dupa gatire (estimare) si 0.44 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 319,
+   "proteine": 44.3,
+   "carbo": 18,
+   "grasimi": 7.1,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 13,
+  "titlu": "Supa de dovleac si morcovi cu seminte",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 700,
+    "u": "g",
+    "n": "dovleac"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 480,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1200,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "seminte de dovleac"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ghimbir pudra"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa in ulei 4 minute.",
+   "Adauga dovleacul, morcovii, ghimbirul si apa si fierbe 20 de minute.",
+   "Mixeaza cu jumatate din naut.",
+   "Serveste cu restul de naut, iaurt grecesc si seminte prajite uscat."
+  ],
+  "sfaturi": [
+   "Dovleacul are densitate calorica mica si da cremozitate.",
+   "Fara smantana si fara unt.",
+   "Varianta cu carne: 400 g piept de pui in loc de 480 g naut fiert (~380 kcal si 36 g proteine pe portie). Serveste cu pui copt sau fiert, taiat fasii.",
+   "Volum: portia are circa 810 g dupa gatire (estimare) si 0.56 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 457,
+   "proteine": 24.3,
+   "carbo": 69.2,
+   "grasimi": 12.1,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 14,
+  "titlu": "Supa de peste cu legume si cartofi",
+  "categorie": "Supe si ciorbe",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cod"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "telina"
+   },
+   {
+    "c": 1300,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "marar proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "foi dafin"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe ceapa, morcovii, telina, cartofii, orezul, pasta de rosii si dafinul 15 minute.",
+   "Taie codul bucati si pune-l in supa 6 minute la foc mic.",
+   "Adauga zeama de lamaie si maraul.",
+   "Potriveste de sare si piper."
+  ],
+  "sfaturi": [
+   "Pestele nu se amesteca mult ca sa nu se faca bucatele.",
+   "O supa usoara, bogata in proteine.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 500 g cod (~389 kcal si 24 g proteine pe portie). Adauga tofu cuburi in ultimele 5 minute si o bucata de alge nori sau sos de soia pentru gust.",
+   "Volum: portia are circa 770 g dupa gatire (estimare) si 0.45 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 347,
+   "proteine": 28.7,
+   "carbo": 55.4,
+   "grasimi": 1.5,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 15,
+  "titlu": "Omleta mare cu legume si ciuperci",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "albusuri"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   }
+  ],
+  "pasi_carte": [
+   "Soteaza ciupercile si ardeiul in ulei 6 minute.",
+   "Adauga spanacul si rosiile si mai tine 2 minute.",
+   "Bate ouale cu albusurile, sare si piper si toarna peste legume.",
+   "Gateste la foc mic acoperit 5 minute pana se prinde."
+  ],
+  "sfaturi": [
+   "Albusurile dau volum si proteina fara calorii multe.",
+   "Merge si la cuptor, in forma mica.",
+   "Varianta cu carne: 100 g sunca de pui in loc de 100 g rosii cherry (~382 kcal si 36 g proteine pe portie). Taie sunca cubulete si pune-o odata cu legumele.",
+   "Volum: portia are circa 480 g dupa gatire (estimare) si 0.59 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 283,
+   "proteine": 27.5,
+   "carbo": 13.7,
+   "grasimi": 13.8,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 16,
+  "titlu": "Frittata la cuptor cu dovlecei si branza de vaci",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 3,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 6,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "branza de vaci"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   }
+  ],
+  "pasi_carte": [
+   "Preincalzeste cuptorul la 190 de grade.",
+   "Soteaza dovleceii si ceapa verde 5 minute si adauga spanacul.",
+   "Bate ouale cu branza de vaci, oregano, sare si piper si toarna peste legume intr-o tava mica unsa.",
+   "Coace 20 de minute pana se prinde."
+  ],
+  "sfaturi": [
+   "Se tine 4 zile la frigider, taiata felii.",
+   "Se poate manca rece.",
+   "Varianta cu carne: 150 g sunca de curcan in loc de 200 g branza de vaci (~270 kcal si 28 g proteine pe portie). Taie sunca cubulete si pune-o in oua.",
+   "Volum: portia are circa 380 g dupa gatire (estimare) si 0.74 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 281,
+   "proteine": 24.8,
+   "carbo": 11.9,
+   "grasimi": 15.5,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 17,
+  "titlu": "Bol de iaurt grecesc cu fructe de padure si ovaz",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "zmeura"
+   },
+   {
+    "c": 50,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "seminte de chia"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "miere"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca iaurtul cu scortisoara.",
+   "Pune fructele si ovazul pe deasupra.",
+   "Adauga semintele de chia si mierea."
+  ],
+  "sfaturi": [
+   "Foloseste fructe congelate dezghetate daca nu e sezon.",
+   "Ovazul crud da textura, nu trebuie gatit.",
+   "Varianta cu carne: 100 g sunca de curcan in loc de 250 g zmeura (~318 kcal si 36 g proteine pe portie). Serveste alaturi o felie de sunca de curcan, pentru varianta sarata.",
+   "Volum: portia are circa 400 g dupa gatire (estimare) si 0.82 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 328,
+   "proteine": 26.5,
+   "carbo": 46.1,
+   "grasimi": 5.5,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 18,
+  "titlu": "Overnight oats cu mar, scortisoara si iaurt",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 80,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 200,
+    "u": "ml",
+    "n": "lapte"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "mere"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "seminte de chia"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca ovazul cu iaurtul, laptele, chia si scortisoara.",
+   "Pune in doua borcane si tine la frigider peste noapte.",
+   "Rade merele deasupra dimineata."
+  ],
+  "sfaturi": [
+   "Se pastreaza 3 zile in frigider, fara mere.",
+   "Laptele vegetal merge la fel.",
+   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc (~1015 kcal si 65 g proteine pe portie). Foloseste lapte de soia.",
+   "Volum: portia are circa 540 g dupa gatire (estimare) si 0.81 kcal pe gram.",
+   "Timpul de mai sus e doar cel de lucru; reteta are nevoie in plus de timp la rece, precizat la pasi."
+  ],
+  "macro": {
+   "kcal": 434,
+   "proteine": 25.5,
+   "carbo": 66.3,
+   "grasimi": 9.1,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 19,
+  "titlu": "Terci de ovaz cu albus si fructe",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 80,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 6,
+    "u": "",
+    "n": "albusuri"
+   },
+   {
+    "c": 400,
+    "u": "ml",
+    "n": "lapte"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "afine"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe ovazul in lapte 5 minute.",
+   "Adauga albusurile batute putin, amestecand, si mai tine 2 minute pana se ingroasa cremos.",
+   "Serveste cu banana feliata, afine si scortisoara."
+  ],
+  "sfaturi": [
+   "Albusurile se topesc in terci si dau proteina; nu se simte oul.",
+   "Merge la microunde in 3 minute.",
+   "Varianta vegana: 200 g tofu matase in loc de 6 albusuri (~517 kcal si 30 g proteine pe portie). Amesteca tofu matase in terciul fierbinte, mixat.",
+   "Volum: portia are circa 540 g dupa gatire (estimare) si 0.79 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 424,
+   "proteine": 23.6,
+   "carbo": 63,
+   "grasimi": 9.7,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 20,
+  "titlu": "Clatite de ovaz cu iaurt si mere",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 60,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "mere"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "praf de copt"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza ovazul, ouale, jumatate din iaurt, praful de copt si scortisoara.",
+   "Coace clatite mici in tigaia unsa, 2 minute pe fiecare parte.",
+   "Serveste cu mere rase si restul de iaurt."
+  ],
+  "sfaturi": [
+   "Foloseste tigaie antiaderenta ca sa nu consumi ulei.",
+   "Se congeleaza si se incalzesc in prajitor de paine.",
+   "Varianta cu carne: 100 g piept de curcan afumat in loc de 150 g iaurt grecesc (~326 kcal si 23 g proteine pe portie). Servesti clatitele cu felii de curcan si rosii.",
+   "Volum: portia are circa 310 g dupa gatire (estimare) si 1.00 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 313,
+   "proteine": 18.9,
+   "carbo": 38.9,
+   "grasimi": 9.9,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 21,
+  "titlu": "Shakshuka cu spanac si ou",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa si ardeiul in ulei 5 minute.",
+   "Adauga usturoiul, condimentele si rosiile si fierbe 10 minute.",
+   "Pune spanacul, apoi sparge ouale in sos.",
+   "Acopera si tine 6 minute pana se prind albusurile."
+  ],
+  "sfaturi": [
+   "Foloseste ardei copt din borcan pentru gust mai dulce.",
+   "Se serveste direct din tigaie.",
+   "Varianta cu carne: 200 g carnati de curcan in loc de 4 oua (~303 kcal si 29 g proteine pe portie). Rumeneste carnatii feliati la inceput si pastreaza doar 2 oua.",
+   "Volum: portia are circa 620 g dupa gatire (estimare) si 0.51 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 317,
+   "proteine": 20.8,
+   "carbo": 28.4,
+   "grasimi": 14.8,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 22,
+  "titlu": "Wrap cu omleta, spanac si rosii",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "tortilla integrala"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   }
+  ],
+  "pasi_carte": [
+   "Fa omleta din oua cu sare si piper in tigaia unsa.",
+   "Incalzeste tortilla si unge-o cu iaurt.",
+   "Pune omleta, spanacul, rosiile si castravetii si rulea."
+  ],
+  "sfaturi": [
+   "Poti pregati omleta cu o seara inainte.",
+   "Iaurtul tine loc de maioneza.",
+   "Varianta cu carne: 100 g piept de pui afumat in loc de 4 oua (~266 kcal si 23 g proteine pe portie). Taie pieptul fasii si pune-l in wrap.",
+   "Volum: portia are circa 380 g dupa gatire (estimare) si 0.96 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 363,
+   "proteine": 25.3,
+   "carbo": 27.5,
+   "grasimi": 17.2,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 23,
+  "titlu": "Salata calda de quinoa cu ou si rosii",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 80,
+    "u": "g",
+    "n": "quinoa"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe quinoa 15 minute si lasa-o sa se odihneasca.",
+   "Fierbe ouale 8 minute.",
+   "Amesteca quinoa cu legumele taiate, ulei si zeama de lamaie.",
+   "Pune ouale taiate deasupra."
+  ],
+  "sfaturi": [
+   "Clateste quinoa pentru a scapa de amaraciune.",
+   "Merge si rece, dintr-o cutie.",
+   "Varianta cu carne: 150 g piept de pui in loc de 2 oua (~361 kcal si 26 g proteine pe portie). Taie pieptul fiert fasii si pune-l in loc de ou.",
+   "Volum: portia are circa 500 g dupa gatire (estimare) si 0.70 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 349,
+   "proteine": 16.4,
+   "carbo": 40.6,
+   "grasimi": 15.1,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 24,
+  "titlu": "Toast cu avocado, ou si rosii",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "avocado"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "spanac proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Prajeste painea.",
+   "Piseaza avocadoul cu sare si lamaie si intinde-l pe paine.",
+   "Pune spanacul si rosiile.",
+   "Fierbe sau prajeste ouale si asaza-le deasupra."
+  ],
+  "sfaturi": [
+   "Foloseste jumatate de avocado ca sa scazi caloriile.",
+   "Merge cu branza de vaci in loc de ou.",
+   "Varianta cu carne: 100 g somon afumat in loc de 2 oua (~300 kcal si 17 g proteine pe portie). Pune felii de somon afumat deasupra in loc de ou.",
+   "Volum: portia are circa 320 g dupa gatire (estimare) si 1.00 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 320,
+   "proteine": 14.7,
+   "carbo": 26.2,
+   "grasimi": 19.2,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 25,
+  "titlu": "Smoothie bowl cu spanac, banana si iaurt",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "zmeura"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "seminte de chia"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza iaurtul, bananele, spanacul si jumatate din fructe.",
+   "Toarna in boluri.",
+   "Pune deasupra restul de fructe, chia si ovaz."
+  ],
+  "sfaturi": [
+   "Fructele congelate fac bolul gros ca inghetata.",
+   "Spanacul nu se simte la gust.",
+   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc (~913 kcal si 61 g proteine pe portie).",
+   "Volum: portia are circa 430 g dupa gatire (estimare) si 0.77 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 332,
+   "proteine": 21.9,
+   "carbo": 54.5,
+   "grasimi": 5.4,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 26,
+  "titlu": "Omleta la cuptor cu broccoli si cascaval",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 3,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 6,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "cascaval"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "usturoi granulat"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe broccoli 3 minute si toaca-l.",
+   "Amesteca ouale cu broccoli, ceapa, cascavalul ras si condimentele.",
+   "Toarna intr-o forma mica unsa si coace 22 de minute la 190 de grade."
+  ],
+  "sfaturi": [
+   "Perfecta pentru meal prep, se incalzeste in 1 minut.",
+   "Cascavalul poate fi in jumatate.",
+   "Varianta cu carne: 150 g sunca de curcan in loc de 100 g cascaval (~293 kcal si 29 g proteine pe portie). Pune sunca taiata cubulete in locul cascavalului.",
+   "Volum: portia are circa 330 g dupa gatire (estimare) si 1.13 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 373,
+   "proteine": 25.9,
+   "carbo": 15.9,
+   "grasimi": 23.6,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 27,
+  "titlu": "Granola usoara cu iaurt si mere coapte",
+  "categorie": "Mic dejun",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "mere"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "miere"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "nuci"
+   }
+  ],
+  "pasi_carte": [
+   "Taie merele cubulete si coace-le 12 minute la 200 de grade cu scortisoara.",
+   "Prajeste ovazul uscat in tigaie 3 minute.",
+   "Pune iaurtul in boluri si adauga merele, ovazul si nucile."
+  ],
+  "sfaturi": [
+   "Merele coapte dau dulceata fara zahar.",
+   "Se pot face din cate 4 mere pentru 2 zile.",
+   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc (~876 kcal si 59 g proteine pe portie).",
+   "Volum: portia are circa 320 g dupa gatire (estimare) si 0.94 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 296,
+   "proteine": 19.8,
+   "carbo": 38,
+   "grasimi": 8.6,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 28,
+  "titlu": "Spuma de iaurt cu fructe de padure",
+  "categorie": "Deserturi usoare",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "zmeura"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "miere"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "vanilie"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "albusuri"
+   }
+  ],
+  "pasi_carte": [
+   "Bate albusurile spuma tare cu un praf de sare.",
+   "Amesteca iaurtul cu miere si vanilie.",
+   "Incorporeaza albusul usor, de jos in sus.",
+   "Pune fructele in pahare si spuma deasupra; tine la rece 30 de minute."
+  ],
+  "sfaturi": [
+   "Albusul batut da volum mare, aproape fara calorii.",
+   "Foloseste albusuri pasteurizate daca nu vrei ou crud.",
+   "Varianta vegana: 400 g iaurt de soia in loc de 400 g iaurt grecesc (~998 kcal si 78 g proteine pe portie).",
+   "Volum: portia are circa 390 g dupa gatire (estimare) si 0.58 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 224,
+   "proteine": 25.8,
+   "carbo": 28.2,
+   "grasimi": 1.8,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 29,
+  "titlu": "Inghetata de banane si capsuni",
+  "categorie": "Deserturi usoare",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 2,
+    "u": "",
+    "n": "banane"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "capsuni"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "vanilie"
+   }
+  ],
+  "pasi_carte": [
+   "Taie bananele rondele si congeleaza-le cu capsunile 3 ore.",
+   "Mixeaza fructele congelate cu iaurtul si vanilia pana devin cremoase.",
+   "Serveste imediat."
+  ],
+  "sfaturi": [
+   "Fara zahar adaugat: bananele coapte dau dulceata.",
+   "Poti pastra in congelator o ora pentru consistenta mai ferma.",
+   "Varianta vegana: 100 g iaurt de soia in loc de 100 g iaurt grecesc (~378 kcal si 21 g proteine pe portie).",
+   "Volum: portia are circa 320 g dupa gatire (estimare) si 0.57 kcal pe gram.",
+   "Timpul de mai sus e doar cel de lucru; reteta are nevoie in plus de timp la rece, precizat la pasi."
+  ],
+  "macro": {
+   "kcal": 184,
+   "proteine": 7.4,
+   "carbo": 40.7,
+   "grasimi": 1,
+   "sursa": "local",
+   "acoperire": "4 din 4"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 30,
+  "titlu": "Mere coapte cu scortisoara si iaurt",
+  "categorie": "Deserturi usoare",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 800,
+    "u": "g",
+    "n": "mere"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "stafide"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "nuci"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "miere"
+   }
+  ],
+  "pasi_carte": [
+   "Scobeste merele si umple-le cu stafide si nuci tocate.",
+   "Presara scortisoara si coace 30 de minute la 180 de grade.",
+   "Serveste calde cu iaurt si un strop de miere."
+  ],
+  "sfaturi": [
+   "Merele mari sunt mai bune de copt.",
+   "Se pot incalzi la microunde a doua zi.",
+   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc (~501 kcal si 29 g proteine pe portie).",
+   "Volum: portia are circa 290 g dupa gatire (estimare) si 0.72 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 210,
+   "proteine": 9.2,
+   "carbo": 38.9,
+   "grasimi": 3.9,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 31,
+  "titlu": "Budinca de chia cu lapte si zmeura",
+  "categorie": "Deserturi usoare",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 30,
+    "u": "g",
+    "n": "seminte de chia"
+   },
+   {
+    "c": 350,
+    "u": "ml",
+    "n": "lapte"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "zmeura"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "miere"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "vanilie"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca chia cu laptele, mierea si vanilia.",
+   "Lasa 10 minute, amesteca din nou si tine la frigider 4 ore.",
+   "Serveste cu zmeura deasupra."
+  ],
+  "sfaturi": [
+   "Se tine 4 zile la frigider.",
+   "Laptele vegetal ofera varianta vegana.",
+   "Varianta vegana: 350 ml lapte de migdale in loc de 350 ml lapte (~175 kcal si 5 g proteine pe portie).",
+   "Volum: portia are circa 320 g dupa gatire (estimare) si 0.80 kcal pe gram.",
+   "Timpul de mai sus e doar cel de lucru; reteta are nevoie in plus de timp la rece, precizat la pasi."
+  ],
+  "macro": {
+   "kcal": 255,
+   "proteine": 9.5,
+   "carbo": 32.5,
+   "grasimi": 11.1,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 32,
+  "titlu": "Cheesecake in borcan cu branza de vaci si fructe",
+  "categorie": "Deserturi usoare",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "branza de vaci"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "albusuri"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "zmeura"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "vanilie"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza branza de vaci, iaurtul, vanilia si albusurile.",
+   "Pune ovazul pe fundul a doua borcane.",
+   "Adauga crema si coace 15 minute la 170 de grade.",
+   "Raceste si serveste cu fructe."
+  ],
+  "sfaturi": [
+   "Merge si fara cuptor, daca renunti la albusuri si lasi 3 ore la rece.",
+   "Foloseste branza de vaci fina.",
+   "Varianta vegana: 200 g tofu matase in loc de 200 g branza de vaci (~294 kcal si 29 g proteine pe portie).",
+   "Volum: portia are circa 330 g dupa gatire (estimare) si 0.74 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 248,
+   "proteine": 22.6,
+   "carbo": 27.1,
+   "grasimi": 6,
+   "sursa": "local",
+   "acoperire": "6 din 6"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 33,
+  "titlu": "Salata de fructe cu menta si iaurt",
+  "categorie": "Deserturi usoare",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 200,
+    "u": "g",
+    "n": "capsuni"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "kiwi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "mandarine"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "pepene verde"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "menta proaspata"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   }
+  ],
+  "pasi_carte": [
+   "Taie fructele cubulete.",
+   "Amesteca-le cu zeama de lime si menta.",
+   "Serveste cu o lingura de iaurt."
+  ],
+  "sfaturi": [
+   "Fructele de sezon sunt mai dulci.",
+   "Lasa 10 minute la rece inainte de servire.",
+   "Varianta vegana: 200 g iaurt de soia in loc de 200 g iaurt grecesc (~316 kcal si 20 g proteine pe portie).",
+   "Volum: portia are circa 270 g dupa gatire (estimare) si 0.46 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 122,
+   "proteine": 6.8,
+   "carbo": 25.1,
+   "grasimi": 0.9,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 34,
+  "titlu": "Clatite de albusuri cu zmeura",
+  "categorie": "Deserturi usoare",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 8,
+    "u": "",
+    "n": "albusuri"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "faina de ovaz"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "zmeura"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "vanilie"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca albusurile cu faina si vanilia.",
+   "Coace clatite subtiri in tigaia antiaderenta.",
+   "Serveste cu zmeura si iaurt."
+  ],
+  "sfaturi": [
+   "Faina de ovaz se face mixand fulgi de ovaz.",
+   "Se pot congela.",
+   "Varianta vegana: 250 g tofu matase in loc de 8 albusuri (~335 kcal si 30 g proteine pe portie).",
+   "Volum: portia are circa 340 g dupa gatire (estimare) si 0.65 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 224,
+   "proteine": 23.2,
+   "carbo": 27.5,
+   "grasimi": 2.6,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 10,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 35,
+  "titlu": "Pere cu scortisoara si branza de vaci",
+  "categorie": "Deserturi usoare",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 3,
+    "u": "",
+    "n": "pere"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "branza de vaci"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "scortisoara"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "miere"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "nuci"
+   }
+  ],
+  "pasi_carte": [
+   "Taie perele in jumatate si scobeste-le.",
+   "Coace-le 20 de minute la 180 de grade cu scortisoara.",
+   "Umple cu branza de vaci si nuci si adauga miere."
+  ],
+  "sfaturi": [
+   "Perele coapte sunt mai usor de digerat.",
+   "Merge si cu mere.",
+   "Varianta vegana: 200 g tofu matase in loc de 200 g branza de vaci (~336 kcal si 19 g proteine pe portie).",
+   "Volum: portia are circa 360 g dupa gatire (estimare) si 0.79 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 290,
+   "proteine": 12.8,
+   "carbo": 46.8,
+   "grasimi": 7.9,
+   "sursa": "local",
+   "acoperire": "5 din 5"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 36,
+  "titlu": "Bol de pui la gratar cu quinoa si legume",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "quinoa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe quinoa 15 minute si lasa-o 5 minute acoperita.",
+   "Condimenteaza pieptul cu boia, sare si piper si fa-l la gratar sau in tigaie 6 minute pe fiecare parte.",
+   "Frige dovleceii si ardeiul feliati 5 minute.",
+   "Imparte quinoa, legumele si spanacul in boluri si pune pieptul feliat deasupra, cu ulei si lamaie."
+  ],
+  "sfaturi": [
+   "Pregateste ingredientele separat pentru 3 zile de meal prep.",
+   "Spanacul se pune proaspat la servire.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 500 g piept de pui (~458 kcal si 29 g proteine pe portie). Marineaza tofu cu sos de soia si prajeste-l pe grill 4 minute pe fiecare parte.",
+   "Volum: portia are circa 460 g dupa gatire (estimare) si 0.98 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 446,
+   "proteine": 38.1,
+   "carbo": 42.7,
+   "grasimi": 13.8,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 50,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 37,
+  "titlu": "Salata mare cu ton, fasole alba si ou",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 240,
+    "u": "g",
+    "n": "ton in apa (conserva)"
+   },
+   {
+    "c": 480,
+    "u": "g",
+    "n": "fasole alba fiarta"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa rosie"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "zeama de lamaie"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe ouale 9 minute si taie-le sferturi.",
+   "Scurge tonul si fasolea.",
+   "Amesteca salata, rosiile, castravetii si ceapa.",
+   "Pune tonul, fasolea si ouale si stropeste cu ulei si lamaie."
+  ],
+  "sfaturi": [
+   "Tonul in suc propriu are mai putine calorii decat cel in ulei.",
+   "Se pastreaza 2 zile fara dressing.",
+   "Varianta vegetariana: 300 g branza de vaci in loc de 240 g ton in apa (conserva) (~422 kcal si 27 g proteine pe portie). Pune branza de vaci in loc de ton.",
+   "Volum: portia are circa 450 g dupa gatire (estimare) si 0.89 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 400,
+   "proteine": 30.5,
+   "carbo": 40.9,
+   "grasimi": 13.7,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 38,
+  "titlu": "Salata cu pui, mazare si iaurt cu menta",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "mazare"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "menta proaspata"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pieptul 15 minute si rupe-l fasii.",
+   "Fierbe orezul 15 minute si raceste-l.",
+   "Fierbe mazarea 3 minute.",
+   "Amesteca iaurtul cu usturoiul, menta si zeama de lamaie.",
+   "Combina salata, castravetii, mazarea si carnea cu sosul."
+  ],
+  "sfaturi": [
+   "Mazarea congelata merge direct, fara fierbere lunga.",
+   "Sosul de iaurt inlocuieste maioneza.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 500 g piept de pui (~383 kcal si 30 g proteine pe portie). Prajeste tofu cuburi in tigaie 6 minute.",
+   "Volum: portia are circa 430 g dupa gatire (estimare) si 0.91 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 389,
+   "proteine": 40.5,
+   "carbo": 39.3,
+   "grasimi": 7.6,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 50,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 39,
+  "titlu": "Bol de naut copt cu legume si tahini",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 720,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "conopida"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovleac"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "tahini"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Usuca nautul si amesteca-l cu ulei, chimen si sare.",
+   "Coace nautul, conopida si dovleacul taiat 25 de minute la 210 de grade.",
+   "Amesteca tahini cu iaurt si lamaie si apa cat sa se subtieze.",
+   "Serveste legumele cu spanac si sosul."
+  ],
+  "sfaturi": [
+   "Nautul copt devine crocant si tine 3 zile.",
+   "Sosul se pastreaza 5 zile.",
+   "Varianta cu carne: 500 g piept de pui in loc de 720 g naut fiert (~349 kcal si 40 g proteine pe portie). Coace pieptul cu legumele 22 de minute.",
+   "Volum: portia are circa 530 g dupa gatire (estimare) si 0.93 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 495,
+   "proteine": 27.3,
+   "carbo": 73.5,
+   "grasimi": 13.3,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 40,
+  "titlu": "Salata de linte, sfecla si feta",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 280,
+    "u": "g",
+    "n": "linte verde"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "sfecla rosie fiarta"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "feta"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "marar proaspat"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "otet"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe lintea 20 de minute si lasa-o sa se raceasca.",
+   "Taie sfecla si castravetii.",
+   "Amesteca totul cu feta sfaramata, ulei si otet."
+  ],
+  "sfaturi": [
+   "Lintea verde isi pastreaza forma.",
+   "O salata buna si rece, se tine 4 zile.",
+   "Varianta cu carne: 400 g piept de curcan in loc de 150 g feta (~487 kcal si 44 g proteine pe portie). Adauga curcan fiert fasii.",
+   "Volum: portia are circa 460 g dupa gatire (estimare) si 1.03 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 472,
+   "proteine": 25.5,
+   "carbo": 60.6,
+   "grasimi": 15.9,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 41,
+  "titlu": "Bol de somon, orez brun si castraveti",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 480,
+    "u": "g",
+    "n": "somon"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "orez brun"
+   },
+   {
+    "c": 600,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 3,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet de orez"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de susan"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe orezul brun 35 de minute.",
+   "Coace somonul 12 minute la 200 de grade.",
+   "Taie legumele subtire.",
+   "Amesteca sosul de soia cu otet si ulei de susan.",
+   "Compune bolurile si toarna sosul."
+  ],
+  "sfaturi": [
+   "Somonul se poate inlocui cu pastrav sau macrou.",
+   "Orezul fiert se tine 3 zile, racit repede.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 480 g somon (~406 kcal si 26 g proteine pe portie). Marineaza tofu in sos de soia si coace-l 20 de minute.",
+   "Volum: portia are circa 500 g dupa gatire (estimare) si 1.00 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 494,
+   "proteine": 31.1,
+   "carbo": 44.5,
+   "grasimi": 21.3,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 60,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 42,
+  "titlu": "Salata caprese cu pui si fasole verde",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "fasole verde"
+   },
+   {
+    "c": 600,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 125,
+    "u": "g",
+    "n": "mozzarella"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "busuioc proaspat"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet balsamic"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe fasolea 6 minute si racest-o.",
+   "Fierbe sau coace pieptul 18 minute si taie-l fasii.",
+   "Taie rosiile si mozzarella.",
+   "Amesteca totul cu busuioc, ulei si otet."
+  ],
+  "sfaturi": [
+   "Mozzarella light are mai putine calorii.",
+   "Se serveste rece, in aceeasi zi.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 500 g piept de pui (~360 kcal si 28 g proteine pe portie). Prajeste tofu cuburi 6 minute.",
+   "Volum: portia are circa 390 g dupa gatire (estimare) si 0.94 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 366,
+   "proteine": 38.4,
+   "carbo": 14.3,
+   "grasimi": 17.6,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 43,
+  "titlu": "Salata de varza cu pui si seminte",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "varza"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "seminte de floarea soarelui"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "otet"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "sos de soia"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pieptul 15 minute si rupe-l fasii.",
+   "Taie varza si morcovii subtire si strange-i cu sare 5 minute.",
+   "Amesteca cu ceapa verde, pui, otet, ulei si sos de soia.",
+   "Presara semintele prajite."
+  ],
+  "sfaturi": [
+   "Varza ramane crocanta 3 zile.",
+   "Un meal prep ieftin si satios.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 500 g piept de pui (~384 kcal si 27 g proteine pe portie). Prajeste tofu cuburi pana se rumenesc.",
+   "Volum: portia are circa 390 g dupa gatire (estimare) si 1.01 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 390,
+   "proteine": 38,
+   "carbo": 30.9,
+   "grasimi": 13.5,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 44,
+  "titlu": "Bol mexican cu fasole neagra si curcan",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "carne tocata de curcan"
+   },
+   {
+    "c": 480,
+    "u": "g",
+    "n": "fasole neagra fiarta"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "porumb"
+   },
+   {
+    "c": 450,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "avocado"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe orezul 15 minute.",
+   "Rumeneste curcanul 8 minute cu chimen, boia si sare.",
+   "Incalzeste fasolea cu porumbul.",
+   "Compune bolurile cu rosii, salata si avocado feliat si stoarce lime."
+  ],
+  "sfaturi": [
+   "Curcanul tocat are putine grasimi si multa proteina.",
+   "Avocadoul se pune la servire.",
+   "Varianta vegetariana: 350 g tofu ferm in loc de 400 g carne tocata de curcan (~469 kcal si 30 g proteine pe portie). Framanta tofu si rumeneste-l cu condimentele.",
+   "Volum: portia are circa 480 g dupa gatire (estimare) si 1.02 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 491,
+   "proteine": 35.1,
+   "carbo": 57.3,
+   "grasimi": 15.8,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 45,
+  "titlu": "Salata greceasca cu naut si pui",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 360,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "feta"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa rosie"
+   },
+   {
+    "c": 50,
+    "u": "g",
+    "n": "masline"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   }
+  ],
+  "pasi_carte": [
+   "Coace pieptul 18 minute la 200 de grade si taie-l fasii.",
+   "Taie legumele cuburi mari.",
+   "Amesteca cu naut, feta, masline, ulei, oregano si lamaie."
+  ],
+  "sfaturi": [
+   "Nautul inlocuieste painea si da satietate.",
+   "Se tine 2 zile.",
+   "Varianta vegetariana: 300 g tofu ferm in loc de 400 g piept de pui (~431 kcal si 26 g proteine pe portie). Pune tofu marinat cu oregano si lamaie.",
+   "Volum: portia are circa 450 g dupa gatire (estimare) si 0.99 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 443,
+   "proteine": 35.4,
+   "carbo": 37.9,
+   "grasimi": 17.7,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 46,
+  "titlu": "Bol de creveti cu orez de conopida",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "creveti curatati"
+   },
+   {
+    "c": 480,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 700,
+    "u": "g",
+    "n": "conopida"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "coriandru proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Rade conopida pe razatoarea mare.",
+   "Soteaza orezul de conopida 5 minute in 1 lingura de ulei.",
+   "Prajeste crevetii cu usturoi si boia 3 minute.",
+   "Incalzeste nautul si pune-l in boluri.",
+   "Serveste cu ardei, rosii, coriandru si lime."
+  ],
+  "sfaturi": [
+   "Conopida rasa sta in loc de orez cu 80% mai putine calorii.",
+   "Crevetii nu se tin mai mult de 2 zile.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 500 g creveti curatati (~507 kcal si 35 g proteine pe portie). Prajeste tofu cuburi cu usturoi si boia.",
+   "Volum: portia are circa 550 g dupa gatire (estimare) si 0.82 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 451,
+   "proteine": 40.8,
+   "carbo": 51.3,
+   "grasimi": 11.5,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 25,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 47,
+  "titlu": "Salata de quinoa cu naut, ardei copti si iaurt",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 160,
+    "u": "g",
+    "n": "quinoa"
+   },
+   {
+    "c": 480,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe quinoa 15 minute si lasa-o sa se raceasca.",
+   "Coace ardeii 25 de minute la 220 de grade si taie-i fasii.",
+   "Amesteca iaurtul cu usturoi, lamaie si ulei.",
+   "Combina quinoa, nautul, legumele si patrunjelul cu sosul."
+  ],
+  "sfaturi": [
+   "O combinatie completa de proteine vegetale.",
+   "Se tine 3 zile la frigider.",
+   "Varianta cu carne: 450 g piept de pui in loc de 480 g naut fiert (~436 kcal si 46 g proteine pe portie). Adauga pui copt fasii.",
+   "Volum: portia are circa 540 g dupa gatire (estimare) si 0.92 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 498,
+   "proteine": 30.8,
+   "carbo": 74.1,
+   "grasimi": 9.8,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 55,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 48,
+  "titlu": "Salata de ton cu cartofi, fasole verde si ou",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 360,
+    "u": "g",
+    "n": "ton in apa (conserva)"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "fasole verde"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "masline"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "otet"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe cartofii 15 minute si fasolea 5 minute.",
+   "Fierbe ouale 9 minute.",
+   "Taie cartofii si ouale.",
+   "Amesteca totul cu ton, masline, ulei si otet."
+  ],
+  "sfaturi": [
+   "Salata nicoise usoara.",
+   "Cartofii fierti tin bine 3 zile.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 360 g ton in apa (conserva) (~441 kcal si 29 g proteine pe portie). Pune tofu cubulete marinate cu otet.",
+   "Volum: portia are circa 430 g dupa gatire (estimare) si 0.86 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 374,
+   "proteine": 29.1,
+   "carbo": 30.7,
+   "grasimi": 16,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 49,
+  "titlu": "Bol de edamame, orez si morcovi",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "edamame"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 140,
+    "u": "g",
+    "n": "orez brun"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "varza rosie"
+   },
+   {
+    "c": 3,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet de orez"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe orezul brun 35 de minute.",
+   "Fierbe edamame 4 minute si ouale 8 minute.",
+   "Taie legumele subtire.",
+   "Amesteca sosul de soia cu ulei de susan, otet si ghimbir ras si toarna peste bol."
+  ],
+  "sfaturi": [
+   "Edamame da proteina completa vegetala.",
+   "Congelate, se gata in 4 minute.",
+   "Varianta cu carne: 450 g piept de pui in loc de 600 g edamame (~420 kcal si 36 g proteine pe portie). Coace pieptul 18 minute si taie-l fasii.",
+   "Volum: portia are circa 510 g dupa gatire (estimare) si 0.88 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 449,
+   "proteine": 27.6,
+   "carbo": 53.2,
+   "grasimi": 16,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 60,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 50,
+  "titlu": "Salata de pui cu avocado si porumb",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "avocado"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "porumb"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pieptul 15 minute si rupe-l fasii.",
+   "Fierbe orezul 15 minute.",
+   "Pisa avocadoul cu iaurt si lime ca sos.",
+   "Amesteca salata, porumbul, rosiile si carnea cu sosul."
+  ],
+  "sfaturi": [
+   "Avocadoul se pune dimineata, nu cu zile inainte.",
+   "Iaurtul tine loc de maioneza.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 500 g piept de pui (~418 kcal si 26 g proteine pe portie). Prajeste tofu cuburi 6 minute.",
+   "Volum: portia are circa 420 g dupa gatire (estimare) si 1.01 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 424,
+   "proteine": 36.3,
+   "carbo": 40.1,
+   "grasimi": 14.2,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 51,
+  "titlu": "Bol cu cod la cuptor, cartofi dulci si broccoli",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "cod"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "orez brun"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cartofi dulci"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe orezul 35 de minute.",
+   "Coace cartofii dulci taiati 20 de minute la 210 de grade.",
+   "Adauga broccoli si codul si coace 12 minute.",
+   "Stropeste cu lamaie, usturoi si patrunjel."
+  ],
+  "sfaturi": [
+   "Codul se coace repede, deci pune-l la final.",
+   "Merge si cu merluciu.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 600 g cod (~445 kcal si 26 g proteine pe portie). Coace tofu cu legumele 25 de minute.",
+   "Volum: portia are circa 410 g dupa gatire (estimare) si 0.98 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 406,
+   "proteine": 33.3,
+   "carbo": 49.3,
+   "grasimi": 8.9,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 80,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 52,
+  "titlu": "Salata calda de orz perlat cu ciuperci si ou",
+  "categorie": "Salate si boluri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 160,
+    "u": "g",
+    "n": "orz perlat"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 6,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "cimbru"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe orzul 30 de minute.",
+   "Soteaza ciupercile cu ceapa si cimbru 8 minute.",
+   "Fierbe ouale 8 minute.",
+   "Amesteca orzul cu ciupercile si spanacul, adauga lamaie si ouale taiate."
+  ],
+  "sfaturi": [
+   "Orzul tine 4 zile.",
+   "Se mananca si rece.",
+   "Varianta cu carne: 400 g piept de pui in loc de 6 oua (~409 kcal si 38 g proteine pe portie). Adauga pui fiert fasii.",
+   "Volum: portia are circa 470 g dupa gatire (estimare) si 0.87 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 407,
+   "proteine": 25.4,
+   "carbo": 44.5,
+   "grasimi": 16,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 60,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 53,
+  "titlu": "Wrap cu pui, salata si iaurt",
+  "categorie": "Wrap-uri si sandvisuri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "tortilla integrala"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "hummus"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   }
+  ],
+  "pasi_carte": [
+   "Prajeste pieptul feliat cu boia 8 minute.",
+   "Amesteca iaurtul cu usturoi si sare.",
+   "Intinde sosul si hummusul pe tortilla, pune salata, rosiile, castravetii si carnea si rulea."
+  ],
+  "sfaturi": [
+   "Tortilla integrala da fibre.",
+   "Poti inveli fiecare wrap in folie pentru drum.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 400 g piept de pui (~419 kcal si 32 g proteine pe portie). Prajeste tofu cu boia.",
+   "Volum: portia are circa 420 g dupa gatire (estimare) si 0.95 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 395,
+   "proteine": 37.6,
+   "carbo": 35.5,
+   "grasimi": 12,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 54,
+  "titlu": "Wrap cu falafel de naut la cuptor si salata",
+  "categorie": "Wrap-uri si sandvisuri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 480,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "tortilla integrala"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza nautul cu oul, usturoiul, patrunjelul si chimenul.",
+   "Formeaza bile si coace 20 de minute la 200 de grade.",
+   "Pune falafelul in tortilla cu salata, castraveti si iaurt."
+  ],
+  "sfaturi": [
+   "Falafelul copt are mult mai putin ulei.",
+   "Se congeleaza copt.",
+   "Varianta cu carne: 400 g carne tocata de curcan in loc de 480 g naut fiert (~382 kcal si 37 g proteine pe portie). Fa chiftele din curcan in loc de falafel.",
+   "Volum: portia are circa 430 g dupa gatire (estimare) si 1.01 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 431,
+   "proteine": 28.2,
+   "carbo": 61.3,
+   "grasimi": 9.3,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 55,
+  "titlu": "Sandvis deschis cu ton si legume",
+  "categorie": "Wrap-uri si sandvisuri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 2,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 4,
+    "u": "",
+    "n": "felii paine integrala"
+   },
+   {
+    "c": 240,
+    "u": "g",
+    "n": "ton in apa (conserva)"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "avocado"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca tonul cu iaurtul si piper.",
+   "Pune pe paine avocado pisat, salata, rosii si castraveti."
+  ],
+  "sfaturi": [
+   "Un pranz rapid, fara gatit.",
+   "Foloseste iaurt in loc de maioneza.",
+   "Varianta vegetariana: 200 g branza de vaci in loc de 240 g ton in apa (conserva) (~473 kcal si 28 g proteine pe portie). Amesteca branza de vaci cu verdeata.",
+   "Volum: portia are circa 660 g dupa gatire (estimare) si 0.72 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 478,
+   "proteine": 40.4,
+   "carbo": 47.6,
+   "grasimi": 16.6,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 15,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 56,
+  "titlu": "Pita umpluta cu pui, legume si hummus",
+  "categorie": "Wrap-uri si sandvisuri",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 240,
+    "u": "g",
+    "n": "paine pita integrala"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "hummus"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   }
+  ],
+  "pasi_carte": [
+   "Taie pieptul fasii si prajeste-l 7 minute.",
+   "Taie pita si unge cu hummus.",
+   "Pune carnea, legumele si spanacul si stoarce lamaie."
+  ],
+  "sfaturi": [
+   "Hummusul inlocuieste sosurile grase.",
+   "Pita integrala este mai satioasa.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 400 g piept de pui (~420 kcal si 29 g proteine pe portie). Prajeste tofu cuburi cu usturoi.",
+   "Volum: portia are circa 380 g dupa gatire (estimare) si 1.05 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 396,
+   "proteine": 34.4,
+   "carbo": 48.9,
+   "grasimi": 8.8,
+   "sursa": "local",
+   "acoperire": "7 din 7"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 57,
+  "titlu": "Piept de pui la air fryer cu legume",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "cartofi dulci"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "usturoi granulat"
+   }
+  ],
+  "pasi_carte": [
+   "Taie pieptul felii groase de 2 cm si condimenteaza-l.",
+   "Pune pieptul 12 minute la 190 de grade in air fryer, intorcandu-l la jumatate.",
+   "Coace legumele taiate si unse cu ulei 15 minute la 200 de grade.",
+   "Serveste impreuna."
+  ],
+  "sfaturi": [
+   "Foloseste termometru: pieptul e gata la 74 de grade in centru.",
+   "Legumele se pot coace intr-un singur cos, in doua transe.",
+   "Varianta vegetariana: 500 g tofu ferm in loc de 600 g piept de pui (~356 kcal si 27 g proteine pe portie). Taie tofu felii si coace-l 15 minute, intorcandu-l o data.",
+   "Volum: portia are circa 420 g dupa gatire (estimare) si 0.85 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 356,
+   "proteine": 39.2,
+   "carbo": 24.3,
+   "grasimi": 11.6,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 58,
+  "titlu": "Somon la cuptor cu sparanghel si cartofi",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 520,
+    "u": "g",
+    "n": "somon"
+   },
+   {
+    "c": 600,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 600,
+    "u": "g",
+    "n": "sparanghel"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "marar proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Taie cartofii felii subtiri si coace-i 15 minute la 210 de grade cu o lingura de ulei.",
+   "Adauga sparanghelul si rosiile si coace 10 minute.",
+   "Pune somonul deasupra cu usturoi si lamaie si coace 12 minute.",
+   "Presara marar."
+  ],
+  "sfaturi": [
+   "Somonul se face repede, il pui ultimul.",
+   "Sparanghelul se poate inlocui cu fasole verde.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 520 g somon (~356 kcal si 27 g proteine pe portie). Coace tofu in aceeasi tava 25 de minute.",
+   "Volum: portia are circa 470 g dupa gatire (estimare) si 0.98 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 464,
+   "proteine": 33.8,
+   "carbo": 36.6,
+   "grasimi": 21.3,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 50,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 59,
+  "titlu": "Chiftele de curcan cu dovlecei la air fryer",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "air fryer",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "carne tocata de curcan"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "spanac proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Rade dovleceii si stoarce-i bine.",
+   "Amesteca curcanul cu dovleceii, oul, ovazul, ceapa, usturoiul si condimentele.",
+   "Formeaza chiftele si pune-le 12 minute la 190 de grade.",
+   "Coace cartofii taiati 25 de minute la 200 de grade.",
+   "Fierbe rosiile 8 minute cu spanacul si serveste cu chiftelele si cartofii."
+  ],
+  "sfaturi": [
+   "Dovleceii fac chiftelele fragede fara ulei.",
+   "Se congeleaza coapte.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 500 g carne tocata de curcan (~361 kcal si 29 g proteine pe portie). Framanta tofu bine si adauga 40 g ovaz in plus.",
+   "Volum: portia are circa 530 g dupa gatire (estimare) si 0.72 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 384,
+   "proteine": 34.2,
+   "carbo": 37,
+   "grasimi": 12.6,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 65,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 60,
+  "titlu": "Conopida coapta cu naut si iaurt",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 900,
+    "u": "g",
+    "n": "conopida"
+   },
+   {
+    "c": 720,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 2,
+    "u": "lingurita",
+    "n": "curry pudra"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "coriandru proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Amesteca conopida si nautul cu ulei, curry si sare.",
+   "Coace 30 de minute la 210 de grade, amestecand o data.",
+   "Amesteca iaurtul cu usturoi si lamaie.",
+   "Serveste cu iaurt si coriandru."
+  ],
+  "sfaturi": [
+   "Nautul copt devine crocant.",
+   "Se tine 3 zile.",
+   "Varianta cu carne: 500 g piept de pui in loc de 720 g naut fiert (~323 kcal si 41 g proteine pe portie). Coace pieptul taiat cuburi 18 minute.",
+   "Volum: portia are circa 510 g dupa gatire (estimare) si 0.91 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 468,
+   "proteine": 28.5,
+   "carbo": 66.2,
+   "grasimi": 12.6,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 61,
+  "titlu": "Tava de pui cu legume si lamaie",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "cimbru"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Taie tot cuburi mari si amesteca cu ulei, cimbru, usturoi si lamaie.",
+   "Pune in tava mare si coace 35 de minute la 200 de grade, amestecand o data.",
+   "Verifica carnea: sa nu mai fie roz."
+  ],
+  "sfaturi": [
+   "Tava unica inseamna o singura spalare.",
+   "Merge cu pulpe fara piele, dar creste caloriile.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 600 g piept de pui (~391 kcal si 24 g proteine pe portie). Pune tofu in ultimele 25 de minute.",
+   "Volum: portia are circa 460 g dupa gatire (estimare) si 0.88 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 409,
+   "proteine": 38.9,
+   "carbo": 38.7,
+   "grasimi": 11.3,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 50,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 62,
+  "titlu": "Vinete umplute cu linte si feta",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 1000,
+    "u": "g",
+    "n": "vinete"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "linte verde"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "feta"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   }
+  ],
+  "pasi_carte": [
+   "Taie vinetele in doua, scobeste-le putin si coace-le 25 de minute la 200 de grade.",
+   "Fierbe lintea 20 de minute si amestec-o cu ceapa calita, rosii, usturoi si oregano.",
+   "Umple vinetele si presara feta.",
+   "Coace 10 minute."
+  ],
+  "sfaturi": [
+   "Lintea da proteina fara carne.",
+   "Se tine 3 zile.",
+   "Varianta cu carne: 400 g carne tocata de curcan in loc de 300 g linte verde (~370 kcal si 27 g proteine pe portie). Rumeneste curcanul cu ceapa si foloseste-l la umplutura.",
+   "Volum: portia are circa 580 g dupa gatire (estimare) si 0.83 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 486,
+   "proteine": 25.7,
+   "carbo": 70.9,
+   "grasimi": 13.5,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 65,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 63,
+  "titlu": "Dovlecei umpluti cu curcan si orez",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 1000,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "carne tocata de curcan"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Taie dovleceii in doua si scobeste-i.",
+   "Caleste ceapa cu carnea 6 minute si adauga orezul crud, usturoiul si miezul tocat.",
+   "Umple dovleceii, pune-i in tava cu rosiile si 100 ml apa.",
+   "Coace 40 de minute la 190 de grade."
+  ],
+  "sfaturi": [
+   "Orezul crud se gateste in sucul rosiilor.",
+   "Se pot congela.",
+   "Varianta vegetariana: 480 g naut fiert in loc de 400 g carne tocata de curcan (~414 kcal si 17 g proteine pe portie). Amesteca nautul cu ceapa si patrunjel.",
+   "Volum: portia are circa 540 g dupa gatire (estimare) si 0.67 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 365,
+   "proteine": 26.2,
+   "carbo": 39.5,
+   "grasimi": 12.4,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 60,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 64,
+  "titlu": "Burgeri de naut si spanac la air fryer",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 480,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "fulgi de ovaz"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "paine integrala"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Mixeaza nautul cu spanacul, ouale, ovazul, ceapa, usturoiul si chimenul.",
+   "Formeaza 8 burgeri si pune-i 12 minute la 190 de grade, intorcandu-i.",
+   "Serveste cu paine integrala, legume si iaurt."
+  ],
+  "sfaturi": [
+   "Burgerii se congeleaza.",
+   "Fara chifla, devin o masa mai usoara.",
+   "Varianta cu carne: 500 g carne tocata de curcan in loc de 480 g naut fiert (~421 kcal si 41 g proteine pe portie). Amesteca curcanul cu ou, ovaz si condimente.",
+   "Volum: portia are circa 480 g dupa gatire (estimare) si 0.90 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 433,
+   "proteine": 27.4,
+   "carbo": 65.5,
+   "grasimi": 8.4,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 65,
+  "titlu": "Pastrav la cuptor cu legume",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "pastrav"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "marar proaspat"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Coace cartofii taiati 15 minute la 200 de grade.",
+   "Adauga dovleceii si rosiile si pune pastravul deasupra cu usturoi, lamaie si marar.",
+   "Coace 15 minute."
+  ],
+  "sfaturi": [
+   "Pastravul se poate inlocui cu macrou.",
+   "Se serveste cald.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 600 g pastrav (~360 kcal si 24 g proteine pe portie). Coace tofu cu legumele 25 de minute.",
+   "Volum: portia are circa 440 g dupa gatire (estimare) si 0.92 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 409,
+   "proteine": 34.8,
+   "carbo": 30.8,
+   "grasimi": 16.7,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 66,
+  "titlu": "Ardei umpluti cu tofu si orez",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "vegan"
+  ],
+  "ingrediente": [
+   {
+    "c": 1000,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "tofu ferm"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Taie capacele ardeilor si scobeste-i.",
+   "Framanta tofu si amesteca-l cu orezul fiert, ceapa calita, sos de soia si usturoi.",
+   "Umple ardeii, pune-i in tava cu rosiile si coace 35 de minute la 190 de grade."
+  ],
+  "sfaturi": [
+   "Fierbe orezul in prealabil 12 minute.",
+   "Se congeleaza.",
+   "Varianta cu carne: 400 g carne tocata de curcan in loc de 500 g tofu ferm (~386 kcal si 26 g proteine pe portie). Rumeneste curcanul cu ceapa si foloseste-l la umplutura.",
+   "Volum: portia are circa 590 g dupa gatire (estimare) si 0.71 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 418,
+   "proteine": 27.9,
+   "carbo": 46.6,
+   "grasimi": 15.6,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 67,
+  "titlu": "Pui cu ciuperci la cuptor in tava",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 600,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "cimbru"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "cartofi"
+   }
+  ],
+  "pasi_carte": [
+   "Pune ciupercile, ceapa si cartofii taiati in tava cu ulei si cimbru.",
+   "Aseaza pieptul deasupra si coace 30 de minute la 200 de grade.",
+   "Adauga spanacul si iaurtul la final si amesteca."
+  ],
+  "sfaturi": [
+   "Iaurtul inlocuieste smantana.",
+   "Ciupercile elibereaza lichid si fac un sos usor.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 600 g piept de pui (~373 kcal si 31 g proteine pe portie). Coace tofu in tava 25 de minute.",
+   "Volum: portia are circa 500 g dupa gatire (estimare) si 0.79 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 391,
+   "proteine": 44.9,
+   "carbo": 28.7,
+   "grasimi": 11.6,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 68,
+  "titlu": "Cod crocant la air fryer cu salata",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "cod"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "pesmet"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "castraveti"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cartofi"
+   }
+  ],
+  "pasi_carte": [
+   "Trece codul prin ou si pesmet.",
+   "Coace cartofii taiati 15 minute la 200 de grade, apoi codul 10 minute la 190 de grade.",
+   "Amesteca salata cu rosii, castraveti, ulei si lamaie.",
+   "Serveste cu cod si cartofi."
+  ],
+  "sfaturi": [
+   "Pesmetul se poate inlocui cu fulgi de ovaz.",
+   "Crusta e crocanta fara prajire.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 600 g cod (~424 kcal si 28 g proteine pe portie). Taie tofu felii si paneaza-l la fel.",
+   "Volum: portia are circa 540 g dupa gatire (estimare) si 0.72 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 385,
+   "proteine": 34.9,
+   "carbo": 39.7,
+   "grasimi": 10.3,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 69,
+  "titlu": "Tava de tofu cu broccoli si ardei",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "vegan",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "tofu ferm"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 3,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Taie tofu cuburi si marineaza-l 10 minute cu sos de soia, ghimbir si usturoi.",
+   "Coace tofu si legumele 25 de minute la 200 de grade.",
+   "Fierbe orezul 15 minute.",
+   "Serveste cu ulei de susan."
+  ],
+  "sfaturi": [
+   "Tofu devine crocant daca il storci inainte.",
+   "Se tine 4 zile.",
+   "Varianta cu carne: 600 g piept de pui in loc de 600 g tofu ferm (~400 kcal si 41 g proteine pe portie). Coace pieptul cuburi 22 de minute.",
+   "Volum: portia are circa 480 g dupa gatire (estimare) si 0.90 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 436,
+   "proteine": 33.6,
+   "carbo": 43.7,
+   "grasimi": 17.6,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 65,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 70,
+  "titlu": "Ciuperci portobello umplute cu branza de vaci si spanac",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 800,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "branza de vaci"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cartofi"
+   }
+  ],
+  "pasi_carte": [
+   "Scoate picioarele ciupercilor si toaca-le.",
+   "Soteaza-le 3 minute cu usturoi si spanac.",
+   "Amesteca cu branza de vaci, oua si parmezan.",
+   "Taie cartofii felii si coace-i 30 de minute la 200 de grade.",
+   "Umple palariile si coace 25 de minute la 190 de grade, alaturi de cartofi."
+  ],
+  "sfaturi": [
+   "Branza de vaci e bogata in proteine si usoara.",
+   "Se pot congela.",
+   "Varianta cu carne: 400 g carne tocata de curcan in loc de 400 g branza de vaci (~452 kcal si 41 g proteine pe portie). Rumeneste curcanul 6 minute si foloseste-l la umplutura.",
+   "Volum: portia are circa 530 g dupa gatire (estimare) si 0.76 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 402,
+   "proteine": 32.1,
+   "carbo": 35.4,
+   "grasimi": 16.5,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 75,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 71,
+  "titlu": "Frigarui de pui si legume la cuptor",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   }
+  ],
+  "pasi_carte": [
+   "Marineaza pieptul taiat cuburi cu iaurt, boia, usturoi si lamaie 30 de minute.",
+   "Infige pe sipci cu legumele.",
+   "Coace 22 de minute la 220 de grade, intorcand o data.",
+   "Serveste cu cartofi copti taiati in felii."
+  ],
+  "sfaturi": [
+   "Iaurtul face carnea frageda.",
+   "Se pot face la gratar.",
+   "Varianta vegetariana: 500 g tofu ferm in loc de 600 g piept de pui (~421 kcal si 32 g proteine pe portie). Taie tofu cuburi mari si marineaza-l.",
+   "Volum: portia are circa 550 g dupa gatire (estimare) si 0.76 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 421,
+   "proteine": 44.5,
+   "carbo": 35.4,
+   "grasimi": 11.8,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 70,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 72,
+  "titlu": "Chiftele de ton si cartofi la air fryer",
+  "categorie": "Cuptor si air fryer",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "air fryer"
+  ],
+  "ingrediente": [
+   {
+    "c": 360,
+    "u": "g",
+    "n": "ton in apa (conserva)"
+   },
+   {
+    "c": 800,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "pesmet"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "salata verde"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "zeama de lamaie"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe cartofii si piseaza-i.",
+   "Amesteca-i cu tonul scurs, ouale, pesmetul, ceapa si patrunjelul.",
+   "Formeaza chiftele si pune-le 12 minute la 190 de grade.",
+   "Serveste cu salata, rosii si lamaie."
+  ],
+  "sfaturi": [
+   "Cartofii leaga compozitia fara ulei.",
+   "Se tin 3 zile.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 360 g ton in apa (conserva) (~420 kcal si 28 g proteine pe portie). Framanta tofu si adauga-l in loc de ton.",
+   "Volum: portia are circa 540 g dupa gatire (estimare) si 0.66 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 353,
+   "proteine": 28.6,
+   "carbo": 51.6,
+   "grasimi": 4.7,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 25,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 73,
+  "titlu": "Paste cu legume si piept de pui",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 160,
+    "u": "g",
+    "n": "paste integrale"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii cherry"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "parmezan"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pastele cu un minut mai putin si pastreaza o cana din apa.",
+   "Prajeste pieptul taiat cuburi 8 minute.",
+   "Adauga usturoiul, broccoli, dovleceii si rosiile si gateste 8 minute.",
+   "Amesteca pastele cu apa pastrata si parmezanul."
+  ],
+  "sfaturi": [
+   "Mai multe legume decat paste inseamna volum cu putine calorii.",
+   "Apa de la paste lega sosul fara smantana.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 600 g piept de pui (~423 kcal si 31 g proteine pe portie). Prajeste tofu cuburi pana se rumenesc.",
+   "Volum: portia are circa 480 g dupa gatire (estimare) si 0.96 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 459,
+   "proteine": 47.3,
+   "carbo": 42.4,
+   "grasimi": 11.7,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 74,
+  "titlu": "Zoodles cu sos de rosii si chiftele de curcan",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 1000,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "carne tocata de curcan"
+   },
+   {
+    "c": 700,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "ou"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "pesmet"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "busuioc proaspat"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "paste integrale"
+   }
+  ],
+  "pasi_carte": [
+   "Taie dovleceii taitei cu un tocator spiralat.",
+   "Amesteca curcanul cu oul, pesmetul si usturoiul si fa chiftele.",
+   "Rumeneste-le 6 minute, adauga ceapa si rosiile si fierbe 15 minute.",
+   "Fierbe pastele 8 minute si amesteca-le cu dovleceii cruzi in ultimele 2 minute."
+  ],
+  "sfaturi": [
+   "Dovleceii se gatesc cat se incalzesc in sos.",
+   "Taiteii de dovlecei elibereaza apa, deci scurge-i.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 500 g carne tocata de curcan (~434 kcal si 31 g proteine pe portie). Framanta tofu cu pesmet si fa chiftele coapte 20 de minute.",
+   "Volum: portia are circa 650 g dupa gatire (estimare) si 0.70 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 457,
+   "proteine": 36.3,
+   "carbo": 44.2,
+   "grasimi": 16.8,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 50,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 75,
+  "titlu": "Orez prajit cu legume si ou",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 160,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 8,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "mazare"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 3,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe orezul si racest-l complet (ideal de o zi).",
+   "Fa omleta din oua si taie-o fasii.",
+   "Calveste legumele 6 minute in wok cu usturoi.",
+   "Adauga orezul si sosul de soia si amesteca 4 minute, apoi omleta."
+  ],
+  "sfaturi": [
+   "Orezul rece se prajeste mai bine decat cel proaspat.",
+   "Adauga mai multe legume decat orez.",
+   "Varianta cu carne: 500 g piept de pui in loc de 8 oua (~480 kcal si 39 g proteine pe portie). Taie pieptul cuburi si rumeneste-l 8 minute inainte de legume.",
+   "Volum: portia are circa 480 g dupa gatire (estimare) si 1.01 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 487,
+   "proteine": 24.3,
+   "carbo": 57.4,
+   "grasimi": 18.4,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 76,
+  "titlu": "Risotto de conopida cu ciuperci si mazare",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 800,
+    "u": "g",
+    "n": "conopida"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "mazare"
+   },
+   {
+    "c": 4,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 80,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 300,
+    "u": "ml",
+    "n": "supa de legume"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Rade conopida pe razatoarea mare.",
+   "Soteaza ceapa, usturoiul si ciupercile 8 minute.",
+   "Adauga conopida, mazarea si supa si fierbe 8 minute.",
+   "Amesteca parmezanul si adauga ouale poseate deasupra."
+  ],
+  "sfaturi": [
+   "Conopida rasa tine loc de orez cu mult mai putine calorii.",
+   "Ouale poseate dau proteina.",
+   "Varianta cu carne: 500 g piept de pui in loc de 4 oua (~455 kcal si 48 g proteine pe portie). Taie pieptul cuburi si rumeneste-l la inceput.",
+   "Volum: portia are circa 610 g dupa gatire (estimare) si 0.63 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 383,
+   "proteine": 26.8,
+   "carbo": 32.2,
+   "grasimi": 18.5,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 77,
+  "titlu": "Spaghete cu sos de ton si rosii",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 240,
+    "u": "g",
+    "n": "paste integrale"
+   },
+   {
+    "c": 360,
+    "u": "g",
+    "n": "ton in apa (conserva)"
+   },
+   {
+    "c": 800,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "capere"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pastele.",
+   "Caleste usturoiul, adauga rosiile, dovleceii rasi si caperele si fierbe 12 minute.",
+   "Adauga tonul scurs.",
+   "Amesteca cu pastele si patrunjel."
+  ],
+  "sfaturi": [
+   "Dovleceii rasi se topesc in sos si tin loc de ulei.",
+   "Sosul se congeleaza.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 360 g ton in apa (conserva) (~474 kcal si 28 g proteine pe portie). Framanta tofu in sos si fierbe 5 minute.",
+   "Volum: portia are circa 530 g dupa gatire (estimare) si 0.76 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 407,
+   "proteine": 28.5,
+   "carbo": 54.6,
+   "grasimi": 10.1,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 25,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 78,
+  "titlu": "Paste cu dovlecei si ricotta",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 160,
+    "u": "g",
+    "n": "paste integrale"
+   },
+   {
+    "c": 800,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "ricotta"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "busuioc proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe pastele.",
+   "Soteaza dovleceii rasi cu usturoi 6 minute si adauga spanacul.",
+   "Amesteca ricotta cu lamaie.",
+   "Combina pastele cu legumele si ricotta, cu putina apa de fiert."
+  ],
+  "sfaturi": [
+   "Ricotta se topeste in sos cremos fara smantana.",
+   "Servita imediat e mai buna.",
+   "Varianta cu carne: 500 g piept de pui in loc de 500 g ricotta (~416 kcal si 39 g proteine pe portie). Rumeneste pieptul cuburi 8 minute si adauga-l la final.",
+   "Volum: portia are circa 530 g dupa gatire (estimare) si 0.91 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 484,
+   "proteine": 24.6,
+   "carbo": 44.7,
+   "grasimi": 25.1,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 79,
+  "titlu": "Taitei de orez cu legume si creveti",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "asiatic"
+  ],
+  "ingrediente": [
+   {
+    "c": 400,
+    "u": "g",
+    "n": "creveti curatati"
+   },
+   {
+    "c": 160,
+    "u": "g",
+    "n": "taitei de orez"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "varza"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "mazare"
+   },
+   {
+    "c": 3,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de susan"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Inmoaie taiteii in apa fierbinte 6 minute.",
+   "Calveste legumele 6 minute in wok cu ghimbir si usturoi.",
+   "Adauga crevetii 3 minute.",
+   "Amesteca taiteii cu sosul de soia si uleiul de susan."
+  ],
+  "sfaturi": [
+   "Foloseste wok sau tigaie mare.",
+   "Fara nicio prajire in ulei mult.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 400 g creveti curatati (~458 kcal si 30 g proteine pe portie). Prajeste tofu cuburi pana se rumenesc.",
+   "Volum: portia are circa 470 g dupa gatire (estimare) si 0.81 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 381,
+   "proteine": 30.4,
+   "carbo": 55.5,
+   "grasimi": 5,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 80,
+  "titlu": "Orez cu pui si legume la wok",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "asiatic"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "mazare"
+   },
+   {
+    "c": 3,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe orezul si lasa-l sa se raceasca.",
+   "Rumeneste pieptul taiat fasii 6 minute.",
+   "Adauga legumele si gateste 8 minute.",
+   "Amesteca orezul si sosul de soia."
+  ],
+  "sfaturi": [
+   "Poti folosi legume congelate.",
+   "Orezul brun merge si el.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 500 g piept de pui (~483 kcal si 29 g proteine pe portie). Prajeste tofu cuburi.",
+   "Volum: portia are circa 460 g dupa gatire (estimare) si 1.02 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 471,
+   "proteine": 38.1,
+   "carbo": 53.7,
+   "grasimi": 11.3,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 30,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 81,
+  "titlu": "Paste integrale cu linte si spanac",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 150,
+    "u": "g",
+    "n": "paste integrale"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "linte rosie"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 40,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "oregano"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe lintea rosie 12 minute.",
+   "Caleste ceapa si usturoiul, adauga rosiile, lintea si oregano si fierbe 10 minute.",
+   "Fierbe pastele si amesteca-le cu sosul.",
+   "Adauga spanacul si parmezanul."
+  ],
+  "sfaturi": [
+   "Lintea se destrama si da un sos cremos si proteic.",
+   "Se congeleaza sosul.",
+   "Varianta cu carne: 350 g carne tocata de curcan in loc de 200 g linte rosie (~424 kcal si 30 g proteine pe portie). Rumeneste curcanul 8 minute si fierbe-l in sos.",
+   "Volum: portia are circa 480 g dupa gatire (estimare) si 1.00 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 474,
+   "proteine": 24.9,
+   "carbo": 71.1,
+   "grasimi": 12.2,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 82,
+  "titlu": "Lasagna cu dovlecei si curcan",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 6,
+  "etichete": [
+   "high-volume",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 1000,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 600,
+    "u": "g",
+    "n": "carne tocata de curcan"
+   },
+   {
+    "c": 800,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 250,
+    "u": "g",
+    "n": "ricotta"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "mozzarella"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 20,
+    "u": "g",
+    "n": "busuioc proaspat"
+   },
+   {
+    "c": 120,
+    "u": "g",
+    "n": "paste (foi de lasagna)"
+   }
+  ],
+  "pasi_carte": [
+   "Taie dovleceii felii lungi subtiri si usuca-i pe hartie.",
+   "Rumeneste curcanul cu ceapa si usturoi, adauga rosiile si fierbe 15 minute.",
+   "Pune in tava straturi de dovlecei, carne, foi de lasagna si ricotta.",
+   "Acopera cu mozzarella si coace 40 de minute la 190 de grade."
+  ],
+  "sfaturi": [
+   "Dovleceii inlocuiesc o parte din foile de lasagna.",
+   "Se taie felii si se congeleaza.",
+   "Varianta vegetariana: 480 g linte verde in loc de 600 g carne tocata de curcan (~586 kcal si 34 g proteine pe portie). Fierbe lintea 20 de minute si foloseste-o in loc de carne.",
+   "Volum: portia are circa 530 g dupa gatire (estimare) si 0.86 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 453,
+   "proteine": 34.4,
+   "carbo": 30.3,
+   "grasimi": 22.6,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 70,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 83,
+  "titlu": "Bulgur cu legume si naut",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 140,
+    "u": "g",
+    "n": "bulgur"
+   },
+   {
+    "c": 480,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "rosii"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa si legumele 8 minute.",
+   "Adauga bulgurul, boia si apa cat sa-l acopere cu un deget.",
+   "Fierbe 12 minute acoperit, apoi adauga nautul.",
+   "Serveste cu iaurt."
+  ],
+  "sfaturi": [
+   "Bulgurul se hidrateaza cu apa fierbinte.",
+   "Se tine 4 zile.",
+   "Varianta cu carne: 500 g piept de pui in loc de 480 g naut fiert (~429 kcal si 41 g proteine pe portie). Rumeneste pieptul cuburi 8 minute la inceput.",
+   "Volum: portia are circa 550 g dupa gatire (estimare) si 0.86 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 476,
+   "proteine": 23.1,
+   "carbo": 75.6,
+   "grasimi": 11.3,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 84,
+  "titlu": "Pad thai usor cu tofu si legume",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "asiatic"
+  ],
+  "ingrediente": [
+   {
+    "c": 100,
+    "u": "g",
+    "n": "taitei de orez"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "tofu ferm"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "oua"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "varza"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa verde"
+   },
+   {
+    "c": 3,
+    "u": "lingura",
+    "n": "sos de soia"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "otet de orez"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lime"
+   },
+   {
+    "c": 10,
+    "u": "g",
+    "n": "alune"
+   }
+  ],
+  "pasi_carte": [
+   "Inmoaie taiteii in apa calda 8 minute.",
+   "Prajeste tofu cubulete pana se rumeneste.",
+   "Adauga ouale si amesteca-le.",
+   "Pune legumele, taiteii, sosul de soia si otetul si amesteca 3 minute.",
+   "Presara alune si lime."
+  ],
+  "sfaturi": [
+   "Sosul se poate inlocui cu soia si tamarind.",
+   "Varza se pune la final ca sa ramana crocanta.",
+   "Varianta cu carne: 500 g creveti curatati in loc de 400 g tofu ferm (~366 kcal si 34 g proteine pe portie). Prajeste crevetii 3 minute.",
+   "Volum: portia are circa 460 g dupa gatire (estimare) si 0.88 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 404,
+   "proteine": 26.6,
+   "carbo": 42.4,
+   "grasimi": 16.9,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 25,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 85,
+  "titlu": "Cuscus cu legume si pui",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "cuscus"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "turmeric"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   }
+  ],
+  "pasi_carte": [
+   "Rumeneste pieptul cuburi 7 minute cu turmeric si chimen.",
+   "Adauga legumele si gateste 8 minute.",
+   "Hidrateaza cuscusul cu 220 ml apa fierbinte 5 minute, apoi ragaie-l cu furculita.",
+   "Amesteca totul si stoarce lamaie."
+  ],
+  "sfaturi": [
+   "Cuscusul e gata in 5 minute.",
+   "Merge si rece, ca salata.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 500 g piept de pui (~509 kcal si 29 g proteine pe portie). Prajeste tofu cuburi cu condimentele.",
+   "Volum: portia are circa 520 g dupa gatire (estimare) si 0.96 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 497,
+   "proteine": 37.9,
+   "carbo": 60.1,
+   "grasimi": 11.4,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 86,
+  "titlu": "Paste cu broccoli, naut si parmezan",
+  "categorie": "Paste si orez",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian"
+  ],
+  "ingrediente": [
+   {
+    "c": 160,
+    "u": "g",
+    "n": "paste integrale"
+   },
+   {
+    "c": 900,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 360,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "parmezan"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "",
+    "n": "lamaie"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "ardei iute fulgi"
+   }
+  ],
+  "pasi_carte": [
+   "Fierbe broccoli impreuna cu pastele in ultimele 4 minute.",
+   "Calveste usturoiul si ardeiul iute in ulei si adauga nautul 3 minute.",
+   "Amesteca pastele si broccoli cu nautul.",
+   "Adauga parmezanul si lamaia."
+  ],
+  "sfaturi": [
+   "Broccoli fiert cu pastele economiseste o oala.",
+   "Nautul da proteina vegetala.",
+   "Varianta cu carne: 500 g piept de pui in loc de 360 g naut fiert (~470 kcal si 46 g proteine pe portie). Rumeneste pieptul cuburi 8 minute si adauga-l in loc de naut.",
+   "Volum: portia are circa 460 g dupa gatire (estimare) si 1.03 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 468,
+   "proteine": 25.5,
+   "carbo": 72.1,
+   "grasimi": 11.6,
+   "sursa": "local",
+   "acoperire": "8 din 8"
+  },
+  "timp": 20,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 87,
+  "titlu": "Chili cu curcan si fasole la oala",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "one pot",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "carne tocata de curcan"
+   },
+   {
+    "c": 360,
+    "u": "g",
+    "n": "fasole rosie fiarta"
+   },
+   {
+    "c": 800,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "porumb"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 2,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa si usturoiul cu putina apa 4 minute.",
+   "Rumeneste curcanul 8 minute cu chimen si boia.",
+   "Adauga rosiile, ardeiul, morcovii si 200 ml apa si fierbe 25 de minute.",
+   "Pune fasolea si porumbul si mai fierbe 10 minute."
+  ],
+  "sfaturi": [
+   "Se congeleaza in portii.",
+   "Serveste cu iaurt grecesc in loc de smantana.",
+   "Varianta vegetariana: 350 g tofu ferm in loc de 500 g carne tocata de curcan (~375 kcal si 28 g proteine pe portie). Framanta tofu si rumeneste-l cu condimentele.",
+   "Volum: portia are circa 590 g dupa gatire (estimare) si 0.74 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 434,
+   "proteine": 37.4,
+   "carbo": 48.6,
+   "grasimi": 12,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 60,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 88,
+  "titlu": "Chili vegetarian cu linte si fasole neagra",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "one pot",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 150,
+    "u": "g",
+    "n": "linte verde"
+   },
+   {
+    "c": 360,
+    "u": "g",
+    "n": "fasole neagra fiarta"
+   },
+   {
+    "c": 800,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "porumb"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 2,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa si usturoiul cu putina apa 4 minute.",
+   "Adauga condimentele, rosiile, linte si 600 ml apa si fierbe 25 de minute.",
+   "Pune legumele si fasolea si mai fierbe 12 minute.",
+   "Serveste cu iaurt."
+  ],
+  "sfaturi": [
+   "Lintea verde isi pastreaza forma.",
+   "Se tine 5 zile.",
+   "Varianta cu carne: 400 g carne tocata de vita 90/10 in loc de 150 g linte verde (~451 kcal si 38 g proteine pe portie). Rumeneste carnea 8 minute inainte de rosii.",
+   "Volum: portia are circa 660 g dupa gatire (estimare) si 0.61 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 407,
+   "proteine": 27.7,
+   "carbo": 72.6,
+   "grasimi": 3.2,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 60,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 89,
+  "titlu": "Tocanita de pui cu legume la oala",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "one pot",
+   "traditional romanesc"
+  ],
+  "ingrediente": [
+   {
+    "c": 700,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "boia dulce"
+   },
+   {
+    "c": 600,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Rumeneste pieptul taiat cuburi 5 minute.",
+   "Adauga ceapa, usturoiul, boia si pasta de rosii.",
+   "Pune legumele si apa si fierbe acoperit 30 de minute.",
+   "Potriveste de sare si piper."
+  ],
+  "sfaturi": [
+   "Foloseste pulpe fara piele pentru un gust mai bogat.",
+   "Se tine 4 zile.",
+   "Varianta vegetariana: 600 g ciuperci in loc de 700 g piept de pui (~249 kcal si 10 g proteine pe portie). Rumeneste ciupercile 8 minute si pune si 240 g naut fiert pentru proteina.",
+   "Volum: portia are circa 620 g dupa gatire (estimare) si 0.68 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 426,
+   "proteine": 44.7,
+   "carbo": 41.7,
+   "grasimi": 8.8,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 90,
+  "titlu": "Curry de naut cu spanac si rosii",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "asiatic",
+   "one pot",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 600,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 150,
+    "u": "ml",
+    "n": "lapte de cocos light"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 2,
+    "u": "lingurita",
+    "n": "curry pudra"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa, ghimbirul si usturoiul cu putina apa.",
+   "Adauga curry si rosiile si fierbe 10 minute.",
+   "Pune nautul, laptele de cocos si spanacul si fierbe 8 minute.",
+   "Serveste cu iaurt."
+  ],
+  "sfaturi": [
+   "Laptele de cocos light are putine calorii.",
+   "Se tine 4 zile.",
+   "Varianta cu carne: 600 g piept de pui in loc de 600 g naut fiert (~363 kcal si 45 g proteine pe portie). Rumeneste pieptul cuburi si fierbe-l in sos 15 minute.",
+   "Volum: portia are circa 550 g dupa gatire (estimare) si 0.79 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 429,
+   "proteine": 24.2,
+   "carbo": 59.8,
+   "grasimi": 13.1,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 91,
+  "titlu": "Curry de pui cu legume si lapte de cocos light",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "asiatic",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "conopida"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 200,
+    "u": "ml",
+    "n": "lapte de cocos light"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 2,
+    "u": "lingurita",
+    "n": "curry pudra"
+   },
+   {
+    "c": 60,
+    "u": "g",
+    "n": "orez"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa, ghimbirul si usturoiul cu putina apa.",
+   "Adauga curry si pieptul cuburi si rumeneste 5 minute.",
+   "Pune legumele si laptele de cocos si fierbe 15 minute.",
+   "Fierbe orezul si serveste cu curry."
+  ],
+  "sfaturi": [
+   "Pune spanacul la final.",
+   "Se tine 4 zile.",
+   "Varianta vegetariana: 500 g tofu ferm in loc de 600 g piept de pui (~438 kcal si 29 g proteine pe portie). Adauga tofu cuburi in ultimele 8 minute.",
+   "Volum: portia are circa 510 g dupa gatire (estimare) si 0.86 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 438,
+   "proteine": 40.9,
+   "carbo": 35.1,
+   "grasimi": 15.7,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 92,
+  "titlu": "Ghiveci de legume cu carnati de curcan",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "traditional romanesc",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "carnati de curcan"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "dovlecei"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "vinete"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 30,
+    "u": "g",
+    "n": "patrunjel proaspat"
+   }
+  ],
+  "pasi_carte": [
+   "Rumeneste carnatii feliati 5 minute.",
+   "Adauga ceapa, usturoiul si legumele taiate.",
+   "Pune rosiile, nautul si 200 ml apa si fierbe acoperit 30 de minute.",
+   "Presara patrunjel."
+  ],
+  "sfaturi": [
+   "Ghiveciul se face si la cuptor, la 180 de grade.",
+   "Se tine 4 zile.",
+   "Varianta vegetariana: 300 g tofu ferm in loc de 300 g carnati de curcan (~464 kcal si 28 g proteine pe portie). Taie tofu cuburi si rumeneste-l la inceput in locul carnatilor.",
+   "Volum: portia are circa 660 g dupa gatire (estimare) si 0.70 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 464,
+   "proteine": 31.6,
+   "carbo": 69.8,
+   "grasimi": 7.9,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 55,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 93,
+  "titlu": "Iahnie de fasole usoara cu ciuperci",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "traditional romanesc",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 720,
+    "u": "g",
+    "n": "fasole alba fiarta"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "boia dulce"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "foi dafin"
+   },
+   {
+    "c": 300,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa in ulei 8 minute pana se rumeneste.",
+   "Adauga ciupercile si gateste 6 minute.",
+   "Pune pasta de rosii, boia, fasolea, dafinul si apa si fierbe 20 de minute.",
+   "Serveste cu iaurt."
+  ],
+  "sfaturi": [
+   "Ciupercile dau gust de afumat fara carnati.",
+   "Se tine 5 zile.",
+   "Varianta cu carne: 300 g carnati de curcan in loc de 720 g fasole alba fiarta (~251 kcal si 29 g proteine pe portie). Taie carnatii rondele si rumeneste-i; foloseste 480 g fasole.",
+   "Volum: portia are circa 540 g dupa gatire (estimare) si 0.73 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 395,
+   "proteine": 27.7,
+   "carbo": 63.1,
+   "grasimi": 5.5,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 94,
+  "titlu": "Tocanita de ciuperci cu naut si cartofi",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "traditional romanesc",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 700,
+    "u": "g",
+    "n": "ciuperci"
+   },
+   {
+    "c": 480,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "boia dulce"
+   },
+   {
+    "c": 600,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa si ciupercile 8 minute.",
+   "Adauga morcovii, pasta de rosii, boia si apa.",
+   "Pune cartofii si nautul si fierbe 25 de minute.",
+   "Serveste cu iaurt."
+  ],
+  "sfaturi": [
+   "Ciupercile se rumenesc fara apa.",
+   "Se tine 4 zile.",
+   "Varianta cu carne: 500 g piept de pui in loc de 480 g naut fiert (~411 kcal si 45 g proteine pe portie). Rumeneste pieptul cuburi la inceput.",
+   "Volum: portia are circa 760 g dupa gatire (estimare) si 0.60 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 457,
+   "proteine": 27.9,
+   "carbo": 75.1,
+   "grasimi": 7.9,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 95,
+  "titlu": "Gulas de vita slaba cu legume",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "traditional romanesc",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "vita carne slaba pentru tocanita"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "cartofi"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "pasta de rosii"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 2,
+    "u": "lingura",
+    "n": "boia dulce"
+   },
+   {
+    "c": 800,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Rumeneste carnea in doua reprize in ulei.",
+   "Caleste ceapa si adauga boia si pasta de rosii.",
+   "Pune apa, carnea si morcovii si fierbe 60 de minute.",
+   "Adauga cartofii si ardeiul si fierbe 25 de minute."
+  ],
+  "sfaturi": [
+   "Taie carnea in bucati egale ca sa se faca uniform.",
+   "Gustul se imbunatateste a doua zi.",
+   "Varianta vegetariana: 600 g ciuperci in loc de 500 g vita carne slaba pentru tocanita (~244 kcal si 10 g proteine pe portie). Rumeneste ciupercile separat si pune 480 g fasole fiarta.",
+   "Volum: portia are circa 640 g dupa gatire (estimare) si 0.68 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 431,
+   "proteine": 30.3,
+   "carbo": 40.6,
+   "grasimi": 16.9,
+   "sursa": "local",
+   "acoperire": "10 din 10"
+  },
+  "timp": 95,
+  "dif": "mediu"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 96,
+  "titlu": "Dal de linte cu spanac si rosii",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "asiatic",
+   "one pot",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 280,
+    "u": "g",
+    "n": "linte rosie"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 15,
+    "u": "g",
+    "n": "ghimbir proaspat"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 2,
+    "u": "lingurita",
+    "n": "curry pudra"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1000,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "iaurt grecesc"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "orez"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa, ghimbirul si usturoiul in ulei cu curry.",
+   "Adauga lintea, rosiile si apa si fierbe 20 de minute.",
+   "Pune spanacul si fierbe 3 minute.",
+   "Serveste cu orez si iaurt."
+  ],
+  "sfaturi": [
+   "Lintea rosie se face in 20 de minute fara inmuiere.",
+   "Se congeleaza.",
+   "Varianta cu carne: 400 g piept de pui in loc de 280 g linte rosie (~360 kcal si 37 g proteine pe portie). Adauga pieptul cuburi si fierbe-l 15 minute in sos.",
+   "Volum: portia are circa 850 g dupa gatire (estimare) si 0.58 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 491,
+   "proteine": 31,
+   "carbo": 81.8,
+   "grasimi": 6.3,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 40,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 97,
+  "titlu": "Jambalaya usoara cu creveti si pui",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 300,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "creveti curatati"
+   },
+   {
+    "c": 150,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "telina"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 500,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 300,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 2,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Rumeneste pieptul cuburi 5 minute in ulei.",
+   "Adauga ceapa, ardeiul, telina, usturoiul si condimentele 5 minute.",
+   "Pune orezul, rosiile si apa si fierbe 18 minute.",
+   "Adauga crevetii si mai tine 4 minute."
+  ],
+  "sfaturi": [
+   "Orezul se gateste in sosul de rosii.",
+   "Crevetii se pun la final.",
+   "Varianta vegetariana: 300 g tofu ferm in loc de 300 g piept de pui (~432 kcal si 34 g proteine pe portie). Adauga tofu cuburi odata cu crevetii.",
+   "Volum: portia are circa 590 g dupa gatire (estimare) si 0.70 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 414,
+   "proteine": 38.1,
+   "carbo": 49.8,
+   "grasimi": 6.9,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 45,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 98,
+  "titlu": "Tocanita de cartofi dulci cu naut si spanac",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "vegetarian",
+   "one pot",
+   "meal-prep"
+  ],
+  "ingrediente": [
+   {
+    "c": 600,
+    "u": "g",
+    "n": "cartofi dulci"
+   },
+   {
+    "c": 480,
+    "u": "g",
+    "n": "naut fiert"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "spanac proaspat"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "chimen"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia afumata"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "iaurt grecesc"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa si usturoiul cu putina apa si condimentele.",
+   "Adauga cartofii dulci cuburi si rosiile si fierbe 15 minute.",
+   "Pune nautul si fierbe 8 minute.",
+   "Adauga spanacul si serveste cu iaurt."
+  ],
+  "sfaturi": [
+   "Cartofii dulci dau volum si dulceata.",
+   "Se tine 4 zile.",
+   "Varianta cu carne: 500 g piept de pui in loc de 480 g naut fiert (~374 kcal si 40 g proteine pe portie). Rumeneste pieptul cuburi si pune-l odata cu cartofii.",
+   "Volum: portia are circa 550 g dupa gatire (estimare) si 0.76 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 420,
+   "proteine": 22.1,
+   "carbo": 77.6,
+   "grasimi": 4.4,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 35,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 99,
+  "titlu": "Sarmale in tigaie cu curcan si varza",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "traditional romanesc",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "carne tocata de curcan"
+   },
+   {
+    "c": 800,
+    "u": "g",
+    "n": "varza"
+   },
+   {
+    "c": 100,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 400,
+    "u": "g",
+    "n": "rosii in suc propriu"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "boia dulce"
+   },
+   {
+    "c": 300,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "cimbru"
+   }
+  ],
+  "pasi_carte": [
+   "Caleste ceapa si carnea 6 minute cu orezul crud.",
+   "Pune varza taiata fasii in tigaia mare, apoi carnea.",
+   "Adauga rosiile, apa si condimentele si fierbe acoperit 40 de minute.",
+   "Amesteca usor si potriveste de sare."
+  ],
+  "sfaturi": [
+   "Gust de sarmale fara infasurat.",
+   "Se tine 4 zile.",
+   "Varianta vegetariana: 400 g tofu ferm in loc de 500 g carne tocata de curcan (~354 kcal si 23 g proteine pe portie). Framanta tofu si caleste-l cu ceapa si orez.",
+   "Volum: portia are circa 590 g dupa gatire (estimare) si 0.67 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 395,
+   "proteine": 30.4,
+   "carbo": 40.1,
+   "grasimi": 13.7,
+   "sursa": "local",
+   "acoperire": "9 din 9"
+  },
+  "timp": 55,
+  "dif": "usor"
+ },
+ {
+  "sursa": "Retete high-volume",
+  "nr": 100,
+  "titlu": "Orez cu pui si legume la o oala",
+  "categorie": "One pot",
+  "capitol": "Volum mare, calorii putine",
+  "portii": 4,
+  "etichete": [
+   "high-volume",
+   "one pot"
+  ],
+  "ingrediente": [
+   {
+    "c": 500,
+    "u": "g",
+    "n": "piept de pui"
+   },
+   {
+    "c": 160,
+    "u": "g",
+    "n": "orez"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "broccoli"
+   },
+   {
+    "c": 300,
+    "u": "g",
+    "n": "ardei gras"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "morcovi"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "mazare"
+   },
+   {
+    "c": 200,
+    "u": "g",
+    "n": "ceapa"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "ulei de masline"
+   },
+   {
+    "c": 450,
+    "u": "ml",
+    "n": "apa"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "turmeric"
+   },
+   {
+    "c": 3,
+    "u": "",
+    "n": "catei usturoi"
+   }
+  ],
+  "pasi_carte": [
+   "Rumeneste pieptul cuburi 5 minute in ulei.",
+   "Adauga ceapa, usturoiul si orezul si amesteca 2 minute.",
+   "Pune legumele, turmericul si apa si fierbe acoperit 18 minute.",
+   "Lasa 5 minute inainte de servire."
+  ],
+  "sfaturi": [
+   "Foloseste legume congelate fara dezghetare.",
+   "Se tine 3 zile.",
+   "Varianta vegetariana: 450 g tofu ferm in loc de 500 g piept de pui (~474 kcal si 29 g proteine pe portie). Adauga tofu cuburi odata cu orezul.",
+   "Volum: portia are circa 610 g dupa gatire (estimare) si 0.75 kcal pe gram."
+  ],
+  "macro": {
+   "kcal": 462,
+   "proteine": 37.8,
+   "carbo": 59.7,
+   "grasimi": 7.8,
+   "sursa": "local",
+   "acoperire": "11 din 11"
+  },
+  "timp": 45,
+  "dif": "usor"
+ }
+]
