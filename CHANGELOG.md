@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.13.0
+- **Meal prep in doua butoane**, fara intrebari: "Adauga la Meal prep" = planificat (lotul apare "de gatit", ingredientele intra in cumparaturi cu sursa reteta) si "Am gatit deja" = gatit (jurnal scris, lista neatinsa). Bifa "adauga la cumparaturi" din formular a disparut.
+- **"Am gatit"** pe un lot planificat: lotul devine gatit (data de azi, jurnal) si din cumparaturi se scoate doar partea acelei retete, indiferent daca ingredientele sunt bifate sau nu. Un ingredient comun cu alte retete ramane cu cantitatea celorlalte; bifele si Debaraua nu se ating. Cosul de gunoi pe un lot planificat il scoate si scoate si partea lui din lista (cu confirmare unitara si Anuleaza).
+- **Cumparaturi venite din Debara** ("Terminat" in Debara): au doar bifa. Bifat = cumparat, produsul se intoarce in Debara si randul dispare; nu mai exista "Am in debara" pe aceste randuri (ramane pe cele din retete). Nu mai raman randuri fara reteta.
+- Limite cunoscute: randurile vechi fara evidenta pe retete isi pastreaza cantitatea la "Am gatit"; doua loturi planificate ale aceleiasi retete au aceeasi sursa, deci al doilea inlocuieste randurile primului.
+
 ## 4.12.0
 - Setari > Administrare > **Titluri de sectiune**: lista de cuvinte (foi, umplutura, crema, glazura...) se gestioneaza din aplicatie. Campul de adaugare e sus (mai multe cuvinte odata, separate prin virgula), fiecare cuvant are cos de gunoi, iar "Revino la lista initiala" readuce lista de start. Se aplica imediat si intra in backup si in sincronizare.
 - Confirmare la stergere **unitara**: peste tot primul tap schimba butonul in "Confirma" (4 secunde), al doilea sterge. Inainte, etichetele spuneau "Confirma stergerea", iar la categorii si la cartile din Setari butonul ramanea gol dupa expirarea confirmarii (pierdea cosul de gunoi, defect din 4.9.1): reparat.
