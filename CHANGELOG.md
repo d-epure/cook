@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.14.0
+- Numele retetei e link in Meniu si in Meal prep (deschide reteta, ca mai inainte butonul "Deschide"). Butonul "Deschide" si cuvantul "gatesc" din dreptul portiilor au disparut; campul de portii ramane, cu "portii" langa el.
+
 ## 4.13.0
 - **Meal prep in doua butoane**, fara intrebari: "Adauga la Meal prep" = planificat (lotul apare "de gatit", ingredientele intra in cumparaturi cu sursa reteta) si "Am gatit deja" = gatit (jurnal scris, lista neatinsa). Bifa "adauga la cumparaturi" din formular a disparut.
 - **"Am gatit"** pe un lot planificat: lotul devine gatit (data de azi, jurnal) si din cumparaturi se scoate doar partea acelei retete, indiferent daca ingredientele sunt bifate sau nu. Un ingredient comun cu alte retete ramane cu cantitatea celorlalte; bifele si Debaraua nu se ating. Cosul de gunoi pe un lot planificat il scoate si scoate si partea lui din lista (cu confirmare unitara si Anuleaza).

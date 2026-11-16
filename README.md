@@ -12,6 +12,8 @@ De la 4.7.0, potrivirea cu debaraua tine cont de marcaje: `formSplit` scoate for
 
 De la 4.8.0: cartea *Retete high-volume* (`carti/retete_high_volume.json`, 100 de retete, `v` 1): cel mult 500 kcal pe portie si cel mult circa 1,1 kcal pe gram dupa gatire (greutate estimata cu factori pentru cereale, paste si carne), cu varianta pereche in sfaturi (macro recalculat cu `macLocal`); eticheta `high-volume` (`TDEF`, migrare `rtv3`); tema Gatire *Volum mare, calorii putine*. Test: `teste/test_carti.js`. Retetele nu sunt gatite si verificate.
 
+De la 4.14.0: in Meniu si in Meal prep numele retetei e `button.lnk` (`data-mopen` / `data-mpopen`), fara buton "Deschide".
+
 De la 4.13.0: loturile de Meal prep (`rmp`) au `st:"p"` cand sunt planificate (fara `st` = gatit; `d` gol pana la gatire). `mpSave(mode)` ("p" planificat cu ingrediente in lista, "g" gatit deja cu jurnal), `data-mpcook` (gatit: jurnal + `removeSrc(titlu)`), `data-mpdel` (scoate lotul si partea lui din lista). Randurile din lista cu sursa unica "Debara" au doar bifa: bifat = `addPan` + randul dispare.
 
 De la 4.12.0: lista de titluri de sectiune e in localStorage `rsec` (in `DKEYS`, deci in backup si sincronizare; lipsa cheii = `SEC_DEF`), citita prin `getSec()`; ecranul e `renderSec`. Confirmarea la stergere e un singur ajutor, `armDel(b)`, folosit de aparate, etichete, categorii, carti si titluri. Test: `teste/test_meniu_cumparaturi.js`.

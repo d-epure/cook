@@ -3,7 +3,7 @@ const {boot,eq,done,sleep,item,supa,pan,dir,fs}=require("./_boot.js");
 (async()=>{
  console.log("\n## "+'Cumparaturi si debara (3.20.0), masa Cina (3.21.0), id stabil pe retetele salvate (4.0.0).');
 await (async()=>{
- const names=["lkey","lClean","inPantry","addList","getList","putList","inCartAny","mpOpen","mpForm","mpSave","getSaved","drawList","sidRun","sidNeed","menRec","mpRec","getMen","getMP","isFav","sKey","getNote","getMT","drawMenu","show","SLOTS","pxAuto"];
+ const names=["lkey","lClean","inPantry","addList","getList","putList","inCartAny","mpOpen","mpForm","mpSave","getSaved","drawList","sidRun","sidNeed","menRec","mpRec","getMen","getMP","isFav","sKey","getNote","getMT","drawMenu","show","SLOTS","pxAuto","putMP","getPan"];
  const day=new Date();const dk=day.getFullYear()+"-"+String(day.getMonth()+1).padStart(2,"0")+"-"+String(day.getDate()).padStart(2,"0");
  let w=await boot({rp:pan,rl:"[]",rs:JSON.stringify([supa,{titlu:"Mere coapte",portii:2,ingrediente:[],pasi:[]}]),rfav:JSON.stringify(["salvat|Supa crema de rosii","Retetele mele|1"]),
   rnote:JSON.stringify({"salvat|Mere coapte":{h:["2026-01-05"]}}),rmp:JSON.stringify([{id:"m1",s:"s",k:"salvat|Mere coapte",t:"Mere coapte",d:"2026-01-05",p:2}]),
@@ -34,9 +34,27 @@ await (async()=>{
  // --- Meal prep: produsele ascunse (din debara) nu blocheaza
  const r=T.getSaved().find(x=>x.id===s1.id);T.putList([item("rosii","g",500,r.titlu)]);
  eq(T.inCartAny(r.titlu),false,"produs ascuns nu inseamna 'deja in cumparaturi'");
- T.mpOpen();T.mpForm("s",r);const dl=D.querySelector("#mdlg");eq(!!dl.querySelector("#mpc"),true,"bifa de cumparaturi apare");eq(/le ai deja in debara/.test(dl.textContent),true,"spune cate sunt in debara");
+ T.mpOpen();T.mpForm("s",r);const dl=D.querySelector("#mdlg");eq([!!dl.querySelector("[data-mpok=p]"),!!dl.querySelector("[data-mpok=g]"),!!dl.querySelector("#mpc")],[true,true,false],"doua butoane distincte, fara bifa/intrebare");eq(/le ai deja in debara/.test(dl.textContent),true,"spune cate sunt in debara");
  const inp=dl.querySelector("#mpp");inp.value="40";inp.dispatchEvent(new w.Event("input",{bubbles:true}));eq(dl.querySelector("#mpw").hidden,false,"avertisment la 40 de portii");
- inp.value="4";inp.dispatchEvent(new w.Event("input",{bubbles:true}));T.mpSave();eq(T.getList().find(x=>x.n==="rosii").c,1000,"cantitati pentru 4 portii, fara dublare");
+ inp.value="4";inp.dispatchEvent(new w.Event("input",{bubbles:true}));T.mpSave("p");eq(T.getList().find(x=>x.n==="rosii").c,1000,"cantitati pentru 4 portii, fara dublare");
+ // --- 4.13.0: Meal prep planificat -> Am gatit
+ {const lot=T.getMP().find(x=>x.t===r.titlu&&x.st==="p");eq([!!lot,lot&&lot.d],[true,""],"adaugat la Meal prep = planificat, fara data de gatire");
+ const jb=(T.getNote(T.sKey(r)).h||[]).length;
+ // un ingredient comun cu alta sursa (bifat) trebuie sa ramana
+ const l0=T.getList();const ro=l0.find(x=>x.n==="rosii");ro.src.push("Alta reteta");ro.parts.push({s:"Alta reteta",c:300});ro.c+=300;ro.done=1;T.putList(l0);
+ T.show("meniu");T.drawMenu();const bt=D.querySelector("[data-mpcook=\""+lot.id+"\"]");eq([!!bt,!!D.querySelector("[data-mpdel=\""+lot.id+"\"] svg"),!!D.querySelector("[data-mpdone=\""+lot.id+"\"]")],[true,true,false],"lot planificat: Am gatit + cos de gunoi, fara Terminat");
+ {const mw=D.querySelector("#mw");eq([!!mw.querySelector("button.lnk[data-mpopen]"),/Deschide|gatesc/.test(mw.textContent)],[true,false],"4.14.0: numele retetei e link; fara Deschide si gatesc");}
+ bt.click();
+ const l1=T.getList(),rr=l1.find(x=>x.n==="rosii");eq([rr&&rr.c,rr&&rr.src,rr&&rr.done],[300,["Alta reteta"],1],"Am gatit scoate doar partea retetei; ingredientul comun ramane (bifa neatinsa)");
+ const lg=T.getMP().find(x=>x.id===lot.id);eq([lg.st,lg.d!==""],[undefined,true],"lotul devine gatit, cu data");
+ eq((T.getNote(T.sKey(r)).h||[]).length,jb+1,"Am gatit scrie in jurnal o data");
+ D.querySelector("[data-mpdone=\""+lot.id+"\"]").click();}
+ // Am gatit deja: lista neatinsa, jurnal scris
+ {const nb=T.getList().length,r2=r;T.mpOpen();T.mpForm("s",r2);D.querySelector("#mpp").value="2";const jb=(T.getNote(T.sKey(r2)).h||[]).length;T.mpSave("g");
+ const lt=T.getMP().find(x=>x.t===r2.titlu);eq([T.getList().length,lt&&lt.st,lt&&lt.d!==""],[nb,undefined,true],"Am gatit deja: gatit direct, lista neatinsa");eq((T.getNote(T.sKey(r2)).h||[]).length,jb+1,"Am gatit deja: jurnal scris");T.putMP([]);}
+ // randuri din Debara: doar bifa, bifat = inapoi in debara
+ {T.putList([item("lapte","ml",null,"Debara")]);T.show("lista");T.drawList();eq([!!D.querySelector("[data-lp]"),!!D.querySelector("[data-ld]")],[false,true],"rand din Debara: doar bifa, fara Am in debara");
+ D.querySelector("[data-ld]").click();eq([T.getList().length,T.getPan().some(x=>/lapte/i.test(x.n))],[0,true],"bifat = cumparat: se intoarce in debara si randul dispare");}
  // --- Cina si reteta stearsa
  eq(T.SLOTS.map(x=>x[0]),["mic","pranz","cina","desert"],"patru mese pe zi");
  T.show("meniu");T.drawMenu();const tx=D.querySelector("#mw").textContent;eq([/Cina/.test(tx),/Reteta nu mai e in Biblioteca/.test(tx)],[true,true],"Cina apare; reteta stearsa e marcata");

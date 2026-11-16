@@ -502,4 +502,4 @@ button.ico svg{width:1.2rem;height:1.2rem;fill:none;stroke:currentColor;stroke-w
 .bpl .bsub{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
 .bsub .lab{color:var(--mut);font-size:var(--fs-s)}
 .bsub .bpill{min-width:var(--h-n);padding-left:10px;padding-right:10px}
-button.lnk{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--pri);text-decoration:underline;cursor:pointer}
+button.lnk{background:none;border:0;padding:0;font:inherit;font-weight:700;text-align:left;color:var(--pri);text-decoration:underline;cursor:pointer}
