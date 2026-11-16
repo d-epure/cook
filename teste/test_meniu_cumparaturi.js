@@ -54,7 +54,11 @@ await (async()=>{
  const lt=T.getMP().find(x=>x.t===r2.titlu);eq([T.getList().length,lt&&lt.st,lt&&lt.d!==""],[nb,undefined,true],"Am gatit deja: gatit direct, lista neatinsa");eq((T.getNote(T.sKey(r2)).h||[]).length,jb+1,"Am gatit deja: jurnal scris");T.putMP([]);}
  // randuri din Debara: doar bifa, bifat = inapoi in debara
  {T.putList([item("lapte","ml",null,"Debara")]);T.show("lista");T.drawList();eq([!!D.querySelector("[data-lp]"),!!D.querySelector("[data-ld]")],[false,true],"rand din Debara: doar bifa, fara Am in debara");
- D.querySelector("[data-ld]").click();eq([T.getList().length,T.getPan().some(x=>/lapte/i.test(x.n))],[0,true],"bifat = cumparat: se intoarce in debara si randul dispare");}
+ D.querySelector("[data-ld]").click();eq([T.getList().length,T.getList()[0].done,T.getPan().some(x=>/lapte/i.test(x.n))],[1,1,true],"bifat = cumparat: intra in debara, dar randul ramane (bifat) pana golesti lista");
+ eq(/Nu mai ai nimic de cumparat/.test(D.querySelector("#ll").textContent)&&/lapte/i.test(D.querySelector("#ll").textContent),true,"mesajul 'nimic de cumparat' nu ascunde produsele bifate");
+ D.querySelector("[data-ld]").click();eq([T.getList()[0].done,T.getPan().some(x=>/lapte/i.test(x.n))],[0,false],"debifat: iese din debara (doar daca bifarea l-a adus)");
+ D.querySelector("[data-ld]").click();D.querySelector("#lAll").click();eq(T.getList().length,0,"Goleste lista scoate randurile bifate");}
+ {const x=item("zzzpulpe","g",400,"Reteta A");x.done=1;const y=item("zzzdovlecei","g",250,"Reteta A");y.done=1;T.putList([x,y]);T.show("lista");T.drawList();const tx=D.querySelector("#ll").textContent;eq([/Nu mai ai nimic de cumparat/.test(tx),/Zzzpulpe/i.test(tx),/Zzzdovlecei/i.test(tx)],[true,true,true],"toate bifate: produsele raman la vedere, nu dispar");T.putList([]);}
  // 4.15.0: Adauga la meniu cu bifa de cumparaturi; butoane AI gri fara cheie
  {T.putMP([]);T.putList([]);T.menOpen({s:"s",r,p:2});const dl=D.querySelector("#mdlg"),cb=dl.querySelector("#mdl");eq(!!cb,true,"Adauga la meniu: bifa pentru cumparaturi apare");
  dl.querySelector("[data-mdok]").click();eq(T.getList().length,0,"bifa nebifata: lista neatinsa");

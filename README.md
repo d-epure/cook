@@ -12,6 +12,8 @@ De la 4.7.0, potrivirea cu debaraua tine cont de marcaje: `formSplit` scoate for
 
 De la 4.8.0: cartea *Retete high-volume* (`carti/retete_high_volume.json`, 100 de retete, `v` 1): cel mult 500 kcal pe portie si cel mult circa 1,1 kcal pe gram dupa gatire (greutate estimata cu factori pentru cereale, paste si carne), cu varianta pereche in sfaturi (macro recalculat cu `macLocal`); eticheta `high-volume` (`TDEF`, migrare `rtv3`); tema Gatire *Volum mare, calorii putine*. Test: `teste/test_carti.js`. Retetele nu sunt gatite si verificate.
 
+De la 4.21.0: in lista de cumparaturi randurile bifate raman vizibile pana la "Goleste lista" / "Sterge bifate" (si cand nu mai e nimic de cumparat); randul cu sursa unica "Debara" retine `pan:1` cand bifarea l-a adus in Debara, ca debifarea sa-l scoata.
+
 De la 4.20.0: `recTxt(kind,r)` formeaza textul retetei ("b" = din carti, "s" = salvata/generata), `recAct` copiaza sau trimite (`navigator.share`, altfel WhatsApp), iconitele vin din `recBtns()` (`data-rcp`, `data-rsh`).
 
 De la 4.19.0: `BPL.f` (pilula Favorite) e starea favoritelor in Biblioteca; `favOk(r)` se aplica in lista, categorii si etichete; lista Carte nu mai contine "Favorite" (a disparut `FAVV`).

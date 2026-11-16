@@ -1174,7 +1174,7 @@ function drawList(){listDedupe();const l=getList(),pan=getPan().length,vis=l.map
  vis.sort((a,b)=>a[0].done-b[0].done);
  const rowH=([x,i])=>PE===i?`<div class="it"><div style="flex-basis:100%"><div class="muted mb4" >Adauga in debara ca (nume general) si categorie:</div><input id="lpn" maxlength="60" value="${esc(sugName(x.n))}" aria-label="Nume in debara"></div><select id="lpc" class="lcs" aria-label="Categorie in debara">${CATS.map(([id,lab])=>`<option value="${esc(id)}"${catOf(sugName(x.n))===id?" selected":""}>${esc(lab)}</option>`).join("")}</select><button class="go m0" data-lpok="${i}" data-lk="${esc(lkey(x.n,x.u))}" >Muta</button><button class="alt" data-lpno="1">Anuleaza</button></div>`:`<div class="it${x.done?" done":""}"><input type="checkbox" data-ld="${i}" data-lk="${esc(lkey(x.n,x.u))}" ${x.done?"checked":""} aria-label="Cumparat"><div><div class="tx">${esc(itTxt(x))}${(t=>t?` <span class="muted">- cumperi ${esc(t)}</span>`:"")(packTxt(x))}${!HP&&!x.done&&inPantry(x.n)?` <span class="lb">in debara</span>`:""}</div><div class="src">${x.src.map(s=>`<button class="srcl" data-lsrc="${esc(s)}">${esc(s)}</button>`).join(", ")}</div></div>${x.done||(x.src.length===1&&x.src[0]==="Debara")?"":`<button class="alt" data-lp="${i}" data-lk="${esc(lkey(x.n,x.u))}" title="Am deja produsul: il muta in Debaraua mea">Am in debara</button>`}<button class="alt" data-lx="${i}" data-lk="${esc(lkey(x.n,x.u))}" aria-label="Scoate">x</button></div>`;
  let body;
- if(l.length&&!need)body=`<p class="okk">Nu mai ai nimic de cumparat.</p>${dn?'<div class="row lact"><button class="alt" id="lAll">Goleste lista</button></div>':""}`;
+ if(l.length&&!need)body=`<p class="okk">Nu mai ai nimic de cumparat.</p>${dn?'<div class="row lact"><button class="alt" id="lAll">Goleste lista</button></div>':""}`+(GRP?CATS.map(([id,lab])=>{const g=vis.filter(([x])=>catOf(x.n)===id);return g.length?`<h3 class="lgh">${esc(lab)}</h3>`+g.map(rowH).join(""):""}).join(""):vis.map(rowH).join("")); /* 4.21.0: produsele bifate raman la vedere pana golesti lista */
  else if(!vis.length)body=`<p class="muted">${l.length?"Totul e ascuns sau bifat.":"Lista e goala. Scrie mai sus un produs sau deschide o reteta si apasa Adauga la cumparaturi. Bifeaza ce ai deja in casa direct aici."}</p>`;
  else if(LV==="r"){const srcs=[];l.forEach(x=>{if(!x.done)x.src.forEach(s=>{if(!srcs.includes(s))srcs.push(s)})});
   body=srcs.map((s,j)=>{const its=l.filter(x=>!x.done&&x.src.includes(s)&&!hid(x));if(!its.length)return"";
@@ -1187,7 +1187,12 @@ function drawList(){listDedupe();const l=getList(),pan=getPan().length,vis=l.map
 $("#ll").onchange=e=>{const d=e.target.dataset; if(e.target.id==="lHp"){HP=e.target.checked;try{localStorage.setItem("rhp",HP?"1":"0")}catch(x){dbg(x)}PE=null;drawList();navCount();return}
  
  if(d.ld!==undefined){const l=getList(),ix=lIx(l,d,+d.ld);if(ix<0){lStale();return}
-  const it=l[ix];if(e.target.checked&&it.src.length===1&&it.src[0]==="Debara"){const u=undoMark(["rl","rp","rcat"]);addPan(it.n);l.splice(ix,1);putList(l);navCount();drawList();drawPantry();undoShow("Cumparat, inapoi in debara: "+cap(it.n)+".",u,redrawAll);return}
+  const it=l[ix];
+  /* 4.21.0: randul din Debara ramane in lista, bifat, pana golesti lista; produsul intra in Debara la bifare si iese daca debifezi (doar daca bifarea l-a adus) */
+  if(it.src.length===1&&it.src[0]==="Debara"){const u=undoMark(["rl","rp","rcat"]);
+   if(e.target.checked){it.done=1;it.pan=addPan(it.n)?1:0}
+   else{it.done=0;if(it.pan){const k=norm(it.n).trim();putPan(getPan().filter(x=>norm(x.n).trim()!==k))}it.pan=0}
+   putList(l);navCount();drawList();drawPantry();undoShow(it.done?"Cumparat, inapoi in debara: "+cap(it.n)+".":"Debifat: "+cap(it.n)+" iese din debara.",u,redrawAll);return}
   it.done=e.target.checked?1:0;putList(l);navCount();drawList()}};
 $("#ll").onkeydown=e=>{if(e.key==="Enter"&&e.target.id==="lAddI"){e.preventDefault();lAdd();return}if(e.key==="Enter"&&e.target.id==="lpn"){e.preventDefault();const b=document.querySelector("[data-lpok]");if(b)b.click()}if(e.key==="Escape"&&PE!==null){PE=null;drawList()}};
 $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
@@ -1628,7 +1633,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="4.20.0";
+const APP_V="4.21.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){

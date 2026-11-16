@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.21.0
+- **Cumparaturi: produsele bifate nu mai dispar.** Cand bifai ultimul produs, mesajul "Nu mai ai nimic de cumparat" inlocuia lista si ascundea tot ce bifasei. Acum mesajul apare deasupra, iar produsele bifate (taiate) raman la vedere pana golesti lista sau gatesti reteta (care scoate doar partea ei).
+- Randurile aduse din Debara raman si ele in lista, bifate. Produsul intra in Debara la bifare si iese daca debifezi (doar daca bifarea l-a adus, nu daca era deja acolo). Se scot din lista cu "Goleste lista" sau "Sterge bifate".
+
 ## 4.20.0
 - **Copiaza si trimite o reteta**, indiferent de sursa (carti, Retetele mele, colectia generata): doua iconite langa Favorita, in pagina retetei. Copiaza pune textul in clipboard; Trimite foloseste meniul de partajare al telefonului, iar pe desktop deschide WhatsApp (ca lista de cumparaturi).
 - Textul e simplu, fara diacritice si fara marcaje: titlu, portii si timp, ingrediente (pe sectiuni, cu cantitatile pentru portiile alese in pagina), mod de preparare numerotat, macro pe portie daca exista, iar ultima linie e sursa ("Din <carte>, reteta <nr>", "Retetele mele" sau "Generata cu AI"). Sfaturile nu intra, ca textul sa ramana scurt.
