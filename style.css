@@ -349,7 +349,6 @@ nav[hidden],#nav button[hidden]{display:none}
 .mt2 small{display:block;font-size:var(--fs-xs);color:var(--mut)}
 @media(max-width:420px){.mh2,.mt2{grid-template-columns:minmax(0,1fr) 52px 62px 48px;gap:4px;font-size:var(--fs-s)}.mh2{font-size:var(--fs-xs)}}
 
-.pdet{margin:6px 0 10px}.pdet summary{cursor:pointer;color:var(--mut);font-size:var(--fs-s)}
 .mmac.muted{color:var(--ink)}
 
 /* 2.26.0 */
@@ -507,3 +506,17 @@ button.lnk{background:none;border:0;padding:0;font:inherit;font-weight:700;text-
 .mrw .mn{flex:1 1 auto;min-width:0}.mrw .mn .src{margin-top:1px}
 .mrw .mpb{flex:0 0 auto;flex-wrap:nowrap}
 .mrw .lnk{text-align:left}
+/* 4.21.1: meniu planificat (gri) vs facut (verde deschis); lista: text aliniat */
+.mday .me.mpl .tx,.mday .me.mpl .lnk{color:var(--mut)}
+.mday .me.mdn{background:var(--soft);border-radius:8px;padding:6px 8px}
+.lst .it{align-items:flex-start}
+.lst .it input[type=checkbox]{margin:2px 0 0}
+.lst .it>div{padding-top:2px}
+.lst .it button{margin-top:0}
+.lst .it .src{margin-top:2px}
+.lst .it .srcl{padding:0 2px;min-height:0;font-size:var(--fs-xs);color:var(--mut);text-decoration:none}
+.lst .it .srcl:active,.lst .it .srcl:hover{color:var(--pri);text-decoration:underline}
+.lrh .alt{min-width:40px;padding:4px 8px}
+.lrh .alt svg{width:18px;height:18px}
+/* 4.22.0: atentionare (nu eroare): produsul exista in debara sub alta forma; legenda Debara mereu vizibila */
+.lb.lbw{background:transparent;color:var(--warn);padding:0 2px;font-weight:600}

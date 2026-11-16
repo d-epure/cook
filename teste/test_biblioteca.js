@@ -55,8 +55,8 @@ await (async()=>{
  // --- cumparaturi
  eq([T.packTxt(item("faina","g",870)),T.packTxt(item("faina","g",1000)),T.packTxt(item("faina","g",1200)),T.packTxt(item("smantana 20%","ml",250)),T.packTxt(item("rosii conserva","g",400)),T.packTxt(item("faina de migdale","g",120)),T.packTxt(item("lapte","ml",300)),T.packTxt(item("somon","g",300)),T.packTxt(item("unt","lingura",2))],["1 kg","","2 kg","2 x 200 ml","","","1 l","",""],"sugestie de ambalaj doar unde are sens");
  T.putList([item("hrisca","g",100),item("malai","g",300)]);T.show("lista");T.drawList();const ll=D.querySelector("#ll");
- eq([!!ll.querySelector("#lDn"),!!ll.querySelector("#lAll"),!!ll.querySelector("details.lmore"),/cumperi 1 kg/.test(ll.textContent)],[true,true,false,true],"Sterge bifate si Goleste lista sunt la vedere; sugestia apare in lista");
- ll.querySelector("#lAll").click();eq(T.getList().length,0,"Goleste lista");
+ eq([!!ll.querySelector("#lDn"),!!ll.querySelector("#lAll"),!!ll.querySelector("details.lmore"),/cumperi 1 kg/.test(ll.textContent)],[true,false,false,true],"Sterge bifate e la vedere, Goleste lista nu mai exista; sugestia apare in lista");
+ ll.querySelector("[data-ld]").click();D.querySelector("#lDn").click();eq(T.getList().map(x=>x.n),["malai"],"Sterge bifate scoate doar ce e bifat; restul ramane");
  })();
  console.log("\n## "+"4.4.0: etichete automate (keto pe carbohidrati neti, gluten-free), tipul 'metoda', linguri adunate cu grame.");
 await (async()=>{

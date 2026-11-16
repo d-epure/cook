@@ -2,6 +2,22 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.22.0
+- **Debara: un singur rand pe produs.** "Rosii", "Rosii deshidratate" si "Rosii, conserva" devin un rand "Rosii" cu marcajele proaspat, uscat si conserva aprinse. La fel "Usturoi" / "Usturoi, catei" / "Usturoi, pudra" si "Vanilie" / "Vanilie, esenta" / "Vanilie, extract". Unirea se face la pornire, cu copie de siguranta si buton Anuleaza (copia ramane si in `rpbak4220`).
+- **Condimente au acum marcaje** (proaspat, uscat, altceva), ca Legumele. Cuvintele catei, pastaie = proaspat; pudra, macinat, fulgi, granulat = uscat; esenta, extract, pasta = altceva (borcan, sos). Se aplica doar produselor din categorii cu marcaje: "zahar pudra" ramane separat de "zahar".
+- **Potrivirea cu retetele:** o reteta fara forma ("rosii") inseamna proaspat; o reteta cu forma ("rosii conserva") cere acea forma bifata. Un produs fara niciun marcaj bifat acopera orice forma. La Leguminoase, "uscat" e acceptat si cand reteta nu spune forma.
+- **Lista de cumparaturi:** daca produsul exista in debara, dar sub alta forma, apare atentionarea "Ai in debara, dar ca: conserva" (portocaliu, nu rosu: nu e eroare).
+- **Adauga in debara:** acelasi produs sub alta forma nu mai face rand nou, ci adauga marcajul pe randul existent ("Ghimbir pudra" devine "Ghimbir" cu uscat). Butonul cos ("Am terminat") pune in lista produsul cu forma cand are un singur marcaj ("Rosii conserva").
+- **Legenda simbolurilor** e mereu vizibila deasupra listei din Debara (nu mai e pliata).
+
+## 4.21.1
+- **Meniu: Planificat vs Facut.** Masa care nu a fost gatita apare cu text gri (planificat); dupa "Am gatit" randul devine verde deschis cu eticheta "gatit".
+- **"Am gatit" din Meniu scoate din cumparaturi partea acelei mese** (ca la Meal prep). Daca era in lista, produsele ei dispar (cele comune cu alte retete isi reduc cantitatea), cu Anuleaza.
+- **"Adauga la meniu" fara bifa de cumparaturi.** Ingredientele intra in lista doar prin cosurile din Meniu (zi, azi si maine, saptamana): o singura cale, nu doua.
+- **Cumparaturi fara "Goleste lista".** Ramane "Sterge bifate" (si cand totul e bifat). In "Pe retete", stergerea unui grup se face cu iconita de cos si confirmare "Confirma".
+- **Text aliniat in lista:** bifa la nivelul primei linii, ambele linii pe aceeasi margine, sursa mai mica si gri (subliniata la atingere).
+- **Corectie categorie:** "dovlecei" (plural) era la Altele; acum e la Legume. "dovlecel" si "dovleac" raman cuvinte separate (scopuri diferite).
+
 ## 4.21.0
 - **Cumparaturi: produsele bifate nu mai dispar.** Cand bifai ultimul produs, mesajul "Nu mai ai nimic de cumparat" inlocuia lista si ascundea tot ce bifasei. Acum mesajul apare deasupra, iar produsele bifate (taiate) raman la vedere pana golesti lista sau gatesti reteta (care scoate doar partea ei).
 - Randurile aduse din Debara raman si ele in lista, bifate. Produsul intra in Debara la bifare si iese daca debifezi (doar daca bifarea l-a adus, nu daca era deja acolo). Se scot din lista cu "Goleste lista" sau "Sterge bifate".
