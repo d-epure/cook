@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.18.1
+- Coada "Parcurge retetele de verificat": panoul arata acum pozitia reala ("De verificat: reteta 5 din 57"), nu un total de alta natura ("mai sunt 158": numara si retetele cu portii sau macro de verificat si cele din cos, in timp ce coada avea 57). Motivele de verificare apar citibile ("ingrediente neclare", nu `ingrediente_neclare`) si doar cele care tin de coada (ingrediente si text).
+
 ## 4.18.0
 - **Meal prep in doua zone**, separate printr-o linie si un subtitlu cu numarul din fiecare: **Planificat** (lista de asteptare: ce vrei sa gatesti; se poate gati sau sterge) si **Gatit** (meal prep efectiv, cu data si portii, pana la "Terminat"). Randurile sunt compacte, cu linie fina intre retete; zona goala nu apare.
 - In "Adauga la meniu", chipul "Meal prep" arata **doar loturile gatite**. O reteta aflata la Planificat se pune in meniu din Biblioteca, ca orice alta.

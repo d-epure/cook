@@ -3,6 +3,16 @@ const {boot,eq,done,sleep,item,supa,pan,dir,fs}=require("./_boot.js");
 (async()=>{
  console.log("\n## "+'4.2.0: timp si dificultate, pilule in Biblioteca, aplicatia fara cheie API, cumparaturi.');
 await (async()=>{
+ console.log("\n## "+'4.18.1: coada de verificare arata pozitia (reteta N din M) si etichete citibile.');
+ const names=["BOOK","vqStart","show","drawBook","vx","VQ"];
+ const w=await boot({},{names}),T=w.__t,D=w.document;
+  w.Element.prototype.scrollIntoView=()=>{};
+ T.BOOK[0].verifica=["ingrediente_neclare","ingrediente_rupte"];T.BOOK[0].cos=0;
+ T.show("carti");T.drawBook();T.vqStart();
+ const tx=(D.querySelector("#bres").textContent||"");
+ eq([/reteta 1 din \d+/.test(tx),/ingrediente_/.test(tx),/ingrediente neclare, ingrediente rupte/.test(tx),/mai sunt/.test(tx)],[true,false,true,false],"coada de verificare: 'reteta 1 din M', fara coduri cu underscore");
+})();
+await (async()=>{
  const names=["stepMin","recT","recD","recTEst","tTxt","tChips","BOOK","drawBook","show","packTxt","drawList","putList","getList","keyUpd","drawOnb","editForm","editSave","getStored","bplOk","LS"];
  let w=await boot({rp:pan},{names}),T=w.__t,D=w.document,L=w.localStorage;
  // --- timp
