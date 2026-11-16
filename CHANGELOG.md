@@ -2,6 +2,13 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.20.0
+- **Copiaza si trimite o reteta**, indiferent de sursa (carti, Retetele mele, colectia generata): doua iconite langa Favorita, in pagina retetei. Copiaza pune textul in clipboard; Trimite foloseste meniul de partajare al telefonului, iar pe desktop deschide WhatsApp (ca lista de cumparaturi).
+- Textul e simplu, fara diacritice si fara marcaje: titlu, portii si timp, ingrediente (pe sectiuni, cu cantitatile pentru portiile alese in pagina), mod de preparare numerotat, macro pe portie daca exista, iar ultima linie e sursa ("Din <carte>, reteta <nr>", "Retetele mele" sau "Generata cu AI"). Sfaturile nu intra, ca textul sa ramana scurt.
+
+## 4.19.0
+- **Favorite are un singur loc:** pilula rapida "Favorite" din Biblioteca. Optiunea "★ Favorite" a disparut din lista "Carte" (aceeasi alegere in doua locuri). Favoritele sunt acum un comutator propriu, care se combina cu orice carte, categorie sau eticheta (de exemplu: doar favoritele din "Retete cu carne"). Categoriile si etichetele arata si ele doar ce exista in favorite cand pilula e activa.
+
 ## 4.18.1
 - Coada "Parcurge retetele de verificat": panoul arata acum pozitia reala ("De verificat: reteta 5 din 57"), nu un total de alta natura ("mai sunt 158": numara si retetele cu portii sau macro de verificat si cele din cos, in timp ce coada avea 57). Motivele de verificare apar citibile ("ingrediente neclare", nu `ingrediente_neclare`) si doar cele care tin de coada (ingrediente si text).
 

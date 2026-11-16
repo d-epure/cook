@@ -3,6 +3,20 @@ const {boot,eq,done,sleep,item,supa,pan,dir,fs}=require("./_boot.js");
 (async()=>{
  console.log("\n## "+'4.2.0: timp si dificultate, pilule in Biblioteca, aplicatia fara cheie API, cumparaturi.');
 await (async()=>{
+ console.log("\n## "+'4.20.0: copierea si trimiterea unei retete (text simplu).');
+ const names=["BOOK","recTxt","show","openBook","drawBook"];
+ const w=await boot({},{names}),T=w.__t,D=w.document;
+ const r={sursa:"Retete keto",nr:214,titlu:"Supa crema de rosii keto",categorie:"Supe",portii:4,timp:35,ingrediente:[{c:800,u:"g",n:"rosii"},{c:1,u:"",n:"ceapa"},{g:"Crema",c:2,u:"linguri",n:"ulei de masline"}],pasi_carte:["Caleste ceapa 5 minute.","Fierbe 20 de minute."],macro:{kcal:289,proteine:5,carbo:20,grasimi:23}};
+ const t=T.recTxt("b",r),L=t.split("\n");
+ eq([L[0],L[1],t.includes("\nIngrediente\n- 800 g Rosii\n- 1 Ceapa\nCrema:\n- 2 linguri Ulei de masline"),t.includes("Mod de preparare\n1. Caleste ceapa 5 minute.\n2. Fierbe 20 de minute."),t.includes("Macro pe portie: 289 kcal, 5 g proteine"),t.endsWith("Din Retete keto, reteta 214")],["Supa crema de rosii keto","4 portii - 35 min",true,true,true,true],"textul retetei: titlu, portii si timp, ingrediente pe sectiuni, pasi, macro, sursa la final");
+ eq(T.recTxt("b",Object.assign({},r,{sursa:"Retetele mele",nr:3})).endsWith("Retetele mele"),true,"reteta ta se semneaza 'Retetele mele'");
+ eq(T.recTxt("s",{titlu:"Idee AI",portii:2,ingrediente:[{cantitate:2,unitate:"",nume:"oua"}],pasi:[{text:"Fierbe."}]}).endsWith("Generata cu AI"),true,"reteta generata se semneaza 'Generata cu AI'");
+ T.BOOK.unshift(r);T.show("carti");T.openBook(0,4,"#bres");
+ eq([!!D.querySelector("#bres [data-rcp]"),!!D.querySelector("#bres [data-rsh]")],[true,true],"pagina retetei are iconitele Copiaza si Trimite");
+ let cp="";Object.defineProperty(w.navigator,"clipboard",{value:{writeText:x=>{cp=x;return Promise.resolve()}},configurable:true});
+ D.querySelector("#bres [data-rcp]").click();await sleep(30);eq(cp.startsWith("Supa crema de rosii keto"),true,"Copiaza pune textul retetei in clipboard");
+})();
+await (async()=>{
  console.log("\n## "+'4.18.1: coada de verificare arata pozitia (reteta N din M) si etichete citibile.');
  const names=["BOOK","vqStart","show","drawBook","vx","VQ"];
  const w=await boot({},{names}),T=w.__t,D=w.document;
@@ -13,7 +27,7 @@ await (async()=>{
  eq([/reteta 1 din \d+/.test(tx),/ingrediente_/.test(tx),/ingrediente neclare, ingrediente rupte/.test(tx),/mai sunt/.test(tx)],[true,false,true,false],"coada de verificare: 'reteta 1 din M', fara coduri cu underscore");
 })();
 await (async()=>{
- const names=["stepMin","recT","recD","recTEst","tTxt","tChips","BOOK","drawBook","show","packTxt","drawList","putList","getList","keyUpd","drawOnb","editForm","editSave","getStored","bplOk","LS"];
+ const names=["stepMin","recT","recD","recTEst","tTxt","tChips","BOOK","drawBook","show","packTxt","drawList","putList","getList","keyUpd","drawOnb","editForm","editSave","getStored","bplOk","LS","bKey","toggleFav","isFav"];
  let w=await boot({rp:pan},{names}),T=w.__t,D=w.document,L=w.localStorage;
  // --- timp
  eq([T.stepMin("Fierbe 20 de minute."),T.stepMin("Coace 30-35 de minute."),T.stepMin("Rumeneste 2 minute pe fiecare parte."),T.stepMin("Lasa o ora la rece."),T.stepMin("Tine la frigider cel putin 6 ore, de preferat peste noapte."),T.stepMin("Mixeaza 30 sec."),T.stepMin("Coace la 190 de grade.")],[20,35,4,60,480,0.5,0],"minutele se citesc din pasi (interval, pe fiecare parte, ore, peste noapte; gradele nu sunt minute)");
@@ -30,7 +44,8 @@ await (async()=>{
  const n0=cnt();pill("Sub 30 min").click();const n30=cnt();eq([n30>0&&n30<n0,n30===all.filter(r=>r.timp<=30).length,pill("Sub 30 min").classList.contains("on")],[true,true,true],"Sub 30 min filtreaza dupa timp");
  pill("Desert").click();const nd=cnt();eq(nd>0&&nd<n30,true,"pilulele se combina (Desert + Sub 30 min)");pill("Desert").click();pill("Sub 30 min").click();eq(cnt(),n0,"debifate, revin toate retetele");
  pill("Din debara").click();eq([D.querySelector("#bd").value,pill("Din debara").classList.contains("on")],["0",true],"'Din debara' apasa pe filtrul existent Din debara");pill("Din debara").click();eq(D.querySelector("#bd").value,"","si il scoate la a doua apasare");
- pill("Favorite").click();eq(D.querySelector("#bs").value!=="",true,"'Favorite' apasa pe filtrul Carte");pill("Favorite").click();
+ {const b0=cnt();pill("Favorite").click();const nf=cnt();eq([pill("Favorite").classList.contains("on"),nf<=b0,[...D.querySelectorAll("#bs option")].some(o=>/Favorite/.test(o.textContent))],[true,true,false],"4.19.0: Favorite e doar pilula; lista Carte nu mai are optiunea");pill("Favorite").click();eq([cnt(),pill("Favorite").classList.contains("on")],[b0,false],"a doua apasare il scoate");}
+ {const r0=T.BOOK.find(r=>!r.cos&&!r.nou);if(!T.isFav(T.bKey(r0)))T.toggleFav(T.bKey(r0));pill("Favorite").click();const sb=D.querySelector("#bs");const only=cnt();sb.value=r0.sursa||"necunoscuta";sb.dispatchEvent(new w.Event("change",{bubbles:true}));const same=cnt();const other=[...sb.options].map(o=>o.value).find(v=>v&&v!==sb.value);sb.value=other;sb.dispatchEvent(new w.Event("change",{bubbles:true}));const none=cnt();eq([only>=1,same===only,none===0],[true,true,true],"Favorite se combina cu filtrul Carte (favorite dintr-o singura carte)");sb.value="";sb.dispatchEvent(new w.Event("change",{bubbles:true}));pill("Favorite").click();T.toggleFav(T.bKey(r0));}
  eq(/aprox\. \d+ min/.test(D.querySelector("#bres").textContent),true,"timpul apare pe carduri");
  // --- fara cheie API
  eq([D.body.classList.contains("nokey"),D.querySelector("#v-carti").classList.contains("hidden"),D.querySelector("#v-idei").classList.contains("hidden")],[true,false,false].map((x,i)=>i===2?true:x),"fara cheie: marcaj pe pagina, porneste in Biblioteca");
