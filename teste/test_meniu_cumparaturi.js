@@ -68,6 +68,18 @@ await (async()=>{
  // 4.17.0: zona de sus din Meniu = un singur rand cu iconite
  {T.show("meniu");T.drawMenu();const mw=D.querySelector("#mw"),top=mw.querySelector(".mtop");eq([!!top,!!top&&top.querySelectorAll("button.ico").length>=2,!!mw.querySelector("details.lmore"),/Mai multe/.test(mw.textContent.split("Micronutrienti")[0])],[true,true,false,false],"un rand: segment + cos + Propune; fara Mai multe");
  eq(!!top.querySelector("[data-mshop]")&&!!top.querySelector("[data-mprop]"),true,"cos si Propune-mi un meniu sunt in randul de sus");}
+ // 4.18.0: Meal prep in doua zone; din Meal prep se alege doar ce e gatit; marcarea meselor abia la gatit
+ {T.putMP([]);T.putList([]);const ents=()=>Object.entries(T.getMen()).filter(([d])=>d.startsWith("2099")).flatMap(([d,v])=>Object.values(v).flat()).filter(e=>e.k===T.sKey(r));
+ T.show("lista");T.menOpen({s:"s",r,day:"2099-01-03"});D.querySelector("[data-mdok]").click();
+ T.mpOpen();T.mpForm("s",r);T.mpSave("p");
+ eq(ents().some(e=>e.mp),false,"planificat: mesele din meniu nu devin 'din Meal prep'");
+ T.show("meniu");T.drawMenu();let mw=D.querySelector("#mw").textContent;eq([/Planificat \(1\)/.test(mw),/Gatit \(/.test(mw)],[true,false],"doar zona Planificat cand nu e nimic gatit");
+ T.menOpen({day:"2099-01-04"});{const c=D.querySelector("#mdlg [data-mdf=m]");if(!c.classList.contains("on"))c.click()}eq(D.querySelector("#mdres").textContent.includes(r.titlu),false,"in alegerea din Meal prep nu apare ce e doar planificat");T.menClose&&0;D.querySelector("[data-mdx]").click();
+ const lot=T.getMP()[0];D.querySelector("[data-mpcook=\""+lot.id+"\"]").click();
+ eq(ents().some(e=>e.mp),true,"dupa Am gatit, mesa din meniu devine 'din Meal prep'");
+ T.show("meniu");T.drawMenu();mw=D.querySelector("#mw").textContent;eq([/Gatit \(1\)/.test(mw),/Planificat \(/.test(mw)],[true,false],"dupa gatit: doar zona Gatit");
+ T.menOpen({day:"2099-01-04"});{const c=D.querySelector("#mdlg [data-mdf=m]");if(!c.classList.contains("on"))c.click()}eq(D.querySelector("#mdres").textContent.includes(r.titlu),true,"lotul gatit se poate alege in meniu");D.querySelector("[data-mdx]").click();
+ T.show("lista");T.menOpen({s:"s",r,day:"2099-01-05"});D.querySelector("[data-mdok]").click();const nw=Object.entries(T.getMen()).filter(([d])=>d==="2099-01-05").flatMap(([d,v])=>Object.values(v).flat());eq([nw.length>0,nw.some(e=>e.mp)],[true,false],"din Biblioteca = gatit doar pentru acea masa, nu din Meal prep");T.putMP([]);}
  // --- Cina si reteta stearsa
  eq(T.SLOTS.map(x=>x[0]),["mic","pranz","cina","desert"],"patru mese pe zi");
  T.show("meniu");T.drawMenu();const tx=D.querySelector("#mw").textContent;eq([/Cina/.test(tx),/Reteta nu mai e in Biblioteca/.test(tx)],[true,true],"Cina apare; reteta stearsa e marcata");

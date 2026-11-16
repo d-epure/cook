@@ -1,9 +1,9 @@
 # Backlog - Cartea mea de retete
 
-Starea la versiunea 4.17.0 (16 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
+Starea la versiunea 4.18.0 (16 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
 
 ## De verificat pe dispozitiv real
-Versiunile 3.20.0 - 4.17.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
+Versiunile 3.20.0 - 4.18.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
 - Dupa actualizare: favoritele, jurnalul, meniul si "Retetele mele" sunt la locul lor; Biblioteca are 956 de retete livrate plus ale tale.
 - Consola browserului (F12) fara erori "Content Security Policy" la: Idei cu AI, backup in Dropbox, descarcarea unui backup, butonul WhatsApp.
 - Aplicatia porneste in mod avion dupa prima incarcare (service worker cu cache propriu).
@@ -12,7 +12,7 @@ Versiunile 3.20.0 - 4.17.0 au fost testate doar in browser simulat (teste in fol
 - Pagina Idei fara cheie API si cu cheie.
 
 ## Urmeaza (in ordinea recomandata)
-0. Lotul agreat pe 16 noiembrie e facut (4.13.0 - 4.17.0). Raman de testat pe telefon: randul de sus din Meniu (iconitele cos / bagheta / cos de gunoi, apasare lunga pentru titlu).
+0. Lotul agreat pe 16 noiembrie e facut (4.13.0 - 4.18.0). Raman de testat pe telefon: cardul Meal prep cu zonele Planificat / Gatit; randul de sus din Meniu (iconitele cos / bagheta / cos de gunoi, apasare lunga pentru titlu).
 1. Retetele noi (air fryer, asiatic, traditional romanesc, mic dejun cu carne, gustari, peste) sunt gatite pe hartie, nu si in bucatarie: de corectat timpi, cantitati si formulari pe masura ce le gatesti tu sau testerii. Corectiile se fac in fisierele din `carti/`, cu `v` crescut in `carti.json`.
 2. Alimentele adaugate de utilizator (date locale, nu se livreaza cu aplicatia): de corectat de mana in Ghid nutritie - "pastarnac" si "pastarnac, radacina" se sterg (exista in Ghid), "rosii deshidratate" se sterge (exista "Rosii uscate"), "burta de vita prefiarta" are valori de circa 2,5 ori prea mari, "Telemea light" de luat de pe eticheta, "oase de vita cu maduva" de verificat.
 3. Baza ramane dominata de keto (551 din 956 de retete au eticheta automata keto, din care 500 sunt cele doua carti keto; cartea Retete high-volume din 4.8.0 e fara keto). Daca deranjeaza la testare: mai multe retete non-keto sau mai putine supe keto.

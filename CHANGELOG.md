@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.18.0
+- **Meal prep in doua zone**, separate printr-o linie si un subtitlu cu numarul din fiecare: **Planificat** (lista de asteptare: ce vrei sa gatesti; se poate gati sau sterge) si **Gatit** (meal prep efectiv, cu data si portii, pana la "Terminat"). Randurile sunt compacte, cu linie fina intre retete; zona goala nu apare.
+- In "Adauga la meniu", chipul "Meal prep" arata **doar loturile gatite**. O reteta aflata la Planificat se pune in meniu din Biblioteca, ca orice alta.
+- O masa din meniu devine "din Meal prep" **doar cand lotul e gatit** (la "Am gatit" sau "Am gatit deja"), nu la planificare. Ce alegi din Biblioteca inseamna gatit doar pentru masa respectiva, deci nu mai e marcat automat "din Meal prep" nici cand exista un lot gatit al aceleiasi retete.
+- Bifa "Adauga ingredientele la cumparaturi" din "Adauga la meniu" apare acum la orice reteta.
+
 ## 4.17.0
 - **Meniu, zona de sus intr-un singur rand** (varianta A): segmentul "Azi si maine / Saptamana" la stanga, iar la dreapta trei iconite: cosul de cumparaturi (pentru perioada aleasa), "Propune-mi un meniu" (bagheta) si, doar pe saptamana, cosul de gunoi pentru "Goleste saptamana" (cu "Confirma" si Anuleaza). Meniul "Mai multe" a disparut; fiecare iconita are titlu la apasare lunga.
 - Cand produsele sunt deja in lista, al doilea tap pe cos cere "Confirma" (cu un mesaj care spune de ce), in locul textului lung de pe buton.

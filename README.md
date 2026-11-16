@@ -12,6 +12,8 @@ De la 4.7.0, potrivirea cu debaraua tine cont de marcaje: `formSplit` scoate for
 
 De la 4.8.0: cartea *Retete high-volume* (`carti/retete_high_volume.json`, 100 de retete, `v` 1): cel mult 500 kcal pe portie si cel mult circa 1,1 kcal pe gram dupa gatire (greutate estimata cu factori pentru cereale, paste si carne), cu varianta pereche in sfaturi (macro recalculat cu `macLocal`); eticheta `high-volume` (`TDEF`, migrare `rtv3`); tema Gatire *Volum mare, calorii putine*. Test: `teste/test_carti.js`. Retetele nu sunt gatite si verificate.
 
+De la 4.18.0: `mpHtml` are doua zone (`mpRow`): Planificat (`st:"p"`) si Gatit; in "Adauga la meniu" chipul Meal prep filtreaza `st!=="p"`; `mpMark(k)` marcheaza mesele din meniu "din Meal prep" la gatit; `menAdd` nu mai marcheaza automat (din Biblioteca = gatit doar pentru acea masa).
+
 De la 4.17.0: zona de sus din Meniu e `.mtop` (segmentul `.mseg` + `button.ico` cu `data-mshop`, `data-mprop` si, pe saptamana, `data-mclr` cu `armDel`); `details.lmore` a fost scos din Meniu. La cos, "Sunt deja in lista" foloseste `armDel` plus un toast.
 
 De la 4.16.1: `mkEntry` pune implicit `p:1` (portii mancate), meniul nu mai are camp de portii; `bp` ramane portiile retetei, pentru macro si cantitati.
