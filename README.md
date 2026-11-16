@@ -12,6 +12,10 @@ De la 4.7.0, potrivirea cu debaraua tine cont de marcaje: `formSplit` scoate for
 
 De la 4.8.0: cartea *Retete high-volume* (`carti/retete_high_volume.json`, 100 de retete, `v` 1): cel mult 500 kcal pe portie si cel mult circa 1,1 kcal pe gram dupa gatire (greutate estimata cu factori pentru cereale, paste si carne), cu varianta pereche in sfaturi (macro recalculat cu `macLocal`); eticheta `high-volume` (`TDEF`, migrare `rtv3`); tema Gatire *Volum mare, calorii putine*. Test: `teste/test_carti.js`. Retetele nu sunt gatite si verificate.
 
+De la 4.16.0: `HP` (Ascunde produsele din debara) se salveaza in localStorage `rhp` ("0" = dezactivat; nu e in `DKEYS`).
+
+De la 4.15.0: fara cheie, `body.nokey [data-ai]` e gri (nu ascuns) iar un handler de click in faza de captura afiseaza mesajul; `button.gri` pentru butoanele de adaptare fara robot. Pagina de pornire e `show("carti")`. Macro-ul zilei e `details.mmic` cu cheia `MICO["m"+zi]`. In dialogul "Adauga la meniu", bifa `#mdl` adauga ingredientele cu sursa "Titlu (meniu zi)" si `en.L=1`.
+
 De la 4.14.0: in Meniu si in Meal prep numele retetei e `button.lnk` (`data-mopen` / `data-mpopen`), fara buton "Deschide".
 
 De la 4.13.0: loturile de Meal prep (`rmp`) au `st:"p"` cand sunt planificate (fara `st` = gatit; `d` gol pana la gatire). `mpSave(mode)` ("p" planificat cu ingrediente in lista, "g" gatit deja cu jurnal), `data-mpcook` (gatit: jurnal + `removeSrc(titlu)`), `data-mpdel` (scoate lotul si partea lui din lista). Randurile din lista cu sursa unica "Debara" au doar bifa: bifat = `addPan` + randul dispare.

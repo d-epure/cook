@@ -154,7 +154,7 @@ function renderBox(){const sel=new Set([...document.querySelectorAll("#apbox inp
 function apSum(){const c=[...document.querySelectorAll("#apbox input:checked")].map(i=>i.value),L=c.length?AP.filter(a=>c.includes(a.id)):AP.filter(a=>a.on);$("#apsum").innerHTML="<b>Aparate pentru adaptare:</b> "+(L.map(a=>esc(a.id)).join(", ")||"niciunul")+(c.length?"":" <span class=\"muted\">(implicit)</span>");syncAdp()}
 /* adaptarea la aparate e activa doar daca e selectat un robot cu moduri de gatire (MC sau Thermomix) */
 function hasRobot(){const c=[...document.querySelectorAll("#apbox input:checked")].map(i=>i.value),L=c.length?AP.filter(a=>c.includes(a.id)):AP.filter(a=>a.on);return L.some(a=>a.id==="MC"||a.id==="Thermomix")}
-function syncAdp(){const ok=hasRobot();document.querySelectorAll("[data-adp]").forEach(b=>{if(!b.dataset.busy)b.disabled=!ok});document.querySelectorAll(".adphint").forEach(h=>h.hidden=ok)}
+function syncAdp(){const ok=hasRobot();document.querySelectorAll("[data-adp]").forEach(b=>{b.classList.toggle("gri",!ok)});document.querySelectorAll(".adphint").forEach(h=>h.hidden=ok)}
 $("#apbox").addEventListener("change",apSum);$("#lbbox").addEventListener("change",lbSum);
 function renderCfg(){
  $("#apcfg").innerHTML=AP.map((a,i)=>`<div class="apr apd"><div class="apn">${tag(a.id)}<b>${esc(a.nume)}</b></div><div class="apc"><label class="ck"><input type="checkbox" data-t="on" data-i="${i}" ${a.on?"checked":""}> activ</label><label class="ck"><input type="checkbox" data-t="backup" data-i="${i}" ${a.backup?"checked":""}> backup</label><button class="alt ico" data-x="${i}" aria-label="Sterge" title="Sterge">${IC_DEL}</button></div></div>`).join("")+
@@ -505,7 +505,7 @@ function drawBook(){
  if(bfs.dataset.k!==tg.join("|")){bfs.dataset.k=tg.join("|");bfs.innerHTML='<option value="">Toate</option>'+tg.map(x=>`<option>${esc(x)}</option>`).join("");bfs.value=tg.includes(bfp)?bfp:""}
  const q=qWords($("#bq").value),f=bfs.value;bplDraw();
  const bp=$("#bp").value;
- {const n=["#bs","#bc","#bf","#bv","#bj","#bp"].filter(s=>$(s).value).length,n2=["#bj","#bp"].filter(s=>$(s).value).length;$("#bfsum2").textContent=n2?"Mai multe filtre ("+n2+")":"Mai multe filtre";if(n2)$("#bflt2").open=true;$("#bfsum").textContent=n?"Filtre ("+n+(n===1?" activ)":" active)"):"Filtre"}
+ {const n=["#bs","#bc","#bf","#bv","#bj","#bp"].filter(s=>$(s).value).length,n2=["#bj","#bv"].filter(s=>$(s).value).length;$("#bfsum2").textContent=n2?"Mai multe filtre ("+n2+")":"Mai multe filtre";if(n2)$("#bflt2").open=true;$("#bfsum").textContent=n?"Filtre ("+n+(n===1?" activ)":" active)"):"Filtre"}
  const bd=$("#bd").value,usePan=bd!==""&&getPan().length>0,bj=$("#bj").value,NT=bj?getNotes():null,lim60=dAdd(dKey(new Date()),-60);
  const jOk=r=>{if(!bj)return true;const n=NT[bKey(r)]||{},l=lastCooked(n);return bj==="4"?+n.st>=4:bj==="ok"?!!l:bj==="g0"?!l:!l||l<lim60};
  const l=BOOK.map((r,i)=>{const z=q.length?bScore(r,q):{s:0,h:0};return{r,i,sc:z.h,w:z.s,ms:usePan?missing(r):null}}).filter(x=>!x.r.nou&&!x.r.cos&&(!usePan||(x.ms.tot>0&&x.ms.miss.length<=+bd))&&jOk(x.r)&&(!bp||(bp==="ok"?!recPref(x.r).av.length:recPref(x.r).lk.length>0))&&(!q.length||x.sc>0)&&(!f||bLab(x.r).includes(f))&&(!sc0||inSrc(x.r,sc0))&&(!cat0||x.r.categorie===cat0)&&stOk(x.r)&&bplOk(x.r)).sort((a,b)=>usePan?(a.ms.miss.length-b.ms.miss.length)||(b.w-a.w)||(b.sc-a.sc):(b.w-a.w)||(b.sc-a.sc));
@@ -916,7 +916,7 @@ const BASE=["sare","piper","ulei","zahar","faina"]; /* puse implicit in debara (
 const getList=()=>{try{const j=JSON.parse(LS("rl"));return Array.isArray(j)?j.filter(x=>x&&typeof x==="object"&&typeof x.n==="string"):[]}catch(e){return[]}};
 const putList=l=>LS("rl",JSON.stringify(l));
 /* ===== DEBARA (produse pe care le ai deja / se consuma greu; fara cantitati) ===== */
-let HP=true,PE=null,PED=null;
+let HP=(()=>{try{return localStorage.getItem("rhp")!=="0"}catch(e){return true}})(),PE=null,PED=null; /* 4.16.0: starea "Ascunde produsele din debara" se pastreaza pe acest dispozitiv (nu intra in backup) */
 /* categorii debara; marcaje (proaspat/congelat/uscat/conserva/altceva) doar unde au sens */
 /* categorii alimente: editabile in Setari -> Alimente > Categorii alimente (rcg); "altele" ramane mereu ultima */
 const DEFCATS=[{id:"condimente",n:"Condimente",f:0},{id:"legume",n:"Legume",f:1},{id:"carne",n:"Carne",f:1},{id:"fructe",n:"Fructe",f:1},{id:"cereale",n:"Cereale",f:0},{id:"leguminoase",n:"Leguminoase",f:1},{id:"lactate",n:"Lactate",f:0},{id:"altele",n:"Altele",f:0}];
@@ -1170,7 +1170,7 @@ function drawList(){listDedupe();const l=getList(),pan=getPan().length,vis=l.map
  const bn=LBN?`<div class="lbn"><span>Adaugat din meniu (${esc(LBN.label)}): <b>${LBN.n}</b> produse noi din ${LBN.r} retete${np?` (${np} ascunse, le ai in debara)`:""}${LBN.sk?` (${LBN.sk} fara ingrediente)`:""}${LBN.old?`; ${LBN.old} erau deja adaugate`:""}.</span><button class="alt" data-lbk="1">Inapoi la meniu</button><button class="alt" data-lbx="1" aria-label="Inchide">&times;</button></div>`:"";
  $("#ll").innerHTML=bn+`<div class="row ladd"><input id="lAddI" maxlength="120" placeholder="Adauga produs, ex: 2 l lapte, paine" aria-label="Produs nou in lista" autocomplete="off"><button class="go" id="lAddB">Adauga</button></div>`+(l.length&&need?`<div class="row mseg lseg"><button class="alt${LV==="p"?" on":""}" data-lv="p">Pe produse</button><button class="alt${LV==="r"?" on":""}" data-lv="r">Pe retete</button></div><div class="row lact"><button class="alt" id="lCp">Copiaza lista</button>${canShare()?`<button class="alt" id="lSh">Trimite lista</button>`:`<button class="alt" id="lWa">Trimite pe WhatsApp</button>`}<button class="alt" id="lDn">Sterge bifate</button><button class="alt" id="lAll">Goleste lista</button></div>
  <label style="font-weight:400;margin:2px 0;display:flex;align-items:center;gap:8px"><input type="checkbox" id="lHp" class="wauto" ${HP?"checked":""}> Ascunde produsele din debara${pan?"":" (debaraua e goala)"}${np?" - "+np+" ascunse":""}</label><div id="lmsg" class="muted"></div>`:"")+body}
-$("#ll").onchange=e=>{const d=e.target.dataset; if(e.target.id==="lHp"){HP=e.target.checked;PE=null;drawList();navCount();return}
+$("#ll").onchange=e=>{const d=e.target.dataset; if(e.target.id==="lHp"){HP=e.target.checked;try{localStorage.setItem("rhp",HP?"1":"0")}catch(x){dbg(x)}PE=null;drawList();navCount();return}
  
  if(d.ld!==undefined){const l=getList(),ix=lIx(l,d,+d.ld);if(ix<0){lStale();return}
   const it=l[ix];if(e.target.checked&&it.src.length===1&&it.src[0]==="Debara"){const u=undoMark(["rl","rp","rcat"]);addPan(it.n);l.splice(ix,1);putList(l);navCount();drawList();drawPantry();undoShow("Cumparat, inapoi in debara: "+cap(it.n)+".",u,redrawAll);return}
@@ -1242,6 +1242,8 @@ $("#cook").onclick=e=>{const d=e.target.dataset;if(!CK)return;
 document.addEventListener("keydown",e=>{if(!CK)return;if(e.key==="Escape"){cookClose(false)}else if(e.key==="ArrowRight"&&!/INPUT|TEXTAREA|SELECT/.test((e.target||{}).tagName||"")){const b=document.querySelector("[data-ckn]");if(b)b.click()}else if(e.key==="ArrowLeft"){const b=document.querySelector("[data-ckp]");if(b&&!b.disabled)b.click()}});
 /* ===== Primii pasi (apare doar cat mai lipsesc lucruri esentiale; se poate ascunde) ===== */
 /* 4.2.0: fara cheie API, tot ce cheama modelul e ascuns (body.nokey, vezi style.css); aplicatia e completa si asa */
+/* 4.15.0: fara cheie, butoanele AI raman vizibile, gri; la apasare spun de ce */
+document.addEventListener("click",e=>{if(!document.body.classList.contains("nokey"))return;const b=e.target.closest&&e.target.closest("[data-ai]");if(!b)return;e.preventDefault();e.stopImmediatePropagation();toast("Functia asta foloseste AI si cere o cheie API: o adaugi in Setari > AI si cheie.")},true);
 function keyUpd(){try{document.body.classList.toggle("nokey",!LS("rk"))}catch(e){dbg(e)}}
 function drawOnb(){const el=$("#onb");if(!el)return;
  const st=[["pan","Spune ce ai in Debara","Ca sa vezi ce poti gati fara sa cumperi nimic.",getPan().some(p=>!BASE.includes(p.n))]],n=st.filter(x=>x[3]).length;
@@ -1420,7 +1422,7 @@ function menOpen(o){const r=o.r||null;MD={day:o.day||dKey(new Date()),slot:o.slo
  const today=dKey(new Date()),mt=monOf(today);let st=MD.day<mt?monOf(MD.day):mt;if(MD.day>dAdd(st,34))st=monOf(MD.day);
  const dopt=[...Array(35)].map((_,i)=>{const k=dAdd(st,i);return`<option value="${k}"${k===MD.day?" selected":""}>${esc(dLab(k))}${k===today?" (azi)":""}</option>`}).join("");
  const sopt=SLOTS.map(([id,l])=>`<option value="${id}"${id===MD.slot?" selected":""}>${l}</option>`).join("");
- const body=r?`<p class="mt12 mb0"><b>${esc(r.titlu)}</b></p>${o.s==="b"&&r.portii==null?`<p class="muted">Cantitatile sunt cele din carte.</p>`:`<label for="mdp">Portii</label><input id="mdp" type="number" min="1" max="99" value="${esc(MD.p||r.portii||1)}" style="max-width:110px">`}<div class="row mt16" ><button class="go m0" data-mdok="1" >Adauga la meniu</button><button class="alt" data-mdx="1">Anuleaza</button></div>`
+ const body=r?`<p class="mt12 mb0"><b>${esc(r.titlu)}</b></p>${o.s==="b"&&r.portii==null?`<p class="muted">Cantitatile sunt cele din carte.</p>`:`<label for="mdp">Portii</label><input id="mdp" type="number" min="1" max="99" value="${esc(MD.p||r.portii||1)}" style="max-width:110px">`}${getMP().some(x=>x.k===(o.s==="b"?bKey(r):sKey(r)))?"":`<label class="mt12 chkl" for="mdl"><input id="mdl" type="checkbox"> Adauga ingredientele la cumparaturi</label>`}<div class="row mt16" ><button class="go m0" data-mdok="1" >Adauga la meniu</button><button class="alt" data-mdx="1">Anuleaza</button></div>`
   :`<label for="mdq" class="mt12">Cauta o reteta (nume sau ingrediente)</label><input id="mdq" placeholder="ex: ciorba, piept de pui" autocomplete="off"><div id="mdres"></div>
    <label for="mdt">Sau scrie liber (ex: resturi, iesim in oras)</label><div class="row g8" ><input id="mdt" maxlength="80" class="fx1"><button class="alt" data-mdtxt="1">Adauga text</button></div><div class="row mt16" ><button class="alt" data-mdx="1">Inchide</button></div>`;
  $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Adauga la meniu"><h2 class="m0">Adauga la meniu</h2><div class="fgrid mt8" ><div><label for="mdday">Ziua</label><select id="mdday">${dopt}</select></div><div><label for="mdslot">Masa</label><select id="mdslot">${sopt}</select></div></div>${body}</div>`;
@@ -1449,7 +1451,9 @@ function menAdd(en){if(!en.mp&&en.s!=="x"&&getMP().some(x=>x.k===en.k))en.mp=1;c
 $("#mdlg").onclick=e=>{if(PRP){pxClick(e);return}const b=e.target,d=b.dataset;
  if(b===$("#mdlg")||d.mdx!==undefined){menClose();return}
  if(!MD)return;
- if(d.mdok!==undefined){const p=$("#mdp")?clampP($("#mdp").value):(MD.r.portii||1);menAdd(mkEntry(MD.s,MD.r,p));return}
+ if(d.mdok!==undefined){const p=$("#mdp")?clampP($("#mdp").value):(MD.r.portii||1),en=mkEntry(MD.s,MD.r,p),day=MD.day,want=!!($("#mdl")&&$("#mdl").checked),dup=en.s!=="x"&&((getMen()[day]||{})[MD.slot]||[]).some(x=>x.s!=="x"&&x.k===en.k);
+  let n=0;if(want&&!dup&&!getMP().some(x=>x.k===en.k)){const ing=menIngs(en);if(ing.length){n=addList(ing,en.t+" (meniu "+ZILE[dFrom(day).getDay()].toLowerCase()+")");en.L=1}}
+  menAdd(en);if(n)toast("Adaugat in meniu; "+n+" produse noi la cumparaturi.");return}
  if(d.mdf!==undefined){MD.f=MD.f===d.mdf?null:d.mdf;mdSearch();return}
  if(d.mdpick!==undefined){const[s,i]=d.mdpick.split(":"),r=s==="s"?getSaved()[+i]:BOOK[+i];if(r){if(MD.mp){mpForm(s,r);return}const en=mkEntry(s,r);if(d.mpk)en.mp=1;menAdd(en)}return}
  if(d.mpok!==undefined){mpSave(d.mpok);return}
@@ -1558,7 +1562,7 @@ function drawMenu(){
   const pt=profT(),T=[mt.k||0,mt.p||0,pt.ok?pt.c:0,pt.ok?pt.f:0],U=["kcal","g","g","g"],N=["Calorii","Proteine","Carbohidrati","Grasimi"],OV=[1,0,1,1];
   const note=`<div class="muted">cate 1 portie din fiecare reteta${t.nl?"; "+t.nl+" calculat"+(t.nl===1?"a":"e")+" din Info":""}${t.ne?"; "+t.ne+" estimat"+(t.ne===1?"a":"e")+" cu AI":""}${t.nm?"; "+t.nm+" fara macro":""}</div>`;
   if(!T.some(x=>x))return`<div class="mmac"><b>Total aprox.:</b> ${t.s[0]} kcal - ${t.s[1]} g proteine - ${t.s[2]} g carbo - ${t.s[3]} g grasimi${note}${eb}</div>`;
-  return`<div class="mmac"><b>Macro, total aprox.</b>${[0,1,2,3].map(i=>T[i]?barRow(N[i],t.s[i],T[i],U[i],!!OV[i],true,false):`<div class="mic big"><span class="mn2">${N[i]}</span><span class="mbar"></span><span class="mv"><b>${t.s[i]}</b> ${U[i]}</span></div>`).join("")}${note}${eb}</div>`}
+  return`<details class="mmic mmac" data-mico="m${d}"${MICO["m"+d]?" open":""}><summary>Macro: ${t.s[0]} kcal, ${t.s[1]} g proteine</summary>${[0,1,2,3].map(i=>T[i]?barRow(N[i],t.s[i],T[i],U[i],!!OV[i],true,false):`<div class="mic big"><span class="mn2">${N[i]}</span><span class="mbar"></span><span class="mv"><b>${t.s[i]}</b> ${U[i]}</span></div>`).join("")}${note}${eb}</details>`}
  const isOpen=d=>MDO[d]!==undefined?MDO[d]:(d===today||(!days.includes(today)&&d===days[0]));
  const rows=days.map(d=>{const dm=m[d]||{},op=isOpen(d),has=SLOTS.some(([s])=>(dm[s]||[]).length);
   return`<div class="card mday${d===today?" today":""}"><div class="mh"><h2 class="mhh"><button class="mtog" data-mtog="1" data-day="${d}" aria-expanded="${op}"><span class="chev" aria-hidden="true">${op?"&#9662;":"&#9656;"}</span> ${esc(dLab(d))}${d===today?` <span class="lb">azi</span>`:d===tom?` <span class="lb">maine</span>`:""}</button></h2>${has?`<button class="alt ib" data-mshop="d" data-day="${d}" aria-label="Cumparaturi pentru ziua asta" title="Cumparaturi pentru ziua asta">${CART}</button>`:""}</div>`+
@@ -1609,7 +1613,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="4.14.0";
+const APP_V="4.16.0";
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
 if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){
@@ -2126,7 +2130,7 @@ $("#nu").onclick=e=>{const b=e.target.closest("button");if(!b)return;
  if(b.dataset.fdcp!==undefined){const t=Object.values(FD).map(f=>`${f.n}: ${f.k[0]} kcal, proteine ${f.k[1]} g, grasimi ${f.k[2]} g, carbo ${f.k[3]} g la 100 g${f.x?"; "+XK.map((q,n)=>f.x[n]==null?"":q+" "+f.x[n]).filter(Boolean).join(", "):""}${f.cv&&Object.keys(f.cv).length?"; "+Object.entries(f.cv).map(([u,g])=>"1 "+(u||"bucata")+" = "+g+" g").join(", "):""}`).join("\n");
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>toast("Lista copiata."),()=>toast("Nu am putut copia."));else toast("Nu pot copia in acest browser.")}};
 /* daca ai ceva planificat azi, aplicatia se deschide direct pe Meniu > Azi */
-{const m=getMen(),t=dKey(new Date());if(SLOTS.some(([s])=>((m[t]||{})[s]||[]).length)){show("meniu")}else syncNav("idei")}
+try{show("carti")}catch(e){dbg(e)}
 
 /* 3.4.1: butonul Inapoi (Android / browser) merge pas cu pas: reteta deschisa -> lista, subpagina Setari -> Setari, pagina -> pagina anterioara */
 (function(){let HS=[],SKIP=0;

@@ -25,7 +25,7 @@ await (async()=>{
  // --- fara cheie API
  eq([D.body.classList.contains("nokey"),D.querySelector("#v-carti").classList.contains("hidden"),D.querySelector("#v-idei").classList.contains("hidden")],[true,false,false].map((x,i)=>i===2?true:x),"fara cheie: marcaj pe pagina, porneste in Biblioteca");
  L.setItem("rk","sk-ant-test");T.keyUpd();eq(D.body.classList.contains("nokey"),false,"cu cheie, marcajul dispare");L.removeItem("rk");T.keyUpd();
- const css=fs.readFileSync(dir+"/style.css","utf8");eq([/body\.nokey \[data-ai\][^{]*\{display:none!important\}/.test(css),/body:not\(\.nokey\) #nokey\{display:none\}/.test(css)],[true,true],"regulile care ascund butoanele AI exista in style.css");
+ const css=fs.readFileSync(dir+"/style.css","utf8");eq([/body\.nokey \[data-ai\]\{opacity:\.45\}/.test(css),/body:not\(\.nokey\) #nokey\{display:none\}/.test(css)],[true,true],"4.15.0: fara cheie, butoanele AI raman vizibile, gri");
  T.drawOnb();eq([/cheia API/i.test(D.querySelector("#onb").textContent),/Incarca-ti cartile/.test(D.querySelector("#onb").textContent)],[false,false],"Primul pas nu mai cere cheia si nici incarcarea cartilor");
  // --- cumparaturi
  eq([T.packTxt(item("faina","g",870)),T.packTxt(item("faina","g",1000)),T.packTxt(item("faina","g",1200)),T.packTxt(item("smantana 20%","ml",250)),T.packTxt(item("rosii conserva","g",400)),T.packTxt(item("faina de migdale","g",120)),T.packTxt(item("lapte","ml",300)),T.packTxt(item("somon","g",300)),T.packTxt(item("unt","lingura",2))],["1 kg","","2 kg","2 x 200 ml","","","1 l","",""],"sugestie de ambalaj doar unde are sens");

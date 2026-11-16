@@ -2,6 +2,17 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.16.0
+- Cumparaturi: starea "Ascunde produsele din debara" se pastreaza intre sesiuni, pe fiecare dispozitiv (ca marimea fontului; nu intra in backup). Implicit ramane bifata.
+
+## 4.15.0
+- **Pagina de pornire** e Biblioteca (Retete), cu sau fara cheie si indiferent daca ai meniu azi.
+- **Biblioteca > Filtre:** "Preferinte" e acum printre filtrele de sus, iar "Stare" a trecut in "Mai multe filtre" (contorul de filtre active tine cont de mutare).
+- **Controale gri cu mesaj, nu ascunse:** fara cheie API, butoanele care folosesc AI raman vizibile, gri, iar la apasare spun ca au nevoie de cheie (Setari > AI si cheie). La fel butoanele de adaptare la aparate, cand nu e bifat un robot.
+- **Meniu, macro pliabil:** totalul de macro al zilei e un bloc pliabil (titlul arata caloriile si proteinele), ca Micronutrientii.
+- **"Adauga la meniu" are bifa "Adauga ingredientele la cumparaturi"** (nebifata implicit). Bifata, produsele intra in lista cu sursa "Titlu (meniu zi)", iar intrarea din meniu apare "in lista". Nu apare pentru retetele aflate deja in Meal prep.
+- Nefacut inca: randul de sus din Meniu (asteapta detalii).
+
 ## 4.14.0
 - Numele retetei e link in Meniu si in Meal prep (deschide reteta, ca mai inainte butonul "Deschide"). Butonul "Deschide" si cuvantul "gatesc" din dreptul portiilor au disparut; campul de portii ramane, cu "portii" langa el.
 
