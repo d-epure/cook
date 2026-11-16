@@ -63,6 +63,11 @@ await (async()=>{
  D.body.classList.add("nokey");let tt="";const bi=D.createElement("button");bi.dataset.ai="1";let hit=0;bi.addEventListener("click",()=>hit++);D.body.appendChild(bi);bi.click();eq(hit,0,"fara cheie: butonul AI gri nu porneste nimic");D.body.classList.remove("nokey");bi.remove();}
  // 4.16.0: "Ascunde produsele din debara" se pastreaza
  {T.putList([item("zzzprodus","g",500,"Test")]);T.show("lista");T.drawList();const cb=D.querySelector("#lHp");cb.checked=false;cb.dispatchEvent(new w.Event("change",{bubbles:true}));eq(w.localStorage.getItem("rhp"),"0","starea Ascunde e salvata");const c2=D.querySelector("#lHp");c2.checked=true;c2.dispatchEvent(new w.Event("change",{bubbles:true}));eq(w.localStorage.getItem("rhp"),"1","si cand e bifata la loc");}
+ // 4.16.1: in meniu intra o singura portie, fara camp de portii
+ {const es=Object.values(T.getMen()).flatMap(d=>Object.values(d).flat()).filter(e=>e.k===T.sKey(r));eq([es.length>0,es.every(e=>e.p===1)],[true,true],"in meniu intra 1 portie, indiferent de portiile retetei");T.show("meniu");T.drawMenu();eq(!!D.querySelector("#mw input[type=number]"),false,"meniul nu arata numarul de portii");}
+ // 4.17.0: zona de sus din Meniu = un singur rand cu iconite
+ {T.show("meniu");T.drawMenu();const mw=D.querySelector("#mw"),top=mw.querySelector(".mtop");eq([!!top,!!top&&top.querySelectorAll("button.ico").length>=2,!!mw.querySelector("details.lmore"),/Mai multe/.test(mw.textContent.split("Micronutrienti")[0])],[true,true,false,false],"un rand: segment + cos + Propune; fara Mai multe");
+ eq(!!top.querySelector("[data-mshop]")&&!!top.querySelector("[data-mprop]"),true,"cos si Propune-mi un meniu sunt in randul de sus");}
  // --- Cina si reteta stearsa
  eq(T.SLOTS.map(x=>x[0]),["mic","pranz","cina","desert"],"patru mese pe zi");
  T.show("meniu");T.drawMenu();const tx=D.querySelector("#mw").textContent;eq([/Cina/.test(tx),/Reteta nu mai e in Biblioteca/.test(tx)],[true,true],"Cina apare; reteta stearsa e marcata");

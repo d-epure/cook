@@ -128,7 +128,6 @@ nav button.on .dot{background:var(--prit)}
 .mt{font-weight:700;font-size:var(--fs-s);color:var(--mut);margin-bottom:4px}
 .me{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:6px 0}
 .me .mn{flex:1 1 180px;min-width:140px}
-.mpi{width:68px;min-height:var(--h-n);padding:6px 8px}
 .lgh{margin:14px 0 2px;font-size:var(--fs-s);font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:10;max-width:min(94vw,520px);display:flex;gap:12px;align-items:center;background:var(--card);color:var(--ink);border:2px solid var(--pri);border-radius:var(--r);padding:8px 8px 8px 16px;box-shadow:0 6px 24px rgba(0,0,0,.22)}
 #undo.hidden{display:none}
@@ -254,14 +253,9 @@ nav[hidden],#nav button[hidden]{display:none}
 .mtog{display:flex;align-items:center;gap:8px;width:100%;margin:0;padding:6px 0;background:none;border:0;box-shadow:none;color:inherit;font:inherit;font-weight:700;font-size:var(--fs-l);text-align:left;min-height:var(--h-n)}
 .mtog .chev{color:var(--mut);width:1em}
 .mday .mh .ib{margin:0;min-height:var(--h-n);min-width:40px;padding:4px 8px}
-#mw .mact{align-items:center;flex-wrap:nowrap}
-#mw .mact .go{flex:1 1 auto;min-width:0}
-#mw .lmore{position:relative;flex:0 0 auto;margin:0}
-#mw .lmore>summary{padding:8px 6px;list-style:none;white-space:nowrap}
-#mw .lmore .lact2{position:absolute;top:100%;right:0;z-index:5;display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:2px;padding:8px;background:var(--card,#fff);border:1px solid var(--line);border-radius:var(--r-s);box-shadow:0 6px 18px rgba(0,0,0,.14);min-width:230px}
-#mw .lmore .lact2 .alt{margin:0}
 .mtgi{padding-top:6px;border-top:1px solid var(--line);font-size:var(--fs-s)}
-#mw .row.mseg,#mw .row.mact{flex-direction:row;flex-wrap:nowrap}
+#mw .row.mseg{flex-direction:row;flex-wrap:nowrap}
+.mtop{display:flex;align-items:center;gap:8px;margin-bottom:12px}.mtop .mseg{flex:1 1 auto;min-width:0;margin:0}.mtop .ico{flex:0 0 auto;margin:0;min-height:var(--h-n);min-width:var(--h-n);padding:4px 8px}
 #mw .mseg>button{flex:1 1 0;margin:0}
 .mtgt{font-weight:700}
 #mdres .chips{display:flex;gap:8px}
@@ -467,7 +461,6 @@ button{min-height:var(--h-n)}
 .lgh .srcl{font-weight:inherit;font-size:inherit;color:inherit}
 
 /* 3.13.1: numarul de portii din meniu are eticheta */
-.mpw{display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-xs)}
 
 /* 3.14.0: meniu zilnic compact: "-" in fata alimentului, "+" langa numele mesei */
 .mt{display:flex;justify-content:space-between;align-items:center}

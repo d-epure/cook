@@ -2,6 +2,13 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.17.0
+- **Meniu, zona de sus intr-un singur rand** (varianta A): segmentul "Azi si maine / Saptamana" la stanga, iar la dreapta trei iconite: cosul de cumparaturi (pentru perioada aleasa), "Propune-mi un meniu" (bagheta) si, doar pe saptamana, cosul de gunoi pentru "Goleste saptamana" (cu "Confirma" si Anuleaza). Meniul "Mai multe" a disparut; fiecare iconita are titlu la apasare lunga.
+- Cand produsele sunt deja in lista, al doilea tap pe cos cere "Confirma" (cu un mesaj care spune de ce), in locul textului lung de pe buton.
+
+## 4.16.1
+- **In meniu intra o singura portie**, indiferent pentru cate portii e reteta (inainte venea implicit cu portiile retetei si trebuia schimbat de mana). Campul "gatesc ... portii" a disparut din randurile meniului si din dialogul "Adauga la meniu": ocupa loc si nu aducea nimic. Meal prep ramane cu numarul de portii, pentru ca acolo conteaza cat gatesti. Intrarile vechi din meniu isi pastreaza portiile.
+
 ## 4.16.0
 - Cumparaturi: starea "Ascunde produsele din debara" se pastreaza intre sesiuni, pe fiecare dispozitiv (ca marimea fontului; nu intra in backup). Implicit ramane bifata.
 
