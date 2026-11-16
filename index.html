@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=4.10.1">
+<link rel="stylesheet" href="style.css?v=4.12.0">
 
 </head>
 <body>
@@ -103,6 +103,7 @@
   <h3 class="mt12 mb4">Imi plac</h3><div class="row g8" ><input id="pfl" maxlength="80" placeholder="ex: somon, avocado" aria-label="Aliment care iti place" style="flex:1;min-width:140px" autocomplete="off"><button class="go m0" id="pfAddL" >Adauga</button></div><div id="pfLl" class="pfl"></div>
   <h3 class="mt16 mb4">Evit</h3><div class="row g8" ><input id="pfe" maxlength="80" placeholder="ex: ciuperci, ficat" aria-label="Aliment pe care il eviti" style="flex:1;min-width:140px" autocomplete="off"><button class="go m0" id="pfAddE" >Adauga</button></div><div id="pfEl" class="pfl"></div></div>
  <div class="card" id="tgcard" data-sg="etichete"><h2>Etichete retete</h2><div id="tgl"></div></div>
+ <div class="card" id="seccard" data-sg="sectiuni"><h2>Titluri de sectiune</h2><p class="muted mt0">Linii din retete care sunt titluri (de exemplu "Foi" sau "Umplutura"), nu produse. Fara cantitate si fara unitate, ele nu intra in cumparaturi si in "Din debara", iar in reteta apar ca subtitluri. "Pentru" + un cuvant din lista (de exemplu "Pentru crema") se recunoaste singur. Datele din carti nu se schimba.</p><div class="apr"><input id="snn" aria-label="Cuvinte noi, separate prin virgula" placeholder="ex: ornat, topping" style="flex:1;min-width:0"><button class="alt" id="sAdd" type="button">Adauga</button></div><div id="smsg" class="muted" role="status"></div><div id="scl"></div><button class="alt mt8" id="sReset" type="button">Revino la lista initiala</button></div>
  <div class="card" id="bkcard" data-sg="bkfile"><h2>Backup in fisier</h2><div id="pst" class="muted mt0 mb12" ></div><p class="muted mt0 mb12" >Datele tale stau doar in acest browser. Descarca periodic un backup: retete salvate, favorite, etichete, aparate, biblioteca incarcata si modelele alese. Cheia API NU se include.</p><button class="go m0" id="bExp" >Descarca backup</button> <button class="alt" id="bShare" type="button" hidden>Trimite backup</button><div id="bkm" class="muted mt8 mb8" ></div><label for="bimp">Restaureaza dintr-un backup</label><input id="bimp" type="file" accept=".json,application/json"><div id="bipv"></div></div>
  <div class="card" id="sncard" data-sg="bksnap"><h2>Copii automate in acest browser</h2><div id="snbox"></div></div>
  <div class="card" id="dbcard" data-sg="bkdb"><h2>Sincronizare Dropbox</h2><div id="dbbox"></div></div>
@@ -117,7 +118,7 @@
 <div id="toast" class="hidden" role="alert"></div>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=4.10.1"></script>
-<script src="app.js?v=4.10.1"></script>
+<script src="nutri.js?v=4.12.0"></script>
+<script src="app.js?v=4.12.0"></script>
 </body>
 </html>

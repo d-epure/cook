@@ -114,4 +114,42 @@ await (async()=>{
  T.LR=true;T.drawMenu();
  eq(/nu mai e in Biblioteca/.test(d.querySelector("#v-meniu").innerHTML),true,"dupa incarcare, avertismentul real ramane");
  })();
+ console.log("\n## 4.11.0: titluri de sectiune scrise ca ingrediente (Foi, Umplutura) nu sunt produse");
+ await (async()=>{
+  const w=await boot({},{wait:800,names:["prepIngs","ingHtml","isSec"]}),T=w.__t;
+  const r={ingrediente:[{c:null,u:"",n:"Foi"},{c:300,u:"g",n:"faina"},{c:null,u:"",n:"Umplutura"},{c:200,u:"g",n:"nuci"},{c:null,u:"",n:"Pentru crema"},{c:1,u:"",n:"ou"}]};
+  eq(T.prepIngs(r.ingrediente).map(x=>x.n),["faina","nuci","ou"],"titlurile de sectiune nu intra in cumparaturi / Din debara");
+  const h=T.ingHtml(r,1);eq([(h.match(/class="gh"/g)||[]).length,/<li>Foi<\/li>/.test(h)],[3,false],"in reteta apar ca subtitluri, nu ca ingrediente");
+  eq(T.prepIngs([{c:null,u:"",n:"Foi"}]).map(x=>x.n),["Foi"],"o singura linie (adaugata manual) ramane produs");
+  eq(T.prepIngs([{c:1,u:"pachet",n:"foi"},{c:2,u:"",n:"oua"}]).map(x=>x.n),["foi","oua"],"'foi' cu cantitate ramane ingredient");
+  eq(T.prepIngs([{c:null,u:"",n:"sos de soia"},{c:2,u:"",n:"oua"}]).map(x=>x.n),["sos de soia","oua"],"'sos de soia' nu e confundat cu un titlu");
+ })();
+ await (async()=>{
+  const l=[{k:"foi|",n:"Foi",u:"",c:null,src:["Prajitura casnica - cu bulion"],parts:[{s:"Prajitura casnica - cu bulion",c:null}],done:0},{k:"umplutura|",n:"Umplutura",u:"",c:null,src:["Adaugat manual"],parts:[],done:0},{k:"faina|g",n:"faina",u:"g",c:300,src:["Prajitura casnica - cu bulion"],parts:[],done:0}];
+  const w=await boot({rl:JSON.stringify(l)},{wait:800});
+  eq(JSON.parse(w.localStorage.getItem("rl")).map(x=>x.n),["Umplutura","faina"],"curatare unica: titlurile aduse din retete dispar din lista veche; ce ai adaugat manual ramane");
+ })();
+ console.log("\n## 4.12.0: titluri de sectiune gestionate din Setari");
+ await (async()=>{
+  const w=await boot({},{wait:800,names:["prepIngs","getSec"]}),T=w.__t,D=w.document,$=q=>D.querySelector(q);
+  const r=[{c:null,u:"",n:"Ornat"},{c:2,u:"",n:"oua"}];
+  eq(T.prepIngs(r).map(x=>x.n),["oua"],"'Ornat' e in lista initiala");
+  $("#snn").value="Cuvant nou, Alt Cuvant";$("#sAdd").click();
+  eq([T.getSec().includes("cuvant nou"),T.getSec().includes("alt cuvant"),JSON.parse(w.localStorage.getItem("rsec")).length],[true,true,16+2],"adaugare mai multe cuvinte odata, fara diacritice/majuscule, salvata");
+  eq(T.prepIngs([{c:null,u:"",n:"Cuvant nou"},{c:1,u:"",n:"ou"}]).map(x=>x.n),["ou"],"cuvantul nou se aplica imediat");
+  eq(T.prepIngs([{c:null,u:"",n:"Pentru cuvant nou"},{c:1,u:"",n:"ou"}]).map(x=>x.n),["ou"],"'Pentru' + cuvant din lista merge singur");
+  $("#snn").value="ou, cuvant nou";$("#sAdd").click();eq(/Adaugat: ou/.test($("#smsg").textContent),true,"doar ce lipsea se adauga");
+  const b=D.querySelector('#scl [data-sx="0"]'),n0=T.getSec().length;
+  b.click();eq([b.textContent,T.getSec().length],["Confirma",n0],"stergere: primul tap cere confirmare");
+  D.querySelector('#scl [data-sx="0"]').click();eq(T.getSec().length,n0-1,"al doilea tap sterge");
+  $("#sReset").click();eq($("#sReset").textContent,"Confirma","revenirea la lista initiala cere aceeasi confirmare");$("#sReset").click();
+  eq([T.getSec().length,w.localStorage.getItem("rsec")],[16,null],"lista initiala restabilita");
+  const dk=require("fs").readFileSync(require("path").join(__dirname,"..","app.js"),"utf8").match(/const DKEYS=\[[^\]]*\]/)[0];eq(/"rsec"/.test(dk),true,"lista intra in backup si sincronizare");
+ })();
+ await (async()=>{
+  const w=await boot({},{wait:800,names:["renderTagCfg","renderCfg"]}),D=w.document;w.__t.renderTagCfg();w.__t.renderCfg();const b=D.querySelector("#tgl [data-tx]");
+  b.click();eq(b.textContent,"Confirma","etichete: aceeasi confirmare 'Confirma'");
+  const a=D.querySelector("#apcfg [data-x]");a.click();eq(a.textContent,"Confirma","aparate: aceeasi confirmare 'Confirma'");
+  await sleep(4300);eq([/<svg/.test(a.innerHTML),a.dataset.arm],[true,""],"nedecisa, confirmarea expira si butonul isi recapata cosul de gunoi");
+ })();
  done()})();

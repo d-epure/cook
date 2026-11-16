@@ -2,6 +2,15 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.12.0
+- Setari > Administrare > **Titluri de sectiune**: lista de cuvinte (foi, umplutura, crema, glazura...) se gestioneaza din aplicatie. Campul de adaugare e sus (mai multe cuvinte odata, separate prin virgula), fiecare cuvant are cos de gunoi, iar "Revino la lista initiala" readuce lista de start. Se aplica imediat si intra in backup si in sincronizare.
+- Confirmare la stergere **unitara**: peste tot primul tap schimba butonul in "Confirma" (4 secunde), al doilea sterge. Inainte, etichetele spuneau "Confirma stergerea", iar la categorii si la cartile din Setari butonul ramanea gol dupa expirarea confirmarii (pierdea cosul de gunoi, defect din 4.9.1): reparat.
+
+## 4.11.0
+- Titlurile de sectiune care au ajuns ca ingrediente in retete ("Foi", "Umplutura", "Pentru crema", "Glazura", "Blat", "Aluat", "Sirop"...) nu mai sunt tratate ca produse: nu intra in lista de cumparaturi, nu mai "lipsesc" la filtrul Din debara si nu mai apar ca ingrediente. In reteta se afiseaza ca subtitluri. Datele din carti nu se modifica (o carte reincarcata se comporta la fel).
+- Regula e stricta: doar linii fara cantitate si fara unitate, cu un nume din lista, si doar cand reteta are mai multe linii. "foi" cu cantitate, "sos de soia" sau un produs adaugat manual raman produse.
+- Lista de cumparaturi existenta: o singura curatare scoate titlurile deja aduse din retete (cele adaugate manual raman).
+
 ## 4.10.1
 - Teste: cele 17 fisiere pe versiuni sunt unite in 5 pe teme (`test_biblioteca`, `test_meniu_cumparaturi`, `test_carti`, `test_interfata_sync`, `test_robustez`), plus `toate.js` care le ruleaza pe toate (`node teste/toate.js`). Aceleasi 155 de verificari, dar folderul nu mai creste cu un fisier la fiecare versiune: verificarile noi se adauga in testul tematic potrivit. Aplicatia nu s-a schimbat.
 

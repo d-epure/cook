@@ -12,6 +12,10 @@ De la 4.7.0, potrivirea cu debaraua tine cont de marcaje: `formSplit` scoate for
 
 De la 4.8.0: cartea *Retete high-volume* (`carti/retete_high_volume.json`, 100 de retete, `v` 1): cel mult 500 kcal pe portie si cel mult circa 1,1 kcal pe gram dupa gatire (greutate estimata cu factori pentru cereale, paste si carne), cu varianta pereche in sfaturi (macro recalculat cu `macLocal`); eticheta `high-volume` (`TDEF`, migrare `rtv3`); tema Gatire *Volum mare, calorii putine*. Test: `teste/test_carti.js`. Retetele nu sunt gatite si verificate.
 
+De la 4.12.0: lista de titluri de sectiune e in localStorage `rsec` (in `DKEYS`, deci in backup si sincronizare; lipsa cheii = `SEC_DEF`), citita prin `getSec()`; ecranul e `renderSec`. Confirmarea la stergere e un singur ajutor, `armDel(b)`, folosit de aparate, etichete, categorii, carti si titluri. Test: `teste/test_meniu_cumparaturi.js`.
+
+De la 4.11.0: `isSec` (langa `prepIngs`) recunosc titlurile de sectiune scrise ca ingrediente; `prepIngs` le sare cand lista are mai multe linii, `ingHtml` le arata ca subtitluri, iar migrarea `rcl4` curata lista veche. Pentru alte titluri, adauga-l din Setari > Titluri de sectiune. Test: `teste/test_meniu_cumparaturi.js`.
+
 De la 4.10.1: testele sunt in `teste/` (`npm i jsdom`, apoi `node teste/toate.js`; sau un singur fisier, de ex. `node teste/test_biblioteca.js`). Verificarile noi se adauga in fisierul tematic potrivit, nu intr-un fisier nou pe versiune.
 
 De la 4.10.0: `#bd` este un camp ascuns (valoare "" / "0".."3") comandat de pilula "Din debara" si de randul `bdSub()`; restul codului (`usePan`, `missing`, sortarea) nu s-a schimbat. Test: `teste/test_biblioteca.js`.
