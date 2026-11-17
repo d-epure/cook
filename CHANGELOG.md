@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.23.2
+- **Dialogul "Adauga la meniu" pe telefon:** tastatura nu se mai deschide singura la deschidere (acoperea restul dialogului, inclusiv campul de cod de bare). Se deschide doar cand atingi un camp. Cand tastatura e deschisa, dialogul primeste loc sub el, iar campul atins se deruleaza in vedere. Pe desktop, cautarea ramane cu cursorul pe ea. Acelasi lucru la formularul Meal prep (campul de portii).
+
 ## 4.23.1
 - **Scanare cu camera** pentru produsul din Meniu: langa "Cauta" apare iconita de camera. Citeste codul (EAN-13, EAN-8, UPC), il pune in camp si cauta produsul, ca la codul tastat. Camera se opreste singura dupa citire, la "Opreste camera", la Anuleaza si cand inchizi dialogul.
 - Foloseste detectorul nativ al browserului cand il are; altfel biblioteca `zxing.min.js` (Apache 2.0, licenta in `zxing-LICENSE.txt`), pusa in pachet si incarcata abia cand apesi camera (nu din alt domeniu). Verificat cu o camera simulata intr-un browser real: citeste un cod EAN-13 prin biblioteca de rezerva.

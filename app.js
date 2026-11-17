@@ -1463,7 +1463,7 @@ function mpOpen(){MD={mp:1,f:null,q:"",r:null};
  $("#mdlg").classList.remove("hidden");mdSearch();setTimeout(()=>{const e=$("#mdq");if(e)e.focus()},0)}
 function mpForm(s,r){MD.s=s;MD.r=r;const today=dKey(new Date()),base=+r.portii>0?+r.portii:null,ri=lPrep(rawIngs(s,r)),has=ri.length>0,np=ri.filter(x=>inPantry(lClean(x.n,x.u).n)).length;
  $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Meal prep"><h2 class="m0">Meal prep</h2><p class="mt12 mb0"><b>${esc(r.titlu)}</b></p><div class="fgrid mt8"><div><label for="mpp">Portii</label><input id="mpp" type="number" min="1" max="99" value="${MD.dp||base||1}"></div><div><label for="mpd1">Data gatirii (la Am gatit deja)</label><input id="mpd1" type="date" value="${today}" max="${today}"></div></div>${has?(np===ri.length?`<p class="muted mt12 mb0">Ai toate ingredientele in debara, nu e nimic de cumparat.</p>`:`<p class="muted mt12 mb0">Adauga la Meal prep pune ingredientele pentru <span id="mpn">${MD.dp||base||1}</span> portii in cumparaturi${np?` (${np} din ${ri.length} le ai deja in debara)`:""}.</p>`):""}<p id="mpw" class="mt8 mb0" style="color:var(--amb)" data-base="${base||0}" hidden></p><div class="row mt16"><button class="go m0" data-mpok="p">Adauga la Meal prep</button><button class="go m0" data-mpok="g">Am gatit deja</button><button class="alt" data-mdx="1">Anuleaza</button></div></div>`;
- setTimeout(()=>{const e=$("#mpp");if(e)e.focus()},0)}
+ setTimeout(()=>{const e=TOUCH()?null:$("#mpp");if(e)e.focus()},0)}
 /* 4.13.0: mode "p" = planificat (ingredientele intra in cumparaturi, fara jurnal); mode "g" = gatit deja (jurnal, lista neatinsa) */
 /* mesele din meniu (de azi inainte) cu aceeasi reteta devin "din Meal prep" cand lotul e gatit: ingredientele nu se mai cumpara a doua oara */
 function mpMark(k){const today=dKey(new Date()),m=getMen();let nm=0;Object.keys(m).forEach(dk=>{if(dk<today)return;SLOTS.forEach(([sl])=>(m[dk][sl]||[]).forEach(en=>{if(en.k===k&&!en.mp&&en.s!=="x"){en.mp=1;nm++}}))});if(nm)putMen(m);return nm}
@@ -1519,6 +1519,10 @@ async function bcScan(){if(!MD||!$("#mdbr"))return;bcStop();BC.done=false;
   BC.rd=new Z.BrowserMultiFormatReader(h,300);BC.rd.decodeFromConstraints(cons,v,(r)=>{if(r)bcFound(r.getText())});
  }catch(e){dbg(e);bcStop();if(!MD||!$("#mdbr"))return;
   $("#mdbr").innerHTML=`<p class="muted">${e&&e.name==="NotAllowedError"?"Nu ai dat voie la camera. Poti scrie codul de bare.":"Nu pot porni camera. Poti scrie codul de bare."}</p>`}}
+/* 4.23.2: pe telefon nu se mai deschide tastatura singura la deschiderea dialogului (acoperea restul, inclusiv campul de cod de bare); cand tastatura e deschisa, dialogul primeste loc sub el si campul atins se deruleaza in vedere */
+const TOUCH=()=>!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
+if(window.visualViewport){const kb=()=>{const m=$("#mdlg"),v=window.visualViewport;if(m)m.style.paddingBottom=(16+Math.max(0,window.innerHeight-v.height-v.offsetTop))+"px"};window.visualViewport.addEventListener("resize",kb);window.visualViewport.addEventListener("scroll",kb)}
+$("#mdlg").addEventListener("focusin",e=>{const t=e.target;if(t&&/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName))setTimeout(()=>{try{t.scrollIntoView({block:"center",behavior:"smooth"})}catch(x){dbg(x)}},350)});
 let MD=null;
 function menOpen(o){const r=o.r||null;MD={day:o.day||dKey(new Date()),slot:o.slot||(r?guessSlot(r):"pranz"),s:o.s||null,r,p:o.p||null,q:"",f:!r&&getMP().some(x=>x.st!=="p")?"m":null};
  const today=dKey(new Date()),mt=monOf(today);let st=MD.day<mt?monOf(MD.day):mt;if(MD.day>dAdd(st,34))st=monOf(MD.day);
@@ -1530,7 +1534,7 @@ function menOpen(o){const r=o.r||null;MD={day:o.day||dKey(new Date()),slot:o.slo
    <label for="mdt">Sau scrie liber (ex: resturi, iesim in oras)</label><div class="row g8" ><input id="mdt" maxlength="80" class="fx1"><button class="alt" data-mdtxt="1">Adauga text</button></div><div class="row mt16" ><button class="alt" data-mdx="1">Inchide</button></div>`;
  $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Adauga la meniu"><h2 class="m0">Adauga la meniu</h2><div class="fgrid mt8" ><div><label for="mdday">Ziua</label><select id="mdday">${dopt}</select></div><div><label for="mdslot">Masa</label><select id="mdslot">${sopt}</select></div></div>${body}</div>`;
  $("#mdlg").classList.remove("hidden");if(!r)mdSearch();
- setTimeout(()=>{const e=$("#mdq")||$("#mdp")||$("[data-mdok]");if(e)e.focus()},0)}
+ setTimeout(()=>{const e=(TOUCH()?null:$("#mdq"))||$("#mdp")||$("[data-mdok]");if(e)e.focus()},0)}
 function menClose(){bcStop();MD=null;$("#mdlg").classList.add("hidden");$("#mdlg").innerHTML=""}
 function mdSearch(){if(!MD||!$("#mdres"))return;
  const q=qWords(MD.q),sv=getSaved(),f=MD.f||null,out=[];
@@ -1721,7 +1725,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="4.23.1";
+const APP_V="4.23.2";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;

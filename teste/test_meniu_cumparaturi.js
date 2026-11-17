@@ -314,4 +314,10 @@ await (async()=>{
   {const w=await mk(w=>{w.navigator.mediaDevices={getUserMedia:async()=>{const e=new Error("x");e.name="NotAllowedError";throw e}};w.BarcodeDetector=class{static async getSupportedFormats(){return["ean_13"]}}}),T=w.__t,D=w.document;
    T.show("meniu");T.menOpen({day:dk});D.querySelector("[data-mdbcam]").click();await sleep(40);eq(/Nu ai dat voie la camera/.test(D.querySelector("#mdbr").textContent),true,"permisiune refuzata: mesaj clar");w.close()}
  })();
+ // --- 4.23.2: pe telefon tastatura nu se mai deschide singura in dialog
+ await (async()=>{
+  for(const [coarse,want] of [[true,false],[false,true]]){
+   const w=await boot({rp:"[]"},{wait:600,names:["menOpen","show"],offline:true});w.matchMedia=()=>({matches:coarse});const T=w.__t,D=w.document;T.show("meniu");T.menOpen({});await sleep(30);
+   eq(D.activeElement&&D.activeElement.id==="mdq",want,coarse?"ecran tactil: cautarea nu primeste focus (tastatura nu acopera dialogul)":"desktop: cautarea primeste focus");w.close()}
+ })();
  done()})();
