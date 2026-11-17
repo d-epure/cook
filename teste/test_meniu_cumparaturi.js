@@ -263,4 +263,55 @@ await (async()=>{
   const nL=T.getList().length;D.querySelector("[data-mshop=z]").click();eq(T.getList().length,nL,"cosul din meniu nu mai adauga ingredientele retetei care are lot (fara dubluri)");
   w.close();
  })();
+ // --- 4.23.0: produs dupa cod de bare (Open Food Facts), cantitate in g, macro in meniu
+ await (async()=>{
+  const day=new Date(),dk=day.getFullYear()+"-"+String(day.getMonth()+1).padStart(2,"0")+"-"+String(day.getDate()).padStart(2,"0");
+  const w=await boot({rp:"[]"},{wait:700,names:["menOpen","getMen","drawMenu","show","dayMac","bcParse","bcLookup"],offline:true}),T=w.__t,D=w.document;
+  let calls=[],mode="ok";
+  w.fetch=async u=>{calls.push(String(u));if(mode==="net")throw new Error("net");if(mode==="nf")return{ok:true,status:200,json:async()=>({status:0})};
+   return{ok:true,status:200,json:async()=>({status:1,product:{code:"5941234567890",product_name:"Iaurt grecesc",brands:"Marca, Alta",serving_quantity:"30",nutriments:{"energy-kcal_100g":400,proteins_100g:"10,5",carbohydrates_100g:20,fat_100g:30}}})}};
+  eq([T.bcParse("1",{status:1,product:{product_name:"X",nutriments:{"energy_100g":418.4}}}).k[0],T.bcParse("1",{status:0})],[100,null],"kJ fara kcal se converteste; produs inexistent = null");
+  T.show("meniu");T.menOpen({day:dk});
+  eq(!!D.querySelector("#mdbc")&&!!D.querySelector("[data-mdbs]"),true,"dialogul Adauga la meniu are campul de cod de bare");
+  D.querySelector("#mdbc").value="12";D.querySelector("[data-mdbs]").click();await sleep(30);
+  eq([/8 pana la 14/.test(D.querySelector("#mdbr").textContent),calls.length],[true,0],"cod prea scurt: mesaj, fara cerere");
+  D.querySelector("#mdbc").value="5941234567890";D.querySelector("[data-mdbs]").click();await sleep(50);
+  eq([calls.length,/world\.openfoodfacts\.org\/api\/v2\/product\/5941234567890/.test(calls[0]),!!D.querySelector("#bcc"),D.querySelector("#mdbq").value],[1,true,true,"30"],"cautare: cerere catre Open Food Facts, card de produs, cantitate implicita = portia de pe ambalaj");
+  eq([/Iaurt grecesc/.test(D.querySelector("#bcc").textContent),/Marca/.test(D.querySelector("#bcc").textContent),/Open Food Facts/.test(D.querySelector("#bcc").textContent),/120 kcal/.test(D.querySelector("#mdbv").textContent)],[true,true,true,true],"cardul arata numele, marca, sursa si macro pentru 30 g");
+  const q=D.querySelector("#mdbq");q.value="50";q.dispatchEvent(new w.Event("input",{bubbles:true}));eq(/200 kcal/.test(D.querySelector("#mdbv").textContent)&&/5.3 g proteine|5,3 g proteine/.test(D.querySelector("#mdbv").textContent),true,"macro se recalculeaza live la 50 g (200 kcal, 5.3 g proteine)");
+  D.querySelector("[data-mdbadd]").click();
+  const es=Object.values(T.getMen()).flatMap(d=>Object.values(d).flat()).filter(e=>e.ean==="5941234567890");
+  eq([es.length,es[0]&&es[0].q,es[0]&&es[0].s,es[0]&&es[0].m&&es[0].m[0],T.dayMac(T.getMen()[dk]).s[0]],[1,50,"x",200,200],"produsul intra in meniu cu cantitate si macro, si se aduna in totalul zilei");
+  T.drawMenu();eq([/50 g/.test(D.querySelector("#mw").textContent),/dupa cantitatea introdusa/.test(D.querySelector("#mw").textContent),!!D.querySelector("#mw .me.mpl")],[true,true,false],"randul arata cantitatea, nota din macro explica; randul fara reteta nu e gri 'planificat'");
+  mode="net";calls=[];T.menOpen({day:dk});D.querySelector("#mdbc").value="5941234567890";D.querySelector("[data-mdbs]").click();await sleep(50);
+  eq([calls.length,!!D.querySelector("#bcc")],[0,true],"produs gasit o data: se tine local, merge si fara internet");
+  D.querySelector("#mdbc").value="4001234567890";D.querySelector("[data-mdbs]").click();await sleep(50);
+  eq([calls.length,/fara internet/.test(D.querySelector("#mdbr").textContent),!!D.querySelector("#bcc")],[1,true,false],"produs nou fara internet: mesaj clar");
+  mode="nf";D.querySelector("[data-mdbs]").click();await sleep(50);
+  eq(/nu e in Open Food Facts/.test(D.querySelector("#mdbr").textContent),true,"produs negasit: mesaj");
+  w.close();
+ })();
+ // --- 4.23.1: scanare cu camera (detector nativ si biblioteca de rezerva), camera se opreste
+ await (async()=>{
+  const day=new Date(),dk=day.getFullYear()+"-"+String(day.getMonth()+1).padStart(2,"0")+"-"+String(day.getDate()).padStart(2,"0");
+  const prod={status:1,product:{code:"5941234567890",product_name:"Iaurt grecesc",nutriments:{"energy-kcal_100g":100,proteins_100g:5,carbohydrates_100g:5,fat_100g:5}}};
+  const mk=async(extra)=>{const w=await boot({rp:"[]"},{wait:700,names:["menOpen","show","menClose"],offline:true});w.fetch=async()=>({ok:true,status:200,json:async()=>prod});w.HTMLMediaElement.prototype.play=async()=>{};if(extra)extra(w);return w};
+  // fara camera: gri + mesaj
+  {const w=await mk(),T=w.__t,D=w.document;T.show("meniu");T.menOpen({day:dk});const b=D.querySelector("[data-mdbcam]");eq([!!b,b.classList.contains("gri")],[true,true],"fara camera: butonul e gri");b.click();eq(/Camera nu e disponibila/.test(D.querySelector("#toast").textContent)&&!D.querySelector("#toast").classList.contains("bad"),true,"fara camera: mesaj scurt, nu rosu");w.close()}
+  // detector nativ
+  {let stopped=0,asked=0;const w=await mk(w=>{w.navigator.mediaDevices={getUserMedia:async c=>{asked++;return{getTracks:()=>[{stop(){stopped++}}]}}};w.BarcodeDetector=class{static async getSupportedFormats(){return["ean_13","ean_8"]}async detect(){return[{rawValue:"5941234567890"}]}}}),T=w.__t,D=w.document;
+   T.show("meniu");T.menOpen({day:dk});const b=D.querySelector("[data-mdbcam]");eq(b.classList.contains("gri"),false,"cu camera: butonul nu e gri");b.click();await sleep(30);eq([!!D.querySelector("#bcv"),asked],[true,1],"camera porneste, cu previzualizare");
+   await sleep(700);eq([!!D.querySelector("#bcc"),D.querySelector("#mdbc").value,stopped>=1],[true,"5941234567890",true],"cod detectat: cauta produsul si opreste camera");w.close()}
+  // biblioteca de rezerva
+  {let stopped=0,reset=0,fmts=null;const w=await mk(w=>{w.navigator.mediaDevices={getUserMedia:async()=>({getTracks:()=>[{stop(){stopped++}}]})};
+    w.ZXing={DecodeHintType:{POSSIBLE_FORMATS:"pf"},BarcodeFormat:{EAN_13:"e13",EAN_8:"e8",UPC_A:"ua",UPC_E:"ue"},BrowserMultiFormatReader:class{constructor(h){fmts=h.get("pf")}decodeFromConstraints(c,v,cb){setTimeout(()=>cb({getText:()=>"5941234567890"}),20)}reset(){reset++}}}}),T=w.__t,D=w.document;
+   T.show("meniu");T.menOpen({day:dk});D.querySelector("[data-mdbcam]").click();await sleep(150);
+   eq([!!D.querySelector("#bcc"),fmts&&fmts.length,reset>=1],[true,4,true],"fara detector nativ: biblioteca de rezerva citeste codul, apoi se opreste");w.close()}
+  // inchiderea dialogului opreste camera
+  {let stopped=0;const w=await mk(w=>{w.navigator.mediaDevices={getUserMedia:async()=>({getTracks:()=>[{stop(){stopped++}}]})};w.BarcodeDetector=class{static async getSupportedFormats(){return["ean_13"]}async detect(){return[]}}}),T=w.__t,D=w.document;
+   T.show("meniu");T.menOpen({day:dk});D.querySelector("[data-mdbcam]").click();await sleep(40);T.menClose();eq(stopped>=1,true,"inchiderea dialogului opreste camera");w.close()}
+  // permisiune refuzata
+  {const w=await mk(w=>{w.navigator.mediaDevices={getUserMedia:async()=>{const e=new Error("x");e.name="NotAllowedError";throw e}};w.BarcodeDetector=class{static async getSupportedFormats(){return["ean_13"]}}}),T=w.__t,D=w.document;
+   T.show("meniu");T.menOpen({day:dk});D.querySelector("[data-mdbcam]").click();await sleep(40);eq(/Nu ai dat voie la camera/.test(D.querySelector("#mdbr").textContent),true,"permisiune refuzata: mesaj clar");w.close()}
+ })();
  done()})();

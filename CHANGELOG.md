@@ -2,6 +2,18 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.23.1
+- **Scanare cu camera** pentru produsul din Meniu: langa "Cauta" apare iconita de camera. Citeste codul (EAN-13, EAN-8, UPC), il pune in camp si cauta produsul, ca la codul tastat. Camera se opreste singura dupa citire, la "Opreste camera", la Anuleaza si cand inchizi dialogul.
+- Foloseste detectorul nativ al browserului cand il are; altfel biblioteca `zxing.min.js` (Apache 2.0, licenta in `zxing-LICENSE.txt`), pusa in pachet si incarcata abia cand apesi camera (nu din alt domeniu). Verificat cu o camera simulata intr-un browser real: citeste un cod EAN-13 prin biblioteca de rezerva.
+- Fara camera sau fara permisiune: butonul e gri cu mesaj scurt, respectiv "Nu ai dat voie la camera. Poti scrie codul de bare."
+
+## 4.23.0
+- **Produs dupa cod de bare, in Meniu.** In "Adauga la meniu" apare campul "Produs dupa cod de bare" (8 pana la 14 cifre) cu "Cauta". Valorile vin de la Open Food Facts (serviciu gratuit, fara cheie; trimite doar codul), la 100 g: kcal, proteine, carbohidrati, grasimi. Cardul produsului arata numele, marca si sursa; alegi cantitatea in grame (implicit portia de pe ambalaj, altfel 100 g), macro-ul se recalculeaza pe loc, iar "Adauga la meniu" pune produsul in ziua si masa aleasa.
+- Produsul intra ca o masa libera, cu cantitatea (ex. "50 g") si macro, care se aduna in totalul zilei; nota din Macro spune ca produsele se numara dupa cantitatea introdusa. Micronutrientii nu se calculeaza pentru produse.
+- Produsele gasite se tin local (ultimele 100), ca sa mearga si fara internet a doua oara. Mesaje clare pentru cod invalid, produs negasit si lipsa internetului (produsul negasit se poate scrie liber).
+- Randurile din Meniu fara reteta (text liber, produse) nu mai apar gri ca "planificat".
+- Securitate: `index.html` permite conectarea si la `world.openfoodfacts.org`.
+
 ## 4.22.3
 - **Meniu: "Propune-mi un meniu"** are iconita de bec galben (idee) in loc de bagheta; titlul spune "Idei de meniu: propune-mi un meniu".
 - **Macro si Micronutrienti** (pe zi si pe saptamana) sunt acum aceeasi cutie: acelasi fundal, aceeasi latime si margine, cu sageata (▸ inchis, ▾ deschis) care arata ca se deschid.
