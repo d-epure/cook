@@ -542,3 +542,17 @@ details.mmic[open]>summary{margin-bottom:4px}
 .bcrow{flex-wrap:wrap}.bcrow input{flex:1 1 11em}.bcb{display:flex;gap:8px;flex:0 0 auto;margin-left:auto}.bcb button{min-width:44px}
 #mdres .chips>*{flex:0 0 auto}
 .mdlg{padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+
+/* 4.25.0: camera: cadru de tintire verde, linie de scanare, lanterna la cerere */
+.bcw{position:relative;border-radius:var(--r-s);overflow:hidden;background:#000}
+.bcw video{max-height:300px;min-height:200px;border-radius:0}
+.bcm{position:absolute;inset:0;pointer-events:none}
+.bcf{position:absolute;left:10%;right:10%;top:18%;bottom:18%;box-shadow:0 0 0 999px rgba(0,0,0,.5)}
+.bcf i{position:absolute;width:22px;height:22px;border:0 solid #7ddc9a}
+.bcf i:nth-child(1){left:0;top:0;border-width:3px 0 0 3px}.bcf i:nth-child(2){right:0;top:0;border-width:3px 3px 0 0}
+.bcf i:nth-child(3){left:0;bottom:0;border-width:0 0 3px 3px}.bcf i:nth-child(4){right:0;bottom:0;border-width:0 3px 3px 0}
+.bcf b{position:absolute;left:4%;right:4%;top:50%;height:2px;background:#7ddc9a;box-shadow:0 0 6px #7ddc9a;animation:bcl 2.2s ease-in-out infinite alternate}
+@keyframes bcl{from{top:12%}to{top:88%}}
+@media (prefers-reduced-motion:reduce){.bcf b{animation:none}}
+.bcfl{position:absolute;right:8px;top:8px;background:rgba(0,0,0,.55);color:#fff;border-color:transparent}
+.bcfl.on{background:#7ddc9a;color:#0b2a1b}

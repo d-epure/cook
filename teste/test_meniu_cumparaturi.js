@@ -360,4 +360,23 @@ await (async()=>{
    eq(/Fara date pentru/.test(D.querySelector("#bres [data-macp]").textContent),false,"dupa asociere, ingredientul nu mai e fara date")}
   w.close()
  })();
+ // --- 4.25.0: cadru de tintire + lanterna la cerere
+ await (async()=>{
+  let torch=[],caps={torch:true};
+  const w=await boot({rp:"[]"},{wait:600,names:["menOpen","show","menClose"],offline:true});
+  w.navigator.mediaDevices={getUserMedia:async()=>({getTracks:()=>[{stop(){}}],getVideoTracks:()=>[{getCapabilities:()=>caps,applyConstraints:async c=>{torch.push(c.advanced[0].torch)}}]})};
+  w.BarcodeDetector=class{static async getSupportedFormats(){return["ean_13"]}async detect(){return[]}};
+  const T=w.__t,D=w.document;T.show("meniu");T.menOpen({});D.querySelector("[data-mdbcam]").click();await sleep(60);
+  eq([!!D.querySelector(".bcf"),D.querySelectorAll(".bcf i").length,/Pune codul de bare in cadru/.test(D.querySelector(".bcv").textContent)],[true,4,true],"camera arata cadrul de tintire cu patru colturi si textul");
+  const fl=D.querySelector("[data-mdbfl]");eq([!!fl,fl.classList.contains("gri"),torch.length],[true,false,0],"lanterna e disponibila si NU e pornita singura");
+  fl.click();await sleep(20);eq([torch,fl.classList.contains("on")],[[true],true],"apasare: lanterna porneste");
+  fl.click();await sleep(20);eq([torch,fl.classList.contains("on")],[[true,false],false],"a doua apasare: lanterna se opreste");
+  w.close();
+  // fara suport pentru lanterna: gri + mesaj
+  const w2=await boot({rp:"[]"},{wait:600,names:["menOpen","show"],offline:true});
+  w2.navigator.mediaDevices={getUserMedia:async()=>({getTracks:()=>[{stop(){}}],getVideoTracks:()=>[{getCapabilities:()=>({}),applyConstraints:async()=>{}}]})};
+  w2.BarcodeDetector=class{static async getSupportedFormats(){return["ean_13"]}async detect(){return[]}};
+  const D2=w2.document;w2.__t.show("meniu");w2.__t.menOpen({});D2.querySelector("[data-mdbcam]").click();await sleep(60);
+  const f2=D2.querySelector("[data-mdbfl]");f2.click();eq([f2.classList.contains("gri"),/Lanterna nu e disponibila/.test(D2.querySelector("#toast").textContent)],[true,true],"fara suport: lanterna e gri si spune de ce");w2.close()
+ })();
  done()})();

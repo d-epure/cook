@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.25.0
+- **Camera pentru cod de bare, ca la Eat & Track:** cadru de tintire cu patru colturi verzi, zona din afara cadrului intunecata, linie verde de scanare (sta pe loc daca ai animatiile reduse in telefon) si textul "Pune codul de bare in cadru". Detectorul nativ citeste acum doar zona din cadru (mai rapid, mai putine citiri gresite); biblioteca de rezerva citeste tot ecranul.
+- **Lanterna la cerere:** buton in coltul camerei. Nu porneste singura, doar cand o apesi; se opreste odata cu camera. Daca telefonul sau browserul nu o permite, butonul e gri si spune de ce.
+
 ## 4.24.1
 - **Macro din Info, ingrediente fara date:** "praf de sare", "varf de cutit", "strop" si "picatura" se potrivesc acum cu alimentul (sare etc.) in loc sa ceara conversie in grame. Titlul avertismentului listeaza toate ingredientele fara date, pe nume, ca sa nu mai cauti prin card. Sub el apare separat lista ingredientelor fara cantitate (scortisoara, esenta de vanilie etc.), care nu intra in calcul.
 - **"Este alt aliment":** langa Cauta cu AI si Completeaza manual, alegi din lista Info alimentul cu care se potriveste ingredientul (ex: praf de sare = Sare). Se salveaza ca aliment al tau si se foloseste si data viitoare, fara sa retastezi valorile.

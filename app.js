@@ -338,7 +338,7 @@ function saveGen(btn){const r=JSON.parse(JSON.stringify(cur));r.etichete=normTag
  l=l.filter(x=>x.id!==r.id);l.unshift(r);
  l=svTrim(l);
  LS("rs",JSON.stringify(l));btn.textContent="Salvat"}
-/* 4.24.1: "Editeaza reteta" si pe retetele AI (generate sau salvate): acelasi formular ca la celelalte retete (titlu, portii, categorie, ingrediente, pasi) */
+/* 4.25.0: "Editeaza reteta" si pe retetele AI (generate sau salvate): acelasi formular ca la celelalte retete (titlu, portii, categorie, ingrediente, pasi) */
 function aiEditForm(sel){const c=RC[sel],r=c.r,cats=[...new Set([...BOOK.map(x=>x.categorie),r.categorie,"Retetele mele","Desert"].filter(Boolean))].sort();
  const ing=ingText((r.ingrediente||[]).map(x=>({c:x.cantitate===""||x.cantitate==null||isNaN(+x.cantitate)?null:+x.cantitate,u:x.unitate||"",n:x.nume,g:x.g})));
  $(sel).innerHTML=`<div class="bv" data-aed="1"><div class="mb12"><button class="alt" data-eaicx="1">Anuleaza</button></div><div class="card"><h2>Editeaza: ${esc(r.titlu)}</h2>
@@ -1527,26 +1527,37 @@ function bcAdd(){const p=MD&&MD.bc;if(!p)return;const q=Math.round(Math.min(5000
  const f=q/100,m=p.k[0]!=null?p.k.map(v=>v==null?null:+(v*f).toFixed(1)):null;
  menAdd(Object.assign({t:(p.n+(p.b?" ("+p.b+")":"")).slice(0,80),s:"x",k:"",p:0,L:0,q,ean:p.code},m?{m}:{}))}
 /* ===== 4.23.1: scanare cu camera. Foloseste detectorul nativ al browserului (BarcodeDetector) cand are formatele EAN/UPC; altfel biblioteca zxing.min.js (Apache 2.0), din acelasi domeniu, incarcata abia cand apesi camera ===== */
+const FLASH_IC='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 13.5h6L10 22l8-11.5h-6z"/></svg>';
 const CAM_IC='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
 let BC={st:null,t:0,rd:null,done:false,zx:null};
 const camOk=()=>!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia);
 function bcStop(){clearInterval(BC.t);BC.t=0;try{if(BC.rd&&BC.rd.reset)BC.rd.reset()}catch(e){dbg(e)}BC.rd=null;try{if(BC.st)BC.st.getTracks().forEach(x=>x.stop())}catch(e){dbg(e)}BC.st=null}
 function bcLoadZx(){if(window.ZXing)return Promise.resolve();return BC.zx||(BC.zx=new Promise((ok,no)=>{const sc=document.createElement("script");sc.src="zxing.min.js?v="+APP_V;sc.onload=()=>window.ZXing?ok():no(new Error("zxing"));sc.onerror=()=>{BC.zx=null;no(new Error("zxing"))};document.head.appendChild(sc)}))}
 function bcFound(code){if(BC.done||!MD)return;BC.done=true;bcStop();try{if(navigator.vibrate)navigator.vibrate(60)}catch(e){dbg(e)}const i=$("#mdbc");if(i)i.value=code;bcRun(code)}
+/* 4.25.0: ecranul camerei: cadru de tintire (colturi verzi, restul intunecat), linie de scanare, lanterna la cerere; citirea nativa se face doar in cadru */
+const bcTrack=()=>{const v=$("#bcv"),st=BC.st||(v&&v.srcObject);try{return st&&st.getVideoTracks&&st.getVideoTracks()[0]||null}catch(e){return null}};
+function bcFlashInit(){const b=$("[data-mdbfl]"),t=bcTrack();if(!b)return;let ok=false;try{ok=!!(t&&t.getCapabilities&&t.getCapabilities().torch)}catch(e){dbg(e)}b.classList.toggle("gri",!ok)}
+async function bcFlash(){const b=$("[data-mdbfl]"),t=bcTrack();if(!b)return;
+ if(b.classList.contains("gri")){toast("Lanterna nu e disponibila pe acest telefon sau browser.",false);return}
+ const on=!b.classList.contains("on");try{await t.applyConstraints({advanced:[{torch:on}]});b.classList.toggle("on",on);b.setAttribute("aria-pressed",on?"true":"false")}catch(e){dbg(e);toast("Nu pot porni lanterna.",false)}}
+/* decupeaza din imagine zona din cadru (10%-90% pe latime, 18%-82% pe inaltime din ce se vede); daca nu merge, citeste tot */
+function bcCrop(v){try{const vw=v.videoWidth,vh=v.videoHeight,bw=v.clientWidth,bh=v.clientHeight;if(!(vw&&vh&&bw&&bh))return v;
+ const sc=Math.max(bw/vw,bh/vh),sw=bw/sc,sh=bh/sc,sx=(vw-sw)/2,sy=(vh-sh)/2,x=sx+sw*.1,y=sy+sh*.18,w=sw*.8,h=sh*.64;
+ const c=BC.cv||(BC.cv=document.createElement("canvas"));c.width=Math.round(w);c.height=Math.round(h);const g=c.getContext("2d");if(!g)return v;g.drawImage(v,x,y,w,h,0,0,c.width,c.height);return c}catch(e){return v}}
 async function bcScan(){if(!MD||!$("#mdbr"))return;bcStop();BC.done=false;
- $("#mdbr").innerHTML=`<div class="bcv mt8"><video id="bcv" playsinline muted></video><div class="muted">Indreapta camera spre codul de bare.</div><button class="alt" data-mdbcx="1">Opreste camera</button></div>`;
+ $("#mdbr").innerHTML=`<div class="bcv mt8"><div class="bcw"><video id="bcv" playsinline muted></video><div class="bcm"><div class="bcf"><i></i><i></i><i></i><i></i><b></b></div></div><button class="alt ico bcfl gri" data-mdbfl="1" aria-label="Lanterna" title="Lanterna">${FLASH_IC}</button></div><div class="muted">Pune codul de bare in cadru.</div><button class="alt" data-mdbcx="1">Opreste camera</button></div>`;
  const v=$("#bcv"),cons={video:{facingMode:{ideal:"environment"}},audio:false};
  try{
   let nat=false;if(window.BarcodeDetector){try{const fm=await window.BarcodeDetector.getSupportedFormats();nat=fm.includes("ean_13")}catch(e){nat=false}}
   if(nat){const det=new window.BarcodeDetector({formats:["ean_13","ean_8","upc_a","upc_e"]});
-   BC.st=await navigator.mediaDevices.getUserMedia(cons);if(!MD||!$("#bcv")){bcStop();return}v.srcObject=BC.st;await v.play();
-   BC.t=setInterval(async()=>{try{const r=await det.detect(v);if(r&&r[0]&&r[0].rawValue)bcFound(r[0].rawValue)}catch(e){dbg(e)}},300);return}
+   BC.st=await navigator.mediaDevices.getUserMedia(cons);if(!MD||!$("#bcv")){bcStop();return}v.srcObject=BC.st;await v.play();bcFlashInit();
+   BC.t=setInterval(async()=>{try{const r=await det.detect(bcCrop(v));if(r&&r[0]&&r[0].rawValue)bcFound(r[0].rawValue)}catch(e){dbg(e)}},300);return}
   await bcLoadZx();if(!MD||!$("#bcv"))return;
   const Z=window.ZXing,h=new Map();h.set(Z.DecodeHintType.POSSIBLE_FORMATS,[Z.BarcodeFormat.EAN_13,Z.BarcodeFormat.EAN_8,Z.BarcodeFormat.UPC_A,Z.BarcodeFormat.UPC_E]);
-  BC.rd=new Z.BrowserMultiFormatReader(h,300);BC.rd.decodeFromConstraints(cons,v,(r)=>{if(r)bcFound(r.getText())});
+  BC.rd=new Z.BrowserMultiFormatReader(h,300);BC.rd.decodeFromConstraints(cons,v,(r)=>{if(r)bcFound(r.getText())});setTimeout(bcFlashInit,700);setTimeout(bcFlashInit,2000);
  }catch(e){dbg(e);bcStop();if(!MD||!$("#mdbr"))return;
   $("#mdbr").innerHTML=`<p class="muted">${e&&e.name==="NotAllowedError"?"Nu ai dat voie la camera. Poti scrie codul de bare.":"Nu pot porni camera. Poti scrie codul de bare."}</p>`}}
-/* 4.24.1: pe telefon nu se mai deschide tastatura singura la deschiderea dialogului (acoperea restul, inclusiv campul de cod de bare); cand tastatura e deschisa, dialogul primeste loc sub el si campul atins se deruleaza in vedere */
+/* 4.25.0: pe telefon nu se mai deschide tastatura singura la deschiderea dialogului (acoperea restul, inclusiv campul de cod de bare); cand tastatura e deschisa, dialogul primeste loc sub el si campul atins se deruleaza in vedere */
 const TOUCH=()=>!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
 if(window.visualViewport){const kb=()=>{const m=$("#mdlg"),v=window.visualViewport;if(m)m.style.paddingBottom=(16+Math.max(0,window.innerHeight-v.height-v.offsetTop))+"px"};window.visualViewport.addEventListener("resize",kb);window.visualViewport.addEventListener("scroll",kb)}
 $("#mdlg").addEventListener("focusin",e=>{const t=e.target;if(t&&/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName))setTimeout(()=>{try{t.scrollIntoView({block:"center",behavior:"smooth"})}catch(x){dbg(x)}},350)});
@@ -1590,6 +1601,7 @@ $("#mdlg").onclick=e=>{if(PRP){pxClick(e);return}const b=e.target,d=b.dataset;
  if(d.mdpick!==undefined){const[s,i]=d.mdpick.split(":"),r=s==="s"?getSaved()[+i]:BOOK[+i];if(r){if(MD.mp){mpForm(s,r);return}const en=mkEntry(s,r);if(d.mpk)en.mp=1;menAdd(en)}return}
  if(d.mpok!==undefined){mpSave(d.mpok);return}
  if(e.target.closest("[data-mdbcam]")){if(!camOk()){toast("Camera nu e disponibila in acest browser. Scrie codul de bare.",false);return}bcScan();return}
+ if(e.target.closest("[data-mdbfl]")){bcFlash();return}
  if(d.mdbcx!==undefined){bcStop();$("#mdbr").innerHTML="";return}
  if(e.target.closest("[data-mdbs]")){bcRun($("#mdbc").value);return}
  if(d.mdbx!==undefined){bcStop();MD.bc=null;$("#mdbr").innerHTML="";$("#mdbc").value="";return}
@@ -1752,7 +1764,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="4.24.1";
+const APP_V="4.25.0";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
@@ -2234,7 +2246,7 @@ function fdFormHtml(z,j){const f=z.f?z.f.k:["","","",""],cv=fdNeedCv(z.x),xv=(z.
  return`${String(j).startsWith("e:")?`<div class="mt8 mb8">${inp("nm","Nume",(z.fd&&z.fd.n)||z.x.n).replace('type="number" min="0" step="any"','type="text" maxlength="60"')}</div>`:""}<p class="muted mt8 mb4" >Valori la 100 g de ${esc(dn(z.x.n))}:</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${inp("kcal","kcal",f[0])}${inp("p","Proteine g",f[1])}${inp("c","Carbo g",f[3])}${inp("g","Grasimi g",f[2])}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">${inp("up","Unitate (ex: cub, felie)",(z.fd&&z.fd.up)||"","mf").replace('type="number" min="0" step="any"','type="text" maxlength="20"')}${inp("ug","Grame pe unitate (ex: 4)",(z.fd&&z.fd.ug)||"")}</div>${cv?`<div class="mt8">${inp("cv","Grame intr-o "+(z.x.u||"bucata"),"")}</div>`:""}<details class="mt8"><summary>Alte valori: fibre, minerale, vitamine (optional)</summary><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${XK.map((k,n)=>inp(k,XI[k][0]+" ("+XI[k][1]+")",xv[n],"mx")).join("")}</div></details><div class="mt8"><label>Grupa (optional)</label><select data-mf="gr"><option value="">-</option>${IGR.map(g=>`<option${g===gr?" selected":""}>${esc(g)}</option>`).join("")}</select></div><div data-merr class="warn" hidden></div><button class="go mt8" type="button" data-mms="${j}" >Salveaza local</button>`}
 function fdPut(z,k,cv,src,gr,x,keep){const key=mTok(z.x.n).join(" ")||dn(z.x.n).toLowerCase(),old=FD[key]||{},u=dn(z.x.u||"").toLowerCase().trim(),c=Object.assign({},old.cv);if(cv)c[u]=cv;
  FD[key]={n:old.n||z.x.n,t:key.split(" "),k,src:keep?(old.src||src):src||old.src||"manual",cv:c,gr:gr||old.gr||"",x:x||old.x||null};fdSave()}
-/* 4.24.1: "Este alt aliment": asociezi ingredientul fara date (ex: praf de sare) cu un aliment din Info (ex: Sare); se salveaza ca aliment al tau si se foloseste si data viitoare */
+/* 4.25.0: "Este alt aliment": asociezi ingredientul fara date (ex: praf de sare) cu un aliment din Info (ex: Sare); se salveaza ca aliment al tau si se foloseste si data viitoare */
 function fdAliasShow(bv,j){const z=bv._ml.miss[j],B=fdBase();
  bv.querySelector(`[data-mrow="${j}"] [data-mform]`).innerHTML=`<label>Alege alimentul din Info</label><input data-mal-in="1" list="mal-l${j}" maxlength="80" placeholder="ex: sare" autocomplete="off"><datalist id="mal-l${j}">${B.R.map(r=>`<option value="${esc(r.n)}">`).join("")}</datalist><div class="warn mt8" data-merr hidden></div><div class="row g8 mt8"><button class="go m0" type="button" data-malok="${j}">Asociaza</button></div>`}
 function fdAliasSave(bv,i,j){const z=bv._ml.miss[j],row=bv.querySelector(`[data-mrow="${j}"]`),v=dn(row.querySelector("[data-mal-in]").value).toLowerCase().trim(),er=row.querySelector("[data-merr]"),B=fdBase();
