@@ -2,6 +2,15 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.22.2
+- **Meniu pe telefon:** randul de sus nu se mai suprapune ("Saptamana" acoperea cosul de cumparaturi). Comutatorul "Azi si maine / Saptamana" ocupa latimea, iar cele trei iconite (cumparaturi, propune-mi, goleste saptamana) trec pe randul de dedesubt, aliniate la dreapta, cand nu incap.
+- Randurile de masa: butonul "-" e aliniat cu titlul (sus), eticheta "in lista" e mai mica, iar "Am gatit" sta pe aceeasi margine cu textul, nu sub butonul "-".
+
+## 4.22.1
+- **Din Meniu spre Meal prep:** cand aceeasi reteta apare de 2 sau mai multe ori in perioada afisata (azi si maine, sau saptamana) si nu are lot, la prima aparitie apare butonul "N mese: fa Meal prep". Deschide formularul existent de Meal prep, cu portiile completate (N). Alegi "Adauga la Meal prep" (planificat) sau "Am gatit deja", ca pana acum.
+- **Lotul planificat preia cumparaturile:** produsele aduse in lista pentru mesele din meniu cu aceeasi reteta (sursele "Titlu (meniu zi)", de azi inainte) ies din lista, iar lotul aduce ingredientele pentru toate portiile. Nu mai apar dubluri. Se aplica la orice lot planificat, nu doar celor pornite din buton.
+- Mesele a caror reteta are lot arata "in lotul Meal prep", iar cosurile din Meniu nu le mai adauga a doua oara in lista.
+
 ## 4.22.0
 - **Debara: un singur rand pe produs.** "Rosii", "Rosii deshidratate" si "Rosii, conserva" devin un rand "Rosii" cu marcajele proaspat, uscat si conserva aprinse. La fel "Usturoi" / "Usturoi, catei" / "Usturoi, pudra" si "Vanilie" / "Vanilie, esenta" / "Vanilie, extract". Unirea se face la pornire, cu copie de siguranta si buton Anuleaza (copia ramane si in `rpbak4220`).
 - **Condimente au acum marcaje** (proaspat, uscat, altceva), ca Legumele. Cuvintele catei, pastaie = proaspat; pudra, macinat, fulgi, granulat = uscat; esenta, extract, pasta = altceva (borcan, sos). Se aplica doar produselor din categorii cu marcaje: "zahar pudra" ramane separat de "zahar".

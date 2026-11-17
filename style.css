@@ -520,3 +520,9 @@ button.lnk{background:none;border:0;padding:0;font:inherit;font-weight:700;text-
 .lrh .alt svg{width:18px;height:18px}
 /* 4.22.0: atentionare (nu eroare): produsul exista in debara sub alta forma; legenda Debara mereu vizibila */
 .lb.lbw{background:transparent;color:var(--warn);padding:0 2px;font-weight:600}
+/* 4.22.2: Meniu pe telefon: randul de sus nu se mai suprapune; randurile de masa aliniate */
+.mtop{flex-wrap:wrap}.mtop .mseg{flex:1 1 200px}.mtop .mti{display:flex;gap:8px;margin-left:auto}
+#mw .mseg>button{min-width:0;white-space:nowrap;padding:4px 8px}
+.me .mrm{align-self:flex-start;margin-top:2px}
+.me .lbb{min-height:32px;padding:2px 10px;margin:2px 6px 4px 0}
+@media (max-width:700px){.me [data-mgat]{margin-left:44px}}

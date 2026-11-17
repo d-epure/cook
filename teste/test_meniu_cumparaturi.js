@@ -244,4 +244,22 @@ await (async()=>{
   eq(T3.getList().map(x=>x.n).sort(),["Rosii conserva","rosii"],"Am terminat cu o singura forma: in lista apare cu forma (Rosii conserva)");
   w3.close();
  })();
+ // --- 4.22.1: din Meniu spre Meal prep; lotul planificat preia cumparaturile mesei
+ await (async()=>{
+  const key=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"),ZI=["duminica","luni","marti","miercuri","joi","vineri","sambata"];
+  const d0=new Date(),d1=new Date(Date.now()+864e5),k0=key(d0),k1=key(d1),t0=supa.titlu+" (meniu "+ZI[d0.getDay()]+")",t1=supa.titlu+" (meniu "+ZI[d1.getDay()]+")";
+  const en=()=>({t:supa.titlu,s:"s",k:"salvat|"+supa.titlu,p:1,bp:2,L:1});
+  const w=await boot({rp:"[]",rs:JSON.stringify([supa]),rl:JSON.stringify([item("zzzrosii","g",300,t0),item("zzzrosii","g",300,t1),item("zzzaltceva","g",50,"Alta reteta")]),rmen:JSON.stringify({[k0]:{cina:[en()]},[k1]:{cina:[en()]}})},{wait:800,names:["getMP","getList","getMen","drawMenu","show","drawList"],offline:true}),T=w.__t,D=w.document;
+  T.show("meniu");T.drawMenu();
+  const bt=D.querySelectorAll("[data-mbr]");eq([bt.length,bt[0]&&bt[0].textContent],[1,"2 mese: fa Meal prep"],"meniu: reteta de 2 ori, fara lot: un singur buton '2 mese: fa Meal prep'");
+  bt[0].click();const dl=D.querySelector("#mdlg");eq([D.querySelector("#mpp").value,D.querySelector("#mpn").textContent],["2","2"],"formularul Meal prep porneste cu 2 portii");
+  dl.querySelector("[data-mpok=p]").click();
+  const lot=T.getMP()[0],L=T.getList(),men=Object.values(T.getMen()).flatMap(d=>Object.values(d).flat());
+  eq([T.getMP().length,lot.st,lot.p],[1,"p",2],"lot planificat cu 2 portii");
+  eq([L.some(x=>x.n==="zzzrosii"),L.some(x=>x.n==="zzzaltceva"),L.every(x=>!x.src.some(y=>/\(meniu /.test(y)))],[false,true,true],"lotul preia cumparaturile: partile (meniu zi) au iesit din lista, restul ramane, nimic cu sursa meniu");
+  eq(men.every(e=>!e.L),true,"mesele din meniu nu mai sunt 'in lista'");
+  eq([D.querySelectorAll("[data-mbr]").length,D.querySelectorAll("#mw .lb").length>0&&/in lotul Meal prep/.test(D.querySelector("#mw").textContent)],[0,true],"butonul dispare; mesele arata 'in lotul Meal prep'");
+  const nL=T.getList().length;D.querySelector("[data-mshop=z]").click();eq(T.getList().length,nL,"cosul din meniu nu mai adauga ingredientele retetei care are lot (fara dubluri)");
+  w.close();
+ })();
  done()})();
