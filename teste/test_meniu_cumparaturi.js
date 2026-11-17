@@ -320,4 +320,28 @@ await (async()=>{
    const w=await boot({rp:"[]"},{wait:600,names:["menOpen","show"],offline:true});w.matchMedia=()=>({matches:coarse});const T=w.__t,D=w.document;T.show("meniu");T.menOpen({});await sleep(30);
    eq(D.activeElement&&D.activeElement.id==="mdq",want,coarse?"ecran tactil: cautarea nu primeste focus (tastatura nu acopera dialogul)":"desktop: cautarea primeste focus");w.close()}
  })();
+ // --- 4.24.0: "Editeaza reteta" si pe retetele AI (salvate si generate), acelasi nume ca la celelalte
+ await (async()=>{
+  const ai={id:"r-test1",titlu:"Orez cu lapte AI",portii:2,etichete:[],ingrediente:[{nume:"orez",cantitate:200,unitate:"g"},{nume:"lapte",cantitate:500,unitate:"ml"}],pasi:[{id:"p1",text:"Fierbe orezul.",aparat:"Thermomix",mod:"gatire",temp:100,durata_min:15},{id:"p2",text:"Adauga laptele.",aparat:"manual",depinde_de:["p1","p9"]}]};
+  const w=await boot({rp:"[]",rs:JSON.stringify([ai])},{wait:600,names:["RC","renderRecipe","getSaved","sKey"],offline:true});const T=w.__t,D=w.document;
+  T.RC["#salvate"]={r:T.getSaved()[0],kind:"saved",back:()=>{}};T.renderRecipe("#salvate");
+  const btn=D.querySelector("#salvate [data-edai]");eq([!!btn,btn&&btn.textContent],[true,"Editeaza reteta"],"reteta AI are butonul Editeaza reteta");
+  btn.click();eq(!!D.querySelector("#salvate [data-ea=titlu]"),true,"se deschide formularul de editare");
+  const set=(k,v)=>{D.querySelector("#salvate [data-ea="+k+"]").value=v};
+  set("titlu","Orez cu lapte");set("categorie","Desert");set("portii","3");set("ing","250 g orez\n600 ml lapte\n1 praf sare");set("pasi","Fierbe orezul.\nAdauga laptele fierbinte.\nServeste cu scortisoara.");
+  D.querySelector("#salvate [data-eaiok]").click();
+  const sv=T.getSaved()[0];
+  eq([sv.titlu,sv.categorie,sv.portii,sv.ingrediente.length,sv.ingrediente[0].nume,sv.ingrediente[0].cantitate,sv.id],["Orez cu lapte","Desert",3,3,"orez",250,"r-test1"],"editarea se salveaza (titlu, categorie, portii, ingrediente; cheia ramane aceeasi)");
+  eq([sv.pasi.length,sv.pasi[0].aparat,sv.pasi[0].temp,sv.pasi[1].aparat,sv.pasi[1].depinde_de,sv.pasi[2].aparat],[3,"Thermomix",100,"manual",["p1"],"manual"],"pasii pastreaza setarile aparatului; pasul nou e manual; legaturile spre pasi stersi dispar");
+  eq(/Orez cu lapte/.test(D.querySelector("#salvate").textContent)&&!D.querySelector("#salvate [data-ea]"),true,"dupa salvare se vede reteta, nu formularul");
+  // validare + renunta
+  D.querySelector("#salvate [data-edai]").click();D.querySelector("#salvate [data-ea=portii]").value="0";D.querySelector("#salvate [data-eaiok]").click();
+  eq([!!D.querySelector("#salvate [data-ea=titlu]"),T.getSaved()[0].portii],[true,3],"portii invalide: nu se salveaza, formularul ramane");
+  D.querySelector("#salvate [data-eaicx]").click();eq(!!D.querySelector("#salvate [data-ea]"),false,"Anuleaza inchide formularul fara schimbari");
+  // reteta generata (nesalvata): se modifica doar in memorie
+  T.RC["#reteta"]={r:JSON.parse(JSON.stringify(ai)),kind:"gen"};D.querySelector("#reteta")&&T.renderRecipe("#reteta");
+  if(D.querySelector("#reteta [data-edai]")){D.querySelector("#reteta [data-edai]").click();D.querySelector("#reteta [data-ea=titlu]").value="Altceva";D.querySelector("#reteta [data-eaiok]").click();eq([T.RC["#reteta"].r.titlu,T.getSaved()[0].titlu],["Altceva","Orez cu lapte"],"reteta generata nesalvata: editarea nu atinge retetele salvate")}
+  // biblioteca: butonul se numeste la fel
+  w.close()
+ })();
  done()})();

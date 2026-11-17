@@ -73,7 +73,7 @@ Navigare: bara cu 5 destinatii (Retete, Meniu, Cumparaturi, Debara, Mai mult): j
 
 AI-ul (Anthropic) se foloseste doar cand apesi: idei, reteta completa, adaptare, estimare de macro si, optional, un meniu generat. Restul (cautare, meniu propus, liste, debara, Info) merge local si gratuit.
 
-Corectarea unei retete (Mai multe actiuni > Corecteaza reteta): daca ingredientele sau pasii lipsesc pentru ca extragerea din carte a esuat, dar textul paginii e pastrat, casetele se completa din liniile detectate in text, ca sa le corectezi in loc sa scrii de la zero.
+Editarea unei retete (Mai multe actiuni > Editeaza reteta, pe orice reteta, inclusiv cele AI; la cele AI doar titlu, portii, categorie, ingrediente si pasi): daca ingredientele sau pasii lipsesc pentru ca extragerea din carte a esuat, dar textul paginii e pastrat, casetele se completa din liniile detectate in text, ca sa le corectezi in loc sa scrii de la zero.
 
 Cumparaturi: produsele se compara dupa `lkey` (singular/plural ignorat; de la 3.20.0 si felul in care e taiat, "de" de la inceput si locul cuvantului de masura, prin `lClean`; kg si l se aduc la g si ml) in `addList` si `listDedupe`; sursa produsului e link (`data-lsrc`) catre reteta, cautata dupa titlu. Meal prep (Meniu; se adauga si din orice reteta deschisa, buton `data-mpr`, `mpBtn`; pe lot: `mpInMen`): `rmp` = [{id,s,k,t,d,p}] (reteta gatita in lot, data, portii informative); `mpHtml`, `mpOpen`, `mpForm`, `mpSave`; la adaugarea unui lot, mesele de azi inainte cu aceeasi reteta primesc `en.mp=1`, la fel orice masa adaugata (`menAdd`) cu reteta unui lot activ; caseta de cumparaturi din formular apare mereu cand e ceva de cumparat (produsele ascunse, pe care le ai in debara, nu conteaza in `inCartAny`); daca reteta e deja in lista, bifa actualizeaza cantitatile; daca ai tot in debara, apare doar mesajul; mesele cu `en.mp=1` (fara "Am gatit", fara ingrediente in cumparaturile meniului). Nimic nu scade automat; "Terminat" scoate lotul.
 
@@ -89,7 +89,7 @@ Tinte si micronutrienti: din profil (formula Mifflin-St Jeor x nivel de activita
 
 Alimente adaugate de tine (Info > Ingrediente > Editeaza): poti schimba numele (nu poate repeta un nume existent); un aliment venit de la AI ramane marcat AI chiar daca il corectezi manual. Poti seta o unitate cu greutatea ei (ex: 1 cub = 4 g). In Info, randul arata valorile pe unitate ("pentru 1 cub (4 g)"), iar in retete "1 cub zahar" se calculeaza ca 4 g. Cu campul "Pentru ... g" schimbat din 100, lista foloseste cantitatea ceruta.
 
-Macro pe reteta: butonul "Calculeaza din Info" / "Recalculeaza din Info" (in reteta deschisa, si in Corecteaza reteta, unde completeaza campurile de macro) calculeaza local din Info > Ingrediente. Ingredientele fara date le cauti cu AI sau le completezi manual; se salveaza local (cheia `rfd`, inclusa in backup) si apar in Info > Ingrediente, "Adaugate de tine". Greutatile pe bucata si cuvintele fara calorii sunt in `nutri.js` (`NUTRI.P`, `NUTRI.Z`).
+Macro pe reteta: butonul "Calculeaza din Info" / "Recalculeaza din Info" (in reteta deschisa, si in Editeaza reteta, unde completeaza campurile de macro) calculeaza local din Info > Ingrediente. Ingredientele fara date le cauti cu AI sau le completezi manual; se salveaza local (cheia `rfd`, inclusa in backup) si apar in Info > Ingrediente, "Adaugate de tine". Greutatile pe bucata si cuvintele fara calorii sunt in `nutri.js` (`NUTRI.P`, `NUTRI.Z`).
 
 ## Backup si actualizari
 

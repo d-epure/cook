@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.24.0
+- **"Editeaza reteta" pe toate retetele:** butonul din Mai multe actiuni se numeste acum la fel peste tot (inainte: "Corecteaza reteta", doar pe retetele din carti si scrise de tine) si exista si pe retetele AI, salvate sau abia generate. Formularul are Titlu, Portii, Categorie, Ingrediente si Mod de preparare. Pasii pe aparat isi pastreaza setarile (temperatura, durata) cand ii editezi pe loc; un pas nou e manual.
+- Categoria "Desert" e mereu in lista, ca sa poti marca o reteta ca desert (Adauga la meniu si Propune-mi un meniu o pun apoi singure la masa Desert).
+
 ## 4.23.3
 - **Dialogul "Adauga la meniu" la orice dimensiune de text (90% - 150%):** butoanele de sursa (Meal prep, Colectia mea, Favorite, Biblioteca) trec pe randul urmator cand nu incap, in loc sa iasa din ecran. Randul de cod de bare: campul are loc suficient, Cauta e acum o lupa langa camera, iar cand textul e mare iconitele trec sub camp. Textul din camp e "Cod de bare". Dialogul tine cont de zona sigura de jos a telefonului.
 - Reparat: apasarea exact pe lupa nu pornea cautarea.
