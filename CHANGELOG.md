@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.22.3
+- **Meniu: "Propune-mi un meniu"** are iconita de bec galben (idee) in loc de bagheta; titlul spune "Idei de meniu: propune-mi un meniu".
+- **Macro si Micronutrienti** (pe zi si pe saptamana) sunt acum aceeasi cutie: acelasi fundal, aceeasi latime si margine, cu sageata (▸ inchis, ▾ deschis) care arata ca se deschid.
+- **Etichete Meal prep corelate:** "in Meal prep" (lot planificat) si "din Meal prep" (gatit). A disparut cuvantul "lotul" si din mesajul cosului din Meniu.
+
 ## 4.22.2
 - **Meniu pe telefon:** randul de sus nu se mai suprapune ("Saptamana" acoperea cosul de cumparaturi). Comutatorul "Azi si maine / Saptamana" ocupa latimea, iar cele trei iconite (cumparaturi, propune-mi, goleste saptamana) trec pe randul de dedesubt, aliniate la dreapta, cand nu incap.
 - Randurile de masa: butonul "-" e aliniat cu titlul (sus), eticheta "in lista" e mai mica, iar "Am gatit" sta pe aceeasi margine cu textul, nu sub butonul "-".

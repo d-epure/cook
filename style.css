@@ -526,3 +526,10 @@ button.lnk{background:none;border:0;padding:0;font:inherit;font-weight:700;text-
 .me .mrm{align-self:flex-start;margin-top:2px}
 .me .lbb{min-height:32px;padding:2px 10px;margin:2px 6px 4px 0}
 @media (max-width:700px){.me [data-mgat]{margin-left:44px}}
+/* 4.22.3: Macro si Micronutrienti din Meniu: aceeasi cutie, acelasi fundal, cu sageata care arata ca se deschid */
+details.mmic{margin-top:10px;padding:2px 12px;background:var(--soft);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-s);font-size:var(--fs-s)}
+details.mmic>summary{list-style:none;cursor:pointer;font-weight:600;padding:6px 0}
+details.mmic>summary::-webkit-details-marker{display:none}
+details.mmic>summary::before{content:"\25B8";display:inline-block;width:1.1em;color:var(--pri)}
+details.mmic[open]>summary::before{content:"\25BE"}
+details.mmic[open]>summary{margin-bottom:4px}

@@ -258,7 +258,8 @@ await (async()=>{
   eq([T.getMP().length,lot.st,lot.p],[1,"p",2],"lot planificat cu 2 portii");
   eq([L.some(x=>x.n==="zzzrosii"),L.some(x=>x.n==="zzzaltceva"),L.every(x=>!x.src.some(y=>/\(meniu /.test(y)))],[false,true,true],"lotul preia cumparaturile: partile (meniu zi) au iesit din lista, restul ramane, nimic cu sursa meniu");
   eq(men.every(e=>!e.L),true,"mesele din meniu nu mai sunt 'in lista'");
-  eq([D.querySelectorAll("[data-mbr]").length,D.querySelectorAll("#mw .lb").length>0&&/in lotul Meal prep/.test(D.querySelector("#mw").textContent)],[0,true],"butonul dispare; mesele arata 'in lotul Meal prep'");
+  eq([D.querySelectorAll("[data-mbr]").length,D.querySelectorAll("#mw .lb").length>0&&/in Meal prep/.test(D.querySelector("#mw").textContent)],[0,true],"butonul dispare; mesele arata 'in Meal prep'");
+  eq([/Idei de meniu/.test(D.querySelector("[data-mprop]").getAttribute("aria-label")),!!D.querySelector("[data-mprop] svg path[fill=\"#f5c542\"]"),/lotul/.test(D.querySelector("#mw").textContent)],[true,true,false],"iconita Idei de meniu e un bec galben; etichetele nu mai spun 'lotul'");
   const nL=T.getList().length;D.querySelector("[data-mshop=z]").click();eq(T.getList().length,nL,"cosul din meniu nu mai adauga ingredientele retetei care are lot (fara dubluri)");
   w.close();
  })();
