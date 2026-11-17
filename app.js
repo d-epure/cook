@@ -1476,6 +1476,7 @@ function mpSave(mode){const r=MD.r,s=MD.s,k=s==="b"?bKey(r):sKey(r),p=clampP($("
  const nm=plan?0:mpMark(k);
  MPO=true;const af=MD&&MD.after;menClose();if(af)af();toast((plan?"Adaugat la Meal prep (de gatit)":"Adaugat la Meal prep (gatit)")+(n?"; "+(n-nh)+" produse la cumparaturi"+(nh?" (alte "+nh+" le ai in debara)":""):"")+(tr?"; "+tr+(tr===1?" masa din meniu nu mai cumpara separat":" mese din meniu nu mai cumpara separat"):"")+(nm?". "+nm+(nm===1?" masa din meniu e acum":" mese din meniu sunt acum")+" \"din Meal prep\"":"")+".");drawMenu();drawList()}
 /* ===== 4.23.0: produs dupa cod de bare (Open Food Facts); valorile sunt la 100 g, cantitatea o alegi tu; produsele gasite se tin local (ultimele 100), ca sa mearga si fara net ===== */
+const SRC_IC='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>';
 const BC_IC='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5v14M7 5v14M10.5 5v14M13 5v14M16.5 5v14M20 5v14"/></svg>';
 const bcGet=()=>{try{const j=JSON.parse(LS("rbc")||"{}");return j&&typeof j==="object"&&!Array.isArray(j)?j:{}}catch(e){return{}}};
 function bcPut(code,p){const o=bcGet();o[code]=Object.assign({},p,{ts:Date.now()});const ks=Object.keys(o);if(ks.length>100)ks.sort((a,b)=>(o[a].ts||0)-(o[b].ts||0)).slice(0,ks.length-100).forEach(k=>delete o[k]);LS("rbc",JSON.stringify(o))}
@@ -1519,7 +1520,7 @@ async function bcScan(){if(!MD||!$("#mdbr"))return;bcStop();BC.done=false;
   BC.rd=new Z.BrowserMultiFormatReader(h,300);BC.rd.decodeFromConstraints(cons,v,(r)=>{if(r)bcFound(r.getText())});
  }catch(e){dbg(e);bcStop();if(!MD||!$("#mdbr"))return;
   $("#mdbr").innerHTML=`<p class="muted">${e&&e.name==="NotAllowedError"?"Nu ai dat voie la camera. Poti scrie codul de bare.":"Nu pot porni camera. Poti scrie codul de bare."}</p>`}}
-/* 4.23.2: pe telefon nu se mai deschide tastatura singura la deschiderea dialogului (acoperea restul, inclusiv campul de cod de bare); cand tastatura e deschisa, dialogul primeste loc sub el si campul atins se deruleaza in vedere */
+/* 4.23.3: pe telefon nu se mai deschide tastatura singura la deschiderea dialogului (acoperea restul, inclusiv campul de cod de bare); cand tastatura e deschisa, dialogul primeste loc sub el si campul atins se deruleaza in vedere */
 const TOUCH=()=>!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
 if(window.visualViewport){const kb=()=>{const m=$("#mdlg"),v=window.visualViewport;if(m)m.style.paddingBottom=(16+Math.max(0,window.innerHeight-v.height-v.offsetTop))+"px"};window.visualViewport.addEventListener("resize",kb);window.visualViewport.addEventListener("scroll",kb)}
 $("#mdlg").addEventListener("focusin",e=>{const t=e.target;if(t&&/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName))setTimeout(()=>{try{t.scrollIntoView({block:"center",behavior:"smooth"})}catch(x){dbg(x)}},350)});
@@ -1530,7 +1531,7 @@ function menOpen(o){const r=o.r||null;MD={day:o.day||dKey(new Date()),slot:o.slo
  const sopt=SLOTS.map(([id,l])=>`<option value="${id}"${id===MD.slot?" selected":""}>${l}</option>`).join("");
  const body=r?`<p class="mt12 mb0"><b>${esc(r.titlu)}</b></p>${o.s==="b"&&r.portii==null?`<p class="muted">Cantitatile sunt cele din carte.</p>`:""}<div class="row mt16" ><button class="go m0" data-mdok="1" >Adauga la meniu</button><button class="alt" data-mdx="1">Anuleaza</button></div>`
   :`<label for="mdq" class="mt12">Cauta o reteta (nume sau ingrediente)</label><input id="mdq" placeholder="ex: ciorba, piept de pui" autocomplete="off"><div id="mdres"></div>
-   <label for="mdbc" class="mt12">Produs dupa cod de bare</label><div class="bcrow"><input id="mdbc" inputmode="numeric" maxlength="14" class="fx1" placeholder="ex: 5941234567890" autocomplete="off"><button class="alt" data-mdbs="1">Cauta</button><button class="alt ico${camOk()?"":" gri"}" data-mdbcam="1" aria-label="Scaneaza cu camera" title="Scaneaza cu camera">${CAM_IC}</button></div><div id="mdbr"></div>
+   <label for="mdbc" class="mt12">Produs dupa cod de bare</label><div class="bcrow"><input id="mdbc" inputmode="numeric" maxlength="14" class="fx1" placeholder="Cod de bare" autocomplete="off"><div class="bcb"><button class="alt ico" data-mdbs="1" aria-label="Cauta produsul" title="Cauta produsul">${SRC_IC}</button><button class="alt ico${camOk()?"":" gri"}" data-mdbcam="1" aria-label="Scaneaza cu camera" title="Scaneaza cu camera">${CAM_IC}</button></div></div><div id="mdbr"></div>
    <label for="mdt">Sau scrie liber (ex: resturi, iesim in oras)</label><div class="row g8" ><input id="mdt" maxlength="80" class="fx1"><button class="alt" data-mdtxt="1">Adauga text</button></div><div class="row mt16" ><button class="alt" data-mdx="1">Inchide</button></div>`;
  $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Adauga la meniu"><h2 class="m0">Adauga la meniu</h2><div class="fgrid mt8" ><div><label for="mdday">Ziua</label><select id="mdday">${dopt}</select></div><div><label for="mdslot">Masa</label><select id="mdslot">${sopt}</select></div></div>${body}</div>`;
  $("#mdlg").classList.remove("hidden");if(!r)mdSearch();
@@ -1564,7 +1565,7 @@ $("#mdlg").onclick=e=>{if(PRP){pxClick(e);return}const b=e.target,d=b.dataset;
  if(d.mpok!==undefined){mpSave(d.mpok);return}
  if(e.target.closest("[data-mdbcam]")){if(!camOk()){toast("Camera nu e disponibila in acest browser. Scrie codul de bare.",false);return}bcScan();return}
  if(d.mdbcx!==undefined){bcStop();$("#mdbr").innerHTML="";return}
- if(d.mdbs!==undefined){bcRun($("#mdbc").value);return}
+ if(e.target.closest("[data-mdbs]")){bcRun($("#mdbc").value);return}
  if(d.mdbx!==undefined){bcStop();MD.bc=null;$("#mdbr").innerHTML="";$("#mdbc").value="";return}
  if(d.mdbadd!==undefined){bcAdd();return}
  if(d.mdtxt!==undefined){const t=($("#mdt").value||"").trim().slice(0,80);if(!t){$("#mdt").focus();return}menAdd({t,s:"x",k:"",p:0,L:0})}};
@@ -1725,7 +1726,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="4.23.2";
+const APP_V="4.23.3";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
