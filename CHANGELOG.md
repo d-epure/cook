@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.24.1
+- **Macro din Info, ingrediente fara date:** "praf de sare", "varf de cutit", "strop" si "picatura" se potrivesc acum cu alimentul (sare etc.) in loc sa ceara conversie in grame. Titlul avertismentului listeaza toate ingredientele fara date, pe nume, ca sa nu mai cauti prin card. Sub el apare separat lista ingredientelor fara cantitate (scortisoara, esenta de vanilie etc.), care nu intra in calcul.
+- **"Este alt aliment":** langa Cauta cu AI si Completeaza manual, alegi din lista Info alimentul cu care se potriveste ingredientul (ex: praf de sare = Sare). Se salveaza ca aliment al tau si se foloseste si data viitoare, fara sa retastezi valorile.
+
 ## 4.24.0
 - **"Editeaza reteta" pe toate retetele:** butonul din Mai multe actiuni se numeste acum la fel peste tot (inainte: "Corecteaza reteta", doar pe retetele din carti si scrise de tine) si exista si pe retetele AI, salvate sau abia generate. Formularul are Titlu, Portii, Categorie, Ingrediente si Mod de preparare. Pasii pe aparat isi pastreaza setarile (temperatura, durata) cand ii editezi pe loc; un pas nou e manual.
 - Categoria "Desert" e mereu in lista, ca sa poti marca o reteta ca desert (Adauga la meniu si Propune-mi un meniu o pun apoi singure la masa Desert).

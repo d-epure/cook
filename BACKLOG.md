@@ -1,9 +1,9 @@
 # Backlog - Cartea mea de retete
 
-Starea la versiunea 4.24.0 (17 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
+Starea la versiunea 4.24.1 (17 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
 
 ## De verificat pe dispozitiv real
-Versiunile 3.20.0 - 4.24.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
+Versiunile 3.20.0 - 4.24.1 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
 - Dupa actualizare: favoritele, jurnalul, meniul si "Retetele mele" sunt la locul lor; Biblioteca are 956 de retete livrate plus ale tale.
 - Consola browserului (F12) fara erori "Content Security Policy" la: Idei cu AI, backup in Dropbox, descarcarea unui backup, butonul WhatsApp.
 - Aplicatia porneste in mod avion dupa prima incarcare (service worker cu cache propriu).
@@ -28,6 +28,7 @@ Versiunile 3.20.0 - 4.24.0 au fost testate doar in browser simulat (teste in fol
 - Data de expirare optionala in debara, la produsele proaspete.
 - Profil si meniu pentru copii: tinte pe grupe de varsta (formula si valorile de referinta din aplicatie sunt pentru adulti), portie ca fractiune din portia retetei, eventual mese diferite fata de adulti.
 - Adaugare de reteta prin dictare vocala (idee din 16 noiembrie, nu se face acum): camp "Dicteaza sau lipeste reteta" plus buton "Structureaza" (AI: titlu, portii, ingrediente cu cantitate si unitate, pasi, fara diacritice), apoi verificare obligatorie in formularul existent (`newBook`) si salvare. Dictare recomandata de la tastatura telefonului (merge offline, zero cod pentru voce); butonul de microfon din aplicatie (recunoasterea vocala a browserului) doar optional: trimite sunetul la Google si e nesigur pe iPhone in aplicatia instalata. Fara cheie API, "Structureaza" e gri cu mesaj. De decis cand se reia: tastatura sau buton in aplicatie, buton separat "Adauga prin dictare" sau in formular, comportament fara cheie.
+- Jurnal de apa (prioritate mica, decis pe 17 noiembrie: nu se face acum; ideea vine din comparatia cu Eat & Track).
 - Import de retete din link, lista de cumparaturi partajata intre utilizatori, poze pe retete (decizii mai vechi).
 
 ## Rescrieri de structura (o versiune dedicata, dupa testarea cu utilizatori)

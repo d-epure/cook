@@ -344,4 +344,20 @@ await (async()=>{
   // biblioteca: butonul se numeste la fel
   w.close()
  })();
+ // --- 4.24.1: macro din Info: "praf de sare" = sare, ingrediente fara cantitate listate, asociere cu alt aliment
+ await (async()=>{
+  const rec={sursa:"Retetele mele",nr:1,titlu:"Test macro",categorie:"Retetele mele",portii:2,manual:true,ingrediente:[{c:200,u:"g",n:"orez"},{c:1,u:"",n:"praf de sare"},{c:null,u:"",n:"scortisoara"},{c:50,u:"g",n:"zzzxyz"}],pasi_carte:["a"]};
+  const w=await boot({rp:"[]",rbook:JSON.stringify([rec])},{wait:700,names:["macLocal","openBook","BOOK"],offline:true});const T=w.__t,D=w.document;
+  const L=T.macLocal(rec,2,rec.ingrediente);
+  eq([L.n,L.ok,L.miss.map(z=>z.x.n),L.nq.map(x=>x.n)],[3,2,["zzzxyz"],["scortisoara"]],"praf de sare se potriveste cu sare (nu mai cere conversie); fara cantitate e listat separat");
+  T.openBook(0,2,"#bres");const mcl=D.querySelector("#bres [data-mcl]");
+  if(!mcl){eq("lipsa buton","buton","butonul Recalculeaza/Calculeaza din Info exista")}else{
+   mcl.click();const txt=D.querySelector("#bres [data-macp]").textContent;
+   eq([/Fara date pentru 1 ingredient: zzzxyz/.test(txt),/Fara cantitate, nu intra in calcul: scortisoara/.test(txt),!!D.querySelector("#bres [data-mal]")],[true,true,true],"panoul listeaza ingredientele fara date si fara cantitate, plus butonul Este alt aliment");
+   D.querySelector("#bres [data-mal]").click();const inp=D.querySelector("#bres [data-mal-in]");inp.value="nume inexistent";D.querySelector("#bres [data-malok]").click();
+   eq(D.querySelector("#bres [data-merr]").hidden,false,"aliment inexistent: mesaj, nu se salveaza");
+   inp.value="Sare";D.querySelector("#bres [data-malok]").click();
+   eq(/Fara date pentru/.test(D.querySelector("#bres [data-macp]").textContent),false,"dupa asociere, ingredientul nu mai e fara date")}
+  w.close()
+ })();
  done()})();
