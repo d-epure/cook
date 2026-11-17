@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.25.1
+- **Cod de bare, cauza erorii de retea:** mesajul "Nu pot cauta acum" spune acum de ce (serviciul a raspuns cu cod de eroare, timp expirat, cererea a fost blocata). Folosit pentru a afla de ce un produs (ex: 7622300541491) nu se gaseste pe telefon.
+
 ## 4.25.0
 - **Camera pentru cod de bare, ca la Eat & Track:** cadru de tintire cu patru colturi verzi, zona din afara cadrului intunecata, linie verde de scanare (sta pe loc daca ai animatiile reduse in telefon) si textul "Pune codul de bare in cadru". Detectorul nativ citeste acum doar zona din cadru (mai rapid, mai putine citiri gresite); biblioteca de rezerva citeste tot ecranul.
 - **Lanterna la cerere:** buton in coltul camerei. Nu porneste singura, doar cand o apesi; se opreste odata cu camera. Daca telefonul sau browserul nu o permite, butonul e gri si spune de ce.
