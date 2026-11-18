@@ -61,7 +61,7 @@ await (async()=>{
 await (async()=>{
  const w=await boot({},{names:["BOOK","bKey","autoTags","hasGluten"]}),T=w.__t,B=T.BOOK;
  const cap=c=>B.filter(r=>r.capitol===c),tag=t=>B.filter(r=>r.sursa!=="Retete high-volume"&&(r.etichete||[]).includes(t)).length;
- eq([B.length,new Set(B.map(T.bKey)).size,new Set(B.map(r=>r.titlu)).size],[953,953,953],"953 de retete livrate, fara chei sau titluri dublate");
+ eq([B.length,new Set(B.map(T.bKey)).size,new Set(B.map(r=>r.titlu)).size],[952,952,952],"952 de retete livrate, fara chei sau titluri dublate");
  eq(["Asiatic","Traditional romanesc","Mic dejun cu carne","Gustari","Peste"].map(c=>cap(c).length),[18,9,13,12,8],"cele cinci loturi noi");
  eq([tag("asiatic"),tag("traditional romanesc"),tag("air fryer")],[50,50,50],"asiatic, traditional romanesc si air fryer au cate 50 de retete (fara cartea high-volume)");
  const nou=B.filter(r=>["Asiatic","Traditional romanesc","Mic dejun cu carne","Gustari","Peste"].includes(r.capitol));
@@ -73,8 +73,8 @@ await (async()=>{
  console.log("\n## "+'4.8.0: cartea Retete high-volume (100 de retete, cel mult 500 kcal), eticheta high-volume, tema Volum mare in Gatire.');
 await (async()=>{
  const J=JSON.parse(fs.readFileSync(dir+"/carti/retete_high_volume.json","utf8")),man=JSON.parse(fs.readFileSync(dir+"/carti.json","utf8")).carti.find(c=>c.sursa==="Retete high-volume");
- eq([J.length,man.n,man.f],[100,100,"carti/retete_high_volume.json"],"100 de retete si intrare in carti.json");
- eq([new Set(J.map(r=>r.titlu)).size,J.every((r,i)=>r.sursa==="Retete high-volume"&&r.nr===i+1)],[100,true],"titluri unice, nr de la 1 la 100");
+ eq([J.length,man.n,man.f],[99,99,"carti/retete_high_volume.json"],"99 de retete (Terci cu albus scos in 4.30.3) si intrare in carti.json");
+ eq([new Set(J.map(r=>r.titlu)).size,J.every(r=>r.sursa==="Retete high-volume")&&new Set(J.map(r=>r.nr)).size===J.length],[99,true],"titluri si numere unice");
  eq(J.every(r=>r.macro&&r.macro.kcal>0&&r.macro.kcal<=500&&r.macro.sursa==="local"&&r.macro.acoperire.split(" din ")[0]===r.macro.acoperire.split(" din ")[1]),true,"toate au macro complet si cel mult 500 kcal pe portie");
  eq(J.every(r=>r.etichete.includes("high-volume")&&+r.timp>0&&["usor","mediu","avansat"].includes(r.dif)&&r.pasi_carte.length>=2&&r.sfaturi.length>=2),true,"eticheta, timp, dificultate, pasi si sfaturi");
  const mese=J.filter(r=>!["Mic dejun","Deserturi usoare"].includes(r.categorie));
@@ -82,12 +82,12 @@ await (async()=>{
  eq(J.filter(r=>r.etichete.includes("vegetarian")).every(r=>!/\b(pui|curcan|vita|porc|peste|ton|somon|cod|creveti|carnat|sunca|pastrav)\b/.test(r.ingrediente.map(i=>i.n).join(" "))),true,"cele vegetariene nu au carne");
  eq(J.filter(r=>r.etichete.includes("vegan")).every(r=>!/\b(ou|oua|albusuri|lapte|iaurt|branza|ricotta|parmezan|miere|feta)\b/.test(r.ingrediente.map(i=>i.n.replace(/iaurt de soia|lapte de (cocos|migdale)/g,"")).join(" "))),true,"cele vegane nu au produse animale");
  eq(/[ăâîșşțţĂÂÎȘȚ]/.test(JSON.stringify(J)),false,"fara diacritice");
- eq(J.filter(r=>r.sfaturi.some(s=>/^Varianta (vegetariana|cu carne|vegana):/.test(s))).length,99,"fiecare reteta are varianta pereche cu macro recalculat (fara Clatite de ovaz cu iaurt si mere: dulce, cu oua, nu are varianta cu sens)");
+ eq(J.filter(r=>r.sfaturi.some(s=>/^Varianta (vegetariana|cu carne|vegana):/.test(s))).length,98,"fiecare reteta are varianta pereche cu macro recalculat (fara Clatite de ovaz cu iaurt si mere: dulce, cu oua, nu are varianta cu sens)");
  // aplicatia: eticheta noua exista si pentru cine are deja lista de etichete
  const w=await boot({rtags:JSON.stringify([{n:"vegan",t:"dieta"},{n:"keto",t:"dieta",auto:"keto"}])},{names:["BOOK","TAGS","canon"]}),T=w.__t;
  eq([T.TAGS.some(t=>t.n==="high-volume"),T.canon("High-Volume"),w.localStorage.getItem("rtv3")],[true,"high-volume","1"],"high-volume se adauga o singura data in lista de etichete existenta");
  const hv=T.BOOK.filter(r=>r.sursa==="Retete high-volume");
- eq([hv.length,T.BOOK.length,new Set(T.BOOK.map(r=>r.titlu)).size],[100,953,953],"biblioteca are 953 de retete livrate, fara titluri dublate");
+ eq([hv.length,T.BOOK.length,new Set(T.BOOK.map(r=>r.titlu)).size],[99,952,952],"biblioteca are 952 de retete livrate, fara titluri dublate");
  const G=w.eval("NUTRI.G"),g=G.find(x=>x[0]==="Volum mare, calorii putine");
  eq([!!g,g&&g[1].length],[true,4],"tema Volum mare, calorii putine in Gatire (4 teme)");
  })();

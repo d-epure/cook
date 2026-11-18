@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.30.3
+- Scoasa "Terci de ovaz cu albus si fructe" din cartea Retete high-volume (albusul nu-ti place). Biblioteca livrata are acum 952 de retete. "Lava cake keto cu ciocolata" si retetele cu albusuri separate (omleta de albusuri, fursecuri cu cocos, omleta mare cu legume, cheesecake in borcan, clatite de albusuri) raman.
+
 ## 4.30.2
 - **Fara oua crude si fara combinatii ciudate cu ou:** scoase din cartea keto "Cafea cu unt si ou fiert", "Terci keto de seminte de in si cocos" si "Terci de chia si nuca de cocos" (ouale batute direct in terci). Biblioteca livrata are acum 953 de retete. Galbenusul ramane doar unde reteta il cere (carbonara, ciorbele legate cu galbenus).
 - **"Spuma de iaurt cu fructe de padure":** albusurile batute crude sunt inlocuite cu aquafaba (apa de la nautul din conserva), care face aceeasi spuma; macro recalculat.
