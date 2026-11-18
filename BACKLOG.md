@@ -1,9 +1,9 @@
 # Backlog - Cartea mea de retete
 
-Starea la versiunea 4.25.1 (17 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
+Starea la versiunea 4.29.0 (17 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
 
 ## De verificat pe dispozitiv real
-Versiunile 3.20.0 - 4.25.1 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
+Versiunile 3.20.0 - 4.29.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
 - Dupa actualizare: favoritele, jurnalul, meniul si "Retetele mele" sunt la locul lor; Biblioteca are 956 de retete livrate plus ale tale.
 - Consola browserului (F12) fara erori "Content Security Policy" la: Idei cu AI, backup in Dropbox, descarcarea unui backup, butonul WhatsApp.
 - Aplicatia porneste in mod avion dupa prima incarcare (service worker cu cache propriu).
@@ -19,7 +19,11 @@ Versiunile 3.20.0 - 4.25.1 au fost testate doar in browser simulat (teste in fol
 4. Titluri lungi la supele keto (177 de titluri peste 60 de caractere) si perechea aproape identica "Ciorba de perisoare de porc cu dovlecei si rosii" (nr. 214 si 282).
 
 ## Nedecise (asteapta un raspuns)
-- Retete fara numar de portii: macro pe 100 g in loc de pe portie, exclus din totalul zilei cu nota "N retete fara numar de portii nu sunt incluse" (plus, mai tarziu, calculator de greutate gatita).
+- Propunere de meniu: loturile Meal prep se iau in calcul doar daca sunt gatite in ultimele 5 zile sau planificate; portiile deja mancate dintr-un lot nu se scad (nu se stiu).
+- Retete fara numar de portii (1 in backup): au acum macro la 100 g in reteta; ramane de hotarat cum intra in totalul zilei (cu nota "N retete fara numar de portii nu sunt incluse") si calculatorul de greutate gatita.
+
+- 193 de retete din Sanda Marin nu au ingrediente scrise (trimit la alte retete: "se face ca la ..."), deci nu au macro. De completat de mana sau dintr-o trecere separata prin carte.
+- Precizie macro calculat din Info: pe 484 de retete cu macro din carte si cel putin 80% ingrediente cu date, mediana calcul/carte e 1,02, dar doar 47% sunt in +-25% si 68% in +-40% (BT FIT Cookbook V2: mediana 0,68, valorile din carte sunt mai mari). Valorile calculate sunt orientative; motorul de meniu pe tinta zilei trebuie sa tina cont.
 
 ## Amanate (decise pe 15 noiembrie: nu se fac inca)
 - Mai multe profiluri de adulti: lista de profiluri in Setari, comutator "Arata pentru" in Meniu, portii pornite de la numarul de persoane.

@@ -2,6 +2,24 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.29.0
+- **Micronutrienti pe saptamana in propunerea de meniu:** la fiecare alegere, scorul favorizeaza retetele care acopera ce lipseste din media saptamanii (fibre, fier, calciu, vitamina D, B12, folat) si penalizeaza ce depaseste limitele (sodiu, grasimi saturate, zaharuri). Se tine cont si de ce ai deja in meniu. Jos, in propunere, apare "Micronutrienti, media pe zi" (acelasi panou cu bare ca in Meniu, extins la cerere): verde cand principalele minime sunt acoperite si limitele respectate, portocaliu cu lista a ce e sub 80% din necesar sau peste limita. Se actualizeaza cand schimbi o masa. Necesita profil nutritional completat.
+- Retetele fara destule ingrediente recunoscute in Info (sub jumatate) nu intra in calculul micronutrientilor.
+
+## 4.28.0
+- **Propune-mi un meniu, pe zi si pe tinta:** (1) portiile ramase din loturile Meal prep recente sau planificate se pun mai intai, la pranz si cina, marcate "din Meal prep" (la "Adauga la meniu" intra cu marcajul Meal prep, deci nu ajung in lista de cumparaturi). (2) Celelalte mese ale zilei se aleg impreuna, ca totalul zilei sa fie aproape de tinta din profil (kcal si proteine); retetele fara macro conteaza neutru. Fara profil completat, propunerea merge ca inainte. (3) Sub fiecare zi apare totalul fata de tinta: verde cand kcal sunt in +-10% si proteinele la cel putin 90%, portocaliu altfel; masa fara macro e numarata separat si nu intra in suma. (4) In aceeasi zi se evita doua retete cu acelasi prim ingredient. Totalul se actualizeaza cand schimbi o masa (Alta varianta, Alege tu, + Inca una, x).
+- Scorul unei retete nu mai compara separat kcal cu o felie fixa din tinta (se face acum pe zi).
+
+## 4.27.0
+- **Macro la 100 g in reteta:** sub macro pe portie apare "La 100 g de ingrediente (crude, fara apa)", calculat din baza Info (cand cel putin jumatate din ingrediente au date). Si retetele fara numar de portii au acum o valoare utila.
+- **Setari > Macro lipsa:** un buton calculeaza dintr-o miscare macro pentru retetele fara macro care au cel putin 80% din ingrediente cu date. Valorile sunt marcate "Calculat din Info", retetele cu macro din carte nu se ating, iar Anuleaza apare dupa calcul. Raportul din Setari spune cate retete nu se pot calcula pentru ca nu au ingrediente scrise.
+- **Mai multe ingrediente recunoscute:** greutate medie pentru produse intregi (pui, rata, iepure, varza, conopida, praz, telina, crap, chifle etc.), "paharel de vin" (50 ml), "plic" (10 g), "apa calda", "foaie de dafin", si la "X sau Y" se foloseste prima varianta.
+
+## 4.26.0
+- **Propune-mi un meniu, mai mult control:** pe fiecare rand al propunerii ai acum "Alege tu" (cauti in retetele tale si biblioteca si pui ce vrei tu in loc de propunere) si "+ Inca una" (a doua reteta la aceeasi masa, pentru zile mai variate; fiecare se scoate cu x). La "Adauga la meniu" intra toate la aceeasi masa, in ordine.
+- Butoanele fara efect nu mai sunt ascunse: "Genereaza" e gri fara cheie API, iar "Alta varianta" e gri cand nu exista alternative, cu mesaj scurt la apasare.
+- **Cod de bare:** dupa o eroare de retea cautarea reincearca o data singura, deci prima scanare nu mai da eroare trecatoare.
+
 ## 4.25.1
 - **Cod de bare, cauza erorii de retea:** mesajul "Nu pot cauta acum" spune acum de ce (serviciul a raspuns cu cod de eroare, timp expirat, cererea a fost blocata). Folosit pentru a afla de ce un produs (ex: 7622300541491) nu se gaseste pe telefon.
 

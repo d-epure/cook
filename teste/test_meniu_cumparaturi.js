@@ -285,8 +285,8 @@ await (async()=>{
   T.drawMenu();eq([/50 g/.test(D.querySelector("#mw").textContent),/dupa cantitatea introdusa/.test(D.querySelector("#mw").textContent),!!D.querySelector("#mw .me.mpl")],[true,true,false],"randul arata cantitatea, nota din macro explica; randul fara reteta nu e gri 'planificat'");
   mode="net";calls=[];T.menOpen({day:dk});D.querySelector("#mdbc").value="5941234567890";D.querySelector("[data-mdbs]").click();await sleep(50);
   eq([calls.length,!!D.querySelector("#bcc")],[0,true],"produs gasit o data: se tine local, merge si fara internet");
-  D.querySelector("#mdbc").value="4001234567890";D.querySelector("[data-mdbs]").click();await sleep(50);
-  eq([calls.length,/fara internet/.test(D.querySelector("#mdbr").textContent),!!D.querySelector("#bcc")],[1,true,false],"produs nou fara internet: mesaj clar");
+  D.querySelector("#mdbc").value="4001234567890";D.querySelector("[data-mdbs]").click();await sleep(1300);
+  eq([calls.length,/fara internet/.test(D.querySelector("#mdbr").textContent),!!D.querySelector("#bcc")],[2,true,false],"produs nou fara internet: reincearca o data, apoi mesaj clar");
   mode="nf";D.querySelector("[data-mdbs]").click();await sleep(50);
   eq(/nu e in Open Food Facts/.test(D.querySelector("#mdbr").textContent),true,"produs negasit: mesaj");
   w.close();
@@ -378,5 +378,77 @@ await (async()=>{
   w2.BarcodeDetector=class{static async getSupportedFormats(){return["ean_13"]}async detect(){return[]}};
   const D2=w2.document;w2.__t.show("meniu");w2.__t.menOpen({});D2.querySelector("[data-mdbcam]").click();await sleep(60);
   const f2=D2.querySelector("[data-mdbfl]");f2.click();eq([f2.classList.contains("gri"),/Lanterna nu e disponibila/.test(D2.querySelector("#toast").textContent)],[true,true],"fara suport: lanterna e gri si spune de ce");w2.close()
+ })();
+ // --- 4.26.0: propunere de meniu: Alege tu, + Inca una, butoane gri; cod de bare: reincercare automata
+ await (async()=>{
+  const mkr=(nr,t,cat)=>({sursa:"Retetele mele",nr,titlu:t,categorie:cat||"Retetele mele",portii:2,manual:true,ingrediente:[{c:200,u:"g",n:"orez"}],pasi_carte:["a"]});
+  const w=await boot({rp:"[]",rbook:JSON.stringify([mkr(1,"Ciorba de test"),mkr(2,"Salata de test"),mkr(3,"Tort de test","Desert")])},{wait:700,names:["pxOpen","show","getMen"],offline:true});
+  const T=w.__t,D=w.document;T.show("meniu");T.pxOpen();D.querySelector("[data-pxgo]").click();
+  const gri=[...D.querySelectorAll("[data-pxgri]")].map(b=>b.textContent);
+  eq(gri.includes("Alta varianta")||gri.includes("Genereaza"),true,"butoane fara efect: gri, cu mesaj (nu ascunse)");
+  const g=D.querySelector("[data-pxgri]");g.click();eq(/Alta varianta|Genereaza|variante|cheia API/.test(D.querySelector("#toast").textContent),true,"apasare pe buton gri: mesaj scurt");
+  const pk=D.querySelector("[data-pxpk]");eq(!!pk&&!!D.querySelector("[data-pxad]"),true,"fiecare rand are Alege tu si + Inca una");
+  const row=pk.dataset.pxpk;pk.click();const q=D.querySelector("#pxq");q.value="salata";q.dispatchEvent(new w.Event("input",{bubbles:true}));
+  const sel=D.querySelector("[data-pxsel]");eq(!!sel&&/Salata de test/.test(D.querySelector("#pxres").textContent),true,"Alege tu: cautarea gaseste reteta");
+  sel.click();eq(/Salata de test/.test(D.querySelector("#mdlg").textContent)&&/alesa de tine/.test(D.querySelector("#mdlg").textContent),true,"reteta aleasa apare pe rand, marcata");
+  const ad=D.querySelector("[data-pxad="+JSON.stringify(row)+"]");ad.click();const q2=D.querySelector("#pxq");q2.value="ciorba";q2.dispatchEvent(new w.Event("input",{bubbles:true}));D.querySelector("[data-pxsel]").click();
+  eq(/\+ Ciorba de test/.test(D.querySelector("#mdlg").textContent),true,"+ Inca una: a doua reteta la aceeasi masa");
+  D.querySelector("[data-pxok]").click();
+  const men=T.getMen(),all=Object.values(men).flatMap(dm=>Object.values(dm));const cell=all.find(l=>l.length===2);
+  eq(!!cell&&cell.map(x=>x.t).join("|"),"Salata de test|Ciorba de test","in meniu intra ambele retete la aceeasi masa, in ordine");
+  w.close();
+  // reincercare cod de bare
+  let calls=0;const w2=await boot({rp:"[]"},{wait:600,names:["bcLookup"],offline:true});
+  w2.fetch=async()=>{calls++;if(calls===1)throw new Error("net");return{ok:true,status:200,json:async()=>({status:1,product:{code:"5941234567890",product_name:"Test",nutriments:{"energy-kcal_100g":100}}})}};
+  const r=await w2.__t.bcLookup("5941234567890");eq([calls,!!r.p],[2,true],"codul de bare: dupa o eroare de retea reincearca o data si reuseste");w2.close()
+ })();
+ // --- 4.27.0: macro la 100 g, conversii noi, calcul in bloc pentru retetele fara macro
+ await (async()=>{
+  const mkr=(nr,t,ing,extra)=>Object.assign({sursa:"Carte de bucate - Sanda Marin",nr,titlu:t,categorie:"Supe",portii:4,ingrediente:ing,pasi_carte:["a"]},extra||{});
+  const R1=mkr(1,"Orez test",[{c:200,u:"g",n:"orez"}]),R2=mkr(2,"Cu macro",[{c:100,u:"g",n:"orez"}],{macro:{kcal:300,proteine:5,carbo:60,grasimi:2}}),R3=mkr(3,"Fara ingrediente",[]),R4=mkr(4,"Fara portii",[{c:100,u:"g",n:"orez"}],{portii:null,pna:true});
+  const w=await boot({rp:"[]",rbook:JSON.stringify([R1,R2,R3,R4])},{wait:700,names:["macLocal","show","BOOK","getStored","drawMx"],offline:true});
+  const T=w.__t,D=w.document;
+  const a=T.macLocal(R1,1),b=T.macLocal({ingrediente:[{c:100,u:"g",n:"orez"}]},1);
+  eq([a.tg,a.p100.kcal===b.o.kcal],[200,true],"macro la 100 g: greutatea totala si valorile la 100 g din ingrediente");
+  const cv=(c,u,n)=>{const L=T.macLocal({portii:1},1,[{c,u,n}]);return L.miss.length===0&&L.ok===1};
+  eq([cv(1,"","paharel de vin"),cv(1,"","pui mare"),cv(100,"g","untura sau ulei"),cv(2,"","apa calda"),cv(1,"","foaie de dafin"),cv(1,"","plic de praf de copt")],[true,true,true,true,true,true],"conversii noi: paharel, pui intreg, 'sau', apa calda, foaie de dafin, plic");
+  T.show("setari");T.drawMx();const el=D.querySelector("#mxl");
+  eq([/Pot calcula 1 dintre ele/.test(el.textContent),/1 retete nu au ingrediente scrise/.test(el.textContent)],[true,true],"Setari: lista retete fara macro, cele calculabile si cele fara ingrediente");
+  D.querySelector("[data-mxgo]").click();
+  const st=T.getStored(),g=n=>st.find(x=>x.nr===n);
+  eq([g(1).macro&&g(1).macro.sursa,g(1).macro&&g(1).macro.acoperire,g(2).macro.kcal,!!g(3).macro],["local","1 din 1",300,false],"calcul in bloc: macro din Info pe cele lipsa; cele cu macro raman neatinse; cele fara ingrediente raman fara");
+  eq([!!g(4).macro,D.querySelector("#undo").classList.contains("hidden")],[false,false],"reteta fara numar de portii e sarita (are doar macro la 100 g), iar Anuleaza apare");
+  w.close()
+ })();
+ // --- 4.28.0: propunere pe zi: Meal prep primul, tinta de kcal/proteine pe zi, rezumat verde/portocaliu
+ await (async()=>{
+  const mkr=(nr,t,cat,k,pr)=>({sursa:"Retetele mele",nr,titlu:t,categorie:cat,portii:2,manual:true,ingrediente:[{c:100,u:"g",n:"ingredient"+nr}],pasi_carte:["a"],macro:{kcal:k,proteine:pr,carbo:40,grasimi:10}});
+  const rec=[mkr(1,"Omleta mica","Mic dejun",300,20),mkr(2,"Pui cu orez","Retetele mele",700,45),mkr(3,"Mamaliga mare","Retetele mele",1500,10),mkr(4,"Peste cu cartofi","Retetele mele",600,40),mkr(5,"Tort test","Desert",250,4),mkr(6,"Salata mica","Retetele mele",200,8)];
+  const today=(d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"))(new Date());
+  const prof={s:"f",a:30,w:60,h:165,act:1.4,g:"m"};
+  const w=await boot({rp:"[]",rbook:JSON.stringify(rec),rprof:JSON.stringify(prof),rmp:JSON.stringify([{id:"l1",s:"b",k:"Retetele mele|2",t:"Pui cu orez",d:today,p:3}])},{wait:700,names:["pxOpen","show","getMT","getMen"],offline:true});
+  const T=w.__t,D=w.document;T.show("meniu");T.pxOpen();D.querySelector("[data-pxgo]").click();
+  const tx=D.querySelector("#mdlg").textContent;
+  eq(/\d+ din \d+ kcal, proteine \d+ din \d+ g/.test(tx),true,"propunerea arata pe fiecare zi totalul fata de tinta");
+  eq((tx.match(/din Meal prep/g)||[]).length,3,"portiile din lotul Meal prep (3) sunt puse primele, la pranz/cina");
+  D.querySelector("[data-pxok]").click();
+  const men=T.getMen(),mp=Object.values(men).flatMap(dm=>Object.values(dm)).flat().filter(e=>e.mp);
+  eq([mp.length,mp.every(e=>e.t==="Pui cu orez")],[3,true],"la Adauga la meniu, portiile din Meal prep intra marcate mp");
+  w.close()
+ })();
+ // --- 4.29.0: micronutrienti pe saptamana in propunerea de meniu
+ await (async()=>{
+  const mkr=(nr,t,n,c)=>({sursa:"Retetele mele",nr,titlu:t,categorie:"Retetele mele",portii:1,manual:true,ingrediente:[{c,u:"g",n}],pasi_carte:["a"],macro:{kcal:300,proteine:20,carbo:30,grasimi:10}});
+  const rec=[mkr(1,"Spanac test","spanac",300),mkr(2,"Orez test","orez",100),mkr(3,"Lapte test","lapte",400)];
+  const w=await boot({rp:"[]",rbook:JSON.stringify(rec),rprof:JSON.stringify({s:"f",a:30,w:60,h:165,act:1.4,g:"m"})},{wait:700,names:["pxOpen","show","pxMicOf","pxMicBonus","micT","getPr","profT"],offline:true});
+  const T=w.__t,D=w.document,R=k=>JSON.parse(JSON.stringify(rec.find(r=>r.nr===k)));
+  const sp=T.pxMicOf("b",R(1)),or=T.pxMicOf("b",R(2)),tg=T.micT(T.getPr(),T.profT());
+  const avg=new Array(27).fill(0);
+  eq([!!sp,!!or,T.pxMicBonus(sp.s,avg,tg)>T.pxMicBonus(or.s,avg,tg)],[true,true,true],"scor micro: spanacul (fier, folat, calciu) primeste mai mult bonus decat orezul cand media e goala");
+  eq(T.pxMicBonus(null,avg,tg),0,"fara date micro: fara bonus");
+  T.show("meniu");T.pxOpen();D.querySelector("[data-pxgo]").click();
+  const sm=D.querySelector("[data-pxmic]");
+  eq([!!sm,/Micronutrienti, media pe zi/.test(sm?sm.textContent:""),/Sub 80% din necesar|Principalele minime/.test(sm?sm.textContent:"")],[true,true,true],"propunerea arata micronutrientii pe saptamana si ce lipseste");
+  w.close()
  })();
  done()})();
