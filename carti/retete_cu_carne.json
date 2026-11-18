@@ -423,7 +423,7 @@
   "sursa": "Retete cu carne",
   "nr": 7,
   "titlu": "Piept de pui la cuptor cu cartofi si legume",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -505,7 +505,7 @@
   "sursa": "Retete cu carne",
   "nr": 8,
   "titlu": "Pui cu orez si legume, la o singura oala",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -590,7 +590,7 @@
   "sursa": "Retete cu carne",
   "nr": 9,
   "titlu": "Curry de pui cu lapte de cocos si spanac",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -676,7 +676,7 @@
   "sursa": "Retete cu carne",
   "nr": 10,
   "titlu": "Chili cu pui si fasole alba",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -770,7 +770,7 @@
   "sursa": "Retete cu carne",
   "nr": 11,
   "titlu": "Bol cu orez, pui teriyaki si broccoli",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -845,7 +845,7 @@
   "sursa": "Retete cu carne",
   "nr": 12,
   "titlu": "Pui tikka masala cu iaurt",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -936,7 +936,7 @@
   "sursa": "Retete cu carne",
   "nr": 13,
   "titlu": "Chiftele de pui si legume la air fryer",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -1020,7 +1020,7 @@
   "sursa": "Retete cu carne",
   "nr": 14,
   "titlu": "Pulpe de pui la cuptor cu ardei si rosii",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -1098,7 +1098,7 @@
   "sursa": "Retete cu carne",
   "nr": 15,
   "titlu": "Salata de pui cu quinoa si avocado",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -1177,7 +1177,7 @@
   "sursa": "Retete cu carne",
   "nr": 16,
   "titlu": "Wrap cu pui, hummus si legume",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -1250,7 +1250,7 @@
   "sursa": "Retete cu carne",
   "nr": 17,
   "titlu": "Pui cu ciuperci si smantana, cu orez",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -1335,7 +1335,7 @@
   "sursa": "Retete cu carne",
   "nr": 18,
   "titlu": "Orez prajit cu pui, ou si legume",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -1557,7 +1557,7 @@
   "sursa": "Retete cu carne",
   "nr": 21,
   "titlu": "Supa de pui cu taitei si legume",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -1636,7 +1636,7 @@
   "sursa": "Retete cu carne",
   "nr": 22,
   "titlu": "Ciorba de perisoare cu carne de pui",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -1730,7 +1730,7 @@
   "sursa": "Retete cu carne",
   "nr": 23,
   "titlu": "Chili cu carne de vita si fasole rosie",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -1998,7 +1998,7 @@
   "sursa": "Retete cu carne",
   "nr": 26,
   "titlu": "Tocanita de vita cu legume",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -2093,7 +2093,7 @@
   "sursa": "Retete cu carne",
   "nr": 27,
   "titlu": "Chiftele de vita si orez la cuptor",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -2181,7 +2181,7 @@
   "sursa": "Retete cu carne",
   "nr": 28,
   "titlu": "Burgeri de vita cu cartof dulce la air fryer",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -2260,7 +2260,7 @@
   "sursa": "Retete cu carne",
   "nr": 29,
   "titlu": "Bol mexican cu vita, orez si fasole neagra",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -2354,7 +2354,7 @@
   "sursa": "Retete cu carne",
   "nr": 30,
   "titlu": "Ardei umpluti cu carne si orez",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -2438,7 +2438,7 @@
   "sursa": "Retete cu carne",
   "nr": 31,
   "titlu": "Wok de vita cu legume si sos de soia",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -2522,7 +2522,7 @@
   "sursa": "Retete cu carne",
   "nr": 32,
   "titlu": "Muschi de porc la cuptor cu legume",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -2604,7 +2604,7 @@
   "sursa": "Retete cu carne",
   "nr": 33,
   "titlu": "Sarmale cu carne de porc si orez",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 6,
   "etichete": [
@@ -2693,7 +2693,7 @@
   "sursa": "Retete cu carne",
   "nr": 34,
   "titlu": "Papricas de porc cu boia",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -2779,7 +2779,7 @@
   "sursa": "Retete cu carne",
   "nr": 35,
   "titlu": "Tocanita de porc cu cartofi",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -2865,7 +2865,7 @@
   "sursa": "Retete cu carne",
   "nr": 36,
   "titlu": "Chiftele de porc la cuptor cu patrunjel",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -2948,7 +2948,7 @@
   "sursa": "Retete cu carne",
   "nr": 37,
   "titlu": "Musaca de cartofi cu carne tocata",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 6,
   "etichete": [
@@ -3038,7 +3038,7 @@
   "sursa": "Retete cu carne",
   "nr": 38,
   "titlu": "Iahnie de fasole cu carnati si ceapa",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3117,7 +3117,7 @@
   "sursa": "Retete cu carne",
   "nr": 39,
   "titlu": "Chiftele de curcan cu spanac la cuptor",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3185,7 +3185,7 @@
   "sursa": "Retete cu carne",
   "nr": 40,
   "titlu": "Taco cu curcan si porumb",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3273,7 +3273,7 @@
   "sursa": "Retete cu carne",
   "nr": 41,
   "titlu": "Salata de orez cu curcan si porumb",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3357,7 +3357,7 @@
   "sursa": "Retete cu carne",
   "nr": 42,
   "titlu": "Somon la cuptor cu legume",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3434,7 +3434,7 @@
   "sursa": "Retete cu carne",
   "nr": 43,
   "titlu": "Somon teriyaki cu orez si broccoli",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3507,7 +3507,7 @@
   "sursa": "Retete cu carne",
   "nr": 44,
   "titlu": "Salata de ton cu fasole alba si ceapa rosie",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3663,7 +3663,7 @@
   "sursa": "Retete cu carne",
   "nr": 46,
   "titlu": "Chiftele de cod la cuptor",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3740,7 +3740,7 @@
   "sursa": "Retete cu carne",
   "nr": 47,
   "titlu": "Cod la cuptor cu cartofi si rosii",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3812,7 +3812,7 @@
   "sursa": "Retete cu carne",
   "nr": 48,
   "titlu": "Pastrav la cuptor cu lamaie si legume",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3879,7 +3879,7 @@
   "sursa": "Retete cu carne",
   "nr": 49,
   "titlu": "Supa de peste cu legume",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -3963,7 +3963,7 @@
   "sursa": "Retete cu carne",
   "nr": 50,
   "titlu": "Creveti cu orez si legume",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -4041,7 +4041,7 @@
   "sursa": "Retete cu carne",
   "nr": 51,
   "titlu": "Tocanita de peste cu rosii si ardei",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -4125,7 +4125,7 @@
   "sursa": "Retete cu carne",
   "nr": 52,
   "titlu": "Macrou la cuptor cu cartofi",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -4197,7 +4197,7 @@
   "sursa": "Retete cu carne",
   "nr": 53,
   "titlu": "Bol cu orez, ton si edamame",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -4272,7 +4272,7 @@
   "sursa": "Retete cu carne",
   "nr": 54,
   "titlu": "Peste la air fryer cu crusta de ierburi",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Carne si peste",
   "portii": 4,
   "etichete": [
@@ -4834,7 +4834,7 @@
   "sursa": "Retete cu carne",
   "nr": 62,
   "titlu": "Piept de pui la air fryer cu boia si usturoi",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 3,
   "etichete": [
@@ -4904,7 +4904,7 @@
   "sursa": "Retete cu carne",
   "nr": 63,
   "titlu": "Pulpe de pui cu miere si mustar la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 4,
   "etichete": [
@@ -4969,7 +4969,7 @@
   "sursa": "Retete cu carne",
   "nr": 64,
   "titlu": "Somon cu lamaie, marar si sparanghel la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 2,
   "etichete": [
@@ -5037,7 +5037,7 @@
   "sursa": "Retete cu carne",
   "nr": 65,
   "titlu": "Cotlet de porc cu cimbru si usturoi la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 3,
   "etichete": [
@@ -5106,7 +5106,7 @@
   "sursa": "Retete cu carne",
   "nr": 66,
   "titlu": "Creveti cu usturoi si ardei iute la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 2,
   "etichete": [
@@ -5175,7 +5175,7 @@
   "sursa": "Retete cu carne",
   "nr": 67,
   "titlu": "Fasii de pui in crusta de pesmet si parmezan la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 4,
   "etichete": [
@@ -5255,7 +5255,7 @@
   "sursa": "Retete cu carne",
   "nr": 68,
   "titlu": "Ardei umpluti cu vita si orez la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 4,
   "etichete": [
@@ -5335,7 +5335,7 @@
   "sursa": "Retete cu carne",
   "nr": 69,
   "titlu": "Pui teriyaki cu broccoli la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 3,
   "etichete": [
@@ -5416,7 +5416,7 @@
   "sursa": "Retete cu carne",
   "nr": 70,
   "titlu": "Macrou cu lamaie si rozmarin la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 2,
   "etichete": [
@@ -5564,7 +5564,7 @@
   "sursa": "Retete cu carne",
   "nr": 72,
   "titlu": "Vita cu broccoli si ghimbir la tigaie",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Asiatic",
   "portii": 3,
   "etichete": [
@@ -5643,7 +5643,7 @@
   "sursa": "Retete cu carne",
   "nr": 73,
   "titlu": "Porc dulce-acrisor cu ananas si ardei",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Asiatic",
   "portii": 4,
   "etichete": [
@@ -5732,7 +5732,7 @@
   "sursa": "Retete cu carne",
   "nr": 74,
   "titlu": "Supa de pui cu taitei de orez si ghimbir",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Asiatic",
   "portii": 4,
   "etichete": [
@@ -5816,7 +5816,7 @@
   "sursa": "Retete cu carne",
   "nr": 75,
   "titlu": "Curry rosu de creveti cu lapte de cocos",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Asiatic",
   "portii": 3,
   "etichete": [
@@ -5895,7 +5895,7 @@
   "sursa": "Retete cu carne",
   "nr": 76,
   "titlu": "Somon glazurat cu miso si susan, cu spanac",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Asiatic",
   "portii": 2,
   "etichete": [
@@ -6037,7 +6037,7 @@
   "sursa": "Retete cu carne",
   "nr": 78,
   "titlu": "Pui cu caju si ardei",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Asiatic",
   "portii": 4,
   "etichete": [
@@ -6127,7 +6127,7 @@
   "sursa": "Retete cu carne",
   "nr": 79,
   "titlu": "Curry verde de pui cu fasole verde",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Asiatic",
   "portii": 4,
   "etichete": [
@@ -6202,7 +6202,7 @@
   "sursa": "Retete cu carne",
   "nr": 80,
   "titlu": "Chiftelute de porc cu ghimbir si sos de soia",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Asiatic",
   "portii": 4,
   "etichete": [
@@ -6286,7 +6286,7 @@
   "sursa": "Retete cu carne",
   "nr": 81,
   "titlu": "Bol cu vita, orez si castraveti cu otet",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Asiatic",
   "portii": 4,
   "etichete": [
@@ -6381,7 +6381,7 @@
   "sursa": "Retete cu carne",
   "nr": 82,
   "titlu": "Ciorba de vacuta cu legume",
-  "categorie": "Ciorbe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Traditional romanesc",
   "portii": 6,
   "etichete": [
@@ -6471,7 +6471,7 @@
   "sursa": "Retete cu carne",
   "nr": 83,
   "titlu": "Ostropel de pui",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Traditional romanesc",
   "portii": 4,
   "etichete": [
@@ -6566,7 +6566,7 @@
   "sursa": "Retete cu carne",
   "nr": 84,
   "titlu": "Varza calita cu carnati afumati",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Traditional romanesc",
   "portii": 4,
   "etichete": [
@@ -6655,7 +6655,7 @@
   "sursa": "Retete cu carne",
   "nr": 85,
   "titlu": "Ciorba radauteana de pui",
-  "categorie": "Ciorbe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Traditional romanesc",
   "portii": 6,
   "etichete": [
@@ -6835,7 +6835,7 @@
   "sursa": "Retete cu carne",
   "nr": 87,
   "titlu": "Tocanita de pui cu mazare",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Traditional romanesc",
   "portii": 4,
   "etichete": [
@@ -8026,7 +8026,7 @@
   "sursa": "Retete cu carne",
   "nr": 105,
   "titlu": "Cod in sos de rosii cu naut",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Peste",
   "portii": 3,
   "etichete": [
@@ -8105,7 +8105,7 @@
   "sursa": "Retete cu carne",
   "nr": 106,
   "titlu": "Tacos cu cod si salata de varza rosie",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Peste",
   "portii": 2,
   "etichete": [],
@@ -8187,7 +8187,7 @@
   "sursa": "Retete cu carne",
   "nr": 107,
   "titlu": "Salata de paste cu ton, porumb si ardei",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Peste",
   "portii": 4,
   "etichete": [
@@ -8270,7 +8270,7 @@
   "sursa": "Retete cu carne",
   "nr": 108,
   "titlu": "Chiftele de somon cu cartof si marar",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Peste",
   "portii": 4,
   "etichete": [
@@ -8348,7 +8348,7 @@
   "sursa": "Retete cu carne",
   "nr": 109,
   "titlu": "Sardine pe paine prajita cu rosii",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Peste",
   "portii": 2,
   "etichete": [],
@@ -8408,7 +8408,7 @@
   "sursa": "Retete cu carne",
   "nr": 110,
   "titlu": "Pastrav la tigaie cu fasole verde si migdale",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Peste",
   "portii": 2,
   "etichete": [],

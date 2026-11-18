@@ -2,6 +2,22 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.0.0
+Versiune mare: un singur model de reteta, categorii comune si jurnal de mese. Datele tale se muta singure la prima pornire (si dupa o restaurare sau o sincronizare); nu ai nimic de facut.
+- **Un singur fel de reteta.** Retetele generate cu AI si salvate intra in Biblioteca, la "Retetele mele" (filtrul **Ale mele**), langa cele scrise de tine. Isi pastreaza pasii pe aparat (temperatura, durata, treapta): in reteta ai Pasi / Pe aparat si Mod gatit, ca inainte. Favoritele, jurnalul, notitele, loturile de Meal prep si mesele din meniu raman legate de ele.
+- **Un ecran si un editor.** Toate retetele se deschid in acelasi ecran si se corecteaza din acelasi "Editeaza reteta". Fostele "Observatii" ale retetelor AI sunt acum **Sfaturi** (le vezi in reteta si le corectezi in editor). Pasii pe aparat isi pastreaza setarile cat timp ii editezi pe loc; un pas nou e manual.
+- **Fara pagina "Colectia mea".** In Biblioteca, langa Favorite, sunt pilulele **Ale mele** si **Cos (N)** (gri cand cosul e gol); din Cos restaurezi sau stergi definitiv. **Idei cu AI** e un buton in Biblioteca (gri fara cheie API), cu intoarcere in Biblioteca.
+- **12 categorii comune** pentru toate cartile: Mic dejun, Supe si ciorbe, Fel principal, Salate si boluri, Paste si orez, Gustari, Deserturi, Sosuri si garnituri, Aluaturi si paine, Conserve, Bauturi, Altele. Categoria originala a cartii ramane ca **capitol**. Cartile livrate au versiunea crescuta, deci se actualizeaza singure. Setarea "Categorii si mese" dispare: masa se deduce din categorie.
+- **Etichete noi:** "de post" (separat de vegan; mierea nu e vegana) si ocaziile Craciun si Anul Nou, Paste, eveniment.
+- **Jurnal de mese** (Meniu > Jurnal), ca Eat & Track: pe zile, cu Mic dejun, Pranz, Cina si Gustari. Adaugi orice: reteta (din Biblioteca, Ale mele, Favorite sau Meal prep), aliment din Info pe grame, produs dupa cod de bare sau text liber. Retetele au portii cu - / +, alimentele grame. Sus, totalul zilei cu bare fata de tintele din profil; verde cand ziua e in tinta (calorii +-10% si proteine cel putin 90%).
+- **"Am mancat"** in loc de "Am gatit": in meniu, un tap scrie masa in jurnal (Desert merge la Gustari), o marcheaza facuta si scoate din cumparaturi partea ei; daca e din Meal prep, scade o portie din lot (lotul gol dispare). In reteta, "Am mancat" deschide jurnalul cu reteta aleasa; "Am gatit azi" si "Anuleaza ultima gatire" dispar (stergerea se face din jurnal).
+- **Macro din Info peste tot:** meniul, propunerea si jurnalul folosesc intai calculul din Info (aceeasi baza pentru toate cartile), apoi valorile din carte. Avertizarea "difera mult" apare doar in reteta, nu si in meniu.
+- **Sanda Marin:** retetele fara ingrediente (doar text, "se face ca la...") nu mai apar in Biblioteca si in alegerea din meniu, cu exceptia celor folosite (favorite, gatite, cu nota). Setari > Carti le poate arata.
+- **Curatenie de date (o data):** in debara, forma scrisa in nume ("fasole rosie, conserva") devine marcaj si liniile dublate se unesc; alimentele tale estimate de AI care exista deja in Info (pastarnac, pastarnac radacina, rosii deshidratate) se sterg; cuptorul clasic e activ.
+- **Setari** pe 4 grupuri: Eu, Bucatarie, Date, Aplicatie (cu punct de atentie pe grup).
+- **Cumparaturi:** galbenusul si albusul se cumpara ca oua (numar), zeama si coaja de lamaie ca lamai.
+- Teste noi: `teste/test_v5.js` (migrare, Ale mele, Cos, Sanda Marin, curatenie, macro din Info, jurnal); testele vechi pentru Colectia mea si editorul AI separat sunt inlocuite.
+
 ## 4.30.3
 - Scoasa "Terci de ovaz cu albus si fructe" din cartea Retete high-volume (albusul nu-ti place). Biblioteca livrata are acum 952 de retete. "Lava cake keto cu ciocolata" si retetele cu albusuri separate (omleta de albusuri, fursecuri cu cocos, omleta mare cu legume, cheesecake in borcan, clatite de albusuri) raman.
 

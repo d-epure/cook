@@ -40,7 +40,7 @@ await (async()=>{
  own.timp=40;own.dif="mediu";eq([T.recT(own),T.recD(own),/aprox/.test(T.tChips(own)),/40 min/.test(T.tChips(own))],[40,"mediu",false,true],"timpul scris de tine are prioritate si nu mai e 'aprox.'");
  // --- pilule
  T.show("carti");T.drawBook();const pill=t=>[...D.querySelectorAll("#bpl .bpill")].find(b=>b.textContent===t),cnt=()=>+(D.querySelector("#bcnt").textContent.match(/(\d+) rete/)||[0,0])[1];
- eq([...D.querySelectorAll("#bpl .bpill")].map(b=>b.textContent),["Mic dejun","Pranz / Cina","Desert","Sub 30 min","Din debara","Favorite"],"cele sase pilule");
+ eq([...D.querySelectorAll("#bpl .bpill")].map(b=>b.textContent),["Mic dejun","Pranz / Cina","Desert","Sub 30 min","Din debara","Favorite","Ale mele","Cos (0)"],"pilulele (5.0.0: si Ale mele, Cos)");
  const n0=cnt();pill("Sub 30 min").click();const n30=cnt();eq([n30>0&&n30<n0,n30===all.filter(r=>r.timp<=30).length,pill("Sub 30 min").classList.contains("on")],[true,true,true],"Sub 30 min filtreaza dupa timp");
  pill("Desert").click();const nd=cnt();eq(nd>0&&nd<n30,true,"pilulele se combina (Desert + Sub 30 min)");pill("Desert").click();pill("Sub 30 min").click();eq(cnt(),n0,"debifate, revin toate retetele");
  pill("Din debara").click();eq([D.querySelector("#bd").value,pill("Din debara").classList.contains("on")],["0",true],"'Din debara' apasa pe filtrul existent Din debara");pill("Din debara").click();eq(D.querySelector("#bd").value,"","si il scoate la a doua apasare");

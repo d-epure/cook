@@ -3,7 +3,7 @@
   "sursa": "Retete vegetariene",
   "nr": 1,
   "titlu": "Bol cu quinoa, naut copt si legume la cuptor, cu sos de iaurt si lamaie",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -100,7 +100,7 @@
   "sursa": "Retete vegetariene",
   "nr": 2,
   "titlu": "Chili sin carne cu fasole rosie, porumb si ardei",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -201,7 +201,7 @@
   "sursa": "Retete vegetariene",
   "nr": 3,
   "titlu": "Curry de naut cu spanac si cartofi dulci",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -438,7 +438,7 @@
   "sursa": "Retete vegetariene",
   "nr": 6,
   "titlu": "Supa crema de linte rosie cu morcovi si ghimbir",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -531,7 +531,7 @@
   "sursa": "Retete vegetariene",
   "nr": 7,
   "titlu": "Paste integrale la cuptor cu ricotta, spanac si rosii",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -617,7 +617,7 @@
   "sursa": "Retete vegetariene",
   "nr": 8,
   "titlu": "Orez cu fasole neagra, porumb si branza, cu salsa de rosii",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -712,7 +712,7 @@
   "sursa": "Retete vegetariene",
   "nr": 9,
   "titlu": "Tofu la tigaie cu legume si orez",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -874,7 +874,7 @@
   "sursa": "Retete vegetariene",
   "nr": 11,
   "titlu": "Linte cu orez si legume, la o singura oala",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -983,7 +983,7 @@
   "sursa": "Retete vegetariene",
   "nr": 12,
   "titlu": "Fasole batuta cu ceapa calita",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -1059,7 +1059,7 @@
   "sursa": "Retete vegetariene",
   "nr": 13,
   "titlu": "Ghiveci de legume la cuptor cu naut",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -1161,7 +1161,7 @@
   "sursa": "Retete vegetariene",
   "nr": 14,
   "titlu": "Curry de linte rosie cu lapte de cocos",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -1264,7 +1264,7 @@
   "sursa": "Retete vegetariene",
   "nr": 15,
   "titlu": "Taitei cu legume si sos de arahide",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -1361,7 +1361,7 @@
   "sursa": "Retete vegetariene",
   "nr": 16,
   "titlu": "Orez prajit cu ou, legume si edamame",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -1540,7 +1540,7 @@
   "sursa": "Retete vegetariene",
   "nr": 18,
   "titlu": "Burgeri de fasole neagra la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -1626,7 +1626,7 @@
   "sursa": "Retete vegetariene",
   "nr": 19,
   "titlu": "Paste one pot cu naut, spanac si rosii",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -1718,7 +1718,7 @@
   "sursa": "Retete vegetariene",
   "nr": 20,
   "titlu": "Risotto de orz cu ciuperci si parmezan",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -1809,7 +1809,7 @@
   "sursa": "Retete vegetariene",
   "nr": 21,
   "titlu": "Bol cu orez brun, tofu glazurat si broccoli",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -1890,7 +1890,7 @@
   "sursa": "Retete vegetariene",
   "nr": 22,
   "titlu": "Bol cu bulgur, naut si legume la gratar",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -1974,7 +1974,7 @@
   "sursa": "Retete vegetariene",
   "nr": 23,
   "titlu": "Bol mexican cu orez, fasole neagra si guacamole",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2065,7 +2065,7 @@
   "sursa": "Retete vegetariene",
   "nr": 24,
   "titlu": "Bol cu cuscus integral, hummus si legume",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2139,7 +2139,7 @@
   "sursa": "Retete vegetariene",
   "nr": 25,
   "titlu": "Bol cu quinoa, edamame si morcov, cu sos de susan",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2219,7 +2219,7 @@
   "sursa": "Retete vegetariene",
   "nr": 26,
   "titlu": "Bol cu orez, ou ochi si spanac cu usturoi",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2289,7 +2289,7 @@
   "sursa": "Retete vegetariene",
   "nr": 27,
   "titlu": "Bol de cartofi dulci copti, fasole neagra si iaurt",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2368,7 +2368,7 @@
   "sursa": "Retete vegetariene",
   "nr": 28,
   "titlu": "Bol cu hrisca, ciuperci si ou",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2452,7 +2452,7 @@
   "sursa": "Retete vegetariene",
   "nr": 29,
   "titlu": "Bol greco-mediteranean cu orez, naut si feta",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2536,7 +2536,7 @@
   "sursa": "Retete vegetariene",
   "nr": 30,
   "titlu": "Bol de legume asiatice cu tempeh",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2621,7 +2621,7 @@
   "sursa": "Retete vegetariene",
   "nr": 31,
   "titlu": "Supa crema de dovleac cu ghimbir si lapte de cocos",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2702,7 +2702,7 @@
   "sursa": "Retete vegetariene",
   "nr": 32,
   "titlu": "Ciorba de fasole verde cu smantana si marar",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2792,7 +2792,7 @@
   "sursa": "Retete vegetariene",
   "nr": 33,
   "titlu": "Supa de linte cu rosii si spanac",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2883,7 +2883,7 @@
   "sursa": "Retete vegetariene",
   "nr": 34,
   "titlu": "Supa crema de ciuperci cu cartof",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -2968,7 +2968,7 @@
   "sursa": "Retete vegetariene",
   "nr": 35,
   "titlu": "Minestrone cu fasole si paste mici",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3064,7 +3064,7 @@
   "sursa": "Retete vegetariene",
   "nr": 36,
   "titlu": "Ciorba de legume cu orez si bors",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3150,7 +3150,7 @@
   "sursa": "Retete vegetariene",
   "nr": 37,
   "titlu": "Supa crema de morcovi si linte rosie",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3235,7 +3235,7 @@
   "sursa": "Retete vegetariene",
   "nr": 38,
   "titlu": "Harira, supa marocana de naut si linte",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3336,7 +3336,7 @@
   "sursa": "Retete vegetariene",
   "nr": 39,
   "titlu": "Supa crema de broccoli si cartof cu branza",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3404,7 +3404,7 @@
   "sursa": "Retete vegetariene",
   "nr": 40,
   "titlu": "Supa miso cu tofu si legume",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3480,7 +3480,7 @@
   "sursa": "Retete vegetariene",
   "nr": 41,
   "titlu": "Supa de rosii cu orez si busuioc",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3555,7 +3555,7 @@
   "sursa": "Retete vegetariene",
   "nr": 42,
   "titlu": "Ciorba de cartofi cu smantana",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3639,7 +3639,7 @@
   "sursa": "Retete vegetariene",
   "nr": 43,
   "titlu": "Ciorba de fasole boabe cu legume",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3725,7 +3725,7 @@
   "sursa": "Retete vegetariene",
   "nr": 44,
   "titlu": "Curry verde cu tofu si legume",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3813,7 +3813,7 @@
   "sursa": "Retete vegetariene",
   "nr": 45,
   "titlu": "Naut tikka masala cu iaurt",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -3910,7 +3910,7 @@
   "sursa": "Retete vegetariene",
   "nr": 46,
   "titlu": "Dal de linte cu spanac si cartofi",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -4001,7 +4001,7 @@
   "sursa": "Retete vegetariene",
   "nr": 47,
   "titlu": "Tocanita de ciuperci cu ardei si rosii",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -4098,7 +4098,7 @@
   "sursa": "Retete vegetariene",
   "nr": 48,
   "titlu": "Tocanita de cartofi cu ciuperci",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -4191,7 +4191,7 @@
   "sursa": "Retete vegetariene",
   "nr": 49,
   "titlu": "Tocanita de dovlecei cu ou",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -4272,7 +4272,7 @@
   "sursa": "Retete vegetariene",
   "nr": 50,
   "titlu": "Chili cu linte si cartof dulce",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -4378,7 +4378,7 @@
   "sursa": "Retete vegetariene",
   "nr": 51,
   "titlu": "Papricas de ciuperci cu boia",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -4464,7 +4464,7 @@
   "sursa": "Retete vegetariene",
   "nr": 52,
   "titlu": "Tajine cu naut, morcovi si caise uscate",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -4565,7 +4565,7 @@
   "sursa": "Retete vegetariene",
   "nr": 53,
   "titlu": "Curry de dovleac cu linte rosie",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -4657,7 +4657,7 @@
   "sursa": "Retete vegetariene",
   "nr": 54,
   "titlu": "Ratatouille la cuptor cu feta",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -4745,7 +4745,7 @@
   "sursa": "Retete vegetariene",
   "nr": 55,
   "titlu": "Fasole verde cu rosii si ou",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -5805,7 +5805,7 @@
   "sursa": "Retete vegetariene",
   "nr": 68,
   "titlu": "Salata de quinoa cu naut, castravete si feta",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -5893,7 +5893,7 @@
   "sursa": "Retete vegetariene",
   "nr": 69,
   "titlu": "Salata de paste cu legume la gratar si mozzarella",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -5971,7 +5971,7 @@
   "sursa": "Retete vegetariene",
   "nr": 70,
   "titlu": "Salata de linte cu rosii si feta",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -6044,7 +6044,7 @@
   "sursa": "Retete vegetariene",
   "nr": 71,
   "titlu": "Salata de orez cu porumb, fasole si avocado",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -6135,7 +6135,7 @@
   "sursa": "Retete vegetariene",
   "nr": 72,
   "titlu": "Salata de cartofi cu ou si mustar",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -6214,7 +6214,7 @@
   "sursa": "Retete vegetariene",
   "nr": 73,
   "titlu": "Salata de fasole alba cu ceapa si patrunjel",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -6296,7 +6296,7 @@
   "sursa": "Retete vegetariene",
   "nr": 74,
   "titlu": "Salata coleslaw cu iaurt",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -6364,7 +6364,7 @@
   "sursa": "Retete vegetariene",
   "nr": 75,
   "titlu": "Tabbouleh cu bulgur si patrunjel",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -6449,7 +6449,7 @@
   "sursa": "Retete vegetariene",
   "nr": 76,
   "titlu": "Salata de naut cu dovlecei la gratar",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -7773,7 +7773,7 @@
   "sursa": "Retete vegetariene",
   "nr": 95,
   "titlu": "Vinete la cuptor umplute cu naut si rosii",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -7857,7 +7857,7 @@
   "sursa": "Retete vegetariene",
   "nr": 96,
   "titlu": "Ardei umpluti cu orez si legume",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -7943,7 +7943,7 @@
   "sursa": "Retete vegetariene",
   "nr": 97,
   "titlu": "Dovlecei umpluti cu quinoa si feta",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8011,7 +8011,7 @@
   "sursa": "Retete vegetariene",
   "nr": 98,
   "titlu": "Gratin de cartofi si conopida cu branza",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8085,7 +8085,7 @@
   "sursa": "Retete vegetariene",
   "nr": 99,
   "titlu": "Tava cu cartofi dulci, naut si spanac",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8169,7 +8169,7 @@
   "sursa": "Retete vegetariene",
   "nr": 100,
   "titlu": "Musaca de cartofi si ciuperci",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 6,
   "etichete": [
@@ -8255,7 +8255,7 @@
   "sursa": "Retete vegetariene",
   "nr": 101,
   "titlu": "Tava de legume la cuptor cu telemea",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8329,7 +8329,7 @@
   "sursa": "Retete vegetariene",
   "nr": 102,
   "titlu": "Varza la cuptor cu ciuperci si mustar",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8407,7 +8407,7 @@
   "sursa": "Retete vegetariene",
   "nr": 103,
   "titlu": "Conopida la cuptor cu naut si tahini",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8487,7 +8487,7 @@
   "sursa": "Retete vegetariene",
   "nr": 104,
   "titlu": "Cartofi la cuptor umpluti cu fasole si branza",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8555,7 +8555,7 @@
   "sursa": "Retete vegetariene",
   "nr": 105,
   "titlu": "Sarmale vegetariene cu orez si ciuperci",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 6,
   "etichete": [
@@ -8646,7 +8646,7 @@
   "sursa": "Retete vegetariene",
   "nr": 106,
   "titlu": "Clatite sarate cu spanac si ricotta la cuptor",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8725,7 +8725,7 @@
   "sursa": "Retete vegetariene",
   "nr": 107,
   "titlu": "Chiftele de linte si orez la cuptor",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8814,7 +8814,7 @@
   "sursa": "Retete vegetariene",
   "nr": 108,
   "titlu": "Chiftele de naut si dovlecei la air fryer",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8899,7 +8899,7 @@
   "sursa": "Retete vegetariene",
   "nr": 109,
   "titlu": "Burgeri de quinoa si cartof dulce",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -8984,7 +8984,7 @@
   "sursa": "Retete vegetariene",
   "nr": 110,
   "titlu": "Chiftele de ciuperci si ovaz",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -9057,7 +9057,7 @@
   "sursa": "Retete vegetariene",
   "nr": 111,
   "titlu": "Chiftele de conopida si branza la air fryer",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -9126,7 +9126,7 @@
   "sursa": "Retete vegetariene",
   "nr": 112,
   "titlu": "Chiftele de spanac si ricotta la cuptor",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -9195,7 +9195,7 @@
   "sursa": "Retete vegetariene",
   "nr": 113,
   "titlu": "Tofu crocant la air fryer cu sos dulce-iute",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -9270,7 +9270,7 @@
   "sursa": "Retete vegetariene",
   "nr": 114,
   "titlu": "Chiftele de fasole alba cu pesmet",
-  "categorie": "Chiftele si burgeri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -9350,7 +9350,7 @@
   "sursa": "Retete vegetariene",
   "nr": 115,
   "titlu": "Wraps cu hummus si legume la gratar",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -9419,7 +9419,7 @@
   "sursa": "Retete vegetariene",
   "nr": 116,
   "titlu": "Quesadilla cu fasole neagra si branza",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -9487,7 +9487,7 @@
   "sursa": "Retete vegetariene",
   "nr": 117,
   "titlu": "Rulouri de omleta cu spanac si branza",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -9556,7 +9556,7 @@
   "sursa": "Retete vegetariene",
   "nr": 118,
   "titlu": "Burrito cu ou si fasole, de congelat",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -9626,7 +9626,7 @@
   "sursa": "Retete vegetariene",
   "nr": 119,
   "titlu": "Taco cu tofu si porumb",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -9716,7 +9716,7 @@
   "sursa": "Retete vegetariene",
   "nr": 120,
   "titlu": "Wrap cu tofu si morcov",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Vegetarian meal prep",
   "portii": 4,
   "etichete": [
@@ -10464,7 +10464,7 @@
   "sursa": "Retete vegetariene",
   "nr": 131,
   "titlu": "Bol cu quinoa, fasole neagra si mango",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -10545,7 +10545,7 @@
   "sursa": "Retete vegetariene",
   "nr": 132,
   "titlu": "Bol cu hrisca, linte si sfecla rosie",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -10630,7 +10630,7 @@
   "sursa": "Retete vegetariene",
   "nr": 133,
   "titlu": "Salata calda de linte cu sfecla si nuci",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -10864,7 +10864,7 @@
   "sursa": "Retete vegetariene",
   "nr": 136,
   "titlu": "Tofu in sos de curry rosu cu orez",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -10939,7 +10939,7 @@
   "sursa": "Retete vegetariene",
   "nr": 137,
   "titlu": "Chili vegan cu fasole rosie si quinoa",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11036,7 +11036,7 @@
   "sursa": "Retete vegetariene",
   "nr": 138,
   "titlu": "Salata de bulgur cu naut si rodie",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11121,7 +11121,7 @@
   "sursa": "Retete vegetariene",
   "nr": 139,
   "titlu": "Tempeh glazurat cu sirop de artar si broccoli, cu orez",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11197,7 +11197,7 @@
   "sursa": "Retete vegetariene",
   "nr": 140,
   "titlu": "Salata de fasole neagra, porumb si orez",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11282,7 +11282,7 @@
   "sursa": "Retete vegetariene",
   "nr": 141,
   "titlu": "Cartofi umpluti cu naut si spanac",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11366,7 +11366,7 @@
   "sursa": "Retete vegetariene",
   "nr": 142,
   "titlu": "Wraps cu hummus, sfecla si rucola",
-  "categorie": "Sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11441,7 +11441,7 @@
   "sursa": "Retete vegetariene",
   "nr": 143,
   "titlu": "Bol cu edamame, orez, castravete si avocado",
-  "categorie": "Boluri",
+  "categorie": "Salate si boluri",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11518,7 +11518,7 @@
   "sursa": "Retete vegetariene",
   "nr": 144,
   "titlu": "Salata de paste cu fasole alba si rosii uscate",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11592,7 +11592,7 @@
   "sursa": "Retete vegetariene",
   "nr": 145,
   "titlu": "Supa crema de dovleac si cartof dulce cu seminte",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11672,7 +11672,7 @@
   "sursa": "Retete vegetariene",
   "nr": 146,
   "titlu": "Supa de fasole alba cu kale",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11762,7 +11762,7 @@
   "sursa": "Retete vegetariene",
   "nr": 147,
   "titlu": "Supa thai cu lapte de cocos si tofu",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11854,7 +11854,7 @@
   "sursa": "Retete vegetariene",
   "nr": 148,
   "titlu": "Ciorba de linte rosie cu legume",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -11935,7 +11935,7 @@
   "sursa": "Retete vegetariene",
   "nr": 149,
   "titlu": "Tocana de vinete cu naut",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -12020,7 +12020,7 @@
   "sursa": "Retete vegetariene",
   "nr": 150,
   "titlu": "Iahnie de fasole alba cu ceapa si boia",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -12107,7 +12107,7 @@
   "sursa": "Retete vegetariene",
   "nr": 151,
   "titlu": "Mazare cu morcovi si marar la oala",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -12183,7 +12183,7 @@
   "sursa": "Retete vegetariene",
   "nr": 152,
   "titlu": "Cartofi la cuptor cu rozmarin si naut",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -12262,7 +12262,7 @@
   "sursa": "Retete vegetariene",
   "nr": 153,
   "titlu": "Salata de varza rosie cu mere si nuci",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -12331,7 +12331,7 @@
   "sursa": "Retete vegetariene",
   "nr": 154,
   "titlu": "Ardei umpluti cu quinoa si fasole",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -12415,7 +12415,7 @@
   "sursa": "Retete vegetariene",
   "nr": 155,
   "titlu": "Vinete coapte cu sos de tahini si naut",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -12489,7 +12489,7 @@
   "sursa": "Retete vegetariene",
   "nr": 156,
   "titlu": "Tava cu conopida, cartofi si naut cu curry",
-  "categorie": "Cuptor",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -12568,7 +12568,7 @@
   "sursa": "Retete vegetariene",
   "nr": 157,
   "titlu": "Ciorba rosie de sfecla cu cartofi",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -12643,7 +12643,7 @@
   "sursa": "Retete vegetariene",
   "nr": 158,
   "titlu": "Wok de legume cu tofu si sos de soia",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Vegan meal prep",
   "portii": 4,
   "etichete": [
@@ -13927,7 +13927,7 @@
   "sursa": "Retete vegetariene",
   "nr": 177,
   "titlu": "Vinete parmigiana la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 3,
   "etichete": [
@@ -14006,7 +14006,7 @@
   "sursa": "Retete vegetariene",
   "nr": 178,
   "titlu": "Dovlecei umpluti cu ricotta si rosii cherry la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 2,
   "etichete": [
@@ -14085,7 +14085,7 @@
   "sursa": "Retete vegetariene",
   "nr": 179,
   "titlu": "Tofu cu ghimbir, broccoli si ardei la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 3,
   "etichete": [
@@ -14163,7 +14163,7 @@
   "sursa": "Retete vegetariene",
   "nr": 180,
   "titlu": "Cartofi dulci umpluti cu fasole neagra si porumb la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 2,
   "etichete": [
@@ -14244,7 +14244,7 @@
   "sursa": "Retete vegetariene",
   "nr": 181,
   "titlu": "Ciuperci umplute cu crema de branza si usturoi la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 2,
   "etichete": [
@@ -14318,7 +14318,7 @@
   "sursa": "Retete vegetariene",
   "nr": 182,
   "titlu": "Conopida crocanta cu boia si sos de iaurt la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 3,
   "etichete": [
@@ -14397,7 +14397,7 @@
   "sursa": "Retete vegetariene",
   "nr": 183,
   "titlu": "Quesadilla cu fasole rosie, porumb si cheddar la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 2,
   "etichete": [
@@ -14471,7 +14471,7 @@
   "sursa": "Retete vegetariene",
   "nr": 184,
   "titlu": "Chiftele de linte rosie cu morcov la air fryer",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Air fryer",
   "portii": 4,
   "etichete": [
@@ -15226,7 +15226,7 @@
   "sursa": "Retete vegetariene",
   "nr": 197,
   "titlu": "Salata de castraveti cu susan si ardei iute",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Asiatic",
   "portii": 4,
   "etichete": [
@@ -15305,7 +15305,7 @@
   "sursa": "Retete vegetariene",
   "nr": 198,
   "titlu": "Supa cu taitei, ou si ciuperci in zeama de miso",
-  "categorie": "Supe",
+  "categorie": "Supe si ciorbe",
   "capitol": "Asiatic",
   "portii": 2,
   "etichete": [
@@ -15390,7 +15390,7 @@
   "sursa": "Retete vegetariene",
   "nr": 199,
   "titlu": "Tofu in sos picant cu ciuperci",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Asiatic",
   "portii": 3,
   "etichete": [
@@ -15567,7 +15567,7 @@
   "sursa": "Retete vegetariene",
   "nr": 201,
   "titlu": "Salata de varza rosie cu edamame si sos de arahide",
-  "categorie": "Salate",
+  "categorie": "Salate si boluri",
   "capitol": "Asiatic",
   "portii": 3,
   "etichete": [
@@ -15780,7 +15780,7 @@
   "sursa": "Retete vegetariene",
   "nr": 204,
   "titlu": "Mamaliga cu branza si smantana",
-  "categorie": "Feluri principale",
+  "categorie": "Fel principal",
   "capitol": "Traditional romanesc",
   "portii": 4,
   "etichete": [

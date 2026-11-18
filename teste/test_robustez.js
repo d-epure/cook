@@ -46,11 +46,6 @@ const item=(n,u,c)=>({k:"",n,u,c,src:["Test"],parts:[{s:"Test",c}],done:0});
  const many=[...Array(203)].map((_,i)=>({id:"x"+i,titlu:"Reteta "+i,portii:2,ingrediente:[],pasi:[]}));
  L.setItem("rfav",JSON.stringify(["salvat|x202"]));
  const tr=T.svTrim(many);eq([tr.length,tr.some(r=>r.id==="x202"),tr.some(r=>r.id==="x201"),tr[0].id],[200,true,false,"x0"],"peste 200: favorita cea mai veche ramane, se sterg cele nefolosite");
- // colectia mea: stergere dupa cheie
- L.setItem("rs",JSON.stringify([{id:"a1",titlu:"Prima",portii:1,ingrediente:[],pasi:[]},{id:"b2",titlu:"A doua",portii:1,ingrediente:[],pasi:[]}]));
- T.show("salvate");T.renderSaved();const del=[...D.querySelectorAll("#salvate [data-d]")].find(b=>b.dataset.sk==="salvat|b2");
- L.setItem("rs",JSON.stringify([{id:"c3",titlu:"Noua",portii:1,ingrediente:[],pasi:[]},{id:"a1",titlu:"Prima",portii:1,ingrediente:[],pasi:[]},{id:"b2",titlu:"A doua",portii:1,ingrediente:[],pasi:[]}]));
- del.click();eq(T.getSaved().map(r=>r.id),["c3","a1"],"Colectia mea: se sterge reteta aleasa, nu cea de pe pozitia veche");
  // restaurare: structura verificata
  const bk=d=>JSON.stringify({app:"retete-dana",format:1,date:d});const bad=d=>{try{T.bkParse(bk(d),"x.json");return false}catch(e){return true}};
  eq([bad({rs:"{}"}),bad({rmen:"[]"}),bad({rl:"null"}),bad({altceva:"[]"}),bad({rs:"[]",rmen:"{}",rm1:"claude-haiku-4-5",rliv:"{}"})],[true,true,true,true,false],"backup cu structura gresita e respins, unul corect e acceptat");

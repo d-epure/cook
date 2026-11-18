@@ -2229,7 +2229,7 @@
   "sursa": "Retete high-volume",
   "nr": 28,
   "titlu": "Spuma de iaurt cu fructe de padure",
-  "categorie": "Deserturi usoare",
+  "categorie": "Deserturi",
   "capitol": "Volum mare, calorii putine",
   "portii": 2,
   "etichete": [
@@ -2295,7 +2295,7 @@
   "sursa": "Retete high-volume",
   "nr": 29,
   "titlu": "Inghetata de banane si capsuni",
-  "categorie": "Deserturi usoare",
+  "categorie": "Deserturi",
   "capitol": "Volum mare, calorii putine",
   "portii": 2,
   "etichete": [
@@ -2351,7 +2351,7 @@
   "sursa": "Retete high-volume",
   "nr": 30,
   "titlu": "Mere coapte cu scortisoara si iaurt",
-  "categorie": "Deserturi usoare",
+  "categorie": "Deserturi",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -2417,7 +2417,7 @@
   "sursa": "Retete high-volume",
   "nr": 31,
   "titlu": "Budinca de chia cu lapte si zmeura",
-  "categorie": "Deserturi usoare",
+  "categorie": "Deserturi",
   "capitol": "Volum mare, calorii putine",
   "portii": 2,
   "etichete": [
@@ -2479,7 +2479,7 @@
   "sursa": "Retete high-volume",
   "nr": 32,
   "titlu": "Cheesecake in borcan cu branza de vaci si fructe",
-  "categorie": "Deserturi usoare",
+  "categorie": "Deserturi",
   "capitol": "Volum mare, calorii putine",
   "portii": 2,
   "etichete": [
@@ -2545,7 +2545,7 @@
   "sursa": "Retete high-volume",
   "nr": 33,
   "titlu": "Salata de fructe cu menta si iaurt",
-  "categorie": "Deserturi usoare",
+  "categorie": "Deserturi",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -2615,7 +2615,7 @@
   "sursa": "Retete high-volume",
   "nr": 34,
   "titlu": "Clatite de albusuri cu zmeura",
-  "categorie": "Deserturi usoare",
+  "categorie": "Deserturi",
   "capitol": "Volum mare, calorii putine",
   "portii": 2,
   "etichete": [
@@ -2675,7 +2675,7 @@
   "sursa": "Retete high-volume",
   "nr": 35,
   "titlu": "Pere cu scortisoara si branza de vaci",
-  "categorie": "Deserturi usoare",
+  "categorie": "Deserturi",
   "capitol": "Volum mare, calorii putine",
   "portii": 2,
   "etichete": [
@@ -4207,7 +4207,7 @@
   "sursa": "Retete high-volume",
   "nr": 53,
   "titlu": "Wrap cu pui, salata si iaurt",
-  "categorie": "Wrap-uri si sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -4291,7 +4291,7 @@
   "sursa": "Retete high-volume",
   "nr": 54,
   "titlu": "Wrap cu falafel de naut la cuptor si salata",
-  "categorie": "Wrap-uri si sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -4381,7 +4381,7 @@
   "sursa": "Retete high-volume",
   "nr": 55,
   "titlu": "Sandvis deschis cu ton si legume",
-  "categorie": "Wrap-uri si sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 2,
   "etichete": [
@@ -4460,7 +4460,7 @@
   "sursa": "Retete high-volume",
   "nr": 56,
   "titlu": "Pita umpluta cu pui, legume si hummus",
-  "categorie": "Wrap-uri si sandvisuri",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -4539,7 +4539,7 @@
   "sursa": "Retete high-volume",
   "nr": 57,
   "titlu": "Piept de pui la air fryer cu legume",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -4625,7 +4625,7 @@
   "sursa": "Retete high-volume",
   "nr": 58,
   "titlu": "Somon la cuptor cu sparanghel si cartofi",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -4705,7 +4705,7 @@
   "sursa": "Retete high-volume",
   "nr": 59,
   "titlu": "Chiftele de curcan cu dovlecei la air fryer",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -4808,7 +4808,7 @@
   "sursa": "Retete high-volume",
   "nr": 60,
   "titlu": "Conopida coapta cu naut si iaurt",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -4890,7 +4890,7 @@
   "sursa": "Retete high-volume",
   "nr": 61,
   "titlu": "Tava de pui cu legume si lamaie",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -4979,7 +4979,7 @@
   "sursa": "Retete high-volume",
   "nr": 62,
   "titlu": "Vinete umplute cu linte si feta",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -5055,7 +5055,7 @@
   "sursa": "Retete high-volume",
   "nr": 63,
   "titlu": "Dovlecei umpluti cu curcan si orez",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -5140,7 +5140,7 @@
   "sursa": "Retete high-volume",
   "nr": 64,
   "titlu": "Burgeri de naut si spanac la air fryer",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -5241,7 +5241,7 @@
   "sursa": "Retete high-volume",
   "nr": 65,
   "titlu": "Pastrav la cuptor cu legume",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -5320,7 +5320,7 @@
   "sursa": "Retete high-volume",
   "nr": 66,
   "titlu": "Ardei umpluti cu tofu si orez",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -5396,7 +5396,7 @@
   "sursa": "Retete high-volume",
   "nr": 67,
   "titlu": "Pui cu ciuperci la cuptor in tava",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -5480,7 +5480,7 @@
   "sursa": "Retete high-volume",
   "nr": 68,
   "titlu": "Cod crocant la air fryer cu salata",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -5566,7 +5566,7 @@
   "sursa": "Retete high-volume",
   "nr": 69,
   "titlu": "Tava de tofu cu broccoli si ardei",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -5649,7 +5649,7 @@
   "sursa": "Retete high-volume",
   "nr": 70,
   "titlu": "Ciuperci portobello umplute cu branza de vaci si spanac",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -5731,7 +5731,7 @@
   "sursa": "Retete high-volume",
   "nr": 71,
   "titlu": "Frigarui de pui si legume la cuptor",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -5826,7 +5826,7 @@
   "sursa": "Retete high-volume",
   "nr": 72,
   "titlu": "Chiftele de ton si cartofi la air fryer",
-  "categorie": "Cuptor si air fryer",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -7118,7 +7118,7 @@
   "sursa": "Retete high-volume",
   "nr": 87,
   "titlu": "Chili cu curcan si fasole la oala",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -7216,7 +7216,7 @@
   "sursa": "Retete high-volume",
   "nr": 88,
   "titlu": "Chili vegetarian cu linte si fasole neagra",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -7320,7 +7320,7 @@
   "sursa": "Retete high-volume",
   "nr": 89,
   "titlu": "Tocanita de pui cu legume la oala",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -7417,7 +7417,7 @@
   "sursa": "Retete high-volume",
   "nr": 90,
   "titlu": "Curry de naut cu spanac si rosii",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -7512,7 +7512,7 @@
   "sursa": "Retete high-volume",
   "nr": 91,
   "titlu": "Curry de pui cu legume si lapte de cocos light",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -7615,7 +7615,7 @@
   "sursa": "Retete high-volume",
   "nr": 92,
   "titlu": "Ghiveci de legume cu carnati de curcan",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -7702,7 +7702,7 @@
   "sursa": "Retete high-volume",
   "nr": 93,
   "titlu": "Iahnie de fasole usoara cu ciuperci",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -7796,7 +7796,7 @@
   "sursa": "Retete high-volume",
   "nr": 94,
   "titlu": "Tocanita de ciuperci cu naut si cartofi",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -7895,7 +7895,7 @@
   "sursa": "Retete high-volume",
   "nr": 95,
   "titlu": "Gulas de vita slaba cu legume",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -7993,7 +7993,7 @@
   "sursa": "Retete high-volume",
   "nr": 96,
   "titlu": "Dal de linte cu spanac si rosii",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -8098,7 +8098,7 @@
   "sursa": "Retete high-volume",
   "nr": 97,
   "titlu": "Jambalaya usoara cu creveti si pui",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -8200,7 +8200,7 @@
   "sursa": "Retete high-volume",
   "nr": 98,
   "titlu": "Tocanita de cartofi dulci cu naut si spanac",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -8294,7 +8294,7 @@
   "sursa": "Retete high-volume",
   "nr": 99,
   "titlu": "Sarmale in tigaie cu curcan si varza",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [
@@ -8381,7 +8381,7 @@
   "sursa": "Retete high-volume",
   "nr": 100,
   "titlu": "Orez cu pui si legume la o oala",
-  "categorie": "One pot",
+  "categorie": "Fel principal",
   "capitol": "Volum mare, calorii putine",
   "portii": 4,
   "etichete": [

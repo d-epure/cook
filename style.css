@@ -473,6 +473,7 @@ button{min-height:var(--h-n)}
 .bpl{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .bpill{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-p);padding:5px 12px;min-height:var(--h-n);font:inherit;font-size:var(--fs-s);font-weight:600;cursor:pointer;margin:0;width:auto}
 .bpill.on{background:var(--soft);border:2px solid var(--pri);padding:4px 11px}
+.bpill.dis{color:var(--mut);opacity:.6}
 /* 4.2.0: fara cheie API, ce cheama modelul nu se vede */
 body.nokey [data-ai]{opacity:.45}
 button.gri{opacity:.45}
@@ -558,3 +559,4 @@ details.mmic[open]>summary{margin-bottom:4px}
 .bcfl.on{background:#7ddc9a;color:#0b2a1b}
 /* 4.30.0: portii cu - / + in Meal prep (rand planificat si dialog) */
 .mps{margin:4px 0 0;gap:6px}.mrw .mps{flex-wrap:nowrap}.mrw .mps b{font-size:var(--fs-m)}.mrw .mps button{min-width:2.5rem;min-height:2.5rem;padding:0 6px}
+.okm{color:var(--pri);font-size:var(--fs-s);margin-top:4px;font-weight:600}

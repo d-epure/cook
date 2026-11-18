@@ -77,7 +77,7 @@ await (async()=>{
  eq([new Set(J.map(r=>r.titlu)).size,J.every(r=>r.sursa==="Retete high-volume")&&new Set(J.map(r=>r.nr)).size===J.length],[99,true],"titluri si numere unice");
  eq(J.every(r=>r.macro&&r.macro.kcal>0&&r.macro.kcal<=500&&r.macro.sursa==="local"&&r.macro.acoperire.split(" din ")[0]===r.macro.acoperire.split(" din ")[1]),true,"toate au macro complet si cel mult 500 kcal pe portie");
  eq(J.every(r=>r.etichete.includes("high-volume")&&+r.timp>0&&["usor","mediu","avansat"].includes(r.dif)&&r.pasi_carte.length>=2&&r.sfaturi.length>=2),true,"eticheta, timp, dificultate, pasi si sfaturi");
- const mese=J.filter(r=>!["Mic dejun","Deserturi usoare"].includes(r.categorie));
+ const mese=J.filter(r=>!["Mic dejun","Deserturi","Gustari","Bauturi"].includes(r.categorie));
  eq([mese.every(r=>r.macro.kcal>=300),mese.filter(r=>r.categorie!=="Supe si ciorbe").every(r=>r.macro.proteine>=22)],[true,true],"mesele principale au cel putin 300 kcal si 22 g proteine (supele au minim 300 kcal)");
  eq(J.filter(r=>r.etichete.includes("vegetarian")).every(r=>!/\b(pui|curcan|vita|porc|peste|ton|somon|cod|creveti|carnat|sunca|pastrav)\b/.test(r.ingrediente.map(i=>i.n).join(" "))),true,"cele vegetariene nu au carne");
  eq(J.filter(r=>r.etichete.includes("vegan")).every(r=>!/\b(ou|oua|albusuri|lapte|iaurt|branza|ricotta|parmezan|miere|feta)\b/.test(r.ingrediente.map(i=>i.n.replace(/iaurt de soia|lapte de (cocos|migdale)/g,"")).join(" "))),true,"cele vegane nu au produse animale");
