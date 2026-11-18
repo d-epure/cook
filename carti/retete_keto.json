@@ -193,7 +193,7 @@
    {
     "c": 50,
     "u": "g",
-    "n": "somon"
+    "n": "somon afumat"
    },
    {
     "c": 40,
@@ -224,13 +224,13 @@
   "pasi_carte": [
    "Bate ouale cu sare si piper si gateste-le intr-o tigaie unsa cu unt ca pe o omleta subtire.",
    "Intinde crema de branza amestecata cu marar peste omleta.",
-   "Asaza somonul afumat deasupra, rulaza si taie in felii."
+   "Aseaza somonul afumat deasupra, ruleaza si taie in felii."
   ],
   "macro": {
-   "kcal": 588,
-   "proteine": 34.1,
+   "kcal": 543,
+   "proteine": 33,
    "carbo": 4.5,
-   "grasimi": 47.8,
+   "grasimi": 43.3,
    "sursa": "local",
    "acoperire": "5 din 5"
   },
@@ -343,7 +343,7 @@
   ],
   "pasi_carte": [
    "Caleste ardeiul taiat cubulete in ulei 3 minute.",
-   "Sparge ouale peste ardei, amesteca usor si gateste pana se inchag.",
+   "Sparge ouale peste ardei, amesteca usor si gateste pana se inchega.",
    "Presara cheddarul ras si serveste."
   ],
   "macro": {
@@ -462,9 +462,9 @@
    }
   ],
   "pasi_carte": [
-   "Fierbe apa cu otet la foc mic si adauga ouale spart in apa 3 minute.",
+   "Adu apa cu otet la un clocot slab, sparge ouale pe rand in apa si lasa-le 3 minute.",
    "Zdrobeste avocado cu sare si piper si intinde-l pe farfurie.",
-   "Asaza ouale deasupra si presara susan."
+   "Aseaza ouale deasupra si presara susan."
   ],
   "macro": {
    "kcal": 340,
@@ -497,7 +497,7 @@
    {
     "c": 60,
     "u": "g",
-    "n": "somon"
+    "n": "somon afumat"
    },
    {
     "c": 2,
@@ -513,18 +513,28 @@
     "c": 1,
     "u": "lingura",
     "n": "marar"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe ouale 9 minute, raceste-le si taie-le in jumatati.",
-   "Amesteca galbenusurile cu maioneza, mustar, somon maruntit si marar.",
+   "Amesteca galbenusurile cu maioneza, mustar, somon maruntit, marar, sare si piper.",
    "Umple albusurile cu crema si serveste rece."
   ],
   "macro": {
-   "kcal": 318,
-   "proteine": 20.5,
+   "kcal": 291,
+   "proteine": 19.8,
    "carbo": 1.5,
-   "grasimi": 25,
+   "grasimi": 22.2,
    "sursa": "local",
    "acoperire": "5 din 5"
   },
@@ -638,7 +648,7 @@
   ],
   "pasi_carte": [
    "Taie avocado in doua si scoate putin din miez.",
-   "Sparge cate un ou in fiecare jumatate si asaza-le intr-un vas.",
+   "Sparge cate un ou in fiecare jumatate si aseaza-le intr-un vas.",
    "Presara parmezan si coace 15 minute la 180 de grade."
   ],
   "macro": {
@@ -697,10 +707,9 @@
    }
   ],
   "pasi_carte": [
-   "Taie spanacul maruntit si amesteca-l cu ouale, smantana, sare si piper.",
+   "Toaca spanacul marunt si amesteca-l cu ouale, smantana, sare si piper.",
    "Imparte compozitia in 8 forme de briose si presara cheddar.",
-   "Coace 18 minute la 180 de grade.",
-   "Se pastreaza 3 zile la frigider, bune pentru meal prep."
+   "Coace 18 minute la 180 de grade."
   ],
   "macro": {
    "kcal": 196,
@@ -710,7 +719,9 @@
    "sursa": "local",
    "acoperire": "4 din 4"
   },
-  "sfaturi": [],
+  "sfaturi": [
+   "Se pastreaza 3 zile la frigider, bune pentru meal prep."
+  ],
   "timp": 25,
   "dif": "usor"
  },
@@ -999,7 +1010,7 @@
   "pasi_carte": [
    "Mixeaza branza de vaci, ouale, migdalele macinate si scortisoara intr-un aluat.",
    "Coace clatite mici in tigaie unsa cu unt, 2 minute pe fiecare parte.",
-   "Serveste cu cateva zmeura sau cu iaurt."
+   "Serveste cu cateva boabe de zmeura sau cu iaurt."
   ],
   "macro": {
    "kcal": 357,
@@ -1217,10 +1228,9 @@
    }
   ],
   "pasi_carte": [
-   "Amesteca chia cu laptele de migdale si eritritolul.",
+   "Amesteca proteina din zer cu laptele de migdale, apoi adauga chia si eritritolul.",
    "Lasa la frigider minimum 4 ore sau peste noapte.",
-   "Serveste cu zmeura deasupra.",
-   "Amesteca si proteina din zer odata cu laptele."
+   "Serveste cu zmeura deasupra."
   ],
   "macro": {
    "kcal": 219,
@@ -1278,10 +1288,9 @@
    }
   ],
   "pasi_carte": [
-   "Amesteca chia cu laptele, cacao si eritritolul.",
+   "Amesteca proteina din zer cu laptele, apoi adauga chia, cacao si eritritolul.",
    "Lasa la frigider peste noapte.",
-   "Dimineata amesteca si adauga smantana dulce deasupra.",
-   "Amesteca si proteina din zer odata cu laptele."
+   "Dimineata amesteca si adauga smantana dulce deasupra."
   ],
   "macro": {
    "kcal": 261,
@@ -1467,122 +1476,6 @@
  },
  {
   "sursa": "Retete keto",
-  "nr": 26,
-  "titlu": "Terci keto de seminte de in si cocos",
-  "portii": 1,
-  "etichete": [
-   "keto",
-   "vegetarian"
-  ],
-  "categorie": "Mic dejun",
-  "capitol": "Mic dejun keto",
-  "ingrediente": [
-   {
-    "c": 20,
-    "u": "g",
-    "n": "seminte de in"
-   },
-   {
-    "c": 15,
-    "u": "g",
-    "n": "nuca de cocos"
-   },
-   {
-    "c": 150,
-    "u": "ml",
-    "n": "lapte de migdale"
-   },
-   {
-    "c": 1,
-    "u": "lingura",
-    "n": "unt de arahide"
-   },
-   {
-    "c": 1,
-    "u": "lingurita",
-    "n": "scortisoara"
-   },
-   {
-    "c": 2,
-    "u": "",
-    "n": "oua"
-   }
-  ],
-  "pasi_carte": [
-   "Fierbe laptele cu semintele de in macinate si cocosul 4-5 minute.",
-   "Amesteca pana se ingroasa.",
-   "Adauga untul de arahide si scortisoara.",
-   "Bate ouale direct in terci in ultimele 2 minute, amestecand continuu, ca sa nu se taie."
-  ],
-  "macro": {
-   "kcal": 442,
-   "proteine": 22.6,
-   "carbo": 15.4,
-   "grasimi": 33.8,
-   "sursa": "local",
-   "acoperire": "6 din 6"
-  },
-  "sfaturi": [],
-  "timp": 15,
-  "dif": "usor"
- },
- {
-  "sursa": "Retete keto",
-  "nr": 27,
-  "titlu": "Terci de chia si nuca de cocos",
-  "portii": 1,
-  "etichete": [
-   "keto",
-   "vegetarian"
-  ],
-  "categorie": "Mic dejun",
-  "capitol": "Mic dejun keto",
-  "ingrediente": [
-   {
-    "c": 20,
-    "u": "g",
-    "n": "seminte de chia"
-   },
-   {
-    "c": 15,
-    "u": "g",
-    "n": "nuca de cocos"
-   },
-   {
-    "c": 150,
-    "u": "ml",
-    "n": "lapte de migdale"
-   },
-   {
-    "c": 1,
-    "u": "lingura",
-    "n": "unt"
-   },
-   {
-    "c": 2,
-    "u": "",
-    "n": "oua"
-   }
-  ],
-  "pasi_carte": [
-   "Incalzeste laptele cu chia si cocosul 5 minute, amestecand.",
-   "Adauga untul si lasa sa se ingroase 2 minute.",
-   "Bate ouale direct in terci in ultimele 2 minute, amestecand continuu, ca sa nu se taie."
-  ],
-  "macro": {
-   "kcal": 432,
-   "proteine": 18.7,
-   "carbo": 12.4,
-   "grasimi": 34.8,
-   "sursa": "local",
-   "acoperire": "5 din 5"
-  },
-  "sfaturi": [],
-  "timp": 20,
-  "dif": "usor"
- },
- {
-  "sursa": "Retete keto",
   "nr": 28,
   "titlu": "Smoothie verde cu avocado si spanac",
   "portii": 1,
@@ -1752,9 +1645,9 @@
   "capitol": "Mic dejun keto",
   "ingrediente": [
    {
-    "c": 10,
-    "u": "g",
-    "n": "migdale"
+    "c": 250,
+    "u": "ml",
+    "n": "lapte de migdale"
    },
    {
     "c": 25,
@@ -1770,19 +1663,24 @@
     "c": 1,
     "u": "lingura",
     "n": "seminte de chia"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "esenta de vanilie"
    }
   ],
   "pasi_carte": [
-   "Mixeaza toate ingredientele 1 minut.",
+   "Mixeaza toate ingredientele cu cateva cuburi de gheata, 1 minut.",
    "Serveste rece, imediat dupa mixare."
   ],
   "macro": {
-   "kcal": 307,
-   "proteine": 22.3,
-   "carbo": 19,
-   "grasimi": 17.4,
+   "kcal": 287,
+   "proteine": 21.6,
+   "carbo": 18.3,
+   "grasimi": 15.1,
    "sursa": "local",
-   "acoperire": "4 din 4"
+   "acoperire": "5 din 5"
   },
   "sfaturi": [],
   "timp": 10,
@@ -1931,8 +1829,8 @@
   ],
   "pasi_carte": [
    "Gateste omleta subtire in unt, in doua reprize.",
-   "Intinde crema de branza, asaza sunca si patrunjelul.",
-   "Rulaza si taie in felii groase."
+   "Intinde crema de branza, aseaza sunca si patrunjelul.",
+   "Ruleaza si taie in felii groase."
   ],
   "macro": {
    "kcal": 365,
@@ -2062,7 +1960,9 @@
    "sursa": "local",
    "acoperire": "5 din 5"
   },
-  "sfaturi": [],
+  "sfaturi": [
+   "Painea keto e reteta Paine keto de migdale si seminte (aceeasi carte); macro de mai sus nu o include."
+  ],
   "timp": 10,
   "dif": "usor"
  },
@@ -2080,7 +1980,7 @@
    {
     "c": 80,
     "u": "g",
-    "n": "somon"
+    "n": "somon afumat"
    },
    {
     "c": 60,
@@ -2101,17 +2001,28 @@
     "c": 20,
     "u": "g",
     "n": "ceapa verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Aseaza somonul pe farfurie.",
-   "Adauga crema de branza, castravetele felii, caperele si marar."
+   "Adauga crema de branza, castravetele felii, ceapa verde tocata si marar.",
+   "Asezoneaza cu sare si piper."
   ],
   "macro": {
-   "kcal": 397,
-   "proteine": 21.2,
+   "kcal": 324,
+   "proteine": 19.5,
    "carbo": 7.6,
-   "grasimi": 31.6,
+   "grasimi": 24.4,
    "sursa": "local",
    "acoperire": "5 din 5"
   },
@@ -2149,7 +2060,7 @@
    {
     "c": 30,
     "u": "g",
-    "n": "olive"
+    "n": "masline"
    },
    {
     "c": 30,
@@ -2377,12 +2288,23 @@
     "c": 1,
     "u": "",
     "n": "ou fiert"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Taie legumele cubulete si amesteca-le cu branza de vaci.",
    "Presara seminte de dovleac si marar.",
-   "Adauga oul fiert taiat deasupra."
+   "Adauga oul fiert taiat deasupra.",
+   "Asezoneaza cu sare si piper."
   ],
   "macro": {
    "kcal": 301,
@@ -2415,7 +2337,7 @@
    {
     "c": 60,
     "u": "g",
-    "n": "somon"
+    "n": "somon afumat"
    },
    {
     "c": 40,
@@ -2444,10 +2366,10 @@
    "Serveste cu somonul taiat felii."
   ],
   "macro": {
-   "kcal": 314,
-   "proteine": 29.9,
+   "kcal": 259,
+   "proteine": 28.6,
    "carbo": 2.6,
-   "grasimi": 20,
+   "grasimi": 14.5,
    "sursa": "local",
    "acoperire": "4 din 4"
   },
@@ -2565,56 +2487,6 @@
  },
  {
   "sursa": "Retete keto",
-  "nr": 46,
-  "titlu": "Cafea cu unt si ou fiert",
-  "portii": 1,
-  "etichete": [
-   "keto",
-   "vegetarian"
-  ],
-  "categorie": "Mic dejun",
-  "capitol": "Mic dejun keto",
-  "ingrediente": [
-   {
-    "c": 3,
-    "u": "",
-    "n": "oua fierte"
-   },
-   {
-    "c": 200,
-    "u": "ml",
-    "n": "apa"
-   },
-   {
-    "c": 15,
-    "u": "g",
-    "n": "unt"
-   },
-   {
-    "c": 1,
-    "u": "lingura",
-    "n": "smantana dulce 35%"
-   }
-  ],
-  "pasi_carte": [
-   "Fierbe ouale 8 minute.",
-   "Mixeaza cafeaua fierbinte cu untul si smantana pana face spuma.",
-   "Serveste cu ouale curatate."
-  ],
-  "macro": {
-   "kcal": 414,
-   "proteine": 21.3,
-   "carbo": 2.3,
-   "grasimi": 35.1,
-   "sursa": "local",
-   "acoperire": "4 din 4"
-  },
-  "sfaturi": [],
-  "timp": 15,
-  "dif": "usor"
- },
- {
-  "sursa": "Retete keto",
   "nr": 47,
   "titlu": "Papanasi din branza de vaci la cuptor",
   "portii": 3,
@@ -2709,11 +2581,21 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ardeiul si rosiile in ulei 5 minute.",
-   "Adauga ouale batute si amesteca pana se prind.",
+   "Adauga ouale batute cu sare si piper si amesteca pana se prind.",
    "Presara cheddarul ras."
   ],
   "macro": {
@@ -2826,10 +2708,9 @@
    }
   ],
   "pasi_carte": [
-   "Amesteca chia cu laptele, cocosul si eritritolul si imparte in doua borcane.",
+   "Amesteca proteina din zer cu laptele, apoi adauga chia, cocosul si eritritolul si imparte in doua borcane.",
    "Lasa la frigider peste noapte.",
-   "Dimineata adauga nucile sparte deasupra.",
-   "Amesteca proteina din zer cu laptele inainte de a adauga chia."
+   "Dimineata adauga nucile sparte deasupra."
   ],
   "macro": {
    "kcal": 303,
@@ -3065,7 +2946,7 @@
    {
     "c": 1,
     "u": "lingurita",
-    "n": "oregano uscat"
+    "n": "rozmarin uscat"
    },
    {
     "c": null,
@@ -3079,7 +2960,7 @@
    }
   ],
   "pasi_carte": [
-   "Condimenteaza pulpele cu sare, piper si oregano.",
+   "Condimenteaza pulpele cu sare, piper si rozmarin.",
    "Aseaza-le intr-o tava cu dovleceii taiati rondele si stropeste cu ulei.",
    "Coace 40 minute la 200 de grade."
   ],
@@ -3114,7 +2995,7 @@
    {
     "c": 100,
     "u": "g",
-    "n": "rosii"
+    "n": "rosii cherry"
    },
    {
     "c": 2,
@@ -3140,7 +3021,7 @@
   "pasi_carte": [
    "Mixeaza busuiocul cu parmezanul, nucile si uleiul pentru pesto.",
    "Rumeneste pieptul 5 minute pe fiecare parte.",
-   "Adauga rosiile si pestoul si mai tine 2 minute pe foc."
+   "Adauga rosiile cherry taiate in doua si pestoul si mai tine 2 minute pe foc."
   ],
   "macro": {
    "kcal": 399,
@@ -3237,7 +3118,7 @@
    {
     "c": 40,
     "u": "g",
-    "n": "olive"
+    "n": "masline"
    },
    {
     "c": 100,
@@ -3350,7 +3231,7 @@
    {
     "c": 500,
     "u": "g",
-    "n": "pulpe de pui cu piele"
+    "n": "aripioare de pui"
    },
    {
     "c": 2,
@@ -3379,15 +3260,15 @@
    }
   ],
   "pasi_carte": [
-   "Amesteca pulpele cu usturoiul, boia, uleiul, sare si piper.",
+   "Amesteca aripioarele cu usturoiul, boia, uleiul, sare si piper.",
    "Coace 45 minute la 200 de grade, intorcandu-le la jumatate.",
    "Serveste cu salata de varza."
   ],
   "macro": {
-   "kcal": 471,
-   "proteine": 45.7,
-   "carbo": 2.2,
-   "grasimi": 29.9,
+   "kcal": 546,
+   "proteine": 44.2,
+   "carbo": 1.9,
+   "grasimi": 39,
    "sursa": "local",
    "acoperire": "4 din 4"
   },
@@ -3665,11 +3546,11 @@
    {
     "c": 100,
     "u": "ml",
-    "n": "smantana dulce 35%"
+    "n": "lapte de cocos"
    },
    {
-    "c": 2,
-    "u": "lingurite",
+    "c": 1,
+    "u": "lingurita",
     "n": "turmeric"
    },
    {
@@ -3681,20 +3562,36 @@
     "c": 1,
     "u": "",
     "n": "catel de usturoi"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "curry pudra"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Rumeneste pieptul cubulete in ulei de cocos cu usturoi si turmeric.",
-   "Adauga conopida in buchetele si smantana.",
-   "Fierbe 12 minute pana se inmoaie conopida."
+   "Rumeneste pieptul cubulete in ulei de cocos cu usturoi, curry si turmeric.",
+   "Adauga conopida in buchetele si laptele de cocos.",
+   "Fierbe 12 minute pana se inmoaie conopida.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
-   "kcal": 448,
-   "proteine": 37.5,
-   "carbo": 9,
-   "grasimi": 29.1,
+   "kcal": 375,
+   "proteine": 37.1,
+   "carbo": 8.6,
+   "grasimi": 21.8,
    "sursa": "local",
-   "acoperire": "6 din 6"
+   "acoperire": "7 din 7"
   },
   "sfaturi": [],
   "timp": 20,
@@ -3804,10 +3701,20 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Marineaza pui taiat fasii cu oregano si ulei.",
+   "Marineaza puiul taiat fasii cu oregano, ulei, sare si piper.",
    "Prajeste-l 8 minute.",
    "Amesteca iaurtul cu castravetele ras si usturoiul si serveste peste carne, cu salata."
   ],
@@ -3917,11 +3824,21 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Rumeneste pieptul 5 minute pe fiecare parte.",
-   "Piseaza nucile cu usturoiul si amesteca cu iaurtul.",
+   "Sareaza si pipereaza pieptul si rumeneste-l 5 minute pe fiecare parte.",
+   "Piseaza nucile cu usturoiul si amesteca cu iaurtul si un praf de sare.",
    "Serveste carnea cu sosul rece."
   ],
   "macro": {
@@ -4030,10 +3947,20 @@
     "c": 1,
     "u": "lingurita",
     "n": "cimbru uscat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Taie muschiul medalioane si rumeneste-l in unt 3 minute pe fiecare parte.",
+   "Taie muschiul medalioane, sareaza-l, pipereaza-l si rumeneste-l in unt 3 minute pe fiecare parte.",
    "Scoate-l si amesteca in tigaie smantana cu mustar si cimbru.",
    "Intoarce carnea in sos 3 minute."
   ],
@@ -4152,7 +4079,7 @@
   ],
   "pasi_carte": [
    "Freaca costitele cu usturoi, boia, mustar, sare si piper.",
-   "Invelesc-le in folie si coace 2 ore la 160 de grade.",
+   "Inveleste-le in folie si coace 2 ore la 160 de grade.",
    "Descopera si mai tine 15 minute la 220 de grade."
   ],
   "macro": {
@@ -4462,12 +4389,23 @@
     "c": 300,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa in ulei, adauga carnea taiata cubulete si rumeneste-o.",
    "Adauga boia, pasta de rosii, ardeiul si apa.",
-   "Fierbe acoperit 70 de minute pana se inmoaie carnea."
+   "Fierbe acoperit 70 de minute pana se inmoaie carnea.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 394,
@@ -4526,7 +4464,7 @@
   "pasi_carte": [
    "Amesteca untul inmuiat cu patrunjel si usturoi si formeaza un sul.",
    "Rumeneste muschiul 3 minute pe fiecare parte.",
-   "Serveste cu o rondea de unt aromat deasupra."
+   "Lasa carnea 5 minute sa se odihneasca si serveste cu o rondea de unt aromat deasupra."
   ],
   "macro": {
    "kcal": 484,
@@ -4537,7 +4475,7 @@
    "acoperire": "4 din 4"
   },
   "sfaturi": [],
-  "timp": 15,
+  "timp": 20,
   "dif": "usor"
  },
  {
@@ -4634,12 +4572,23 @@
     "c": 1,
     "u": "lingura",
     "n": "boia dulce"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste carnea cu boia.",
    "Adauga varza taiata fin si 100 ml apa si fierbe 15 minute.",
-   "Adauga smantana la final."
+   "Adauga smantana la final.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 374,
@@ -4693,11 +4642,21 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Taie dovleceii felii subtiri pe lung.",
-   "Prepara sosul din carne rumenita si rosii.",
+   "Taie dovleceii felii subtiri pe lung, sareaza-i, lasa-i 10 minute si tamponeaza-i.",
+   "Rumeneste carnea in ulei 8 minute, adauga rosiile taiate, sare si piper si fierbe 15 minute.",
    "Aseaza straturi de dovlecei, sos si mozzarella.",
    "Presara parmezan si coace 35 minute la 190 de grade."
   ],
@@ -4710,7 +4669,7 @@
    "acoperire": "6 din 6"
   },
   "sfaturi": [],
-  "timp": 45,
+  "timp": 80,
   "dif": "usor"
  },
  {
@@ -4748,11 +4707,21 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Taie vinetele in doua si scobeste putin din miez.",
-   "Rumeneste carnea cu miezul tocat si rosiile.",
+   "Rumeneste carnea cu miezul tocat, rosiile, sare si piper.",
    "Umple vinetele, adauga mozzarella si coace 30 minute la 190 de grade."
   ],
   "macro": {
@@ -4765,7 +4734,7 @@
   },
   "sfaturi": [],
   "timp": 40,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete keto",
@@ -4802,10 +4771,20 @@
     "c": 1,
     "u": "lingura",
     "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Amesteca carnea cu oul si patrunjelul.",
+   "Amesteca carnea cu oul, patrunjelul, sare si piper.",
    "Umple ardeii curatati si presara cheddar.",
    "Coace 35 minute la 190 de grade."
   ],
@@ -4866,11 +4845,21 @@
     "c": 300,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Amesteca carnea cu oul, boia si cimbru.",
-   "Invelesc compozitia in foi de varza murata clatite.",
+   "Amesteca carnea cu oul, boia, cimbru, putina sare si piper.",
+   "Inveleste compozitia in foi de varza murata clatite.",
    "Aseaza-le in oala cu pasta de rosii diluata in apa si fierbe 60 de minute la foc mic."
   ],
   "macro": {
@@ -4920,10 +4909,20 @@
     "c": 1,
     "u": "lingurita",
     "n": "boia dulce"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Taie carnea si ardeii cuburi si marineaza-le cu ulei si boia.",
+   "Taie carnea si ardeii cuburi si marineaza-le cu ulei, boia, sare si piper.",
    "Infige-le pe frigarui si prajeste-le 12 minute."
   ],
   "macro": {
@@ -5037,12 +5036,23 @@
     "c": 400,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste mielul taiat bucati in unt.",
    "Adauga apa si fierbe 60 minute.",
-   "Adauga ceapa verde si ierburile in ultimele 5 minute."
+   "Adauga ceapa verde si ierburile in ultimele 5 minute.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 428,
@@ -5104,7 +5114,7 @@
    }
   ],
   "pasi_carte": [
-   "Taie dovleceii spaghete cu un ras special.",
+   "Taie dovleceii spaghete cu un spiralizator.",
    "Rumeneste baconul.",
    "Amesteca galbenusurile cu parmezanul.",
    "Incalzeste dovleceii 1 minut cu baconul, ia de pe foc si amesteca cu crema de oua."
@@ -5224,7 +5234,7 @@
   ],
   "pasi_carte": [
    "Unge somonul cu mustar.",
-   "Amesteca parmezanul cu migdalele macinate si presara peste peste.",
+   "Amesteca parmezanul cu migdalele macinate si presara peste somon.",
    "Coace 15 minute la 200 de grade."
   ],
   "macro": {
@@ -5274,10 +5284,15 @@
     "c": 1,
     "u": "",
     "n": "catel de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Rumeneste somonul in unt, 4 minute pe fiecare parte.",
+   "Sareaza si pipereaza somonul si rumeneste-l in unt, 4 minute pe fiecare parte.",
    "Scoate-l si scade spanacul cu usturoiul.",
    "Adauga smantana, fierbe 2 minute si pune somonul inapoi."
   ],
@@ -5317,7 +5332,7 @@
    {
     "c": 40,
     "u": "g",
-    "n": "olive"
+    "n": "masline"
    },
    {
     "c": 2,
@@ -5382,10 +5397,15 @@
     "c": 30,
     "u": "ml",
     "n": "suc de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Curata pastravul si umple-l cu usturoi si patrunjel.",
+   "Curata pastravul, sareaza-l si umple-l cu usturoi si patrunjel.",
    "Stropeste cu ulei si lamaie.",
    "Coace 25 minute la 200 de grade."
   ],
@@ -5449,7 +5469,7 @@
    }
   ],
   "pasi_carte": [
-   "Condimenteaza macroul si fripte-l 6 minute pe fiecare parte.",
+   "Condimenteaza macroul si frige-l 6 minute pe fiecare parte.",
    "Taie castravetii si amesteca-i cu marar, ulei si otet.",
    "Serveste impreuna."
   ],
@@ -5500,12 +5520,23 @@
     "c": 30,
     "u": "ml",
     "n": "suc de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Topeste untul si caleste usturoiul 1 minut.",
    "Adauga crevetii si gateste 3 minute pe fiecare parte.",
-   "Stropeste cu lamaie si presara patrunjel."
+   "Stropeste cu lamaie si presara patrunjel.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 286,
@@ -5613,11 +5644,22 @@
     "c": 1,
     "u": "lingura",
     "n": "suc de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Zdrobeste avocado cu lamaie.",
    "Amesteca tonul cu maioneza.",
+   "Asezoneaza cu sare si piper.",
    "Serveste cu ouale fierte taiate."
   ],
   "macro": {
@@ -5787,7 +5829,7 @@
   ],
   "pasi_carte": [
    "Pune rucola pe farfurie.",
-   "Asaza sardinele si stropeste cu lamaie si ulei.",
+   "Aseaza sardinele si stropeste cu lamaie si ulei.",
    "Presara parmezan."
   ],
   "macro": {
@@ -5832,12 +5874,17 @@
     "c": 30,
     "u": "ml",
     "n": "suc de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Prajeste pastravul 5 minute pe fiecare parte.",
+   "Sareaza si pipereaza pastravul si prajeste-l 5 minute pe fiecare parte.",
    "Rumeneste migdalele feliate in unt.",
-   "Toarna untul cu migdale peste peste si stropeste cu lamaie."
+   "Toarna untul cu migdale peste pastrav si stropeste cu lamaie."
   ],
   "macro": {
    "kcal": 579,
@@ -5881,6 +5928,11 @@
     "c": 30,
     "u": "ml",
     "n": "suc de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -5940,10 +5992,21 @@
     "c": 80,
     "u": "g",
     "n": "salata verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Amesteca tonul cu ouale maruntite, telina si maioneza.",
+   "Asezoneaza cu sare si piper.",
    "Serveste in frunze de salata."
   ],
   "macro": {
@@ -5998,12 +6061,23 @@
     "c": 1,
     "u": "lingura",
     "n": "marar"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe crevetii 3 minute si lasa-i sa se raceasca.",
    "Taie avocado si castravetii cubulete.",
-   "Amesteca toate cu lime si ulei."
+   "Amesteca toate cu lime si ulei.",
+   "Asezoneaza cu sare si piper."
   ],
   "macro": {
    "kcal": 320,
@@ -6111,12 +6185,23 @@
     "c": 1,
     "u": "",
     "n": "catel de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ciupercile cu usturoi in unt.",
    "Adauga smantana si fierbe 3 minute.",
-   "Aseaza codul in sos si gateste 8 minute acoperit."
+   "Aseaza codul in sos si gateste 8 minute acoperit.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 329,
@@ -6162,13 +6247,8 @@
     "n": "sos de soia"
    },
    {
-    "c": 1,
-    "u": "lingura",
-    "n": "ulei de masline"
-   },
-   {
-    "c": 1,
-    "u": "lingura",
+    "c": 2,
+    "u": "linguri",
     "n": "ulei de masline"
    }
   ],
@@ -6290,13 +6370,23 @@
     "c": 100,
     "u": "g",
     "n": "ricotta"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Taie dovleceii in doua si scobeste miezul.",
-   "Caleste ciupercile cu miezul tocat si usturoiul.",
-   "Umple dovleceii, adauga mozzarella si coace 25 minute la 190 de grade.",
-   "Amesteca ricotta cu umplutura."
+   "Caleste ciupercile cu miezul tocat, usturoiul, sare si piper.",
+   "Amesteca ricotta cu umplutura.",
+   "Umple dovleceii, adauga mozzarella si coace 25 minute la 190 de grade."
   ],
   "macro": {
    "kcal": 320,
@@ -6308,7 +6398,7 @@
   },
   "sfaturi": [],
   "timp": 35,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete keto",
@@ -6356,8 +6446,7 @@
   "pasi_carte": [
    "Taie vinetele rondele si unge-le cu ulei.",
    "Coace 20 minute la 200 de grade.",
-   "Adauga rosii si feta si mai tine 8 minute.",
-   "Sparge ouale peste vinete in ultimele 8 minute de coacere."
+   "Adauga rosiile si feta, sparge ouale peste vinete si mai coace 8 minute."
   ],
   "macro": {
    "kcal": 390,
@@ -6368,7 +6457,7 @@
    "acoperire": "6 din 6"
   },
   "sfaturi": [],
-  "timp": 45,
+  "timp": 35,
   "dif": "usor"
  },
  {
@@ -6420,9 +6509,8 @@
   ],
   "pasi_carte": [
    "Fierbe conopida 5 minute.",
-   "Aseaza-o in vas, toarna smantana si presara cheddar.",
-   "Coace 20 minute la 190 de grade.",
-   "Intercaleaza cuburile de sunca intre buchetelele de conopida inainte de coacere."
+   "Aseaza-o in vas, intercaleaza cuburile de sunca intre buchetele, toarna smantana si presara cheddar.",
+   "Coace 20 minute la 190 de grade."
   ],
   "macro": {
    "kcal": 378,
@@ -6581,12 +6669,22 @@
     "c": 1,
     "u": "lingurita",
     "n": "oregano uscat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Topeste mozzarella in cuptor sau in microunde si amesteca-o cu ouale si migdalele.",
    "Intinde pe hartie si coace 12 minute la 200 de grade.",
-   "Adauga rosii si oregano si mai coace 5 minute."
+   "Adauga rosiile feliate, oregano, sare si piper si mai coace 5 minute."
   ],
   "macro": {
    "kcal": 401,
@@ -6598,7 +6696,7 @@
   },
   "sfaturi": [],
   "timp": 25,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete keto",
@@ -6635,7 +6733,7 @@
   ],
   "pasi_carte": [
    "Gateste ouale batute ca doua clatite subtiri.",
-   "Umple cu spanac scazut si ricotta si rulaza."
+   "Umple cu spanac scazut si ricotta si ruleaza."
   ],
   "macro": {
    "kcal": 307,
@@ -6745,11 +6843,21 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste legumele taiate cubulete in ulei 5 minute.",
-   "Toarna ouale batute si presara cheddar.",
+   "Toarna ouale batute cu sare si piper si presara cheddar.",
    "Gateste acoperit 5 minute."
   ],
   "macro": {
@@ -6809,9 +6917,8 @@
   ],
   "pasi_carte": [
    "Amesteca conopida in buchetele cu ulei, usturoi si boia.",
-   "Coace 25 minute la 200 de grade.",
-   "Presara parmezan la final.",
-   "Presara feta zdrobita peste conopida in ultimele 5 minute."
+   "Coace 20 minute la 200 de grade.",
+   "Presara feta zdrobita si parmezanul si mai coace 5 minute."
   ],
   "macro": {
    "kcal": 369,
@@ -6822,7 +6929,7 @@
    "acoperire": "6 din 6"
   },
   "sfaturi": [],
-  "timp": 40,
+  "timp": 35,
   "dif": "usor"
  },
  {
@@ -6865,13 +6972,24 @@
     "c": 250,
     "u": "g",
     "n": "piept de pui"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Caleste ciupercile in unt pana scade apa.",
-   "Adauga usturoiul si smantana.",
+   "Rumeneste pieptul taiat cubulete in unt si scoate-l.",
+   "Caleste ciupercile in aceeasi tigaie pana scade apa.",
+   "Adauga usturoiul, smantana si puiul.",
    "Fierbe 5 minute si presara marar.",
-   "Rumeneste pieptul taiat cubulete inainte de ciuperci."
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 421,
@@ -6938,7 +7056,7 @@
  {
   "sursa": "Retete keto",
   "nr": 121,
-  "titlu": "Salata greceasca keto cu feta, ou si olive",
+  "titlu": "Salata greceasca keto cu feta, ou si masline",
   "portii": 2,
   "etichete": [
    "keto",
@@ -6965,7 +7083,7 @@
    {
     "c": 40,
     "u": "g",
-    "n": "olive"
+    "n": "masline"
    },
    {
     "c": 2,
@@ -7020,7 +7138,7 @@
    {
     "c": 80,
     "u": "g",
-    "n": "somon"
+    "n": "somon afumat"
    },
    {
     "c": 60,
@@ -7048,10 +7166,10 @@
    "Condimenteaza cu ulei si lamaie si presara parmezan."
   ],
   "macro": {
-   "kcal": 459,
-   "proteine": 24.5,
+   "kcal": 386,
+   "proteine": 22.8,
    "carbo": 8.8,
-   "grasimi": 37.3,
+   "grasimi": 30.1,
    "sursa": "local",
    "acoperire": "6 din 6"
   },
@@ -7153,11 +7271,22 @@
     "c": 1,
     "u": "lingura",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Taie puiul si telina cubulete.",
-   "Amesteca cu maioneza, iaurt si nuci sparte."
+   "Amesteca cu maioneza, iaurt si nuci sparte.",
+   "Asezoneaza cu sare si piper."
   ],
   "macro": {
    "kcal": 383,
@@ -7303,7 +7432,7 @@
    {
     "c": 30,
     "u": "g",
-    "n": "olive"
+    "n": "masline"
    },
    {
     "c": 1,
@@ -7421,12 +7550,23 @@
     "c": 1,
     "u": "lingura",
     "n": "suc de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Gateste crevetii 3 minute in tigaie.",
    "Aseaza rucola, avocado si creveti.",
-   "Condimenteaza cu ulei si lamaie."
+   "Condimenteaza cu ulei si lamaie.",
+   "Asezoneaza cu sare si piper."
   ],
   "macro": {
    "kcal": 239,
@@ -7463,7 +7603,7 @@
     "n": "feta"
    },
    {
-    "c": 2,
+    "c": 4,
     "u": "",
     "n": "oua fierte"
    },
@@ -7476,11 +7616,6 @@
     "c": 1,
     "u": "",
     "n": "catel de usturoi"
-   },
-   {
-    "c": 2,
-    "u": "",
-    "n": "oua fierte"
    }
   ],
   "pasi_carte": [
@@ -7549,11 +7684,10 @@
    }
   ],
   "pasi_carte": [
-   "Coace vinetele 40 minute la 200 de grade si lasa-le sa se scurga.",
-   "Paseaza-le cu usturoi, ulei si maioneza.",
-   "Serveste cu paine keto.",
+   "Coace vinetele 40 minute la 200 de grade, curata-le si lasa-le sa se scurga.",
+   "Paseaza miezul cu usturoi, ulei si maioneza si potriveste de sare.",
    "Amesteca branza de vaci in pasta de vinete.",
-   "Serveste cu ouale fierte taiate."
+   "Serveste cu ouale fierte taiate (si cu paine keto, daca vrei)."
   ],
   "macro": {
    "kcal": 303,
@@ -7607,13 +7741,24 @@
     "c": 150,
     "u": "g",
     "n": "piept de pui fiert"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe broccoli in apa 10 minute.",
    "Adauga untul si smantana si paseaza cu mixerul.",
    "Adauga cheddarul si amesteca pana se topeste.",
-   "Adauga puiul fiert maruntit la final."
+   "Adauga puiul fiert maruntit la final.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 410,
@@ -7667,13 +7812,23 @@
     "c": 200,
     "u": "g",
     "n": "piept de pui fiert"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe conopida cu usturoiul in apa 12 minute.",
    "Adauga untul si smantana si paseaza.",
-   "Servire cu seminte de dovleac.",
-   "Adauga puiul fiert maruntit la final si mai tine 2 minute pe foc."
+   "Adauga puiul fiert maruntit si mai tine 2 minute pe foc.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 303,
@@ -7838,12 +7993,23 @@
     "c": 1200,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe pieptul cu telina si morcovii in apa 25 minute.",
    "Scoate carnea si taie-o.",
-   "Adauga ouale batute in supa fierbinte, apoi carnea."
+   "Adauga ouale batute in supa fierbinte, apoi carnea.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 240,
@@ -7860,7 +8026,7 @@
  {
   "sursa": "Retete keto",
   "nr": 137,
-  "titlu": "Ciorba de burta keto cu smantana",
+  "titlu": "Ciorba de vita in stil de burta, keto, cu smantana",
   "portii": 3,
   "etichete": [
    "keto"
@@ -7897,10 +8063,15 @@
     "c": 1200,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Fierbe carnea in apa 60 de minute pana se inmoaie.",
+   "Fierbe carnea taiata fasii in apa cu sare 90 de minute, luand spuma, pana se inmoaie.",
    "Adauga usturoiul si otetul.",
    "Leaga cu smantana amestecata cu galbenusul de ou."
   ],
@@ -7912,8 +8083,10 @@
    "sursa": "local",
    "acoperire": "6 din 6"
   },
-  "sfaturi": [],
-  "timp": 70,
+  "sfaturi": [
+   "E o varianta rapida cu carne de vita; ciorba de burta adevarata cere burta de vita fiarta 3-4 ore."
+  ],
+  "timp": 100,
   "dif": "usor"
  },
  {
@@ -7956,20 +8129,36 @@
     "c": 1200,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": 2,
+    "u": "",
+    "n": "catei de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe pieptul cu telina in apa 25 minute.",
    "Scoate carnea, taie-o si pune-o inapoi.",
-   "Leaga cu smantana si galbenusuri si adauga otet."
+   "Leaga cu smantana si galbenusuri, apoi adauga usturoiul pisat si otetul.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
-   "kcal": 320,
-   "proteine": 33,
-   "carbo": 4.3,
+   "kcal": 324,
+   "proteine": 33.2,
+   "carbo": 5.2,
    "grasimi": 18.3,
    "sursa": "local",
-   "acoperire": "6 din 6"
+   "acoperire": "7 din 7"
   },
   "sfaturi": [],
   "timp": 35,
@@ -8015,13 +8204,24 @@
     "c": 250,
     "u": "g",
     "n": "piept de pui"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
+   "Fierbe pieptul in apa 15 minute, scoate-l si taie-l; pastreaza 400 ml din apa.",
    "Caleste ciupercile in unt.",
-   "Adauga apa si fierbe 10 minute.",
-   "Adauga smantana si marar.",
-   "Fierbe pieptul separat 15 minute, taie-l si adauga-l in supa la final."
+   "Adauga apa pastrata si fierbe 10 minute.",
+   "Adauga smantana, puiul si marar.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 279,
@@ -8075,11 +8275,16 @@
     "c": 1,
     "u": "lingurita",
     "n": "boia dulce"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Coace pieptul 20 minute la 200 de grade cu boia si ulei.",
-   "Rade conopida si calest-o in unt 5 minute.",
+   "Coace pieptul 20 minute la 200 de grade cu boia, sare si ulei.",
+   "Rade conopida si caleste-o in unt 5 minute, cu putina sare.",
    "Imparte in 4 caserole cu avocado feliat in momentul servirii."
   ],
   "macro": {
@@ -8133,7 +8338,7 @@
   ],
   "pasi_carte": [
    "Rumeneste carnea cu sos de soia.",
-   "Fierbe broccoli 4 minute.",
+   "Fierbe broccoli 4 minute si ouale 8 minute.",
    "Imparte in 3 caserole si adauga un ou fiert in fiecare."
   ],
   "macro": {
@@ -8145,7 +8350,7 @@
    "acoperire": "5 din 5"
   },
   "sfaturi": [],
-  "timp": 10,
+  "timp": 20,
   "dif": "usor"
  },
  {
@@ -8242,12 +8447,23 @@
     "c": 1,
     "u": "lingurita",
     "n": "boia dulce"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste carnea cu boia.",
    "Adauga varza taiata fin si caleste 10 minute.",
-   "Amesteca mustarul la final."
+   "Amesteca mustarul la final.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 361,
@@ -8377,7 +8593,7 @@
  {
   "sursa": "Retete keto",
   "nr": 146,
-  "titlu": "Bol de tofu si ouale cu spanac",
+  "titlu": "Bol de tofu si oua cu spanac",
   "portii": 2,
   "etichete": [
    "keto",
@@ -8469,10 +8685,20 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "garam masala"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Marineaza puiul cu iaurt, boia si turmeric 30 de minute.",
+   "Marineaza puiul cu iaurt, boia, turmeric, garam masala si sare 30 de minute.",
    "Coace-l 20 minute la 200 de grade.",
    "Serveste cu conopida rasa calita in ulei."
   ],
@@ -8528,12 +8754,23 @@
     "c": 400,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste carnea cubulete in ulei.",
-   "Adauga ciupercile, boia si apa si fierbe 60 de minute.",
-   "Adauga smantana la final."
+   "Adauga ciupercile, boia si apa si fierbe acoperit 90 de minute, pana se inmoaie carnea.",
+   "Adauga smantana la final.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 451,
@@ -8544,7 +8781,7 @@
    "acoperire": "6 din 6"
   },
   "sfaturi": [],
-  "timp": 70,
+  "timp": 100,
   "dif": "usor"
  },
  {
@@ -8592,13 +8829,23 @@
     "c": 200,
     "u": "g",
     "n": "piept de pui fiert"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe legumele taiate in apa 15 minute.",
-   "Adauga ouale batute in firul subtire.",
-   "Fierbe 2 minute si adauga smantana.",
-   "Adauga puiul fiert taiat in ciorba inainte de smantana."
+   "Adauga ouale batute in fir subtire si fierbe 2 minute.",
+   "Adauga puiul fiert taiat, apoi smantana.",
+   "Gusta si potriveste de sare si piper."
   ],
   "macro": {
    "kcal": 297,
@@ -8850,12 +9097,17 @@
     "c": 1,
     "u": "lingurita",
     "n": "scortisoara"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "esenta de vanilie"
    }
   ],
   "pasi_carte": [
    "Amesteca galbenusurile cu eritritol.",
    "Incalzeste smantana si toarna-o subtire peste galbenusuri.",
-   "Pune pe foc mic 5 minute pana se ingroasa, apoi raceste."
+   "Pune pe foc mic 5 minute, amestecand continuu, fara sa fiarba, pana se ingroasa; adauga vanilia si raceste."
   ],
   "macro": {
    "kcal": 334,
@@ -9530,7 +9782,7 @@
    {
     "c": 50,
     "u": "ml",
-    "n": "apa"
+    "n": "cafea"
    },
    {
     "c": 1,
@@ -9544,9 +9796,9 @@
    }
   ],
   "pasi_carte": [
-   "Fa un blat mic din migdale macinate si 1 ou si coace-l 12 minute la 170 de grade, apoi sfarama-l.",
+   "Fa un blat mic din migdale macinate si oua si coace-l 12 minute la 170 de grade, apoi sfarama-l.",
    "Mixeaza crema de branza cu smantana batuta si eritritolul.",
-   "Aseaza straturi de blat si crema in pahare si presara cacao."
+   "Stropeste blatul sfaramat cu cafeaua racita si aseaza straturi de blat si crema in pahare si presara cacao."
   ],
   "macro": {
    "kcal": 476,
@@ -9557,7 +9809,7 @@
    "acoperire": "7 din 7"
   },
   "sfaturi": [],
-  "timp": 20,
+  "timp": 25,
   "dif": "usor"
  },
  {
@@ -9596,10 +9848,20 @@
     "c": 60,
     "u": "g",
     "n": "zmeura"
+   },
+   {
+    "c": 2,
+    "u": "g",
+    "n": "agar-agar"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "esenta de vanilie"
    }
   ],
   "pasi_carte": [
-   "Incalzeste smantana cu laptele si eritritolul fara sa fiarba.",
+   "Incalzeste smantana cu laptele, eritritolul si vanilia, presara agar-agarul si fierbe 2 minute la foc mic, amestecand continuu.",
    "Toarna in 4 forme si tine la frigider 4 ore.",
    "Serveste cu zmeura."
   ],
@@ -9611,7 +9873,9 @@
    "sursa": "local",
    "acoperire": "5 din 5"
   },
-  "sfaturi": [],
+  "sfaturi": [
+   "Agar-agarul (din alge) tine locul gelatinei, ca desertul sa ramana vegetarian."
+  ],
   "timp": 250,
   "dif": "usor"
  },
@@ -9646,12 +9910,17 @@
     "c": 1,
     "u": "lingurita",
     "n": "scortisoara"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "esenta de vanilie"
    }
   ],
   "pasi_carte": [
    "Bate galbenusurile cu eritritolul.",
    "Incalzeste smantana si amesteca-o cu galbenusurile, apoi lasa sa se ingroase pe foc mic.",
-   "Raceste si congeleaza 4 ore, amestecand din ora in ora."
+   "Adauga vanilia, raceste si congeleaza 4 ore, amestecand din ora in ora."
   ],
   "macro": {
    "kcal": 293,
@@ -9905,11 +10174,16 @@
     "c": 1,
     "u": "lingura",
     "n": "eritritol"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "esenta de vanilie"
    }
   ],
   "pasi_carte": [
    "Topeste uleiul si untul.",
-   "Amesteca cocosul si eritritolul.",
+   "Amesteca cocosul, eritritolul si vanilia.",
    "Pune in forme si lasa la congelator 30 de minute."
   ],
   "macro": {
@@ -10320,6 +10594,11 @@
     "c": 1,
     "u": "lingurita",
     "n": "praf de copt"
+   },
+   {
+    "c": 0.5,
+    "u": "lingurita",
+    "n": "esenta de vanilie"
    }
   ],
   "pasi_carte": [
@@ -10658,10 +10937,15 @@
     "c": 1,
     "u": "lingurita",
     "n": "scortisoara"
+   },
+   {
+    "c": 1,
+    "u": "lingurita",
+    "n": "esenta de vanilie"
    }
   ],
   "pasi_carte": [
-   "Amesteca chia cu laptele, scortisoara si eritritolul.",
+   "Amesteca chia cu laptele, vanilia, scortisoara si eritritolul.",
    "Lasa peste noapte la frigider.",
    "Serveste cu capsuni taiate."
   ],
@@ -10898,7 +11182,7 @@
    {
     "c": 150,
     "u": "ml",
-    "n": "apa"
+    "n": "cafea"
    },
    {
     "c": 50,
@@ -10922,8 +11206,8 @@
    "Pune spuma peste cafea si presara cacao."
   ],
   "macro": {
-   "kcal": 174,
-   "proteine": 1.8,
+   "kcal": 176,
+   "proteine": 2,
    "carbo": 2.4,
    "grasimi": 18.3,
    "sursa": "local",
@@ -11195,7 +11479,7 @@
   "pasi_carte": [
    "Bate albusurile spuma si incorporeaza galbenusurile cu migdalele macinate.",
    "Coace blatul 12 minute la 180 de grade pe hartie.",
-   "Rulaza blatul cu crema de branza amestecata cu eritritol si capsuni."
+   "Ruleaza blatul cu crema de branza amestecata cu eritritol si capsuni."
   ],
   "macro": {
    "kcal": 160,
@@ -11360,10 +11644,15 @@
     "c": 1,
     "u": "lingurita",
     "n": "scortisoara"
+   },
+   {
+    "c": 0.5,
+    "u": "lingurita",
+    "n": "esenta de vanilie"
    }
   ],
   "pasi_carte": [
-   "Bate smantana cu eritritol si scortisoara.",
+   "Bate smantana cu eritritol, vanilie si scortisoara.",
    "Pune fructele in 2 boluri si adauga crema deasupra."
   ],
   "macro": {

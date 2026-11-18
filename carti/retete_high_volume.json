@@ -55,11 +55,21 @@
     "c": 2,
     "u": "",
     "n": "foi dafin"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe pieptul de pui in apa cu ceapa, morcovii, telina si dafinul 20 de minute, spumand.",
-   "Scoate carnea, rup-o fasii si pune-o la loc.",
+   "Scoate carnea, rupe-o fasii si pune-o la loc.",
    "Adauga dovleceii si taiteii si fierbe 6-8 minute.",
    "Potriveste de sare si piper si presara patrunjel."
   ],
@@ -135,7 +145,7 @@
    },
    {
     "c": 2,
-    "u": "lingurita",
+    "u": "lingurite",
     "n": "boia dulce"
    },
    {
@@ -147,6 +157,16 @@
     "c": 300,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -170,7 +190,7 @@
    "acoperire": "11 din 11"
   },
   "timp": 45,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -229,6 +249,16 @@
     "c": 300,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -240,7 +270,7 @@
   "sfaturi": [
    "Conopida da cremozitatea, deci nu mai trebuie smantana.",
    "Nautul intreg la final da textura si proteina.",
-   "Varianta cu carne: 400 g piept de pui in loc de 600 g naut fiert (~270 kcal si 34 g proteine pe portie). Fierbe pieptul separat 15 minute, ruperi-l fasii si pune-l in supa la servire.",
+   "Varianta cu carne: 400 g piept de pui in loc de 600 g naut fiert (~270 kcal si 34 g proteine pe portie). Fierbe pieptul separat 15 minute, rupe-l fasii si pune-l in supa la servire.",
    "Volum: portia are circa 770 g dupa gatire (estimare) si 0.51 kcal pe gram."
   ],
   "macro": {
@@ -315,19 +345,24 @@
     "c": 2,
     "u": "",
     "n": "catei usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Fierbe ouale 9 minute, racestele si taie-le.",
+   "Fierbe ouale 9 minute, raceste-le si taie-le.",
    "Fierbe apa cu orezul 12 minute, apoi ceapa verde taiata 3 minute si salata taiata fasii 2 minute.",
    "Stinge focul si amesteca iaurtul cu putina supa, apoi pune-l in oala.",
-   "Adauga castravetii, usturoiul, maraul, otetul si ouale; potriveste de sare."
+   "Adauga castravetii, usturoiul, mararul, otetul si ouale; potriveste de sare."
   ],
   "sfaturi": [
    "Nu fierbe supa dupa ce pui iaurtul ca sa nu se taie.",
    "O gustare racoritoare, buna si rece.",
-   "Varianta cu carne: 200 g sunca de pui in loc de 300 g iaurt grecesc (~367 kcal si 25 g proteine pe portie). Taie sunca fasii si pune-o in supa la final; scoate iaurtul sau pastreaza 100 g.",
-   "Volum: portia are circa 710 g dupa gatire (estimare) si 0.43 kcal pe gram."
+   "Volum: portia are circa 710 g dupa gatire (estimare) si 0.43 kcal pe gram.",
+   "Varianta cu carne: adauga 200 g piept de pui fiert, rupt fasii, la final (~364 kcal si 34 g proteine pe portie)."
   ],
   "macro": {
    "kcal": 304,
@@ -396,6 +431,16 @@
     "c": 1,
     "u": "lingurita",
     "n": "oregano"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -475,7 +520,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
    },
    {
@@ -578,13 +623,18 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
    },
    {
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -656,7 +706,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "pasta de rosii"
    },
    {
@@ -668,6 +718,16 @@
     "c": 1,
     "u": "lingurita",
     "n": "boia dulce"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -760,6 +820,16 @@
     "c": 1,
     "u": "lingura",
     "n": "otet"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -783,7 +853,7 @@
    "acoperire": "11 din 11"
   },
   "timp": 40,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -845,7 +915,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -923,7 +993,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "pasta de rosii"
    },
    {
@@ -945,6 +1015,16 @@
     "c": 200,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -968,7 +1048,7 @@
    "acoperire": "11 din 11"
   },
   "timp": 50,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -1031,13 +1111,24 @@
     "c": 20,
     "u": "g",
     "n": "patrunjel proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe pieptul cu ceapa, morcovii si telina 25 de minute.",
    "Scoate pieptul si rupe-l fasii.",
    "Amesteca iaurtul cu ouale si cu o cana de supa fierbinte, apoi toarna in oala pe foc mic.",
-   "Adauga usturoiul, otetul si carnea si nu mai fierbe."
+   "Adauga usturoiul, otetul si carnea si nu mai fierbe.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Iaurtul inlocuieste smantana si taie jumatate din calorii.",
@@ -1054,7 +1145,7 @@
    "acoperire": "10 din 10"
   },
   "timp": 40,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -1113,12 +1204,23 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa in ulei 4 minute.",
    "Adauga dovleacul, morcovii, ghimbirul si apa si fierbe 20 de minute.",
    "Mixeaza cu jumatate din naut.",
+   "Gusta si potriveste de sare si piper.",
    "Serveste cu restul de naut, iaurt grecesc si seminte prajite uscat."
   ],
   "sfaturi": [
@@ -1136,7 +1238,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 35,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -1186,7 +1288,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "pasta de rosii"
    },
    {
@@ -1203,12 +1305,22 @@
     "c": 2,
     "u": "",
     "n": "foi dafin"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe ceapa, morcovii, telina, cartofii, orezul, pasta de rosii si dafinul 15 minute.",
    "Taie codul bucati si pune-l in supa 6 minute la foc mic.",
-   "Adauga zeama de lamaie si maraul.",
+   "Adauga zeama de lamaie si mararul.",
    "Potriveste de sare si piper."
   ],
   "sfaturi": [
@@ -1226,7 +1338,7 @@
    "acoperire": "11 din 11"
   },
   "timp": 40,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -1274,6 +1386,16 @@
     "c": 1,
     "u": "lingurita",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -1346,6 +1468,16 @@
     "c": 1,
     "u": "lingurita",
     "n": "oregano"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -1422,8 +1554,8 @@
   "sfaturi": [
    "Foloseste fructe congelate dezghetate daca nu e sezon.",
    "Ovazul crud da textura, nu trebuie gatit.",
-   "Varianta cu carne: 100 g sunca de curcan in loc de 250 g zmeura (~318 kcal si 36 g proteine pe portie). Serveste alaturi o felie de sunca de curcan, pentru varianta sarata.",
-   "Volum: portia are circa 400 g dupa gatire (estimare) si 0.82 kcal pe gram."
+   "Volum: portia are circa 400 g dupa gatire (estimare) si 0.82 kcal pe gram.",
+   "Varianta vegana: 400 g iaurt de soia in loc de 400 g iaurt grecesc si sirop de artar in loc de miere (~310 kcal si 14 g proteine pe portie)."
   ],
   "macro": {
    "kcal": 328,
@@ -1488,7 +1620,7 @@
   "sfaturi": [
    "Se pastreaza 3 zile in frigider, fara mere.",
    "Laptele vegetal merge la fel.",
-   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc (~1015 kcal si 65 g proteine pe portie). Foloseste lapte de soia.",
+   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc (~420 kcal si 16 g proteine pe portie). Foloseste lapte de soia.",
    "Volum: portia are circa 540 g dupa gatire (estimare) si 0.81 kcal pe gram.",
    "Timpul de mai sus e doar cel de lucru; reteta are nevoie in plus de timp la rece, precizat la pasi."
   ],
@@ -1533,7 +1665,7 @@
    {
     "c": 1,
     "u": "",
-    "n": "banane"
+    "n": "banana"
    },
    {
     "c": 150,
@@ -1554,7 +1686,7 @@
   "sfaturi": [
    "Albusurile se topesc in terci si dau proteina; nu se simte oul.",
    "Merge la microunde in 3 minute.",
-   "Varianta vegana: 200 g tofu matase in loc de 6 albusuri (~517 kcal si 30 g proteine pe portie). Amesteca tofu matase in terciul fierbinte, mixat.",
+   "Varianta vegana: 200 g tofu matase in loc de 6 albusuri (~428 kcal si 18 g proteine pe portie). Amesteca tofu matase in terciul fierbinte, mixat.",
    "Volum: portia are circa 540 g dupa gatire (estimare) si 0.79 kcal pe gram."
   ],
   "macro": {
@@ -1624,7 +1756,6 @@
   "sfaturi": [
    "Foloseste tigaie antiaderenta ca sa nu consumi ulei.",
    "Se congeleaza si se incalzesc in prajitor de paine.",
-   "Varianta cu carne: 100 g piept de curcan afumat in loc de 150 g iaurt grecesc (~326 kcal si 23 g proteine pe portie). Servesti clatitele cu felii de curcan si rosii.",
    "Volum: portia are circa 310 g dupa gatire (estimare) si 1.00 kcal pe gram."
   ],
   "macro": {
@@ -1695,11 +1826,21 @@
     "c": 1,
     "u": "lingurita",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa si ardeiul in ulei 5 minute.",
-   "Adauga usturoiul, condimentele si rosiile si fierbe 10 minute.",
+   "Adauga usturoiul, condimentele, rosiile, sare si piper si fierbe 10 minute.",
    "Pune spanacul, apoi sparge ouale in sos.",
    "Acopera si tine 6 minute pana se prind albusurile."
   ],
@@ -1766,12 +1907,22 @@
     "c": 1,
     "u": "lingurita",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fa omleta din oua cu sare si piper in tigaia unsa.",
    "Incalzeste tortilla si unge-o cu iaurt.",
-   "Pune omleta, spanacul, rosiile si castravetii si rulea."
+   "Pune omleta, spanacul, rosiile si castravetii si ruleaza."
   ],
   "sfaturi": [
    "Poti pregati omleta cu o seara inainte.",
@@ -1836,13 +1987,24 @@
     "c": 1,
     "u": "",
     "n": "lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe quinoa 15 minute si lasa-o sa se odihneasca.",
    "Fierbe ouale 8 minute.",
    "Amesteca quinoa cu legumele taiate, ulei si zeama de lamaie.",
-   "Pune ouale taiate deasupra."
+   "Pune ouale taiate deasupra.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Clateste quinoa pentru a scapa de amaraciune.",
@@ -1897,13 +2059,23 @@
     "c": 100,
     "u": "g",
     "n": "spanac proaspat"
+   },
+   {
+    "c": 1,
+    "u": "lingura",
+    "n": "zeama de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
    "Prajeste painea.",
    "Piseaza avocadoul cu sare si lamaie si intinde-l pe paine.",
    "Pune spanacul si rosiile.",
-   "Fierbe sau prajeste ouale si asaza-le deasupra."
+   "Fierbe sau prajeste ouale si aseaza-le deasupra."
   ],
   "sfaturi": [
    "Foloseste jumatate de avocado ca sa scazi caloriile.",
@@ -1912,12 +2084,12 @@
    "Volum: portia are circa 320 g dupa gatire (estimare) si 1.00 kcal pe gram."
   ],
   "macro": {
-   "kcal": 320,
+   "kcal": 322,
    "proteine": 14.7,
-   "carbo": 26.2,
+   "carbo": 26.9,
    "grasimi": 19.2,
    "sursa": "local",
-   "acoperire": "5 din 5"
+   "acoperire": "6 din 6"
   },
   "timp": 10,
   "dif": "usor"
@@ -1973,7 +2145,7 @@
   "sfaturi": [
    "Fructele congelate fac bolul gros ca inghetata.",
    "Spanacul nu se simte la gust.",
-   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc (~913 kcal si 61 g proteine pe portie).",
+   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc (~318 kcal si 13 g proteine pe portie).",
    "Volum: portia are circa 430 g dupa gatire (estimare) si 0.77 kcal pe gram."
   ],
   "macro": {
@@ -2104,7 +2276,7 @@
   "sfaturi": [
    "Merele coapte dau dulceata fara zahar.",
    "Se pot face din cate 4 mere pentru 2 zile.",
-   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc (~876 kcal si 59 g proteine pe portie).",
+   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc si sirop de artar in loc de miere (~282 kcal si 10 g proteine pe portie).",
    "Volum: portia are circa 320 g dupa gatire (estimare) si 0.94 kcal pe gram."
   ],
   "macro": {
@@ -2151,32 +2323,37 @@
     "n": "vanilie"
    },
    {
-    "c": 2,
+    "c": 60,
+    "u": "ml",
+    "n": "aquafaba (apa de la nautul din conserva)"
+   },
+   {
+    "c": null,
     "u": "",
-    "n": "albusuri"
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Bate albusurile spuma tare cu un praf de sare.",
+   "Bate aquafaba spuma tare cu un praf de sare, 5-6 minute cu mixerul.",
    "Amesteca iaurtul cu miere si vanilie.",
-   "Incorporeaza albusul usor, de jos in sus.",
+   "Incorporeaza spuma usor, de jos in sus.",
    "Pune fructele in pahare si spuma deasupra; tine la rece 30 de minute."
   ],
   "sfaturi": [
-   "Albusul batut da volum mare, aproape fara calorii.",
-   "Foloseste albusuri pasteurizate daca nu vrei ou crud.",
-   "Varianta vegana: 400 g iaurt de soia in loc de 400 g iaurt grecesc (~998 kcal si 78 g proteine pe portie).",
-   "Volum: portia are circa 390 g dupa gatire (estimare) si 0.58 kcal pe gram."
+   "Aquafaba batuta da volum mare, aproape fara calorii, fara ou crud.",
+   "Nautul ramas merge intr-o salata sau in hummus.",
+   "Varianta vegana: 400 g iaurt de soia in loc de 400 g iaurt grecesc si sirop de artar in loc de miere (~189 kcal si 10 g proteine pe portie).",
+   "Volum: portia are circa 390 g dupa gatire (estimare) si 0.53 kcal pe gram."
   ],
   "macro": {
-   "kcal": 224,
-   "proteine": 25.8,
-   "carbo": 28.2,
+   "kcal": 207,
+   "proteine": 22.2,
+   "carbo": 27.9,
    "grasimi": 1.8,
    "sursa": "local",
    "acoperire": "5 din 5"
   },
-  "timp": 40,
+  "timp": 45,
   "dif": "usor"
  },
  {
@@ -2220,7 +2397,7 @@
   "sfaturi": [
    "Fara zahar adaugat: bananele coapte dau dulceata.",
    "Poti pastra in congelator o ora pentru consistenta mai ferma.",
-   "Varianta vegana: 100 g iaurt de soia in loc de 100 g iaurt grecesc (~378 kcal si 21 g proteine pe portie).",
+   "Varianta vegana: 100 g iaurt de soia in loc de 100 g iaurt grecesc (~179 kcal si 4 g proteine pe portie).",
    "Volum: portia are circa 320 g dupa gatire (estimare) si 0.57 kcal pe gram.",
    "Timpul de mai sus e doar cel de lucru; reteta are nevoie in plus de timp la rece, precizat la pasi."
   ],
@@ -2287,7 +2464,7 @@
   "sfaturi": [
    "Merele mari sunt mai bune de copt.",
    "Se pot incalzi la microunde a doua zi.",
-   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc (~501 kcal si 29 g proteine pe portie).",
+   "Varianta vegana: 300 g iaurt de soia in loc de 300 g iaurt grecesc si sirop de artar in loc de miere (~204 kcal si 4 g proteine pe portie).",
    "Volum: portia are circa 290 g dupa gatire (estimare) si 0.72 kcal pe gram."
   ],
   "macro": {
@@ -2348,7 +2525,7 @@
   "sfaturi": [
    "Se tine 4 zile la frigider.",
    "Laptele vegetal ofera varianta vegana.",
-   "Varianta vegana: 350 ml lapte de migdale in loc de 350 ml lapte (~175 kcal si 5 g proteine pe portie).",
+   "Varianta vegana: 350 ml lapte de migdale in loc de 350 ml lapte si sirop de artar in loc de miere (~174 kcal si 5 g proteine pe portie).",
    "Volum: portia are circa 320 g dupa gatire (estimare) si 0.80 kcal pe gram.",
    "Timpul de mai sus e doar cel de lucru; reteta are nevoie in plus de timp la rece, precizat la pasi."
   ],
@@ -2415,7 +2592,7 @@
   "sfaturi": [
    "Merge si fara cuptor, daca renunti la albusuri si lasi 3 ore la rece.",
    "Foloseste branza de vaci fina.",
-   "Varianta vegana: 200 g tofu matase in loc de 200 g branza de vaci (~294 kcal si 29 g proteine pe portie).",
+   "Varianta vegana: 200 g tofu matase in loc de branza de vaci, 100 g iaurt de soia in loc de iaurtul grecesc si fara albusuri, in varianta fara cuptor (~184 kcal si 9 g proteine pe portie).",
    "Volum: portia are circa 330 g dupa gatire (estimare) si 0.74 kcal pe gram."
   ],
   "macro": {
@@ -2485,7 +2662,7 @@
   "sfaturi": [
    "Fructele de sezon sunt mai dulci.",
    "Lasa 10 minute la rece inainte de servire.",
-   "Varianta vegana: 200 g iaurt de soia in loc de 200 g iaurt grecesc (~316 kcal si 20 g proteine pe portie).",
+   "Varianta vegana: 200 g iaurt de soia in loc de 200 g iaurt grecesc (~117 kcal si 4 g proteine pe portie).",
    "Volum: portia are circa 270 g dupa gatire (estimare) si 0.46 kcal pe gram."
   ],
   "macro": {
@@ -2545,7 +2722,7 @@
   "sfaturi": [
    "Faina de ovaz se face mixand fulgi de ovaz.",
    "Se pot congela.",
-   "Varianta vegana: 250 g tofu matase in loc de 8 albusuri (~335 kcal si 30 g proteine pe portie).",
+   "Varianta vegana: 250 g tofu matase in loc de 8 albusuri si 100 g iaurt de soia in loc de iaurtul grecesc (~220 kcal si 12 g proteine pe portie).",
    "Volum: portia are circa 340 g dupa gatire (estimare) si 0.65 kcal pe gram."
   ],
   "macro": {
@@ -2605,7 +2782,7 @@
   "sfaturi": [
    "Perele coapte sunt mai usor de digerat.",
    "Merge si cu mere.",
-   "Varianta vegana: 200 g tofu matase in loc de 200 g branza de vaci (~336 kcal si 19 g proteine pe portie).",
+   "Varianta vegana: 200 g tofu matase in loc de 200 g branza de vaci si sirop de artar in loc de miere (~247 kcal si 7 g proteine pe portie).",
    "Volum: portia are circa 360 g dupa gatire (estimare) si 0.79 kcal pe gram."
   ],
   "macro": {
@@ -2663,7 +2840,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -2675,6 +2852,16 @@
     "c": 1,
     "u": "lingurita",
     "n": "boia afumata"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -2748,20 +2935,31 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "zeama de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe ouale 9 minute si taie-le sferturi.",
    "Scurge tonul si fasolea.",
    "Amesteca salata, rosiile, castravetii si ceapa.",
-   "Pune tonul, fasolea si ouale si stropeste cu ulei si lamaie."
+   "Pune tonul, fasolea si ouale si stropeste cu ulei si lamaie.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Tonul in suc propriu are mai putine calorii decat cel in ulei.",
@@ -2778,7 +2976,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 25,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -2840,6 +3038,16 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -2847,7 +3055,8 @@
    "Fierbe orezul 15 minute si raceste-l.",
    "Fierbe mazarea 3 minute.",
    "Amesteca iaurtul cu usturoiul, menta si zeama de lamaie.",
-   "Combina salata, castravetii, mazarea si carnea cu sosul."
+   "Combina salata, castravetii, mazarea si carnea cu sosul.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Mazarea congelata merge direct, fara fierbere lunga.",
@@ -2906,7 +3115,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "tahini"
    },
    {
@@ -2928,6 +3137,11 @@
     "c": 200,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -2997,12 +3211,12 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "otet"
    }
   ],
@@ -3071,7 +3285,7 @@
    },
    {
     "c": 3,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
    },
    {
@@ -3147,20 +3361,31 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
     "c": 1,
     "u": "lingura",
     "n": "otet balsamic"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Fierbe fasolea 6 minute si racest-o.",
+   "Fierbe fasolea 6 minute si raceste-o.",
    "Fierbe sau coace pieptul 18 minute si taie-l fasii.",
    "Taie rosiile si mozzarella.",
-   "Amesteca totul cu busuioc, ulei si otet."
+   "Amesteca totul cu busuioc, ulei si otet.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Mozzarella light are mai putine calorii.",
@@ -3222,7 +3447,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "otet"
    },
    {
@@ -3232,8 +3457,13 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -3320,6 +3550,11 @@
     "c": 1,
     "u": "lingurita",
     "n": "boia afumata"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -3393,7 +3628,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -3472,7 +3707,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -3489,12 +3724,17 @@
     "c": 30,
     "u": "g",
     "n": "coriandru proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
    "Rade conopida pe razatoarea mare.",
-   "Soteaza orezul de conopida 5 minute in 1 lingura de ulei.",
-   "Prajeste crevetii cu usturoi si boia 3 minute.",
+   "Soteaza orezul de conopida 5 minute in 1 lingura de ulei, cu putina sare.",
+   "Prajeste crevetii cu usturoi, boia si sare 3 minute.",
    "Incalzeste nautul si pune-l in boluri.",
    "Serveste cu ardei, rosii, coriandru si lime."
   ],
@@ -3572,13 +3812,24 @@
     "c": 2,
     "u": "",
     "n": "catei usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe quinoa 15 minute si lasa-o sa se raceasca.",
    "Coace ardeii 25 de minute la 220 de grade si taie-i fasii.",
    "Amesteca iaurtul cu usturoi, lamaie si ulei.",
-   "Combina quinoa, nautul, legumele si patrunjelul cu sosul."
+   "Combina quinoa, nautul, legumele si patrunjelul cu sosul.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "O combinatie completa de proteine vegetale.",
@@ -3595,7 +3846,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 55,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -3640,12 +3891,12 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "otet"
    }
   ],
@@ -3716,7 +3967,7 @@
    },
    {
     "c": 3,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
    },
    {
@@ -3743,7 +3994,7 @@
   ],
   "sfaturi": [
    "Edamame da proteina completa vegetala.",
-   "Congelate, se gata in 4 minute.",
+   "Congelate, sunt gata in 4 minute.",
    "Varianta cu carne: 450 g piept de pui in loc de 600 g edamame (~420 kcal si 36 g proteine pe portie). Coace pieptul 18 minute si taie-l fasii.",
    "Volum: portia are circa 510 g dupa gatire (estimare) si 0.88 kcal pe gram."
   ],
@@ -3813,13 +4064,24 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe pieptul 15 minute si rupe-l fasii.",
    "Fierbe orezul 15 minute.",
    "Pisa avocadoul cu iaurt si lime ca sos.",
-   "Amesteca salata, porumbul, rosiile si carnea cu sosul."
+   "Amesteca salata, porumbul, rosiile si carnea cu sosul.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Avocadoul se pune dimineata, nu cu zile inainte.",
@@ -3836,7 +4098,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 45,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -3876,7 +4138,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -3892,8 +4154,8 @@
   ],
   "pasi_carte": [
    "Fierbe orezul 35 de minute.",
-   "Coace cartofii dulci taiati 20 de minute la 210 de grade.",
-   "Adauga broccoli si codul si coace 12 minute.",
+   "Coace cartofii dulci taiati, unsi cu ulei si sarati, 20 de minute la 210 de grade.",
+   "Adauga broccoli si codul sarat si piperat si coace 12 minute.",
    "Stropeste cu lamaie, usturoi si patrunjel."
   ],
   "sfaturi": [
@@ -3958,7 +4220,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -3970,13 +4232,24 @@
     "c": 1,
     "u": "",
     "n": "lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe orzul 30 de minute.",
    "Soteaza ciupercile cu ceapa si cimbru 8 minute.",
    "Fierbe ouale 8 minute.",
-   "Amesteca orzul cu ciupercile si spanacul, adauga lamaie si ouale taiate."
+   "Amesteca orzul cu ciupercile si spanacul, adauga lamaie si ouale taiate.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Orzul tine 4 zile.",
@@ -3993,7 +4266,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 60,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -4050,12 +4323,17 @@
     "c": 1,
     "u": "lingurita",
     "n": "boia afumata"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
    "Prajeste pieptul feliat cu boia 8 minute.",
    "Amesteca iaurtul cu usturoi si sare.",
-   "Intinde sosul si hummusul pe tortilla, pune salata, rosiile, castravetii si carnea si rulea."
+   "Intinde sosul si hummusul pe tortilla, pune salata, rosiile, castravetii si carnea si ruleaza."
   ],
   "sfaturi": [
    "Tortilla integrala da fibre.",
@@ -4072,7 +4350,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 25,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -4130,10 +4408,20 @@
     "c": 1,
     "u": "lingurita",
     "n": "chimen"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Mixeaza nautul cu oul, usturoiul, patrunjelul si chimenul.",
+   "Mixeaza nautul cu oul, usturoiul, patrunjelul si chimenul, cu sare si piper.",
    "Formeaza bile si coace 20 de minute la 200 de grade.",
    "Pune falafelul in tortilla cu salata, castraveti si iaurt."
   ],
@@ -4199,11 +4487,22 @@
     "c": 1,
     "u": "",
     "n": "avocado"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Amesteca tonul cu iaurtul si piper.",
-   "Pune pe paine avocado pisat, salata, rosii si castraveti."
+   "Pune pe paine avocado pisat, salata, rosii si castraveti.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Un pranz rapid, fara gatit.",
@@ -4267,10 +4566,20 @@
     "c": 1,
     "u": "",
     "n": "lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Taie pieptul fasii si prajeste-l 7 minute.",
+   "Taie pieptul fasii, sareaza-l, pipereaza-l si prajeste-l 7 minute.",
    "Taie pita si unge cu hummus.",
    "Pune carnea, legumele si spanacul si stoarce lamaie."
   ],
@@ -4330,7 +4639,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -4342,12 +4651,22 @@
     "c": 1,
     "u": "lingurita",
     "n": "usturoi granulat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Taie pieptul felii groase de 2 cm si condimenteaza-l.",
+   "Taie pieptul felii groase de 2 cm si condimenteaza-l cu boia, usturoi, sare si piper.",
    "Pune pieptul 12 minute la 190 de grade in air fryer, intorcandu-l la jumatate.",
-   "Coace legumele taiate si unse cu ulei 15 minute la 200 de grade.",
+   "Coace legumele taiate si unse cu ulei si sarate 15 minute la 200 de grade.",
    "Serveste impreuna."
   ],
   "sfaturi": [
@@ -4365,7 +4684,7 @@
    "acoperire": "8 din 8"
   },
   "timp": 40,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -4417,12 +4736,17 @@
     "c": 15,
     "u": "g",
     "n": "marar proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Taie cartofii felii subtiri si coace-i 15 minute la 210 de grade cu o lingura de ulei.",
+   "Taie cartofii felii subtiri si coace-i 15 minute la 210 de grade cu o lingura de ulei si sare.",
    "Adauga sparanghelul si rosiile si coace 10 minute.",
-   "Pune somonul deasupra cu usturoi si lamaie si coace 12 minute.",
+   "Pune somonul sarat deasupra, cu usturoi si lamaie si coace 12 minute.",
    "Presara marar."
   ],
   "sfaturi": [
@@ -4509,11 +4833,21 @@
     "c": 300,
     "u": "g",
     "n": "spanac proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rade dovleceii si stoarce-i bine.",
-   "Amesteca curcanul cu dovleceii, oul, ovazul, ceapa, usturoiul si condimentele.",
+   "Amesteca curcanul cu dovleceii, oul, ovazul, ceapa, usturoiul si condimentele, cu sare si piper.",
    "Formeaza chiftele si pune-le 12 minute la 190 de grade.",
    "Coace cartofii taiati 25 de minute la 200 de grade.",
    "Fierbe rosiile 8 minute cu spanacul si serveste cu chiftelele si cartofii."
@@ -4533,7 +4867,7 @@
    "acoperire": "11 din 11"
   },
   "timp": 65,
-  "dif": "mediu"
+  "dif": "avansat"
  },
  {
   "sursa": "Retete high-volume",
@@ -4565,12 +4899,12 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
     "c": 2,
-    "u": "lingurita",
+    "u": "lingurite",
     "n": "curry pudra"
    },
    {
@@ -4587,6 +4921,11 @@
     "c": 20,
     "u": "g",
     "n": "coriandru proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -4650,7 +4989,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -4667,10 +5006,20 @@
     "c": 3,
     "u": "",
     "n": "catei usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Taie tot cuburi mari si amesteca cu ulei, cimbru, usturoi si lamaie.",
+   "Taie tot cuburi mari si amesteca cu ulei, cimbru, usturoi, lamaie, sare si piper.",
    "Pune in tava mare si coace 35 de minute la 200 de grade, amestecand o data.",
    "Verifica carnea: sa nu mai fie roz."
   ],
@@ -4730,7 +5079,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -4817,11 +5166,21 @@
     "c": 20,
     "u": "g",
     "n": "patrunjel proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Taie dovleceii in doua si scobeste-i.",
-   "Caleste ceapa cu carnea 6 minute si adauga orezul crud, usturoiul si miezul tocat.",
+   "Caleste ceapa cu carnea 6 minute si adauga orezul crud, usturoiul, miezul tocat, sare si piper.",
    "Umple dovleceii, pune-i in tava cu rosiile si 100 ml apa.",
    "Coace 40 de minute la 190 de grade."
   ],
@@ -4909,10 +5268,20 @@
     "c": 200,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Mixeaza nautul cu spanacul, ouale, ovazul, ceapa, usturoiul si chimenul.",
+   "Mixeaza nautul cu spanacul, ouale, ovazul, ceapa, usturoiul si chimenul, cu sare si piper.",
    "Formeaza 8 burgeri si pune-i 12 minute la 190 de grade, intorcandu-i.",
    "Serveste cu paine integrala, legume si iaurt."
   ],
@@ -4931,7 +5300,7 @@
    "acoperire": "11 din 11"
   },
   "timp": 30,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -4966,7 +5335,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -4983,11 +5352,16 @@
     "c": 3,
     "u": "",
     "n": "catei usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Coace cartofii taiati 15 minute la 200 de grade.",
-   "Adauga dovleceii si rosiile si pune pastravul deasupra cu usturoi, lamaie si marar.",
+   "Coace cartofii taiati, cu sare, 15 minute la 200 de grade.",
+   "Adauga dovleceii si rosiile si pune pastravul sarat deasupra cu usturoi, lamaie si marar.",
    "Coace 15 minute."
   ],
   "sfaturi": [
@@ -5047,7 +5421,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
    },
    {
@@ -5121,7 +5495,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -5138,11 +5512,16 @@
     "c": 300,
     "u": "g",
     "n": "cartofi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Pune ciupercile, ceapa si cartofii taiati in tava cu ulei si cimbru.",
-   "Aseaza pieptul deasupra si coace 30 de minute la 200 de grade.",
+   "Pune ciupercile, ceapa si cartofii taiati in tava cu ulei, cimbru si sare.",
+   "Aseaza pieptul sarat si piperat deasupra si coace 30 de minute la 200 de grade.",
    "Adauga spanacul si iaurtul la final si amesteca."
   ],
   "sfaturi": [
@@ -5211,19 +5590,24 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
     "c": 500,
     "u": "g",
     "n": "cartofi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Trece codul prin ou si pesmet.",
-   "Coace cartofii taiati 15 minute la 200 de grade, apoi codul 10 minute la 190 de grade.",
-   "Amesteca salata cu rosii, castraveti, ulei si lamaie.",
+   "Sareaza codul si trece-l prin ou si pesmet.",
+   "Coace cartofii taiati, cu sare, 15 minute la 200 de grade, apoi codul 10 minute la 190 de grade.",
+   "Amesteca salata cu rosii, castraveti, ulei, lamaie si sare.",
    "Serveste cu cod si cartofi."
   ],
   "sfaturi": [
@@ -5241,7 +5625,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 40,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -5284,7 +5668,7 @@
    },
    {
     "c": 3,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
    },
    {
@@ -5456,7 +5840,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -5473,10 +5857,15 @@
     "c": 1,
     "u": "",
     "n": "lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Marineaza pieptul taiat cuburi cu iaurt, boia, usturoi si lamaie 30 de minute.",
+   "Marineaza pieptul taiat cuburi cu iaurt, boia, usturoi, lamaie si sare 30 de minute.",
    "Infige pe sipci cu legumele.",
    "Coace 22 de minute la 220 de grade, intorcand o data.",
    "Serveste cu cartofi copti taiati in felii."
@@ -5552,13 +5941,23 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "zeama de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe cartofii si piseaza-i.",
-   "Amesteca-i cu tonul scurs, ouale, pesmetul, ceapa si patrunjelul.",
+   "Amesteca-i cu tonul scurs, ouale, pesmetul, ceapa si patrunjelul, cu sare si piper.",
    "Formeaza chiftele si pune-le 12 minute la 190 de grade.",
    "Serveste cu salata, rosii si lamaie."
   ],
@@ -5639,7 +6038,7 @@
   ],
   "sfaturi": [
    "Mai multe legume decat paste inseamna volum cu putine calorii.",
-   "Apa de la paste lega sosul fara smantana.",
+   "Apa de la paste leaga sosul fara smantana.",
    "Varianta vegetariana: 400 g tofu ferm in loc de 600 g piept de pui (~423 kcal si 31 g proteine pe portie). Prajeste tofu cuburi pana se rumenesc.",
    "Volum: portia are circa 480 g dupa gatire (estimare) si 0.96 kcal pe gram."
   ],
@@ -5714,13 +6113,18 @@
     "c": 100,
     "u": "g",
     "n": "paste integrale"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
    "Taie dovleceii taitei cu un tocator spiralat.",
    "Amesteca curcanul cu oul, pesmetul si usturoiul si fa chiftele.",
    "Rumeneste-le 6 minute, adauga ceapa si rosiile si fierbe 15 minute.",
-   "Fierbe pastele 8 minute si amesteca-le cu dovleceii cruzi in ultimele 2 minute."
+   "Fierbe pastele in apa cu sare 8 minute si amesteca-le cu dovleceii cruzi in ultimele 2 minute."
   ],
   "sfaturi": [
    "Dovleceii se gatesc cat se incalzesc in sos.",
@@ -5783,12 +6187,12 @@
    },
    {
     "c": 3,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de floarea soarelui"
    },
    {
@@ -5798,9 +6202,9 @@
    }
   ],
   "pasi_carte": [
-   "Fierbe orezul si racest-l complet (ideal de o zi).",
+   "Fierbe orezul si raceste-l complet (ideal de o zi).",
    "Fa omleta din oua si taie-o fasii.",
-   "Calveste legumele 6 minute in wok cu usturoi.",
+   "Caleste legumele 6 minute in wok cu usturoi.",
    "Adauga orezul si sosul de soia si amesteca 4 minute, apoi omleta."
   ],
   "sfaturi": [
@@ -5864,7 +6268,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -5882,7 +6286,7 @@
    "Rade conopida pe razatoarea mare.",
    "Soteaza ceapa, usturoiul si ciupercile 8 minute.",
    "Adauga conopida, mazarea si supa si fierbe 8 minute.",
-   "Amesteca parmezanul si adauga ouale poseate deasupra."
+   "Poseaza ouale 3 minute in apa care abia clocoteste, cu putin otet. Amesteca parmezanul in risotto si pune ouale deasupra."
   ],
   "sfaturi": [
    "Conopida rasa tine loc de orez cu mult mai putine calorii.",
@@ -5898,7 +6302,7 @@
    "sursa": "local",
    "acoperire": "9 din 9"
   },
-  "timp": 30,
+  "timp": 35,
   "dif": "usor"
  },
  {
@@ -5939,22 +6343,27 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "capere"
    },
    {
     "c": 20,
     "u": "g",
     "n": "patrunjel proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Fierbe pastele.",
+   "Fierbe pastele in apa cu sare.",
    "Caleste usturoiul, adauga rosiile, dovleceii rasi si caperele si fierbe 12 minute.",
    "Adauga tonul scurs.",
    "Amesteca cu pastele si patrunjel."
@@ -6015,7 +6424,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -6027,10 +6436,15 @@
     "c": 20,
     "u": "g",
     "n": "busuioc proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Fierbe pastele.",
+   "Fierbe pastele in apa cu sare.",
    "Soteaza dovleceii rasi cu usturoi 6 minute si adauga spanacul.",
    "Amesteca ricotta cu lamaie.",
    "Combina pastele cu legumele si ricotta, cu putina apa de fiert."
@@ -6096,7 +6510,7 @@
    },
    {
     "c": 3,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
    },
    {
@@ -6117,7 +6531,7 @@
   ],
   "pasi_carte": [
    "Inmoaie taiteii in apa fierbinte 6 minute.",
-   "Calveste legumele 6 minute in wok cu ghimbir si usturoi.",
+   "Caleste legumele 6 minute in wok cu ghimbir si usturoi.",
    "Adauga crevetii 3 minute.",
    "Amesteca taiteii cu sosul de soia si uleiul de susan."
   ],
@@ -6182,12 +6596,12 @@
    },
    {
     "c": 3,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de floarea soarelui"
    },
    {
@@ -6264,7 +6678,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -6281,12 +6695,17 @@
     "c": 1,
     "u": "lingurita",
     "n": "oregano"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
    "Fierbe lintea rosie 12 minute.",
    "Caleste ceapa si usturoiul, adauga rosiile, lintea si oregano si fierbe 10 minute.",
-   "Fierbe pastele si amesteca-le cu sosul.",
+   "Fierbe pastele in apa cu sare si amesteca-le cu sosul.",
    "Adauga spanacul si parmezanul."
   ],
   "sfaturi": [
@@ -6355,7 +6774,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -6367,11 +6786,21 @@
     "c": 120,
     "u": "g",
     "n": "paste (foi de lasagna)"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Taie dovleceii felii lungi subtiri si usuca-i pe hartie.",
-   "Rumeneste curcanul cu ceapa si usturoi, adauga rosiile si fierbe 15 minute.",
+   "Rumeneste curcanul cu ceapa si usturoi, adauga rosiile, sare si piper si fierbe 15 minute.",
    "Pune in tava straturi de dovlecei, carne, foi de lasagna si ricotta.",
    "Acopera cu mozzarella si coace 40 de minute la 190 de grade."
   ],
@@ -6437,7 +6866,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -6449,12 +6878,23 @@
     "c": 200,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa si legumele 8 minute.",
    "Adauga bulgurul, boia si apa cat sa-l acopere cu un deget.",
    "Fierbe 12 minute acoperit, apoi adauga nautul.",
+   "Gusta si potriveste de sare si piper.",
    "Serveste cu iaurt."
   ],
   "sfaturi": [
@@ -6472,7 +6912,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 35,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -6519,7 +6959,7 @@
    },
    {
     "c": 3,
-    "u": "lingura",
+    "u": "linguri",
     "n": "sos de soia"
    },
    {
@@ -6610,7 +7050,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "ulei de masline"
    },
    {
@@ -6627,13 +7067,24 @@
     "c": 1,
     "u": "",
     "n": "lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste pieptul cuburi 7 minute cu turmeric si chimen.",
    "Adauga legumele si gateste 8 minute.",
-   "Hidrateaza cuscusul cu 220 ml apa fierbinte 5 minute, apoi ragaie-l cu furculita.",
-   "Amesteca totul si stoarce lamaie."
+   "Hidrateaza cuscusul cu 220 ml apa fierbinte 5 minute, apoi afaneaza-l cu furculita.",
+   "Amesteca totul si stoarce lamaie.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Cuscusul e gata in 5 minute.",
@@ -6650,7 +7101,7 @@
    "acoperire": "10 din 10"
   },
   "timp": 35,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -6707,7 +7158,7 @@
   ],
   "pasi_carte": [
    "Fierbe broccoli impreuna cu pastele in ultimele 4 minute.",
-   "Calveste usturoiul si ardeiul iute in ulei si adauga nautul 3 minute.",
+   "Caleste usturoiul si ardeiul iute in ulei si adauga nautul 3 minute.",
    "Amesteca pastele si broccoli cu nautul.",
    "Adauga parmezanul si lamaia."
   ],
@@ -6783,20 +7234,31 @@
    },
    {
     "c": 2,
-    "u": "lingurita",
+    "u": "lingurite",
     "n": "chimen"
    },
    {
     "c": 1,
     "u": "lingurita",
     "n": "boia afumata"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa si usturoiul cu putina apa 4 minute.",
    "Rumeneste curcanul 8 minute cu chimen si boia.",
    "Adauga rosiile, ardeiul, morcovii si 200 ml apa si fierbe 25 de minute.",
-   "Pune fasolea si porumbul si mai fierbe 10 minute."
+   "Pune fasolea si porumbul si mai fierbe 10 minute.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se congeleaza in portii.",
@@ -6813,7 +7275,7 @@
    "acoperire": "10 din 10"
   },
   "timp": 60,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -6871,7 +7333,7 @@
    },
    {
     "c": 2,
-    "u": "lingurita",
+    "u": "lingurite",
     "n": "chimen"
    },
    {
@@ -6883,12 +7345,23 @@
     "c": 200,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa si usturoiul cu putina apa 4 minute.",
    "Adauga condimentele, rosiile, linte si 600 ml apa si fierbe 25 de minute.",
    "Pune legumele si fasolea si mai fierbe 12 minute.",
+   "Gusta si potriveste de sare si piper.",
    "Serveste cu iaurt."
   ],
   "sfaturi": [
@@ -6906,7 +7379,7 @@
    "acoperire": "11 din 11"
   },
   "timp": 60,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -6948,7 +7421,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "pasta de rosii"
    },
    {
@@ -6970,6 +7443,16 @@
     "c": 3,
     "u": "",
     "n": "catei usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -7047,19 +7530,30 @@
    },
    {
     "c": 2,
-    "u": "lingurita",
+    "u": "lingurite",
     "n": "curry pudra"
    },
    {
     "c": 200,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa, ghimbirul si usturoiul cu putina apa.",
    "Adauga curry si rosiile si fierbe 10 minute.",
    "Pune nautul, laptele de cocos si spanacul si fierbe 8 minute.",
+   "Gusta si potriveste de sare si piper.",
    "Serveste cu iaurt."
   ],
   "sfaturi": [
@@ -7077,7 +7571,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 35,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -7139,20 +7633,31 @@
    },
    {
     "c": 2,
-    "u": "lingurita",
+    "u": "lingurite",
     "n": "curry pudra"
    },
    {
     "c": 60,
     "u": "g",
     "n": "orez"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa, ghimbirul si usturoiul cu putina apa.",
    "Adauga curry si pieptul cuburi si rumeneste 5 minute.",
    "Pune legumele si laptele de cocos si fierbe 15 minute.",
-   "Fierbe orezul si serveste cu curry."
+   "Fierbe orezul si serveste cu curry.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Pune spanacul la final.",
@@ -7169,7 +7674,7 @@
    "acoperire": "11 din 11"
   },
   "timp": 40,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -7289,7 +7794,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "pasta de rosii"
    },
    {
@@ -7316,12 +7821,23 @@
     "c": 300,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa in ulei 8 minute pana se rumeneste.",
    "Adauga ciupercile si gateste 6 minute.",
    "Pune pasta de rosii, boia, fasolea, dafinul si apa si fierbe 20 de minute.",
+   "Gusta si potriveste de sare si piper.",
    "Serveste cu iaurt."
   ],
   "sfaturi": [
@@ -7339,7 +7855,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 45,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -7382,7 +7898,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "pasta de rosii"
    },
    {
@@ -7404,12 +7920,23 @@
     "c": 300,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa si ciupercile 8 minute.",
    "Adauga morcovii, pasta de rosii, boia si apa.",
    "Pune cartofii si nautul si fierbe 25 de minute.",
+   "Gusta si potriveste de sare si piper.",
    "Serveste cu iaurt."
   ],
   "sfaturi": [
@@ -7427,7 +7954,7 @@
    "acoperire": "10 din 10"
   },
   "timp": 45,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -7469,7 +7996,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "pasta de rosii"
    },
    {
@@ -7479,7 +8006,7 @@
    },
    {
     "c": 2,
-    "u": "lingura",
+    "u": "linguri",
     "n": "boia dulce"
    },
    {
@@ -7491,13 +8018,24 @@
     "c": 3,
     "u": "",
     "n": "catei usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste carnea in doua reprize in ulei.",
    "Caleste ceapa si adauga boia si pasta de rosii.",
    "Pune apa, carnea si morcovii si fierbe 60 de minute.",
-   "Adauga cartofii si ardeiul si fierbe 25 de minute."
+   "Adauga cartofii si ardeiul si fierbe 25 de minute.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Taie carnea in bucati egale ca sa se faca uniform.",
@@ -7563,7 +8101,7 @@
    },
    {
     "c": 2,
-    "u": "lingurita",
+    "u": "lingurite",
     "n": "curry pudra"
    },
    {
@@ -7585,12 +8123,23 @@
     "c": 100,
     "u": "g",
     "n": "orez"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa, ghimbirul si usturoiul in ulei cu curry.",
    "Adauga lintea, rosiile si apa si fierbe 20 de minute.",
    "Pune spanacul si fierbe 3 minute.",
+   "Gusta si potriveste de sare si piper.",
    "Serveste cu orez si iaurt."
   ],
   "sfaturi": [
@@ -7608,7 +8157,7 @@
    "acoperire": "11 din 11"
   },
   "timp": 40,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -7669,20 +8218,31 @@
    },
    {
     "c": 2,
-    "u": "lingurita",
+    "u": "lingurite",
     "n": "boia afumata"
    },
    {
     "c": 3,
     "u": "",
     "n": "catei usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste pieptul cuburi 5 minute in ulei.",
    "Adauga ceapa, ardeiul, telina, usturoiul si condimentele 5 minute.",
    "Pune orezul, rosiile si apa si fierbe 18 minute.",
-   "Adauga crevetii si mai tine 4 minute."
+   "Adauga crevetii si mai tine 4 minute.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Orezul se gateste in sosul de rosii.",
@@ -7699,7 +8259,7 @@
    "acoperire": "11 din 11"
   },
   "timp": 45,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -7759,13 +8319,24 @@
     "c": 200,
     "u": "g",
     "n": "iaurt grecesc"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa si usturoiul cu putina apa si condimentele.",
    "Adauga cartofii dulci cuburi si rosiile si fierbe 15 minute.",
    "Pune nautul si fierbe 8 minute.",
-   "Adauga spanacul si serveste cu iaurt."
+   "Adauga spanacul si serveste cu iaurt.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Cartofii dulci dau volum si dulceata.",
@@ -7782,7 +8353,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 35,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete high-volume",
@@ -7841,6 +8412,11 @@
     "c": 1,
     "u": "lingurita",
     "n": "cimbru"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -7932,12 +8508,23 @@
     "c": 3,
     "u": "",
     "n": "catei usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste pieptul cuburi 5 minute in ulei.",
    "Adauga ceapa, usturoiul si orezul si amesteca 2 minute.",
    "Pune legumele, turmericul si apa si fierbe acoperit 18 minute.",
+   "Gusta si potriveste de sare si piper.",
    "Lasa 5 minute inainte de servire."
   ],
   "sfaturi": [
@@ -7955,6 +8542,6 @@
    "acoperire": "11 din 11"
   },
   "timp": 45,
-  "dif": "usor"
+  "dif": "mediu"
  }
 ]

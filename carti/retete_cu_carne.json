@@ -39,6 +39,16 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -107,10 +117,15 @@
     "c": 1,
     "u": "lingurita",
     "n": "boia afumata"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Fierbe cartofii cubulete 8 minute si rumeneste-i in ulei cu boia.",
+   "Fierbe cartofii cubulete in apa cu sare 8 minute si rumeneste-i in ulei cu boia.",
    "Rumeneste carnatii scosi din membrana, apoi fa omleta framantata.",
    "Umple tortilla cu cartofi, carnati, omleta si cascaval si ruleaza strans.",
    "Infasoara individual."
@@ -171,6 +186,16 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -298,6 +323,11 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -439,10 +469,20 @@
     "c": 3,
     "u": "",
     "n": "catei de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Taie cartofii si legumele cubulete si amesteca-le cu jumatate din ulei si condimente.",
+   "Taie cartofii si legumele cubulete si amesteca-le cu jumatate din ulei si condimente (sare si piper).",
    "Condimenteaza pieptul de pui si pune-l in tava peste legume.",
    "Coace la 200 de grade 35 de minute, pana pieptul ajunge la 74 de grade in centru."
   ],
@@ -512,12 +552,23 @@
     "c": 700,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste pieptul taiat cubulete in ulei 5 minute si scoate-l.",
    "Caleste ceapa si morcovul, adauga orezul si turmericul.",
-   "Pune apa, puiul si mazarea, acopera si fierbe la foc mic 18 minute."
+   "Pune apa, puiul si mazarea, acopera si fierbe la foc mic 18 minute.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 4 zile la frigider; incalzeste bine, mai ales orezul.",
@@ -587,12 +638,23 @@
     "c": 1,
     "u": "",
     "n": "lime"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa in ulei, adauga pasta de curry si puiul taiat cubulete.",
    "Toarna laptele de cocos, adauga dovleceii si fierbe 15 minute.",
-   "Pune spanacul si lime."
+   "Pune spanacul si lime.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 4 zile la frigider; serveste cu orez.",
@@ -671,12 +733,23 @@
     "c": 400,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste puiul taiat cubulete in ulei si scoate-l.",
    "Caleste ceapa si ardeiul cu condimentele, adauga rosiile, apa si fasolea.",
-   "Pune puiul inapoi si fierbe 25 de minute; adauga porumbul la final."
+   "Pune puiul inapoi si fierbe 25 de minute; adauga porumbul la final.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 5 zile la frigider sau 3 luni la congelator.",
@@ -825,12 +898,23 @@
     "c": 100,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Marineaza puiul taiat cubulete in iaurt si jumatate din garam masala 30 de minute.",
    "Caleste ceapa, usturoiul si ghimbirul, adauga restul de condiment, rosiile si apa.",
-   "Pune puiul cu marinada si fierbe 15 minute pana ajunge la 74 de grade."
+   "Pune puiul cu marinada si fierbe 15 minute pana ajunge la 74 de grade.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 4 zile la frigider; serveste cu orez.",
@@ -899,10 +983,20 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Rade dovleceii, stoarce-i si amesteca-i cu puiul tocat, oul, pesmetul si condimentele.",
+   "Rade dovleceii, stoarce-i si amesteca-i cu puiul tocat, oul, pesmetul si condimentele, cu sare si piper.",
    "Formeaza 16 chiftele si unge-le cu ulei.",
    "Gateste in air fryer la 190 de grade 12 minute, intorcandu-le o data."
   ],
@@ -973,6 +1067,11 @@
     "c": 1,
     "u": "lingurita",
     "n": "cimbru"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -1045,6 +1144,11 @@
     "c": 20,
     "u": "g",
     "n": "coriandru proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -1114,10 +1218,15 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Rumeneste pieptul taiat fasii in ulei pana la 74 de grade in centru.",
+   "Sareaza si pipereaza pieptul taiat fasii si rumeneste-l in ulei pana la 74 de grade in centru.",
    "Unge tortilla cu hummus si adauga puiul, legumele si rucola.",
    "Ruleaza strans si infasoara in folie."
   ],
@@ -1188,12 +1297,23 @@
     "c": 20,
     "u": "g",
     "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe orezul.",
    "Rumeneste puiul taiat cubulete, scoate-l, apoi rumeneste ciupercile cu ceapa si usturoiul.",
    "Pune puiul inapoi cu smantana si 100 ml de apa si fierbe 8 minute.",
+   "Gusta si potriveste de sare si piper.",
    "Presara patrunjel si serveste cu orez."
   ],
   "sfaturi": [
@@ -1209,7 +1329,7 @@
    "acoperire": "8 din 8"
   },
   "timp": 20,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete cu carne",
@@ -1406,6 +1526,11 @@
     "c": 1,
     "u": "",
     "n": "lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -1474,12 +1599,23 @@
     "c": 1500,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe pieptul cu ceapa, morcovul si telina in apa 25 de minute si scoate puiul.",
    "Fierbe taiteii in supa 6 minute.",
-   "Fa puiul fasii si pune-l inapoi cu patrunjel."
+   "Fa puiul fasii si pune-l inapoi cu patrunjel.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 4 zile la frigider sau 3 luni la congelator, fara taitei.",
@@ -1557,6 +1693,16 @@
     "c": 20,
     "u": "g",
     "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -1641,12 +1787,23 @@
     "c": 400,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste carnea tocata in ulei 8 minute, framantand-o.",
    "Adauga ceapa, ardeiul si condimentele, apoi rosiile, apa si fasolea.",
-   "Fierbe 30 de minute si adauga porumbul la final."
+   "Fierbe 30 de minute si adauga porumbul la final.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 5 zile la frigider sau 3 luni la congelator.",
@@ -1724,13 +1881,18 @@
     "c": 1,
     "u": "lingurita",
     "n": "oregano"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa, morcovul si telina taiate marunt in ulei.",
    "Adauga carnea tocata si rumeneste-o 8 minute.",
    "Pune pasta de rosii, rosiile, usturoiul si oregano si fierbe 30 de minute.",
-   "Fierbe pastele si amesteca-le cu sosul."
+   "Fierbe pastele in apa cu sare si amesteca-le cu sosul."
   ],
   "sfaturi": [
    "Se pastreaza 4 zile la frigider sau 3 luni la congelator, sosul separat.",
@@ -1894,12 +2056,23 @@
     "c": 700,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste carnea taiata cuburi in ulei in doua reprize.",
    "Caleste ceapa, adauga boiaua, pasta de rosii, dafinul si apa.",
-   "Fierbe acoperit la foc mic 60 de minute, apoi adauga morcovii, cartofii si usturoiul si mai fierbe 25 de minute."
+   "Fierbe acoperit la foc mic 60 de minute, apoi adauga morcovii, cartofii si usturoiul si mai fierbe 25 de minute.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 4 zile la frigider sau 3 luni la congelator.",
@@ -1914,7 +2087,7 @@
    "acoperire": "10 din 10"
   },
   "timp": 95,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete cu carne",
@@ -1971,6 +2144,16 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -2040,11 +2223,21 @@
     "c": 1,
     "u": "lingurita",
     "n": "chimen"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe cartofii dulci pana se inmoaie si piseaza-i.",
-   "Amesteca cu carnea, oul, ovazul si condimentele.",
+   "Amesteca cu carnea, oul, ovazul si condimentele, cu sare si piper.",
    "Formeaza 8 burgeri si gateste-i la air fryer la 190 de grade 14 minute, intorcandu-i o data (71 de grade in centru)."
   ],
   "sfaturi": [
@@ -2123,11 +2316,21 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe orezul.",
-   "Rumeneste carnea cu chimen si boia 8 minute.",
+   "Rumeneste carnea cu chimen, boia, sare si piper 8 minute.",
    "Incalzeste fasolea cu porumbul si taie rosiile.",
    "Asambleaza in caserole; avocado si lime se adauga la servire."
   ],
@@ -2198,10 +2401,20 @@
     "c": 20,
     "u": "g",
     "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Caleste ceapa, adauga carnea si orezul si amesteca 5 minute, apoi ierburile.",
+   "Caleste ceapa, adauga carnea si orezul si amesteca 5 minute, apoi ierburile, sare si piper.",
    "Umple ardeii si aseaza-i in tava cu sucul de rosii si 200 ml apa.",
    "Coace acoperit la 180 de grade 55 de minute."
   ],
@@ -2219,7 +2432,7 @@
    "acoperire": "8 din 8"
   },
   "timp": 75,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete cu carne",
@@ -2355,6 +2568,16 @@
     "c": 3,
     "u": "",
     "n": "catei de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -2433,10 +2656,20 @@
     "c": 20,
     "u": "g",
     "n": "marar proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Caleste ceapa, amesteca-o cu carnea, orezul, boiaua, cimbru si marar.",
+   "Caleste ceapa, amesteca-o cu carnea, orezul, boiaua, cimbru, marar, sare si piper.",
    "Pune cate o lingura de amestec in foile de varza si ruleaza-le.",
    "Aseaza in oala cu pasta de rosii dizolvata in apa si fierbe la foc mic 80 de minute."
   ],
@@ -2454,7 +2687,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 90,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete cu carne",
@@ -2507,13 +2740,24 @@
     "c": 3,
     "u": "",
     "n": "catei de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste carnea taiata cuburi in ulei in doua reprize.",
    "Caleste ceapa, ia de pe foc si amesteca boiaua.",
    "Pune carnea, rosiile si apa si fierbe acoperit 50 de minute.",
-   "Adauga usturoiul si smantana si lasa 2 minute."
+   "Adauga usturoiul si smantana si lasa 2 minute.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 4 zile la frigider sau 3 luni la congelator; serveste cu mamaliga.",
@@ -2529,7 +2773,7 @@
    "acoperire": "8 din 8"
   },
   "timp": 65,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete cu carne",
@@ -2583,12 +2827,23 @@
     "c": 600,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Rumeneste carnea taiata cuburi in ulei.",
    "Adauga ceapa, boiaua, pasta de rosii, cimbru si apa si fierbe acoperit 40 de minute.",
-   "Pune cartofii cubulete si mai fierbe 25 de minute pana scade sosul."
+   "Pune cartofii cubulete si mai fierbe 25 de minute pana scade sosul.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 4 zile la frigider sau 3 luni la congelator.",
@@ -2657,6 +2912,16 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -2740,10 +3005,15 @@
     "c": 2,
     "u": "linguri",
     "n": "ulei de floarea soarelui"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Fierbe cartofii feliati 8 minute.",
+   "Fierbe cartofii feliati in apa cu sare 8 minute.",
    "Caleste ceapa si carnea tocata, adauga rosiile si fierbe 10 minute.",
    "Fa bechamel din unt, faina si lapte si adauga ouale batute.",
    "Aseaza straturi de cartofi si carne, acopera cu bechamel si cascaval si coace 40 de minute la 190 de grade."
@@ -2966,10 +3236,20 @@
     "c": 1,
     "u": "",
     "n": "lime"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Rumeneste carnea tocata 8 minute in ulei cu condimentele.",
+   "Rumeneste carnea tocata 8 minute in ulei cu condimentele, sare si piper.",
    "Taie rosiile si avocado.",
    "Umple tortilla cu carne, porumb, rosii si lime."
   ],
@@ -2987,7 +3267,7 @@
    "acoperire": "9 din 9"
   },
   "timp": 20,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete cu carne",
@@ -3039,12 +3319,23 @@
     "c": 20,
     "u": "g",
     "n": "coriandru proaspat"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe orezul si raceste-l.",
    "Fierbe sau coace pieptul de curcan pana la 74 de grade si taie-l cubulete.",
-   "Amesteca totul cu uleiul, lime si coriandru."
+   "Amesteca totul cu uleiul, lime si coriandru.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 3 zile la frigider.",
@@ -3112,11 +3403,16 @@
     "c": 2,
     "u": "",
     "n": "catei de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Taie cartofii cubulete mici si coace-i cu ulei 15 minute la 200 de grade.",
-   "Adauga broccoli, rosiile si somonul condimentat cu usturoi, lamaie si marar.",
+   "Taie cartofii cubulete mici si coace-i cu ulei si sare 15 minute la 200 de grade.",
+   "Adauga broccoli, rosiile si somonul sarat si condimentat cu usturoi, lamaie si marar.",
    "Coace 15 minute; somonul se desface usor in felii."
   ],
   "sfaturi": [
@@ -3252,12 +3548,23 @@
     "c": 2,
     "u": "linguri",
     "n": "zeama de lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Scurge tonul si fasolea.",
    "Taie ceapa subtire si rosiile in jumatati.",
-   "Amesteca totul cu ulei, lamaie si patrunjel."
+   "Amesteca totul cu ulei, lamaie si patrunjel.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 3 zile la frigider.",
@@ -3325,10 +3632,15 @@
     "c": 20,
     "u": "g",
     "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Fierbe pastele.",
+   "Fierbe pastele in apa cu sare.",
    "Caleste usturoiul in ulei, adauga rosiile, caperele si masline si fierbe 10 minute.",
    "Pune tonul scurs si amesteca cu pastele si patrunjel."
   ],
@@ -3392,11 +3704,21 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe cartofii si piseaza-i.",
-   "Mixeaza codul crud cu cartofii, oul, pesmetul, marar si coaja de lamaie.",
+   "Mixeaza codul crud cu cartofii, oul, pesmetul, marar si coaja de lamaie, cu sare si piper.",
    "Formeaza 12 chiftele, unge-le cu ulei si coace la 200 de grade 18 minute."
   ],
   "sfaturi": [
@@ -3534,7 +3856,7 @@
    }
   ],
   "pasi_carte": [
-   "Umple cei 4 pastravi cu felii de lamaie, usturoi si patrunjel.",
+   "Sareaza cei 4 pastravi pe dinafara si pe dinauntru si umple-i cu felii de lamaie, usturoi si patrunjel.",
    "Aseaza-i in tava peste legumele taiate si stropeste cu ulei.",
    "Coace la 200 de grade 25 de minute."
   ],
@@ -3604,12 +3926,23 @@
     "c": 1,
     "u": "",
     "n": "lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe legumele taiate in apa 15 minute.",
    "Adauga codul taiat bucati si fierbe 8 minute.",
-   "Stoarce lamaie si presara marar."
+   "Stoarce lamaie si presara marar.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 2 zile la frigider.",
@@ -3755,12 +4088,23 @@
     "c": 200,
     "u": "ml",
     "n": "apa"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa, ardeiul si usturoiul in ulei.",
    "Adauga rosiile, boiaua si apa si fierbe 12 minute.",
-   "Pune codul taiat bucati si fierbe 8 minute fara sa amesteci mult."
+   "Pune codul taiat bucati si fierbe 8 minute fara sa amesteci mult.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 2 zile la frigider; serveste cu orez sau mamaliga.",
@@ -3822,11 +4166,16 @@
     "c": 3,
     "u": "",
     "n": "catei de usturoi"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
-   "Taie cartofii felii si coace-i cu ulei 20 de minute la 200 de grade.",
-   "Adauga ceapa si macroul cu usturoi, lamaie si patrunjel.",
+   "Taie cartofii felii si coace-i cu ulei si sare 20 de minute la 200 de grade.",
+   "Adauga ceapa si macroul sarat, cu usturoi, lamaie si patrunjel.",
    "Coace 20 de minute."
   ],
   "sfaturi": [
@@ -3969,7 +4318,7 @@
   ],
   "pasi_carte": [
    "Amesteca pesmetul cu patrunjelul, usturoiul si uleiul.",
-   "Unge codul cu mustar si presara crusta.",
+   "Sareaza codul, unge-l cu mustar si presara crusta.",
    "Gateste in air fryer la 190 de grade 10-12 minute, pana se desface usor."
   ],
   "sfaturi": [
@@ -4079,11 +4428,21 @@
     "c": 20,
     "u": "g",
     "n": "patrunjel verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Fierbe ouale 9 minute, curata-le si taie-le in doua.",
-   "Amesteca galbenusurile cu tonul scurs, iaurtul si mustarul.",
+   "Amesteca galbenusurile cu tonul scurs, iaurtul, mustarul, sare si piper.",
    "Umple albusurile si presara patrunjel."
   ],
   "sfaturi": [
@@ -4142,12 +4501,23 @@
     "c": 1,
     "u": "lingura",
     "n": "otet"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Caleste ceapa in ulei pana se inmoaie.",
    "Rumeneste ficatul 8 minute pana nu mai e roz in centru.",
-   "Mixeaza cu untul, cimbru si otet pana devine cremos."
+   "Mixeaza cu untul, cimbru si otet pana devine cremos.",
+   "Gusta si potriveste de sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza 3 zile la frigider; nu se congeleaza bine.",
@@ -4205,6 +4575,16 @@
     "c": 1,
     "u": "lingura",
     "n": "ulei de masline"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
@@ -4225,7 +4605,7 @@
    "acoperire": "6 din 6"
   },
   "timp": 20,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete cu carne",
@@ -4277,10 +4657,20 @@
     "c": 1,
     "u": "",
     "n": "lamaie"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
-   "Taie puiul si legumele cuburi egale si marineaza-le cu ulei, boia, oregano si lamaie.",
+   "Taie puiul si legumele cuburi egale si marineaza-le cu ulei, boia, oregano, lamaie, sare si piper.",
    "Infige-le alternativ pe frigarui.",
    "Coace la 220 de grade 20 de minute, intorcand la jumatate (74 de grade in pui)."
   ],
@@ -4339,11 +4729,22 @@
     "c": 150,
     "u": "g",
     "n": "salata verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Amesteca tonul scurs cu iaurtul, telina si ceapa tocate si mustarul.",
-   "Pune cate o lingura in foi de salata."
+   "Pune cate o lingura in foi de salata.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Se pastreaza amestecul 3 zile la frigider; umple foile la servire.",
@@ -5947,6 +6348,11 @@
     "c": 1,
     "u": "lingura",
     "n": "seminte de susan"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
@@ -6111,7 +6517,7 @@
    {
     "c": 1,
     "u": "",
-    "n": "foi de dafin"
+    "n": "foaie de dafin"
    },
    {
     "c": 200,
@@ -6225,7 +6631,7 @@
    }
   ],
   "pasi_carte": [
-   "Taie varza fasii subtiri si freac-o cu putina sare.",
+   "Taie varza fasii subtiri si freaca-o cu putina sare.",
    "Caleste ceapa tocata in ulei 4 minute, apoi adauga carnatii feliati 3 minute.",
    "Pune varza, boiaua, cimbrul, foile de dafin si apa, acopera si gateste la foc mic 30 de minute, amestecand din cand in cand.",
    "Adauga pasta de rosii si piper si mai gateste 10 minute fara capac."
@@ -6320,7 +6726,7 @@
   "pasi_carte": [
    "Fierbe pieptul de pui in apa cu sare 25 de minute, scoate-l si rupe-l fasii.",
    "Pune in zeama morcovul, telina, ceapa si ardeiul intregi sau taiate mare si fierbe 20 de minute, apoi scoate-le si taie-le fasii subtiri.",
-   "Bate smantana cu galbenusurile si subtiaz-o cu 2 polonice de zeama fierbinte, turnate treptat.",
+   "Bate smantana cu galbenusurile si subtiaza-o cu 2 polonice de zeama fierbinte, turnate treptat.",
    "Toarna amestecul in oala, adauga puiul si legumele si incalzeste 3 minute, fara sa mai clocoteasca.",
    "Adauga usturoiul pisat si otetul si presara patrunjel."
   ],
@@ -6657,7 +7063,7 @@
    {
     "c": 1,
     "u": "",
-    "n": "felii paine integrala"
+    "n": "felie paine integrala"
    }
   ],
   "pasi_carte": [
@@ -6719,12 +7125,23 @@
     "c": 1,
     "u": "lingurita",
     "n": "mustar"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Amesteca iaurtul cu mustarul si intinde-l pe tortilla.",
    "Adauga puiul rupt fasii, oul feliat si salata.",
-   "Ruleaza strans si taie in doua."
+   "Ruleaza strans si taie in doua.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
@@ -6739,7 +7156,7 @@
    "acoperire": "6 din 6"
   },
   "timp": 10,
-  "dif": "usor"
+  "dif": "mediu"
  },
  {
   "sursa": "Retete cu carne",
@@ -6926,7 +7343,7 @@
    }
   ],
   "pasi_carte": [
-   "Fierbe cartofii taiati cubulete 8 minute si scurge-i.",
+   "Fierbe cartofii taiati cubulete in apa cu sare 8 minute si scurge-i.",
    "Rumeneste carnatii feliati in ulei 5 minute, apoi adauga ceapa 3 minute.",
    "Pune cartofii, boiaua si sare si prajeste 6 minute, pana prind crusta.",
    "Fa doua adancituri, sparge ouale, acopera si gateste 3 minute."
@@ -6984,12 +7401,23 @@
     "c": 20,
     "u": "g",
     "n": "ceapa verde"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "piper"
    }
   ],
   "pasi_carte": [
    "Scurge tonul si zdrobeste-l cu furculita.",
    "Amesteca-l cu iaurtul, mustarul si ceapa verde tocata.",
-   "Intinde pe feliile de paine prajita si pune felii de castravete deasupra."
+   "Intinde pe feliile de paine prajita si pune felii de castravete deasupra.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
@@ -7360,12 +7788,18 @@
     "c": null,
     "u": "",
     "n": "piper"
+   },
+   {
+    "c": null,
+    "u": "",
+    "n": "sare"
    }
   ],
   "pasi_carte": [
    "Taie ardeii in sferturi, pe lung, si scoate semintele.",
    "Amesteca tonul scurs cu crema de branza, ceapa verde tocata si piper.",
-   "Umple barcutele de ardei."
+   "Umple barcutele de ardei.",
+   "Asezoneaza cu sare si piper."
   ],
   "sfaturi": [
    "Proteina completa: carnea sau pestele acopera aminoacizii esentiali.",
@@ -7567,7 +8001,7 @@
    }
   ],
   "pasi_carte": [
-   "Fierbe pastele 10 minute (sau cat scrie pe ambalaj) si pastreaza o cana din apa lor.",
+   "Fierbe pastele in apa cu sare 10 minute (sau cat scrie pe ambalaj) si pastreaza o cana din apa lor.",
    "Rumeneste somonul taiat cuburi in ulei 4 minute si scoate-l.",
    "Caleste usturoiul tocat 30 de secunde, adauga spanacul si lasa-l 2 minute sa scada.",
    "Ia tigaia de pe foc, amesteca iaurtul cu 4 linguri din apa pastelor si zeama de lamaie.",
@@ -7812,7 +8246,7 @@
    }
   ],
   "pasi_carte": [
-   "Fierbe pastele 10 minute (sau cat scrie pe ambalaj), scurge-le si clateste-le cu apa rece.",
+   "Fierbe pastele in apa cu sare 10 minute (sau cat scrie pe ambalaj), scurge-le si clateste-le cu apa rece.",
    "Taie ardeiul si ceapa cubulete.",
    "Amesteca iaurtul cu mustarul, sucul de lamaie, sare si piper.",
    "Amesteca pastele cu tonul scurs, porumbul, legumele si sosul."

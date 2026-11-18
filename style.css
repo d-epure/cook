@@ -556,3 +556,5 @@ details.mmic[open]>summary{margin-bottom:4px}
 @media (prefers-reduced-motion:reduce){.bcf b{animation:none}}
 .bcfl{position:absolute;right:8px;top:8px;background:rgba(0,0,0,.55);color:#fff;border-color:transparent}
 .bcfl.on{background:#7ddc9a;color:#0b2a1b}
+/* 4.30.0: portii cu - / + in Meal prep (rand planificat si dialog) */
+.mps{margin:4px 0 0;gap:6px}.mrw .mps{flex-wrap:nowrap}.mrw .mps b{font-size:var(--fs-m)}.mrw .mps button{min-width:2.5rem;min-height:2.5rem;padding:0 6px}

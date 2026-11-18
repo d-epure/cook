@@ -35,6 +35,10 @@ await (async()=>{
  let r=await T.shipRun();st=T.getStored();const Dz=n=>st.find(x=>x.sursa==="Deserturi rapide"&&x.nr===n);
  eq([Dz(1).titlu,Dz(2).titlu===t2,!!Dz(31),!!Dz(5),r],["Mousse nou",true,true,false,{add:1,upd:28}],"versiune noua: neschimbatele se actualizeaza, cele schimbate sau sterse de utilizator nu");
  eq(await T.shipRun(),{add:0,upd:0},"a doua rulare nu face nimic");
+ // 4.30.2: retete scoase din carte
+ {w.localStorage.setItem("rfav",JSON.stringify(["Deserturi rapide|4"]));const des2=des.filter(x=>![3,4].includes(x.nr));man.carti.find(x=>x.sursa==="Deserturi rapide").v+=1;
+  w.fetch=async u=>{u=String(u);if(u==="carti.json")return{ok:true,json:async()=>man};if(u==="carti/deserturi_rapide.json")return{ok:true,json:async()=>des2};return{ok:false}};
+  await T.shipRun();st=T.getStored();eq([!!Dz(3),!!Dz(4),!!Dz(6)],[false,true,true],"reteta scoasa din carte iese din Biblioteca, mai putin daca e folosita (favorita)");}
  })();
  console.log("\n## "+'4.5.0: 36 de retete noi la air fryer in cartile livrate.');
 await (async()=>{
@@ -57,7 +61,7 @@ await (async()=>{
 await (async()=>{
  const w=await boot({},{names:["BOOK","bKey","autoTags","hasGluten"]}),T=w.__t,B=T.BOOK;
  const cap=c=>B.filter(r=>r.capitol===c),tag=t=>B.filter(r=>r.sursa!=="Retete high-volume"&&(r.etichete||[]).includes(t)).length;
- eq([B.length,new Set(B.map(T.bKey)).size,new Set(B.map(r=>r.titlu)).size],[956,956,956],"956 de retete livrate, fara chei sau titluri dublate");
+ eq([B.length,new Set(B.map(T.bKey)).size,new Set(B.map(r=>r.titlu)).size],[953,953,953],"953 de retete livrate, fara chei sau titluri dublate");
  eq(["Asiatic","Traditional romanesc","Mic dejun cu carne","Gustari","Peste"].map(c=>cap(c).length),[18,9,13,12,8],"cele cinci loturi noi");
  eq([tag("asiatic"),tag("traditional romanesc"),tag("air fryer")],[50,50,50],"asiatic, traditional romanesc si air fryer au cate 50 de retete (fara cartea high-volume)");
  const nou=B.filter(r=>["Asiatic","Traditional romanesc","Mic dejun cu carne","Gustari","Peste"].includes(r.capitol));
@@ -78,13 +82,23 @@ await (async()=>{
  eq(J.filter(r=>r.etichete.includes("vegetarian")).every(r=>!/\b(pui|curcan|vita|porc|peste|ton|somon|cod|creveti|carnat|sunca|pastrav)\b/.test(r.ingrediente.map(i=>i.n).join(" "))),true,"cele vegetariene nu au carne");
  eq(J.filter(r=>r.etichete.includes("vegan")).every(r=>!/\b(ou|oua|albusuri|lapte|iaurt|branza|ricotta|parmezan|miere|feta)\b/.test(r.ingrediente.map(i=>i.n.replace(/iaurt de soia|lapte de (cocos|migdale)/g,"")).join(" "))),true,"cele vegane nu au produse animale");
  eq(/[ăâîșşțţĂÂÎȘȚ]/.test(JSON.stringify(J)),false,"fara diacritice");
- eq(J.filter(r=>r.sfaturi.some(s=>/^Varianta (vegetariana|cu carne|vegana):/.test(s))).length,100,"fiecare reteta are varianta pereche cu macro recalculat");
+ eq(J.filter(r=>r.sfaturi.some(s=>/^Varianta (vegetariana|cu carne|vegana):/.test(s))).length,99,"fiecare reteta are varianta pereche cu macro recalculat (fara Clatite de ovaz cu iaurt si mere: dulce, cu oua, nu are varianta cu sens)");
  // aplicatia: eticheta noua exista si pentru cine are deja lista de etichete
  const w=await boot({rtags:JSON.stringify([{n:"vegan",t:"dieta"},{n:"keto",t:"dieta",auto:"keto"}])},{names:["BOOK","TAGS","canon"]}),T=w.__t;
  eq([T.TAGS.some(t=>t.n==="high-volume"),T.canon("High-Volume"),w.localStorage.getItem("rtv3")],[true,"high-volume","1"],"high-volume se adauga o singura data in lista de etichete existenta");
  const hv=T.BOOK.filter(r=>r.sursa==="Retete high-volume");
- eq([hv.length,T.BOOK.length,new Set(T.BOOK.map(r=>r.titlu)).size],[100,956,956],"biblioteca are 956 de retete livrate, fara titluri dublate");
+ eq([hv.length,T.BOOK.length,new Set(T.BOOK.map(r=>r.titlu)).size],[100,953,953],"biblioteca are 953 de retete livrate, fara titluri dublate");
  const G=w.eval("NUTRI.G"),g=G.find(x=>x[0]==="Volum mare, calorii putine");
  eq([!!g,g&&g[1].length],[true,4],"tema Volum mare, calorii putine in Gatire (4 teme)");
  })();
+ // 4.30.1: revizia continutului din carti (asezonare, formulari, variante)
+ {const man=JSON.parse(fs.readFileSync(dir+"/carti.json","utf8")),all=[];man.carti.forEach(c=>JSON.parse(fs.readFileSync(dir+"/"+c.f,"utf8")).forEach(r=>all.push(r)));
+  const txt=r=>(r.pasi_carte||[]).concat(r.sfaturi||[],[r.titlu]).join(" ");
+  eq(all.filter(r=>/\b(Asaza|rulaza|Rulaza|Sotaza|Calveste|ragaie|invelesti|olive|racestele|maraul|cate o polonic)\b/.test(txt(r))).map(r=>r.titlu),[],"fara greselile de scriere gasite la revizie");
+  const usesSalt=r=>/\bsare\b|sareaza|sare-(i|le)\b/.test((r.pasi_carte||[]).join(" "));
+  eq(all.filter(r=>usesSalt(r)&&!(r.ingrediente||[]).some(x=>/^sare\b/.test(x.n))).map(r=>r.titlu),[],"daca pasii folosesc sare, sarea e si in ingrediente");
+  eq(all.filter(r=>(r.sfaturi||[]).some(s=>/Varianta[^:]*:.*\(~(\d+) kcal/.test(s)&&+s.match(/\(~(\d+) kcal/)[1]>1.6*r.macro.kcal)).map(r=>r.titlu),[],"variantele nu au kcal pe toata reteta in loc de pe portie");
+  eq(all.filter(r=>/vanilie/i.test(r.titlu)&&!(r.ingrediente||[]).some(x=>/vanilie/.test(x.n))).map(r=>r.titlu),[],"retetele cu vanilie in titlu au vanilie in ingrediente");
+  eq(all.filter(r=>/Panna cotta/i.test(r.titlu)&&!(r.ingrediente||[]).some(x=>/gelatina|agar/.test(x.n))).length,0,"panna cotta are gelatina");
+  eq(all.filter(r=>(r.sfaturi||[]).some(s=>/^Varianta cu carne/.test(s))&&/iaurt|zmeura|ovaz/i.test(r.titlu)&&/Bol de iaurt|Clatite de ovaz/.test(r.titlu)).length,0,"fara varianta cu carne la mic dejun dulce");}
  done()})();

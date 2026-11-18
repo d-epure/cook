@@ -1,4 +1,4 @@
-/* Meniu, cumparaturi, debara si categorii. Rulare: node teste/test_meniu_cumparaturi.js (sau node teste/toate.js pentru toate) */
+/* Meniu, cumparaturi, debara si categorii (inclusiv Meal prep cu portii editabile, 4.30.0). Rulare: node teste/test_meniu_cumparaturi.js (sau node teste/toate.js pentru toate) */
 const {boot,eq,done,sleep,item,supa,pan,dir,fs}=require("./_boot.js");
 (async()=>{
  console.log("\n## "+'Cumparaturi si debara (3.20.0), masa Cina (3.21.0), id stabil pe retetele salvate (4.0.0).');
@@ -450,5 +450,47 @@ await (async()=>{
   const sm=D.querySelector("[data-pxmic]");
   eq([!!sm,/Micronutrienti, media pe zi/.test(sm?sm.textContent:""),/Sub 80% din necesar|Principalele minime/.test(sm?sm.textContent:"")],[true,true,true],"propunerea arata micronutrientii pe saptamana si ce lipseste");
   w.close()
+ })();
+await (async()=>{
+ console.log("\n## Meal prep: portii pana la gatit, observatii editabile, o reteta o data pe zi (4.30.0)");
+ const names=["getMP","putMP","getList","putList","mpOpen","mpForm","mpSave","getSaved","sKey","show","drawMenu","renderRecipe","RC","pxBuild","getMen","putMen","SLOTS","aiEditSave"];
+ const ovaz={titlu:"Ovaz cu chia",portii:4,ingrediente:[{nume:"fulgi de ovaz",cantitate:200,unitate:"g"},{nume:"seminte de chia",cantitate:40,unitate:"g"}],pasi:[{id:"p1",text:"Amesteca tot.",aparat:"manual"}]};
+ const mere=Object.assign({},supa,{titlu:"Mere caramelizate cu nuca",avertismente:["Reteta respecta regimul keto.","Merele din placinta trebuie scurse bine."]});
+ const w=await boot({rl:"[]",rs:JSON.stringify([supa,ovaz,mere])},{names,offline:true});const T=w.__t,D=w.document;
+ const r=T.getSaved().find(x=>x.titlu===supa.titlu);
+ // dialog: - / + in loc de camp de scris
+ T.mpOpen();T.mpForm("s",r);let dl=D.querySelector("#mdlg");
+ eq([dl.querySelector("#mpp").type,!!dl.querySelector('[data-mpf][data-mps="1"]'),dl.querySelector(".mps b").textContent],["hidden",true,"2"],"dialog: portii cu - / +, pornind de la portiile retetei");
+ dl.querySelector('[data-mpf][data-mps="1"]').click();dl.querySelector('[data-mpf][data-mps="1"]').click();
+ eq([dl.querySelector(".mps b").textContent,dl.querySelector("#mpn").textContent],["4","4"],"+ de doua ori: 4 portii, si textul despre cumparaturi se schimba");
+ T.mpSave("p");const ro=()=>T.getList().find(x=>x.n==="rosii");eq(ro().c,1000,"planificat pentru 4 portii: 1000 g rosii");
+ // rand planificat: - / +, cumparaturile se scaleaza
+ T.show("meniu");T.drawMenu();const lot=T.getMP()[0];
+ const plus=()=>D.querySelector(`[data-mpq="${lot.id}"][data-mps="1"]`),minus=()=>D.querySelector(`[data-mpq="${lot.id}"][data-mps="-1"]`);
+ eq([!!plus(),!!minus()],[true,true],"lot planificat: portiile au - / + in Meal prep");
+ plus().click();plus().click();eq([T.getMP()[0].p,ro().c],[6,1500],"6 portii: lotul si cumparaturile se schimba (1500 g rosii)");
+ {const l=T.getList();ro().done;const x=l.find(y=>y.n==="ceapa");x.done=1;T.putList(l)}
+ minus().click();eq([T.getMP()[0].p,ro().c,T.getList().find(x=>x.n==="ceapa").c],[5,1250,240],"5 portii: ce e bifat (cumparat) ramane neatins");
+ // butonul din reteta: mereu vizibil; pe reteta planificata deschide lotul
+ D.querySelector(`[data-mpcook="${lot.id}"]`);T.mpOpen();T.mpForm("s",r);dl=D.querySelector("#mdlg");
+ eq([dl.querySelector(".mps b").textContent,dl.querySelector("[data-mpok=u]")&&dl.querySelector("[data-mpok=u]").textContent],["5","Salveaza portiile"],"reteta deja planificata: dialogul arata lotul, cu Salveaza portiile");
+ dl.querySelector('[data-mpf][data-mps="-1"]').click();dl.querySelector("[data-mpok=u]").click();
+ eq([T.getMP().length,T.getMP()[0].p,ro().c],[1,4,1000],"Salveaza portiile: acelasi lot (fara dublura), 4 portii, cumparaturile potrivite");
+ T.mpOpen();T.mpForm("s",r);D.querySelector("#mdlg [data-mpok=g]").click();
+ eq([T.getMP().length,T.getMP()[0].st,T.getMP()[0].p,!ro()],[1,undefined,4,true],"Am gatit deja pe lot planificat: lotul trece in Gatit, fara lot nou; cumparaturile lui ies");
+ // observatii editabile
+ const k=T.sKey(T.getSaved().find(x=>x.titlu===mere.titlu));const host=D.createElement("div");host.id="tst";D.body.appendChild(host);
+ T.RC["#tst"]={r:T.getSaved().find(x=>x.titlu===mere.titlu),kind:"saved"};T.renderRecipe("#tst");
+ eq(/Adauga la Meal prep/.test(host.textContent),true,"butonul Adauga la Meal prep e pe reteta");
+ host.querySelector("[data-edai]")||0;T.RC["#tst"].edit=true;T.renderRecipe("#tst");const o=host.querySelector("[data-ea=obs]");
+ eq(!!o&&o.value.split("\n").length,2,"Editeaza reteta: campul Observatii are cele 2 observatii");
+ o.value="Reteta respecta regimul keto.";T.aiEditSave("#tst");
+ eq(T.getSaved().find(x=>x.titlu===mere.titlu).avertismente,["Reteta respecta regimul keto."],"observatia gresita se sterge si se salveaza");
+ // propunere: lotul din Meal prep cel mult o data pe zi
+ const ko=T.sKey(T.getSaved().find(x=>x.titlu===ovaz.titlu)),td=new Date(),dk=td.getFullYear()+"-"+String(td.getMonth()+1).padStart(2,"0")+"-"+String(td.getDate()).padStart(2,"0");
+ T.putMP([{id:"o1",s:"s",k:ko,t:ovaz.titlu,d:dk,p:6}]);T.putMen({});
+ const res=T.pxBuild(["pranz","cina"]),mp=res.rows.filter(x=>x&&x.mp),days=mp.map(x=>x.d);
+ eq([mp.length>0,new Set(days).size===days.length],[true,true],"propunere: Ovaz cu chia din Meal prep apare cel mult o data pe zi");
+ w.close()
  })();
  done()})();

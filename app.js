@@ -170,6 +170,7 @@ $("#apcfg").onclick=e=>{const d=e.target.dataset;
 $("#apcfg").onchange=e=>{const d=e.target.dataset;if(d.t){AP[d.i][d.t]=e.target.checked?1:0;saveAP()}};
 const apText=l=>l.map(a=>`- ${a.id} (${a.nume}, ${a.backup?"DOAR BACKUP":"preferat"}): ${a.note||""}. Moduri: ${a.moduri||"orice"}.${a.tmax?" Temp "+a.tmin+"-"+a.tmax+" C.":""}`).join("\n");
 const pick=()=>{const s=[...document.querySelectorAll("#apbox input:checked")].map(i=>i.value);return s.length?AP.filter(a=>s.includes(a.id)):AP.filter(a=>a.on)};
+const AV_RULE="avertismente: doar atentionari reale despre ingredientele si pasii din aceasta reteta, scurte; nu repeta ce spun etichetele si nu presupune alte forme ale ingredientelor decat cele scrise (mere inseamna mere).";
 const RULE="Foloseste aparatele preferate oricand pot face pasul. Aparatele backup doar daca un aparat preferat nu poate face pasul (ex. apa fiarta, tigaie) sau daca nu exista altul.";
 
 /* setari */
@@ -267,6 +268,7 @@ async function makeRecipe(idea,btn){
  btn.disabled=true;const stop=timer(btn,"Scriu reteta...");
  const u=`Reteta: "${idea.titlu}" pentru ${$("#por").value} portii.${idea.rezumat?` Se bazeaza pe o reteta de pe web (${idea.sursa_nume||"sursa"}). Rezumat: ${idea.rezumat} Reformuleaza in cuvintele tale si adapteaza la aparate; nu copia textul sursei.`:""} Ingrediente ale utilizatorului: ${$("#ing").value}.
 ${lblRule()}
+${AV_RULE}
 Aparate:\n${apText(pick())}\n${RULE}
 ${rulesFor(pick(),9)}
 Format: {"titlu":"","portii":0,"ingrediente":[{"nume":"","cantitate":0,"unitate":""}],"pasi":[{"id":"p1","text":"","aparat":"id|manual","mod":"","temp":0,"treapta":"","sens":"","sonda_c":0,"volum_ml":0,"durata_min":0,"depinde_de":["id"]}],"avertismente":[""],"etichete":[""]}`;
@@ -347,6 +349,7 @@ function aiEditForm(sel){const c=RC[sel],r=c.r,cats=[...new Set([...BOOK.map(x=>
  <label for="ea-i">Ingrediente (unul pe linie)</label><textarea id="ea-i" data-ea="ing" rows="8">${esc(ing)}</textarea>
  <label for="ea-s">Mod de preparare (un pas pe linie)</label><textarea id="ea-s" data-ea="pasi" rows="8">${esc((r.pasi||[]).map(x=>x.text).join("\n"))}</textarea>
  <p class="muted mt8 mb0">Pasii pe aparat isi pastreaza setarile (temperatura, durata) cat timp ii editezi pe loc; un pas nou e manual.</p>
+ <label for="ea-o">Observatii (una pe linie; sterge ce nu e corect)</label><textarea id="ea-o" data-ea="obs" rows="3">${esc((r.avertismente||[]).filter(x=>typeof x==="string").join("\n"))}</textarea>
  <div class="acts"><button class="go" data-eaiok="1">Salveaza</button><button class="alt" data-eaicx="1">Anuleaza</button></div></div></div>`}
 function aiEditSave(sel){const c=RC[sel],r=c.r,g=k=>$(sel).querySelector(`[data-ea=${k}]`).value;
  const t=g("titlu").trim();if(!t){toast("Titlul nu poate fi gol.");return}
@@ -360,6 +363,7 @@ function aiEditSave(sel){const c=RC[sel],r=c.r,g=k=>$(sel).querySelector(`[data-
  out.forEach(s=>{if(Array.isArray(s.depinde_de))s.depinde_de=s.depinde_de.filter(x=>ids.has(x)&&x!==s.id)});
  const k0=sKey(r);r.titlu=t;r.portii=pn;if(g("categorie"))r.categorie=g("categorie");else delete r.categorie;
  r.ingrediente=ings.map(x=>({nume:x.n,cantitate:x.c==null?"":x.c,unitate:x.u||"",...(x.g?{g:x.g}:{})}));r.pasi=out;
+ {const ob=nd(g("obs")).split("\n").map(x=>x.trim()).filter(Boolean);if(ob.length)r.avertismente=ob;else delete r.avertismente}
  if(c.kind!=="gen"){const l=getSaved(),i=l.findIndex(x=>sKey(x)===k0);if(i>=0){l[i]=r;LS("rs",JSON.stringify(l))}}
  c.edit=false;renderRecipe(sel);toast("Reteta a fost salvata.")}
 function rcClick(e,sel){const c=RC[sel];if(!c)return false;if(c.edit){const d0=e.target.dataset;if(d0.eaicx!==undefined){c.edit=false;renderRecipe(sel);return true}if(d0.eaiok!==undefined){aiEditSave(sel);return true}return true}if(e.target.dataset.edai!==undefined){c.edit=true;renderRecipe(sel);const el0=$(sel);if(el0.scrollIntoView)el0.scrollIntoView({block:"start"});return true}{const bt=e.target.closest&&e.target.closest("[data-rcp],[data-rsh]");if(bt){recAct("s",c.r,bt.dataset.rsh!==undefined?"s":"c");return true}}const d=e.target.dataset;
@@ -570,6 +574,7 @@ async function adaptBook(i,p,sel,btn){
  const u=`Adapteaza reteta din carte "${r.titlu}" pentru ${p} portii la aparatele de mai jos. Pastreaza ingredientele si cantitatile date (nu adauga si nu scoate ingrediente) si urmeaza pasii cartii in aceeasi ordine, dar muta fiecare pas pe cel mai potrivit aparat.
 Ingrediente:\n${ing}
 Pasii din carte:\n${pasi||"(nu sunt pasi extrasi)"}${vx(r).length?`\nATENTIE: extragerea automata a acestei retete e nesigura (${vx(r).join(", ")}). Textul paginii din carte, ca atare, ca sa clarifici ingredientele si pasii (daca ceva ramane neclar, scrie in avertismente):\n${String(r.text_brut||"").slice(0,3500)}`:""}
+${AV_RULE}
 Aparate:\n${apText(L)}\n${RULE}
 ${rulesFor(L,12)}
 Format: {"titlu":"","portii":0,"ingrediente":[{"nume":"","cantitate":0,"unitate":""}],"pasi":[{"id":"p1","text":"","aparat":"id|manual","mod":"","temp":0,"treapta":"","sens":"","sonda_c":0,"volum_ml":0,"durata_min":0,"depinde_de":["id"]}],"avertismente":[""]}`;
@@ -847,6 +852,9 @@ async function shipRun(force){if(SHIPPING)return null;SHIPPING=true;let add=0,up
     if(ex.liv){if(ex.liv<+b.v&&shUnmod(ex)){st[i]=mk(rec);upd++;ch=true}return}
     /* carte incarcata de mana inainte de 4.1.0: retetele neatinse trec pe versiunea livrata; cele corectate, din cos sau cu marcaje raman ale tale */
     if(first&&!ex.corectata&&!ex.manual&&!ex.cos&&!ex.mok&&!ex.pna&&!(ex.verifica||[]).length){st[i]=mk(rec);upd++;ch=true}});
+   /* 4.30.2: o reteta scoasa din carte (nu mai e in fisier) se scoate si din Biblioteca, daca n-ai schimbat-o si nu e in favorite, notite, Meal prep sau meniu */
+   {const live=new Set(recs.map(x=>String(x&&x.nr))),used=["rfav","rnote","rmp","rmen"].map(k=>LS(k)||"").join("");
+    for(let j=st.length-1;j>=0;j--){const ex=st[j];if(ex&&ex.sursa===b.sursa&&ex.liv&&ex.liv<+b.v&&!live.has(String(ex.nr))&&shUnmod(ex)&&used.indexOf('"'+b.sursa+"|"+ex.nr+'"')<0){st.splice(j,1);ch=true}}}
    bv[b.sursa]={v:+b.v,max:Math.max(0,...recs.map(r=>+r.nr||0))}}
   putBv(bv);if(need&&!fail)localStorage.removeItem("rbneed");
   if(ch){if(!(await saveStored(st)))return null;BOOK=cl(STORED).map(fixRec)}
@@ -1477,23 +1485,40 @@ const getMP=()=>{try{const j=JSON.parse(LS("rmp")||"[]");return Array.isArray(j)
 const putMP=l=>LS("rmp",JSON.stringify(l));
 let MPO=false;
 const mpRec=e=>{if(e.s==="b"){const i=BOOK.findIndex(x=>bKey(x)===e.k);return i>=0?{s:"b",i,r:BOOK[i]}:null}const sv=getSaved(),i=sv.findIndex(x=>sKey(x)===e.k);return i>=0?{s:"s",i,r:sv[i]}:null};
-const mpBtn=(st,r)=>{const k=st==="b"?bKey(r):sKey(r);return getMP().some(x=>x.k===k)?"":`<button class="alt" data-mpr="1">Meal prep</button>`};
+/* 4.30.0: butonul e mereu vizibil; cand reteta e planificata, deschide lotul planificat (portiile se schimba pana e gatit) */
+const mpPlan=k=>getMP().find(x=>x.k===k&&x.st==="p");
+const mpBtn=(st,r)=>{const pl=mpPlan(st==="b"?bKey(r):sKey(r));return`<button class="alt" data-mpr="1">${pl?"Meal prep: "+esc(pl.p)+(+pl.p===1?" portie":" portii"):"Adauga la Meal prep"}</button>`};
 const mpInMen=k=>{const m=getMen(),t=dKey(new Date());let n=0;Object.keys(m).forEach(dk=>{if(dk<t)return;SLOTS.forEach(([sl])=>(m[dk][sl]||[]).forEach(en=>{if(en.k===k&&en.mp&&en.s!=="x")n++}))});return n};
 /* 4.18.0: doua zone: Planificat (lista de asteptare: se gateste sau se sterge) si Gatit (meal prep efectiv, de unde se alege in meniu) */
-function mpRow(x){const p=x.st==="p",rc=mpRec(x),n=p?0:mpInMen(x.k),meta=(p?"":"gatit "+esc(dLab(x.d).toLowerCase())+" - ")+(x.p?esc(x.p)+(+x.p===1?" portie":" portii"):"")+(n?" - "+n+(n===1?" masa in meniu":" mese in meniu"):"");
- return`<div class="mrw"><div class="mn">${rc?`<button class="lnk tx" data-mpopen="${esc(x.id)}" title="Deschide reteta">${esc(x.t)}</button>`:`<div class="tx">${esc(x.t)}</div>`}<div class="src">${meta}</div>${rc?"":`<div class="warn">Reteta nu mai e in Biblioteca.</div>`}</div><div class="mpb">${p?`<button class="go" data-mpcook="${esc(x.id)}">Am gatit</button><button class="alt ico" data-mpdel="${esc(x.id)}" aria-label="Scoate din Meal prep" title="Scoate din Meal prep">${IC_DEL}</button>`:`<button class="alt" data-mpdone="${esc(x.id)}">Terminat</button>`}</div></div>`}
+const mpStep=(n,attr)=>`<div class="scl mps"><button class="alt" ${attr} data-mps="-1" aria-label="Mai putine portii" ${n<=1?"disabled":""}>-</button><b aria-live="polite">${n}</b><button class="alt" ${attr} data-mps="1" aria-label="Mai multe portii" ${n>=99?"disabled":""}>+</button><span>${n===1?"portie":"portii"}</span></div>`;
+function mpRow(x){const p=x.st==="p",rc=mpRec(x),n=p?0:mpInMen(x.k),meta=p?"":"gatit "+esc(dLab(x.d).toLowerCase())+(x.p?" - "+esc(x.p)+(+x.p===1?" portie":" portii"):"")+(n?" - "+n+(n===1?" masa in meniu":" mese in meniu"):"");
+ return`<div class="mrw"><div class="mn">${rc?`<button class="lnk tx" data-mpopen="${esc(x.id)}" title="Deschide reteta">${esc(x.t)}</button>`:`<div class="tx">${esc(x.t)}</div>`}${p?mpStep(clampP(x.p),`data-mpq="${esc(x.id)}"`):`<div class="src">${meta}</div>`}${rc?"":`<div class="warn">Reteta nu mai e in Biblioteca.</div>`}</div><div class="mpb">${p?`<button class="go" data-mpcook="${esc(x.id)}">Am gatit</button><button class="alt ico" data-mpdel="${esc(x.id)}" aria-label="Scoate din Meal prep" title="Scoate din Meal prep">${IC_DEL}</button>`:`<button class="alt" data-mpdone="${esc(x.id)}">Terminat</button>`}</div></div>`}
 function mpHtml(){const l=getMP(),pl=l.filter(x=>x.st==="p"),dn=l.filter(x=>x.st!=="p"),zone=(t,a)=>a.length?`<div class="mpz"><div class="mzh">${t} (${a.length})</div>${a.map(mpRow).join("")}</div>`:"";
  return`<div class="card"><details class="mre mpd" id="mpd"${MPO?" open":""}><summary>Meal prep (${l.length})</summary>`+(l.length?zone("Planificat",pl)+zone("Gatit",dn):`<p class="muted">Nu ai nimic pregatit. Adaugi aici ce gatesti pentru mai multe zile.</p>`)+`<button class="alt mt8 mb0" data-mpadd="1">+ Adauga la Meal prep</button></details></div>`}
 function mpOpen(){MD={mp:1,f:null,q:"",r:null};
  $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Adauga la Meal prep"><h2 class="m0">Adauga la Meal prep</h2><label for="mdq" class="mt12">Cauta o reteta (nume sau ingrediente)</label><input id="mdq" placeholder="ex: ciorba, piept de pui" autocomplete="off"><div id="mdres"></div><div class="row mt16"><button class="alt" data-mdx="1">Inchide</button></div></div>`;
  $("#mdlg").classList.remove("hidden");mdSearch();setTimeout(()=>{const e=$("#mdq");if(e)e.focus()},0)}
-function mpForm(s,r){MD.s=s;MD.r=r;const today=dKey(new Date()),base=+r.portii>0?+r.portii:null,ri=lPrep(rawIngs(s,r)),has=ri.length>0,np=ri.filter(x=>inPantry(lClean(x.n,x.u).n)).length;
- $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Meal prep"><h2 class="m0">Meal prep</h2><p class="mt12 mb0"><b>${esc(r.titlu)}</b></p><div class="fgrid mt8"><div><label for="mpp">Portii</label><input id="mpp" type="number" min="1" max="99" value="${MD.dp||base||1}"></div><div><label for="mpd1">Data gatirii (la Am gatit deja)</label><input id="mpd1" type="date" value="${today}" max="${today}"></div></div>${has?(np===ri.length?`<p class="muted mt12 mb0">Ai toate ingredientele in debara, nu e nimic de cumparat.</p>`:`<p class="muted mt12 mb0">Adauga la Meal prep pune ingredientele pentru <span id="mpn">${MD.dp||base||1}</span> portii in cumparaturi${np?` (${np} din ${ri.length} le ai deja in debara)`:""}.</p>`):""}<p id="mpw" class="mt8 mb0" style="color:var(--amb)" data-base="${base||0}" hidden></p><div class="row mt16"><button class="go m0" data-mpok="p">Adauga la Meal prep</button><button class="go m0" data-mpok="g">Am gatit deja</button><button class="alt" data-mdx="1">Anuleaza</button></div></div>`;
- setTimeout(()=>{const e=TOUCH()?null:$("#mpp");if(e)e.focus()},0)}
+function mpForm(s,r){MD.s=s;MD.r=r;const today=dKey(new Date()),base=+r.portii>0?+r.portii:null,ri=lPrep(rawIngs(s,r)),has=ri.length>0,np=ri.filter(x=>inPantry(lClean(x.n,x.u).n)).length,pl=mpPlan(s==="b"?bKey(r):sKey(r));MD.pl=pl?pl.id:null;const p0=pl?clampP(pl.p):clampP(MD.dp||base||1);
+ const info=pl?`<p class="muted mt12 mb0">E deja planificata in Meal prep. Schimbi portiile pana o gatesti; cumparaturile se potrivesc singure.</p>`:has?(np===ri.length?`<p class="muted mt12 mb0">Ai toate ingredientele in debara, nu e nimic de cumparat.</p>`:`<p class="muted mt12 mb0">Adauga la Meal prep pune ingredientele pentru <span id="mpn">${p0}</span> portii in cumparaturi${np?` (${np} din ${ri.length} le ai deja in debara)`:""}.</p>`):"";
+ $("#mdlg").innerHTML=`<div class="card mdbox" role="dialog" aria-modal="true" aria-label="Meal prep"><h2 class="m0">Meal prep</h2><p class="mt12 mb0"><b>${esc(r.titlu)}</b></p><label class="mt8">Portii</label><input id="mpp" type="hidden" value="${p0}">${mpStep(p0,'data-mpf="1"')}<label for="mpd1">Data gatirii (la Am gatit deja)</label><input id="mpd1" type="date" value="${today}" max="${today}">${info}<p id="mpw" class="mt8 mb0" style="color:var(--amb)" data-base="${base||0}" hidden></p><div class="row mt16"><button class="go m0" data-mpok="${pl?"u":"p"}">${pl?"Salveaza portiile":"Adauga la Meal prep"}</button><button class="go m0" data-mpok="g">Am gatit deja</button><button class="alt" data-mdx="1">Anuleaza</button></div></div>`;
+ mpPUpd(p0)}
+/* 4.30.0: portiile din dialog se aleg cu - / + (ca la "Gatesc pentru") */
+function mpPUpd(p){p=clampP(p);const i=$("#mpp");if(!i)return;i.value=p;const st=$("#mdlg .mps");if(st){st.querySelector("b").textContent=p;st.querySelector('[data-mps="-1"]').disabled=p<=1;st.querySelector('[data-mps="1"]').disabled=p>=99;st.querySelector("span").textContent=p===1?"portie":"portii"}
+ const w=$("#mpw"),b=w?+w.dataset.base:0;if($("#mpn"))$("#mpn").textContent=p;if(w){const big=b>0&&p/b>4;w.hidden=!big;w.textContent=big?"Gatesti de "+(+(p/b).toFixed(1))+" ori reteta ("+p+" portii, reteta e pentru "+b+"). Verifica numarul de portii.":""}}
+/* 4.30.0: lot planificat: portiile se schimba pana e gatit; partea lui din cumparaturi (ce nu e bifat) se scaleaza la fel. Fara numar de portii in reteta, cantitatile au fost adaugate nescalate, deci raman asa. */
+function mpResize(id,np){const l=getMP(),x=l.find(y=>y.id===id);if(!x||x.st!=="p")return false;np=clampP(np);const op=clampP(x.p);if(np===op)return false;x.p=np;putMP(l);
+ const rc=mpRec(x),base=rc&&+rc.r.portii>0?+rc.r.portii:null;if(base){const f=np/op,li=getList();let ch=0;
+  li.forEach(it=>{if(it.done||!(it.src||[]).includes(x.t))return;if(it.parts){const pt=it.parts.find(q=>q.s===x.t);if(pt&&pt.c!=null){pt.c=+(pt.c*f).toFixed(2);const cs=it.parts.map(q=>q.c).filter(c=>c!=null);it.c=cs.length?+cs.reduce((a,c)=>a+c,0).toFixed(2):null;ch++}}else if(it.src.length===1&&it.c!=null){it.c=+(it.c*f).toFixed(2);ch++}});
+  if(ch){putList(li);navCount()}}
+ return true}
 /* 4.13.0: mode "p" = planificat (ingredientele intra in cumparaturi, fara jurnal); mode "g" = gatit deja (jurnal, lista neatinsa) */
 /* mesele din meniu (de azi inainte) cu aceeasi reteta devin "din Meal prep" cand lotul e gatit: ingredientele nu se mai cumpara a doua oara */
 function mpMark(k){const today=dKey(new Date()),m=getMen();let nm=0;Object.keys(m).forEach(dk=>{if(dk<today)return;SLOTS.forEach(([sl])=>(m[dk][sl]||[]).forEach(en=>{if(en.k===k&&!en.mp&&en.s!=="x"){en.mp=1;nm++}}))});if(nm)putMen(m);return nm}
 function mpSave(mode){const r=MD.r,s=MD.s,k=s==="b"?bKey(r):sKey(r),p=clampP($("#mpp").value),today=dKey(new Date()),plan=mode==="p";let d=$("#mpd1").value;if(!/^\d{4}-\d{2}-\d{2}$/.test(d)||d>today)d=today;
+ /* 4.30.0: reteta deja planificata: "Salveaza portiile" schimba lotul; "Am gatit deja" il muta in Gatit (ca butonul Am gatit din Meniu), fara lot nou */
+ if(MD.pl&&getMP().some(y=>y.id===MD.pl)){const id=MD.pl,af=MD.after;mpResize(id,p);if(mode==="g"){const x=getMP().find(y=>y.id===id);putMP(getMP().map(y=>{if(y.id!==id)return y;const z=Object.assign({},y,{d});delete z.st;return z}));setNote(k,{h:(getNote(k).h||[]).concat([d])});const rr=removeSrc(x.t),nm=mpMark(k);MPO=true;menClose();if(af)af();toast("Gatit: "+x.t+" ("+p+(p===1?" portie":" portii")+")"+(nm?". "+nm+(nm===1?" masa din meniu e acum":" mese din meniu sunt acum")+" \"din Meal prep\"":"")+(rr.rem||rr.red?". Din cumparaturi: "+rr.rem+" produse scoase":"")+".")}
+  else{MPO=true;menClose();if(af)af();toast("Meal prep: "+p+(p===1?" portie":" portii")+"; cumparaturile s-au potrivit.")}
+  drawMenu();drawList();return}
  const l=getMP();l.push(Object.assign({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),s,k,t:r.titlu,d:plan?"":d,p},plan?{st:"p"}:{}));putMP(l);
  if(!plan)setNote(k,{h:(getNote(k).h||[]).concat([d])});
  let n=0,nh=0;let tr=0;if(plan){const base=+r.portii>0?+r.portii:null,f=base?p/base:1;if(inCart(r.titlu))removeSrc(r.titlu);
@@ -1601,6 +1626,7 @@ $("#mdlg").onclick=e=>{if(PRP){pxClick(e);return}const b=e.target,d=b.dataset;
  if(d.mdf!==undefined){MD.f=MD.f===d.mdf?null:d.mdf;mdSearch();return}
  if(d.mdpick!==undefined){const[s,i]=d.mdpick.split(":"),r=s==="s"?getSaved()[+i]:BOOK[+i];if(r){if(MD.mp){mpForm(s,r);return}const en=mkEntry(s,r);if(d.mpk)en.mp=1;menAdd(en)}return}
  if(d.mpok!==undefined){mpSave(d.mpok);return}
+ if(d.mpf!==undefined&&d.mps!==undefined){const i=$("#mpp");if(i)mpPUpd(+i.value+(+d.mps));return}
  if(e.target.closest("[data-mdbcam]")){if(!camOk()){toast("Camera nu e disponibila in acest browser. Scrie codul de bare.",false);return}bcScan();return}
  if(e.target.closest("[data-mdbfl]")){bcFlash();return}
  if(d.mdbcx!==undefined){bcStop();$("#mdbr").innerHTML="";return}
@@ -1669,7 +1695,9 @@ function pxBuild(slots){const m=getMen(),today=dKey(new Date()),ctx={fav:new Set
  /* 1. Meal prep: portiile ramase ale loturilor recente sau planificate, la pranz si cina */
  const lim=dAdd(today,-5);
  getMP().filter(l=>l.d>=lim).sort((a,b)=>(a.d>b.d)-(a.d<b.d)).forEach(l=>{const rc=mpRec(l);if(!rc)return;let left=Math.max(0,(+l.p||0)-mpInMen(l.k));if(!left)return;const key=l.k,item={c:{s:rc.s,r:rc.r,sl:"pranz",key},s:99,why:["din Meal prep"]};
-  cells.filter(x=>!x.row&&(x.sl==="pranz"||x.sl==="cina")&&x.d>=(l.d>today?l.d:today)).forEach(x=>{if(left<=0)return;x.row=mk(x,{cand:[item],ix:0,mp:true});left--;used.add(key)})});
+  /* 4.30.0: un lot intra cel mult o data pe zi (nu pranz si cina din aceeasi reteta); zilele care au deja reteta in meniu sunt sarite */
+  const dz=new Set(Object.keys(m).filter(dk=>SLOTS.some(([sl])=>((m[dk]||{})[sl]||[]).some(en=>en.k===key))));
+  cells.filter(x=>!x.row&&(x.sl==="pranz"||x.sl==="cina")&&x.d>=(l.d>today?l.d:today)).forEach(x=>{if(left<=0||dz.has(x.d)||cells.some(y=>y.d===x.d&&y.row&&y.row.mp&&y.row.cand[0].c.key===key))return;x.row=mk(x,{cand:[item],ix:0,mp:true});left--;dz.add(x.d);used.add(key)})});
  /* 2. restul meselor, zi cu zi */
  const T=ctx.mt.k,P=ctx.mt.p,rows=[],byDay={};cells.forEach(x=>{(byDay[x.d]=byDay[x.d]||[]).push(x)});
  const tg=micT(getPr(),profT()),acc=new Array(27).fill(0);let nAcc=0;const hadMic=new Set(),accAdd=v=>{if(v)for(let j=0;j<27;j++)acc[j]+=v[j]};
@@ -1798,6 +1826,7 @@ $("#v-meniu").onclick=e=>{const b=e.target.closest("button")||e.target,d=b.datas
  if(d.mpadd!==undefined){mpOpen();return}
  if(d.mbr!==undefined){const a=(getMen()[d.day]||{})[d.slot],en=a&&a[+d.ix],rec=en&&menRec(en);if(!rec)return;const n=+d.mn||1;MD={mp:1,f:null,q:"",r:null,dp:Math.min(99,Math.max(1,n)),after:()=>{drawMenu()}};$("#mdlg").classList.remove("hidden");mpForm(en.s,rec.r);return}
  if(d.mpdone!==undefined){const u=undoMark(["rmp"]),x=getMP().find(y=>y.id===d.mpdone);putMP(getMP().filter(y=>y.id!==d.mpdone));drawMenu();undoShow("Terminat: "+(x?x.t:"lot")+".",u,drawMenu);return}
+ if(d.mpq!==undefined&&d.mps!==undefined){const x=getMP().find(y=>y.id===d.mpq);if(x&&mpResize(x.id,clampP(x.p)+(+d.mps))){MPO=true;drawMenu();drawList();const nb=document.querySelector(`[data-mpq="${CSS.escape(x.id)}"][data-mps="${d.mps}"]`);if(nb&&!nb.disabled)nb.focus()}return}
  if(d.mpcook!==undefined){const x=getMP().find(y=>y.id===d.mpcook);if(!x)return;const u=undoMark(["rmp","rl","rnote","rmen"]),today=dKey(new Date());putMP(getMP().map(y=>{if(y.id!==x.id)return y;const z=Object.assign({},y,{d:today});delete z.st;return z}));setNote(x.k,{h:(getNote(x.k).h||[]).concat([today])});const r=removeSrc(x.t),nm=mpMark(x.k);drawMenu();drawList();undoShow("Gatit: "+x.t+(nm?". "+nm+(nm===1?" masa din meniu e acum":" mese din meniu sunt acum")+" \"din Meal prep\"":"")+(r.rem||r.red?". Din cumparaturi: "+r.rem+" produse scoase"+(r.red?", "+r.red+" cu cantitate redusa (comune cu alte retete)":""):"")+".",u,redrawAll);return}
  if(d.mpdel!==undefined){if(armDel(b))return;const x=getMP().find(y=>y.id===d.mpdel);if(!x)return;const u=undoMark(["rmp","rl"]);putMP(getMP().filter(y=>y.id!==x.id));const r=removeSrc(x.t);drawMenu();drawList();undoShow("Scos din Meal prep: "+x.t+(r.rem||r.red?" ("+r.rem+" produse scoase din cumparaturi)":"")+".",u,redrawAll);return}
  if(d.mpopen!==undefined){const x=getMP().find(y=>y.id===d.mpopen),rc=x&&mpRec(x);if(!rc)return;if(rc.s==="b"){show("carti");drawBook();openBook(rc.i,rc.r.portii,"#bres")}else{SV=x.k;show("salvate")}window.scrollTo(0,0);return}
@@ -1826,7 +1855,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="4.29.0";
+const APP_V="4.30.2";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;

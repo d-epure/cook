@@ -2,6 +2,30 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 4.30.2
+- **Fara oua crude si fara combinatii ciudate cu ou:** scoase din cartea keto "Cafea cu unt si ou fiert", "Terci keto de seminte de in si cocos" si "Terci de chia si nuca de cocos" (ouale batute direct in terci). Biblioteca livrata are acum 953 de retete. Galbenusul ramane doar unde reteta il cere (carbonara, ciorbele legate cu galbenus).
+- **"Spuma de iaurt cu fructe de padure":** albusurile batute crude sunt inlocuite cu aquafaba (apa de la nautul din conserva), care face aceeasi spuma; macro recalculat.
+- **Retetele scoase dintr-o carte ies si din Biblioteca** la actualizare, daca nu le-ai schimbat si nu sunt in favorite, notite, Meal prep sau meniu (inainte ramaneau pentru totdeauna).
+
+## 4.30.1
+- **Revizia retetelor livrate (956, toate cartile):** am citit fiecare reteta (cele 300 de supe keto pe sabloane) si am corectat 574 dintre ele in fisierele din `carti/`; versiunea fiecarei carti a crescut, deci retetele se actualizeaza singure la pornire. Retetele pe care le-ai corectat tu raman neatinse.
+- **Asezonare:** 249 de retete sarate nu aveau sare, o aveau doar in pasi, sau o aveau prea tarziu (dupa cuptor). Sarea si piperul sunt acum in ingrediente si in pasul potrivit: in umplutura (ardei umpluti, sarmale), in marinada sau pe carne si peste inainte de cuptor, in ouale batute, in apa pastelor si a cartofilor; la tocanite si supe, "Gusta si potriveste de sare si piper" inainte de servire. Retetele dulci si cele cu ingrediente sarate (telemea, bacon, sos de soia etc.) n-au primit sare in plus.
+- **Combinatii:** scoase variantele fara sens (sunca in loc de zmeura la bolul cu iaurt, curcan afumat in loc de iaurt la clatitele cu mere); la deserturi, gustari si garnituri sfatul "adauga tofu sau naut" e inlocuit cu unul potrivit (iaurt, lapte, sau "serveste langa o sursa de proteina"); variantele vegane nu mai pastreaza miere, albusuri sau iaurt de vaca (sirop de artar, aquafaba, iaurt de soia); panna cotta are agar-agar (fara el nu se lega; gelatina n-ar fi fost vegetariana).
+- **Variante vegane cu valori gresite:** sapte variante cu iaurt de soia aratau caloriile pentru toata reteta (ex: 1015 kcal in loc de 420); recalculate pe portie. Si cele cu tofu matase erau supraevaluate (Info il potriveste cu tofu ferm).
+- **Timpi de gatire:** tocana de vita si ciorba de vita keto fierb 90 de minute (nu 60), ca sa se inmoaie carnea; restul timpilor verificati automat pe tipul de carne, leguminoase, orez si cartofi erau in regula.
+- **Retete keto reparate:** pasi adaugati la final dar care trebuiau facuti inainte (puiul la tocanita de ciuperci, sunca la conopida gratinata, ricotta in umplutura, ouale la vinete) sunt mutati la locul lor; ingrediente lipsa sau gresite (cafea la tiramisu si cappuccino, vanilie la retetele "cu vanilie", lapte de migdale la shake, lapte de cocos si curry la "curry de cocos", aripioare la "Aripioare de pui", somon afumat unde pasii il cer, rozmarin la pulpele "cu rozmarin"); ingrediente dublate unite; "Ciorba de burta keto" (facuta cu vita) se numeste acum "Ciorba de vita in stil de burta".
+- **Supe keto:** ierburile proaspete (busuioc, patrunjel, marar) nu se mai calesc, se pun la mixare; scos pasul de umplutura "Mai fierbe 5 minute, apoi gusta".
+- **Formulari:** greseli de scriere (aseaza, ruleaza, soteaza, caleste, inchega, paseaza, raceste-le, mararul etc.), "olive" devenit "masline", singular si plural la cantitati (1 banana, 2 linguri, 1 foaie de dafin), feta in loc de "telemea" acolo unde ingredientul e feta.
+- Macro recalculat din Info la 14 retete cu ingrediente schimbate; timp si dificultate recalculate la 51 de retete cu pasi schimbati.
+- Teste noi in `teste/test_carti.js`: fara greselile gasite, sarea din pasi e si in ingrediente, variantele au valori pe portie, retetele "cu vanilie" au vanilie, panna cotta se leaga.
+
+## 4.30.0
+- **Meal prep planificat, portii editabile pana la gatit:** pe randul din Planificat portiile au - / +. Cumparaturile retetei se potrivesc singure (ce ai bifat deja ca si cumparat ramane neatins). Dupa "Am gatit", portiile raman fixe.
+- **Dialogul Meal prep cu - / +** in loc de camp de scris (ca la "Gatesc pentru" din reteta); porneste de la portiile retetei.
+- **Butonul Meal prep e mereu in reteta:** se numeste "Adauga la Meal prep" (inainte disparea cand reteta era deja in Meal prep). Daca reteta e planificata, butonul arata "Meal prep: N portii" si deschide lotul existent: "Salveaza portiile" il schimba, "Am gatit deja" il muta in Gatit. Nu se mai face un lot dublu.
+- **Observatiile retetelor AI se pot corecta:** in Editeaza reteta e un camp nou "Observatii (una pe linie)". Stergi sau rescrii ce nu e corect (ex: "Merele din placinta..." cand reteta are doar mere). La retetele generate de acum, modelul e rugat sa scrie in observatii doar atentionari reale si sa nu presupuna alte forme ale ingredientelor.
+- **Propune-mi un meniu fara aceeasi reteta de doua ori pe zi:** un lot din Meal prep intra cel mult o data pe zi (inainte putea lua si pranzul si cina, ex: Ovaz cu chia de doua ori miercuri). Ziua care are deja reteta in meniu e sarita; portiile ramase merg in zilele urmatoare.
+
 ## 4.29.0
 - **Micronutrienti pe saptamana in propunerea de meniu:** la fiecare alegere, scorul favorizeaza retetele care acopera ce lipseste din media saptamanii (fibre, fier, calciu, vitamina D, B12, folat) si penalizeaza ce depaseste limitele (sodiu, grasimi saturate, zaharuri). Se tine cont si de ce ai deja in meniu. Jos, in propunere, apare "Micronutrienti, media pe zi" (acelasi panou cu bare ca in Meniu, extins la cerere): verde cand principalele minime sunt acoperite si limitele respectate, portocaliu cu lista a ce e sub 80% din necesar sau peste limita. Se actualizeaza cand schimbi o masa. Necesita profil nutritional completat.
 - Retetele fara destule ingrediente recunoscute in Info (sub jumatate) nu intra in calculul micronutrientilor.
