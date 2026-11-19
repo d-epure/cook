@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.2.3
+- **Cumparaturi, lista goala:** explica de unde ajung produsele in lista (scrise de tine, dintr-o reteta, din Meniu, din Meal prep, din Debara); bifa inseamna cumparat. Fraza gresita "Bifeaza ce ai deja in casa" a disparut.
+
 ## 5.2.2
 - **Debara:** categoria Condimente vine implicit fara marcaje (proaspat / congelat / uscat / conserva / altceva). Daca ti-ai salvat deja categoriile, ramane cum le-ai setat (Setari > Bucatarie > Raioane debara > Gestioneaza categoriile). La condimentele fara marcaje, forma nu conteaza: "piper macinat", "ghimbir pudra", "vanilie esenta" sunt acelasi produs ca "piper", "ghimbir", "vanilie" (in debara si la cumparaturi).
 
