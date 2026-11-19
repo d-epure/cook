@@ -139,6 +139,7 @@ function v5Data(){try{
  }catch(e){dbg(e)}
  try{if(LS("rv5f")!=="1"){const fd=JSON.parse(LS("rfd")||"{}");if(fd&&typeof fd==="object"){let ch=false;const names=new Set(NUTRI.R.map(x=>norm(x[0])));
    Object.keys(fd).forEach(k=>{const v=fd[k],n=norm(v&&v.n||"").replace(/,\s*radacina$/,"").replace(/^rosii deshidratate$/,"rosii uscate");if(v&&v.src==="ai"&&names.has(n)){delete fd[k];ch=true}});if(ch){LS("rfd",JSON.stringify(fd));try{FD=fd}catch(e){dbg(e)}}}LS("rv5f","1")}}catch(e){dbg(e)}
+ try{if(LS("rv516")!=="1"){const p=JSON.parse(LS("rp")||"[]");let ch=false;if(Array.isArray(p))p.forEach(x=>{if(x&&typeof x.n==="string"&&/\b(murat[aei]?|murate|muraturi)\b/.test(norm(x.n))&&Array.isArray(x.f)&&x.f.length===1&&x.f[0]==="conserva"){x.f=["altceva"];ch=true}});if(ch)LS("rp",JSON.stringify(p));LS("rv516","1")}}catch(e){dbg(e)}
  try{if(LS("rv5c")!=="1"){const c=AP.find(a=>a.id==="cuptor");if(c&&!c.on){c.on=1;saveAP()}LS("rv5c","1")}}catch(e){dbg(e)}}
 /* id dedus din titlu la migrare: acelasi pe toate dispozitivele, ca sincronizarea sa nu dubleze retetele */
 const sidT=t=>{let h=5381;const z=String(t==null?"":t);for(let i=0;i<z.length;i++)h=((h*33)^z.charCodeAt(i))>>>0;return"t"+h.toString(36)};
@@ -1073,8 +1074,10 @@ const FORMW={congelat:"congelat",congelata:"congelat",congelate:"congelat",conge
 /* 4.22.0: cuvinte de forma pentru produse cu marcaje (usturoi catei/pudra, vanilie esenta/extract): devin marcaj doar daca produsul are categorie cu marcaje (zahar pudra ramane zahar pudra) */
 const FORMX={catei:"proaspat",catel:"proaspat",pastaie:"proaspat",pastai:"proaspat",pudra:"uscat",macinat:"uscat",macinata:"uscat",macinati:"uscat",macinate:"uscat",fulgi:"uscat",granulat:"uscat",granulata:"uscat",granule:"uscat",esenta:"altceva",extract:"altceva",pasta:"altceva"};
 function formSplit(name){const z=norm(String(name||"")),f=new Set(),ws=z.split(/[^a-z0-9]+/);ws.forEach(w=>{if(FORMW[w])f.add(FORMW[w])});if(/in suc propriu/.test(z))f.add("conserva");
+ /* 5.1.6: muraturile (murati, murate, in otet, in saramura) sunt la borcan: marcajul "altceva" */
+ const mur=/\b(murat[aei]?|murate|muraturi)\b|in otet|in saramura/.test(z);if(mur&&!f.size)f.add("altceva");
  let fx=false;if(ws.some(w=>FORMX[w])){const b=ws.filter(w=>w&&!FORMW[w]&&!FORMX[w]).join(" ");if(b&&FCAT.includes(catOf(b))){fx=true;ws.forEach(w=>{if(FORMX[w])f.add(FORMX[w])})}}
- const base=norm(String(name||"").replace(/\([^)]*\)/g," ")).replace(/in suc propriu/g," ").split(/[^a-z0-9]+/).filter(w=>w&&!FORMW[w]&&!(fx&&FORMX[w])).join(" ");return{t:[...new Set(toks(base))],f}}
+ const base=norm(String(name||"").replace(/\([^)]*\)/g," ")).replace(/in suc propriu/g," ").split(/[^a-z0-9]+/).filter(w=>w&&!FORMW[w]&&!(fx&&FORMX[w])).join(" ");return{t:[...new Set(toks(base))],f,mur}}
 const fKey=n=>formSplit(n).t.slice().sort().join(" ");
 /* numele fara cuvintele de forma: "Rosii, conserva" -> "Rosii"; "pudra de usturoi" -> "usturoi" */
 function baseName(n){const o=String(n||"").trim();const w=o.replace(/in\s+suc\s+propriu/ig," ").split(/[\s,]+/).filter(x=>x&&!FORMW[norm(x)]&&!FORMX[norm(x)]);while(w.length&&/^(de|din|cu|la|in|si)$/.test(norm(w[0])))w.shift();while(w.length&&/^(de|din|cu|la|in|si)$/.test(norm(w[w.length-1])))w.pop();return w.length?w.join(" "):o}
@@ -1083,7 +1086,7 @@ const panItems=()=>{panCache();return _pi||(_pi=_pv.map(p=>{const q=formSplit(p.
 /* 4.22.0: ingredientul fara forma inseamna proaspat; produsul fara niciun marcaj bifat acopera orice forma */
 const PRO=new Set(["proaspat"]),PRL=new Set(["proaspat","uscat"]);
 /* 5.1.3: condimentul cerut fara forma (piper, boia) e acoperit de orice forma din debara */
-const formOk=(q,p)=>!p.f.size||!q.f.size&&p.cd||[...(q.f.size?q.f:p.dc?PRL:PRO)].some(x=>p.f.has(x));
+const formOk=(q,p)=>!p.f.size||!q.f.size&&p.cd||q.mur&&(p.f.has("altceva")||p.f.has("conserva"))||[...(q.f.size?q.f:p.dc?PRL:PRO)].some(x=>p.f.has(x));
 const fLab=f=>FI[f][0].split(" (")[0].toLowerCase();
 /* produsul e in debara, dar sub alta forma decat cea ceruta: formele pe care le ai */
 function pOther(name){const q=formSplit(name),t=q.t;if(!t.length)return[];const p=panItems().find(p=>p.t.length&&p.t.every(w=>t.some(x=>tokEq(w,x)))&&t.every(x=>p.t.some(w=>tokEq(w,x)))&&!formOk(q,p));return p?[...p.f]:[]}
@@ -2042,7 +2045,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="5.1.5";
+const APP_V="5.1.7";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
@@ -2090,6 +2093,7 @@ $("#cgl").onclick=e=>{const b=e.target,id=b.dataset.cgd;if(id===undefined)return
 function foodNames(){const m=new Map();getPan().forEach(p=>m.set(cn(p.n),p.n));getCats().forEach(o=>{if(!m.has(cn(o.n)))m.set(cn(o.n),o.n)});return[...m.values()].sort((a,b)=>norm(a).localeCompare(norm(b)))}
 function drawFoods(){drawCatCfg();const q=norm($("#fdq").value||"").trim(),ov=new Set(getCats().map(x=>cn(x.n)));
  const L=foodNames().filter(n=>!q||norm(n).includes(q));
+ {const q=($("#fdq").value||"").trim(),sm=$("#fdls");if(sm)sm.textContent="Alimente ("+L.length+")";if(q&&$("#fdld"))$("#fdld").open=true}
  $("#fdl").innerHTML=L.length?L.map(n=>`<div class="fd"><div class="pn">${esc(n)}</div><select data-fc="${esc(n)}" aria-label="Categorie pentru ${esc(n)}">${CATS.map(([id,lab])=>`<option value="${esc(id)}"${id===catOf(n)?" selected":""}>${esc(lab)}</option>`).join("")}</select>${ov.has(cn(n))?`<button class="alt" data-fr="${esc(n)}" title="Revine la incadrarea automata">Automat</button>`:`<span class="muted fa">automat</span>`}</div>`).join(""):'<p class="muted">Niciun aliment. Adauga unul mai sus sau pune produse in Debara.</p>'}
 $("#fdAdd").onclick=()=>{const n=$("#fdn").value.trim();if(!n)return;setCat(n,$("#fdc").value);$("#fdn").value="";drawFoods();if(!$("#v-debara").classList.contains("hidden"))drawPantry()};
 $("#fdn").onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();$("#fdAdd").click()}};

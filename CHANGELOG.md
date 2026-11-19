@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.1.7
+- **Setari > Raioane debara:** "Gestioneaza categoriile" e primul, deasupra alimentelor. Lista de alimente e restransa ("Alimente (N)"), intre cautare si primul aliment; se deschide singura cand cauti.
+
+## 5.1.6
+- **Muraturi:** "murati", "murate", "in otet", "in saramura" inseamna borcan, adica marcajul "altceva (borcan)" din Debara. "Castraveti murati (in otet)" din reteta e acoperit de castravetii murati din debara, fara "Ai in debara, dar ca: conserva". Muraturile din debara marcate doar "conserva" trec o data pe marcajul borcan; cele noi il primesc singure. Castravetii proaspeti raman produs separat.
+
 ## 5.1.5
 - **Cumparaturi:** acelasi produs nu mai apare pe doua linii. "Piept de pui fiert (sau pulpa slaba de vita / curcan)" se cumpara ca "Piept de pui" si se aduna cu "Piept de pui" din alta reteta (250 g + 150 g = 400 g). Regula: alternativele "(sau ...)" si starea de gatire de la final (fiert, copt, prajit, gatit, rumenit) dispar din numele de cumparat. Se aplica si liniilor deja in lista.
 

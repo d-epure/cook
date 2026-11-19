@@ -109,4 +109,10 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   const L=T.getList().map(x=>[x.n,x.c]);
   eq([L.filter(x=>/piept/i.test(x[0])),L.some(x=>x[0]==="cartofi"),L.some(x=>/murati/.test(x[0]))],[[["Piept de pui",400]],true,true],"'Piept de pui fiert (sau ...)' si 'Piept de pui' sunt o singura linie; starea de gatire si alternativele dispar din nume");
   w.close()})();
+ console.log("\n## "+'5.1.6: muraturi la borcan');
+ await (async()=>{
+  const w=await boot({rp:JSON.stringify([{n:"Castraveti murati",f:["conserva"]},{n:"Castraveti",f:["proaspat"]}])},{wait:700,names:["inPantry","pOther","getPan","formSplit"],offline:true});const T=w.__t;
+  eq([T.getPan().find(x=>x.n==="Castraveti murati").f,T.inPantry("Castraveti murati (in otet)"),T.pOther("Castraveti murati (in otet)"),T.inPantry("castraveti")],[["altceva"],true,[],true],"muraturile din debara au marcajul borcan; 'Castraveti murati (in otet)' e in debara, fara avertizare; castravetii proaspeti raman separati");
+  eq([...T.formSplit("ardei murati").f],["altceva"],"o muratura noua primeste marcajul borcan");
+  w.close()})();
  done()})();
