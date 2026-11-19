@@ -1745,12 +1745,17 @@ function jrFromEn(en,n){const e={id:sid(),t:String(en.t||"").slice(0,80),s:en.s=
 function jrLot(k,n){const l=getMP(),lot=l.filter(x=>x.k===k&&x.st!=="p"&&+x.p>0).sort((a,b)=>String(a.d).localeCompare(String(b.d)))[0];if(!lot)return null;
  lot.p=Math.max(0,+((+lot.p)-(n||1)).toFixed(2));const left=lot.p;putMP(left>0?l:l.filter(x=>x!==lot));return{id:lot.id,left}}
 function jrPut(day,sl,e){const j=getJr();((j[day]=j[day]||{})[sl]=(j[day][sl]||[])).push(e);putJr(j)}
-/* 5.1.0: mesele din meniu de azi si din zilele trecute intra singure in jurnal, ca mancate (de la prima pornire a versiunii, fara istoric).
+/* 5.1.1: mesele din meniu din zilele trecute intra singure in jurnal, ca mancate (de la prima pornire a 5.1.0, fara istoric); azi bifezi tu cu "Am mancat".
    Ce a fost diferit stergi sau corectezi in jurnal; stergerea pune masa din meniu pe "nemancat" (en.e=2) si nu mai revine. */
 const jrMid=(d,sl,en)=>"m|"+d+"|"+sl+"|"+(en.k||en.t);
 function jrSync(){if(!LIBREADY)return 0;const today=dKey(new Date());let st=LS("rjs");if(!st){st=today;LS("rjs",st)}
+ /* 5.1.1, o data: mesele de azi puse singure in jurnal de 5.1.0 se intorc in meniu ca planificate (portia revine in lot) */
+ if(LS("rv511")!=="1"){try{const j=getJr(),m=getMen(),dm=m[today]||{};let ch=false;
+  SLOTS.forEach(([sl])=>(dm[sl]||[]).forEach(en=>{if(!en||en.e!==1)return;const js=jrSlotOf(sl),a=((j[today]||{})[js]||[]),id=jrMid(today,sl,en),ix=a.findIndex(x=>x.id===id);
+   if(ix>=0){jrLotBack(a[ix]);a.splice(ix,1)}if(en.k&&!en.mp){const h=getNote(en.k).h||[],k=h.lastIndexOf(today);if(k>=0)setNote(en.k,{h:h.slice(0,k).concat(h.slice(k+1))})}delete en.e;ch=true}));
+  if(ch){putJr(j);putMen(m)}}catch(e){dbg(e)}LS("rv511","1")}
  const m=getMen();let j=null,n=0,mc=false;
- Object.keys(m).forEach(d=>{if(d<st||d>today||!m[d]||typeof m[d]!=="object")return;SLOTS.forEach(([sl])=>((m[d]||{})[sl]||[]).forEach(en=>{if(!en||en.e)return;
+ Object.keys(m).forEach(d=>{if(d<st||d>=today||!m[d]||typeof m[d]!=="object")return;SLOTS.forEach(([sl])=>((m[d]||{})[sl]||[]).forEach(en=>{if(!en||en.e)return;
   j=j||getJr();const id=jrMid(d,sl,en),js=jrSlotOf(sl),dz=(j[d]=j[d]||{}),arr=(dz[js]=dz[js]||[]);
   if(!arr.some(x=>x.id===id)){const je=jrFromEn(en,1);je.id=id;je.men=1;
    if(en.k&&en.s==="b"){if(en.mp){const l=jrLot(en.k,1);if(l)je.lot=l.id}else if(!(getNote(en.k).h||[]).includes(d))setNote(en.k,{h:(getNote(en.k).h||[]).concat([d])})}
@@ -1982,7 +1987,7 @@ function drawMenu(){jrSync();
  const rows=days.map(d=>{const dm=m[d]||{},op=isOpen(d),has=SLOTS.some(([s])=>(dm[s]||[]).length);
   return`<div class="card mday${d===today?" today":""}"><div class="mh"><h2 class="mhh"><button class="mtog" data-mtog="1" data-day="${d}" aria-expanded="${op}"><span class="chev" aria-hidden="true">${op?"&#9662;":"&#9656;"}</span> ${esc(dLab(d))}${d===today?` <span class="lb">azi</span>`:d===tom?` <span class="lb">maine</span>`:""}</button></h2>${has?`<button class="alt ib" data-mshop="d" data-day="${d}" aria-label="Cumparaturi pentru ziua asta" title="Cumparaturi pentru ziua asta">${CART}</button>`:""}</div>`+
   SLOTS.filter(([id])=>op||(dm[id]||[]).length).map(([id,lab])=>`<div class="ms"><div class="mt"><span>${lab}</span>${op?`<button class="alt ib mpl" data-madd="${id}" data-day="${d}" aria-label="Adauga in ${lab}" title="Adauga in ${lab}">+</button>`:""}</div>${(dm[id]||[]).map((en,ix)=>{const rec=menRec(en),ref=`data-day="${d}" data-slot="${id}" data-ix="${ix}"`;
-   return`<div class="me${en.e===1?" mdn":en.k?" mpl":""}"><button class="alt ib mrm" data-mdel="1" ${ref} aria-label="Scoate ${esc(en.t)} din meniu" title="Scoate din meniu">&minus;</button><div class="mn">${rec?`<button class="lnk tx" data-mopen="1" ${ref} title="Deschide reteta">${esc(en.t)}</button>`:`<span class="tx">${esc(en.t)}</span>`}${en.mp?` <span class="lb">din Meal prep</span>`:""}${en.L?` <button class="lb lbb" data-mlx="1" ${ref} title="Scoate din cumparaturi" aria-label="In lista; apasa ca sa scoti din cumparaturi">in lista &times;</button>`:""}${!en.mp&&en.k&&PLN.has(en.k)?` <span class="lb">in Meal prep</span>`:""}${BRK[d+"|"+id+"|"+ix]?`<div><button class="alt mt4 mb0" data-mbr="1" data-mn="${BRK[d+"|"+id+"|"+ix]}" ${ref}>${BRK[d+"|"+id+"|"+ix]} mese: fa Meal prep</button></div>`:""}${en.s!=="x"&&!rec&&LIBREADY?`<div class="warn">Reteta nu mai e in Biblioteca; folosesc ingredientele salvate in meniu.</div>`:""}${rec&&rec.r.cos?`<div class="muted">Reteta e in cos.</div>`:""}${(()=>{const a=menMac(en);return a?`<div class="muted">~${Math.round(a[0])} kcal${a[1]!=null?", "+Math.round(a[1])+" g proteine":""} (${en.q?en.q+" g":"1 portie"}${en.me?", estimat":""})</div>`:""})()}</div>${d<=today?(en.e===1?` <span class="lb">mancat</span>`:`<button class="alt" data-mgat="1" ${ref}>Am mancat</button>`):""}</div>`}).join("")}</div>`).join("")+macBlock(dm,d)+`</div>`}).join("");
+   return`<div class="me${en.e===1?" mdn":en.k?" mpl":""}"><button class="alt ib mrm" data-mdel="1" ${ref} aria-label="Scoate ${esc(en.t)} din meniu" title="Scoate din meniu">&minus;</button><div class="mn">${rec?`<button class="lnk tx" data-mopen="1" ${ref} title="Deschide reteta">${esc(en.t)}</button>`:`<span class="tx">${esc(en.t)}</span>`}${en.mp?` <span class="lb">din Meal prep</span>`:""}${en.L?` <button class="lb lbb" data-mlx="1" ${ref} title="Scoate din cumparaturi" aria-label="In lista; apasa ca sa scoti din cumparaturi">in lista &times;</button>`:""}${!en.mp&&en.k&&PLN.has(en.k)?` <span class="lb">in Meal prep</span>`:""}${BRK[d+"|"+id+"|"+ix]?`<div><button class="alt mt4 mb0" data-mbr="1" data-mn="${BRK[d+"|"+id+"|"+ix]}" ${ref}>${BRK[d+"|"+id+"|"+ix]} mese: fa Meal prep</button></div>`:""}${en.s!=="x"&&!rec&&LIBREADY?`<div class="warn">Reteta nu mai e in Biblioteca; folosesc ingredientele salvate in meniu.</div>`:""}${rec&&rec.r.cos?`<div class="muted">Reteta e in cos.</div>`:""}${(()=>{const a=menMac(en);return a?`<div class="muted">~${Math.round(a[0])} kcal${a[1]!=null?", "+Math.round(a[1])+" g proteine":""} (${en.q?en.q+" g":"1 portie"}${en.me?", estimat":""})</div>`:""})()}</div>${d<=today&&en.e!==1?`<button class="alt" data-mgat="1" ${ref}>Am mancat</button>`:""}</div>`}).join("")}</div>`).join("")+macBlock(dm,d)+`</div>`}).join("");
  $("#mw").innerHTML=mpHtml()+head+rows}
 $("#mw").addEventListener("toggle",e=>{const k=e.target.dataset&&e.target.dataset.mico;if(k)MICO[k]=e.target.open},true);
 /* cumparaturi din meniu: intrarile deja adaugate nu se repeta decat daca confirmi */
@@ -2030,7 +2035,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="5.1.0";
+const APP_V="5.1.2";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;

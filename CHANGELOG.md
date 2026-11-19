@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.1.2
+- Meniu: fara textul "mancat" pe masa; fundalul verde deschis arata deja ca masa e mancata.
+
+## 5.1.1
+- **Mesele de azi nu mai apar mancate dimineata.** Jurnalul se completeaza singur din Meniu doar pentru zilele trecute; pentru azi bifezi tu cu "Am mancat" (in Meniu), iar ce ramane nebifat intra singur a doua zi. Mesele de azi trecute singure in Jurnal de 5.1.0 se intorc in Meniu ca planificate, cu portia inapoi in lotul de Meal prep.
+
 ## 5.1.0
 Meniul e planul, Jurnalul e ce ai mancat. Nu mai completezi de doua ori.
 - **Jurnalul se completeaza singur din Meniu:** mesele planificate pentru azi si pentru zilele trecute apar direct in Jurnal, ca mancate (cu portia scazuta din Meal prep si reteta marcata gatita). Tu doar corectezi ce a fost diferit: stergi ce n-ai mancat, schimbi portiile, adaugi cu "+" ce n-a fost planificat. Se aplica de la instalarea versiunii, fara mesele din trecut.

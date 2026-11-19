@@ -44,7 +44,8 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   const T=w.__t,D=w.document;
   const mm=T.menMac(T.mkEntry("b",T.BOOK[0],1));eq([mm[0]<999,mm[0]>200],[true,true],"macro: calculul din Info are prioritate fata de valoarea din carte");
   T.show("meniu");T.drawMenu();eq(/difera mult/.test(D.querySelector("#mw").textContent),false,"meniul nu mai arata avertizarea 'difera mult'");
-  let j=T.getJr()[today]||{};eq([(j.mic||[]).length,j.mic&&j.mic[0].lot,T.getMP()[0].p,!!D.querySelector("#mw [data-mgat]")],[1,"l1",1,false],"5.1.0: masa de azi din meniu intra singura in jurnal; o portie scade din lotul de Meal prep");
+  let j=T.getJr()[today]||{};eq([(j.mic||[]).length,T.getMP()[0].p,!!D.querySelector("#mw [data-mgat]")],[0,2,true],"5.1.1: masa de azi din meniu ramane planificata, cu Am mancat (nu intra singura in jurnal)");
+  D.querySelector("#mw [data-mgat]").click();j=T.getJr()[today]||{};eq([(j.mic||[]).length,j.mic&&j.mic[0].lot,T.getMP()[0].p],[1,"l1",1],"Am mancat: in jurnal la Mic dejun, o portie scade din lotul de Meal prep");
   eq([!!D.querySelector("#mw .me.mdn"),/Micronutrienti/.test(D.querySelector("#mw").textContent)],[true,false],"masa apare Facut; Meniul nu mai are micronutrienti");
   // sters din jurnal: in meniu devine nemancat, portia revine in lot; Am mancat o pune la loc
   T.show("jurnal");{const b=D.querySelector("#jw [data-jdel][data-js=mic]");b.click();b.click()}
@@ -80,5 +81,15 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   eq([mp.length>0,mp.every(r=>r.cand.length>1)],[true,true],"masa din Meal prep are si alte variante (Alta varianta nu mai e gri)");
   eq([T.pxSlot(T.BOOK[3]),T.pxSlot(T.BOOK[4])],[null,"desert"],"aluatul (o baza) nu intra in propunere; prajitura da");
   eq([T.recPref({titlu:"Tartine cu pasta de ton",ingrediente:[{n:"ton"}]}).lk,T.recPref({titlu:"Paste cu sos",ingrediente:[{n:"paste"}]}).lk],[[],["paste"]],"'pasta de ton' nu inseamna paste");
+  w.close()})();
+ console.log("\n## "+'5.1.1: mesele de azi puse singure de 5.1.0 se intorc in meniu');
+ await (async()=>{
+  const today=dk(new Date()),rec={sursa:"Carte",nr:1,titlu:"Curry de naut",categorie:"Fel principal",portii:4,ingrediente:[{c:200,u:"g",n:"naut fiert"}],pasi_carte:["a"]};
+  const w=await boot({rbook:JSON.stringify([rec]),rjs:"2000-01-01",rmp:JSON.stringify([{id:"l1",s:"b",k:"Carte|1",t:rec.titlu,d:today,p:3}]),
+   rmen:JSON.stringify({[today]:{pranz:[{t:rec.titlu,s:"b",k:"Carte|1",p:1,bp:4,mp:1,e:1}]}}),
+   rjr:JSON.stringify({[today]:{pranz:[{id:"m|"+today+"|pranz|Carte|1",t:rec.titlu,s:"b",k:"Carte|1",n:1,g:0,u:[400,20,40,10],men:1,lot:"l1"}]}})},
+   {wait:900,names:["getJr","getMP","getMen","show","drawMenu"],offline:true});const T=w.__t,D=w.document;
+  T.show("meniu");T.drawMenu();
+  eq([!!(T.getJr()[today]||{}).pranz,T.getMP()[0].p,T.getMen()[today].pranz[0].e,!!D.querySelector("#mw [data-mgat]")],[false,4,undefined,true],"pranzul de azi iese din jurnal, portia revine in lot, in meniu are din nou Am mancat");
   w.close()})();
  done()})();

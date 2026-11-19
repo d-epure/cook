@@ -1,9 +1,9 @@
 # Backlog - Cartea mea de retete
 
-Starea la versiunea 5.1.0 (18 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
+Starea la versiunea 5.1.2 (18 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
 
 ## De verificat pe dispozitiv real
-Versiunile 3.20.0 - 5.1.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
+Versiunile 3.20.0 - 5.1.2 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
 - Dupa actualizare: favoritele, jurnalul, meniul si "Retetele mele" sunt la locul lor; Biblioteca are 952 de retete livrate plus ale tale.
 - Consola browserului (F12) fara erori "Content Security Policy" la: Idei cu AI, backup in Dropbox, descarcarea unui backup, butonul WhatsApp.
 - Aplicatia porneste in mod avion dupa prima incarcare (service worker cu cache propriu).
@@ -60,7 +60,7 @@ Versiunile 3.20.0 - 5.1.0 au fost testate doar in browser simulat (teste in fold
 - Restaurarea unui backup nou cere internet o data, pentru cartile livrate.
 
 ## Facut (detalii in CHANGELOG.md)
-- 5.1.0 Jurnalul se completeaza singur din Meniu (azi si zilele trecute), micronutrientii mutati in Jurnal (zi si media pe 7 zile). 5.0.1 X sus in dialoguri, Alta varianta la mesele din Meal prep.
+- 5.1.1 Jurnalul se completeaza singur din Meniu doar pentru zilele trecute; azi cu "Am mancat". 5.1.0 Jurnalul completat din Meniu, micronutrientii mutati in Jurnal (zi si media pe 7 zile). 5.0.1 X sus in dialoguri, Alta varianta la mesele din Meal prep.
 - 5.0.0 un singur model de reteta (retetele AI in Biblioteca, Ale mele, Cos, fara Colectia mea), 12 categorii comune cu capitol, jurnal de mese cu "Am mancat", macro din Info ca sursa principala, Sanda Marin fara ingrediente ascunse, curatenie de date, Setari pe 4 grupuri.
 - 3.20.0 cumparaturi si debara fara dubluri, Meal prep fara blocaj. 3.21.0 masa Cina.
 - 4.0.0 id stabil pe retetele salvate, tinta de proteine pe kg. 4.1.0 carti livrate cu aplicatia, corectii de continut, backup mic. 4.1.1 corectiile din auditul de calitate.
