@@ -92,4 +92,14 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   T.show("meniu");T.drawMenu();
   eq([!!(T.getJr()[today]||{}).pranz,T.getMP()[0].p,T.getMen()[today].pranz[0].e,!!D.querySelector("#mw [data-mgat]")],[false,4,undefined,true],"pranzul de azi iese din jurnal, portia revine in lot, in meniu are din nou Am mancat");
   w.close()})();
+ console.log("\n## "+'5.1.3: zi stransa, condimente');
+ await (async()=>{
+  const today=dk(new Date()),rec={sursa:"Carte",nr:1,titlu:"Supa",categorie:"Supe si ciorbe",portii:2,ingrediente:[{c:1,u:"",n:"piper"}],pasi_carte:["a"]};
+  const w=await boot({rbook:JSON.stringify([rec]),rp:JSON.stringify([{n:"Piper",f:["uscat"]},{n:"Pastarnac",f:["congelat"]}]),rmen:JSON.stringify({[today]:{pranz:[{t:"Supa",s:"b",k:"Carte|1",p:1,bp:2}]}})},
+   {wait:900,names:["show","drawMenu","inPantry"],offline:true});const T=w.__t,D=w.document;
+  T.show("meniu");T.drawMenu();const c=D.querySelector("#mw .mday.today");
+  eq(!!c.querySelector(".me"),true,"ziua deschisa arata mesele");c.querySelector("[data-mtog]").click();
+  const c2=D.querySelector("#mw .mday.today");eq([!!c2.querySelector(".me"),!!c2.querySelector(".ms"),!!c2.querySelector(".mmac")],[false,false,false],"ziua stransa arata doar titlul");
+  eq([T.inPantry("piper"),T.inPantry("piper macinat"),T.inPantry("pastarnac")],[true,true,false],"piperul uscat din debara acopera 'piper'; pastarnacul congelat nu acopera pastarnac proaspat");
+  w.close()})();
  done()})();

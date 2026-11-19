@@ -2,6 +2,10 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.1.3
+- **Meniu:** ziua stransa arata doar titlul (data, cosul de cumparaturi); mesele si macro se vad doar cand e deschisa. Inainte ziua stransa arata aproape la fel ca cea deschisa.
+- **Cumparaturi:** un condiment cerut fara forma (piper, boia, oregano) e acoperit de orice forma din debara; nu mai apare "Ai in debara, dar ca: uscat" pentru piper.
+
 ## 5.1.2
 - Meniu: fara textul "mancat" pe masa; fundalul verde deschis arata deja ca masa e mancata.
 
