@@ -3,7 +3,7 @@ const {boot,eq,done,sleep,item,supa,pan,dir,fs}=require("./_boot.js");
 (async()=>{
  console.log("\n## "+'Cumparaturi si debara (3.20.0), masa Cina (3.21.0), id stabil pe retetele salvate (4.0.0).');
 await (async()=>{
- const names=["lkey","lClean","inPantry","addList","getList","putList","inCartAny","mpOpen","mpForm","mpSave","getSaved","drawList","BOOK","bKey","v5Run","menRec","menOpen","mpRec","getMen","getMP","isFav","sKey","getNote","getMT","drawMenu","show","SLOTS","pxAuto","putMP","getPan"];
+ const names=["lkey","lClean","inPantry","addList","getList","putList","mpOpen","mpForm","mpSave","getSaved","drawList","BOOK","bKey","v5Run","menRec","menOpen","mpRec","getMen","getMP","isFav","sKey","getNote","getMT","drawMenu","show","SLOTS","pxAuto","putMP","getPan"];
  const day=new Date();const dk=day.getFullYear()+"-"+String(day.getMonth()+1).padStart(2,"0")+"-"+String(day.getDate()).padStart(2,"0");
  let w=await boot({rp:pan,rl:"[]",rs:JSON.stringify([supa,{titlu:"Mere coapte",portii:2,ingrediente:[],pasi:[]}]),rfav:JSON.stringify(["salvat|Supa crema de rosii","Carte|7"]),
   rnote:JSON.stringify({"salvat|Mere coapte":{h:["2026-01-05"]}}),rmp:JSON.stringify([{id:"m1",s:"s",k:"salvat|Mere coapte",t:"Mere coapte",d:"2026-01-05",p:2}]),
@@ -32,7 +32,7 @@ await (async()=>{
  eq(T.getMT().p,120,"tinta de proteine = g pe kg x greutate (rmt ignorat)");
  // --- Meal prep: produsele ascunse (din debara) nu blocheaza
  const r=s1;T.putList([item("rosii","g",500,r.titlu)]);
- eq(T.inCartAny(r.titlu),false,"produs ascuns nu inseamna 'deja in cumparaturi'");
+
  T.mpOpen();T.mpForm("b",r);const dl=D.querySelector("#mdlg");eq([!!dl.querySelector("[data-mpok=p]"),!!dl.querySelector("[data-mpok=g]"),!!dl.querySelector("#mpc")],[true,true,false],"doua butoane distincte, fara bifa/intrebare");eq(/le ai deja in debara/.test(dl.textContent),true,"spune cate sunt in debara");
  const inp=dl.querySelector("#mpp");inp.value="40";inp.dispatchEvent(new w.Event("input",{bubbles:true}));eq(dl.querySelector("#mpw").hidden,false,"avertisment la 40 de portii");
  inp.value="4";inp.dispatchEvent(new w.Event("input",{bubbles:true}));T.mpSave("p");eq(T.getList().find(x=>x.n==="rosii").c,1000,"cantitati pentru 4 portii, fara dublare");
@@ -200,7 +200,7 @@ await (async()=>{
  await (async()=>{
   const day=new Date(Date.now()-864e5),dk=day.getFullYear()+"-"+String(day.getMonth()+1).padStart(2,"0")+"-"+String(day.getDate()).padStart(2,"0"),zi=["duminica","luni","marti","miercuri","joi","vineri","sambata"][day.getDay()];
   const w=await boot({rp:"[]",rjs:"2000-01-01",rs:JSON.stringify([supa]),rl:JSON.stringify([item("rosii","g",300,supa.titlu+" (meniu "+zi+")"),item("zzzfaina","g",5,"Alta reteta")]),
-   rmen:JSON.stringify({[dk]:{cina:[{t:supa.titlu,s:"s",k:"salvat|"+supa.titlu,p:1,bp:2,L:1}]}})},{wait:800,names:["catOf","getList","getMen","drawMenu","show","drawList","getNote","BOOK","bKey","getJr","drawJr"],offline:true}),T=w.__t,D=w.document;
+   rmen:JSON.stringify({[dk]:{cina:[{t:supa.titlu,s:"s",k:"salvat|"+supa.titlu,p:1,bp:2,L:1}]}})},{wait:800,names:["catOf","getList","getMen","drawMenu","show","drawList","getNote","BOOK","bKey","drawJr"],offline:true}),T=w.__t,D=w.document;
   T.show("meniu");T.drawMenu();
   eq([!!D.querySelector("[data-mgat]"),(T.getNote(T.bKey(T.BOOK.find(r=>r.titlu===supa.titlu))).h||[]).includes(dk)],[false,true],"5.2.0: fara Am mancat; reteta din meniul de ieri conteaza gatita ieri");
   const L=T.getList(),en=Object.values(T.getMen()).flatMap(d=>Object.values(d).flat())[0];

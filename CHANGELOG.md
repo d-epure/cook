@@ -2,6 +2,16 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.3.1
+Reparatii din auditul QA din 19 noiembrie 2026.
+- **Cumparaturi, condimente:** sare, piper, boia, oregano si celelalte condimente apar pe o singura linie, fara cantitate (se cumpara la pachet).
+- **Cumparaturi, cantitati:** ce e in paranteza e detaliu, nu alt produs ("Galbenusuri (~36 g)" nu mai face linie separata); lingurite se aduna cu linguri (1 lingura = 3 lingurite); galbenusurile si albusurile intra la oua. Afisarea e rotunjita pentru cumparat: linguri in sferturi (1 3/4 linguri), grame si ml in sus (la 5 sub 50 g, apoi la 10), bucati in sus; unitatea se acorda cu numarul (1 lingura, 3 linguri). Cantitatea salvata ramane exacta. Liniile vechi din lista se aduna o data la pornire dupa aceleasi reguli.
+- **Jurnal:** media pe zi se calculeaza doar pe zilele incheiate (azi nu mai trage media in jos).
+- **AI:** modelul implicit e claude-haiku-5-5 (claude-haiku-4-5 nu mai raspunde). Cine avea vechiul implicit trece o data pe noul model; un model ales de tine ramane. La eroarea "model inexistent" mesajul trimite la Setari.
+- **Actualizare:** service worker-ul muta cartile din cache-ul vechi in cel nou, deci cartile nu se mai descarca din nou la fiecare versiune.
+- **Cod:** scoase 25 de functii nefolosite ramase de la vechiul jurnal (jrSync, jrOpen, getJr, putJr, micBlock, micWeek si altele) si handlerele lor; jrFoods/jrFDraw se numesc acum infoFoods/infoFoodsDraw (campul "Aliment din Info" din dialogul de meniu).
+- **Teste:** verificari noi pentru toate cele de mai sus si pornire cu 14 chei corupte in localStorage. Testele ruleaza automat pe GitHub la fiecare urcare (`.github/workflows/teste.yml`, tabul Actions).
+
 ## 5.3.0
 - **Gatire, layout nou:** sus cautarea ("orez", "ou", "congelare", "naut"), sub ea 7 grupe cu numarul de teme: Baze, Timpi si temperaturi, Pastrare, Fara reteta, Leguminoase si vegetarian, Romaneasca, Sfaturi. La deschidere nu mai apare lista lunga; o grupa arata doar temele ei, iar deschizi o tema si celelalte se strang. Cautarea arata temele potrivite, deschise, doar cu randurile care contin cuvantul, evidentiat.
 - Grupele unite: Tehnici de baza + Metode pas cu pas = Baze; Siguranta alimentara + Congelare = Pastrare; Leguminoase + Gatit vegetarian + De post = Leguminoase si vegetarian; Inlocuiri si greseli + Organizare + Volum mare = Sfaturi; timpii leguminoaselor sunt la Timpi si temperaturi.

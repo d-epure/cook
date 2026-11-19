@@ -9,7 +9,7 @@ function boot(seed){const w=new JSDOM(html,{runScripts:"outside-only",url:"https
  w.matchMedia=()=>({matches:false,addEventListener(){},addListener(){}});w.fetch=()=>Promise.reject(new Error("fara retea"));
  for(const k of Object.keys(seed||{}))w.localStorage.setItem(k,seed[k]);
  w.eval(fs.readFileSync(dir+"/nutri.js","utf8"));
- w.eval(fs.readFileSync(dir+"/app.js","utf8")+`;window.__t={esc,clampP,getList,putList,drawList,lkey,getSaved,svTrim,sKey,bkParse,undoMark,undoShow,show,DKEYS,BK_KEYS,LSK,sclHtml,dayMac,renderSaved,APP_V};`);return w}
+ w.eval(fs.readFileSync(dir+"/app.js","utf8")+`;window.__t={esc,clampP,getList,putList,drawList,lkey,getSaved,sKey,bkParse,undoMark,undoShow,show,DKEYS,BK_KEYS,LSK,sclHtml,dayMac,renderSaved,APP_V};`);return w}
 const item=(n,u,c)=>({k:"",n,u,c,src:["Test"],parts:[{s:"Test",c}],done:0});
 (async()=>{
  const pan=JSON.stringify([{n:"sare",f:[]}]);
@@ -42,10 +42,6 @@ const item=(n,u,c)=>({k:"",n,u,c,src:["Test"],parts:[{s:"Test",c}],done:0});
  L.setItem("rl",JSON.stringify([item("din alt tab","",1)]));
  const ev=new w.StorageEvent("storage",{key:"rl",newValue:L.getItem("rl"),storageArea:L});w.dispatchEvent(ev);await sleep(400);
  eq(/Din alt tab/i.test(D.querySelector("#ll").textContent),true,"schimbarea din alt tab apare in lista");
- // limita de 200 de retete salvate
- const many=[...Array(203)].map((_,i)=>({id:"x"+i,titlu:"Reteta "+i,portii:2,ingrediente:[],pasi:[]}));
- L.setItem("rfav",JSON.stringify(["salvat|x202"]));
- const tr=T.svTrim(many);eq([tr.length,tr.some(r=>r.id==="x202"),tr.some(r=>r.id==="x201"),tr[0].id],[200,true,false,"x0"],"peste 200: favorita cea mai veche ramane, se sterg cele nefolosite");
  // restaurare: structura verificata
  const bk=d=>JSON.stringify({app:"retete-dana",format:1,date:d});const bad=d=>{try{T.bkParse(bk(d),"x.json");return false}catch(e){return true}};
  eq([bad({rs:"{}"}),bad({rmen:"[]"}),bad({rl:"null"}),bad({altceva:"[]"}),bad({rs:"[]",rmen:"{}",rm1:"claude-haiku-4-5",rliv:"{}"})],[true,true,true,true,false],"backup cu structura gresita e respins, unul corect e acceptat");

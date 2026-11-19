@@ -116,4 +116,30 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   const all=G.flatMap(g=>g[1].flatMap(t=>t[1])).join("\n");
   eq([/Carne tocata \(vita, porc, pui\): 71/.test(all),/45-90 de minute/.test(all),(all.match(/Dezgheata in frigider/g)||[]).length,/Se tine 5 zile la frigider sau 3 luni/.test(all)],[false,false,1,false],"fara neconcordante: tocatura de pasare 74, un singur timp pentru naut, o singura regula de dezghetare, 3-4 zile la frigider");
   w.close()})();
+ console.log("\n## "+'5.3.1: lista de cumparaturi, media din jurnal, modelul AI, date corupte');
+ await (async()=>{
+  const w=await boot({rp:"[]",rm1:"claude-haiku-4-5",rm2b:"claude-sonnet-5-5",rl:JSON.stringify([{k:"galbenusuri fierte (~36 g)|",n:"galbenusuri fierte (~36 g)",u:"",c:2,src:["A"],parts:[{s:"A",c:2}],done:0},{k:"sare|lingurit",n:"sare",u:"lingurita",c:0.08,src:["B"],parts:[{s:"B",c:0.08}],done:0}])},{wait:700,names:["addList","getList","drawList","show","listTxt","apiErr","AI_DEF"],offline:true});const T=w.__t,L=w.localStorage;
+  T.show("lista");T.drawList();
+  let G=T.getList();eq([G.find(x=>x.n==="oua")&&G.find(x=>x.n==="oua").c,G.filter(x=>/^sare$/i.test(x.n)).map(x=>[x.c,x.u])],[2,[[null,""]]],"liniile vechi: galbenusurile (cu paranteza) devin oua, sarea pierde cantitatea");
+  T.addList([{c:null,u:"",n:"Sare"},{c:1,u:"praf",n:"sare"},{c:1,u:"lingura",n:"ulei de masline (10 ml)"},{c:0.5,u:"lingurita",n:"ulei de masline"},{c:0.5,u:"linguri",n:"ulei de masline"},{c:0.17,u:"lingura",n:"lapte"},{c:241.67,u:"g",n:"orez basmati"},{c:10.33,u:"g",n:"smantana"},{c:3,u:"linguri",n:"zahar brun"},{c:1,u:"linguri",n:"miere"}],"C");T.drawList();
+  G=T.getList();
+  eq([G.filter(x=>/^sare$/i.test(x.n)).length,G.filter(x=>/ulei de masline/.test(x.n)).length],[1,1],"o singura linie pentru sare si una pentru uleiul de masline (paranteze si lingurite adunate)");
+  const tx=T.listTxt();
+  eq([/1 3\/4 linguri Ulei de masline/.test(tx),/1\/4 lingura Lapte/.test(tx),/250 g Orez basmati/.test(tx),/15 g Smantana/.test(tx),/3 linguri Zahar brun/.test(tx),/1 lingura Miere/.test(tx),/0\.17|241\.67|10\.33/.test(tx)],[true,true,true,true,true,true,false],"cantitati rotunjite pentru cumparat si unitatea acordata (1 lingura, 3 linguri)");
+  eq([L.getItem("rm1"),L.getItem("rm2b"),T.AI_DEF],["claude-haiku-5-5","claude-sonnet-5-5","claude-haiku-5-5"],"modelul vechi implicit trece pe claude-haiku-5-5; un model ales de tine ramane");
+  eq(/Setari/.test(T.apiErr(404,{error:{type:"not_found_error",message:"model"}},"claude-x")),true,"modelul inexistent (404) trimite la Setari");
+  w.close()})();
+ await (async()=>{
+  const today=dk(new Date()),y=dk(new Date(Date.now()-864e5)),rec={sursa:"Carte",nr:1,titlu:"Ovaz",categorie:"Mic dejun",portii:1,ingrediente:[{c:100,u:"g",n:"fulgi de ovaz"}],pasi_carte:["a"]};
+  const w=await boot({rbook:JSON.stringify([rec]),rmen:JSON.stringify({[y]:{mic:[{t:"Ovaz",s:"b",k:"Carte|1",p:1,bp:1}]},[today]:{mic:[{t:"Ovaz",s:"b",k:"Carte|1",p:3,bp:1}]}})},{wait:700,names:["show","drawJr"],offline:true});const D=w.document;
+  w.__t.show("jurnal");const tx=D.querySelector("#jw").textContent,m=/Media pe zi \(zilele incheiate: (\d+) zi/.exec(tx);
+  eq(m&&m[1],"1","media pe 7 zile ia doar zilele incheiate (azi nu intra)");
+  w.close()})();
+ await (async()=>{
+  const bad={rmen:"{",rmp:"[1,null,{\"id\":\"x\"}]",rl:"{\"a\":1}",rp:"null",rnote:"[]",rfav:"{}",rjn:"5",rprof:"[]",rpf:"\"x\"",rbook:"[{\"titlu\":5}]",rcat:"{",rtags:"7",ra:"{}",rmv:"q"};
+  const w=await boot(bad,{wait:900,names:["show","pxBuild"],offline:true});const T=w.__t;let err="";
+  for(const v of ["carti","meniu","jurnal","lista","debara","setari","gatire","ingr"]){try{T.show(v)}catch(e){err+=v+": "+e.message+"; "}}
+  try{T.pxBuild(["pranz"])}catch(e){err+="propunere: "+e.message}
+  eq(err,"","pornire cu 14 chei de date corupte: toate ecranele se deschid fara eroare");
+  w.close()})();
  done()})();

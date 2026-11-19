@@ -5,7 +5,11 @@
 const V=new URL(self.location.href).searchParams.get("v")||"0";
 const CACHE="cook-"+V; /* 4.1.1: nume propriu; "retete-" putea fi si cache-ul altei aplicatii de pe aceeasi adresa */
 const SHELL=["./","index.html","style.css?v="+V,"app.js?v="+V,"nutri.js?v="+V,"manifest.webmanifest","icon-192.png","icon-512.png"];
-self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()))});
+/* 5.3.1: la instalarea unei versiuni noi, cartile (carti.json, carti/*.json) se copiaza din cache-ul vechi, ca sa ramana si fara internet */
+self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE).then(async c=>{await c.addAll(SHELL);
+ for(const k of await caches.keys()){if(k===CACHE||!k.startsWith("cook-"))continue;const old=await caches.open(k);
+  for(const r of await old.keys()){if(/\/carti(\.json|\/)/.test(r.url)){const m=await old.match(r);if(m)await c.put(r,m)}}}
+}).then(()=>self.skipWaiting()))});
 /* sterg doar cache-urile acestei aplicatii: cele "cook-" vechi si cele "retete-" care contin pagina de la adresa mea */
 const mine=k=>k.startsWith("cook-")?Promise.resolve(k!==CACHE):k.startsWith("retete-")?caches.open(k).then(c=>c.keys()).then(rs=>rs.some(r=>r.url.startsWith(self.registration.scope))).catch(()=>false):Promise.resolve(false);
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.map(k=>mine(k).then(y=>y?caches.delete(k):false)))).then(()=>self.clients.claim()))});
