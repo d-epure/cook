@@ -90,7 +90,7 @@ await (async()=>{
 await (async()=>{
  const names=["CATS","FCAT","guessCat","catOf","show","drawGat","drawList","putList","getPan","addPan"];
  let w=await boot({},{names,offline:true}),T=w.__t,D=w.document;
- eq([T.CATS.map(c=>c[0]),T.FCAT],[["condimente","legume","carne","fructe","cereale","leguminoase","lactate","altele"],["condimente","legume","carne","fructe","leguminoase"]],"implicit: Condimente (de la 4.22.0), Carne si Leguminoase cu marcaje, Cereale fara");
+ eq([T.CATS.map(c=>c[0]),T.FCAT],[["condimente","legume","carne","fructe","cereale","leguminoase","lactate","altele"],["legume","carne","fructe","leguminoase"]],"implicit (5.2.2): Condimente si Cereale fara marcaje; Legume, Carne, Fructe, Leguminoase cu");
  eq(["fasole alba","linte rosie","Naut","fasole verde","orez","arpacas","piept de pui","mazare"].map(T.guessCat),["leguminoase","leguminoase","leguminoase","legume","cereale","cereale","carne","legume"],"incadrare automata: leguminoasele au categoria lor, fasolea verde ramane leguma");
  T.addPan("piept de pui");T.addPan("naut");T.addPan("orez");const P=T.getPan();eq([P.find(x=>x.n==="piept de pui").cat,P.find(x=>x.n==="naut").cat,P.find(x=>x.n==="orez").cat],["carne","leguminoase","cereale"],"produsele din debara ajung in categoria potrivita");
  T.show("gatire");const g=D.querySelector("#gl").textContent;eq([/Leguminoase si cereale uscate/.test(g),/cel putin 10 minute/.test(g),/Inmuiere/.test(g)],[true,true,true],"tema noua din Gatire, cu regula de siguranta pentru fasole");
@@ -216,7 +216,7 @@ await (async()=>{
   const w=await boot({rp},{wait:900,names:["getPan","inPantry","pOther","addPan","putList","getList","drawList","show","drawPantry","formSplit"],offline:true}),T=w.__t,D=w.document;
   const pn=T.getPan(),F=n=>(pn.find(x=>x.n===n)||{}).f;
   eq(pn.map(x=>x.n).filter(n=>!["faina","piper","sare","ulei"].includes(n)).sort(),["Naut","Rosii","Usturoi","Vanilie","Zahar","Zahar pudra"],"linii unite: Rosii, Usturoi, Vanilie; zahar pudra ramane separat (categorie fara marcaje)");
-  eq([F("Rosii").slice().sort(),F("Usturoi").slice().sort(),F("Vanilie").slice().sort()],[["conserva","proaspat","uscat"],["proaspat","uscat"],["altceva","proaspat"]],"marcajele se aduna pe aceeasi linie (catei = proaspat, pudra = uscat, esenta/extract = altceva)");
+  eq([F("Rosii").slice().sort(),F("Usturoi").slice().sort(),F("Vanilie").slice().sort()],[["conserva","proaspat","uscat"],["proaspat","uscat"],[]],"marcajele se aduna pe aceeasi linie (catei = proaspat, pudra = uscat); vanilia (condiment, fara marcaje) ramane fara marcaje");
   eq(/6 randuri unite/.test(D.querySelector("#undot").textContent)&&!D.querySelector("#undo").classList.contains("hidden"),true,"la pornire apare mesajul cu Anuleaza");
   eq([!!w.localStorage.getItem("rpbak4220"),JSON.parse(w.localStorage.getItem("rpbak4220")).length],[true,12],"copie de siguranta a debaralei de dinainte");
   D.querySelector("#undob").click();eq(JSON.parse(w.localStorage.getItem("rp")).length,12,"Anuleaza readuce randurile vechi");
@@ -229,7 +229,7 @@ await (async()=>{
   eq([T2.addPan("Rosii congelate"),T2.getPan().filter(x=>/^rosii/i.test(x.n)).length,T2.getPan().find(x=>x.n==="Rosii").f.includes("congelat")],["f",1,true],"adaugare sub alta forma: aceeasi linie, marcaj in plus");
   eq([T2.addPan("Rosii"),T2.addPan("Zahar pudra")],[false,false],"nimic nou: nu dubleaza");
   eq([T2.addPan("Ghimbir pudra"),!!T2.getPan().find(x=>x.n==="Ghimbir")],[true,true],"produs nou cu forma: linie cu numele de baza (Ghimbir, uscat)");
-  eq(T2.getPan().find(x=>x.n==="Ghimbir").f,["uscat"],"Ghimbir pudra = uscat");
+  eq(T2.getPan().find(x=>x.n==="Ghimbir").f,[],"Ghimbir pudra = Ghimbir (condiment fara marcaje)");
   T2.show("debara");T2.drawPantry();const pl=D2.querySelector("#pl");
   eq([!!pl.querySelector(".plg .fleg"),!!pl.querySelector("details.pdet"),/altceva \(borcan, esenta\)/.test(pl.textContent)],[true,false,true],"legenda simbolurilor e vizibila, nu pliata");
   w2.close();

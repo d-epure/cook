@@ -1019,7 +1019,7 @@ const putList=l=>LS("rl",JSON.stringify(l));
 let HP=(()=>{try{return localStorage.getItem("rhp")!=="0"}catch(e){return true}})(),PE=null,PED=null; /* 4.16.0: starea "Ascunde produsele din debara" se pastreaza pe acest dispozitiv (nu intra in backup) */
 /* categorii debara; marcaje (proaspat/congelat/uscat/conserva/altceva) doar unde au sens */
 /* categorii alimente: editabile in Setari -> Alimente > Categorii alimente (rcg); "altele" ramane mereu ultima */
-const DEFCATS=[{id:"condimente",n:"Condimente",f:1},{id:"legume",n:"Legume",f:1},{id:"carne",n:"Carne",f:1},{id:"fructe",n:"Fructe",f:1},{id:"cereale",n:"Cereale",f:0},{id:"leguminoase",n:"Leguminoase",f:1},{id:"lactate",n:"Lactate",f:0},{id:"altele",n:"Altele",f:0}];
+const DEFCATS=[{id:"condimente",n:"Condimente",f:0},{id:"legume",n:"Legume",f:1},{id:"carne",n:"Carne",f:1},{id:"fructe",n:"Fructe",f:1},{id:"cereale",n:"Cereale",f:0},{id:"leguminoase",n:"Leguminoase",f:1},{id:"lactate",n:"Lactate",f:0},{id:"altele",n:"Altele",f:0}];
 const FI={proaspat:["Proaspat",'<path d="M5 19C5 10 10 5 20 4c0 10-4 15-13 15z" fill="#3f9d4e"/><path d="M5 19L14 10" stroke="#fff" stroke-width="1.4" fill="none" stroke-linecap="round"/>'],
  congelat:["Congelat",'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" fill="#bfe6f7" stroke="#4aa3cc" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9" fill="none" stroke="#4aa3cc" stroke-width="1.2"/>'],
  uscat:["Uscat",'<path d="M5 19C5 10 10 5 20 4c0 10-4 15-13 15z" fill="#e0a82e"/><path d="M5 19L14 10" stroke="#fff" stroke-width="1.4" fill="none" stroke-linecap="round"/>'],
@@ -1082,12 +1082,13 @@ const FORMX={catei:"proaspat",catel:"proaspat",pastaie:"proaspat",pastai:"proasp
 function formSplit(name){const z=norm(String(name||"")),f=new Set(),ws=z.split(/[^a-z0-9]+/);ws.forEach(w=>{if(FORMW[w])f.add(FORMW[w])});if(/in suc propriu/.test(z))f.add("conserva");
  /* 5.1.6: muraturile (murati, murate, in otet, in saramura) sunt la borcan: marcajul "altceva" */
  const mur=/\b(murat[aei]?|murate|muraturi)\b|in otet|in saramura/.test(z);if(mur&&!f.size)f.add("altceva");
- let fx=false;if(ws.some(w=>FORMX[w])){const b=ws.filter(w=>w&&!FORMW[w]&&!FORMX[w]).join(" ");if(b&&FCAT.includes(catOf(b))){fx=true;ws.forEach(w=>{if(FORMX[w])f.add(FORMX[w])})}}
+ let fx=false;if(ws.some(w=>FORMX[w])){const b=ws.filter(w=>w&&!FORMW[w]&&!FORMX[w]).join(" "),cb=b?catOf(b):"";if(b&&FCAT.includes(cb)){fx=true;ws.forEach(w=>{if(FORMX[w])f.add(FORMX[w])})}else if(cb==="condimente")fx=true /* 5.2.2: condimente fara marcaje: forma nu conteaza ("piper macinat" = "piper") */}
+ 
  const base=norm(String(name||"").replace(/\([^)]*\)/g," ")).replace(/in suc propriu/g," ").split(/[^a-z0-9]+/).filter(w=>w&&!FORMW[w]&&!(fx&&FORMX[w])).join(" ");return{t:[...new Set(toks(base))],f,mur}}
 const fKey=n=>formSplit(n).t.slice().sort().join(" ");
 /* numele fara cuvintele de forma: "Rosii, conserva" -> "Rosii"; "pudra de usturoi" -> "usturoi" */
 function baseName(n){const o=String(n||"").trim();const w=o.replace(/in\s+suc\s+propriu/ig," ").split(/[\s,]+/).filter(x=>x&&!FORMW[norm(x)]&&!FORMX[norm(x)]);while(w.length&&/^(de|din|cu|la|in|si)$/.test(norm(w[0])))w.shift();while(w.length&&/^(de|din|cu|la|in|si)$/.test(norm(w[w.length-1])))w.pop();return w.length?w.join(" "):o}
-function splitNm(name){const q=formSplit(name);if(!q.f.size)return{n:name,f:[]};const bn=baseName(name);return FCAT.includes(catOf(bn))?{n:bn,f:[...q.f]}:{n:name,f:[]}}
+function splitNm(name){const q=formSplit(name),bn=baseName(name),cb=catOf(bn);if(cb==="condimente"&&!FCAT.includes(cb)&&bn!==name)return{n:bn,f:[]};if(!q.f.size)return{n:name,f:[]};return FCAT.includes(cb)?{n:bn,f:[...q.f]}:{n:name,f:[]}}
 const panItems=()=>{panCache();return _pi||(_pi=_pv.map(p=>{const q=formSplit(p.n);(p.f||[]).forEach(x=>q.f.add(x));q.dc=catOf(p.n)==="leguminoase";q.cd=catOf(p.n)==="condimente";return q}))};
 /* 4.22.0: ingredientul fara forma inseamna proaspat; produsul fara niciun marcaj bifat acopera orice forma */
 const PRO=new Set(["proaspat"]),PRL=new Set(["proaspat","uscat"]);
@@ -2085,7 +2086,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="5.2.1";
+const APP_V="5.2.2";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
