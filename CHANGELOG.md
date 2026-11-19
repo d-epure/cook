@@ -2,6 +2,16 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.2.6
+- Gatire > Bucataria romaneasca > Preparate casnice: fara mentiunea despre silitra si sarea de curare; nota despre riscul sararii si afumarii in casa ramane.
+
+## 5.2.5
+- **Gatire:** sectiune noua "Bucataria romaneasca", scrisa din cartile din aplicatie (Sanda Marin, BT FIT): ciorbe si borsuri (acrire, verdeata, dresul cu smantana si galbenus), rantas si sosuri legate cu faina, sarmale (varza dulce, murata, foi de vita), aluat dospit (paine si cozonac, cu proportiile din Sanda Marin), de post (ce pui in loc de unt, lapte, oua, branza), preparate casnice (sunca, slanina, carnati).
+
+## 5.2.4
+- **Gatire (ghidul):** greseli corectate: "soteata" -> "calita", "ragaie-l" -> "rasfira-l", "Amestec-l" -> "Amesteca-l", "oule" -> "ouale", "Fier din plante" -> "Fierul din plante", "tofu cuburi" -> "tofu taiat cuburi", "antiaderentul" -> "tigaia antiaderenta"; fraze clarificate (aluatul se poate dezumfla, oul posat, conopida calita). Sectiunea "Prajire si sotare" devine "Prajire si calire", cu explicatia: calirea (sotarea) inseamna gatit scurt in putina grasime, pana se inmoaie, fara sa se rumeneasca. "Legume la cuptor sau sotate" devine "Legume la cuptor sau la tigaie".
+- Retetele demonstrative: "Calieste" -> "Incalzeste" / "Caleste".
+
 ## 5.2.3
 - **Cumparaturi, lista goala:** explica de unde ajung produsele in lista (scrise de tine, dintr-o reteta, din Meniu, din Meal prep, din Debara); bifa inseamna cumparat. Fraza gresita "Bifeaza ce ai deja in casa" a disparut.
 
