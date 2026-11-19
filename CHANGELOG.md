@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.1.4
+- **"Am mancat":** mesajul de confirmare e acum doar "Adaugat in jurnal." (cu Anuleaza). Mesajele scurte nu se mai rup pe cate un cuvant pe rand.
+- **Jurnal:** macro e restrans implicit, cu o linie de sumar ("Macro: 614 / 1990 kcal, 15 / 104 g proteine"); il deschizi pentru bare, ca in Meniu.
+- La bare: "Raman 1630 kcal" in loc de "mai ramane 1630 kcal" (si "Peste tinta cu ...").
+- **Dialogul "Am mancat":** codul de bare e primul, imediat sub Ziua si Masa.
+
 ## 5.1.3
 - **Meniu:** ziua stransa arata doar titlul (data, cosul de cumparaturi); mesele si macro se vad doar cand e deschisa. Inainte ziua stransa arata aproape la fel ca cea deschisa.
 - **Cumparaturi:** un condiment cerut fara forma (piper, boia, oregano) e acoperit de orice forma din debara; nu mai apare "Ai in debara, dar ca: uscat" pentru piper.
