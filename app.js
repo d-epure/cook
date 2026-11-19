@@ -1181,8 +1181,11 @@ function prepIngs(ings){const out=[];let skip=false;const multi=(ings||[]).lengt
 const stemW=w=>w.length>4?w.replace(/(ie|ii|i|e|a)$/,""):w;
 /* 3.20.0: produsul din lista nu tine cont de cum e taiat ("ceapa tocata marunt" = "ceapa", "cartofi, taiati cuburi" = "cartofi"), de "de" de la inceput ("de usturoi" = "usturoi") si de unde sta cuvantul de masura ("3 catei usturoi" = "usturoi, 3 catei"). Carnea tocata ramane carne tocata. */
 const PREPW=new Set(["taiat","taiata","taiati","taiate","tocat","tocata","tocati","tocate","marunt","maruntit","maruntita","maruntiti","maruntite","fin","cuburi","cubulete","cubulet","feliat","feliata","feliati","feliate","felii","rondele","fasii","pisat","pisata","pisati","pisate","zdrobit","zdrobita","zdrobiti","zdrobite","curatat","curatata","curatati","curatate","ras","rasa","rase","dupa","gust","optional"]);
+const LUNIT=/^(paharele|paharel|pahare|pahar|cesti|ceasca|cani|cana|linguri|lingura|lingurite|lingurita|plicuri|plic|varf|legaturi|legatura|felii|felie|bucati|bucata|borcane|borcan|cutii|cutie)\s+(?:de\s+)?(\S.*)$/i;
 function lClean(n,u){let t=String(n||"").replace(/\s+/g," ").trim();u=String(u||"").trim();
  t=t.replace(/^de\s+/i,"");
+ /* 5.2.1: "pahar smantana" fara unitate: "pahar" e masura, nu ingredient */
+ {const um=LUNIT.exec(t);if(um&&!u){u=um[1].toLowerCase();t=um[2]}}
  const m=/^(catei|catel)\s+(?:de\s+)?(\S.*)$/i.exec(t);if(m&&(!u||/^cate[il]$/i.test(u))){t=m[2];u="catei"}
  if(/^catel$/i.test(u))u="catei";
  const meat=/\b(carne|vita|porc|pui|curcan|miel|peste)\b/.test(norm(t));
@@ -1194,7 +1197,7 @@ function lClean(n,u){let t=String(n||"").replace(/\s+/g," ").trim();u=String(u||
 const lkey=(n,u)=>{const c=lClean(n,u);return norm(c.n).split(/\s+/).filter(Boolean).map(stemW).join(" ")+"|"+norm(c.u).split(/\s+/).filter(Boolean).map(stemW).join(" ")};
 function listDedupe(){const l=getList(),out=[];let ch=false;
  /* 5.1.5: liniile vechi ("Piept de pui fiert (sau ...)") primesc numele de cumparat, ca sa se uneasca cu "Piept de pui" */
- l.forEach(x=>{if(!x||x.done||typeof x.n!=="string")return;const nn=x.n.replace(/\s*\(\s*sau\b[^)]*\)/ig,"").trim().replace(BUYST,"").trim();if(nn&&nn!==x.n){x.n=nn;ch=true}});
+ l.forEach(x=>{if(!x||x.done||typeof x.n!=="string")return;{const um=!x.u&&LUNIT.exec(x.n.trim());if(um){x.u=um[1].toLowerCase();x.n=um[2];x.k=lkey(x.n,x.u);ch=true}}const nn=x.n.replace(/\s*\(\s*sau\b[^)]*\)/ig,"").trim().replace(BUYST,"").trim();if(nn&&nn!==x.n){x.n=nn;ch=true}});
  const mp=new Map();l.forEach(x=>{const kk=x.done?null:lkey(x.n,x.u),t=kk?mp.get(kk):null;if(!t){out.push(x);if(kk)mp.set(kk,x);return}ch=true;
   const tp=Array.isArray(t.parts)?t.parts:t.src.length===1?[{s:t.src[0],c:t.c}]:null,xp=Array.isArray(x.parts)?x.parts:x.src.length===1?[{s:x.src[0],c:x.c}]:null;
   if(t.c!=null&&x.c!=null)t.c=+(t.c+x.c).toFixed(2);else if(t.c==null)t.c=x.c;
@@ -2082,7 +2085,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="5.2.0";
+const APP_V="5.2.1";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;

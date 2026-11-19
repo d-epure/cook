@@ -99,4 +99,10 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   eq([T.getPan().find(x=>x.n==="Castraveti murati").f,T.inPantry("Castraveti murati (in otet)"),T.pOther("Castraveti murati (in otet)"),T.inPantry("castraveti")],[["altceva"],true,[],true],"muraturile din debara au marcajul borcan; 'Castraveti murati (in otet)' e in debara, fara avertizare; castravetii proaspeti raman separati");
   eq([...T.formSplit("ardei murati").f],["altceva"],"o muratura noua primeste marcajul borcan");
   w.close()})();
+ console.log("\n## "+'5.2.1: masura scrisa in nume');
+ await (async()=>{
+  const w=await boot({rp:"[]",rl:JSON.stringify([{k:"pahar smantan|",n:"pahar smantana",u:"",c:0.5,src:["Placinta cu gris"],done:0}])},{wait:600,names:["addList","getList","drawList","show"],offline:true});const T=w.__t;
+  T.show("lista");T.drawList();T.addList([{c:1,u:"",n:"pahar de lapte"},{c:2,u:"",n:"linguri zahar"}],"X");T.drawList();
+  eq(T.getList().map(x=>[x.n,x.c,x.u]),[["smantana",0.5,"pahar"],["lapte",1,"pahar"],["zahar",2,"linguri"]],"'pahar', 'linguri' din nume trec la masura, si pe liniile deja in lista");
+  w.close()})();
  done()})();

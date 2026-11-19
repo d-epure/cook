@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.2.1
+- **Cumparaturi:** masura scrisa in numele ingredientului ("pahar smantana", "pahar de lapte", "linguri zahar") trece la masura: "0.5 pahar Smantana", nu "0.5 Pahar smantana". Se repara si liniile deja in lista.
+
 ## 5.2.0
 Meniul e singurul loc unde sunt mesele; Jurnalul arata doar cifrele.
 - **Fara "Am mancat".** Tot ce e in Meniu la azi sau la o zi trecuta conteaza ca mancat. Ce ai sarit scoti din Meniu; ce ai mancat in plus adaugi in Meniu, si la zilele trecute.
