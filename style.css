@@ -571,3 +571,4 @@ button.ico svg{pointer-events:none}
 .jrow{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:10px 2px;margin:0;font:inherit;color:inherit;cursor:pointer}
 .jdot{width:10px;height:10px;border-radius:50%;background:var(--line);flex:0 0 auto}
 .jdot.jok{background:var(--pri)}.jdot.jwn{background:#c98a1b}
+mark{background:#f3e3a8;color:inherit;padding:0 1px;border-radius:2px}

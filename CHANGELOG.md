@@ -2,6 +2,19 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.3.0
+- **Gatire, layout nou:** sus cautarea ("orez", "ou", "congelare", "naut"), sub ea 7 grupe cu numarul de teme: Baze, Timpi si temperaturi, Pastrare, Fara reteta, Leguminoase si vegetarian, Romaneasca, Sfaturi. La deschidere nu mai apare lista lunga; o grupa arata doar temele ei, iar deschizi o tema si celelalte se strang. Cautarea arata temele potrivite, deschise, doar cu randurile care contin cuvantul, evidentiat.
+- Grupele unite: Tehnici de baza + Metode pas cu pas = Baze; Siguranta alimentara + Congelare = Pastrare; Leguminoase + Gatit vegetarian + De post = Leguminoase si vegetarian; Inlocuiri si greseli + Organizare + Volum mare = Sfaturi; timpii leguminoaselor sunt la Timpi si temperaturi.
+- **Neconcordante corectate:**
+  - tocatura de pui sau curcan: 74 de grade (scria 71, ca la vita si porc);
+  - naut si fasole: un singur timp de fierbere (scria 45-90 de minute intr-un loc si 60-90 / 60-120 in altul);
+  - legume la cuptor: aceiasi timpi in ambele locuri (dovlecei, ardei, vinete 20-25 de minute; radacinoase 35-45);
+  - orz perlat: 30-40 de minute peste tot; "arpacas" e orzul, nu graul;
+  - mancarea gatita: 3-4 zile la frigider peste tot (frittata si tocanita scriau 4 zile, sosul de rosii 5);
+  - racirea inainte de congelare: aceeasi regula ca la pastrare (in cel mult 2 ore de la gatit; orezul intr-o ora);
+  - dubluri scoase: dezghetarea si reincalzirea la 74 de grade apar o singura data, la Pastrare; "leguminoase + cereale = proteina completa" o singura data;
+  - oul posat: pasii in ordinea corecta; trimiterile intre teme folosesc numele noilor grupe.
+
 ## 5.2.6
 - Gatire > Bucataria romaneasca > Preparate casnice: fara mentiunea despre silitra si sarea de curare; nota despre riscul sararii si afumarii in casa ramane.
 

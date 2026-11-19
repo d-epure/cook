@@ -2086,7 +2086,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="5.2.6";
+const APP_V="5.3.0";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
@@ -2462,8 +2462,22 @@ function drawMas(){const q=norm($("#mq").value||"").trim().split(/\s+/).filter(B
  const v=x=>x==null?"-":x;
  $("#ml").innerHTML=L.length?`<div class="mh2"><span>Aliment</span><span>Lingura</span><span>Lingurita</span><span>Cana</span></div>`+L.map(m=>`<div class="mt2"><span><b>${esc(m[0])}</b></span><span>${v(m[2][0])}</span><span>${v(m[2][1])}</span><span>${v(m[2][2])}</span></div>`).join(""):`<p class="muted">Nu am gasit niciun aliment.</p>`}
 $("#mq").oninput=drawMas;
-function drawGat(){const el=$("#gl");if(el.dataset.k==="1")return;el.dataset.k="1";
- el.innerHTML=NUTRI.G.map(([g,t])=>`<h3 class="gg">${esc(g)}</h3>`+t.map(([n,r])=>`<details class="gd"><summary>${esc(n)}</summary><ul>${r.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></details>`).join("")).join("")}
+/* 5.3.0: Gatire cu cautare si 7 grupe: la deschidere doar cautarea si grupele; o grupa arata temele ei (una deschisa odata); cautarea arata temele potrivite, deschise, cu cuvantul evidentiat */
+let GQ="",GG=-1;
+function drawGat(){const el=$("#gl");if(el.dataset.k!=="2"){el.dataset.k="2";
+  el.innerHTML=`<input id="gq" type="search" placeholder="cauta: orez, ou, congelare, naut" aria-label="Cauta in Gatire" autocomplete="off"><div id="gch" class="bpl mt8" role="group" aria-label="Grupe"></div><div id="gres" class="mt8"></div>`;
+  $("#gq").oninput=e=>{GQ=e.target.value;gDraw()};
+  $("#gch").onclick=e=>{const b=e.target.closest("[data-gg]");if(!b)return;const n=+b.dataset.gg;GG=GG===n&&!qWords(GQ).length?-1:n;if(qWords(GQ).length){GQ="";$("#gq").value=""}gDraw()};
+  $("#gres").addEventListener("toggle",e=>{if(e.target.open&&!qWords(GQ).length)document.querySelectorAll("#gres details.gd").forEach(d=>{if(d!==e.target)d.open=false})},true)}
+ gDraw()}
+function gDraw(){const w=qWords(GQ),rx=w.length?new RegExp("("+w.map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")","gi"):null;
+ const hl=t=>rx?esc(t).replace(rx,"<mark>$1</mark>"):esc(t),hit=(n,r)=>w.every(x=>norm(n+" "+r.join(" ")).includes(x));
+ $("#gch").innerHTML=NUTRI.G.map(([g,t],i)=>`<button type="button" class="bpill${!w.length&&GG===i?" on":""}" data-gg="${i}" aria-pressed="${!w.length&&GG===i}">${esc(g)} (${t.length})</button>`).join("");
+ const det=(n,r,op,g)=>`<details class="gd"${op?" open":""}><summary>${hl(n)}${g?` <span class="muted" style="font-weight:400">- ${esc(g)}</span>`:""}</summary><ul>${r.map(x=>`<li>${hl(x)}</li>`).join("")}</ul></details>`;
+ let h="";
+ if(w.length){const L=[];NUTRI.G.forEach(([g,t])=>t.forEach(([n,r])=>{if(!hit(n,r))return;const tn=w.every(x=>norm(n).includes(x)),ln=r.filter(x=>w.some(y=>norm(x).includes(y)));L.push(det(n,tn||!ln.length?r:ln,true,g))}));h=L.length?L.join(""):`<p class="muted">Nimic gasit pentru "${esc(GQ.trim())}".</p>`}
+ else if(GG>=0&&NUTRI.G[GG])h=NUTRI.G[GG][1].map(([n,r])=>det(n,r,false,"")).join("");
+ $("#gres").innerHTML=h}
 
 /* ===== 2.32.0: numar de portii confirmat separat, "-" = nu se aplica, fisier de corectii ===== */
 function pParse(v){v=String(v==null?"":v).trim();if(v==="-"||v==="\u2013")return{na:true};if(v==="")return{n:null};if(!/^\d{1,3}$/.test(v)||+v<1||+v>200)return{bad:true};return{n:+v}}

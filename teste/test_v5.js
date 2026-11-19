@@ -105,4 +105,15 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   T.show("lista");T.drawList();T.addList([{c:1,u:"",n:"pahar de lapte"},{c:2,u:"",n:"linguri zahar"}],"X");T.drawList();
   eq(T.getList().map(x=>[x.n,x.c,x.u]),[["smantana",0.5,"pahar"],["lapte",1,"pahar"],["zahar",2,"linguri"]],"'pahar', 'linguri' din nume trec la masura, si pe liniile deja in lista");
   w.close()})();
+ console.log("\n## "+'5.3.0: Gatire cu cautare si 7 grupe');
+ await (async()=>{
+  const w=await boot({},{wait:500,names:["show"],offline:true});const T=w.__t,D=w.document,G=w.NUTRI.G;
+  T.show("gatire");const ch=[...D.querySelectorAll("#gch [data-gg]")];
+  eq([G.length,ch.length,D.querySelectorAll("#gres details").length],[7,7,0],"la deschidere: cautarea si 7 grupe, fara lista lunga");
+  ch[1].click();eq(D.querySelectorAll("#gres details").length,G[1][1].length,"o grupa arata doar temele ei");
+  const q=D.querySelector("#gq");q.value="congelator";q.dispatchEvent(new w.Event("input",{bubbles:true}));
+  eq([D.querySelectorAll("#gres details[open]").length>0,!!D.querySelector("#gres mark")],[true,true],"cautarea arata temele potrivite, deschise, cu cuvantul evidentiat");
+  const all=G.flatMap(g=>g[1].flatMap(t=>t[1])).join("\n");
+  eq([/Carne tocata \(vita, porc, pui\): 71/.test(all),/45-90 de minute/.test(all),(all.match(/Dezgheata in frigider/g)||[]).length,/Se tine 5 zile la frigider sau 3 luni/.test(all)],[false,false,1,false],"fara neconcordante: tocatura de pasare 74, un singur timp pentru naut, o singura regula de dezghetare, 3-4 zile la frigider");
+  w.close()})();
  done()})();

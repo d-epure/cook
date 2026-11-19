@@ -88,8 +88,8 @@ await (async()=>{
  eq([T.TAGS.some(t=>t.n==="high-volume"),T.canon("High-Volume"),w.localStorage.getItem("rtv3")],[true,"high-volume","1"],"high-volume se adauga o singura data in lista de etichete existenta");
  const hv=T.BOOK.filter(r=>r.sursa==="Retete high-volume");
  eq([hv.length,T.BOOK.length,new Set(T.BOOK.map(r=>r.titlu)).size],[99,952,952],"biblioteca are 952 de retete livrate, fara titluri dublate");
- const G=w.eval("NUTRI.G"),g=G.find(x=>x[0]==="Volum mare, calorii putine");
- eq([!!g,g&&g[1].length],[true,4],"tema Volum mare, calorii putine in Gatire (4 teme)");
+ const G=w.eval("NUTRI.G"),g=G.find(x=>x[0]==="Sfaturi"),vt=g?g[1].filter(t=>["Ce umple farfuria fara multe calorii","Trucuri de gatit","Cum citesti volumul unei portii","Cand nu e potrivit"].includes(t[0])).length:0;
+ eq([!!g,vt],[true,4],"temele Volum mare, calorii putine in Gatire > Sfaturi (4 teme)");
  })();
  // 4.30.1: revizia continutului din carti (asezonare, formulari, variante)
  {const man=JSON.parse(fs.readFileSync(dir+"/carti.json","utf8")),all=[];man.carti.forEach(c=>JSON.parse(fs.readFileSync(dir+"/"+c.f,"utf8")).forEach(r=>all.push(r)));
