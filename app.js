@@ -1184,6 +1184,8 @@ function lClean(n,u){let t=String(n||"").replace(/\s+/g," ").trim();u=String(u||
  return{n:keep.join(", "),u}}
 const lkey=(n,u)=>{const c=lClean(n,u);return norm(c.n).split(/\s+/).filter(Boolean).map(stemW).join(" ")+"|"+norm(c.u).split(/\s+/).filter(Boolean).map(stemW).join(" ")};
 function listDedupe(){const l=getList(),out=[];let ch=false;
+ /* 5.1.5: liniile vechi ("Piept de pui fiert (sau ...)") primesc numele de cumparat, ca sa se uneasca cu "Piept de pui" */
+ l.forEach(x=>{if(!x||x.done||typeof x.n!=="string")return;const nn=x.n.replace(/\s*\(\s*sau\b[^)]*\)/ig,"").trim().replace(BUYST,"").trim();if(nn&&nn!==x.n){x.n=nn;ch=true}});
  const mp=new Map();l.forEach(x=>{const kk=x.done?null:lkey(x.n,x.u),t=kk?mp.get(kk):null;if(!t){out.push(x);if(kk)mp.set(kk,x);return}ch=true;
   const tp=Array.isArray(t.parts)?t.parts:t.src.length===1?[{s:t.src[0],c:t.c}]:null,xp=Array.isArray(x.parts)?x.parts:x.src.length===1?[{s:x.src[0],c:x.c}]:null;
   if(t.c!=null&&x.c!=null)t.c=+(t.c+x.c).toFixed(2);else if(t.c==null)t.c=x.c;
@@ -1196,7 +1198,9 @@ const cumBtn=(t,at)=>inCart(t)?`<button class="alt on" data-${at}="1" aria-press
 function cartRemove(t){const l=getList();l.forEach(x=>{if(!(x.src||[]).includes(t))return;const pt=(x.parts||[]).find(p=>p.s===t);if(pt&&x.c!=null&&pt.c!=null)x.c=+(x.c-pt.c).toFixed(2);x.parts=(x.parts||[]).filter(p=>p.s!==t);x.src=x.src.filter(s=>s!==t)});putList(l.filter(x=>x.src.length));navCount()}
 function cartToggle(t,ings,redraw){if(inCart(t)){const u=undoMark(["rl"]);cartRemove(t);redraw();undoShow("Scoasa din cumparaturi: "+t+".",u,()=>{navCount();redraw()})}else{const n=addList(ings,t);redraw();toast("Adaugat la cumparaturi ("+n+" produse).")}}
 /* 5.0.0: ingredientul din reteta devine produsul pe care il cumperi: galbenusurile si albusurile sunt oua, zeama si coaja de lamaie sunt lamai */
-function buyMap(x){if(!x||typeof x.n!=="string")return x;const n=norm(x.n).trim(),u=norm(x.u||""),c=x.c==null||isNaN(+x.c)?null:+x.c;
+/* 5.1.5: "Piept de pui fiert (sau pulpa de curcan)" se cumpara ca "Piept de pui": fara alternativele "(sau ...)" si fara starea de gatire de la final */
+const BUYST=/\s+(fiert|fiarta|fierti|fierte|copt|coapta|copti|coapte|prajit|prajita|prajiti|prajite|gatit|gatita|gatiti|gatite|rumenit|rumenita|rumeniti|rumenite)\s*$/i;
+function buyMap(x){if(!x||typeof x.n!=="string")return x;{const nn=x.n.replace(/\s*\(\s*sau\b[^)]*\)/ig,"").trim().replace(BUYST,"").trim();if(nn&&nn!==x.n)x=Object.assign({},x,{n:nn})}const n=norm(x.n).trim(),u=norm(x.u||""),c=x.c==null||isNaN(+x.c)?null:+x.c;
  const ml=c==null?null:/^(ml)$/.test(u)?c:/^lingur(a|i)$/.test(u)?c*15:/^lingurit(a|e)$/.test(u)?c*5:/^g$/.test(u)?c:null;
  const cnt=(per)=>c==null?null:u===""?c:ml!=null?Math.max(1,Math.ceil(ml/per)):null;
  let m=/^(galbenus|galbenusuri)( de oua?)?$/.exec(n);if(m)return Object.assign({},x,{n:"oua",u:"",c:cnt(18)});
@@ -2038,7 +2042,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="5.1.4";
+const APP_V="5.1.5";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;

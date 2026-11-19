@@ -1,9 +1,9 @@
 # Backlog - Cartea mea de retete
 
-Starea la versiunea 5.1.4 (18 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
+Starea la versiunea 5.1.5 (18 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
 
 ## De verificat pe dispozitiv real
-Versiunile 3.20.0 - 5.1.4 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
+Versiunile 3.20.0 - 5.1.5 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
 - Dupa actualizare: favoritele, jurnalul, meniul si "Retetele mele" sunt la locul lor; Biblioteca are 952 de retete livrate plus ale tale.
 - Consola browserului (F12) fara erori "Content Security Policy" la: Idei cu AI, backup in Dropbox, descarcarea unui backup, butonul WhatsApp.
 - Aplicatia porneste in mod avion dupa prima incarcare (service worker cu cache propriu).
@@ -49,6 +49,7 @@ Versiunile 3.20.0 - 5.1.4 au fost testate doar in browser simulat (teste in fold
 - Font gazduit local in loc de Google Fonts.
 
 ## Limite cunoscute
+- Cumparaturi (5.1.5): cantitatea ceruta gatit (ex: 250 g piept de pui fiert) se aduna ca atare, fara conversie la crud (carnea pierde cam un sfert din greutate la fiert).
 - Jurnalul completat din Meniu (5.1.0): daca doua dispozitive il completeaza inainte sa se sincronizeze, intrarea apare o singura data (acelasi id), dar portia din Meal prep poate scadea de doua ori. Se corecteaza din "- / +" pe lot.
 - Cheia API si tokenul Dropbox stau necriptate in browser (aplicatie fara server). Celelalte aplicatii de pe aceeasi adresa GitHub Pages le pot citi; folosesc insa alte chei, deci nu se suprascriu.
 - Timpul si dificultatea retetelor sunt estimari automate ("aprox."); retetele lasate peste noapte apar cu circa 8 ore.

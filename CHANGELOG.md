@@ -2,6 +2,9 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.1.5
+- **Cumparaturi:** acelasi produs nu mai apare pe doua linii. "Piept de pui fiert (sau pulpa slaba de vita / curcan)" se cumpara ca "Piept de pui" si se aduna cu "Piept de pui" din alta reteta (250 g + 150 g = 400 g). Regula: alternativele "(sau ...)" si starea de gatire de la final (fiert, copt, prajit, gatit, rumenit) dispar din numele de cumparat. Se aplica si liniilor deja in lista.
+
 ## 5.1.4
 - **"Am mancat":** mesajul de confirmare e acum doar "Adaugat in jurnal." (cu Anuleaza). Mesajele scurte nu se mai rup pe cate un cuvant pe rand.
 - **Jurnal:** macro e restrans implicit, cu o linie de sumar ("Macro: 614 / 1990 kcal, 15 / 104 g proteine"); il deschizi pentru bare, ca in Meniu.
