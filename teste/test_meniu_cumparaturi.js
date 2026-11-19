@@ -196,17 +196,16 @@ await (async()=>{
   const a=D.querySelector("#apcfg [data-x]");a.click();eq(a.textContent,"Confirma","aparate: aceeasi confirmare 'Confirma'");
   await sleep(4300);eq([/<svg/.test(a.innerHTML),a.dataset.arm],[true,""],"nedecisa, confirmarea expira si butonul isi recapata cosul de gunoi");
  })();
- // --- 4.21.1: meniu planificat/facut, Am gatit scoate partea din lista, lista fara Goleste, categorie dovlecei
+ // --- 4.21.1 / 5.1.0: masa din meniu de ieri intra singura in jurnal (mancata), partea ei iese din lista; lista fara Goleste, categorie dovlecei
  await (async()=>{
-  const day=new Date(),dk=day.getFullYear()+"-"+String(day.getMonth()+1).padStart(2,"0")+"-"+String(day.getDate()).padStart(2,"0"),zi=["duminica","luni","marti","miercuri","joi","vineri","sambata"][day.getDay()];
-  const w=await boot({rp:"[]",rs:JSON.stringify([supa]),rl:JSON.stringify([item("rosii","g",300,supa.titlu+" (meniu "+zi+")"),item("zzzfaina","g",5,"Alta reteta")]),
-   rmen:JSON.stringify({[dk]:{cina:[{t:supa.titlu,s:"s",k:"salvat|"+supa.titlu,p:1,bp:2,L:1}]}})},{wait:800,names:["catOf","getList","getMen","drawMenu","show","drawList","getNote","BOOK","bKey","getJr"],offline:true}),T=w.__t,D=w.document;
+  const day=new Date(Date.now()-864e5),dk=day.getFullYear()+"-"+String(day.getMonth()+1).padStart(2,"0")+"-"+String(day.getDate()).padStart(2,"0"),zi=["duminica","luni","marti","miercuri","joi","vineri","sambata"][day.getDay()];
+  const w=await boot({rp:"[]",rjs:"2000-01-01",rs:JSON.stringify([supa]),rl:JSON.stringify([item("rosii","g",300,supa.titlu+" (meniu "+zi+")"),item("zzzfaina","g",5,"Alta reteta")]),
+   rmen:JSON.stringify({[dk]:{cina:[{t:supa.titlu,s:"s",k:"salvat|"+supa.titlu,p:1,bp:2,L:1}]}})},{wait:800,names:["catOf","getList","getMen","drawMenu","show","drawList","getNote","BOOK","bKey","getJr","drawJr"],offline:true}),T=w.__t,D=w.document;
   T.show("meniu");T.drawMenu();
-  eq([!!D.querySelector(".me.mpl"),!!D.querySelector(".me.mdn"),!!D.querySelector("[data-mgat]")],[true,false,true],"meniu: masa nemancata e Planificat (gri), cu butonul Am mancat");
-  D.querySelector("[data-mgat]").click();
-  eq([!!D.querySelector(".me.mdn"),!!D.querySelector(".me.mpl"),(T.getNote(T.bKey(T.BOOK.find(r=>r.titlu===supa.titlu))).h||[]).includes(dk),((T.getJr()[dk]||{}).cina||[]).map(e=>[e.t,e.n,e.s])],[true,false,true,[[supa.titlu,1,"b"]]],"5.0.0: Am mancat: masa e Facut (verde deschis), reteta gatita azi, intrare in jurnalul de mese la Cina");
+  eq([!!D.querySelector("[data-mgat]"),(T.getNote(T.bKey(T.BOOK.find(r=>r.titlu===supa.titlu))).h||[]).includes(dk),((T.getJr()[dk]||{}).cina||[]).map(e=>[e.t,e.n,e.s,e.men])],[false,true,[[supa.titlu,1,"b",1]]],"5.1.0: masa de ieri e mancata singura: fara buton, reteta gatita, in jurnal la Cina");
   const L=T.getList(),en=Object.values(T.getMen()).flatMap(d=>Object.values(d).flat())[0];
-  eq([L.map(x=>x.n),en.L],[["zzzfaina"],0],"Am gatit scoate din lista doar partea mesei si reseteaza 'in lista'");
+  eq([L.map(x=>x.n),en.L],[["zzzfaina"],0],"partea mesei iese din lista si 'in lista' se reseteaza");
+  T.drawMenu();eq(((T.getJr()[dk]||{}).cina||[]).length,1,"a doua desenare nu dubleaza intrarea");
   eq([T.catOf("dovlecei"),T.catOf("dovlecel"),T.catOf("dovleac")],["legume","legume","legume"],"dovlecei/dovlecel/dovleac sunt in Legume (cuvinte distincte)");
   T.show("lista");T.drawList();D.querySelector("[data-lv=r]").click();
   const t=D.querySelector("[data-lsr]");t.click();eq([t.textContent,T.getList().length],["Confirma",1],"Pe retete: stergerea grupului cere Confirma, nu sterge la prima atingere");

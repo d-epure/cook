@@ -2,6 +2,21 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.1.0
+Meniul e planul, Jurnalul e ce ai mancat. Nu mai completezi de doua ori.
+- **Jurnalul se completeaza singur din Meniu:** mesele planificate pentru azi si pentru zilele trecute apar direct in Jurnal, ca mancate (cu portia scazuta din Meal prep si reteta marcata gatita). Tu doar corectezi ce a fost diferit: stergi ce n-ai mancat, schimbi portiile, adaugi cu "+" ce n-a fost planificat. Se aplica de la instalarea versiunii, fara mesele din trecut.
+- **Ce stergi din Jurnal ramane sters:** masa din Meniu devine "nemancata" (are din nou butonul "Am mancat") si portia revine in lotul de Meal prep. O masa scoasa din Meniu iese si din Jurnal.
+- La zilele trecute, partea mesei iese si din lista de cumparaturi; la ziua de azi lista ramane neatinsa (poate n-ai cumparat inca).
+- **Micronutrientii s-au mutat din Meniu in Jurnal**, unde cifrele sunt reale: pe zi si media pe zi din ultimele 7 zile (fierul, calciul, fibrele si vitaminele se judeca pe mai multe zile). Alimentele adaugate din Info intra si ele in calcul. Meniul pastreaza barele de macro pe zi, pentru plan; "Propune-mi un meniu" tine cont de micronutrienti ca inainte.
+- Jurnal: butoanele - / + ale portiilor stau pe acelasi rand cu cosul de gunoi.
+
+## 5.0.1
+- **X sus in fiecare dialog** (Propunere de meniu, Adauga la meniu, Am mancat, Meal prep): ramane vizibil si cand derulezi, deci nu mai cobori pana jos ca sa anulezi. Tasta Esc inchide si propunerea.
+- In propunerea de meniu, butonul care scoate o masa e acum cosul de gunoi (nu se mai confunda cu X-ul de inchidere).
+- **Propunere de meniu, masa din Meal prep:** "Alta varianta" nu mai e gri; schimba portia din Meal prep cu o alta reteta potrivita (si atunci masa nu mai e luata din lot).
+- **Bazele nu mai sunt propuse ca masa:** aluaturi, foi, glazuri, creme de baza, siropuri (ex: "Aluat de unt si smantana" aparea la Desert).
+- **"Pasta" nu mai e "paste":** "Tartine cu pasta de ton" nu mai apare cu "iti place: paste"; la fel pentru pasta de tomate in debara.
+
 ## 5.0.0
 Versiune mare: un singur model de reteta, categorii comune si jurnal de mese. Datele tale se muta singure la prima pornire (si dupa o restaurare sau o sincronizare); nu ai nimic de facut.
 - **Un singur fel de reteta.** Retetele generate cu AI si salvate intra in Biblioteca, la "Retetele mele" (filtrul **Ale mele**), langa cele scrise de tine. Isi pastreaza pasii pe aparat (temperatura, durata, treapta): in reteta ai Pasi / Pe aparat si Mod gatit, ca inainte. Favoritele, jurnalul, notitele, loturile de Meal prep si mesele din meniu raman legate de ele.

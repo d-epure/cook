@@ -1,9 +1,9 @@
 # Backlog - Cartea mea de retete
 
-Starea la versiunea 5.0.0 (18 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
+Starea la versiunea 5.1.0 (18 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
 
 ## De verificat pe dispozitiv real
-Versiunile 3.20.0 - 5.0.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
+Versiunile 3.20.0 - 5.1.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
 - Dupa actualizare: favoritele, jurnalul, meniul si "Retetele mele" sunt la locul lor; Biblioteca are 952 de retete livrate plus ale tale.
 - Consola browserului (F12) fara erori "Content Security Policy" la: Idei cu AI, backup in Dropbox, descarcarea unui backup, butonul WhatsApp.
 - Aplicatia porneste in mod avion dupa prima incarcare (service worker cu cache propriu).
@@ -21,6 +21,7 @@ Versiunile 3.20.0 - 5.0.0 au fost testate doar in browser simulat (teste in fold
 4. Titluri lungi la supele keto (177 de titluri peste 60 de caractere) si perechea aproape identica "Ciorba de perisoare de porc cu dovlecei si rosii" (nr. 214 si 282).
 
 ## Nedecise (asteapta un raspuns)
+- Codul de bare doar in Jurnal (scoaterea lui din Meniu) si Meniul cu o singura linie de macro pe zi: propuse pe 18 noiembrie, neconfirmate inca.
 - Revizia retetelor (4.30.1), ce n-am schimbat fara tine: "Crema de lamaie cu smantana" are scortisoara (merge si coaja de lamaie); "Clatite de ovaz cu iaurt si mere" a ramas fara varianta pereche (e dulce si are oua, deci nici cu carne, nici vegana n-are sens). De hotarat: raman, se schimba sau se scot.
 - Info nu are "iaurt de soia" si "tofu matase" (tofu matase se potriveste cu tofu ferm, de circa doua ori mai caloric); valorile variantelor vegane sunt calculate de mana (iaurt de soia 50 kcal si 4 g proteine la 100 g, tofu matase 55 kcal si 4,8 g). De adaugat in Info?
 - Propunere de meniu: loturile Meal prep se iau in calcul doar daca sunt gatite in ultimele 5 zile sau planificate, cel mult o masa pe zi (4.30.0). De la 5.0.0 portiile mancate ("Am mancat") se scad din lot.
@@ -48,6 +49,7 @@ Versiunile 3.20.0 - 5.0.0 au fost testate doar in browser simulat (teste in fold
 - Font gazduit local in loc de Google Fonts.
 
 ## Limite cunoscute
+- Jurnalul completat din Meniu (5.1.0): daca doua dispozitive il completeaza inainte sa se sincronizeze, intrarea apare o singura data (acelasi id), dar portia din Meal prep poate scadea de doua ori. Se corecteaza din "- / +" pe lot.
 - Cheia API si tokenul Dropbox stau necriptate in browser (aplicatie fara server). Celelalte aplicatii de pe aceeasi adresa GitHub Pages le pot citi; folosesc insa alte chei, deci nu se suprascriu.
 - Timpul si dificultatea retetelor sunt estimari automate ("aprox."); retetele lasate peste noapte apar cu circa 8 ore.
 - Eticheta gluten-free se pune dupa lista de ingrediente; nu tine cont de urme sau contaminare.
@@ -58,6 +60,7 @@ Versiunile 3.20.0 - 5.0.0 au fost testate doar in browser simulat (teste in fold
 - Restaurarea unui backup nou cere internet o data, pentru cartile livrate.
 
 ## Facut (detalii in CHANGELOG.md)
+- 5.1.0 Jurnalul se completeaza singur din Meniu (azi si zilele trecute), micronutrientii mutati in Jurnal (zi si media pe 7 zile). 5.0.1 X sus in dialoguri, Alta varianta la mesele din Meal prep.
 - 5.0.0 un singur model de reteta (retetele AI in Biblioteca, Ale mele, Cos, fara Colectia mea), 12 categorii comune cu capitol, jurnal de mese cu "Am mancat", macro din Info ca sursa principala, Sanda Marin fara ingrediente ascunse, curatenie de date, Setari pe 4 grupuri.
 - 3.20.0 cumparaturi si debara fara dubluri, Meal prep fara blocaj. 3.21.0 masa Cina.
 - 4.0.0 id stabil pe retetele salvate, tinta de proteine pe kg. 4.1.0 carti livrate cu aplicatia, corectii de continut, backup mic. 4.1.1 corectiile din auditul de calitate.

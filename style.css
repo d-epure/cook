@@ -560,3 +560,5 @@ details.mmic[open]>summary{margin-bottom:4px}
 /* 4.30.0: portii cu - / + in Meal prep (rand planificat si dialog) */
 .mps{margin:4px 0 0;gap:6px}.mrw .mps{flex-wrap:nowrap}.mrw .mps b{font-size:var(--fs-m)}.mrw .mps button{min-width:2.5rem;min-height:2.5rem;padding:0 6px}
 .okm{color:var(--pri);font-size:var(--fs-s);margin-top:4px;font-weight:600}
+.dlgx{float:right;position:sticky;top:0;z-index:2;margin:-4px -4px 4px 8px;background:var(--card)}
+button.ico svg{pointer-events:none}
