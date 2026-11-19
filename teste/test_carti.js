@@ -85,7 +85,7 @@ await (async()=>{
  eq(J.filter(r=>r.sfaturi.some(s=>/^Varianta (vegetariana|cu carne|vegana):/.test(s))).length,98,"fiecare reteta are varianta pereche cu macro recalculat (fara Clatite de ovaz cu iaurt si mere: dulce, cu oua, nu are varianta cu sens)");
  // aplicatia: eticheta noua exista si pentru cine are deja lista de etichete
  const w=await boot({rtags:JSON.stringify([{n:"vegan",t:"dieta"},{n:"keto",t:"dieta",auto:"keto"}])},{names:["BOOK","TAGS","canon"]}),T=w.__t;
- eq([T.TAGS.some(t=>t.n==="high-volume"),T.canon("High-Volume"),w.localStorage.getItem("rtv3")],[true,"high-volume","1"],"high-volume se adauga o singura data in lista de etichete existenta");
+ eq([T.TAGS.some(t=>t.n==="high-volume"),T.canon("High-Volume"),JSON.parse(w.localStorage.getItem("rmig")||"[]").includes("rtv3")],[true,"high-volume",true],"high-volume se adauga o singura data in lista de etichete existenta");
  const hv=T.BOOK.filter(r=>r.sursa==="Retete high-volume");
  eq([hv.length,T.BOOK.length,new Set(T.BOOK.map(r=>r.titlu)).size],[99,952,952],"biblioteca are 952 de retete livrate, fara titluri dublate");
  const G=w.eval("NUTRI.G"),g=G.find(x=>x[0]==="Sfaturi"),vt=g?g[1].filter(t=>["Ce umple farfuria fara multe calorii","Trucuri de gatit","Cum citesti volumul unei portii","Cand nu e potrivit"].includes(t[0])).length:0;

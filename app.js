@@ -2,7 +2,7 @@
 const dbg=e=>{try{if(localStorage.getItem("rdebug")==="1")console.warn(e)}catch(x){/* fara localStorage nu avem unde scrie */}};
 /* Cartea mea de retete - logica aplicatiei (vanilla JS, fara build).
    Datele stau in localStorage: rk cheie API, rm1/rm2b modele, ra aparate, rtags etichete,
-   rs retete salvate (vechi: din 5.0.0 se muta in biblioteca, la "Retetele mele"), rjr jurnalul vechi (doar in backup; de la 5.2.0 jurnalul se calculeaza din meniu), rjn observatii pe zi, rsmall arata retetele Sanda Marin fara ingrediente, rv5f/rv5c curatenie 5.0.0 facuta, rjs data de la care jurnalul se completeaza din meniu, rfav favorite, rnote jurnal si notite pe retete, rbook biblioteca incarcata (in IndexedDB; rlib = marcaj in localStorage),
+   rs retete salvate (vechi: din 5.0.0 se muta in biblioteca, la "Retetele mele"), rjr jurnalul vechi (doar in backup; de la 5.2.0 jurnalul se calculeaza din meniu), rjn observatii pe zi, rsmall arata retetele Sanda Marin fara ingrediente, rmig migrarile facute (registrul MIGS, de la 5.4.0), rjs data de la care jurnalul se completeaza din meniu, rfav favorite, rnote jurnal si notite pe retete, rbook biblioteca incarcata (in IndexedDB; rlib = marcaj in localStorage),
    rmen meniu, rmp Meal prep (retete gatite in loturi), rmv vedere meniu (azi/saptamana), rmt tinte de macro (vechi), rprof profil nutritional si tinte, rl cumparaturi, rlv vedere lista (produse/retete),
    pna = nr. de portii "nu se aplica" (pe reteta), rfd alimente adaugate de tine (macro la 100 g), rp debara, rnd marcaj local: migrarea fara diacritice s-a facut (nu intra in backup), rcg categorii alimente, rcat categoria fiecarui aliment, rpf preferinte alimente, rpxc mese pe categorie,
    ru consum, ronb "Primii pasi" ascuns, rbk data ultimei copii. Datele Info (Ingrediente, Masuri, Gatire) sunt in nutri.js, nu in localStorage.
@@ -24,6 +24,17 @@ const DKEYS=["rjn","rs","rfav","rtags","rsec","ra","rbook","rm1","rm2b","rl","rp
 const LSK=new RegExp("^("+DKEYS.filter(k=>k!=="rbook").join("|")+")$");
 const LS=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(LSK.test(k))v=nd(v);localStorage.setItem(k,v);if(LSK.test(k))syMark(k)}catch(e){if(v!==undefined){try{toast("Nu am putut salva: memoria browserului e plina sau blocata. Descarca o copie de siguranta si sterge ce nu mai folosesti.")}catch(x){dbg(x)}}return null}};
 const AI_DEF="claude-haiku-5-5"; /* 5.3.1: modelul implicit */
+/* 5.4.0: registrul migrarilor. Fiecare schimbare de date facuta o singura data are un nume in MIGS (in ordinea in care ruleaza la pornire);
+   cele facute stau intr-o singura cheie, rmig. Steagurile vechi (rdef1, rv52...) se muta o data in rmig si se sterg.
+   Migrare noua: adaug numele la sfarsitul MIGS si scriu mig("nume",()=>{...}) acolo unde datele de care are nevoie sunt deja incarcate. */
+const MIGS=["rdef2","rdef1","rtg5","rtv3","rdef4","rdef3","rgrp2","rcl3","rcl4","rv5f","rv516","rv5c","rv52","rsyv2"];
+const MIGD=(()=>{let d=[];try{const j=JSON.parse(localStorage.getItem("rmig")||"[]");if(Array.isArray(j))d=j.filter(x=>typeof x==="string")}catch(e){dbg(e)}
+ const set=new Set(d);let ch=false;
+ MIGS.forEach(id=>{const old=id==="rsyv2"?"rsyv":id;let v=null;try{v=localStorage.getItem(old)}catch(e){dbg(e)}
+  if(v!=null){if(id!=="rsyv2"||v==="2"){if(!set.has(id)){set.add(id);ch=true}}try{localStorage.removeItem(old)}catch(e){dbg(e)}}});
+ if(ch)try{localStorage.setItem("rmig",JSON.stringify([...set]))}catch(e){dbg(e)}return set})();
+function mig(id,fn){if(!MIGS.includes(id)){dbg(new Error("migrare fara nume in MIGS: "+id));return false}if(MIGD.has(id))return false;
+ try{fn()}catch(e){dbg(e)}MIGD.add(id);try{localStorage.setItem("rmig",JSON.stringify([...MIGD]))}catch(e){dbg(e)}return true}
 const DEF=[
 {id:"MC",nume:"Monsieur Cuisine Smart",on:1,backup:0,strict:1,tmin:37,tmax:130,maxMin:99,maxMl:3000,moduri:"gatit, sotat, abur, framantat, mixat, tocat, sous vide, slow cook, cantarire",note:"taie, toaca, mixeaza, framanta, sosuri, supe-crema; treapta 1-10 sau turbo; sens normal/invers; max 3 l continut"},
 {id:"Ninja",nume:"Ninja Foodi MAX 14-in-1",on:1,backup:0,strict:1,tmin:80,tmax:200,moduri:"Pressure Cook, Air Fry, Grill, Bake, Dehydrate, Prove, Sear/Saute, Steam, Slow Cook, Yoghurt, Steam Meals, Steam Air Fry, Steam Bake, Steam Bread",note:"crocant, air fry, gratar, copt, presiune, slow cook, abur; sonda digitala (sonda_c); la Pressure Cook scrie 'verifica presiunea in manual'"},
@@ -33,8 +44,8 @@ const DEF=[
 {id:"cuptor",nume:"Cuptor clasic pe gaz",on:1,backup:1,tmin:120,tmax:250,moduri:"copt",note:"temperatura aproximativa, fara ventilator"}];
 let AP;try{AP=JSON.parse(LS("ra"))}catch(e){dbg(e)}if(!Array.isArray(AP)||!AP.length)AP=JSON.parse(JSON.stringify(DEF));
 /* migrare: Thermomix adaugat in lista implicita (o singura data, daca lipseste) */
-if(!LS("rdef2")){const k=AP.findIndex(a=>a&&a.id==="Thermomix");if(k>=0){const t=JSON.parse(JSON.stringify(DEF.find(a=>a.id==="Thermomix")));t.on=AP[k].on;AP[k]=t;LS("ra",JSON.stringify(AP))}LS("rdef2","1")}
-if(!LS("rdef1")){if(!AP.some(a=>a&&a.id==="Thermomix")){const t=DEF.find(a=>a.id==="Thermomix"),i=AP.findIndex(a=>a&&a.id==="aragaz");AP.splice(i<0?AP.length:i,0,JSON.parse(JSON.stringify(t)));LS("ra",JSON.stringify(AP))}LS("rdef1","1")}
+mig("rdef2",()=>{const k=AP.findIndex(a=>a&&a.id==="Thermomix");if(k>=0){const t=JSON.parse(JSON.stringify(DEF.find(a=>a.id==="Thermomix")));t.on=AP[k].on;AP[k]=t;LS("ra",JSON.stringify(AP))}})
+mig("rdef1",()=>{if(!AP.some(a=>a&&a.id==="Thermomix")){const t=DEF.find(a=>a.id==="Thermomix"),i=AP.findIndex(a=>a&&a.id==="aragaz");AP.splice(i<0?AP.length:i,0,JSON.parse(JSON.stringify(t)));LS("ra",JSON.stringify(AP))}})
 const saveAP=()=>LS("ra",JSON.stringify(AP));
 const tag=id=>`<span class="tag">${esc(id)}</span>`;
 const esc=t=>String(t==null?"":t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -68,7 +79,7 @@ function catFix(r){if(!r||CAT12.includes(r.categorie))return false;const o=Strin
 const TDEF=[{n:"traditional romanesc",t:"bucatarie"},{n:"asiatic",t:"bucatarie"},{n:"vegan",t:"dieta"},{n:"vegetarian",t:"dieta"},{n:"high-protein",t:"dieta",auto:"protein"},{n:"keto",t:"dieta",auto:"keto"},{n:"gluten-free",t:"dieta",auto:"gluten"},{n:"meal-prep",t:"metoda"},{n:"air fryer",t:"metoda"},{n:"one pot",t:"metoda"},{n:"high-volume",t:"dieta"},{n:"de post",t:"dieta"},{n:"Craciun si Anul Nou",t:"ocazie"},{n:"Paste",t:"ocazie"},{n:"eveniment",t:"ocazie"}];
 let TAGS;try{TAGS=JSON.parse(LS("rtags"))}catch(e){dbg(e)}if(!Array.isArray(TAGS)||!TAGS.length)TAGS=JSON.parse(JSON.stringify(TDEF));
 /* 5.0.0: eticheta "de post" si etichetele de ocazie (Craciun si Anul Nou, Paste, eveniment) erau pe retete, dar nu in lista din Setari */
-if(LS("rtg5")!=="1"){["de post","Craciun si Anul Nou","Paste","eveniment"].forEach(n=>{if(!TAGS.some(t=>t.n===n)){const d=TDEF.find(t=>t.n===n);TAGS.push(JSON.parse(JSON.stringify(d)))}});LS("rtags",JSON.stringify(TAGS));LS("rtg5","1")}
+mig("rtg5",()=>{["de post","Craciun si Anul Nou","Paste","eveniment"].forEach(n=>{if(!TAGS.some(t=>t.n===n)){const d=TDEF.find(t=>t.n===n);TAGS.push(JSON.parse(JSON.stringify(d)))}});LS("rtags",JSON.stringify(TAGS))})
 const saveTags=()=>LS("rtags",JSON.stringify(TAGS));
 /* 3.18.0: etichete noi (meal-prep, air fryer, one pot) adaugate o singura data la cei care au deja lista salvata; h=1 inseamna ascunsa (nu apare in filtre, carduri, alegere la generare; retetele o pastreaza) */
 try{if(!localStorage.getItem("rtv")){["meal-prep","air fryer","one pot"].forEach(n=>{if(!TAGS.some(t=>norm(t.n)===norm(n)))TAGS.push({n,t:"dieta"})});localStorage.setItem("rtags",JSON.stringify(TAGS));localStorage.setItem("rtv","1")}}catch(e){dbg(e)}
@@ -77,7 +88,7 @@ try{if(!localStorage.getItem("rtv2")){TAGS.forEach(t=>{if(["meal-prep","air frye
  const g=TAGS.find(t=>/^(gluten-free|fara gluten)$/.test(norm(t.n)));if(g)g.auto="gluten";else TAGS.push({n:"gluten-free",t:"dieta",auto:"gluten"});
  localStorage.setItem("rtags",JSON.stringify(TAGS));localStorage.setItem("rtv2","1")}}catch(e){dbg(e)}
 /* 4.8.0, o singura data: eticheta high-volume (portii mari, calorii putine) adaugata la cine are deja lista de etichete */
-try{if(!localStorage.getItem("rtv3")){if(!TAGS.some(t=>norm(t.n)==="high-volume"))TAGS.push({n:"high-volume",t:"dieta"});localStorage.setItem("rtags",JSON.stringify(TAGS));localStorage.setItem("rtv3","1")}}catch(e){dbg(e)}
+mig("rtv3",()=>{if(!TAGS.some(t=>norm(t.n)==="high-volume"))TAGS.push({n:"high-volume",t:"dieta"});LS("rtags",JSON.stringify(TAGS))})
 const hidT=()=>new Set(TAGS.filter(t=>t.h).map(t=>t.n));
 const tagShown=a=>{const h=hidT();return a.filter(n=>!h.has(n))};
 const canon=n=>{const k=norm(n),t=TAGS.find(x=>norm(x.n)===k||(x.al||[]).some(a=>norm(a)===k));return t?t.n:null};
@@ -132,10 +143,10 @@ async function v5Run(){let ch=0;try{const sv=getSaved(),st=getStored();
  v5Data();return ch}
 /* 5.2.0, o data: jurnalul nu mai tine mese. Portiile scazute din loturi de "Am mancat" (5.0-5.1) se pun la loc (acum le scade meniul);
    marcajele "mancat" din meniu si lista de mese din jurnal dispar */
-function v52Run(){if(LS("rv52")==="1")return;try{const j=JSON.parse(LS("rjr")||"{}"),l=getMP();let ch=false;
+function v52Run(){mig("rv52",()=>{const j=JSON.parse(LS("rjr")||"{}"),l=getMP();let ch=false;
  if(j&&typeof j==="object")Object.values(j).forEach(dz=>{if(dz&&typeof dz==="object")Object.values(dz).forEach(a=>{if(Array.isArray(a))a.forEach(e=>{if(e&&e.lot){const x=l.find(y=>y.id===e.lot);if(x){x.p=+((+x.p||0)+(+e.n||1)).toFixed(2);ch=true}}})})});
  if(ch)putMP(l);const m=getMen();let mc=false;Object.values(m).forEach(dm=>{if(dm&&typeof dm==="object")SLOTS.forEach(([sl])=>(dm[sl]||[]).forEach(en=>{if(en&&en.e!=null){delete en.e;mc=true}}))});if(mc)putMen(m);
- localStorage.removeItem("rjr")}catch(e){dbg(e)}LS("rv52","1")}
+ localStorage.removeItem("rjr")})}
 /* 5.0.0: curatenie de date, o data: debara (litere mici, forma scoasa din nume), alimentele tale dublate in Info, cuptorul activ */
 function v5Data(){try{
  const p=JSON.parse(LS("rp")||"[]");if(Array.isArray(p)){let ch=false;const FORMS=["conserva","congelat","uscat","proaspat"];
@@ -143,10 +154,10 @@ function v5Data(){try{
    if(n!==x.n){x.n=n;ch=true}});
   if(ch){const mm=new Map();p.forEach(x=>{const k=norm(x.n);if(mm.has(k)){const o=mm.get(k);o.f=[...new Set([...(o.f||[]),...(x.f||[])])]}else mm.set(k,x)});LS("rp",JSON.stringify([...mm.values()]))}}
  }catch(e){dbg(e)}
- try{if(LS("rv5f")!=="1"){const fd=JSON.parse(LS("rfd")||"{}");if(fd&&typeof fd==="object"){let ch=false;const names=new Set(NUTRI.R.map(x=>norm(x[0])));
-   Object.keys(fd).forEach(k=>{const v=fd[k],n=norm(v&&v.n||"").replace(/,\s*radacina$/,"").replace(/^rosii deshidratate$/,"rosii uscate");if(v&&v.src==="ai"&&names.has(n)){delete fd[k];ch=true}});if(ch){LS("rfd",JSON.stringify(fd));try{FD=fd}catch(e){dbg(e)}}}LS("rv5f","1")}}catch(e){dbg(e)}
- try{if(LS("rv516")!=="1"){const p=JSON.parse(LS("rp")||"[]");let ch=false;if(Array.isArray(p))p.forEach(x=>{if(x&&typeof x.n==="string"&&/\b(murat[aei]?|murate|muraturi)\b/.test(norm(x.n))&&Array.isArray(x.f)&&x.f.length===1&&x.f[0]==="conserva"){x.f=["altceva"];ch=true}});if(ch)LS("rp",JSON.stringify(p));LS("rv516","1")}}catch(e){dbg(e)}
- try{if(LS("rv5c")!=="1"){const c=AP.find(a=>a.id==="cuptor");if(c&&!c.on){c.on=1;saveAP()}LS("rv5c","1")}}catch(e){dbg(e)}}
+ mig("rv5f",()=>{const fd=JSON.parse(LS("rfd")||"{}");if(fd&&typeof fd==="object"){let ch=false;const names=new Set(NUTRI.R.map(x=>norm(x[0])));
+   Object.keys(fd).forEach(k=>{const v=fd[k],n=norm(v&&v.n||"").replace(/,\s*radacina$/,"").replace(/^rosii deshidratate$/,"rosii uscate");if(v&&v.src==="ai"&&names.has(n)){delete fd[k];ch=true}});if(ch){LS("rfd",JSON.stringify(fd));try{FD=fd}catch(e){dbg(e)}}}})
+ mig("rv516",()=>{const p=JSON.parse(LS("rp")||"[]");let ch=false;if(Array.isArray(p))p.forEach(x=>{if(x&&typeof x.n==="string"&&/\b(murat[aei]?|murate|muraturi)\b/.test(norm(x.n))&&Array.isArray(x.f)&&x.f.length===1&&x.f[0]==="conserva"){x.f=["altceva"];ch=true}});if(ch)LS("rp",JSON.stringify(p))})
+ mig("rv5c",()=>{const c=AP.find(a=>a.id==="cuptor");if(c&&!c.on){c.on=1;saveAP()}})}
 /* id dedus din titlu la migrare: acelasi pe toate dispozitivele, ca sincronizarea sa nu dubleze retetele */
 const sidT=t=>{let h=5381;const z=String(t==null?"":t);for(let i=0;i<z.length;i++)h=((h*33)^z.charCodeAt(i))>>>0;return"t"+h.toString(36)};
 const sidNeed=()=>{try{const j=JSON.parse(localStorage.getItem("rs")||"[]");return Array.isArray(j)&&j.some(r=>r&&typeof r==="object"&&!r.id)}catch(e){return false}};
@@ -1096,7 +1107,7 @@ const fLab=f=>FI[f][0].split(" (")[0].toLowerCase();
 /* produsul e in debara, dar sub alta forma decat cea ceruta: formele pe care le ai */
 function pOther(name){const q=formSplit(name),t=q.t;if(!t.length)return[];const p=panItems().find(p=>p.t.length&&p.t.every(w=>t.some(x=>tokEq(w,x)))&&t.every(x=>p.t.some(w=>tokEq(w,x)))&&!formOk(q,p));return p?[...p.f]:[]}
 function inPantry(name){const q=formSplit(name),t=q.t;if(!t.length)return false;return panItems().some(p=>p.t.length&&p.t.every(w=>t.some(x=>tokEq(w,x)))&&t.every(x=>p.t.some(w=>tokEq(w,x)))&&formOk(q,p))}
-if(!LS("rdef4")){try{(JSON.parse(LS("rp")||"[]")||[]).forEach(x=>{if(x&&typeof x.n==="string"&&CATS.some(c=>c[0]===x.cat)&&x.cat!==guessCat(x.n))setCat(x.n,x.cat)})}catch(e){dbg(e)}LS("rdef4","1")}
+mig("rdef4",()=>{(JSON.parse(LS("rp")||"[]")||[]).forEach(x=>{if(x&&typeof x.n==="string"&&CATS.some(c=>c[0]===x.cat)&&x.cat!==guessCat(x.n))setCat(x.n,x.cat)})})
 /* 4.22.0: liniile care difera doar prin forma (Rosii / Rosii deshidratate / Rosii, conserva; Usturoi / Usturoi, catei / Usturoi, pudra) se aduna intr-una, cu marcajele reunite; se repeta la pornire (idempotent), ca sa prinda si date aduse de pe alt dispozitiv */
 let PMIG=null;
 function panUnify(){const raw=LS("rp");if(raw===null)return null;let j;try{j=JSON.parse(raw)}catch(e){return null}if(!Array.isArray(j))return null;
@@ -1112,7 +1123,7 @@ function panUnify(){const raw=LS("rp");if(raw===null)return null;let j;try{j=JSO
  const keep=new Set(out.map(r=>cn(r.n))),nc=cats.filter(c=>keep.has(cn(c.n)));drop.forEach(d=>{if(!nc.some(c=>cn(c.n)===cn(d.n)))nc.push({n:d.n,c:d.c})});
  LS("rpbak4220",raw);LS("rcatbak4220",LS("rcat")||"");const before={rp:raw,rcat:LS("rcat")};LS("rp",JSON.stringify(out.map(r=>({n:r.n,f:r.f}))));putCats(nc);return{n,before}}
 PMIG=panUnify();
-if(!LS("rdef3")){BASE.forEach(addPan);LS("rdef3","1")} /* 1.8.1: produsele de baza intra in debara, o singura data */
+mig("rdef3",()=>BASE.forEach(addPan)) /* 1.8.1: produsele de baza intra in debara, o singura data */
 const hid=x=>!x.done&&HP&&inPantry(x.n);
 const cleanName=n=>String(n||"").replace(/\([^)]*\)/g," ").replace(/\s+/g," ").trim();
 const sugName=n=>{const t=toks(n).find(w=>ALIAS_NUME[w]);return t?ALIAS_NUME[t]:cleanName(n)};
@@ -1315,7 +1326,7 @@ const uAgree=(u,c)=>{const sg=USG[u]||u;return UPL[sg]?(c!=null&&c>1?UPL[sg]:sg)
 const frac=c=>{const q=Math.max(.25,Math.round(c*4)/4),w=Math.floor(q),r=q-w,f=r===.25?"1/4":r===.5?"1/2":r===.75?"3/4":"";return w&&f?w+" "+f:w?String(w):f};
 const buyQ=(c,u)=>{if(c==null||isNaN(+c))return"";c=+c;const n=norm(u||"");if(/^(g|ml)$/.test(n))return String(c<50?Math.ceil(c/5)*5:Math.ceil(c/10)*10);if(/^(kg|l)$/.test(n))return fmtQ(c);if(!n)return String(Math.ceil(c-1e-9));return frac(c)};
 const itTxt=x=>{const q=buyQ(x.c,x.u),u=x.u?uAgree(x.u,x.c):"";return(q?q+" ":"")+(u?u+" ":"")+cap(x.n)};
-if(LS("rgrp2")!=="1"){LS("rgrp","1");LS("rgrp2","1")} /* 2.24.1: bifa "Grupeaza" a fost scoasa; lista e mereu grupata */
+mig("rgrp2",()=>LS("rgrp","1")) /* 2.24.1: bifa "Grupeaza" a fost scoasa; lista e mereu grupata */
 const GRP=LS("rgrp")!=="0";
 let LSRC=[];let LV=LS("rlv")==="r"?"r":"p";
 const canShare=()=>typeof navigator!=="undefined"&&typeof navigator.share==="function";
@@ -1380,8 +1391,8 @@ $("#ll").onclick=e=>{const b=e.target,d=b.dataset,id=b.id;
   const old=()=>{const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();let r=false;try{r=document.execCommand("copy")}catch(x){dbg(x)}ta.remove();r?ok():manual()};
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,old);else old();return}
  if(id==="lDn"){const u=undoMark(["rl"]),n0=getList().length;putList(getList().filter(x=>!x.done));navCount();drawList();const n1=getList().length;if(n0!==n1)undoShow("Produsele bifate au fost sterse ("+(n0-n1)+").",u,redrawAll)}};
-if(!LS("rcl3")){const l0=getList(),l1=[];l0.forEach(x=>{const p=prepIngs([{c:x.c,u:x.u,n:x.n}]);p.forEach(q=>l1.push(Object.assign({},x,{n:q.n,k:norm(q.n)+"|"+norm(x.u||"")})))});if(l1.length!==l0.length||l1.some((q,i)=>q.n!==(l0[i]||{}).n))putList(l1);LS("rcl3","1")}
-if(!LS("rcl4")){const l0=getList(),l1=l0.filter(x=>!(isSec({c:x.c,u:x.u,n:x.n})&&(x.src||[]).length&&!(x.src||[]).includes("Adaugat manual")&&!(x.src||[]).includes("Debara")));if(l1.length!==l0.length)putList(l1);LS("rcl4","1")} /* 4.11.0: scoate din lista titlurile de sectiune (Foi, Umplutura) aduse din retete inainte de aceasta versiune */
+mig("rcl3",()=>{const l0=getList(),l1=[];l0.forEach(x=>{const p=prepIngs([{c:x.c,u:x.u,n:x.n}]);p.forEach(q=>l1.push(Object.assign({},x,{n:q.n,k:norm(q.n)+"|"+norm(x.u||"")})))});if(l1.length!==l0.length||l1.some((q,i)=>q.n!==(l0[i]||{}).n))putList(l1)})
+mig("rcl4",()=>{const l0=getList(),l1=l0.filter(x=>!(isSec({c:x.c,u:x.u,n:x.n})&&(x.src||[]).length&&!(x.src||[]).includes("Adaugat manual")&&!(x.src||[]).includes("Debara")));if(l1.length!==l0.length)putList(l1)}) /* 4.11.0: scoate din lista titlurile de sectiune (Foi, Umplutura) aduse din retete inainte de aceasta versiune */
 navCount();
 /* versiune */
 /* ===== Mod gatit: un pas pe ecran, font mare, ecran aprins, cronometre ===== */
@@ -2023,7 +2034,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="5.3.1";
+const APP_V="5.4.0";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
@@ -2348,7 +2359,7 @@ $("#dbbox").onchange=e=>{if(e.target.id==="dba")LS("rdba",e.target.checked?"1":"
  catch(x){show("setari");setSub("backup");dbDraw("Nu am putut conecta Dropbox: "+(x.message||x))}})();
 snDraw();dbDraw();
 /* copii automate la pornire (dupa ce biblioteca e incarcata) */
-setTimeout(async()=>{await snapMake(false);snDraw();if(LS("rsyv")!=="2"){try{if(IDBOK&&DB)await idbDel("syncbase")}catch(e){dbg(e)}["rdbr","rsyc"].forEach(k=>{try{localStorage.removeItem(k)}catch(e){dbg(e)}});LS("rsyv","2")}
+setTimeout(async()=>{await snapMake(false);snDraw();if(!MIGD.has("rsyv2")){try{if(IDBOK&&DB)await idbDel("syncbase")}catch(e){dbg(e)}mig("rsyv2",()=>["rdbr","rsyc"].forEach(k=>localStorage.removeItem(k)))}
  SYREADY=true;await syAuto(true)},3000);
 try{const t=sessionStorage.getItem("rsyt");if(t){sessionStorage.removeItem("rsyt");setTimeout(()=>toast(t),600)}}catch(e){dbg(e)}
 $("#profbox").onchange=e=>{const k=e.target.dataset.pr;if(!k)return;const p=getPr(),v=e.target.value.trim();

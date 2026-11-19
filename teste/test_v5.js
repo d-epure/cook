@@ -142,4 +142,21 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   try{T.pxBuild(["pranz"])}catch(e){err+="propunere: "+e.message}
   eq(err,"","pornire cu 14 chei de date corupte: toate ecranele se deschid fara eroare");
   w.close()})();
+ console.log("\n## "+'5.4.0: registrul migrarilor');
+ await (async()=>{
+  const old={rdef1:"1",rdef2:"1",rdef3:"1",rdef4:"1",rtg5:"1",rtv3:"1",rgrp2:"1",rcl3:"1",rcl4:"1",rv5f:"1",rv516:"1",rv5c:"1",rv52:"1",rsyv:"2",
+   rp:"[]",rtags:JSON.stringify([{n:"vegan",t:"dieta"}]),rfd:JSON.stringify({a:{n:"pastarnac",src:"ai",k:[1,1,1,1]}}),rjr:JSON.stringify({"2026-01-01":{mic:[]}})};
+  const w=await boot(old,{wait:1200,names:["MIGS","MIGD","mig","getPan","TAGS"],offline:true});const T=w.__t,L=w.localStorage;
+  const left=Object.keys(old).filter(k=>/^(rdef|rtg5|rtv3|rgrp2|rcl|rv5|rsyv)/.test(k)&&L.getItem(k)!=null);
+  const rm=JSON.parse(L.getItem("rmig")||"[]");
+  eq([left,T.MIGS.every(id=>rm.includes(id))],[[],true],"steagurile vechi se muta in rmig si dispar din localStorage");
+  eq([T.getPan().length,T.TAGS.some(t=>t.n==="high-volume"),Object.keys(JSON.parse(L.getItem("rfd"))).length,L.getItem("rjr")!=null],[0,false,1,true],"migrarile deja facute nu ruleaza din nou");
+  let ran=0;eq([T.mig("rdef3",()=>ran++),T.mig("altceva",()=>ran++),ran],[false,false,0],"o migrare facuta nu ruleaza; un nume care nu e in MIGS nu ruleaza");
+  w.close()})();
+ await (async()=>{
+  const w=await boot({rp:"[]"},{wait:3600,names:["MIGS"],offline:true});const T=w.__t,L=w.localStorage;
+  const rm=JSON.parse(L.getItem("rmig")||"[]"),miss=T.MIGS.filter(id=>!rm.includes(id));
+  eq([miss,new Set(T.MIGS).size===T.MIGS.length],[[],true],"instalare noua: toate migrarile ruleaza o data si se noteaza in rmig; nume unice");
+  eq(Object.keys(L).filter(k=>/^(rdef\d|rtg5|rtv3|rgrp2|rcl\d|rv5\w*|rv52|rsyv)$/.test(k)),[],"nu mai apar steaguri separate");
+  w.close()})();
  done()})();

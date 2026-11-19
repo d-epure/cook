@@ -2,6 +2,12 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.4.0
+- **Registrul migrarilor (din auditul QA, C3):** cele 14 schimbari de date facute o singura data la pornire (Thermomix in aparate, etichete noi, produsele de baza in debara, curatenia 5.0.0, murate pe marcajul "altceva", mutarea jurnalului vechi, curatenia sincronizarii si altele) au acum un nume intr-o singura lista, `MIGS`, iar cele facute stau intr-o singura cheie, `rmig`, in loc de 14 steaguri separate (`rdef1`-`rdef4`, `rtg5`, `rtv3`, `rgrp2`, `rcl3`, `rcl4`, `rv5f`, `rv516`, `rv5c`, `rv52`, `rsyv`). La prima pornire steagurile vechi se muta in `rmig` si se sterg; nimic nu ruleaza din nou si datele tale nu se schimba.
+- O migrare noua se scrie cu `mig("nume", ...)`; numele trebuie sa fie in `MIGS`, altfel nu ruleaza.
+- Fata de propunere: in loc de un singur numar de versiune a datelor, `rmig` tine numele migrarilor facute. Migrarile ruleaza in momente diferite ale pornirii (unele cer biblioteca incarcata, una ruleaza dupa 3 secunde), deci un numar ar fi presupus o ordine stricta care nu exista.
+- Teste: steagurile vechi se muta si dispar, migrarile facute nu ruleaza din nou, la o instalare noua toate ruleaza o data.
+
 ## 5.3.1
 Reparatii din auditul QA din 19 noiembrie 2026.
 - **Cumparaturi, condimente:** sare, piper, boia, oregano si celelalte condimente apar pe o singura linie, fara cantitate (se cumpara la pachet).

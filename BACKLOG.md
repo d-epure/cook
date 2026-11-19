@@ -1,9 +1,9 @@
 # Backlog - Cartea mea de retete
 
-Starea la versiunea 5.3.1 (19 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
+Starea la versiunea 5.4.0 (19 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
 
 ## De verificat pe dispozitiv real
-Versiunile 3.20.0 - 5.3.1 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
+Versiunile 3.20.0 - 5.4.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
 - Dupa actualizare: favoritele, jurnalul, meniul si "Retetele mele" sunt la locul lor; Biblioteca are 952 de retete livrate plus ale tale.
 - Consola browserului (F12) fara erori "Content Security Policy" la: Idei cu AI, backup in Dropbox, descarcarea unui backup, butonul WhatsApp.
 - Aplicatia porneste in mod avion dupa prima incarcare (service worker cu cache propriu).
@@ -11,6 +11,7 @@ Versiunile 3.20.0 - 5.3.1 au fost testate doar in browser simulat (teste in fold
 - Asezarea pe telefon: pilulele din Biblioteca, butoanele din Cumparaturi, ziua din meniu cu patru mese.
 - Pagina Idei fara cheie API si cu cheie.
 - 5.0.0: la prima pornire retetele din fosta Colectia mea apar in Biblioteca > Ale mele, cu favoritele, jurnalul, Meal prep si meniul legate; pasii pe aparat si Mod gatit la retetele AI; jurnalul de mese pe telefon (randul cu portii, campul de grame, dialogul "Am mancat"); sincronizarea Dropbox cu un dispozitiv inca pe 4.30 (acela poate readuce retete in vechea lista; 5.0.0 le muta din nou, fara dubluri).
+- 5.4.0: dupa actualizare, aplicatia porneste ca inainte (aparate, etichete, debara neschimbate); in F12 > Application > Local Storage apare `rmig` si nu mai apar `rdef1`, `rv52` etc.
 - 5.3.1: lista de cumparaturi dupa actualizare (liniile vechi adunate, condimente fara cantitate, linguri in sferturi); Idei cu AI pe claude-haiku-5-5; in tabul Actions din GitHub, testele cu bifa verde.
 - 4.30.0: - / + pe randul planificat din Meal prep (incape langa Am gatit si cosul de gunoi la 90% si 150%), lista de cumparaturi dupa schimbarea portiilor, campul Observatii din Editeaza reteta.
 
@@ -22,9 +23,8 @@ Versiunile 3.20.0 - 5.3.1 au fost testate doar in browser simulat (teste in fold
 4. Titluri lungi la supele keto (177 de titluri peste 60 de caractere) si perechea aproape identica "Ciorba de perisoare de porc cu dovlecei si rosii" (nr. 214 si 282).
 
 ## Din auditul QA (19 noiembrie 2026)
-Facut in 5.3.1: reparatiile 1-5, codul mort, testele noi, testele automate pe GitHub. Raman:
-- C3, registru de migrari: cele circa 20 de steaguri `rv*`/`rdef*`/`rtg*` din localStorage devin o lista ordonata de migrari cu un singur numar de versiune a datelor. Propus ca 5.4.0.
-- C2, `app.js` impartit in fisiere pe zone (biblioteca, meniu, cumparaturi, debara, setari, sincronizare), tot scripturi clasice, fara build. Propus dupa C3, in versiune separata.
+Facut in 5.3.1: reparatiile 1-5, codul mort, testele noi, testele automate pe GitHub. Facut in 5.4.0: C3, registrul migrarilor (`MIGS`, `rmig`). Raman:
+- C2, `app.js` impartit in fisiere pe zone (biblioteca, meniu, cumparaturi, debara, setari, sincronizare), tot scripturi clasice, fara build. Propus ca 5.5.0, in versiune separata.
 - Restul observatiilor (performanta, clean code) sunt in documentul de audit; nu se fac fara discutie.
 
 ## Nedecise (asteapta un raspuns)
