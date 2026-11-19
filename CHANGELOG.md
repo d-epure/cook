@@ -2,6 +2,17 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.2.0
+Meniul e singurul loc unde sunt mesele; Jurnalul arata doar cifrele.
+- **Fara "Am mancat".** Tot ce e in Meniu la azi sau la o zi trecuta conteaza ca mancat. Ce ai sarit scoti din Meniu; ce ai mancat in plus adaugi in Meniu, si la zilele trecute.
+- **Portii pe fiecare reteta din Meniu:** "- 1 portie +", cu pas de jumatate. Schimba macro-ul mesei si al zilei si cantitatile pentru cumparaturi.
+- **Aliment din Info pe grame si in Meniu**, langa codul de bare si textul liber; aduce macro si micronutrienti. Gramele produselor (Info sau cod de bare) se pot schimba pe rand.
+- **Meal prep se consuma din Meniu:** fiecare masa din Meal prep (cu portiile ei) scade din lotul gatit cel mai vechi. In lista Meal prep vezi "N in meniu, raman M"; in alegerea din Meniu apar doar loturile cu portii ramase. Lotul consumat in intregime de mese din zile trecute dispare singur; "Terminat" ramane pentru cand se termina altfel (a mancat si altcineva).
+- **Istoricul de gatit:** o reteta din Meal prep conteaza gatita la "Am gatit" din Meal prep; altfel, o reteta din Meniu conteaza gatita in ziua ei, dupa ce ziua a trecut. Scoasa din Meniu dintr-o zi trecuta, ziua aceea nu mai conteaza.
+- **Zilele trecute din Meniu sunt estompate**; mesele nu mai au fundal verde / gri. Partea de cumparaturi a unei mese trecute iese din lista.
+- **Jurnalul e doar de citit**, calculat din Meniu: ziua aleasa fata de tinta (macro restrans, micronutrienti), un camp de **Observatii** pe zi (separat, nu se leaga de nimic), apoi "Ultimele 7 zile" (un rand pe zi cu calorii, proteine si un punct verde in tinta / galben in afara; atingerea deschide ziua in Meniu) si media pe zi, cu micronutrientii mediei.
+- Migrare: lista de mese din Jurnal dispare (portiile scazute din loturi de "Am mancat" revin, acum le scade Meniul); marcajele "mancat" dispar.
+
 ## 5.1.7
 - **Setari > Raioane debara:** "Gestioneaza categoriile" e primul, deasupra alimentelor. Lista de alimente e restransa ("Alimente (N)"), intre cautare si primul aliment; se deschide singura cand cauti.
 

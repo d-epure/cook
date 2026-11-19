@@ -79,7 +79,7 @@ await (async()=>{
  const lot=T.getMP()[0];D.querySelector("[data-mpcook=\""+lot.id+"\"]").click();
  eq(ents().some(e=>e.mp),true,"dupa Am gatit, mesa din meniu devine 'din Meal prep'");
  T.show("meniu");T.drawMenu();mw=D.querySelector("#mw").textContent;eq([/Gatit \(1\)/.test(mw),/Planificat \(/.test(mw)],[true,false],"dupa gatit: doar zona Gatit");
- T.menOpen({day:"2099-01-04"});{const c=D.querySelector("#mdlg [data-mdf=m]");if(!c.classList.contains("on"))c.click()}eq(D.querySelector("#mdres").textContent.includes(r.titlu),true,"lotul gatit se poate alege in meniu");D.querySelector("[data-mdx]").click();
+ T.menOpen({day:"2099-01-04"});{const c=D.querySelector("#mdlg [data-mdf=m]");if(!c.classList.contains("on"))c.click()}eq(D.querySelector("#mdres").textContent.includes(r.titlu),false,"5.2.0: lotul gatit, cu toate portiile deja in meniu, nu se mai alege");D.querySelector("[data-mdx]").click();
  T.show("lista");T.menOpen({s:"b",r,day:"2099-01-05"});D.querySelector("[data-mdok]").click();const nw=Object.entries(T.getMen()).filter(([d])=>d==="2099-01-05").flatMap(([d,v])=>Object.values(v).flat());eq([nw.length>0,nw.some(e=>e.mp)],[true,false],"din Biblioteca = gatit doar pentru acea masa, nu din Meal prep");T.putMP([]);}
  // --- Cina si reteta stearsa
  eq(T.SLOTS.map(x=>x[0]),["mic","pranz","cina","desert"],"patru mese pe zi");
@@ -202,10 +202,9 @@ await (async()=>{
   const w=await boot({rp:"[]",rjs:"2000-01-01",rs:JSON.stringify([supa]),rl:JSON.stringify([item("rosii","g",300,supa.titlu+" (meniu "+zi+")"),item("zzzfaina","g",5,"Alta reteta")]),
    rmen:JSON.stringify({[dk]:{cina:[{t:supa.titlu,s:"s",k:"salvat|"+supa.titlu,p:1,bp:2,L:1}]}})},{wait:800,names:["catOf","getList","getMen","drawMenu","show","drawList","getNote","BOOK","bKey","getJr","drawJr"],offline:true}),T=w.__t,D=w.document;
   T.show("meniu");T.drawMenu();
-  eq([!!D.querySelector("[data-mgat]"),(T.getNote(T.bKey(T.BOOK.find(r=>r.titlu===supa.titlu))).h||[]).includes(dk),((T.getJr()[dk]||{}).cina||[]).map(e=>[e.t,e.n,e.s,e.men])],[false,true,[[supa.titlu,1,"b",1]]],"5.1.0: masa de ieri e mancata singura: fara buton, reteta gatita, in jurnal la Cina");
+  eq([!!D.querySelector("[data-mgat]"),(T.getNote(T.bKey(T.BOOK.find(r=>r.titlu===supa.titlu))).h||[]).includes(dk)],[false,true],"5.2.0: fara Am mancat; reteta din meniul de ieri conteaza gatita ieri");
   const L=T.getList(),en=Object.values(T.getMen()).flatMap(d=>Object.values(d).flat())[0];
-  eq([L.map(x=>x.n),en.L],[["zzzfaina"],0],"partea mesei iese din lista si 'in lista' se reseteaza");
-  T.drawMenu();eq(((T.getJr()[dk]||{}).cina||[]).length,1,"a doua desenare nu dubleaza intrarea");
+  eq([L.map(x=>x.n),en.L],[["zzzfaina"],0],"partea mesei de ieri iese din lista si 'in lista' se reseteaza");
   eq([T.catOf("dovlecei"),T.catOf("dovlecel"),T.catOf("dovleac")],["legume","legume","legume"],"dovlecei/dovlecel/dovleac sunt in Legume (cuvinte distincte)");
   T.show("lista");T.drawList();D.querySelector("[data-lv=r]").click();
   const t=D.querySelector("[data-lsr]");t.click();eq([t.textContent,T.getList().length],["Confirma",1],"Pe retete: stergerea grupului cere Confirma, nu sterge la prima atingere");
@@ -280,7 +279,7 @@ await (async()=>{
   D.querySelector("[data-mdbadd]").click();
   const es=Object.values(T.getMen()).flatMap(d=>Object.values(d).flat()).filter(e=>e.ean==="5941234567890");
   eq([es.length,es[0]&&es[0].q,es[0]&&es[0].s,es[0]&&es[0].m&&es[0].m[0],T.dayMac(T.getMen()[dk]).s[0]],[1,50,"x",200,200],"produsul intra in meniu cu cantitate si macro, si se aduna in totalul zilei");
-  T.drawMenu();eq([/50 g/.test(D.querySelector("#mw").textContent),/dupa cantitatea introdusa/.test(D.querySelector("#mw").textContent),!!D.querySelector("#mw .me.mpl")],[true,true,false],"randul arata cantitatea, nota din macro explica; randul fara reteta nu e gri 'planificat'");
+  T.drawMenu();eq([(D.querySelector("#mw [data-mq]")||{}).value==="50",/dupa cantitatea introdusa/.test(D.querySelector("#mw").textContent),!!D.querySelector("#mw .me.mpl")],[true,true,false],"randul arata cantitatea, nota din macro explica; randul fara reteta nu e gri 'planificat'");
   mode="net";calls=[];T.menOpen({day:dk});D.querySelector("#mdbc").value="5941234567890";D.querySelector("[data-mdbs]").click();await sleep(50);
   eq([calls.length,!!D.querySelector("#bcc")],[0,true],"produs gasit o data: se tine local, merge si fara internet");
   D.querySelector("#mdbc").value="4001234567890";D.querySelector("[data-mdbs]").click();await sleep(1300);

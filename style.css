@@ -564,3 +564,10 @@ details.mmic[open]>summary{margin-bottom:4px}
 button.ico svg{pointer-events:none}
 /* 5.1.4: mesajele scurte nu se mai rup pe cuvinte (fereastra cat textul, cel mult latimea ecranului) */
 #undo,#toast,#busy{width:max-content}
+/* 5.2.0: portii / grame pe randul din meniu; zilele trecute estompate; randurile jurnalului */
+.mqty{display:flex;gap:6px;align-items:center;margin-top:6px}
+.mday.mpast{opacity:.72}
+.jrows{display:flex;flex-direction:column}
+.jrow{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:10px 2px;margin:0;font:inherit;color:inherit;cursor:pointer}
+.jdot{width:10px;height:10px;border-radius:50%;background:var(--line);flex:0 0 auto}
+.jdot.jok{background:var(--pri)}.jdot.jwn{background:#c98a1b}

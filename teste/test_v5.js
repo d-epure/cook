@@ -33,44 +33,38 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   eq([!!D.querySelector("#v-salvate"),!D.querySelector("#bidei")],[false,false],"fara pagina Colectia mea; Idei cu AI e un buton in Biblioteca");
   w.close()})();
 
- console.log("\n## "+'5.0.0: jurnal de mese');
+ console.log("\n## "+'5.2.0: meniu cu portii si grame, Meal prep din meniu, jurnal doar de citit');
  await (async()=>{
-  const today=dk(new Date());
-  const rec={sursa:"Retetele mele",nr:1,titlu:"Ovaz cu lapte",categorie:"Mic dejun",portii:2,manual:true,ingrediente:[{c:100,u:"g",n:"fulgi de ovaz"},{c:400,u:"ml",n:"lapte"}],pasi_carte:["Fierbe."],macro:{kcal:999,proteine:1,carbo:1,grasimi:1}};
-  const w=await boot({rbook:JSON.stringify([rec]),rprof:JSON.stringify({s:"f",a:40,h:165,w:60,act:1.6,g:"c",pk:2}),
-   rmp:JSON.stringify([{id:"l1",s:"b",k:"Retetele mele|1",t:rec.titlu,d:today,p:2}]),
-   rmen:JSON.stringify({[today]:{mic:[{t:rec.titlu,s:"b",k:"Retetele mele|1",p:1,bp:2,mp:1}]}})},
-   {wait:900,names:["BOOK","show","drawJr","getJr","getMP","jrOpen","menMac","mkEntry","drawMenu","getNote","openBook"],offline:true});
-  const T=w.__t,D=w.document;
-  const mm=T.menMac(T.mkEntry("b",T.BOOK[0],1));eq([mm[0]<999,mm[0]>200],[true,true],"macro: calculul din Info are prioritate fata de valoarea din carte");
-  T.show("meniu");T.drawMenu();eq(/difera mult/.test(D.querySelector("#mw").textContent),false,"meniul nu mai arata avertizarea 'difera mult'");
-  let j=T.getJr()[today]||{};eq([(j.mic||[]).length,T.getMP()[0].p,!!D.querySelector("#mw [data-mgat]")],[0,2,true],"5.1.1: masa de azi din meniu ramane planificata, cu Am mancat (nu intra singura in jurnal)");
-  D.querySelector("#mw [data-mgat]").click();j=T.getJr()[today]||{};eq([(j.mic||[]).length,j.mic&&j.mic[0].lot,T.getMP()[0].p],[1,"l1",1],"Am mancat: in jurnal la Mic dejun, o portie scade din lotul de Meal prep");
-  eq([!!D.querySelector("#mw .me.mdn"),/Micronutrienti/.test(D.querySelector("#mw").textContent)],[true,false],"masa apare Facut; Meniul nu mai are micronutrienti");
-  // sters din jurnal: in meniu devine nemancat, portia revine in lot; Am mancat o pune la loc
-  T.show("jurnal");{const b=D.querySelector("#jw [data-jdel][data-js=mic]");b.click();b.click()}
-  eq([((T.getJr()[today]||{}).mic||[]).length,T.getMP()[0].p],[0,2],"sters din jurnal: portia revine in lot");
-  T.show("meniu");eq(!!D.querySelector("#mw [data-mgat]"),true,"in meniu masa e nemancata, cu Am mancat; nu revine singura in jurnal");
-  D.querySelector("#mw [data-mgat]").click();eq([((T.getJr()[today]||{}).mic||[]).length,T.getMP()[0].p],[1,1],"Am mancat o pune la loc");
-  // scoasa din meniu: iese si din jurnal
-  {const b=D.querySelector("#mw [data-mdel]");b.click();eq([((T.getJr()[today]||{}).mic||[]).length,T.getMP()[0].p],[0,2],"scoasa din meniu: iese si din jurnal, portia revine")}
-  T.jrOpen({r:T.BOOK[0],s:"b",slot:"mic"});D.querySelector("#mdlg [data-jrok]").click();
-  T.show("jurnal");T.drawJr();
-  T.show("jurnal");let jw=D.querySelector("#jw");eq([/Ovaz cu lapte/.test(jw.textContent),/kcal/.test(jw.textContent),jw.querySelectorAll(".mbar").length>=4],[true,true,true],"jurnal: intrarea, kcal si barele fata de tinte");
-  jw.querySelector("[data-jp='0.5']").click();eq(T.getJr()[today].mic[0].n,1.5,"portiile se schimba cu + / -");
-  // aliment din Info pe grame
-  jw.querySelector("[data-jadd=gustari]").click();const dl=D.querySelector("#mdlg");eq([/Am mancat/.test(dl.textContent),!!dl.querySelector("#jrf"),dl.querySelector("#mdslot").value],[true,true,"gustari"],"dialogul jurnalului: reteta, aliment din Info, cod de bare, text");
-  const f=dl.querySelector("#jrf");f.value="banana";f.dispatchEvent(new w.Event("input",{bubbles:true}));const pick=dl.querySelector("[data-jrfp]");eq(!!pick,true,"cautarea in Info gaseste banana");
-  pick.click();const q=dl.querySelector("#mdbq");q.value="150";dl.querySelector("[data-mdbadd]").click();
-  j=T.getJr()[today];const g=j.gustari&&j.gustari[0];eq([!!g,g&&g.g,g&&g.n,g&&g.u&&g.u[0]>50&&g.u[0]<150],[true,1,150,true],"aliment pe grame, cu valorile la 100 g");
-  {const tx=D.querySelector("#jw").textContent;eq([/Micronutrienti/.test(tx),!!g.x&&g.x.length===27],[true,true],"jurnal: micronutrientii zilei, si pentru alimentele din Info")}
-  jw=D.querySelector("#jw");const qi=jw.querySelector("[data-jq]");qi.value="200";qi.dispatchEvent(new w.Event("change",{bubbles:true}));eq(T.getJr()[today].gustari[0].n,200,"gramele se pot schimba");
-  // stergere cu confirmare
-  const del=D.querySelector("#jw [data-js=gustari] ~ [data-jdel], #jw [data-jdel][data-js=gustari]");del.click();eq(T.getJr()[today].gustari.length,1,"primul tap pe cosul de gunoi cere Confirma");del.click();eq(!!(T.getJr()[today]||{}).gustari,false,"al doilea sterge");
-  // din reteta: Am mancat
-  T.show("carti");T.openBook(0,2,"#bres");eq([!!D.querySelector("#bres [data-jeat]"),/Am gatit azi/.test(D.querySelector("#bres").textContent)],[true,false],"reteta are Am mancat in loc de Am gatit azi");
-  D.querySelector("#bres [data-jeat]").click();D.querySelector("#mdlg [data-mdslot], #mdslot").value="cina";D.querySelector("#mdslot").dispatchEvent(new w.Event("change",{bubbles:true}));D.querySelector("#mdlg [data-jrok]").click();
-  eq(((T.getJr()[today]||{}).cina||[]).length,1,"Am mancat din reteta scrie in jurnal la masa aleasa");
+  const today=dk(new Date()),y=dk(new Date(Date.now()-864e5)),y2=dk(new Date(Date.now()-2*864e5));
+  const rec={sursa:"Retetele mele",nr:1,titlu:"Ovaz cu lapte",categorie:"Mic dejun",portii:2,manual:true,ingrediente:[{c:100,u:"g",n:"fulgi de ovaz"},{c:400,u:"ml",n:"lapte"}],pasi_carte:["Fierbe."]};
+  const cur={sursa:"Carte",nr:2,titlu:"Curry de naut",categorie:"Fel principal",portii:4,ingrediente:[{c:400,u:"g",n:"naut fiert"},{c:200,u:"g",n:"spanac"}],pasi_carte:["a"]};
+  const w=await boot({rbook:JSON.stringify([rec,cur]),rprof:JSON.stringify({s:"f",a:40,h:165,w:60,act:1.6,g:"c",pk:2}),rjs:y2,rcs:y2,
+   rmp:JSON.stringify([{id:"l1",s:"b",k:"Carte|2",t:cur.titlu,d:y2,p:2},{id:"l2",s:"b",k:"Carte|2",t:cur.titlu,d:y,p:3}]),
+   rjr:JSON.stringify({[y]:{pranz:[{id:"x",t:cur.titlu,s:"b",k:"Carte|2",n:1,g:0,u:[400,20,40,10],lot:"l2"}]}}),
+   rmen:JSON.stringify({[y2]:{pranz:[{t:cur.titlu,s:"b",k:"Carte|2",p:1,bp:4,mp:1,e:1}],cina:[{t:cur.titlu,s:"b",k:"Carte|2",p:1,bp:4,mp:1}]},[y]:{pranz:[{t:cur.titlu,s:"b",k:"Carte|2",p:1,bp:4,mp:1}],mic:[{t:rec.titlu,s:"b",k:"Retetele mele|1",p:1,bp:2}]},[today]:{mic:[{t:rec.titlu,s:"b",k:"Retetele mele|1",p:1,bp:2}]}})},
+   {wait:900,names:["BOOK","show","drawJr","drawMenu","getMP","getMen","menQ","menIngs","dayMac","getNote","openBook","menOpen","mpAlloc","mpLeft"],offline:true});
+  const T=w.__t,D=w.document,L=w.localStorage;
+  // migrare
+  eq([L.getItem("rjr"),T.getMP().find(x=>x.id==="l2").p,T.getMen()[y2].pranz[0].e],[null,4,undefined],"migrare: lista de mese din jurnal dispare, portia scazuta din lot revine, marcajul 'mancat' dispare");
+  // Meal prep din meniu
+  T.show("meniu");T.drawMenu();
+  eq([!!T.getMP().find(x=>x.id==="l1"),T.mpLeft(T.getMP().find(x=>x.id==="l2"))],[false,3],"lotul consumat de mese din zile trecute dispare singur (terminat); celalalt are 4 - 1 = 3 portii");
+  eq((T.getNote("Retetele mele|1").h||[]).includes(y),true,"reteta din meniul de ieri (fara Meal prep) conteaza gatita ieri");
+  eq([!!D.querySelector("#mw [data-mgat]"),!!D.querySelector("#mw .mday.today")],[false,true],"fara Am mancat in meniu");
+  // portii
+  const before=T.menQ(T.getMen()[today].mic[0])[0];D.querySelector("#mw .mday.today [data-mpp='0.5']").click();
+  const en=T.getMen()[today].mic[0];eq([en.p,Math.round(T.menQ(en)[0])===Math.round(before*1.5),T.menIngs(en)[0].c],[1.5,true,75],"portiile: 1,5 portii inmultesc macro si cantitatile de cumparat");
+  // aliment din Info in meniu
+  T.menOpen({day:today,slot:"pranz"});const dl=D.querySelector("#mdlg"),f=dl.querySelector("#jrf");eq(!!f,true,"dialogul meniului are Aliment din Info (pe grame)");
+  f.value="banana";f.dispatchEvent(new w.Event("input",{bubbles:true}));dl.querySelector("[data-jrfp]").click();const q=dl.querySelector("#mdbq");q.value="150";dl.querySelector("[data-mdbadd]").click();
+  let b=(T.getMen()[today].pranz||[])[0];eq([b&&b.s,b&&b.q,b&&Array.isArray(b.x),b&&b.m[0]>100],["x",150,true,true],"alimentul intra in meniu pe grame, cu macro si micronutrienti");
+  T.drawMenu();const gi=D.querySelector("#mw [data-mq]");gi.value="300";gi.dispatchEvent(new w.Event("change",{bubbles:true}));b=T.getMen()[today].pranz[0];eq([b.q,Math.round(b.m[0])],[300,Math.round(gi?b.m[0]:0)],"gramele se schimba din meniu");
+  // jurnal
+  T.show("jurnal");T.drawJr();const jw=D.querySelector("#jw"),tx=jw.textContent;
+  eq([/Macro:/.test(tx),jw.querySelectorAll("[data-jgo]").length,/Media pe zi/.test(tx),!!jw.querySelector("[data-jadd]"),!!jw.querySelector("[data-jdel]")],[true,7,true,false,false],"jurnal: macro de azi, 7 zile, media; fara adaugare sau stergere de mese");
+  const ta=jw.querySelector("#jnote");ta.value="antrenament seara";ta.dispatchEvent(new w.Event("change",{bubbles:true}));eq(JSON.parse(L.getItem("rjn"))[today],"antrenament seara","observatiile zilei se salveaza separat");
+  jw.querySelector(`[data-jgo="${y}"]`).click();eq(D.querySelector("#v-meniu").classList.contains("hidden"),false,"atingerea unei zile deschide Meniul");
+  T.show("carti");T.openBook(0,2,"#bres");eq(!!D.querySelector("#bres [data-jeat]"),false,"reteta nu mai are Am mancat");
   w.close()})();
  console.log("\n## "+'5.0.1: propunerea de meniu');
  await (async()=>{
@@ -81,16 +75,6 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   eq([mp.length>0,mp.every(r=>r.cand.length>1)],[true,true],"masa din Meal prep are si alte variante (Alta varianta nu mai e gri)");
   eq([T.pxSlot(T.BOOK[3]),T.pxSlot(T.BOOK[4])],[null,"desert"],"aluatul (o baza) nu intra in propunere; prajitura da");
   eq([T.recPref({titlu:"Tartine cu pasta de ton",ingrediente:[{n:"ton"}]}).lk,T.recPref({titlu:"Paste cu sos",ingrediente:[{n:"paste"}]}).lk],[[],["paste"]],"'pasta de ton' nu inseamna paste");
-  w.close()})();
- console.log("\n## "+'5.1.1: mesele de azi puse singure de 5.1.0 se intorc in meniu');
- await (async()=>{
-  const today=dk(new Date()),rec={sursa:"Carte",nr:1,titlu:"Curry de naut",categorie:"Fel principal",portii:4,ingrediente:[{c:200,u:"g",n:"naut fiert"}],pasi_carte:["a"]};
-  const w=await boot({rbook:JSON.stringify([rec]),rjs:"2000-01-01",rmp:JSON.stringify([{id:"l1",s:"b",k:"Carte|1",t:rec.titlu,d:today,p:3}]),
-   rmen:JSON.stringify({[today]:{pranz:[{t:rec.titlu,s:"b",k:"Carte|1",p:1,bp:4,mp:1,e:1}]}}),
-   rjr:JSON.stringify({[today]:{pranz:[{id:"m|"+today+"|pranz|Carte|1",t:rec.titlu,s:"b",k:"Carte|1",n:1,g:0,u:[400,20,40,10],men:1,lot:"l1"}]}})},
-   {wait:900,names:["getJr","getMP","getMen","show","drawMenu"],offline:true});const T=w.__t,D=w.document;
-  T.show("meniu");T.drawMenu();
-  eq([!!(T.getJr()[today]||{}).pranz,T.getMP()[0].p,T.getMen()[today].pranz[0].e,!!D.querySelector("#mw [data-mgat]")],[false,4,undefined,true],"pranzul de azi iese din jurnal, portia revine in lot, in meniu are din nou Am mancat");
   w.close()})();
  console.log("\n## "+'5.1.3: zi stransa, condimente');
  await (async()=>{
