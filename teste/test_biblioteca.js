@@ -164,4 +164,13 @@ await (async()=>{
  eq($("#pl details.pcat").open,true,"o categorie deschisa ramane deschisa dupa redesenare");
  eq(!!$("#totop"),true,"butonul Inapoi sus exista");
 })();
+await (async()=>{
+ console.log("\n## "+'5.6.1: micronutrientii zilei si in Meniu, inclusiv la zilele viitoare.');
+ const w=await boot({},{names:["BOOK","show","drawMenu","getMen","putMen","bKey","dKey","dAdd"]}),T=w.__t,D=w.document;
+ const r=T.BOOK.find(x=>(x.ingrediente||[]).length>=4&&x.portii>0),d=T.dAdd(T.dKey(new Date()),1),m=T.getMen();
+ m[d]={pranz:[{s:"b",k:T.bKey(r),t:r.titlu}]};T.putMen(m);T.show("meniu");T.drawMenu();
+ const b=[...D.querySelectorAll("#mw [data-mtog]")].find(x=>x.dataset.day===d);if(b&&b.getAttribute("aria-expanded")!=="true")b.click();
+ const mic=D.querySelector('#mw details.mmic[data-mico="n'+d+'"]');
+ eq([!!mic,mic&&mic.querySelector("summary").textContent],[true,"Micronutrienti"],"zi viitoare din Meniu: Micronutrienti sub Macro");
+})();
  done()})();

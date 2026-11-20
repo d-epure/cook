@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.6.1
+- **Micronutrientii revin in Meniu:** sub Macro, la fiecare zi deschisa, inclusiv la zilele viitoare, ca sa vezi fibrele, fierul, calciul si restul pe masura ce construiesti meniul, nu doar dupa ce ai mancat. Calculul e acelasi ca in Jurnal (dupa portiile din fiecare masa, cu alimentele din Info). Fusesera mutate doar in Jurnal in 5.1.0, cand Jurnalul era separat de Meniu; de la 5.2.0 Jurnalul se calculeaza din Meniu, deci motivul nu mai exista.
+- Jurnalul pastreaza micronutrientii zilei alese si media pe 7 zile.
+- Test nou in `teste/test_biblioteca.js`.
+
 ## 5.6.0
 - **Biblioteca la deschidere:** nu mai arata retete; apare numarul total si indemnul "Cauta un ingredient sau un nume, ori alege o pilula". Lista apare dupa o cautare, o pilula sau un filtru si dispare cand le scoti.
 - **10 rezultate:** cautarea arata primele 10 retete; "Arata mai multe" aduce inca 10 (inainte 60).
