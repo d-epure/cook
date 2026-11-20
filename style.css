@@ -134,6 +134,7 @@ nav button.on .dot{background:var(--prit)}
 
 /* navigare in doua trepte */
 nav[hidden],#nav button[hidden]{display:none}
+#bsearch[hidden],#bnewrow[hidden]{display:none}
 #nav{margin-bottom:18px}
 #nav button{min-height:var(--h-n);padding:5px 13px;font-size:var(--fs-s);font-weight:600;background:transparent}
 #nav button.on{background:var(--soft);border:2px solid var(--pri);color:var(--ink);padding:4px 12px}

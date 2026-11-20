@@ -2,6 +2,15 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.5.0
+Ecranul retetei din Biblioteca, dupa testarea pe telefon.
+- **Sus, direct Inapoi:** cat e deschisa o reteta, cautarea (campul, pilulele, Lipsesc cel mult, Filtre, Parcurge retetele de verificat) si randul cu Reteta noua / Idei cu AI se ascund; primul buton e Inapoi la rezultate. Revin cand te intorci la rezultate.
+- **Cosul de gunoi nu mai e pe randul de sus:** Muta in cos e acum in Mai multe actiuni (aceeasi confirmare). Sus raman Inapoi, Favorita, Copiaza, Trimite.
+- **Micronutrienti la 100 g:** sectiune pliata noua, imediat sub Micronutrienti per portie, pe aceeasi baza ca macro-ul la 100 g (ingrediente crude, fara apa; apare cand Info acopera cel putin jumatate din ingrediente). Si la retetele fara numar de portii, unde per portie nu se aplica. Randul de macro la 100 g ramane cum era.
+- **Etichete:** sectiunea ramane deschisa dupa ce bifezi, ca sa poti bifa mai multe la rand; se inchide cand o inchizi tu sau deschizi alta reteta.
+- **Jurnal devine Notite** pe pagina retetei (stele, de cate ori ai gatit-o, ce ai scris), ca sa nu se confunde cu Meniu > Jurnal. Eticheta dubla "Notite" de deasupra campului a disparut. Textele care vorbeau de "jurnalul" retetei (cos, stergere carte, dubluri) spun acum "notitele".
+- Teste noi in `teste/test_biblioteca.js`.
+
 ## 5.4.0
 - **Registrul migrarilor (din auditul QA, C3):** cele 14 schimbari de date facute o singura data la pornire (Thermomix in aparate, etichete noi, produsele de baza in debara, curatenia 5.0.0, murate pe marcajul "altceva", mutarea jurnalului vechi, curatenia sincronizarii si altele) au acum un nume intr-o singura lista, `MIGS`, iar cele facute stau intr-o singura cheie, `rmig`, in loc de 14 steaguri separate (`rdef1`-`rdef4`, `rtg5`, `rtv3`, `rgrp2`, `rcl3`, `rcl4`, `rv5f`, `rv516`, `rv5c`, `rv52`, `rsyv`). La prima pornire steagurile vechi se muta in `rmig` si se sterg; nimic nu ruleaza din nou si datele tale nu se schimba.
 - O migrare noua se scrie cu `mig("nume", ...)`; numele trebuie sa fie in `MIGS`, altfel nu ruleaza.

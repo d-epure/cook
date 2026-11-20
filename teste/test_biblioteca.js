@@ -114,4 +114,32 @@ await (async()=>{
  [...w2.document.querySelectorAll("#bpl .bpill")].find(b=>b.textContent==="Din debara").click();
  eq(/Debaraua e goala/.test(w2.document.querySelector("#bpl").textContent),true,"debara goala: mesaj in loc de rezultate fara explicatie");
  })();
+await (async()=>{
+ console.log("\n## "+'5.5.0: ecranul retetei - Inapoi sus, cosul in Mai multe actiuni, micro la 100 g, etichete deschise, Notite.');
+ const w=await boot({},{names:["BOOK","show","drawBook","openBook"]}),T=w.__t,D=w.document,$=q=>D.querySelector(q);
+ w.Element.prototype.scrollIntoView=()=>{};
+ const r={sursa:"Test 550",nr:1,titlu:"Supa test 550",categorie:"Supe",portii:4,ingrediente:[{c:800,u:"g",n:"rosii"},{c:1,u:"",n:"ceapa"},{c:2,u:"linguri",n:"ulei de masline"}],pasi_carte:["Fierbe."]};
+ T.BOOK.unshift(r);T.show("carti");T.drawBook();
+ eq([$("#bsearch").hidden,$("#bnewrow").hidden],[false,false],"lista de rezultate: cautarea se vede");
+ T.openBook(0,4,"#bres");
+ const bar=$("#bres .bv > .mb12");
+ eq([$("#bsearch").hidden,$("#bnewrow").hidden,bar.querySelector("button").hasAttribute("data-bback")],[true,true,true],"reteta deschisa: cautarea ascunsa, primul buton e Inapoi");
+ eq([!!bar.querySelector("[data-cosb]"),!!$("#bres details.mre [data-cosb]")],[false,true],"cosul de gunoi e in Mai multe actiuni, nu pe randul de sus");
+ const sm=[...D.querySelectorAll("#bres details.mmic>summary")].map(x=>x.textContent);
+ eq(sm,["Micronutrienti per portie","Micronutrienti la 100 g"],"micro la 100 g imediat sub cel per portie");
+ const tg=()=>$("#bres details[data-tgd]");
+ eq(tg().open,false,"etichetele pornesc inchise");
+ tg().open=true;let cb=[...tg().querySelectorAll("input[data-tgb]")].find(x=>!x.checked&&!x.disabled);cb.checked=true;cb.dispatchEvent(new w.Event("change",{bubbles:true}));
+ eq(tg().open,true,"dupa o bifa sectiunea Etichete ramane deschisa");
+ cb=[...tg().querySelectorAll("input[data-tgb]")].find(x=>!x.checked&&!x.disabled);cb.checked=true;cb.dispatchEvent(new w.Event("change",{bubbles:true}));
+ eq([tg().open,normT(r.etichete).length],[true,2],"a doua bifa: tot deschisa, doua etichete salvate");
+ const jr=$("#bres .jr .jrh b").textContent;
+ eq([jr,/Jurnal/.test($("#bres .jr").textContent)],["Notite",false],"caseta de jos se numeste Notite, fara Jurnal");
+ $("#bres [data-bback]").click();
+ eq([$("#bsearch").hidden,$("#bnewrow").hidden],[false,false],"inapoi la rezultate: cautarea revine");
+ const r2=Object.assign({},r,{titlu:"Fara portii 550",nr:2,portii:null,pna:1});T.BOOK.unshift(r2);T.openBook(0,null,"#bres");
+ eq([...D.querySelectorAll("#bres details.mmic>summary")].map(x=>x.textContent),["Micronutrienti la 100 g"],"fara portii: doar micro la 100 g");
+ eq(tg().open,false,"alta reteta: etichetele pornesc din nou inchise");
+ function normT(a){return(a||[]).filter(Boolean)}
+})();
  done()})();
