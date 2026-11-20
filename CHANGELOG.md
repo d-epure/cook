@@ -2,6 +2,17 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.6.0
+- **Biblioteca la deschidere:** nu mai arata retete; apare numarul total si indemnul "Cauta un ingredient sau un nume, ori alege o pilula". Lista apare dupa o cautare, o pilula sau un filtru si dispare cand le scoti.
+- **10 rezultate:** cautarea arata primele 10 retete; "Arata mai multe" aduce inca 10 (inainte 60).
+- **Titlul retetei e link:** in rezultate, atingi titlul si se deschide reteta (Deschide ramane).
+- **"Mai e si in":** fiecare carte pe randul ei, aliniate sub eticheta, fara spatiu in plus.
+- **Gatita 1 data:** "gatita 1 data", apoi "gatita de 3 ori", "gatita de 20 de ori" (in rezultate si in Notite).
+- **Inapoi sus:** buton rotund cu sageata in dreapta jos, pe orice pagina, apare dupa ce cobori mai mult de un ecran.
+- **Aceeasi sageata peste tot:** toate sectiunile pliate (Filtre, Macro, Micronutrienti, Etichete, Cum functioneaza Debaraua, Setari) si zilele din Meniu au acelasi triunghi, de aceeasi marime si culoare, care se roteste la deschidere. Inainte, Macro folosea sageata browserului si Micronutrienti alt caracter, de alta marime. Meniurile cu "..." raman fara sageata.
+- **Debara pe categorii pliabile:** fiecare categorie (Condimente, Cereale...) se strange si se deschide; pornesc stranse. La cautare se deschid cele cu rezultate; cand adaugi un produs, categoria lui se deschide; o categorie deschisa ramane deschisa cat lucrezi in Debara.
+- Teste: noi verificari in `teste/test_biblioteca.js`; doua teste vechi cauta acum ceva inainte sa citeasca lista (lista nu mai apare goala de filtre).
+
 ## 5.5.0
 Ecranul retetei din Biblioteca, dupa testarea pe telefon.
 - **Sus, direct Inapoi:** cat e deschisa o reteta, cautarea (campul, pilulele, Lipsesc cel mult, Filtre, Parcurge retetele de verificat) si randul cu Reteta noua / Idei cu AI se ascund; primul buton e Inapoi la rezultate. Revin cand te intorci la rezultate.

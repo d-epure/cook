@@ -21,12 +21,12 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
   eq(Object.values(JSON.parse(L.getItem("rfd"))).map(x=>x.n).sort(),["Telemea light","cub zahar"],"alimentele tale care dubleaza Info (estimate de AI) se sterg; restul raman");
   eq(T.AP.find(a=>a.id==="cuptor").on,1,"cuptorul clasic e activ");
   // Sanda Marin fara ingrediente: ascunse, cu exceptia celor folosite
-  T.show("carti");T.drawBook();let tx=D.querySelector("#bres").textContent;
+  T.show("carti");D.querySelector("#bq").value="reteta veche";T.drawBook();let tx=D.querySelector("#bres").textContent;
   eq([/Reteta veche 1/.test(tx),/Reteta veche 2/.test(tx),T.smN()],[false,true,2],"Sanda Marin fara ingrediente nu apar in lista; cea gatita apare");
   L.setItem("rsmall","1");T.drawBook();eq(/Reteta veche 1/.test(D.querySelector("#bres").textContent),true,"Setari > Carti le poate arata");L.setItem("rsmall","");
   // pilule Ale mele si Cos
   const pill=t=>[...D.querySelectorAll("#bpl .bpill")].find(b=>b.textContent.startsWith(t));
-  pill("Ale mele").click();tx=D.querySelector("#bres").textContent;eq([/Gofre/.test(tx),/Mere caramelizate/.test(tx),/Reteta veche/.test(tx)],[true,true,false],"Ale mele: scrise de tine si salvate din AI");
+  D.querySelector("#bq").value="";pill("Ale mele").click();tx=D.querySelector("#bres").textContent;eq([/Gofre/.test(tx),/Mere caramelizate/.test(tx),/Reteta veche/.test(tx)],[true,true,false],"Ale mele: scrise de tine si salvate din AI");
   pill("Ale mele").click();pill("Cos").click();tx=D.querySelector("#bres").textContent;eq([/In cos/.test(tx),!!D.querySelector("#bres [data-crest]"),!!D.querySelector("#bres [data-cdel] svg")],[true,true,true],"Cos: restaureaza sau sterge (cos de gunoi)");
   D.querySelector("#bres [data-crest]").click();await sleep(50);eq([T.BOOK.find(r=>r.titlu==="In cos").cos,pill("Cos").classList.contains("dis")],[undefined,true],"restaurata; Cos (0) e gri");
   eq(await T.v5Run(),0,"a doua rulare nu schimba nimic");

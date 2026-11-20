@@ -252,7 +252,7 @@ nav[hidden],#nav button[hidden]{display:none}
 /* meniu 2.18.0 */
 .mhh{margin:0;flex:1 1 auto;min-width:0}
 .mtog{display:flex;align-items:center;gap:8px;width:100%;margin:0;padding:6px 0;background:none;border:0;box-shadow:none;color:inherit;font:inherit;font-weight:700;font-size:var(--fs-l);text-align:left;min-height:var(--h-n)}
-.mtog .chev{color:var(--mut);width:1em}
+.mtog .chev{margin-right:0}
 .mday .mh .ib{margin:0;min-height:var(--h-n);min-width:40px;padding:4px 8px}
 .mtgi{padding-top:6px;border-top:1px solid var(--line);font-size:var(--fs-s)}
 #mw .row.mseg{flex-direction:row;flex-wrap:nowrap}
@@ -530,10 +530,7 @@ button.lnk{background:none;border:0;padding:0;font:inherit;font-weight:700;text-
 @media (max-width:700px){.me [data-mgat]{margin-left:44px}}
 /* 4.22.3: Macro si Micronutrienti din Meniu: aceeasi cutie, acelasi fundal, cu sageata care arata ca se deschid */
 details.mmic{margin-top:10px;padding:2px 12px;background:var(--soft);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-s);font-size:var(--fs-s)}
-details.mmic>summary{list-style:none;cursor:pointer;font-weight:600;padding:6px 0}
-details.mmic>summary::-webkit-details-marker{display:none}
-details.mmic>summary::before{content:"\25B8";display:inline-block;width:1.1em;color:var(--pri)}
-details.mmic[open]>summary::before{content:"\25BE"}
+details.mmic>summary{cursor:pointer;font-weight:600;padding:6px 0}
 details.mmic[open]>summary{margin-bottom:4px}
 /* 4.23.1: previzualizare camera pentru scanare */
 .bcv video{width:100%;max-height:260px;border-radius:var(--r-s);background:#000;object-fit:cover;display:block}
@@ -573,3 +570,24 @@ button.ico svg{pointer-events:none}
 .jdot{width:10px;height:10px;border-radius:50%;background:var(--line);flex:0 0 auto}
 .jdot.jok{background:var(--pri)}.jdot.jwn{background:#c98a1b}
 mark{background:#f3e3a8;color:inherit;padding:0 1px;border-radius:2px}
+
+/* 5.6.0: aceeasi sageata de extindere peste tot (sectiuni pliate si zilele din Meniu): triunghi de aceeasi marime si culoare, se roteste la deschidere. Meniurile cu "..." (pmenu, lmore) nu au sageata. */
+details:not(.pmenu):not(.lmore)>summary{list-style:none}
+details:not(.pmenu):not(.lmore)>summary::-webkit-details-marker{display:none}
+details:not(.pmenu):not(.lmore)>summary::before,.mtog .chev{content:"";flex:0 0 auto;display:inline-block;width:0;height:0;border-style:solid;border-width:.32rem 0 .32rem .52rem;border-color:transparent transparent transparent var(--pri);margin-right:.55rem;vertical-align:middle;transition:transform .15s}
+details:not(.pmenu):not(.lmore)[open]>summary::before,.mtog[aria-expanded="true"] .chev{transform:rotate(90deg)}
+/* 5.6.0: titlul retetei din rezultate deschide reteta */
+.tlk{background:none;border:0;box-shadow:none;padding:0;margin:0;min-height:0;width:auto;font:inherit;color:inherit;text-align:left;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.tlk:hover{color:var(--pri)}
+/* 5.6.0: "Mai e si in" - fiecare carte pe randul ei, aliniate sub eticheta */
+.alsoin .lk{display:block;padding:4px 0;min-height:0;text-align:left}
+.bhint{margin:4px 2px}
+/* 5.6.0: Debara, categorii pliabile */
+details.pcat>summary{display:flex;align-items:center;min-height:var(--h-n);padding:2px 0}
+details.pcat>summary h3{margin:0;display:inline}
+details.pcat[open]>summary{margin-bottom:6px}
+details.pcat{padding:4px 12px}
+/* 5.6.0: Inapoi sus */
+.totop{position:fixed;right:16px;bottom:calc(20px + env(safe-area-inset-bottom,0));z-index:7;width:48px;height:48px;min-height:0;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);color:var(--pri);border:1px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.16)}
+.totop[hidden]{display:none}
+@media(max-width:700px){.totop{bottom:calc(76px + env(safe-area-inset-bottom,0))}}

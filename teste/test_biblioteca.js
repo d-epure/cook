@@ -46,7 +46,7 @@ await (async()=>{
  pill("Din debara").click();eq([D.querySelector("#bd").value,pill("Din debara").classList.contains("on")],["0",true],"'Din debara' apasa pe filtrul existent Din debara");pill("Din debara").click();eq(D.querySelector("#bd").value,"","si il scoate la a doua apasare");
  {const b0=cnt();pill("Favorite").click();const nf=cnt();eq([pill("Favorite").classList.contains("on"),nf<=b0,[...D.querySelectorAll("#bs option")].some(o=>/Favorite/.test(o.textContent))],[true,true,false],"4.19.0: Favorite e doar pilula; lista Carte nu mai are optiunea");pill("Favorite").click();eq([cnt(),pill("Favorite").classList.contains("on")],[b0,false],"a doua apasare il scoate");}
  {const r0=T.BOOK.find(r=>!r.cos&&!r.nou);if(!T.isFav(T.bKey(r0)))T.toggleFav(T.bKey(r0));pill("Favorite").click();const sb=D.querySelector("#bs");const only=cnt();sb.value=r0.sursa||"necunoscuta";sb.dispatchEvent(new w.Event("change",{bubbles:true}));const same=cnt();const other=[...sb.options].map(o=>o.value).find(v=>v&&v!==sb.value);sb.value=other;sb.dispatchEvent(new w.Event("change",{bubbles:true}));const none=cnt();eq([only>=1,same===only,none===0],[true,true,true],"Favorite se combina cu filtrul Carte (favorite dintr-o singura carte)");sb.value="";sb.dispatchEvent(new w.Event("change",{bubbles:true}));pill("Favorite").click();T.toggleFav(T.bKey(r0));}
- eq(/aprox\. \d+ min/.test(D.querySelector("#bres").textContent),true,"timpul apare pe carduri");
+ pill("Sub 30 min").click();eq(/aprox\. \d+ min/.test(D.querySelector("#bres").textContent),true,"timpul apare pe carduri");pill("Sub 30 min").click();
  // --- fara cheie API
  eq([D.body.classList.contains("nokey"),D.querySelector("#v-carti").classList.contains("hidden"),D.querySelector("#v-idei").classList.contains("hidden")],[true,false,false].map((x,i)=>i===2?true:x),"fara cheie: marcaj pe pagina, porneste in Biblioteca");
  L.setItem("rk","sk-ant-test");T.keyUpd();eq(D.body.classList.contains("nokey"),false,"cu cheie, marcajul dispare");L.removeItem("rk");T.keyUpd();
@@ -141,5 +141,27 @@ await (async()=>{
  eq([...D.querySelectorAll("#bres details.mmic>summary")].map(x=>x.textContent),["Micronutrienti la 100 g"],"fara portii: doar micro la 100 g");
  eq(tg().open,false,"alta reteta: etichetele pornesc din nou inchise");
  function normT(a){return(a||[]).filter(Boolean)}
+})();
+await (async()=>{
+ console.log("\n## "+'5.6.0: Biblioteca goala la deschidere, 10 rezultate, titlul deschide reteta, "gatita 1 data", Debara pliabila, Inapoi sus.');
+ const w=await boot({},{names:["BOOK","show","drawBook","ckTxt","drawPantry","addPan"]}),T=w.__t,D=w.document,$=q=>D.querySelector(q);
+ w.Element.prototype.scrollIntoView=()=>{};
+ T.show("carti");T.drawBook();
+ eq([$("#bres .card"),/Cauta un ingredient/.test($("#bres").textContent),/^\d+ retete/.test($("#bcnt").textContent)],[null,true,true],"la deschidere: nicio reteta, doar indemnul si numarul total");
+ const pill=t=>[...D.querySelectorAll("#bpl .bpill")].find(b=>b.textContent===t);
+ pill("Pranz / Cina").click();
+ eq(D.querySelectorAll("#bres .card button.tlk").length,10,"o pilula aleasa: primele 10 retete");
+ $("#bres [data-bmore]").click();eq(D.querySelectorAll("#bres .card button.tlk").length,20,"Arata mai multe: inca 10");
+ $("#bres .card button.tlk").click();eq([!!$("#bres [data-bback]"),$("#bsearch").hidden],[true,true],"titlul retetei o deschide");
+ $("#bres [data-bback]").click();pill("Pranz / Cina").click();eq($("#bres .card"),null,"pilula scoasa: lista dispare din nou");
+ eq([T.ckTxt(1),T.ckTxt(3),T.ckTxt(19),T.ckTxt(20),T.ckTxt(101)],["1 data","de 3 ori","de 19 ori","de 20 de ori","de 101 ori"],"gatita 1 data / de 3 ori / de 20 de ori");
+ T.show("debara");T.drawPantry();const cats=[...D.querySelectorAll("#pl details.pcat")];
+ eq([cats.length>0,cats.every(c=>!c.open)],[true,true],"Debara: categoriile sunt pliabile si pornesc stranse");
+ $("#pin").value="sare";$("#pin").dispatchEvent(new w.Event("input"));
+ eq([...D.querySelectorAll("#pl details.pcat")].every(c=>c.open),true,"la cautare, categoriile gasite sunt deschise");
+ $("#pin").value="";$("#pin").dispatchEvent(new w.Event("input"));
+ const c0=$("#pl details.pcat");c0.open=true;c0.dispatchEvent(new w.Event("toggle"));T.drawPantry();
+ eq($("#pl details.pcat").open,true,"o categorie deschisa ramane deschisa dupa redesenare");
+ eq(!!$("#totop"),true,"butonul Inapoi sus exista");
 })();
  done()})();
