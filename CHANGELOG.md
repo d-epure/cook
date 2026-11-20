@@ -2,6 +2,17 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.7.1
+- **Setari > Despre:** in locul istoricului modificarilor (util doar pentru dezvoltare) apare, pe scurt, ce face aplicatia: Retete, Meniu, Cumparaturi, Debara, Mai mult si unde stau datele tale. Versiunea ramane afisata.
+- CHANGELOG.md si README.md raman doar in repo; aplicatia nu le mai citeste.
+
+## 5.7.0
+- **Gatire fara pilule:** cele 7 grupe (Baze, Timpi si temperaturi, Pastrare, Fara reteta, Leguminoase si vegetarian, Romaneasca, Sfaturi) sunt acum sectiuni pliabile, cu numarul de teme alaturi; temele din fiecare grupa sunt si ele pliabile, cu aceeasi sageata. Pilulele raman doar pentru filtre (Biblioteca).
+- Pornesc toate stranse; poti deschide mai multe grupe; in aceeasi grupa e deschisa o singura tema odata. O grupa deschisa ramane deschisa si dupa o cautare.
+- **Cautarea** arata doar grupele cu teme potrivite, deschise, cu temele potrivite deschise si cuvantul evidentiat.
+- Curatenie: scoasa clasa CSS veche `.gg` (titluri de grupa nefolosite).
+- Teste actualizate (`teste/test_v5.js`, `teste/test_meniu_cumparaturi.js`).
+
 ## 5.6.1
 - **Micronutrientii revin in Meniu:** sub Macro, la fiecare zi deschisa, inclusiv la zilele viitoare, ca sa vezi fibrele, fierul, calciul si restul pe masura ce construiesti meniul, nu doar dupa ce ai mancat. Calculul e acelasi ca in Jurnal (dupa portiile din fiecare masa, cu alimentele din Info). Fusesera mutate doar in Jurnal in 5.1.0, cand Jurnalul era separat de Meniu; de la 5.2.0 Jurnalul se calculeaza din Meniu, deci motivul nu mai exista.
 - Jurnalul pastreaza micronutrientii zilei alese si media pe 7 zile.

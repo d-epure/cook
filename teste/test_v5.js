@@ -108,11 +108,15 @@ const dk=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+Strin
  console.log("\n## "+'5.3.0: Gatire cu cautare si 7 grupe');
  await (async()=>{
   const w=await boot({},{wait:500,names:["show"],offline:true});const T=w.__t,D=w.document,G=w.NUTRI.G;
-  T.show("gatire");const ch=[...D.querySelectorAll("#gch [data-gg]")];
-  eq([G.length,ch.length,D.querySelectorAll("#gres details").length],[7,7,0],"la deschidere: cautarea si 7 grupe, fara lista lunga");
-  ch[1].click();eq(D.querySelectorAll("#gres details").length,G[1][1].length,"o grupa arata doar temele ei");
+  T.show("gatire");const ch=[...D.querySelectorAll("#gres details.gcat")];
+  eq([G.length,ch.length,ch.filter(d=>d.open).length,D.querySelectorAll("#gch").length],[7,7,0,0],"la deschidere: cautarea si 7 grupe pliabile, toate stranse, fara pilule");
+  eq([ch[1].querySelectorAll("details.gd").length,ch[1].querySelector("details.gd").open],[G[1][1].length,false],"o grupa are temele ei, tot pliabile");
+  ch[1].open=true;ch[1].dispatchEvent(new w.Event("toggle"));const ts=ch[1].querySelectorAll("details.gd");ts[0].open=true;ts[0].dispatchEvent(new w.Event("toggle"));ts[1].open=true;ts[1].dispatchEvent(new w.Event("toggle"));
+  eq([ts[0].open,ts[1].open],[false,true],"o singura tema deschisa odata in grupa");
   const q=D.querySelector("#gq");q.value="congelator";q.dispatchEvent(new w.Event("input",{bubbles:true}));
   eq([D.querySelectorAll("#gres details[open]").length>0,!!D.querySelector("#gres mark")],[true,true],"cautarea arata temele potrivite, deschise, cu cuvantul evidentiat");
+  eq([...D.querySelectorAll("#gres details.gcat")].every(d=>d.open&&d.querySelector("details.gd")),true,"la cautare: doar grupele cu teme potrivite, deschise");
+  q.value="";q.dispatchEvent(new w.Event("input",{bubbles:true}));eq(D.querySelector("#gres details.gcat[data-gg='1']").open,true,"dupa cautare, grupa deschisa de tine ramane deschisa");
   const all=G.flatMap(g=>g[1].flatMap(t=>t[1])).join("\n");
   eq([/Carne tocata \(vita, porc, pui\): 71/.test(all),/45-90 de minute/.test(all),(all.match(/Dezgheata in frigider/g)||[]).length,/Se tine 5 zile la frigider sau 3 luni/.test(all)],[false,false,1,false],"fara neconcordante: tocatura de pasare 74, un singur timp pentru naut, o singura regula de dezghetare, 3-4 zile la frigider");
   w.close()})();

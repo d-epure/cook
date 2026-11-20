@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=5.6.1">
+<link rel="stylesheet" href="style.css?v=5.7.1">
 
 </head>
 <body>
@@ -111,7 +111,14 @@
  <div class="card" id="dbcard" data-sg="bkdb"><h2>Sincronizare Dropbox</h2><div id="dbbox"></div></div>
  <div class="card" id="mxcard" data-sg="biblioteca"><h2>Macro lipsa</h2><div id="mxl"></div></div>
  <div class="card" id="bscard" data-sg="biblioteca"><h2>Carti</h2><label for="bfile">Incarca baza de retete (retete.json)</label><input id="bfile" type="file" accept=".json,application/json"><div id="bm" class="muted mt8 mb12" ></div><div id="bpv"></div><label for="bpatch">Aplica un fisier de corectii (portii, marcaje)</label><input id="bpatch" type="file" accept=".json,application/json"><div id="bpm" class="muted mt8 mb12" ></div><div id="bpp"></div><div id="bsn"></div><div id="bdup"></div><p class="muted">Stergerea afecteaza doar retetele incarcate in Biblioteca mea. Aparatele, retetele salvate si cheia API raman. Fisierul tau retete.json ramane neatins.</p></div>
- <div class="card" id="abcard" data-sg="despre"><h2>Despre</h2><p id="abv" class="mt0 mb8"></p><details class="mre" id="chgd"><summary>Pentru dezvoltare: istoric modificari</summary><pre id="chg" class="chg" tabindex="0"></pre></details></div>
+ <div class="card" id="abcard" data-sg="despre"><h2>Despre</h2><p id="abv" class="mt0 mb8"></p><p class="mt0 mb8">Iti tii retetele intr-un singur loc, iti planifici mesele si stii ce ai de cumparat.</p><ul class="abl">
+<li><b>Retete:</b> cauti dupa ingrediente sau nume in retetele tale si in cartile incluse, filtrezi (mic dejun, sub 30 min, din debara), scrii retete proprii. Fiecare reteta are macro si micronutrienti, notite si mod gatit pas cu pas.</li>
+<li><b>Meniu:</b> pui retete pe zile si mese si vezi macro si micronutrienti pe zi, fata de tinta ta. Meal prep pentru ce gatesti in avans, Jurnal pentru ce ai mancat.</li>
+<li><b>Cumparaturi:</b> lista se face din meniu si din retete, tinand cont de ce ai deja in Debara; o trimiti din telefon.</li>
+<li><b>Debara:</b> ce ai acasa; Retete iti arata ce poti gati cu ea.</li>
+<li><b>Mai mult:</b> ghid de nutritie (Ingrediente, Masuri, Gatire) si Setari.</li>
+<li><b>Datele tale</b> stau in acest browser. Fa backup in fisier sau in Dropbox ca sa nu le pierzi. Ideile si adaptarile cu AI cer o cheie API; restul merge fara.</li>
+</ul></div>
  </div></div>
 </section>
 </main>
@@ -121,7 +128,7 @@
 <button id="totop" type="button" class="totop" aria-label="Inapoi sus" title="Inapoi sus" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=5.6.1"></script>
-<script src="app.js?v=5.6.1"></script>
+<script src="nutri.js?v=5.7.1"></script>
+<script src="app.js?v=5.7.1"></script>
 </body>
 </html>

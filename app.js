@@ -2058,7 +2058,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="5.6.1";
+const APP_V="5.7.1";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
@@ -2148,10 +2148,8 @@ let _ls=null;
 function sRender(){const e=sEff();if(SUB&&SUB!==_ls)STAB=tabOf(SUB);_ls=SUB;$("#v-setari").classList.toggle("sm-det",!!SUB);renderSnav(e);
  document.querySelectorAll("#v-setari [data-sg]").forEach(c=>c.classList.toggle("hidden",!(e&&SGMAP[e].includes(c.dataset.sg))));
  $("#sbt").textContent=e?STITLE[e]:"";document.querySelectorAll("#sdet .card h2").forEach(x=>x.classList.remove("dup"));if(SUB){const cs=document.querySelectorAll("#sdet .card[data-sg]:not(.hidden)"),x=cs.length===1&&cs[0].querySelector(":scope>h2");if(x)x.classList.add("dup")}
- if(e==="alimente")drawFoods();if(e==="despre")loadChg()}
-let CHG=null;
-function loadChg(){$("#abv").textContent="Cartea mea de retete, versiunea "+APP_V+".";const el=$("#chg");if(CHG!==null){el.textContent=CHG;return}el.textContent="Se incarca...";
- fetch("CHANGELOG.md").then(r=>r.ok?r.text():Promise.reject()).then(t=>{CHG=t.slice(0,60000);el.textContent=CHG}).catch(()=>{CHG=null;el.textContent="Istoricul complet e in fisierul CHANGELOG.md din pachet (aici nu se poate citi cand deschizi aplicatia ca fisier unic)."})}
+ if(e==="alimente")drawFoods();if(e==="despre")$("#abv").textContent="Cartea mea de retete, versiunea "+APP_V+"."}
+/* 5.7.1: Despre arata ce face aplicatia (in index.html), nu istoricul modificarilor; CHANGELOG.md si README.md raman doar in repo */
 $("#snav").onclick=e=>{const tt=e.target.closest("[data-tab]");if(tt){setTab(tt.dataset.tab);renderSnav(sEff());return}const b=e.target.closest("[data-s]");if(b){SUB=TABOF(b.dataset.s);sRender();window.scrollTo(0,0)}};
 $("#sdet").addEventListener("change",()=>renderSnav(sEff()));$("#sdet").addEventListener("click",()=>setTimeout(()=>renderSnav(sEff()),80));
 $("#sbk").onclick=()=>{setHome();window.scrollTo(0,0)};
@@ -2434,22 +2432,23 @@ function drawMas(){const q=norm($("#mq").value||"").trim().split(/\s+/).filter(B
  const v=x=>x==null?"-":x;
  $("#ml").innerHTML=L.length?`<div class="mh2"><span>Aliment</span><span>Lingura</span><span>Lingurita</span><span>Cana</span></div>`+L.map(m=>`<div class="mt2"><span><b>${esc(m[0])}</b></span><span>${v(m[2][0])}</span><span>${v(m[2][1])}</span><span>${v(m[2][2])}</span></div>`).join(""):`<p class="muted">Nu am gasit niciun aliment.</p>`}
 $("#mq").oninput=drawMas;
-/* 5.3.0: Gatire cu cautare si 7 grupe: la deschidere doar cautarea si grupele; o grupa arata temele ei (una deschisa odata); cautarea arata temele potrivite, deschise, cu cuvantul evidentiat */
-let GQ="",GG=-1;
-function drawGat(){const el=$("#gl");if(el.dataset.k!=="2"){el.dataset.k="2";
-  el.innerHTML=`<input id="gq" type="search" placeholder="cauta: orez, ou, congelare, naut" aria-label="Cauta in Gatire" autocomplete="off"><div id="gch" class="bpl mt8" role="group" aria-label="Grupe"></div><div id="gres" class="mt8"></div>`;
+/* 5.3.0: Gatire cu cautare si 7 grupe. 5.7.0: grupele sunt sectiuni pliabile (nu pilule, pilulele sunt pentru filtre), cu temele ca subsectiuni pliabile; o tema deschisa odata in grupa ei; cautarea arata doar grupele cu teme potrivite, deschise, cu cuvantul evidentiat */
+let GQ="";const GOPEN=new Set();
+function drawGat(){const el=$("#gl");if(el.dataset.k!=="3"){el.dataset.k="3";
+  el.innerHTML=`<input id="gq" type="search" placeholder="cauta: orez, ou, congelare, naut" aria-label="Cauta in Gatire" autocomplete="off"><div id="gres" class="mt8"></div>`;
   $("#gq").oninput=e=>{GQ=e.target.value;gDraw()};
-  $("#gch").onclick=e=>{const b=e.target.closest("[data-gg]");if(!b)return;const n=+b.dataset.gg;GG=GG===n&&!qWords(GQ).length?-1:n;if(qWords(GQ).length){GQ="";$("#gq").value=""}gDraw()};
-  $("#gres").addEventListener("toggle",e=>{if(e.target.open&&!qWords(GQ).length)document.querySelectorAll("#gres details.gd").forEach(d=>{if(d!==e.target)d.open=false})},true)}
+  $("#gres").addEventListener("toggle",e=>{const t=e.target;if(qWords(GQ).length)return;
+   if(t.matches("details.gcat")){t.open?GOPEN.add(+t.dataset.gg):GOPEN.delete(+t.dataset.gg);return}
+   if(t.matches("details.gd")&&t.open)t.parentElement.querySelectorAll(":scope>details.gd").forEach(d=>{if(d!==t)d.open=false})},true)}
  gDraw()}
 function gDraw(){const w=qWords(GQ),rx=w.length?new RegExp("("+w.map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")","gi"):null;
  const hl=t=>rx?esc(t).replace(rx,"<mark>$1</mark>"):esc(t),hit=(n,r)=>w.every(x=>norm(n+" "+r.join(" ")).includes(x));
- $("#gch").innerHTML=NUTRI.G.map(([g,t],i)=>`<button type="button" class="bpill${!w.length&&GG===i?" on":""}" data-gg="${i}" aria-pressed="${!w.length&&GG===i}">${esc(g)} (${t.length})</button>`).join("");
- const det=(n,r,op,g)=>`<details class="gd"${op?" open":""}><summary>${hl(n)}${g?` <span class="muted" style="font-weight:400">- ${esc(g)}</span>`:""}</summary><ul>${r.map(x=>`<li>${hl(x)}</li>`).join("")}</ul></details>`;
- let h="";
- if(w.length){const L=[];NUTRI.G.forEach(([g,t])=>t.forEach(([n,r])=>{if(!hit(n,r))return;const tn=w.every(x=>norm(n).includes(x)),ln=r.filter(x=>w.some(y=>norm(x).includes(y)));L.push(det(n,tn||!ln.length?r:ln,true,g))}));h=L.length?L.join(""):`<p class="muted">Nimic gasit pentru "${esc(GQ.trim())}".</p>`}
- else if(GG>=0&&NUTRI.G[GG])h=NUTRI.G[GG][1].map(([n,r])=>det(n,r,false,"")).join("");
- $("#gres").innerHTML=h}
+ const det=(n,r,op)=>`<details class="gd"${op?" open":""}><summary>${hl(n)}</summary><ul>${r.map(x=>`<li>${hl(x)}</li>`).join("")}</ul></details>`;
+ const h=NUTRI.G.map(([g,t],i)=>{let L;
+  if(w.length){L=[];t.forEach(([n,r])=>{if(!hit(n,r))return;const tn=w.every(x=>norm(n).includes(x)),ln=r.filter(x=>w.some(y=>norm(x).includes(y)));L.push(det(n,tn||!ln.length?r:ln,true))});if(!L.length)return""}
+  else L=t.map(([n,r])=>det(n,r,false));
+  return`<details class="gcat" data-gg="${i}"${w.length||GOPEN.has(i)?" open":""}><summary>${esc(g)} <span class="muted">${w.length?L.length:t.length}</span></summary><div class="ggb">${L.join("")}</div></details>`}).join("");
+ $("#gres").innerHTML=h||`<p class="muted">Nimic gasit pentru "${esc(GQ.trim())}".</p>`}
 
 /* ===== 2.32.0: numar de portii confirmat separat, "-" = nu se aplica, fisier de corectii ===== */
 function pParse(v){v=String(v==null?"":v).trim();if(v==="-"||v==="\u2013")return{na:true};if(v==="")return{n:null};if(!/^\d{1,3}$/.test(v)||+v<1||+v>200)return{bad:true};return{n:+v}}
