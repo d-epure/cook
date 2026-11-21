@@ -173,4 +173,12 @@ await (async()=>{
  const mic=D.querySelector('#mw details.mmic[data-mico="n'+d+'"]');
  eq([!!mic,mic&&mic.querySelector("summary").textContent],[true,"Micronutrienti"],"zi viitoare din Meniu: Micronutrienti sub Macro");
 })();
+await (async()=>{
+ console.log("\n## "+'5.8.0: macro pe card din Info (per portie / la 100 g / incomplet), Cum folosesc aplicatia, Despre pe sectiuni.');
+ const w=await boot({},{names:["BOOK","show","drawBook","nutCard"]}),T=w.__t,D=w.document,$=q=>D.querySelector(q);
+ const a={titlu:"A",portii:2,ingrediente:[{c:200,u:"g",n:"orez"},{c:100,u:"g",n:"zahar"}]},b={titlu:"B",portii:null,ingrediente:[{c:200,u:"g",n:"orez"},{c:100,u:"g",n:"zzzxyz"}]},c={titlu:"C",portii:2,ingrediente:[{c:200,u:"g",n:"qqq"},{c:100,u:"g",n:"zzzxyz"},{c:1,u:"g",n:"orez"}]};
+ eq([/per portie$/.test(T.nutCard(a)),/la 100 g .*incomplet/.test(T.nutCard(b)),/indisponibile: lipsesc 2 din 3/.test(T.nutCard(c))],[true,true,true],"card: per portie, la 100 g fara portii (cu incomplet), indisponibil sub jumatate");
+ T.show("carti");T.drawBook();$("#bres [data-howto]").click();
+ eq([!$("#v-setari").classList.contains("hidden"),D.querySelectorAll("#abcard details.abd").length],[true,6],"Cum folosesc aplicatia deschide Despre, cu 6 sectiuni pliabile");
+})();
  done()})();

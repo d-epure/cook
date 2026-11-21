@@ -347,14 +347,10 @@ await (async()=>{
   const w=await boot({rp:"[]",rbook:JSON.stringify([rec])},{wait:700,names:["macLocal","openBook","BOOK"],offline:true});const T=w.__t,D=w.document;
   const L=T.macLocal(rec,2,rec.ingrediente);
   eq([L.n,L.ok,L.miss.map(z=>z.x.n),L.nq.map(x=>x.n)],[3,2,["zzzxyz"],["scortisoara"]],"praf de sare se potriveste cu sare (nu mai cere conversie); fara cantitate e listat separat");
-  T.openBook(0,2,"#bres");const mcl=D.querySelector("#bres [data-mcl]");
-  if(!mcl){eq("lipsa buton","buton","butonul Recalculeaza/Calculeaza din Info exista")}else{
-   mcl.click();const txt=D.querySelector("#bres [data-macp]").textContent;
-   eq([/Fara date pentru 1 ingredient: zzzxyz/.test(txt),/Fara cantitate, nu intra in calcul: scortisoara/.test(txt),!!D.querySelector("#bres [data-mal]")],[true,true,true],"panoul listeaza ingredientele fara date si fara cantitate, plus butonul Este alt aliment");
-   D.querySelector("#bres [data-mal]").click();const inp=D.querySelector("#bres [data-mal-in]");inp.value="nume inexistent";D.querySelector("#bres [data-malok]").click();
-   eq(D.querySelector("#bres [data-merr]").hidden,false,"aliment inexistent: mesaj, nu se salveaza");
-   inp.value="Sare";D.querySelector("#bres [data-malok]").click();
-   eq(/Fara date pentru/.test(D.querySelector("#bres [data-macp]").textContent),false,"dupa asociere, ingredientul nu mai e fara date")}
+  T.openBook(0,2,"#bres");const nt=D.querySelector("#bres [data-nut]").textContent;
+  eq([!D.querySelector("#bres [data-mcl]"),/Informatii nutritionale/.test(nt),/Nu am in Info: zzzxyz \(2 din 3 ingrediente\)/.test(nt),/Fara cantitate, nu intra in calcul: scortisoara/.test(nt),D.querySelectorAll("#bres [data-nut] .ninc").length,!!D.querySelector("#bres [data-naiall][data-ai]")],[true,true,true,true,2,true],"5.8.0: Informatii nutritionale fara buton de recalcul, cu lipsa din Info, Cauta cu AI si eticheta incomplet la portie si la 100 g");
+  const r2=T.BOOK[0];r2.ingrediente=[{c:50,u:"g",n:"zzzxyz"},{c:50,u:"g",n:"qqqwww"},{c:200,u:"g",n:"orez"}];T.openBook(0,2,"#bres");
+  eq([/Nu pot calcula valorile/.test(D.querySelector("#bres [data-nut]").textContent),D.querySelectorAll("#bres [data-nut] .nuth").length],[true,0],"sub jumatate din ingrediente in Info: fara cifre");
   w.close()
  })();
  // --- 4.25.0: cadru de tintire + lanterna la cerere

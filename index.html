@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=5.7.1">
+<link rel="stylesheet" href="style.css?v=5.8.0">
 
 </head>
 <body>
@@ -111,14 +111,41 @@
  <div class="card" id="dbcard" data-sg="bkdb"><h2>Sincronizare Dropbox</h2><div id="dbbox"></div></div>
  <div class="card" id="mxcard" data-sg="biblioteca"><h2>Macro lipsa</h2><div id="mxl"></div></div>
  <div class="card" id="bscard" data-sg="biblioteca"><h2>Carti</h2><label for="bfile">Incarca baza de retete (retete.json)</label><input id="bfile" type="file" accept=".json,application/json"><div id="bm" class="muted mt8 mb12" ></div><div id="bpv"></div><label for="bpatch">Aplica un fisier de corectii (portii, marcaje)</label><input id="bpatch" type="file" accept=".json,application/json"><div id="bpm" class="muted mt8 mb12" ></div><div id="bpp"></div><div id="bsn"></div><div id="bdup"></div><p class="muted">Stergerea afecteaza doar retetele incarcate in Biblioteca mea. Aparatele, retetele salvate si cheia API raman. Fisierul tau retete.json ramane neatins.</p></div>
- <div class="card" id="abcard" data-sg="despre"><h2>Despre</h2><p id="abv" class="mt0 mb8"></p><p class="mt0 mb8">Iti tii retetele intr-un singur loc, iti planifici mesele si stii ce ai de cumparat.</p><ul class="abl">
-<li><b>Retete:</b> cauti dupa ingrediente sau nume in retetele tale si in cartile incluse, filtrezi (mic dejun, sub 30 min, din debara), scrii retete proprii. Fiecare reteta are macro si micronutrienti, notite si mod gatit pas cu pas.</li>
-<li><b>Meniu:</b> pui retete pe zile si mese si vezi macro si micronutrienti pe zi, fata de tinta ta. Meal prep pentru ce gatesti in avans, Jurnal pentru ce ai mancat.</li>
-<li><b>Cumparaturi:</b> lista se face din meniu si din retete, tinand cont de ce ai deja in Debara; o trimiti din telefon.</li>
-<li><b>Debara:</b> ce ai acasa; Retete iti arata ce poti gati cu ea.</li>
-<li><b>Mai mult:</b> ghid de nutritie (Ingrediente, Masuri, Gatire) si Setari.</li>
-<li><b>Datele tale</b> stau in acest browser. Fa backup in fisier sau in Dropbox ca sa nu le pierzi. Ideile si adaptarile cu AI cer o cheie API; restul merge fara.</li>
-</ul></div>
+ <div class="card" id="abcard" data-sg="despre"><h2>Despre</h2><p id="abv" class="mt0 mb8"></p><p class="mt0 mb8">Iti tii retetele intr-un singur loc, iti planifici mesele si stii ce ai de cumparat. Mai jos, pe scurt, ce face fiecare parte si cum se leaga intre ele.</p>
+<details class="abd"><summary>Retete</summary><ul class="abl">
+<li><b>Cautare:</b> scrii ingrediente sau un nume (ex: vita, cartofi). Pilulele de sub cautare filtreaza: Mic dejun, Pranz / Cina, Desert, Sub 30 min, Din debara, Favorite, Ale mele, Cos. Lista apare dupa ce cauti sau alegi ceva, cate 10 retete; "Arata mai multe" aduce inca 10.</li>
+<li><b>Din debara</b> arata ce poti gati cu ce ai acasa; "Lipsesc cel mult 0-3" spune cate ingrediente iti pot lipsi.</li>
+<li><b>Cardul retetei:</b> titlul sau Deschide deschid reteta; steaua o pune la Favorite. Caloriile de pe card sunt per portie (la 100 g cand reteta nu are numar de portii).</li>
+<li><b>Reteta deschisa:</b> sus Inapoi la rezultate, Favorita, Copiaza si Trimite. Mod gatit te duce pas cu pas; Adauga la meniu si Adauga la Meal prep o pun in planificare. In Mai multe actiuni: Editeaza reteta, adaptarea la aparatele tale si cosul de gunoi.</li>
+<li><b>Informatii nutritionale:</b> calculate din ingredientele retetei, cu datele din Info (Mai mult &gt; Ingrediente), per portie si la 100 g, fiecare cu micronutrientii lui. Daca un ingredient nu e in Info, apare cu rosu; "Cauta cu AI" ii cauta valorile si le pastreaza in Info, ca sa fie folosite la toate retetele. Cand lipsesc ingrediente, valorile au eticheta "incomplet"; cand lipsesc mai mult de jumatate, nu se calculeaza.</li>
+<li><b>Etichete si Notite:</b> pui etichete (vegetarian, keto...) si scrii notite, stele si cand ai gatit-o.</li>
+<li><b>Reteta noua</b> o scrii tu; <b>Idei cu AI</b> propune retete din ce ai in casa (cere cheie AI).</li>
+</ul></details>
+<details class="abd"><summary>Meniu si Jurnal</summary><ul class="abl">
+<li><b>Meniu:</b> azi si maine sau toata saptamana, cu Mic dejun, Pranz, Cina si Desert. "+" langa masa adauga o reteta, "-" o scoate. Pentru fiecare zi vezi macro si micronutrienti fata de tinta ta, inclusiv la zilele viitoare.</li>
+<li><b>Propune-mi un meniu</b> face o propunere din retetele tale, tinand cont de debara, preferinte si tinte.</li>
+<li><b>Meal prep:</b> ce gatesti in avans, pe portii; portiile se scad cand le pui in meniu.</li>
+<li><b>Jurnal:</b> ce ai mancat, calculat din Meniu pentru azi si zilele trecute, cu Observatii si media pe 7 zile.</li>
+<li>Iconul de cos de pe zi trimite ingredientele zilei in Cumparaturi.</li>
+</ul></details>
+<details class="abd"><summary>Cumparaturi</summary><ul class="abl">
+<li>Lista se face din meniu si din retete; ce ai deja in Debara nu intra.</li>
+<li>O vezi pe produse sau pe retete, grupata pe categorii. Bifat inseamna cumparat; "Am in debara" scoate produsul de pe lista.</li>
+<li>Trimite lista sau Copiaza lista, ca s-o trimiti pe WhatsApp sau in alt mesaj.</li>
+</ul></details>
+<details class="abd"><summary>Debara</summary><ul class="abl">
+<li>Ce ai acasa, pe categorii pliabile. Un singur camp: cauti sau adaugi.</li>
+<li>Marcajele (proaspat, congelat, uscat, conserva, altceva) spun in ce forma il ai; lista de cumparaturi tine cont de ele.</li>
+<li>Cosul de pe produs ("am terminat") il trimite inapoi in Cumparaturi. Din Debara, Retete iti arata ce poti gati.</li>
+</ul></details>
+<details class="abd"><summary>Mai mult</summary><ul class="abl">
+<li><b>Ghid nutritie:</b> Ingrediente (Info: calorii, macro si micronutrienti pe aliment), Masuri (cat cantareste o lingura sau o cana) si Gatire (sfaturi, pe grupe).</li>
+<li><b>Setari:</b> profil nutritional si tinte, aparate, etichete, categorii pentru debara, backup si cheie AI.</li>
+</ul></details>
+<details class="abd"><summary>Datele tale</summary><ul class="abl">
+<li>Stau doar in acest browser. Fa backup in fisier sau in Dropbox, ca sa nu le pierzi si sa le ai pe alt dispozitiv.</li>
+<li>Functiile cu AI cer o cheie API; fara ea restul aplicatiei merge, iar Info se completeaza si la actualizarile aplicatiei.</li>
+</ul></details></div>
  </div></div>
 </section>
 </main>
@@ -128,7 +155,7 @@
 <button id="totop" type="button" class="totop" aria-label="Inapoi sus" title="Inapoi sus" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=5.7.1"></script>
-<script src="app.js?v=5.7.1"></script>
+<script src="nutri.js?v=5.8.0"></script>
+<script src="app.js?v=5.8.0"></script>
 </body>
 </html>

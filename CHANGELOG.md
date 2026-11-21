@@ -2,6 +2,17 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.8.0
+- **Informatii nutritionale (reteta):** o singura sectiune, mereu calculata din Info pe baza ingredientelor retetei; valorile din carte nu mai apar. Doua blocuri la fel construite: "Per portie (circa X g)" cu micronutrientii per portie imediat sub el, apoi "La 100 g de ingrediente crude, fara apa" cu micronutrientii la 100 g. La retetele fara numar de portii ramane doar blocul la 100 g.
+- **Fara buton de recalcul:** valorile se calculeaza la fiecare deschidere; scoase "Recalculeaza din Info" si panoul lui (Completeaza manual, Este alt aliment, Cum am calculat). Alimentele se pot completa manual in continuare din Mai mult > Ingrediente.
+- **Ingrediente lipsa din Info:** mesaj rosu sub titlu, cu ce lipseste si cate din cate ingrediente sunt gasite, si butonul "Cauta cu AI" (cauta pe rand fiecare ingredient lipsa si il pastreaza in Info, apoi recalculeaza). Fara cheie AI butonul e gri; la atingere explica ca cere cheie si ca Info se completeaza si la actualizarile aplicatiei.
+- **Valori incomplete:** cand lipsesc ingrediente, valorile au eticheta rosie "incomplet"; cand lipseste mai mult de jumatate, nu se afiseaza cifre, doar mesajul.
+- **Card in rezultate:** caloriile, proteinele si carbohidratii vin din Info si spun la ce se raporteaza: "per portie", sau "la 100 g" la retetele fara numar de portii; cu "incomplet" cand e cazul; sub jumatate gasite: "Valori nutritionale indisponibile: lipsesc X din Y ingrediente in Info".
+- **Cum folosesc aplicatia:** link in Biblioteca (cand nu ai cautat inca) care deschide Setari > Despre.
+- **Despre:** descrierea pe sectiuni pliabile (Retete, Meniu si Jurnal, Cumparaturi, Debara, Mai mult, Datele tale): ce face fiecare parte, butoanele principale si cum se leaga intre ele.
+- Teste: noi in `teste/test_biblioteca.js`; testul vechi pentru butonul de recalcul inlocuit in `teste/test_meniu_cumparaturi.js`.
+- De stiut: doua verificari de Meal prep din `test_meniu_cumparaturi.js` pica la sfarsit de saptamana (propunerea are mai putine zile ramase decat portii in lot); picau si pe 5.7.1, nu sunt legate de schimbarile de aici.
+
 ## 5.7.1
 - **Setari > Despre:** in locul istoricului modificarilor (util doar pentru dezvoltare) apare, pe scurt, ce face aplicatia: Retete, Meniu, Cumparaturi, Debara, Mai mult si unde stau datele tale. Versiunea ramane afisata.
 - CHANGELOG.md si README.md raman doar in repo; aplicatia nu le mai citeste.
