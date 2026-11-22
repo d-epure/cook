@@ -836,7 +836,7 @@ $("#bres").onclick=e=>{if(bvClick(e,"#bres"))return;const d=e.target.closest("bu
  if(d.cdel!==undefined){const r=BOOK.find(x=>bKey(x)===d.cdel);if(r)cosAsk(e.target.closest("button"),()=>cosDelete([r],()=>{drawBook();bplDraw()}),"Sterge definitiv?");return}
  if(d.cclr!==undefined){const rs=BOOK.filter(x=>x.cos);if(rs.length)cosAsk(e.target,()=>cosDelete(rs,()=>{drawBook();bplDraw()}),"Sterg "+rs.length+" definitiv?");return}
  if(d.bmore!==undefined){BLIM+=10;drawBook();return}
- if(d.howto!==undefined){goDespre();return}
+ if(d.howto!==undefined){goGhid();return}
  if(d.fav!==undefined){favT(d.fav,drawBook);return}
  if(d.b!==undefined){openBook(+d.b,BOOK[d.b].portii,"#bres");$("#bres").scrollIntoView({block:"start"})}};
 $("#bres").onchange=e=>{bvChange(e,"#bres")};
@@ -909,6 +909,7 @@ async function libInit(){
  await v5Run();
  if(STORED.length){try{BOOK=cl(STORED).map(fixRec)}catch(e){dbg(e)}}
  LIBREADY=true;try{v52Run();cookSync()}catch(e){dbg(e)}try{drawBook();updBS();drawOnb();if(!$("#v-meniu").classList.contains("hidden"))drawMenu()}catch(e){dbg(e)}
+ lFormMerge();
  {const dd=menDedupe(),orf=lOrphan();if(orf.length)setTimeout(()=>toast(orfTxt(orf)),1500);if(dd)setTimeout(()=>toast("Am adunat "+dd+(dd===1?" reteta aparuta de doua ori":" retete aparute de doua ori")+" la aceeasi masa, in meniu."),900)}
  if(ND_MSG)setTimeout(()=>toast(ND_MSG),600);window.__ready=true;
  shipRun().then(r=>shipDone(r,true)).catch(()=>{})}
@@ -1263,12 +1264,25 @@ function lUnify(l,nm,u,c){if(c==null)return null;const sp=SPOON.test(norm(u)),is
  const y=l.find(z=>!z.done&&z.c!=null&&nKey(z.n)===k&&(sp?/^g$/i.test(z.u||""):SPOON.test(norm(z.u||""))));if(!y)return null;
  if(sp){const g=toG(nm,u,c);return g?{c:g,u:"g"}:null}
  const g=toG(y.n,y.u,y.c);if(!g)return null;const f=g/y.c;(y.parts||[]).forEach(p=>{if(p.c!=null)p.c=Math.round(p.c*f)});y.c=g;y.u="g";y.k=lkey(y.n,"g");return{c,u:"g"}}
+/* 5.9.0: acelasi produs, o data fara forma ("Spanac") si o data cu forma ("Spanac proaspat"), e un singur rand, cu forma scrisa; forme diferite (proaspat / congelat) raman separate */
+function lFormMatch(l,nm,u){const f=formSplit(nm).f,b=lkey(baseName(nm),u);
+ return l.find(y=>{if(y.done||lkey(baseName(y.n),y.u)!==b)return false;const g=formSplit(y.n).f;return(!f.size)!==(!g.size)})}
+function lFormMerge(){try{const l=getList();let n=0;
+ for(let i=l.length-1;i>=0;i--){const y=l[i];if(y.done)continue;const rest=l.slice(0,i),t=lFormMatch(rest,y.n,y.u);if(!t)continue;
+  if(!formSplit(t.n).f.size&&formSplit(y.n).f.size){t.n=y.n;t.k=lkey(y.n,y.u)}
+  if(!t.parts)t.parts=(t.src||[]).map((x,j,a)=>({s:x,c:a.length===1?t.c:null}));
+  if(t.c!=null&&y.c!=null)t.c=+(t.c+y.c).toFixed(2);else if(t.c==null)t.c=y.c;
+  (y.src||[]).forEach(x=>{if(!t.src.includes(x))t.src.push(x)});
+  (y.parts||[{s:(y.src||[])[0],c:y.c}]).forEach(p=>{const q=t.parts.find(z=>z.s===p.s);if(q)q.c=q.c!=null&&p.c!=null?+(q.c+p.c).toFixed(2):(q.c==null?p.c:q.c);else t.parts.push(p)});
+  l.splice(i,1);n++}
+ if(n){putList(l);navCount()}return n}catch(e){dbg(e);return 0}}
 function addList(ings,title){const l=getList();let n=0;ings=lPrep(ings);
  ings.forEach(x=>{const cl=lClean(x.n,x.u),nm=cl.n;if(!nm)return;let u=cl.u,c=(x.c===""||x.c==null||isNaN(+x.c))?null:+x.c;
   if(c!=null&&/^kg$/i.test(u)){c=+(c*1000).toFixed(2);u="g"}else if(c!=null&&/^l$/i.test(u)){c=+(c*1000).toFixed(2);u="ml"}
   {const un=lUnify(l,nm,u,c);if(un){c=un.c;u=un.u}}
-  const k=lkey(nm,u);
+  let k=lkey(nm,u);
   let it=l.find(y=>lkey(y.n,y.u)===k&&!y.done);
+  if(!it){const fm=lFormMatch(l,nm,u);if(fm){it=fm;if(!formSplit(it.n).f.size&&formSplit(nm).f.size){it.n=nm;it.k=lkey(nm,u)}}}
   if(it&&!it.parts&&it.src.length===1)it.parts=[{s:it.src[0],c:it.c}];
   if(it){if(it.c!=null&&c!=null)it.c=+(it.c+c).toFixed(2);else if(it.c==null)it.c=c;if(!it.src.includes(title))it.src.push(title);
    if(it.parts){const pt=it.parts.find(p=>p.s===title);if(pt)pt.c=pt.c!=null&&c!=null?+(pt.c+c).toFixed(2):(pt.c==null?c:pt.c);else it.parts.push({s:title,c})}}
@@ -2083,7 +2097,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="5.8.0";
+const APP_V="5.9.0";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
@@ -2140,13 +2154,13 @@ $("#fdl").onchange=e=>{const n=e.target.dataset.fc;if(n===undefined)return;setCa
 $("#fdl").onclick=e=>{const n=e.target.dataset.fr;if(n===undefined)return;putCats(getCats().filter(x=>cn(x.n)!==cn(n)));drawFoods()};
 $("#pCats").onclick=()=>{show("setari");setSub("alimente");$("#cdet").open=true;window.scrollTo(0,0)};
 /* Setari: pagina de pornire cu lista si stari; Utilizare in fata, Tehnic pliat (2.24.1) */
-const SUBS=["profil","aparate","pref","alimente","etichete","cont","carti","backup","despre"];
-const SGMAP={profil:["profil"],aparate:["aparate"],pref:["pref"],alimente:["alimente"],etichete:["etichete"],sectiuni:["sectiuni"],cont:["cont"],carti:["biblioteca"],backup:["bkfile","bksnap","bkdb"],despre:["despre"]};
-const STITLE={profil:"Profil nutritional",aparate:"Aparate",pref:"Preferinte alimente",alimente:"Raioane debara",etichete:"Etichete retete",sectiuni:"Titluri de sectiune",mese:"Mese",cont:"AI si cheie",carti:"Carti",backup:"Backup",despre:"Despre"};
+const SUBS=["profil","aparate","pref","alimente","etichete","cont","carti","backup","ghid","despre"];
+const SGMAP={profil:["profil"],aparate:["aparate"],pref:["pref"],alimente:["alimente"],etichete:["etichete"],sectiuni:["sectiuni"],cont:["cont"],carti:["biblioteca"],backup:["bkfile","bksnap","bkdb"],ghid:["ghid"],despre:["despre"]};
+const STITLE={profil:"Profil nutritional",aparate:"Aparate",pref:"Preferinte alimente",alimente:"Raioane debara",etichete:"Etichete retete",sectiuni:"Titluri de sectiune",mese:"Mese",cont:"AI si cheie",carti:"Carti",backup:"Backup",ghid:"Cum folosesc aplicatia",despre:"Despre"};
 const SUBOF={biblioteca:"carti",date:"carti",tehnic:"cont"},TABOF=e=>SUBOF[e]||e,WIDE=window.matchMedia("(min-width:900px)");
 let SUB=null;
-/* 5.8.0: "Cum folosesc aplicatia" din Biblioteca deschide Setari > Despre */
-function goDespre(){show("setari");SUB="despre";sRender();window.scrollTo(0,0)}
+/* 5.8.0: "Cum folosesc aplicatia" din Biblioteca; 5.9.0: duce la Setari > Cum folosesc aplicatia (pasi), nu la Despre */
+function goGhid(){show("setari");SUB="ghid";sRender();window.scrollTo(0,0)}
 const sEff=()=>SUB||(WIDE.matches?"aparate":null);
 function setSub(s){s=TABOF(s);SUB=SUBS.includes(s)?s:null;sRender()}
 function setHome(){SUB=null;sRender()}
@@ -2161,10 +2175,11 @@ function sStat(id){try{
  if(id==="cont")return (LS("rk")?"Cheie setata":"Cheie lipsa")+" \u00b7 "+((LS("rm1")||AI_DEF).replace("claude-",""));
  if(id==="carti"){const n=(()=>{try{return STORED.length}catch(e){return 0}})();return n?n+" retete in biblioteca":"nicio carte incarcata"}
  if(id==="backup"){const f=t=>new Date(t).toLocaleDateString("ro-RO",{day:"numeric",month:"short"});if(dbOn())return +LS("rdbl")?"sincronizat cu Dropbox: "+f(+LS("rdbl")):"Dropbox conectat";const t=+LS("rbk")||0;return t?"ultimul backup: "+f(t):"niciun backup"}
+ if(id==="ghid")return "Pasi pentru ce vrei sa faci";
  if(id==="despre")return "Versiunea "+APP_V}catch(e){dbg(e)}return""}
 function sRow(id,e){const w=id==="cont"&&!LS("rk")||id==="backup"&&bkDue();return`<button type="button" class="srow${e===id?" on":""}" data-s="${id}"><span class="srt"><b>${STITLE[id]}</b><span class="srs${w?" warn2":""}">${esc(sStat(id))}</span></span><span class="chev" aria-hidden="true">&rsaquo;</span></button>`}
 /* 5.0.0: setarile in 4 grupuri: Eu, Bucatarie, Date, Aplicatie */
-const SGRP={eu:["profil","pref"],buc:["aparate","etichete","alimente","sectiuni"],date:["backup","carti"],app:["cont","despre"]},SGL={eu:"Eu",buc:"Bucatarie",date:"Date",app:"Aplicatie"},tabOf=i=>Object.keys(SGRP).find(g=>SGRP[g].includes(i))||"eu";
+const SGRP={eu:["profil","pref"],buc:["aparate","etichete","alimente","sectiuni"],date:["backup","carti"],app:["cont","ghid","despre"]},SGL={eu:"Eu",buc:"Bucatarie",date:"Date",app:"Aplicatie"},tabOf=i=>Object.keys(SGRP).find(g=>SGRP[g].includes(i))||"eu";
 let STAB=(()=>{try{const v=localStorage.getItem("rst");return SGRP[v]?v:"eu"}catch(x){return"eu"}})();
 function setTab(t){STAB=SGRP[t]?t:"eu";try{localStorage.setItem("rst",STAB)}catch(x){dbg(x)}}
 function renderSnav(e){const at=sAttn();
@@ -2324,7 +2339,7 @@ async function syApplyLocal(mer,loc){await snapMake(true);SYAPPLY=true;
  try{for(const k of BK_KEYS){if(syEq(mer[k],loc[k]))continue;
    if(k==="rbook"){if(!(await saveStored(Array.isArray(mer.rbook)?mer.rbook:[])))throw new Error("Nu am putut salva biblioteca.");continue}
    const v=mer[k];try{if(v===undefined)localStorage.removeItem(k);else localStorage.setItem(k,nd(SY_RAW.includes(k)?v:JSON.stringify(v)))}catch(e){throw new Error("Nu am putut scrie in browser (spatiu insuficient).")}}}
- finally{try{sidRun();v5Run();menDedupe();const o=lOrphan();if(o.length)setTimeout(()=>toast(orfTxt(o)),600)}catch(e){dbg(e)}SYAPPLY=false}}
+ finally{try{sidRun();v5Run();menDedupe();lFormMerge();const o=lOrphan();if(o.length)setTimeout(()=>toast(orfTxt(o)),600)}catch(e){dbg(e)}SYAPPLY=false}}
 var SYAPPLY=false,SYBUSY=false,SYT=0,SYREADY=false,SYLAST=0;
 /* rezultat: {ok, applied?, pending?, blocked?, diff?, err?} */
 async function syncRun(o){o=o||{};if(SYBUSY)return{busy:true};SYBUSY=true;SYLAST=Date.now();

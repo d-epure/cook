@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=5.8.0">
+<link rel="stylesheet" href="style.css?v=5.9.0">
 
 </head>
 <body>
@@ -111,7 +111,18 @@
  <div class="card" id="dbcard" data-sg="bkdb"><h2>Sincronizare Dropbox</h2><div id="dbbox"></div></div>
  <div class="card" id="mxcard" data-sg="biblioteca"><h2>Macro lipsa</h2><div id="mxl"></div></div>
  <div class="card" id="bscard" data-sg="biblioteca"><h2>Carti</h2><label for="bfile">Incarca baza de retete (retete.json)</label><input id="bfile" type="file" accept=".json,application/json"><div id="bm" class="muted mt8 mb12" ></div><div id="bpv"></div><label for="bpatch">Aplica un fisier de corectii (portii, marcaje)</label><input id="bpatch" type="file" accept=".json,application/json"><div id="bpm" class="muted mt8 mb12" ></div><div id="bpp"></div><div id="bsn"></div><div id="bdup"></div><p class="muted">Stergerea afecteaza doar retetele incarcate in Biblioteca mea. Aparatele, retetele salvate si cheia API raman. Fisierul tau retete.json ramane neatins.</p></div>
- <div class="card" id="abcard" data-sg="despre"><h2>Despre</h2><p id="abv" class="mt0 mb8"></p><p class="mt0 mb8">Iti tii retetele intr-un singur loc, iti planifici mesele si stii ce ai de cumparat. Mai jos, pe scurt, ce face fiecare parte si cum se leaga intre ele.</p>
+ <div class="card" id="ghcard" data-sg="ghid"><h2>Cum folosesc aplicatia</h2><p class="muted mt0 mb8">Alege ce vrei sa faci si urmeaza pasii.</p>
+<details class="abd"><summary>1. Gasesc o reteta</summary><ol class="abl"><li>Intra in Retete.</li><li>Scrie in cautare un ingredient sau un nume, de exemplu &quot;naut&quot; sau &quot;supa&quot;.</li><li>Sau alege o pilula: Mic dejun, Pranz / Cina, Desert, Sub 30 min, Favorite. Le poti combina.</li><li>Pentru ce poti gati cu ce ai acasa, alege Din debara si, la &quot;Lipsesc cel mult&quot;, cate ingrediente iti pot lipsi.</li><li>Atinge titlul retetei (sau Deschide) ca s-o vezi.</li><li>Inapoi la rezultate te intoarce la lista; Arata mai multe aduce inca 10 retete.</li></ol></details>
+<details class="abd"><summary>2. Planific meniul</summary><ol class="abl"><li>Intra in Meniu si alege Azi si maine sau Saptamana.</li><li>Atinge + langa masa (Mic dejun, Pranz, Cina, Desert) si alege reteta si numarul de portii.</li><li>Sau, din reteta deschisa, apasa Adauga la meniu si alege ziua si masa.</li><li>Pentru o propunere automata, atinge bagheta din Meniu (Propune-mi un meniu), apoi Adauga la meniu.</li><li>Sub fiecare zi vezi Macro si Micronutrienti fata de tinta ta; tinta o setezi in Setari > Profil nutritional.</li></ol></details>
+<details class="abd"><summary>3. Fac lista de cumparaturi</summary><ol class="abl"><li>In Meniu, atinge cosul de sus: pune in Cumparaturi ingredientele pentru zilele afisate.</li><li>Sau, din reteta deschisa, apasa Adauga la cumparaturi; pentru o singura zi, atinge cosul de langa ziua respectiva.</li><li>Intra in Cumparaturi. Ce ai deja in Debara nu apare (Ascunde produsele din debara).</li><li>In magazin, bifeaza ce ai cumparat; Sterge bifate curata lista.</li><li>Am in debara pe un rand muta produsul in Debara si il scoate de pe lista.</li><li>Copiaza lista sau Trimite lista, ca s-o trimiti pe WhatsApp.</li></ol></details>
+<details class="abd"><summary>4. Pun ce am acasa in Debara</summary><ol class="abl"><li>Intra in Debara.</li><li>Scrie produsul in campul de sus si apasa Adauga; ajunge singur in categoria lui.</li><li>Deschide categoria si alege marcajul: proaspat, congelat, uscat, conserva sau altceva.</li><li>Cand se termina, atinge cosul de pe rand: produsul trece in Cumparaturi.</li><li>Cu ... editezi sau scoti produsul.</li></ol></details>
+<details class="abd"><summary>5. Gatesc pas cu pas</summary><ol class="abl"><li>Deschide reteta si apasa Mod gatit.</li><li>Urmeaza pasii unul cate unul; butonul de jos te duce la pasul urmator.</li><li>Unde reteta are un timp, pornesti cronometrul din pas.</li><li>La final, reteta se marcheaza gatita din Meniu.</li></ol></details>
+<details class="abd"><summary>6. Gatesc in avans (Meal prep)</summary><ol class="abl"><li>Din reteta deschisa, apasa Adauga la Meal prep si alege cate portii gatesti.</li><li>In Meniu, la Meal prep, vezi loturile; numarul de portii il poti schimba pana gatesti.</li><li>Dupa ce gatesti, apasa Am gatit.</li><li>Cand pui portii din lot in meniu, ele se scad din lot.</li></ol></details>
+<details class="abd"><summary>7. Urmaresc ce mananc (Jurnal)</summary><ol class="abl"><li>Intra in Meniu > Jurnal.</li><li>Pentru azi si zilele trecute, vezi ce ai mancat dupa Meniu, cu macro si micronutrienti.</li><li>Scrie la Observatii ce a fost altfel (ex: am sarit pranzul).</li><li>Jos vezi media pe ultimele 7 zile.</li></ol></details>
+<details class="abd"><summary>8. Scriu o reteta a mea</summary><ol class="abl"><li>In Retete, apasa + Reteta noua (o scrii tu).</li><li>Completeaza titlul, portiile, ingredientele cu cantitati si pasii.</li><li>Salveaza. O gasesti la pilula Ale mele.</li><li>Pentru modificari: reteta deschisa > Mai multe actiuni > Editeaza reteta.</li></ol></details>
+<details class="abd"><summary>9. Completez valorile nutritionale lipsa</summary><ol class="abl"><li>Deschide reteta si uita-te la Informatii nutritionale.</li><li>Daca apare cu rosu &quot;Nu am in Info&quot;, ingredientele de acolo nu au valori.</li><li>Apasa Cauta cu AI: valorile se cauta si se pastreaza in Info, pentru toate retetele (cere cheie AI).</li><li>Fara cheie: completezi manual in Mai mult > Ghid nutritie > Ingrediente, sau astepti o actualizare a aplicatiei.</li></ol></details>
+<details class="abd"><summary>10. Fac backup si folosesc pe alt telefon</summary><ol class="abl"><li>Intra in Setari > Backup.</li><li>Descarca backup salveaza toate datele tale intr-un fisier; Restaureaza le aduce inapoi.</li><li>Pentru telefon si laptop, Conecteaza Dropbox pe fiecare dispozitiv: datele se sincronizeaza.</li><li>Datele stau doar in browser: fara backup, le pierzi daca stergi datele browserului.</li></ol></details></div>
+<div class="card" id="abcard" data-sg="despre"><h2>Despre</h2><p id="abv" class="mt0 mb8"></p><p class="mt0 mb8">Iti tii retetele intr-un singur loc, iti planifici mesele si stii ce ai de cumparat. Mai jos, pe scurt, ce face fiecare parte si cum se leaga intre ele.</p>
 <details class="abd"><summary>Retete</summary><ul class="abl">
 <li><b>Cautare:</b> scrii ingrediente sau un nume (ex: vita, cartofi). Pilulele de sub cautare filtreaza: Mic dejun, Pranz / Cina, Desert, Sub 30 min, Din debara, Favorite, Ale mele, Cos. Lista apare dupa ce cauti sau alegi ceva, cate 10 retete; "Arata mai multe" aduce inca 10.</li>
 <li><b>Din debara</b> arata ce poti gati cu ce ai acasa; "Lipsesc cel mult 0-3" spune cate ingrediente iti pot lipsi.</li>
@@ -155,7 +166,7 @@
 <button id="totop" type="button" class="totop" aria-label="Inapoi sus" title="Inapoi sus" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=5.8.0"></script>
-<script src="app.js?v=5.8.0"></script>
+<script src="nutri.js?v=5.9.0"></script>
+<script src="app.js?v=5.9.0"></script>
 </body>
 </html>

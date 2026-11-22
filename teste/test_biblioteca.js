@@ -179,6 +179,14 @@ await (async()=>{
  const a={titlu:"A",portii:2,ingrediente:[{c:200,u:"g",n:"orez"},{c:100,u:"g",n:"zahar"}]},b={titlu:"B",portii:null,ingrediente:[{c:200,u:"g",n:"orez"},{c:100,u:"g",n:"zzzxyz"}]},c={titlu:"C",portii:2,ingrediente:[{c:200,u:"g",n:"qqq"},{c:100,u:"g",n:"zzzxyz"},{c:1,u:"g",n:"orez"}]};
  eq([/per portie$/.test(T.nutCard(a)),/la 100 g .*incomplet/.test(T.nutCard(b)),/indisponibile: lipsesc 2 din 3/.test(T.nutCard(c))],[true,true,true],"card: per portie, la 100 g fara portii (cu incomplet), indisponibil sub jumatate");
  T.show("carti");T.drawBook();$("#bres [data-howto]").click();
- eq([!$("#v-setari").classList.contains("hidden"),D.querySelectorAll("#abcard details.abd").length],[true,6],"Cum folosesc aplicatia deschide Despre, cu 6 sectiuni pliabile");
+ eq([!$("#v-setari").classList.contains("hidden"),!$("#ghcard").hidden,D.querySelectorAll("#ghcard details.abd").length,D.querySelectorAll("#abcard details.abd").length],[true,true,10,6],"5.9.0: Cum folosesc aplicatia deschide ghidul cu 10 sarcini; Despre ramane cu cele 6 sectiuni");
+})();
+await (async()=>{
+ console.log("\n## "+'5.9.0: Cumparaturi - acelasi produs cu si fara forma e un singur rand.');
+ const w=await boot({},{names:["addList","getList","lFormMerge","putList"]}),T=w.__t;
+ T.putList([]);T.addList([{c:40,u:"g",n:"spanac proaspat"}],"Tofu scramble");T.addList([{c:50,u:"g",n:"spanac"}],"Frittata");T.addList([{c:100,u:"g",n:"spanac congelat"}],"Supa");
+ let l=T.getList();eq(l.map(x=>[x.n.toLowerCase(),x.c,x.src.length]),[["spanac proaspat",90,2],["spanac congelat",100,1]],"spanac + spanac proaspat = un rand de 90 g; congelat ramane separat");
+ T.putList([{k:"a",n:"Spanac",u:"g",c:50,src:["A"],parts:[{s:"A",c:50}],done:0},{k:"b",n:"Spanac proaspat",u:"g",c:40,src:["B"],parts:[{s:"B",c:40}],done:0}]);
+ eq([T.lFormMerge(),T.getList().map(x=>[x.n,x.c,x.parts.length])],[1,[["Spanac proaspat",90,2]]],"dublurile deja existente se unesc la pornire");
 })();
  done()})();

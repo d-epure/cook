@@ -2,6 +2,11 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.9.0
+- **Cum folosesc aplicatia:** pagina noua in Setari > Aplicatie, langa Despre, cu instructiuni pas cu pas pe 10 sarcini pliabile (gasesc o reteta, planific meniul, fac lista de cumparaturi, pun ce am acasa in Debara, gatesc pas cu pas, Meal prep, Jurnal, scriu o reteta, completez valorile nutritionale lipsa, backup si alt telefon). Linkul "Cum folosesc aplicatia" din Biblioteca duce aici, nu la Despre. Despre ramane cum era (ce face aplicatia).
+- **Cumparaturi fara dubluri de forma:** acelasi produs, o data fara forma ("Spanac") si o data cu forma ("Spanac proaspat"), devine un singur rand cu forma scrisa ("90 g Spanac proaspat"), cu ambele retete dedesubt. Forme diferite (proaspat / congelat) raman separate. Dublurile deja existente se unesc la pornire si dupa sincronizare.
+- Teste noi in `teste/test_biblioteca.js`.
+
 ## 5.8.0
 - **Informatii nutritionale (reteta):** o singura sectiune, mereu calculata din Info pe baza ingredientelor retetei; valorile din carte nu mai apar. Doua blocuri la fel construite: "Per portie (circa X g)" cu micronutrientii per portie imediat sub el, apoi "La 100 g de ingrediente crude, fara apa" cu micronutrientii la 100 g. La retetele fara numar de portii ramane doar blocul la 100 g.
 - **Fara buton de recalcul:** valorile se calculeaza la fiecare deschidere; scoase "Recalculeaza din Info" si panoul lui (Completeaza manual, Este alt aliment, Cum am calculat). Alimentele se pot completa manual in continuare din Mai mult > Ingrediente.
