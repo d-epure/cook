@@ -189,4 +189,23 @@ await (async()=>{
  T.putList([{k:"a",n:"Spanac",u:"g",c:50,src:["A"],parts:[{s:"A",c:50}],done:0},{k:"b",n:"Spanac proaspat",u:"g",c:40,src:["B"],parts:[{s:"B",c:40}],done:0}]);
  eq([T.lFormMerge(),T.getList().map(x=>[x.n,x.c,x.parts.length])],[1,[["Spanac proaspat",90,2]]],"dublurile deja existente se unesc la pornire");
 })();
+await (async()=>{
+ console.log("\n## "+'5.10.0: carti inactive - scoase din cautare si propuneri, Favoritele raman, comutator pentru gatite/cu stele.');
+ const w=await boot({},{names:["BOOK","show","drawBook","updBS","bKey","pxPool","getNotes"]}),T=w.__t,D=w.document,$=q=>D.querySelector(q);
+ w.Element.prototype.scrollIntoView=()=>{};
+ const src=T.BOOK.find(r=>/keto/i.test(r.sursa||"")).sursa,inB=T.BOOK.filter(r=>r.sursa===src),fav=inB[0],ck=inB[1];
+ w.localStorage.setItem("rfav",JSON.stringify([T.bKey(fav)]));const nt=T.getNotes();nt[T.bKey(ck)]={h:["2026-11-20"],st:5};w.localStorage.setItem("rnote",JSON.stringify(nt));
+ T.show("setari");T.updBS();const row=[...D.querySelectorAll("#bsn .bsr")].find(x=>x.querySelector("b").textContent===src);
+ eq([/\(\d+\)/.test(row.querySelector(".bsn").textContent),row.querySelectorAll("button").length],[true,3],"rand compact: nume (numar), comutator, descarca, sterge");
+ row.querySelector("[data-boff]").click();
+ eq([JSON.parse(w.localStorage.getItem("roff")),!!D.querySelector("#bsn .bsr.off .offt")],[[src],true],"comutatorul inactiveaza cartea");
+ T.show("carti");$("#bq").value=fav.titlu.split(" ")[0];T.drawBook();
+ const vis=()=>[...D.querySelectorAll("#bres .card .tlk")].map(b=>T.BOOK[+b.dataset.b]).filter(r=>r.sursa===src);
+ eq(vis().every(r=>r===fav||r===ck)&&vis().every(r=>r!==ck),true,"rezultate: din cartea inactiva doar Favoritele");
+ eq(T.pxPool().filter(x=>x.r.sursa===src).every(x=>x.r===fav),true,"propunerea de meniu: din cartea inactiva doar Favoritele");
+ $("#boffg").checked=true;$("#boffg").dispatchEvent(new w.Event("change",{bubbles:true}));$("#bq").value=ck.titlu.split(" ")[0];T.drawBook();
+ eq(vis().some(r=>r===ck),true,"cu comutatorul din Filtre apar si retetele gatite sau cu stele");
+ T.show("setari");T.updBS();[...D.querySelectorAll("#bsn [data-boff]")].find(b=>b.dataset.boff===src).click();
+ eq(w.localStorage.getItem("roff"),"[]","reactivare din acelasi comutator");
+})();
  done()})();

@@ -1,9 +1,9 @@
 # Backlog - Cartea mea de retete
 
-Starea la versiunea 5.9.0 (20 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
+Starea la versiunea 5.10.0 (20 noiembrie 2026). Fisierul vine in fiecare pachet si se actualizeaza la fiecare versiune: ce e facut trece in CHANGELOG.md, aici ramane ce urmeaza. Regulile de lucru: fara diacritice, changelog la fiecare versiune, README aliniat, o singura sectiune per scop, interfata simpla.
 
 ## De verificat pe dispozitiv real
-Versiunile 3.20.0 - 5.9.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
+Versiunile 3.20.0 - 5.10.0 au fost testate doar in browser simulat (teste in folderul `teste/`). Raman de confirmat pe telefon si laptop (in plus: butoanele A-/A+, randul cartilor din Setari si cosurile de gunoi, la 90% si 150%):
 - Dupa actualizare: favoritele, jurnalul, meniul si "Retetele mele" sunt la locul lor; Biblioteca are 952 de retete livrate plus ale tale.
 - Consola browserului (F12) fara erori "Content Security Policy" la: Idei cu AI, backup in Dropbox, descarcarea unui backup, butonul WhatsApp.
 - Aplicatia porneste in mod avion dupa prima incarcare (service worker cu cache propriu).
@@ -11,6 +11,7 @@ Versiunile 3.20.0 - 5.9.0 au fost testate doar in browser simulat (teste in fold
 - Asezarea pe telefon: pilulele din Biblioteca, butoanele din Cumparaturi, ziua din meniu cu patru mese.
 - Pagina Idei fara cheie API si cu cheie.
 - 5.0.0: la prima pornire retetele din fosta Colectia mea apar in Biblioteca > Ale mele, cu favoritele, jurnalul, Meal prep si meniul legate; pasii pe aparat si Mod gatit la retetele AI; jurnalul de mese pe telefon (randul cu portii, campul de grame, dialogul "Am mancat"); sincronizarea Dropbox cu un dispozitiv inca pe 4.30 (acela poate readuce retete in vechea lista; 5.0.0 le muta din nou, fara dubluri).
+- 5.10.0: inactiveaza o carte pe telefon, verifica ca Favoritele din ea raman si ca dupa sincronizare e inactiva si pe laptop; comutatorul din Filtre.
 - 5.9.0: Cumparaturi cu spanac si spanac proaspat din doua retete = un rand; Am in debara pe randul unit; ghidul Cum folosesc aplicatia, pasii pe telefon.
 - 5.8.0: Informatii nutritionale pe o reteta completa, una cu un ingredient lipsa (incomplet, Cauta cu AI cu si fara cheie) si una fara portii; caloriile de pe carduri; Cum folosesc aplicatia si Despre.
 - 5.7.1: Setari > Despre - textul despre aplicatie e clar pentru cineva care o deschide prima data.

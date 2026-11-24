@@ -608,3 +608,15 @@ details.gcat>summary .muted{font-weight:400}
 details.abd>summary{cursor:pointer;font-weight:700;padding:10px 0;min-height:var(--h-n);display:flex;align-items:center}
 details.abd{border-top:1px solid var(--line)}
 details.abd:last-of-type{border-bottom:1px solid var(--line)}
+/* 5.10.0: carti active / inactive */
+.bsr{display:flex;align-items:center;gap:8px}
+.bsr .bsn{flex:1;min-width:0;overflow-wrap:anywhere}
+.bsr .bsn b{display:inline;width:auto}
+.bsr.off .bsn b,.bsr.off .bsn .muted{color:var(--mut)}
+.offt{font-size:var(--fs-xs);color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:0 6px;white-space:nowrap}
+.swt{flex:0 0 auto;width:46px;min-width:46px;height:28px;min-height:28px;padding:0;border-radius:14px;border:0;background:var(--pri);position:relative;cursor:pointer;box-shadow:none}
+.swt::after{content:"";position:absolute;top:4px;left:22px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}
+.swt[aria-checked="false"]{background:var(--mut);opacity:.55}
+.swt[aria-checked="false"]::after{left:4px}
+.offg{display:flex;align-items:center;gap:8px;font-size:var(--fs-s);margin:4px 0}
+.offg.dis{color:var(--mut)}

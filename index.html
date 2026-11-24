@@ -13,7 +13,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Retete">
-<link rel="stylesheet" href="style.css?v=5.9.0">
+<link rel="stylesheet" href="style.css?v=5.10.0">
 
 </head>
 <body>
@@ -54,7 +54,7 @@
 
 <section id="v-carti" class="hidden"><div id="bnewrow" class="mb12 row g8"><button class="go fx1" id="bnew" type="button" style="margin:0">+ Reteta noua (o scrii tu)</button><button class="alt" id="bidei" type="button" data-ai="1" style="margin:0">&#10022; Idei cu AI</button></div><div class="card" id="bsearch"><div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 12px"><label for="bq" class="m0">Cauta in retetele tale</label><span id="bcnt" class="muted fss" ></span></div><input id="bq" placeholder="ingrediente sau nume, ex: vita, cartofi">
  <div id="bpl" class="bpl" role="group" aria-label="Filtre rapide"></div>
- <details id="bflt" class="mre"><summary id="bfsum">Filtre</summary><div class="fgrid"><div><label for="bs">Carte</label><select id="bs"></select></div><div><label for="bc">Categorie</label><select id="bc"></select></div><div><label for="bf">Eticheta</label><select id="bf"></select></div><div><label for="bp">Preferinte</label><select id="bp"><option value="">Toate</option><option value="ok">Fara alimente evitate</option><option value="lk">Cu alimente care imi plac</option></select></div><details id="bflt2" class="mre" style="grid-column:1/-1"><summary id="bfsum2">Mai multe filtre</summary><div class="fgrid mt8" ><input type="hidden" id="bd" value=""><div><label for="bj">Jurnal</label><select id="bj"><option value="">Toate</option><option value="4">Apreciate (4-5 stele)</option><option value="ok">Gatite pana acum</option><option value="g0">Negatite inca</option><option value="old">Negatite sau demult (peste 60 zile)</option></select></div><div><label for="bv">Stare</label><select id="bv"><option value="">Toate</option><option value="v">De verificat (ingrediente si text)</option><option value="p">Portii de verificat</option><option value="m">Macro de verificat</option><option value="ok">Fara semn de intrebare</option></select></div></div></details></div></details>
+ <details id="bflt" class="mre"><summary id="bfsum">Filtre</summary><div class="fgrid"><div><label for="bs">Carte</label><select id="bs"></select></div><div><label for="bc">Categorie</label><select id="bc"></select></div><div><label for="bf">Eticheta</label><select id="bf"></select></div><div><label for="bp">Preferinte</label><select id="bp"><option value="">Toate</option><option value="ok">Fara alimente evitate</option><option value="lk">Cu alimente care imi plac</option></select></div><div id="boffw" style="grid-column:1/-1"></div><details id="bflt2" class="mre" style="grid-column:1/-1"><summary id="bfsum2">Mai multe filtre</summary><div class="fgrid mt8" ><input type="hidden" id="bd" value=""><div><label for="bj">Jurnal</label><select id="bj"><option value="">Toate</option><option value="4">Apreciate (4-5 stele)</option><option value="ok">Gatite pana acum</option><option value="g0">Negatite inca</option><option value="old">Negatite sau demult (peste 60 zile)</option></select></div><div><label for="bv">Stare</label><select id="bv"><option value="">Toate</option><option value="v">De verificat (ingrediente si text)</option><option value="p">Portii de verificat</option><option value="m">Macro de verificat</option><option value="ok">Fara semn de intrebare</option></select></div></div></details></div></details>
  <div id="bn" class="muted mt12" ></div><button class="alt mt8" id="bvq" type="button" hidden >Parcurge retetele de verificat</button></div><div id="bres"></div></section>
 
 
@@ -166,7 +166,7 @@
 <button id="totop" type="button" class="totop" aria-label="Inapoi sus" title="Inapoi sus" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <div id="undo" class="hidden" role="status"><span id="undot"></span><button class="alt" id="undob" type="button">Anuleaza</button></div>
 
-<script src="nutri.js?v=5.9.0"></script>
-<script src="app.js?v=5.9.0"></script>
+<script src="nutri.js?v=5.10.0"></script>
+<script src="app.js?v=5.10.0"></script>
 </body>
 </html>

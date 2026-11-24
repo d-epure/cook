@@ -5,6 +5,7 @@ const dbg=e=>{try{if(localStorage.getItem("rdebug")==="1")console.warn(e)}catch(
    rs retete salvate (vechi: din 5.0.0 se muta in biblioteca, la "Retetele mele"), rjr jurnalul vechi (doar in backup; de la 5.2.0 jurnalul se calculeaza din meniu), rjn observatii pe zi, rsmall arata retetele Sanda Marin fara ingrediente, rmig migrarile facute (registrul MIGS, de la 5.4.0), rjs data de la care jurnalul se completeaza din meniu, rfav favorite, rnote jurnal si notite pe retete, rbook biblioteca incarcata (in IndexedDB; rlib = marcaj in localStorage),
    rmen meniu, rmp Meal prep (retete gatite in loturi), rmv vedere meniu (azi/saptamana), rmt tinte de macro (vechi), rprof profil nutritional si tinte, rl cumparaturi, rlv vedere lista (produse/retete),
    pna = nr. de portii "nu se aplica" (pe reteta), rfd alimente adaugate de tine (macro la 100 g), rp debara, rnd marcaj local: migrarea fara diacritice s-a facut (nu intra in backup), rcg categorii alimente, rcat categoria fiecarui aliment, rpf preferinte alimente, rpxc mese pe categorie,
+   roff cartile inactive (5.10.0; in backup si sincronizare), roffg comutatorul din Filtre pentru retetele gatite sau cu stele din cartile inactive (local),
    ru consum, ronb "Primii pasi" ascuns, rbk data ultimei copii. Datele Info (Ingrediente, Masuri, Gatire) sunt in nutri.js, nu in localStorage.
    Cuprins (cauta "=====" sau comentariile de sectiune): etichete, favorite si chei, jurnal pe reteta, aparate,
    biblioteca (filtre, incarcare, stocare in IndexedDB, coada "De verificat", macro cu AI), debara, mod gatit,
@@ -20,7 +21,7 @@ const nd=s=>{if(typeof s!=="string")return s;if(/[̧̦̆̂]/.test(s))s=s.normali
 const ndo=o=>{if(typeof o==="string")return nd(o);if(Array.isArray(o)){for(let i=0;i<o.length;i++){const v=o[i];if(typeof v==="string"){const n=nd(v);if(n!==v)o[i]=n}else if(v&&typeof v==="object")ndo(v)}}
  else if(o&&typeof o==="object"){for(const k of Object.keys(o)){const v=o[k];if(typeof v==="string"){const n=nd(v);if(n!==v)o[k]=n}else if(v&&typeof v==="object")ndo(v)}}return o};
 /* 4.1.1: o singura lista cu cheile de date; din ea se deduc LSK (chei normalizate si sincronizate) si BK_KEYS (backup) */
-const DKEYS=["rjn","rs","rfav","rtags","rsec","ra","rbook","rm1","rm2b","rl","rp","rcat","rcg","rmen","rmp","rmt","rnote","rpf","rpxc","rfd","rprof"];
+const DKEYS=["rjn","rs","rfav","rtags","rsec","ra","rbook","rm1","rm2b","rl","rp","rcat","rcg","rmen","rmp","rmt","rnote","rpf","rpxc","rfd","rprof","roff"];
 const LSK=new RegExp("^("+DKEYS.filter(k=>k!=="rbook").join("|")+")$");
 const LS=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);if(LSK.test(k))v=nd(v);localStorage.setItem(k,v);if(LSK.test(k))syMark(k)}catch(e){if(v!==undefined){try{toast("Nu am putut salva: memoria browserului e plina sau blocata. Descarca o copie de siguranta si sterge ce nu mai folosesti.")}catch(x){dbg(x)}}return null}};
 const AI_DEF="claude-haiku-5-5"; /* 5.3.1: modelul implicit */
@@ -570,6 +571,11 @@ let BPL={m:"",t:false,f:false,a:false,c:false};
 /* 5.0.0: retetele Sanda Marin fara ingrediente (doar text) nu apar in liste, cu exceptia celor folosite (favorite, gatite, cu nota); Setari > Carti le poate arata */
 const smAll=()=>LS("rsmall")==="1";
 function smHid(r,nt){if(smAll()||!/sanda marin/i.test(r.sursa||"")||(r.ingrediente||[]).length)return false;const k=bKey(r);if(isFav(k))return false;const n=(nt||getNotes())[k];return!(n&&((n.h||[]).length||+n.st||n.nt))}
+/* 5.10.0: carti inactive - retetele lor nu apar in cautare, pilule si propuneri; Favoritele raman; cu comutatorul din Filtre apar si cele gatite sau cu stele. Meniul, Meal prep si notitele nu se ating. */
+const getOff=()=>{try{const a=JSON.parse(LS("roff")||"[]");return new Set(Array.isArray(a)?a:[])}catch(e){return new Set()}};
+const offG=()=>LS("roffg")==="1";
+function bookOff(r,nt,off){off=off||getOff();if(!off.size||!off.has(r.sursa||"necunoscuta"))return false;const k=bKey(r);if(isFav(k))return false;
+ if(offG()){const n=(nt||getNotes())[k];if(n&&((n.h||[]).length||+n.st))return false}return true}
 const smN=()=>{const nt=getNotes();return BOOK.filter(r=>!r.cos&&/sanda marin/i.test(r.sursa||"")&&!(r.ingrediente||[]).length&&(smAll()||smHid(r,nt))).length};
 const bplSlot=r=>{const s=pxSlot(r)||pxAuto(r);return s==="cina"?"pranz":s};
 const bplOk=r=>(!BPL.m||bplSlot(r)===BPL.m)&&(!BPL.t||(recT(r)||9999)<=30);
@@ -583,9 +589,11 @@ $("#bpl").onclick=e=>{const d=(e.target.closest("button")||{}).dataset;if(!d||!d
  bReset()};
 /* 5.5.0: cat e deschisa o reteta in Biblioteca, cautarea si butoanele de sus se ascund (Inapoi ramane primul); revin la lista de rezultate */
 function bSearchVis(on){["#bsearch","#bnewrow"].forEach(q=>{const el=$(q);if(el)el.hidden=!on})}
+function offDraw(OFF){const el=$("#boffw");if(!el)return;const on=OFF.size>0,g=offG();
+ el.innerHTML=`<label class="offg${on?"":" dis"}"><input type="checkbox" id="boffg"${g&&on?" checked":""}${on?"":` aria-disabled="true"`}> Din cartile inactive, arata si retetele gatite sau cu stele</label>`}
 function drawBook(){bSearchVis(true);
  if(!LIBREADY){$("#bres").innerHTML='<p class="muted">Se incarca biblioteca...</p>';return}
- const srcs=[...new Set(BOOK.filter(r=>!r.cos).map(r=>r.sursa||"necunoscuta"))],sel=$("#bs"),prev=sel.value;
+ const OFF0=getOff(),srcs=[...new Set(BOOK.filter(r=>!r.cos).map(r=>r.sursa||"necunoscuta"))].filter(x=>!OFF0.has(x)),sel=$("#bs"),prev=sel.value;
  if(sel.dataset.k!==srcs.join("|")){sel.dataset.k=srcs.join("|");sel.innerHTML='<option value="">Toate cartile</option>'+srcs.map(x=>`<option>${esc(x)}</option>`).join("");sel.value=srcs.includes(prev)?prev:""}
  const cats=[...new Set(BOOK.filter(r=>!r.cos&&(!sel.value||inSrc(r,sel.value))&&favOk(r)).map(r=>r.categorie).filter(Boolean))].sort(),cs=$("#bc"),cp=cs.value; /* categoriile arata doar ce exista in cartea aleasa */
  if(cs.dataset.k!==cats.join("|")){cs.dataset.k=cats.join("|");cs.innerHTML='<option value="">Toate categoriile</option>'+cats.map(x=>`<option>${esc(x)}</option>`).join("");cs.value=cats.includes(cp)?cp:""}
@@ -599,16 +607,17 @@ function drawBook(){bSearchVis(true);
   $("#bres").innerHTML=`<div class="card"><p class="muted mt0 mb8">Retetele din cos nu apar in cautare, meniu si propuneri. Le restaurezi sau le stergi definitiv (se pierd si notitele lor: stele, cand ai gatit-o, ce ai scris).</p><button class="alt" data-cclr="1">Goleste cosul</button></div>`+cs.map(x=>`<div class="card"><h2>${ed(x.r.titlu)}</h2>${srcLine(x.r)}<div class="row g8 mt8"><button class="go m0" data-crest="${esc(bKey(x.r))}">Restaureaza</button><button class="alt ico m0" data-cdel="${esc(bKey(x.r))}" aria-label="Sterge definitiv ${esc(x.r.titlu)}" title="Sterge definitiv">${IC_DEL}</button></div></div>`).join("");return}}
  const bd=$("#bd").value,usePan=bd!==""&&getPan().length>0,bj=$("#bj").value,NT=getNotes(),lim60=dAdd(dKey(new Date()),-60);
  const jOk=r=>{if(!bj)return true;const n=NT[bKey(r)]||{},l=lastCooked(n);return bj==="4"?+n.st>=4:bj==="ok"?!!l:bj==="g0"?!l:!l||l<lim60};
- const l=BOOK.map((r,i)=>{const z=q.length?bScore(r,q):{s:0,h:0};return{r,i,sc:z.h,w:z.s,ms:usePan?missing(r):null}}).filter(x=>!x.r.nou&&!x.r.cos&&!smHid(x.r,NT)&&(!usePan||(x.ms.tot>0&&x.ms.miss.length<=+bd))&&jOk(x.r)&&(!bp||(bp==="ok"?!recPref(x.r).av.length:recPref(x.r).lk.length>0))&&(!q.length||x.sc>0)&&(!f||bLab(x.r).includes(f))&&(!sc0||inSrc(x.r,sc0))&&favOk(x.r)&&(!cat0||x.r.categorie===cat0)&&stOk(x.r)&&bplOk(x.r)).sort((a,b)=>usePan?(a.ms.miss.length-b.ms.miss.length)||(b.w-a.w)||(b.sc-a.sc):(b.w-a.w)||(b.sc-a.sc));
+ const OFF=getOff();offDraw(OFF);
+ const l=BOOK.map((r,i)=>{const z=q.length?bScore(r,q):{s:0,h:0};return{r,i,sc:z.h,w:z.s,ms:usePan?missing(r):null}}).filter(x=>!x.r.nou&&!x.r.cos&&!smHid(x.r,NT)&&!bookOff(x.r,NT,OFF)&&(!usePan||(x.ms.tot>0&&x.ms.miss.length<=+bd))&&jOk(x.r)&&(!bp||(bp==="ok"?!recPref(x.r).av.length:recPref(x.r).lk.length>0))&&(!q.length||x.sc>0)&&(!f||bLab(x.r).includes(f))&&(!sc0||inSrc(x.r,sc0))&&favOk(x.r)&&(!cat0||x.r.categorie===cat0)&&stOk(x.r)&&bplOk(x.r)).sort((a,b)=>usePan?(a.ms.miss.length-b.ms.miss.length)||(b.w-a.w)||(b.sc-a.sc):(b.w-a.w)||(b.sc-a.sc));
 /* 3.4.0: retetele cu acelasi titlu (din orice carte, si din aceeasi) se grupeaza intr-un card; exemplarul principal e cel mai complet */
  const gk=r=>norm(r.titlu).replace(/[^a-z0-9]+/g," ").trim(),cmp=r=>(r.verifica?0:100)+((r.pasi_carte||[]).length?50:0)+Math.min((r.ingrediente||[]).length,20)+(r.macro&&r.macro.kcal!=null?5:0)+(r.portii!=null?3:0),gm=new Map();
  l.forEach((x,n)=>{const k=gk(x.r)||"#"+n;if(!gm.has(k))gm.set(k,[]);gm.get(k).push(x)});
  const ls=[...gm.values()].map(g=>{if(g.length===1)return g[0];const best=g.reduce((a,b)=>cmp(b.r)>cmp(a.r)?b:a);return Object.assign({},best,{others:g.filter(y=>y!==best)})});
  _bnA=[bd,usePan];bnDraw(bd,usePan);
  /* 5.6.0: la deschidere nu arat retete; lista apare dupa ce cauti sau alegi o pilula / un filtru */
- if(!(q.length||f||sc0||cat0||bd!==""||bj||bp||$("#bv").value||BPL.m||BPL.t||BPL.f||BPL.a)){const tot=new Set(BOOK.filter(r=>!r.cos&&!r.nou).map((r,n)=>gk(r)||"#"+n)).size;
+ if(!(q.length||f||sc0||cat0||bd!==""||bj||bp||$("#bv").value||BPL.m||BPL.t||BPL.f||BPL.a)){const tot=new Set(BOOK.filter(r=>!r.cos&&!r.nou&&!bookOff(r,NT,OFF)).map((r,n)=>gk(r)||"#"+n)).size;
   $("#bcnt").textContent=tot+(tot===1?" reteta":" retete")+(BOOK===BOOK0?" demo":"");$("#bres").innerHTML=`<p class="muted bhint">Cauta un ingredient sau un nume, ori alege o pilula, ca sa vezi retete.</p><button type="button" class="lk bhint" data-howto="1">Cum folosesc aplicatia</button>`;return}
- {const tot=new Set(BOOK.filter(r=>!r.cos&&!r.nou).map((r,n)=>gk(r)||"#"+n)).size,all=BOOK.filter(r=>!r.cos&&!r.nou).length;
+ {const tot=new Set(BOOK.filter(r=>!r.cos&&!r.nou&&!bookOff(r,NT,OFF)).map((r,n)=>gk(r)||"#"+n)).size,all=BOOK.filter(r=>!r.cos&&!r.nou&&!bookOff(r,NT,OFF)).length;
  $("#bcnt").textContent="Rezultat: "+(ls.length===tot?ls.length+(ls.length===1?" reteta":" retete")+(all>tot?(all-tot===1?" (1 exemplar cu acelasi titlu este grupat)":" ("+(all-tot)+" exemplare cu acelasi titlu sunt grupate)"):""):ls.length+(ls.length===1?" reteta gasita":" retete gasite")+" din "+tot)+(usePan&&ls.length>1?", cele mai potrivite primele":"")+(BOOK===BOOK0?". Sunt retete demo: dispar cand incarci o carte sau scrii prima ta reteta.":"")}
  $("#bres").innerHTML=ls.length?ls.slice(0,BLIM).map(x=>`<div class="card"><h2><button type="button" class="tlk" data-b="${x.i}">${ed(x.r.titlu)}</button></h2>${srcLine(x.r)}<div>${bChips(x.r)}</div>${jrLine(bKey(x.r))}${pfLine(x.r)}${x.ms?`<div class="miss${x.ms.miss.length?"":" ok"}">${x.ms.miss.length?"Iti lipsesc ("+x.ms.miss.length+"): "+esc(x.ms.miss.join(", ")):"Ai tot ce trebuie din debara"}</div>`:""}${(()=>{const t=`${q.length?"Potriviri: "+x.sc+"/"+q.length+" - ":""}${nutCard(x.r)}${x.r.verifica?" - verifica fisa":""}`;return t?`<p class="muted">${t}</p>`:""})()}${x.others?`<div class="muted mt8 mb12 alsoin">Mai e si in:${x.others.map(o=>`<button type="button" class="lk" data-b="${o.i}">${esc(o.r.sursa||"necunoscuta")}${o.r.nr!=null&&o.r.nr!==""?", nr. "+esc(o.r.nr):""}${o.r.verifica?" (de verificat)":""}</button>`).join("")}</div>`:""}<button class="go" data-b="${x.i}">Deschide</button> ${favBtn(bKey(x.r),"Favorita")}</div>`).join("")+(ls.length>BLIM?`<div class="card"><button class="alt" data-bmore="1">Arata mai multe</button></div>`:""):'<p class="muted">Nicio reteta gasita. Incearca alt ingredient sau scoate filtrul.</p>';
 }
@@ -830,6 +839,8 @@ function newBook(){BOOK=BOOK.filter(x=>!x.nou);const S="Retetele mele",nr=Math.m
 $("#bnew").onclick=newBook;
 $("#bidei").onclick=()=>{show("idei");window.scrollTo(0,0)};$("#ideiBack").onclick=()=>{show("carti");window.scrollTo(0,0)};
 var BLIM=10;const bReset=()=>{BLIM=10;drawBook()}; /* 5.6.0: 10 rezultate, apoi cate 10 */
+$("#boffw").addEventListener("click",e=>{const c=e.target.closest("#boffg");if(c&&c.getAttribute("aria-disabled")==="true"){e.preventDefault();toast("Nu ai nicio carte inactiva. O inactivezi din Setari > Carti.")}});
+$("#boffw").addEventListener("change",e=>{if(e.target.id==="boffg"){LS("roffg",e.target.checked?"1":"");bReset()}});
 let BQT=0;$("#bq").oninput=()=>{clearTimeout(BQT);BQT=setTimeout(bReset,180)}; /* 4.1.1: nu redesenez la fiecare tasta */$("#bf").onchange=bReset;$("#bs").onchange=bReset;$("#bc").onchange=bReset;$("#bv").onchange=bReset;$("#bd").onchange=bReset;$("#bj").onchange=bReset;$("#bp").onchange=bReset;
 $("#bres").onclick=e=>{if(bvClick(e,"#bres"))return;const d=e.target.closest("button")?e.target.closest("button").dataset:e.target.dataset;
  if(d.crest!==undefined){const r=BOOK.find(x=>bKey(x)===d.crest);if(r){cosSet(r,false);drawBook();bplDraw();undoShow("Restaurata: "+r.titlu+".",{},()=>{cosSet(r,true);drawBook();bplDraw()})}return}
@@ -965,14 +976,14 @@ window.addEventListener("online",()=>{if(window.__ready)shipRun().then(r=>{if(r)
 function updBS(){const s=STORED,c={};s.forEach(r=>{const k=r.sursa||"necunoscuta";c[k]=(c[k]||0)+1});const k=Object.keys(c);
  const shDel=Object.values(getBv()).some(x=>x&&x.del)?`<div class="mt12"><button class="alt" data-ship="1">Readu cartile aplicatiei</button><p class="muted mt4 mb0">Ai sters carti care vin cu aplicatia. Butonul le aduce inapoi; retetele tale raman neatinse.</p></div>`:"";
  const smn=smN(),smB=smn?`<div class="mt12"><p class="muted mt0 mb4">${smn} retete Sanda Marin au doar text, fara ingrediente; ${smAll()?"apar":"nu apar"} in Biblioteca (cele folosite de tine apar oricum).</p><button class="alt m0" data-small="1">${smAll()?"Ascunde-le":"Arata-le"}</button></div>`:"";
- $("#bsn").innerHTML=shDel+smB+(k.length?k.map(x=>`<div class="bsr"><b>${esc(x)}</b><div class="bsm"><span class="muted">${c[x]} ${c[x]===1?"reteta":"retete"}</span><button class="alt ico" data-dl="${esc(x)}" aria-label="Descarca JSON" title="Descarca JSON"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 20h14"/></svg></button><button class="alt ico" data-src="${esc(x)}" aria-label="Sterge" title="Sterge">${IC_DEL}</button></div></div>`).join("")+`<div class="row mt12 g8" ><button class="go m0" data-dlall="1" >Descarca toate (${s.length} retete)</button><button class="alt" data-all="1">Goleste biblioteca</button></div>`:'<p class="muted">Nu ai nicio baza incarcata (apare doar reteta de test).</p>');dupDraw()}
+ const OFF=getOff();$("#bsn").innerHTML=shDel+smB+(k.length?k.map(x=>{const off=OFF.has(x);return`<div class="bsr${off?" off":""}"><div class="bsn"><b>${esc(x)}</b> <span class="muted">(${c[x]})</span>${off?' <span class="offt">inactiva</span>':""}</div><button type="button" class="swt" role="switch" aria-checked="${!off}" data-boff="${esc(x)}" aria-label="${off?"Carte inactiva: atinge ca s-o activezi":"Carte activa: atinge ca s-o inactivezi"}"></button><button class="alt ico" data-dl="${esc(x)}" aria-label="Descarca JSON" title="Descarca JSON"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 20h14"/></svg></button><button class="alt ico" data-src="${esc(x)}" aria-label="Sterge" title="Sterge">${IC_DEL}</button></div>`}).join("")+`<div class="row mt12 g8" ><button class="go m0" data-dlall="1" >Descarca toate (${s.length} retete)</button><button class="alt" data-all="1">Goleste biblioteca</button></div>`:'<p class="muted">Nu ai nicio baza incarcata (apare doar reteta de test).</p>');dupDraw()}
 /* descarca o carte (cu corecturile tale) in acelasi format in care o incarci: o lista de retete, reincarcabila ca atare */
 function dlBook(src){const all=src===null,l=getStored().filter(r=>all||(r.sursa||"necunoscuta")===src).map(r=>{const o=JSON.parse(JSON.stringify(r));delete o.nou;delete o.liv;delete o.lh;return o});
  if(!l.length){toast("Nu am gasit retete in aceasta carte.");return}
  const name=(all?"toate-retetele":String(src).replace(/[^\w\-]+/g,"_").replace(/^_+|_+$/g,"")||"carte")+"-corectat-"+dKey(new Date())+".json",a=document.createElement("a");
  a.href=URL.createObjectURL(new Blob([JSON.stringify(l,null,1)],{type:"application/json"}));a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
  toast("Descarcat: "+name+" ("+l.length+" retete). Il poti reincarca din Setari -> Carti.")}
-$("#bscard").onclick=e=>{const b=e.target,d=b.dataset;if(d.small!==undefined){LS("rsmall",smAll()?"":"1");updBS();drawBook();return}if(d.ship!==undefined){b.disabled=true;shipRun(true).then(r=>{shipDone(r);updBS()}).catch(()=>{b.disabled=false});return}if(d.dl!==undefined){dlBook(d.dl);return}if(d.dlall!==undefined){dlBook(null);return}if(d.src===undefined&&!d.all)return;
+$("#bscard").onclick=e=>{const b=e.target.closest("button")||e.target,d=b.dataset;if(d.boff!==undefined){const o=getOff();o.has(d.boff)?o.delete(d.boff):o.add(d.boff);LS("roff",JSON.stringify([...o]));updBS();bReset();toast(o.has(d.boff)?"Carte inactiva: retetele ei nu mai apar in cautare. Favoritele raman.":"Carte activa din nou.");return}if(d.small!==undefined){LS("rsmall",smAll()?"":"1");updBS();drawBook();return}if(d.ship!==undefined){b.disabled=true;shipRun(true).then(r=>{shipDone(r);updBS()}).catch(()=>{b.disabled=false});return}if(d.dl!==undefined){dlBook(d.dl);return}if(d.dlall!==undefined){dlBook(null);return}if(d.src===undefined&&!d.all)return;
  if(armDel(b))return;
  {const bv=getBv();if(d.all)Object.keys(bv).forEach(k=>{bv[k]={del:1}});else if(bv[d.src])bv[d.src]={del:1};putBv(bv)}
  putStored(d.all?[]:getStored().filter(r=>(r.sursa||"necunoscuta")!==d.src))};
@@ -1781,7 +1792,7 @@ function mdSearch(){if(!MD||!$("#mdres"))return;
  const wr=r=>r.sursa==="Retetele mele",fv=r=>isFav(bKey(r));
  const hit=x=>!q.length||(x.s==="s"?q.every(w=>norm(x.r.titlu+" "+(x.r.ingrediente||[]).map(y=>y.nume).join(" ")).includes(w)):bScore(x.r,q).h===q.length);
  const add=x=>{if(out.length<60&&hit(x))out.push(x)};
- if(!f){if(q.length){BOOK.forEach((r,i)=>{if(!r.cos&&!smHid(r,NTm))add({s:"b",i,r})})}}
+ if(!f){if(q.length){BOOK.forEach((r,i)=>{if(!r.cos&&!smHid(r,NTm)&&!bookOff(r,NTm))add({s:"b",i,r})})}}
  else if(f==="c"){BOOK.forEach((r,i)=>{if(wr(r)&&!r.cos)add({s:"b",i,r})})}
  else if(f==="f"){BOOK.forEach((r,i)=>{if(fv(r)&&!r.cos)add({s:"b",i,r})})}
  else if(f==="m"){const sn=new Set(),U=mpAlloc();getMP().filter(x=>x.st!=="p"&&mpLeft(x,U)>0).forEach(x=>{const rc=mpRec(x);if(rc&&!sn.has(x.k)){sn.add(x.k);add({s:rc.s,i:rc.i,r:rc.r,mp:1})}})}
@@ -1902,7 +1913,7 @@ function pxAuto(r){const t=norm((r.categorie||"")+" "+(r.titlu||""));if(PX_EXC.t
  return"pranz"}
 const pxIngs=(s,r)=>(s==="b"?(r.ingrediente||[]):(r.ingrediente||[])).filter(x=>(x.n||x.nume)).length;
 function pxPool(){const out=[];
- BOOK.forEach((r,i)=>{if(r.nou||r.cos||(r.verifica||[]).some(x=>x!==PVR)||!pxIngs("b",r))return;const sl=pxSlot(r);if(sl)out.push({s:"b",r,sl,key:bKey(r)})});
+ const OFF=getOff(),NTp=getNotes();BOOK.forEach((r,i)=>{if(r.nou||r.cos||bookOff(r,NTp,OFF)||(r.verifica||[]).some(x=>x!==PVR)||!pxIngs("b",r))return;const sl=pxSlot(r);if(sl)out.push({s:"b",r,sl,key:bKey(r)})});
  getSaved().forEach(r=>{if(!pxIngs("s",r))return;const sl=pxSlot(r);if(sl)out.push({s:"s",r,sl,key:sKey(r)})});return out}
 function pxScore(c,slot,ctx){const r=c.r,why=[];let s=0;const pf=recPref(r);
  if(pf.av.length)return null;
@@ -2097,7 +2108,7 @@ const ZS=[.9,1,1.15,1.3,1.5];
 function zmSet(i,sv){i=Math.max(0,Math.min(ZS.length-1,i));document.documentElement.style.setProperty("--z",ZS[i]);$("#zv").textContent=Math.round(ZS[i]*100)+"%";$("#zd").disabled=i===0;$("#zu").disabled=i===ZS.length-1;ZI=i;if(sv)try{localStorage.setItem("rzm",String(ZS[i]))}catch(e){}}
 let ZI=1;
 (function(){let v=1;try{v=parseFloat(localStorage.getItem("rzm"))||1}catch(e){}let i=ZS.indexOf(v);zmSet(i<0?1:i,false);$("#zd").onclick=()=>zmSet(ZI-1,true);$("#zu").onclick=()=>zmSet(ZI+1,true);$("#zv").onclick=()=>zmSet(1,true)})();
-const APP_V="5.9.0";
+const APP_V="5.10.0";
 if(PMIG)setTimeout(()=>{drawPantry();navCount();undoShow("Debara: "+PMIG.n+(PMIG.n===1?" rand unit":" randuri unite")+" (aceeasi forma, alt marcaj).",PMIG.before,redrawAll)},400);
 /* ===== Instalare ca aplicatie, functionare fara net, stocare protejata ===== */
 let INST=null;
@@ -2287,7 +2298,7 @@ async function snDraw(){const el=$("#snbox");if(!el)return;const L=await snapLis
    ce ai acum aici, ce e acum in Dropbox. Ce s-a schimbat doar pe o parte se preia; ce s-a schimbat pe ambele parti, pe elemente diferite, se pastreaza amandoua;
    pe acelasi element castiga varianta de aici. Modificarea bate stergerea. Cheia AI si cheile Dropbox nu se sincronizeaza. */
 const SY_RAW=["rm1","rm2b"],SY_MIN=60000;
-const SY_LAB={rbook:"biblioteca",rs:"retete salvate",rfav:"favorite",rtags:"etichete",rsec:"titluri de sectiune",ra:"aparate",rm1:"setari AI",rm2b:"setari AI",rl:"lista de cumparaturi",rp:"debara",rcat:"debara",rcg:"debara",rmen:"meniu",rmp:"Meal prep",rmt:"meniu",rnote:"notite",rpf:"preferinte alimente",rpxc:"meniu",rfd:"alimente proprii",rprof:"profil nutritional",rjn:"observatii jurnal"};
+const SY_LAB={roff:"carti inactive",rbook:"biblioteca",rs:"retete salvate",rfav:"favorite",rtags:"etichete",rsec:"titluri de sectiune",ra:"aparate",rm1:"setari AI",rm2b:"setari AI",rl:"lista de cumparaturi",rp:"debara",rcat:"debara",rcg:"debara",rmen:"meniu",rmp:"Meal prep",rmt:"meniu",rnote:"notite",rpf:"preferinte alimente",rpxc:"meniu",rfd:"alimente proprii",rprof:"profil nutritional",rjn:"observatii jurnal"};
 function syLocal(){const o={};BK_KEYS.forEach(k=>{if(k==="rbook"){o.rbook=cl(STORED);return}
  const v=LS(k);if(v==null)return;if(SY_RAW.includes(k)){o[k]=v;return}try{o[k]=JSON.parse(v)}catch(e){dbg(e)}});return o}
 function syEq(a,b){if(a===b)return true;if(typeof a!=="object"||typeof b!=="object"||!a||!b)return false;

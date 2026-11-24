@@ -2,6 +2,14 @@
 
 Conventie: MAJOR.MINOR.PATCH. MINOR = functie noua; PATCH = reparatie/ajustare; MAJOR = schimbare de fundatie sau de structura a datelor.
 
+## 5.10.0
+- **Setari > Carti, mai compact:** un rand pe carte, cu numarul de retete in paranteza dupa nume ("Retete keto (197)") si, pe acelasi rand, comutatorul Activa / Inactiva, descarcarea si cosul de gunoi (aceeasi confirmare la stergere).
+- **Carti inactive:** comutatorul gri scoate retetele cartii din cautare, din toate pilulele (inclusiv Din debara), din lista Carte din Filtre, din cautarea din Meniu si din "Propune-mi un meniu"; totalul din Biblioteca numara doar retetele active. Randul cartii devine gri, cu "inactiva". Retetele raman salvate; cartea se reactiveaza din acelasi comutator. Meniul, Meal prep, notitele si cumparaturile deja facute nu se ating. Cartile aplicatiei se actualizeaza si cand sunt inactive.
+- **Favoritele raman vizibile** si din cartile inactive, peste tot, inclusiv in propuneri.
+- **Comutator in Filtre:** "Din cartile inactive, arata si retetele gatite sau cu stele" (oprit implicit). Fara carti inactive e gri si spune de ce la atingere.
+- Alegerea cartilor inactive (`roff`) intra in backup si in sincronizarea Dropbox; comutatorul din Filtre (`roffg`) ramane local.
+- Teste noi in `teste/test_biblioteca.js`.
+
 ## 5.9.0
 - **Cum folosesc aplicatia:** pagina noua in Setari > Aplicatie, langa Despre, cu instructiuni pas cu pas pe 10 sarcini pliabile (gasesc o reteta, planific meniul, fac lista de cumparaturi, pun ce am acasa in Debara, gatesc pas cu pas, Meal prep, Jurnal, scriu o reteta, completez valorile nutritionale lipsa, backup si alt telefon). Linkul "Cum folosesc aplicatia" din Biblioteca duce aici, nu la Despre. Despre ramane cum era (ce face aplicatia).
 - **Cumparaturi fara dubluri de forma:** acelasi produs, o data fara forma ("Spanac") si o data cu forma ("Spanac proaspat"), devine un singur rand cu forma scrisa ("90 g Spanac proaspat"), cu ambele retete dedesubt. Forme diferite (proaspat / congelat) raman separate. Dublurile deja existente se unesc la pornire si dupa sincronizare.
